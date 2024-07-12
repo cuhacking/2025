@@ -101,3 +101,4 @@ You should now be able to sign in with Google.
 ## Contributors ✨
 
 - [Nathan Coulas](https://www.nathancoulas.com)
+- [Jowi Aoun](https://www.linkedin.com/in/jowiaoun/)
