@@ -10,7 +10,7 @@ services:
     image: app
     container_name: app
     environment:
-      - DATABASE_URL=postgres://postgres:postgres@db:5432/postgres
+      - DATABASE_URL=postgres://postgres:password@db:5432/postgres
     depends_on:
       - db
     networks:
