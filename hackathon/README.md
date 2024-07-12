@@ -51,7 +51,7 @@ You will also need to set `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` if you w
 
 There is information about how to install Google OAuth credentials in the [Additional Setup](#additional-setup) section.
 
-### 5. Run PostgreSQL in Docker
+### 6. Run PostgreSQL in Docker
 
 ```bash
 docker-compose up -d db
@@ -61,13 +61,13 @@ docker-compose up -d db
 
 <small>**Note:** You can also build and run the app itself with Docker by running `docker-compose up -d --build`.</small>
 
-### 6. Run Prisma Migrate
+### 7. Run Prisma Migrate
 
 ```bash
 yarn prisma migrate dev
 ```
 
-### 7. Run Development Server
+### 8. Run Development Server
 
 ```bash
 yarn dev
