@@ -105,3 +105,4 @@ You should now be able to sign in with Google.
 - [Hasith De Alwis](https://hasithportfolio.netlify.app/home)
 - [Muktar Akinbile](https://www.muktarakinbile.com/)
 - [Mumtahin Farabi](https://github.com/mfarabi619)
+- [Aashna Verma](https://aashna-verma.github.io/)
