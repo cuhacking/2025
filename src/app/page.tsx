@@ -24,13 +24,17 @@ export default async function Home() {
     );
   }
 
+  const team = await api.team.get({id: session.user.id})
+
+  if (!team) return <h1>Error: no team found for user</h1>
+
   return (
     <HydrateClient>
       <div>
         <p>
           Welcome back, <code>{session.user.email}</code>!
         </p>
-        <UserProfile session={session} />
+        <UserProfile session={session} team={team} />
       </div>
     </HydrateClient>
   );
