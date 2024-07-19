@@ -1,5 +1,5 @@
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { UserInformation, User as PrismaUser } from "@prisma/client";
+import {UserInformation, Team, User as PrismaUser} from "@prisma/client";
 import {
   User,
   getServerSession,
@@ -57,27 +57,57 @@ const getFirstNameAndLastName = (
   };
 };
 
+function generateRandomString(length: number): string {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  let result = '';
+  const charactersLength = characters.length;
+
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+
+  return result;
+}
+
 const createUserEventHandler = async (message: { user: User }) => {
   const { user } = message;
 
+  if (!user.email) return;
+
   if (!user.name) return;
+
   const { firstName, lastName } = getFirstNameAndLastName(user.name);
 
-  if (!user.email) return;
+  // create a Team object for the user
+  const team: Team = {
+    id: generateRandomString(5),
+    name: firstName + "\'s team",
+    ownerId: user.id,
+    usersIds: [user.id]
+  }
 
   // create a default UserInformation object with all values set to null
   const userInformation: UserInformation = {
-    email: user.email,
     id: user.id,
+    userId: user.id,
+    email: user.email,
     first_name: firstName,
     last_name: lastName,
+    gender: null,
     school: null,
     major: null,
     date_of_birth: null,
     phone_number: null,
     levels_of_study: null,
-    userId: user.id,
+    ownedTeamId: team.id,
+    teamId: team.id,
   };
+
+  await db.team.create({
+    data: {
+      ...team
+    }
+  })
 
   await db.userInformation.create({
     data: {

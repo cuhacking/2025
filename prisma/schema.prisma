@@ -25,6 +25,10 @@ model UserInformation {
   // Other Fields
   user            User?     @relation(fields: [userId], references: [id])
   userId          String    @unique
+  ownedTeam       Team      @relation("OwnedTeam", fields: [ownedTeamId], references: [id])
+  ownedTeamId     String    @unique
+  team            Team?     @relation("TeamUsers", fields: [teamId], references: [id])
+  teamId          String?
 }
 
 // NEXT AUTH REQUIREMENTS //
@@ -73,17 +77,13 @@ model User {
   sessions          Session[]
   userInformation   UserInformation? @relation
   userInformationId String?          @unique
-  ownedTeam         Team             @relation("OwnedTeam", fields: [ownedTeamId], references: [id])
-  ownedTeamId       String           @unique
-  team              Team?            @relation("TeamUsers", fields: [teamId], references: [id])
-  teamId            String?
 }
 
 model Team {
-  id       String   @id
+  id       String            @id
   name     String
-  owner    User?    @relation("OwnedTeam")
+  owner    UserInformation?  @relation("OwnedTeam")
   ownerId  String?
-  users    User[]   @relation("TeamUsers")
+  users    UserInformation[] @relation("TeamUsers")
   usersIds String[]
 }
