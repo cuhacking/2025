@@ -86,4 +86,6 @@ model Team {
   ownerId  String?
   users    UserInformation[] @relation("TeamUsers")
   usersIds String[]
+
+  @@index([ownerId])
 }
