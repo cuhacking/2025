@@ -1,7 +1,8 @@
 "use client";
 
+import QRCode from "react-qr-code"
 import { Session } from "next-auth";
-import {Team} from "@prisma/client";
+import { Team } from "@prisma/client";
 
 interface UserProfileProps {
   session: Session;
@@ -9,7 +10,6 @@ interface UserProfileProps {
 }
 
 export function UserProfile(props: UserProfileProps) {
-
   return (
     <div>
       <h1>Your application is just your profile.</h1>
@@ -19,6 +19,13 @@ export function UserProfile(props: UserProfileProps) {
       <h1>Your team</h1>
       <p>Team name: {props.team.name}</p>
       <p>Invite code: {props.team.id}</p>
+
+      <QRCode
+        size={256}
+        style={{ height: "auto", maxWidth: "15%", width: "15%", margin: "2rem"}}
+        value={props.team.id}
+        viewBox={`0 0 256 256`}
+      />
     </div>
   );
 }
