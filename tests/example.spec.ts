@@ -1,18 +1,28 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from "@playwright/test";
 
-test('has title', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+test("has title", async ({ page }) => {
+  await page.goto("http://localhost:8000");
 
   // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Playwright/);
+  await expect(page).toHaveTitle(/Apply for cuHacking 2025!/);
 });
 
-test('get started link', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+test("get started link", async ({ page }) => {
+  await page.goto("http://localhost:8000");
 
-  // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
+  await expect(page.locator("body")).toContainText(
+    "Welcome to trpc with next-auth!",
+  );
 
-  // Expects page to have a heading with the name of Installation.
-  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+  await expect(page.locator("body")).toContainText(
+    "Sign in to see the latest post.",
+  );
+
+  await page.getByRole("link", { name: "Sign in" }).click();
+
+  await expect(
+    page.getByRole("button", { name: "Sign in with Google" }),
+  ).toBeVisible();
+
+  await page.getByRole("button", { name: "Sign in with Google" }).click();
 });
