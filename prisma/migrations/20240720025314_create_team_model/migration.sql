@@ -5,6 +5,9 @@
   - Added the required column `ownedTeamId` to the `UserInformation` table without a default value. This is not possible if the table is not empty.
 
 */
+-- DropForeignKey
+ALTER TABLE "UserInformation" DROP CONSTRAINT "UserInformation_userId_fkey";
+
 -- AlterTable
 ALTER TABLE "UserInformation" ADD COLUMN     "ownedTeamId" TEXT NOT NULL,
 ADD COLUMN     "teamId" TEXT;
@@ -30,3 +33,6 @@ ALTER TABLE "UserInformation" ADD CONSTRAINT "UserInformation_ownedTeamId_fkey" 
 
 -- AddForeignKey
 ALTER TABLE "UserInformation" ADD CONSTRAINT "UserInformation_teamId_fkey" FOREIGN KEY ("teamId") REFERENCES "Team"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "User" ADD CONSTRAINT "User_userInformationId_fkey" FOREIGN KEY ("userInformationId") REFERENCES "UserInformation"("id") ON DELETE SET NULL ON UPDATE CASCADE;

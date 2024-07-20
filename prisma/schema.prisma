@@ -23,7 +23,7 @@ model UserInformation {
   phone_number    String?
   school          String?
   // Other Fields
-  user            User?     @relation(fields: [userId], references: [id])
+  user            User?     @relation("UserInformation")
   userId          String    @unique
   ownedTeam       Team      @relation("OwnedTeam", fields: [ownedTeamId], references: [id])
   ownedTeamId     String    @unique
@@ -75,7 +75,7 @@ model User {
   image             String?
   accounts          Account[]
   sessions          Session[]
-  userInformation   UserInformation? @relation
+  userInformation   UserInformation? @relation("UserInformation", fields: [userInformationId], references: [id])
   userInformationId String?          @unique
 }
 
