@@ -24,7 +24,7 @@ export default async function Home() {
     );
   }
 
-  const team = await api.team.get({id: session.user.id})
+  const team = await api.team.getByUserId({userId: session.user.id})
 
   if (!team) return <h1>Error: no team found for user</h1>
 
