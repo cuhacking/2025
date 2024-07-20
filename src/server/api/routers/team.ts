@@ -6,28 +6,44 @@ import {
 } from "~/server/api/trpc";
 
 export const teamRouter = createTRPCRouter({
-  get: protectedProcedure
-    .input(z.object({ id: z.string().min(1) }))
-    .query(({ ctx, input }) => {
+
+
+  /**
+   * Retrieves the team with the specified team ID.
+   */
+  getByTeamId: protectedProcedure
+  .input(z.object({ teamId: z.string().min(1) }))
+  .query(({ ctx, input }) => {
     return ctx.db.team.findFirst({
       where: {
-        ownerId: input.id
+        id: input.teamId
       }
     })
   }),
 
+
   /**
-   * Handles a user joining a team.
-   *
-   * This mutation performs the following actions:
-   * 1. Takes `userId` and `teamId` as input to identify the user and the team to join.
-   * 2. Retrieves the user along with their related user information.
-   * 3. Checks if the user exists.
-   * 4. Retrieves the team the user wants to join.
-   * 5. Checks if the team exists and if it is not full (maximum 4 users).
-   * 6. Updates the user's `teamId` in their user information.
-   * 7. Adds the user ID to the team's `usersIds` array.
-   * 8. Performs all database updates within a transaction to ensure data integrity.
+   * Retrieves the team which contains the user by the user ID.
+   */
+  getByUserId: protectedProcedure
+    .input(z.object({ userId: z.string().min(1) }))
+    .query(({ ctx, input }) => {
+    return ctx.db.team.findFirst({
+      where: {
+        usersIds: {
+          has: input.userId
+        }
+      }
+    })
+  }),
+
+
+  /**
+   * Handles the process of a user joining a team. This includes:
+   * 1. Verifying the existence of the user and their associated information.
+   * 2. Checking the existence and availability of the team to join.
+   * 3. Ensuring that the user is not already in the team.
+   * 4. Updating the user's team association and the team’s user list within a transaction to ensure data integrity.
    */
   joinUserTeam: protectedProcedure
     .input(z.object({
@@ -40,11 +56,20 @@ export const teamRouter = createTRPCRouter({
           id: input.userId
         },
         include: {
-          userInformation: true
+          userInformation: {
+            include: {
+              team: {
+                select: {
+                  usersIds: true
+                }
+              }
+            }
+          },
         }
       })
 
       if (!user) throw new Error(`Could not find user with id ${input.userId}`)
+      if (!user.userInformation || !user.userInformation) throw new Error(`Could not find user's userInformation`)
 
       const teamToJoin = await ctx.db.team.findFirst({
         where: {
@@ -54,10 +79,31 @@ export const teamRouter = createTRPCRouter({
 
       if (!teamToJoin) throw new Error(`Could not find team with id ${input.teamId}`)
       if (teamToJoin.usersIds.length >= 4) throw new Error(`Team is full`)
+      if (teamToJoin.usersIds.includes(user.id)) throw new Error(`User already in the team`)
 
-      // Perform all-or-nothing transaction
+      // Perform all-or-nothing transaction to leave previous team and join the new team
       await ctx.db.$transaction(async (prisma) => {
+        if (
+          !user.userInformation ||
+          !user.userInformation.team ||
+          !user.userInformation.teamId
+        ) throw new Error(`Could not find user's userInformation`)
 
+        const updatedTeamUsersIds = user.userInformation.team.usersIds.filter(id => id !== user.id)
+
+        // Leave previous team
+        await prisma.team.update({
+          where: {
+            id: user.userInformation.teamId
+          },
+          data: {
+            usersIds: {
+              set: updatedTeamUsersIds
+            }
+          }
+        })
+
+        // Update user's team
         await prisma.user.update({
           where: {
             id: user.id
@@ -71,6 +117,7 @@ export const teamRouter = createTRPCRouter({
           }
         })
 
+        // Join team
         await prisma.team.update({
           where: {
             id: input.teamId
@@ -88,17 +135,11 @@ export const teamRouter = createTRPCRouter({
 
 
   /**
-   * Handles a user leaving a team.
-   *
-   * This mutation performs the following actions:
-   * 1. Takes `userId` as input to identify the user.
-   * 2. Retrieves the user along with their related user information.
-   * 3. Checks if the user and their user information, including the team ID, exist.
-   * 4. Throws an error if the user is trying to leave the team they are the owner of.
-   * 5. Retrieves the team the user is part of.
-   * 6. Removes the user ID from the team's `usersIds` array.
-   * 7. Updates the user's `teamId` in their user information.
-   * 8. Performs all database updates within a transaction to ensure data integrity.
+   * Handles the process of a user leaving their current team and joining back their default team. This includes:
+   * 1. Verifying the existence of the user and their associated information.
+   * 2. Checking if the user is attempting to leave their own team (default team), which is not allowed.
+   * 3. Retrieving the team the user is leaving.
+   * 4. Updating the team’s user list and the user's team association within a transaction to ensure data integrity.
    */
   leaveUserTeam: protectedProcedure
     .input(z.object({
@@ -127,6 +168,7 @@ export const teamRouter = createTRPCRouter({
       if (!teamToLeave) throw new Error(`Could not retrieve team to leave`)
 
       await ctx.db.$transaction(async (prisma) => {
+
         if (!user.userInformation) throw new Error('Could not retrieve user information')
 
         const updatedUsersIds = teamToLeave.usersIds.filter(id => id !== user.id);
