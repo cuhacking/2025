@@ -69,7 +69,7 @@ export const teamRouter = createTRPCRouter({
       })
 
       if (!user) throw new Error(`Could not find user with id ${input.userId}`)
-      if (!user.userInformation || !user.userInformation) throw new Error(`Could not find user's userInformation`)
+      if (!user.userInformation) throw new Error(`Could not find user's userInformation`)
 
       const teamToJoin = await ctx.db.team.findFirst({
         where: {
