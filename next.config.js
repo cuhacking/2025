@@ -6,7 +6,16 @@ await import("./src/env.js");
 
 /** @type {import("next").NextConfig} */
 const config = {
-    output: "standalone"
+    output: "standalone",
+    async redirects() {
+        return [
+            {
+                source: '/t/j/:teamId',
+                destination: '/teams/join/:teamId',
+                permanent: true,
+            },
+        ];
+    },
 };
 
 export default config;
