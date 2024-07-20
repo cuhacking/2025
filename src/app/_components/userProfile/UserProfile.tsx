@@ -3,6 +3,7 @@
 import QRCode from "react-qr-code"
 import { Session } from "next-auth";
 import { Team } from "@prisma/client";
+import { signOut } from "next-auth/react"
 
 interface UserProfileProps {
   session: Session;
@@ -20,12 +21,16 @@ export function UserProfile(props: UserProfileProps) {
       <p>Team name: {props.team.name}</p>
       <p>Invite code: {props.team.id}</p>
 
+      <p>Share this QR code with your friends to invite them!</p>
       <QRCode
         size={256}
         style={{ height: "auto", maxWidth: "15%", width: "15%", margin: "2rem"}}
-        value={props.team.id}
+        value={`http://localhost:8000/t/j/${props.team.id}`}
         viewBox={`0 0 256 256`}
       />
+
+      <button onClick={() => signOut()}>Sign out</button>
+
     </div>
   );
 }
