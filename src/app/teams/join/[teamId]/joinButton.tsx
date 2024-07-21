@@ -1,13 +1,13 @@
 'use client';
 
+import {joinTeamAction} from "~/app/teams/join/[teamId]/actions";
+
 const JoinButton = ({
   teamId,
   userId,
-  joinTeamAction
 }: {
   teamId: string,
   userId: string,
-  joinTeamAction: (teamId: string, userId: string) => void,
 }) => {
   return (
     <button onClick={() => joinTeamAction(teamId, userId)}>
