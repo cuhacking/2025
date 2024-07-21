@@ -1,9 +1,7 @@
-"use client";
-
 import QRCode from "react-qr-code"
 import { type Session } from "next-auth";
 import { type Team } from "@prisma/client";
-import { signOut } from "next-auth/react"
+import SignOut from "~/app/_components/userProfile/signOut";
 
 interface UserProfileProps {
   session: Session;
@@ -29,8 +27,7 @@ export function UserProfile(props: UserProfileProps) {
         viewBox={`0 0 256 256`}
       />
 
-      <button onClick={() => signOut()}>Sign out</button>
-
+      <SignOut/>
     </div>
   );
 }
