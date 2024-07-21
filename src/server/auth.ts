@@ -89,7 +89,6 @@ const createUserEventHandler = async (message: { user: User }) => {
   // create a default UserInformation object with all values set to null
   const userInformation: UserInformation = {
     id: user.id,
-    userId: user.id,
     email: user.email,
     first_name: firstName,
     last_name: lastName,
@@ -99,26 +98,24 @@ const createUserEventHandler = async (message: { user: User }) => {
     date_of_birth: null,
     phone_number: null,
     levels_of_study: null,
+    userId: user.id,
     ownedTeamId: team.id,
     teamId: team.id,
   };
 
-  await db.team.create({
-    data: {
-      ...team
-    }
-  })
+  await db.$transaction(async (prisma) => {
+    await prisma.team.create({
+      data: {
+        ...team
+      }
+    })
 
-  await db.userInformation.create({
-    data: {
-      ...userInformation,
-      user: {
-        connect: {
-          id: user.id,
-        },
+    await prisma.userInformation.create({
+      data: {
+        ...userInformation,
       },
-    },
-  });
+    });
+  })
 };
 
 /**
