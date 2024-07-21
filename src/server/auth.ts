@@ -1,7 +1,7 @@
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import {UserInformation, Team, User as PrismaUser} from "@prisma/client";
+import {type UserInformation, type Team, type User as PrismaUser} from "@prisma/client";
 import {
-  User,
+  type User,
   getServerSession,
   type DefaultSession,
   type NextAuthOptions,
@@ -28,9 +28,9 @@ declare module "next-auth" {
       PrismaUser;
   }
 
-  interface User {
-    // ...other properties
-  }
+  // interface User {
+  //   // ...other properties
+  // }
 }
 
 const getFirstNameAndLastName = (

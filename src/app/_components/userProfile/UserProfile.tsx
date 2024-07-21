@@ -1,8 +1,8 @@
 "use client";
 
 import QRCode from "react-qr-code"
-import { Session } from "next-auth";
-import { Team } from "@prisma/client";
+import { type Session } from "next-auth";
+import { type Team } from "@prisma/client";
 import { signOut } from "next-auth/react"
 
 interface UserProfileProps {
