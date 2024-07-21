@@ -1,6 +1,6 @@
 import {getServerAuthSession} from "~/server/auth";
-import JoinButton from "~/app/teams/join/[teamId]/joinButton";
 import {api} from "~/trpc/server";
+import JoinTeam from "~/app/_components/teams/joinTeam";
 
 export default async function Home({ params }: { params: { teamId: string } }) {
   const { teamId } = params;
@@ -26,7 +26,7 @@ export default async function Home({ params }: { params: { teamId: string } }) {
     <div>
       <h1>You&apos;ve been invited to join {team.name}</h1>
       <p>Team ID: {team.id}</p>
-      <JoinButton teamId={teamId} userId={session.user.id}/>
+      <JoinTeam teamId={teamId} userId={session.user.id}/>
     </div>
   );
 };
