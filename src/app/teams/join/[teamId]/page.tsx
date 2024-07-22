@@ -1,6 +1,6 @@
 import {getServerAuthSession} from "~/server/auth";
 import {api} from "~/trpc/server";
-import JoinTeam from "~/app/_components/teams/joinTeam";
+import JoinTeam from "~/app/_components/team/joinTeam";
 
 export default async function Home({ params }: { params: { teamId: string } }) {
   const { teamId } = params;
