@@ -10,6 +10,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id                String           @id @default(cuid())
+  name              String?
+  email             String?          @unique
+  emailVerified     DateTime?
+  image             String?
+  accounts          Account[]
+  sessions          Session[]
+  userInformation   UserInformation? @relation("UserInformation")
+  userInformationId String?          @unique
+}
+
 model UserInformation {
   id              String    @id @default(cuid())
   // MLH Fields
@@ -23,17 +35,29 @@ model UserInformation {
   phone_number    String?
   school          String?
   // Other Fields
-  user            User?     @relation("UserInformation")
+  user            User      @relation("UserInformation", fields: [userId], references: [id])
   userId          String    @unique
   ownedTeam       Team      @relation("OwnedTeam", fields: [ownedTeamId], references: [id])
   ownedTeamId     String    @unique
-  team            Team?     @relation("TeamUsers", fields: [teamId], references: [id])
-  teamId          String?
+  team            Team      @relation("TeamUsers", fields: [teamId], references: [id])
+  teamId          String
+}
+
+model Team {
+  id       String            @id
+  name     String            @unique
+  owner    UserInformation?  @relation("OwnedTeam")
+  ownerId  String?           @unique
+  users    UserInformation[] @relation("TeamUsers")
+  usersIds String[]
+
+  @@index([ownerId])
 }
 
 // NEXT AUTH REQUIREMENTS //
 model Account {
   id                       String  @id @default(cuid())
+  user                     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId                   String
   type                     String
   provider                 String
@@ -45,7 +69,6 @@ model Account {
   scope                    String?
   id_token                 String?
   session_state            String?
-  user                     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   refresh_token_expires_in Int?
 
   @@unique([provider, providerAccountId])
@@ -65,27 +88,4 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
-}
-
-model User {
-  id                String           @id @default(cuid())
-  name              String?
-  email             String?          @unique
-  emailVerified     DateTime?
-  image             String?
-  accounts          Account[]
-  sessions          Session[]
-  userInformation   UserInformation? @relation("UserInformation", fields: [userInformationId], references: [id])
-  userInformationId String?          @unique
-}
-
-model Team {
-  id       String            @id
-  name     String
-  owner    UserInformation?  @relation("OwnedTeam")
-  ownerId  String?
-  users    UserInformation[] @relation("TeamUsers")
-  usersIds String[]
-
-  @@index([ownerId])
 }
