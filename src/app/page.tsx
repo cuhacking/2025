@@ -3,7 +3,11 @@ import Link from "next/link";
 import { LatestPost } from "~/app/_components/post";
 import { getServerAuthSession } from "~/server/auth";
 import { api, HydrateClient } from "~/trpc/server";
+
+// Components
 import { UserProfile } from "./_components/userProfile/UserProfile";
+import SignInButton from "./_components/NextAuth/SignInButton";
+import SignOutButton from "./_components/NextAuth/SignOutButton";
 
 export default async function Home() {
   const hello = await api.post.hello({ text: "from tRPC" });
@@ -17,9 +21,7 @@ export default async function Home() {
         <p>
           Welcome to <code>trpc</code> with <code>next-auth</code>!
         </p>
-        <p>
-          <Link href="/api/auth/signin">Sign in</Link> to see the latest post.
-        </p>
+        <SignInButton/>
       </div>
     );
   }
@@ -31,6 +33,7 @@ export default async function Home() {
           Welcome back, <code>{session.user.email}</code>!
         </p>
         <UserProfile session={session} />
+        <SignOutButton/>
       </div>
     </HydrateClient>
   );

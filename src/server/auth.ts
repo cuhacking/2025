@@ -18,7 +18,7 @@ import { db } from "~/server/db";
  *
  * @see https://next-auth.js.org/getting-started/typescript#module-augmentation
  */
-declare module "next-auth" {
+declare module "next-auth" { 
   interface Session extends DefaultSession {
     user: {
       id: string;
@@ -99,6 +99,9 @@ const createUserEventHandler = async (message: { user: User }) => {
 export const authOptions: NextAuthOptions = {
   events: {
     createUser: createUserEventHandler,
+  },
+  pages: {
+    signIn: '/api/auth/signIn',
   },
   callbacks: {
     session: ({ session, user }) => ({
