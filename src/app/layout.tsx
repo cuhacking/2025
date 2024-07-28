@@ -4,7 +4,7 @@ import { type Metadata } from "next";
 
 import { TRPCReactProvider } from "~/trpc/react";
 
-import AuthProvider from "./_components/NextAuth/AuthProvider";
+import { AuthProvider }  from "~/app/_components/NextAuth/AuthProvider";
 
 export const metadata: Metadata = {
   title: "Apply for cuHacking 2025!",

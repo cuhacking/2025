@@ -1,7 +1,7 @@
-import SignIn from "~/app/_components/NextAuth/SignIn";
+import { SignIn } from "~/app/_components/NextAuth/SignIn";
 
 const SignInPage = () => {
-    return <SignIn/>
-  }
-  
+  return <SignIn/>
+}
+
 export default SignInPage;

@@ -1,9 +1,8 @@
 "use client";
 
-import { signIn } from 'next-auth/react';
+import { signIn } from "next-auth/react";
 
-// Button to go to sign in page
-export default function SignInButton() {
+export const SignInButton = () => {
   return (
     <button onClick={() => signIn()}>
       Sign in

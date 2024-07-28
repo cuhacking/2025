@@ -1,11 +1,9 @@
 "use client";
 
-import { useSession } from "next-auth/react";
-import { useRouter } from 'next/navigation';
-import { signIn } from 'next-auth/react';
+import { useSession, signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
-// Page for signing in
-const SignIn = () => {
+export const SignIn = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
 
@@ -23,5 +21,3 @@ const SignIn = () => {
     </div>
   )
 }
-
-export default SignIn;

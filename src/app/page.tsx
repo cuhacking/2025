@@ -6,8 +6,8 @@ import { api, HydrateClient } from "~/trpc/server";
 
 // Components
 import { UserProfile } from "./_components/userProfile/UserProfile";
-import SignInButton from "./_components/NextAuth/SignInButton";
-import SignOutButton from "./_components/NextAuth/SignOutButton";
+import { SignInButton }  from "~/app/_components/NextAuth/SignInButton";
+import { SignOutButton }  from "~/app/_components/NextAuth/SignOutButton";
 
 export default async function Home() {
   const hello = await api.post.hello({ text: "from tRPC" });
