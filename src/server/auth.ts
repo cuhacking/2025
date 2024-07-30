@@ -8,6 +8,7 @@ import {
 } from "next-auth";
 import { type Adapter } from "next-auth/adapters";
 import GoogleProvider from "next-auth/providers/google";
+import { randomBytes } from 'crypto';
 
 import { env } from "~/env";
 import { db } from "~/server/db";
@@ -58,15 +59,7 @@ const getFirstNameAndLastName = (
 };
 
 function generateRandomString(length: number): string {
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-  let result = '';
-  const charactersLength = characters.length;
-
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
-
-  return result;
+  return randomBytes(length).toString('hex').slice(0, length);
 }
 
 const createUserEventHandler = async (message: { user: User }) => {
