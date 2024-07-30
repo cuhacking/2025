@@ -1,16 +1,16 @@
 'use client';
 
-import {joinTeamAction} from "~/app/teams/join/[teamId]/actions";
+import {joinTeamAction} from "~/app/teams/join/[TEAM_ID]/actions";
 
 export default function JoinTeam({
-  teamId,
-  userId,
+  TEAM_ID,
+  USER_ID,
 }: {
-  teamId: string,
-  userId: string,
+  TEAM_ID: string,
+  USER_ID: string,
 }) {
   return (
-    <button onClick={() => joinTeamAction(teamId, userId)}>
+    <button onClick={() => joinTeamAction(TEAM_ID, USER_ID)}>
       Join Team
     </button>
   );
