@@ -10,8 +10,8 @@ import { type Adapter } from "next-auth/adapters";
 import GoogleProvider from "next-auth/providers/google";
 import { randomBytes } from 'crypto';
 
-import { env } from "~/env";
-import { db } from "~/server/db";
+import { env } from '~/env'
+import { db } from '~/server/db'
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -19,14 +19,14 @@ import { db } from "~/server/db";
  *
  * @see https://next-auth.js.org/getting-started/typescript#module-augmentation
  */
-declare module "next-auth" {
+declare module 'next-auth' {
   interface Session extends DefaultSession {
     user: {
-      id: string;
+      id: string
       // ...other properties
       // role: UserRole;
-    } & DefaultSession["user"] &
-      PrismaUser;
+    } & DefaultSession['user'] &
+    PrismaUser
   }
 
   // interface User {
@@ -34,29 +34,27 @@ declare module "next-auth" {
   // }
 }
 
-const getFirstNameAndLastName = (
-  name: string,
-): { firstName: string; lastName: string } => {
-  const splitName = name.split(" ");
+function getFirstNameAndLastName(name: string): { firstName: string, lastName: string } {
+  const splitName = name.split(' ')
   if (splitName.length === 1) {
     return {
       firstName: splitName[0]!,
-      lastName: "",
-    };
+      lastName: '',
+    }
   }
 
   if (splitName.length === 2) {
     return {
       firstName: splitName[0]!,
       lastName: splitName[1]!,
-    };
+    }
   }
 
   return {
     firstName: name,
-    lastName: "",
-  };
-};
+    lastName: '',
+  }
+}
 
 function generateRandomString(length: number): string {
   return randomBytes(length).toString('hex').slice(0, length);
@@ -127,7 +125,7 @@ export const authOptions: NextAuthOptions = {
         ...session.user,
         id: user.id,
       },
-      strategy: "jwt",
+      strategy: 'jwt',
     }),
   },
   adapter: PrismaAdapter(db) as Adapter,
@@ -146,11 +144,11 @@ export const authOptions: NextAuthOptions = {
      * @see https://next-auth.js.org/providers/github
      */
   ],
-};
+}
 
 /**
  * Wrapper for `getServerSession` so that you don't need to import the `authOptions` in every file.
  *
  * @see https://next-auth.js.org/configuration/nextjs
  */
-export const getServerAuthSession = () => getServerSession(authOptions);
+export const getServerAuthSession = () => getServerSession(authOptions)

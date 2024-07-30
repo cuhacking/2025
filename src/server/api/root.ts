@@ -11,7 +11,7 @@ export const appRouter = createTRPCRouter({
 });
 
 // export type definition of API
-export type AppRouter = typeof appRouter;
+export type AppRouter = typeof appRouter
 
 /**
  * Create a server-side caller for the tRPC API.
@@ -20,4 +20,4 @@ export type AppRouter = typeof appRouter;
  * const res = await trpc.team.getByUserId(userId);
  *       ^? Team
  */
-export const createCaller = createCallerFactory(appRouter);
+export const createCaller = createCallerFactory(appRouter)

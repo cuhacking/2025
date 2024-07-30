@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link'
 
 import { api, HydrateClient } from "~/trpc/server";
 import { getServerAuthSession } from "~/server/auth";
@@ -14,7 +14,7 @@ export default async function Home() {
           <Link href="/api/auth/signin">Sign in</Link>
         </p>
       </div>
-    );
+    )
   }
 
   const TEAM = await api.team.getByUserId({userId: SESSION.user.id})
@@ -32,5 +32,5 @@ export default async function Home() {
         )}
       </div>
     </HydrateClient>
-  );
+  )
 }

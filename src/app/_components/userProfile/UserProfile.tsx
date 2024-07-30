@@ -30,5 +30,5 @@ export default function UserProfile({
 
       <SignOut/>
     </div>
-  );
+  )
 }
