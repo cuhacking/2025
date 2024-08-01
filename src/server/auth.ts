@@ -77,12 +77,24 @@ const createUserEventHandler = async (message: { user: User }) => {
   };
 
   try {
+    if (typeof user.id !== "string") {
+      return;
+    }
+    //cannot create a link entry to User model at the same time
     await db.userInformation.create({
       data: {
         ...userInformation,
+      },
+    });
+
+    await db.userInformation.update({
+      where: {
+        id: user.id, // Use the ID from the created record
+      },
+      data: {
         user: {
           connect: {
-            id: user.id,
+            id: user.id, // Link to the existing User
           },
         },
       },
