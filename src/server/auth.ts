@@ -1,7 +1,7 @@
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { UserInformation, User as PrismaUser } from "@prisma/client";
+import type { UserInformation, User as PrismaUser } from "@prisma/client";
 import {
-  User,
+  type User,
   getServerSession,
   type DefaultSession,
   type NextAuthOptions,
@@ -26,10 +26,6 @@ declare module "next-auth" {
       // role: UserRole;
     } & DefaultSession["user"] &
       PrismaUser;
-  }
-
-  interface User {
-    // ...other properties
   }
 }
 
@@ -73,22 +69,30 @@ const createUserEventHandler = async (message: { user: User }) => {
     last_name: lastName,
     school: null,
     major: null,
+    gender: null,
     date_of_birth: null,
     phone_number: null,
     levels_of_study: null,
     userId: user.id,
   };
 
-  await db.userInformation.create({
-    data: {
-      ...userInformation,
-      user: {
-        connect: {
-          id: user.id,
+  try {
+    await db.userInformation.create({
+      data: {
+        ...userInformation,
+        user: {
+          connect: {
+            id: user.id,
+          },
         },
       },
-    },
-  });
+    });
+  } catch (err) {
+    console.error(
+      "auth.ts::createUserEventHandler - Troubling creating user",
+      err,
+    );
+  }
 };
 
 /**
