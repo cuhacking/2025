@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { UserProfile } from './_components/userProfile/UserProfile'
+import { UserProfile } from '../_components/userProfile/UserProfile'
 import { getServerAuthSession } from '~/server/auth'
 import { HydrateClient, api } from '~/trpc/server'
 
