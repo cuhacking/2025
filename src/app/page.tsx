@@ -1,37 +1,48 @@
-import Link from "next/link";
+import Link from 'next/link'
 
-import { LatestPost } from "~/app/_components/post";
-import { getServerAuthSession } from "~/server/auth";
-import { api, HydrateClient } from "~/trpc/server";
-import { UserProfile } from "./_components/userProfile/UserProfile";
+import { UserProfile } from './_components/userProfile/UserProfile'
+import { LatestPost } from '~/app/_components/post'
+import { getServerAuthSession } from '~/server/auth'
+import { HydrateClient, api } from '~/trpc/server'
 
 export default async function Home() {
-  const hello = await api.post.hello({ text: "from tRPC" });
-  const session = await getServerAuthSession();
+  const session = await getServerAuthSession()
 
-  void api.post.getLatest.prefetch();
+  void api.post.getLatest.prefetch()
 
   if (!session) {
     return (
       <div>
         <p>
-          Welcome to <code>trpc</code> with <code>next-auth</code>!
+          Welcome to
+          {' '}
+          <code>trpc</code>
+          {' '}
+          with
+          {' '}
+          <code>next-auth</code>
+          !
         </p>
         <p>
-          <Link href="/api/auth/signin">Sign in</Link> to see the latest post.
+          <Link href="/api/auth/signin">Sign in</Link>
+          {' '}
+          to see the latest post.
         </p>
       </div>
-    );
+    )
   }
 
   return (
     <HydrateClient>
       <div>
         <p>
-          Welcome back, <code>{session.user.email}</code>!
+          Welcome back,
+          {' '}
+          <code>{session.user.email}</code>
+          !
         </p>
         <UserProfile session={session} />
       </div>
     </HydrateClient>
-  );
+  )
 }

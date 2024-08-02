@@ -5,6 +5,7 @@ cuHacking is a hackathon organized by students at Carleton University. This proj
 ## Description
 
 What we use:
+
 - [Next.js](https://nextjs.org)
 - [NextAuth.js](https://next-auth.js.org)
 - [Prisma](https://prisma.io)
@@ -34,7 +35,7 @@ pnpm install
 
 ### 5. Create `.env` File
 
-Copy `.env.example` to `.env` and fill in the necessary environment variables. 
+Copy `.env.example` to `.env` and fill in the necessary environment variables.
 
 You will need to set `NEXTAUTH_SECRET` to a random string.
 We recommend using a password generator to create a secure secret or you can use the following command to generate a random string:
