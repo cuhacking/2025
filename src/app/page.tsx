@@ -1,7 +1,6 @@
 import Link from 'next/link'
 
 import { UserProfile } from './_components/userProfile/UserProfile'
-import { LatestPost } from '~/app/_components/post'
 import { getServerAuthSession } from '~/server/auth'
 import { HydrateClient, api } from '~/trpc/server'
 
