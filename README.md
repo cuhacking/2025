@@ -1,6 +1,6 @@
-# hackathon
+# cuHacking Hacker Portal
 
-Let's build the best hackathon platform.
+cuHacking is a hackathon organized by students at Carleton University. This project is a web application that serves as the portal for hackers to register for the hackathon, view the schedule, and submit their projects.
 
 ## Description
 
@@ -12,28 +12,24 @@ What we use:
 
 ## Development Setup
 
-### 1. Install Docker
+### 1. Install [Docker](https://www.docker.com)
 
-If you don't have Docker installed, you can download it from [here](https://www.docker.com/products/docker-desktop).
+[Docker Desktop](https://www.docker.com/products/docker-desktop/) provides a nice UI.
 
-There's other ways of installing it, but we recommend using Docker Desktop because of its helpful UI.
+### 2. Install [ Node.js](https://nodejs.org)
 
-### 2. Install Node.js
-
-You'll also need Node.js installed. You can download it from [here](https://nodejs.org). 
-
-### 3. Install Yarn
-
-We use [Yarn](https://yarnpkg.com) as our package manager. You can install it by running:
+### 3. Install [pnpm](https://pnpm.io/)
 
 ```bash
-npm install -g yarn
+npm install -g pnpm
 ```
 
 ### 4. Install Dependencies
 
 ```bash
-yarn install
+pnpm i
+# or
+pnpm install
 ```
 
 ### 5. Create `.env` File
@@ -64,25 +60,25 @@ docker-compose up -d db
 ### 7. Run Prisma Migrate
 
 ```bash
-yarn prisma migrate dev
+pnpm prisma migrate dev
 ```
 
 ### 8. Run Development Server
 
 ```bash
-yarn dev
+pnpm dev
 ```
 
 You should now be able to access the app at [http://localhost:8000](http://localhost:8000).
 
 Happy hacking! 🚀
 
-
 ## Additional Setup
 
 ### Google OAuth
 
-To enable Google OAuth, you'll need to create a project in the [Google Developer Console](https://console.developers.google.com) and create OAuth credentials.
+To enable Google OAuth, you'll need to create a project in the
+[Google Developer Console](https://console.developers.google.com) and create OAuth credentials.
 
 1. Go to the [Google Developer Console](https://console.developers.google.com) and create a new project.
 
