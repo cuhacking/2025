@@ -1,16 +1,16 @@
-import { PrismaAdapter } from "@auth/prisma-adapter";
-import { UserInformation, User as PrismaUser } from "@prisma/client";
+import { PrismaAdapter } from '@auth/prisma-adapter'
+import type { User as PrismaUser, UserInformation } from '@prisma/client'
 import {
-  User,
-  getServerSession,
   type DefaultSession,
   type NextAuthOptions,
-} from "next-auth";
-import { type Adapter } from "next-auth/adapters";
-import GoogleProvider from "next-auth/providers/google";
+  type User,
+  getServerSession,
+} from 'next-auth'
+import type { Adapter } from 'next-auth/adapters'
+import GoogleProvider from 'next-auth/providers/google'
 
-import { env } from "~/env";
-import { db } from "~/server/db";
+import { env } from '~/env'
+import { db } from '~/server/db'
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -18,14 +18,14 @@ import { db } from "~/server/db";
  *
  * @see https://next-auth.js.org/getting-started/typescript#module-augmentation
  */
-declare module "next-auth" {
+declare module 'next-auth' {
   interface Session extends DefaultSession {
     user: {
-      id: string;
+      id: string
       // ...other properties
       // role: UserRole;
-    } & DefaultSession["user"] &
-      PrismaUser;
+    } & DefaultSession['user'] &
+    PrismaUser
   }
 
   interface User {
@@ -33,37 +33,37 @@ declare module "next-auth" {
   }
 }
 
-const getFirstNameAndLastName = (
-  name: string,
-): { firstName: string; lastName: string } => {
-  const splitName = name.split(" ");
+function getFirstNameAndLastName(name: string): { firstName: string, lastName: string } {
+  const splitName = name.split(' ')
   if (splitName.length === 1) {
     return {
       firstName: splitName[0]!,
-      lastName: "",
-    };
+      lastName: '',
+    }
   }
 
   if (splitName.length === 2) {
     return {
       firstName: splitName[0]!,
       lastName: splitName[1]!,
-    };
+    }
   }
 
   return {
     firstName: name,
-    lastName: "",
-  };
-};
+    lastName: '',
+  }
+}
 
-const createUserEventHandler = async (message: { user: User }) => {
-  const { user } = message;
+async function createUserEventHandler(message: { user: User }) {
+  const { user } = message
 
-  if (!user.name) return;
-  const { firstName, lastName } = getFirstNameAndLastName(user.name);
+  if (!user.name)
+    return
+  const { firstName, lastName } = getFirstNameAndLastName(user.name)
 
-  if (!user.email) return;
+  if (!user.email)
+    return
 
   // create a default UserInformation object with all values set to null
   const userInformation: UserInformation = {
@@ -77,7 +77,7 @@ const createUserEventHandler = async (message: { user: User }) => {
     phone_number: null,
     levels_of_study: null,
     userId: user.id,
-  };
+  }
 
   await db.userInformation.create({
     data: {
@@ -88,8 +88,8 @@ const createUserEventHandler = async (message: { user: User }) => {
         },
       },
     },
-  });
-};
+  })
+}
 
 /**
  * Options for NextAuth.js used to configure adapters, providers, callbacks, etc.
@@ -107,7 +107,7 @@ export const authOptions: NextAuthOptions = {
         ...session.user,
         id: user.id,
       },
-      strategy: "jwt",
+      strategy: 'jwt',
     }),
   },
   adapter: PrismaAdapter(db) as Adapter,
@@ -126,11 +126,11 @@ export const authOptions: NextAuthOptions = {
      * @see https://next-auth.js.org/providers/github
      */
   ],
-};
+}
 
 /**
  * Wrapper for `getServerSession` so that you don't need to import the `authOptions` in every file.
  *
  * @see https://next-auth.js.org/configuration/nextjs
  */
-export const getServerAuthSession = () => getServerSession(authOptions);
+export const getServerAuthSession = () => getServerSession(authOptions)
