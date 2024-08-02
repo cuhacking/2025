@@ -39,7 +39,7 @@
     "**/*.cjs",
     "**/*.js",
     ".next/types/**/*.ts",
-    "postcss.config.mjs",
+    "postcss.config.cjs",
     "next.config.mjs"
   ],
   "exclude": ["node_modules"]
