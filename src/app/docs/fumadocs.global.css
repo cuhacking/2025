@@ -58,9 +58,9 @@
 /*---------------- ROLL BUTTON ----------------*/
 
 /*The button appears behind the desktop header, move it down*/
-[aria-label='Scroll to Top'] {
-  @apply md:top-20 !important;
-}
+/*[aria-label='Scroll to Top'] {*/
+/*  @apply md:top-20 !important;*/
+/*}*/
 
 /*---------------- THEME PRESETS ----------------*/
 
