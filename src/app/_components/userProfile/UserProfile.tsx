@@ -1,10 +1,9 @@
-"use client";
+'use client'
 
-import { Session } from "next-auth";
-import { api } from "~/trpc/react";
+import type { Session } from 'next-auth'
 
 interface UserProfileProps {
-  session: Session;
+  session: Session
 }
 
 export function UserProfile(props: UserProfileProps) {
@@ -12,7 +11,9 @@ export function UserProfile(props: UserProfileProps) {
     <div>
       <h1>Your application is just your profile.</h1>
       <h2>All you have to do is fill it in.</h2>
-      {JSON.stringify(props.session, null, 2)}
+      <pre>
+        {JSON.stringify(props.session, null, 2)}
+      </pre>
     </div>
-  );
+  )
 }
