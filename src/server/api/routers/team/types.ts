@@ -1,5 +1,5 @@
-import {type joinUserTeamSchema, type leaveUserTeamSchema} from "~/server/api/routers/team/constants";
-import {type z} from "zod";
+import type { z } from 'zod'
+import type { joinUserTeamSchema, leaveUserTeamSchema } from '~/server/api/routers/team/constants'
 
-export type JoinUserTeamInput = z.infer<typeof joinUserTeamSchema>;
-export type LeaveUserTeamInput = z.infer<typeof leaveUserTeamSchema>;
+export type JoinUserTeamInput = z.infer<typeof joinUserTeamSchema>
+export type LeaveUserTeamInput = z.infer<typeof leaveUserTeamSchema>

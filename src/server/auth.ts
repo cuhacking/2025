@@ -1,14 +1,14 @@
-import { PrismaAdapter } from "@auth/prisma-adapter";
-import {type UserInformation, type Team, type User as PrismaUser} from "@prisma/client";
+import { randomBytes } from 'node:crypto'
+import { PrismaAdapter } from '@auth/prisma-adapter'
+import type { User as PrismaUser, Team, UserInformation } from '@prisma/client'
 import {
-  type User,
-  getServerSession,
   type DefaultSession,
   type NextAuthOptions,
-} from "next-auth";
-import { type Adapter } from "next-auth/adapters";
-import GoogleProvider from "next-auth/providers/google";
-import { randomBytes } from 'crypto';
+  type User,
+  getServerSession,
+} from 'next-auth'
+import type { Adapter } from 'next-auth/adapters'
+import GoogleProvider from 'next-auth/providers/google'
 
 import { env } from '~/env'
 import { db } from '~/server/db'
@@ -57,24 +57,26 @@ function getFirstNameAndLastName(name: string): { firstName: string, lastName: s
 }
 
 function generateRandomString(length: number): string {
-  return randomBytes(length).toString('hex').slice(0, length);
+  return randomBytes(length).toString('hex').slice(0, length)
 }
 
-const createUserEventHandler = async (message: { user: User }) => {
-  const { user } = message;
+async function createUserEventHandler(message: { user: User }) {
+  const { user } = message
 
-  if (!user.email) return;
+  if (!user.email)
+    return
 
-  if (!user.name) return;
+  if (!user.name)
+    return
 
-  const { firstName, lastName } = getFirstNameAndLastName(user.name);
+  const { firstName, lastName } = getFirstNameAndLastName(user.name)
 
   // create a Team object for the user
   const team: Team = {
     id: generateRandomString(5),
-    name: firstName + "\'s team",
+    name: `${firstName}\'s team`,
     ownerId: user.id,
-    usersIds: [user.id]
+    usersIds: [user.id],
   }
 
   // create a default UserInformation object with all values set to null
@@ -92,22 +94,22 @@ const createUserEventHandler = async (message: { user: User }) => {
     userId: user.id,
     ownedTeamId: team.id,
     teamId: team.id,
-  };
+  }
 
   await db.$transaction(async (prisma) => {
     await prisma.team.create({
       data: {
-        ...team
-      }
+        ...team,
+      },
     })
 
     await prisma.userInformation.create({
       data: {
         ...userInformation,
       },
-    });
+    })
   })
-};
+}
 
 /**
  * Options for NextAuth.js used to configure adapters, providers, callbacks, etc.

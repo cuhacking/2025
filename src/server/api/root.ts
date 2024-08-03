@@ -1,5 +1,5 @@
-import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
-import { teamRouter } from "~/server/api/routers/team/team";
+import { createCallerFactory, createTRPCRouter } from '~/server/api/trpc'
+import { teamRouter } from '~/server/api/routers/team/team'
 
 /**
  * This is the primary router for your server.
@@ -8,7 +8,7 @@ import { teamRouter } from "~/server/api/routers/team/team";
  */
 export const appRouter = createTRPCRouter({
   team: teamRouter,
-});
+})
 
 // export type definition of API
 export type AppRouter = typeof appRouter

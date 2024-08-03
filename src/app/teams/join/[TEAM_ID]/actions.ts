@@ -1,17 +1,13 @@
-'use server';
+'use server'
 
-import {api} from "~/trpc/server";
-import {redirect} from "next/navigation";
+import { redirect } from 'next/navigation'
+import { api } from '~/trpc/server'
 
-export const joinTeamAction = async (
-  teamId: string,
-  userId: string,
-): Promise<never> => {
-
+export async function joinTeamAction(teamId: string, userId: string): Promise<never> {
   await api.team.joinUserTeam({
     userId,
     teamId,
-  });
+  })
 
-  redirect("/");
-};
+  redirect('/')
+}

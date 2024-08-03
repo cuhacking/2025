@@ -1,13 +1,12 @@
 import {
   createTRPCRouter,
-} from "~/server/api/trpc";
+} from '~/server/api/trpc'
 import {
   getByTeamIdProcedure,
   getByUserIdProcedure,
+  joinUserTeamProcedure,
   leaveUserTeamProcedure,
-  joinUserTeamProcedure
-} from "~/server/api/routers/team/procedures";
-
+} from '~/server/api/routers/team/procedures'
 
 export const teamRouter = createTRPCRouter({
   /**
@@ -29,4 +28,4 @@ export const teamRouter = createTRPCRouter({
    * Handles the process of a user leaving their current team and joining back their default team.
    */
   leaveUserTeam: leaveUserTeamProcedure,
-});
+})
