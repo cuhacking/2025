@@ -1,0 +1,28 @@
+---
+title: Welcome to the Docs
+description: Read the docs, and suffer less - Wise Person
+---
+
+import { pages } from "../../app/docs/source";
+
+## Categories
+
+<Cards>
+  {pages
+    .filter((page) => page.title !== "Home") // Filter out the Home page
+    .map((page) => (
+      <Card
+        key={page.title}
+        title={page.title}
+        description={page.description}
+        href={`/docs/${page.url}`}
+        icon={
+          <page.icon
+            style={{
+              color: `hsl(var(--accent-foreground))`,
+            }}
+          />
+        }
+      />
+    ))}
+</Cards>

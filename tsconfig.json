@@ -41,6 +41,6 @@
     ".next/types/**/*.ts",
     "postcss.config.cjs",
     "next.config.mjs"
-  ],
+, ".map.ts"  ],
   "exclude": ["node_modules"]
 }
