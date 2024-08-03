@@ -1,6 +1,6 @@
 import type { DocsLayoutProps } from 'fumadocs-ui/layout'
 import { RootToggle } from 'fumadocs-ui/components/layout/root-toggle'
-import { Library as DocumentationPageIcon, Laptop as HackerPortalIcon, Bird as LandingPageIcon } from 'lucide-react'
+import { Github, Laptop as HackerPortalIcon, Bird as LandingPageIcon } from 'lucide-react'
 import Image from 'next/image'
 import type { HomeLayoutProps } from 'fumadocs-ui/home-layout'
 import { pageTree, pages } from '@/app/docs/source'
@@ -24,19 +24,43 @@ export const baseOptions: HomeLayoutProps = {
   githubUrl: 'https://github.com/cuhacking/hackathon',
   links: [
     {
-      text: 'Docs Home',
-      url: '/docs',
-      icon: <DocumentationPageIcon />,
-    },
-    {
+      type: 'menu',
       text: 'Landing Page',
-      url: 'https://www.cuhacking.ca',
       icon: <LandingPageIcon />,
+      items: [
+        {
+          text: 'Website',
+          url: 'https://www.cuhacking.ca',
+          icon: <LandingPageIcon />,
+        },
+        {
+          text: 'Source',
+          url: 'https://www.cuhacking.ca',
+          icon: <Github />,
+        },
+      ],
     },
     {
+      type: 'menu',
       text: 'Hacker Portal',
-      url: '/',
       icon: <HackerPortalIcon />,
+      items: [
+        {
+          text: 'App',
+          url: '/',
+          icon: <HackerPortalIcon />,
+        },
+        {
+          text: 'Source',
+          url: 'https://github.com/cuhacking/hackathon',
+          icon: <Github />,
+        },
+        {
+          text: 'Project Board',
+          url: 'https://github.com/orgs/cuhacking/projects/4',
+          icon: <Github />,
+        },
+      ],
     },
   ],
 }
