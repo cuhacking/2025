@@ -10,6 +10,7 @@ import {
 import type { Adapter } from 'next-auth/adapters'
 import GoogleProvider from 'next-auth/providers/google'
 
+import { TRPCError } from '@trpc/server'
 import { env } from '~/env'
 import { db } from '~/server/db'
 
@@ -63,11 +64,12 @@ function generateRandomString(length: number): string {
 async function createUserEventHandler(message: { user: User }) {
   const { user } = message
 
-  if (!user.email)
-    return
-
-  if (!user.name)
-    return
+  if (!user.email || !user.name) {
+    throw new TRPCError({
+      code: 'NOT_FOUND',
+      message: `Could not retrieve user name or email`,
+    })
+  }
 
   const { firstName, lastName } = getFirstNameAndLastName(user.name)
 

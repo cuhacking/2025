@@ -1,13 +1,13 @@
 import Link from 'next/link'
 
-import { HydrateClient, api } from '~/trpc/server'
-import { getServerAuthSession } from '~/server/auth'
+import { HydrateClient } from '~/trpc/server'
 import UserProfile from '~/app/_components/userProfile/UserProfile'
+import { getServerAuthSession } from '~/server/auth'
 
 export default async function Home() {
-  const SESSION = await getServerAuthSession()
+  const session = await getServerAuthSession()
 
-  if (!SESSION) {
+  if (!session) {
     return (
       <div>
         <p>
@@ -17,24 +17,16 @@ export default async function Home() {
     )
   }
 
-  const TEAM = await api.team.getByUserId({ userId: SESSION.user.id })
-
   return (
     <HydrateClient>
       <div>
         <p>
           Welcome back,
           {' '}
-          <code>{SESSION.user.email}</code>
+          <code>{session.user.email}</code>
           !
         </p>
-        {TEAM
-          ? (
-              <UserProfile SESSION={SESSION} TEAM={TEAM} />
-            )
-          : (
-              <h1>Error: No team found for user</h1>
-            )}
+        <UserProfile />
       </div>
     </HydrateClient>
   )
