@@ -21,9 +21,6 @@ CREATE TABLE "Team" (
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Team_name_key" ON "Team"("name");
-
--- CreateIndex
 CREATE UNIQUE INDEX "Team_ownerId_key" ON "Team"("ownerId");
 
 -- CreateIndex
