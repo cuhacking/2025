@@ -6,5 +6,6 @@
     "system-requirements",
     "branching-guidelines",
     "coding-guidelines",
+    "conventional-commits",
   ]
 }
