@@ -28,7 +28,7 @@
     "@t3-oss/env-nextjs": "^0.10.1",
     "@tanstack/react-query": "^5.39.0",
     "@trpc/client": "next",
-    "@trpc/react-query": "next",
+    "@trpc/react-query": "11.0.0-rc.467",
     "@trpc/server": "next",
     "@types/mdx": "^2.0.13",
     "fumadocs-core": "^13.0.4",

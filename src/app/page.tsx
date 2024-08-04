@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { UserProfile } from '~/app/_components/userProfile/UserProfile'
 import { getServerAuthSession } from '~/server/auth'
 import { HydrateClient, api } from '~/trpc/server'
+import ApplicationForm from "./_components/ApplicationForm";
 
 export default async function Home() {
   const session = await getServerAuthSession()
@@ -41,6 +42,7 @@ export default async function Home() {
           !
         </p>
         <UserProfile session={session} />
+        <ApplicationForm session={session} />
       </div>
     </HydrateClient>
   )
