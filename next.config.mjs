@@ -4,6 +4,8 @@
  */
 import createMDX from 'fumadocs-mdx/config'
 import { fileGenerator, remarkDocGen, remarkInstall } from 'fumadocs-docgen'
+import rehypeKatex from 'rehype-katex'
+import remarkMath from 'remark-math'
 
 await import('./src/env.js')
 
@@ -11,7 +13,12 @@ const withMDX = createMDX({
   rootContentPath: './src/content',
   mdxOptions: {
     lastModifiedTime: 'git',
-    remarkPlugins: [[remarkInstall, { Tabs: 'InstallTabs' }], [remarkDocGen, { generators: [fileGenerator()] }]],
+    remarkPlugins: [
+      [remarkMath],
+      [remarkInstall, { Tabs: 'InstallTabs' }],
+      [remarkDocGen, { generators: [fileGenerator()] }],
+    ],
+    rehypePlugins: v => [rehypeKatex, ...v],
   },
 })
 
