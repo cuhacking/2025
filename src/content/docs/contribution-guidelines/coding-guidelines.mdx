@@ -34,6 +34,45 @@ You can also view the `eslint.config.mjs` file to view a list of the presets and
   </Accordion>
  </Accordions>
 
+### Refactoring
+`Refactoring` is a misleading term, as the `factoring` part needs to happen first.
+
+Let's say we have:
+
+```math
+c = x + xy
+```
+
+We can make it easier to read by factoring out the `x`:
+```math
+c = x(1 + y)
+```
+
+This is great, and we can go even further:
+```math
+\begin{align*}
+c &= x^2\left(\frac{1}{x} + \frac{y}{x}\right) \\
+  &= x^3\left(\frac{1}{x^2} + \frac{y}{x^2}\right) \\
+  &= x^4\left(\frac{1}{x^3} + \frac{y}{x^3}\right)
+\end{align*}
+```
+
+Now compare the two equations, which one is easier to understand?
+
+<div className="flex justify-center items-center gap-4">
+
+    ```math
+    c = x^4\left(\frac{1}{x^3} + \frac{y}{x^3}\right)
+    ```
+    
+    ```math
+    c = x(1 + y)
+    ```
+</div>
+
+Now take this concept and apply it to code. You'll find that the parallels are uncanny.
+
+
 People before reading the [Knowledge Base](/docs/knowledge-base): 🐈
 
 People after reading the [Knowledge Base](/docs/knowledge-base): 🐅
