@@ -21,6 +21,7 @@ export default async function Page({
   const gitHubRepoUrl = packageJson.repository.url.replace(/\.git$/, '') // Remove .git suffix
 
   const footer = (
+    <>
       <a
         href={`${gitHubRepoUrl}/blob/main/${path}`}
         target="_blank"
@@ -30,6 +31,15 @@ export default async function Page({
         <Edit className="size-3" />
         Edit on GitHub
       </a>
+      <a
+        href={`${gitHubRepoUrl}/graphs/contributors`}
+        target="_blank"
+        rel="noreferrer noopener"
+        className="text-xs text-center"
+      >
+        Made with 🩶 for Hackers by Hackers
+      </a>
+    </>
   )
 
   return (
