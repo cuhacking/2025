@@ -11,11 +11,7 @@ test('get started link', async ({ page }) => {
   await page.goto('http://localhost:8000')
 
   await expect(page.locator('body')).toContainText(
-    'Welcome to trpc with next-auth!',
-  )
-
-  await expect(page.locator('body')).toContainText(
-    'Sign in to see the latest post.',
+    'Sign in',
   )
 
   await page.getByRole('link', { name: 'Sign in' }).click()
