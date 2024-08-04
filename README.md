@@ -3,7 +3,7 @@
 cuHacking is a hackathon organized by students at Carleton University. This project is a web application that serves as the portal for hackers to register for the hackathon, view the schedule, and submit their projects.
 
 ## Description
-
+test
 What we use:
 
 - [Next.js](https://nextjs.org)
