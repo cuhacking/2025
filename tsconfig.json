@@ -2,24 +2,31 @@
   "compilerOptions": {
     "incremental": true,
     "target": "es2022",
-
     "jsx": "preserve",
     /* Bundled projects */
-    "lib": ["dom", "dom.iterable", "ES2022"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "ES2022"
+    ],
     "moduleDetection": "force",
-
     /* Path Aliases */
     "baseUrl": ".",
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "paths": {
-      "~/*": ["./src/*"],
-      "@/*": ["./src/*"],
-      "@root/*": ["./*"]
+      "~/*": [
+        "./src/*"
+      ],
+      "@/*": [
+        "./src/*"
+      ],
+      "@root/*": [
+        "./*"
+      ]
     },
     "resolveJsonModule": true,
     "allowJs": true,
-
     "checkJs": true,
     /* Strictness */
     "strict": true,
@@ -29,7 +36,11 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "skipLibCheck": true,
-    "plugins": [{ "name": "next" }]
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     ".eslintrc.cjs",
@@ -40,7 +51,11 @@
     "**/*.js",
     ".next/types/**/*.ts",
     "postcss.config.cjs",
-    "next.config.mjs"
-, ".map.ts"  ],
-  "exclude": ["node_modules"]
+    "next.config.mjs",
+    ".map.ts",
+    "eslint.config.mjs"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
