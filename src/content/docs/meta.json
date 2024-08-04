@@ -1,0 +1,10 @@
+{
+  "root": true,
+  "pages": [
+    "index",
+    "--- Categories ---",
+    "tools-overview",
+    "contribution-guidelines",
+    "knowledge-base"
+  ]
+}
