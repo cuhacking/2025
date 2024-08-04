@@ -1,4 +1,5 @@
 import '@/app/docs/fumadocs.global.css'
+import 'katex/dist/katex.css'
 import { DocsLayout } from 'fumadocs-ui/layout'
 import { HomeLayout } from 'fumadocs-ui/home-layout'
 import type { ReactNode } from 'react'
