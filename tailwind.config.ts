@@ -1,14 +1,27 @@
-import { type Config } from "tailwindcss";
-import { fontFamily } from "tailwindcss/defaultTheme";
+import type { Config } from 'tailwindcss'
+import { fontFamily } from 'tailwindcss/defaultTheme'
+import { createPreset } from 'fumadocs-ui/tailwind-plugin'
 
 export default {
-  content: ["./src/**/*.tsx"],
+  darkMode: ['class'],
+  content: [
+    './src/**/*.{ts,tsx}',
+    './mdx-components.tsx',
+    './node_modules/fumadocs-ui/dist/**/*.js',
+  ],
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-geist-sans)", ...fontFamily.sans],
+        // sans: ['var(--font-geist-sans)', ...fontFamily.sans],
       },
     },
   },
-  plugins: [],
-} satisfies Config;
+  presets: [createPreset({
+    // preset: 'default',
+    // preset: 'neutral',
+    // preset: 'dusk',
+    // preset: 'purple',
+    // preset: 'ocean',
+    preset: 'catppuccin',
+  })],
+} satisfies Config

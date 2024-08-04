@@ -1,4 +1,4 @@
-version: "3.9"
+version: '3.9'
 services:
   app:
     platform: linux/x86_64
@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: docker/Dockerfile.app
     ports:
-      - "8000:8000"
+      - '8000:8000'
     image: app
     container_name: app
     environment:
@@ -25,9 +25,9 @@ services:
     networks:
       - hackathon-network
     ports:
-      - "5432:5432"
+      - '5432:5432'
     volumes:
-      - db-data:/var/lib/postgresql/data 
+      - db-data:/var/lib/postgresql/data
 networks:
   hackathon-network:
     driver: bridge

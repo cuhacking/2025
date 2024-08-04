@@ -1,17 +1,17 @@
-import "~/styles/globals.css";
-import { GeistSans } from "geist/font/sans";
-import { type Metadata } from "next";
+import '~/styles/globals.css'
+import { GeistSans } from 'geist/font/sans'
+import type { Metadata } from 'next'
 
-import { TRPCReactProvider } from "~/trpc/react";
+import { TRPCReactProvider } from '~/trpc/react'
 
 import { AuthProvider }  from "~/app/_components/NextAuth/AuthProvider";
 
 export const metadata: Metadata = {
-  title: "Apply for cuHacking 2025!",
+  title: 'Apply for cuHacking 2025!',
   description:
-    "Apply to participate in cuHacking 2025, Carleton University's official hackathon.",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
-};
+    'Apply to participate in cuHacking 2025, Carleton University\'s official hackathon.',
+  icons: [{ rel: 'icon', url: '/favicon.ico' }],
+}
 
 export default function RootLayout({
   children,
@@ -26,5 +26,5 @@ export default function RootLayout({
         </TRPCReactProvider>
       </body>
     </html>
-  );
+  )
 }
