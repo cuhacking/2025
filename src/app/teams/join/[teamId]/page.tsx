@@ -6,25 +6,25 @@ export default async function Home({
   params,
 }: {
   params: {
-    TEAM_ID: string
+    teamId: string
   }
 }) {
-  const { TEAM_ID } = params
-  const SESSION = await getServerAuthSession()
+  const { teamId } = params
+  const session = await getServerAuthSession()
 
-  if (!SESSION) {
+  if (!session) {
     return <p>Sign in or Register to join teams</p>
   }
 
-  if (!TEAM_ID) {
+  if (!teamId) {
     return <p>Invalid team ID</p>
   }
 
-  const TEAM = await api.team.getByTeamId({
-    teamId: TEAM_ID,
+  const team = await api.team.getByTeamId({
+    teamId,
   })
 
-  if (!TEAM) {
+  if (!team) {
     return <p>Invalid team</p>
   }
 
@@ -32,13 +32,13 @@ export default async function Home({
     <div>
       <h1>
         You&apos;ve been invited to join
-        {TEAM.name}
+        {team.name}
       </h1>
       <p>
         Team ID:
-        {TEAM.id}
+        {team.id}
       </p>
-      <JoinTeam TEAM_ID={TEAM_ID} USER_ID={SESSION.user.id} />
+      <JoinTeam teamId={teamId} userId={session.user.id} />
     </div>
   )
 };
