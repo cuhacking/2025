@@ -114,6 +114,9 @@ importers:
       eslint-plugin-format:
         specifier: ^0.1.2
         version: 0.1.2(eslint@8.57.0)
+      eslint-plugin-playwright:
+        specifier: ^1.6.2
+        version: 1.6.2(eslint@8.57.0)
       eslint-plugin-react-hooks:
         specifier: ^4.6.2
         version: 4.6.2(eslint@8.57.0)
@@ -1905,6 +1908,16 @@ packages:
       svelte-eslint-parser:
         optional: true
       vue-eslint-parser:
+        optional: true
+
+  eslint-plugin-playwright@1.6.2:
+    resolution: {integrity: sha512-mraN4Em3b5jLt01q7qWPyLg0Q5v3KAWfJSlEWwldyUXoa7DSPrBR4k6B6LROLqipsG8ndkwWMdjl1Ffdh15tag==}
+    engines: {node: '>=16.6.0'}
+    peerDependencies:
+      eslint: '>=8.40.0'
+      eslint-plugin-jest: '>=25'
+    peerDependenciesMeta:
+      eslint-plugin-jest:
         optional: true
 
   eslint-plugin-react-debug@1.8.0:
@@ -6092,6 +6105,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
       - typescript
+
+  eslint-plugin-playwright@1.6.2(eslint@8.57.0):
+    dependencies:
+      eslint: 8.57.0
+      globals: 13.24.0
 
   eslint-plugin-react-debug@1.8.0(eslint@8.57.0)(typescript@5.5.4):
     dependencies:
