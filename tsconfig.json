@@ -13,7 +13,9 @@
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["./src/*"],
+      "@/*": ["./src/*"],
+      "@root/*": ["./*"]
     },
     "resolveJsonModule": true,
     "allowJs": true,
@@ -37,8 +39,8 @@
     "**/*.cjs",
     "**/*.js",
     ".next/types/**/*.ts",
-    "postcss.config.mjs",
+    "postcss.config.cjs",
     "next.config.mjs"
-  ],
+, ".map.ts"  ],
   "exclude": ["node_modules"]
 }

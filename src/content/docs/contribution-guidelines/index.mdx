@@ -1,0 +1,134 @@
+---
+title: Quick Start
+description: Understand our collaboration process.
+icon: LayoutTemplate
+---
+
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+## Using Lazygit and Linux/Unix (literally anything \*nix)
+
+The use of [Lazygit](https://github.com/jesseduffield/lazygit) is highly encouraged, as it provides a visual [terminal user interface (TUI)](https://en.wikipedia.org/wiki/Text-based_user_interface) to manage your commits, branches, staging areas, stashes, and much more. It is also significantly easier to resolve merge conflicts, cherry-pick commits between branches, squash them, amend a few commits back, checkout a specific commit, stage in hunks, etc. You will be able to unlock the full power of Git without having to memorize all the commands.
+
+For Windows users, the use of [Windows Subsystem Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) is highly encouraged in order to avoid those rare, maddening, a-tiny-part-of-this-one-library-breaks issues that can be very hard to debug.
+
+<Accordions>
+  <Accordion title="Do I need to switch to the dark side and code in shell? 💀">
+    No you don't 😂 You can simply run WSL in your VS Code terminal, or any other
+    IDE terminal. Rather than cloning the repo on your Windows machine, you'd be
+    cloning it in a directory of your choice in the GNU/Linux OS.
+
+    You can still access the windows filesystem from WSL and vice versa, browsing through the Linux
+    directories with the Windows file explorer graphically. It's a deadly
+    combo. Well done Microsoft 👏
+
+  </Accordion>
+</Accordions>
+
+As you go through this document, if there's a technology or process you'd like to dig deeper into, feel free to explore our [knowledge base](/docs/knowledge-base). If you find some great resources and/or have some of your own, we'd very much appreciate your contributions :)
+
+---
+
+<div className="steps">
+  <div className="step">
+    Step 1: Read our [Tools Overview](/docs/tools-overview) to get an
+    understanding of the technologies we use and why.
+  </div>
+  <div className="step">Step 2: Follow along with the rest of this page.</div>
+</div>
+
+---
+
+#### Install pnpm
+
+This project uses [pnpm](https://pnpm.io/). You can follow the instructions on the pnpm website to install it. Then do the following:
+
+```bash
+# Clone this repository
+git clone git@github.com:cuhacking/hackathon.git
+
+# Navigate to repository
+cd hackathon
+
+# Install dependencies listed in package.json
+pnpm i
+
+# Run the app locally
+pnpm dev
+```
+
+---
+
+### Conventional Commits
+
+We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification for commit messages.
+
+When you hit `enter` after doing `git commit`, it will trigger a [Git Hook](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) managed by [Husky](https://typicode.github.io/husky/), which triggers a [Commitlint](https://commitlint.js.org/) command to verify that your commit message meets the specified guidelines. Any messages that do not follow the specification will be rejected with feedback locally.
+
+In order to ease the process of learning the specification and writing compliant commit messages, we've configured [Commitizen](https://commitizen-tools.github.io/commitizen/) to guide you through the process of writing a commit message interactively.
+You can run `pnpm commit` to use this tool. This will guarantee that your commit messages are formatted correctly.
+
+With time, writing conventional commit messages will become second nature and you will no longer need to use Commitizen :)
+
+- Each commit should be a single logical change. Don't make several logical changes in one commit. For example, if a patch fixes a bug and optimizes the performance of a feature, split it into two separate commits.
+- Each commit should be able to stand on its own, and each commit should build on the previous one. This way, if a commit introduces a bug, it should be easy to identify and revert.
+- Each commit should be deployable and not break the build, tests, or functionality.
+- If you're not sure if a commit should be split, it's better to split it if each commit is deployable and doesn't break the build, tests, or functionality.
+- If you fixed changes in a past commit, use `git commit --amend` to add changes to the previous commit rather than creating a new one; thus keeping the commit history clean and concise.
+  - Only exception to this is if the commit already existed on the `main` branch, in which case a fixup commit should be made rather than an amend. If that commit is amended and force pushed, it will diverge the git history for the entire team.
+- If you ever amend, reorder, or rebase, your local branch will become divergent from the remote for the amended commit(s), so GitHub won't let you push. Simply force push to overwrite your old branch: `git push --force-with-lease`.
+
+---
+
+### Branching Guidelines
+
+We currently follow [Trunk-based development](https://tilburgsciencehub.com/topics/automation/version-control/advanced-git/git-branching-strategies/) with a no-merge, no-squash, rebase-only workflow as the project is in its early stages. This essentially means you should always create a branch off `main` in the following format:
+`yourname/<conventional-spec>/<issue-number>-<issue-name-kebab-cased>`. For example, `johndoe/feat/1-add-login-page`.
+
+Do not do `git merge`, as this can create a merge commit unless you fast forward; instead always pull the latest from `main`, check back out to your branch, then do `git rebase main`.
+This keeps a clean, linear history that is free of merge commits and easy to debug.
+
+This is subject to change as the project and team scales. Our goal is to always keep branches as short-lived as possible, thus keeping cycle times to a minimum and reducing bugs.
+
+Sometimes the issue names are long, in which case you can create them directly by clicking on an issue, and it'll autofill the issue number and name for you in kebab-case.
+
+---
+
+### Coding Guidelines
+
+We're huge on clean code. Code will be read more than it is written. Thankfully you don't have to memorize all of the conventions, as most of them have been automated by [ESLint](https://eslint.org/). If you have the ESLint extension in your IDE, you will immediately see some annoying red and yellow squigglies underneath your code. Thankfully, most of these squigglies can be made to go away using the format command in your IDE, or by running `pnpm lint:fix` in your terminal.
+
+<Accordions>
+  <Accordion title="But these squigglies are so annoying 😭 Can I just do `eslint ignore`? 🥺👉👈">
+    <ul>
+      <li>Yes, they're very annoying, we understand 😫</li>
+      <li>We feel tempted to just throw in an `eslint ignore` too. We learned over time that these squigglies are invaluable in ensuring that all code everyone writes follows the same style guide. Following the same conventions also makes migrations and automated codebase re-writes significantly easier using tools such as [codemods](https://github.com/facebook/jscodeshift).</li>
+      <li>It's either the squigglies or trying to memorize many pages of documentation on style guides which vary from team to team. Having PRs nitpicked at or argued over by different opinions is also very time consuming. It wears the team down and increases the chances of bugs. Whenever possible, we do our best to automate fixes for the squigglies.</li>
+    </ul>
+  </Accordion>
+
+  <Accordion title="The error message isn't helpful, should I google the error or is there a quicker way?">
+Googling works great; as an alternative ESLint also comes with an interactive solution to find which rules come from which plugins, and hyperlink you to their docs directly.
+
+Simply do `pnpm lint:inspect` in your terminal, and you'll see a little web app pop up in your browser. It will look [like this](https://eslint-config.antfu.me). Click around and explore :)
+
+You can also view the `eslint.config.mjs` file to view a list of the presets and plugins we use.
+
+  </Accordion>
+ </Accordions>
+
+### Pull Requests
+
+Always simple rebase your branch onto main before creating a pull request. This ensures that your branch is up to date with the latest changes in the main branch. Branch and PR rules are set up for the repo just in case as a guardrail.
+
+Do your best to close only 1 issue per pull request, and always use the exact same PR title as the issue name. This makes debugging easier later. If the current issue is blocking the next, simply create a new branch off the branch for the pull request and continue working on the next issue on that branch. This technique is called [branch stacking](https://medium.com/@lneves12/git-how-to-stack-multiple-git-branches-and-rebase-them-like-a-pro-91c0cdf67ef). With the power of `git rebase`, you can continually apply PR feedback for the first branch while making progress for the next task on the second branch. Once again, [Lazygit](https://github.com/jesseduffield/lazygit) makes this very quick and easy to do cleanly.
+
+Ensure that the issue is linked to your PR, and is part of a milestone. However, do not add it to the project board, because it shows up as a card and causes visual pollution. We can easily just see your linked PR from the closed issue if we need to find it.
+
+If you're getting tired of storing work in progress by stashing changes or amending commits and then switching branches, it's a great sign to look into using [Git Worktrees](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Use-this-git-worktree-add-example-and-never-switch-branches-again).
+
+---
+
+### Final Step
+
+Profit.
