@@ -3,6 +3,7 @@
   "icon": "GitPullRequestCreateArrow",
   "pages": [
     "index",
+    "writing-documentation",
     "system-requirements",
     "branching-guidelines",
     "coding-guidelines",
