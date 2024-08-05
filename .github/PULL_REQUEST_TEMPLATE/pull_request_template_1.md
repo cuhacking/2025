@@ -2,7 +2,7 @@
 What does merging this PR into main achieve?
 
 ## Dependency Changes
-If any depdency changes, list them here.
+If there are any dependency changes, list them here.
 
 ## Screenshots - If Applicable
 |Before|After|
@@ -11,7 +11,7 @@ If any depdency changes, list them here.
 
 
 ## After Screenshots (If applicable)
-If there are any screenshots add those here.
+If there are any screenshots, add those here.
 
 ## Context
-If we need any context leave that here. 
+If we need any context, leave that here. 
