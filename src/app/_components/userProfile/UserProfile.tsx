@@ -1,8 +1,8 @@
-import QRCode from 'react-qr-code'
 import { TRPCError } from '@trpc/server'
-import SignOut from '~/app/_components/userProfile/signOut'
+import { SignOut } from '~/app/_components/userProfile/signOut'
 import { api } from '~/trpc/server'
 import { getServerAuthSession } from '~/server/auth'
+import { TeamQRCode } from '~/app/_components/userProfile/teamQrCode'
 
 export default async function UserProfile() {
   const session = await getServerAuthSession()
@@ -40,12 +40,7 @@ export default async function UserProfile() {
       </p>
 
       <p>Share this QR code with your friends to invite them!</p>
-      <QRCode
-        size={256}
-        style={{ height: 'auto', maxWidth: '15%', width: '15%', margin: '2rem' }}
-        value={`http://localhost:8000/t/j/${team.id}`}
-        viewBox="0 0 256 256"
-      />
+      <TeamQRCode teamId={team.id} />
 
       <SignOut />
     </div>

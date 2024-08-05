@@ -2,8 +2,8 @@
 
 import { signOut } from 'next-auth/react'
 
-export default function SignOut() {
+export function SignOut() {
   return (
     <button type="button" onClick={() => signOut()}>Sign Out</button>
   )
-};
+}

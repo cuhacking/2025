@@ -39,7 +39,7 @@
     "lucide-react": "^0.424.0",
     "next": "^14.2.1",
     "next-auth": "^4.24.7",
-    "playwright": "^1.45.2",
+    "playwright": "^1.45.3",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
     "react-qr-code": "^2.0.15",
