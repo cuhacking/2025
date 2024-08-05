@@ -6,6 +6,7 @@ import createMDX from 'fumadocs-mdx/config'
 import { fileGenerator, remarkDocGen, remarkInstall } from 'fumadocs-docgen'
 import rehypeKatex from 'rehype-katex'
 import remarkMath from 'remark-math'
+import rehypeMermaid from 'rehype-mermaid'
 
 await import('./src/env.js')
 
@@ -18,7 +19,11 @@ const withMDX = createMDX({
       [remarkInstall, { Tabs: 'InstallTabs' }],
       [remarkDocGen, { generators: [fileGenerator()] }],
     ],
-    rehypePlugins: v => [rehypeKatex, ...v],
+    rehypePlugins: v => [
+      rehypeKatex,
+      [rehypeMermaid, { strategy: 'inline-svg' }],
+      ...v,
+    ],
   },
 })
 
