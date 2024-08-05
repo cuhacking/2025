@@ -27,24 +27,52 @@ With time, writing conventional commit messages will become second nature and yo
   - Only exception to this is if the commit already existed on the `main` branch, in which case a fixup commit should be made rather than an amend. If that commit is amended and force pushed, it will diverge the git history for the entire team.
 - If you ever amend, reorder, or rebase, your local branch will become divergent from the remote for the amended commit(s), so GitHub won't let you push. Simply force push to overwrite your old branch: `git push --force-with-lease`.
 
+The slight learning curve of writing conventional commits is well worth the effort. It allows us unlock some pretty powerful DevOps which saves the entire team a lot of time in the long run.
+
+### Commit Message Decision Tree
+
+#### Type
 ```mermaid
 flowchart TD
-n9["Is there a difference in the UI?"]
-n9 --> |"Yes"| n10["Was it a bug fix or a new/changed feature?"]
-n10 --> |"Bug Fix"| n11["fix"]
-n10 --> |"New/Changed Feature"| n12["feat"]
-n9 --> |"No"| n2["Were only internal config files changed?"]
-n2 --> |"Yes"| n3["chore"]
-n2 --> |"No"| n4["Was it only documentation content?"]
-n4 --> |"Yes"| n6["docs"]
-n4 --> |"No"| n18["Was it a CI or build change?"]
-n18 --> |"Yes, CI change"| n19["ci"]
-n18 --> |"Yes, Build change"| n20["build"]
-n18 --> |"No"| n7["Were only tests changed?"]
-n7 --> |"Yes"| n8["tests"]
-n7 --> |"No"| n13["Are they only performance optimizations?"]
-n13 --> |"Yes"| n14["perf"]
-n13 --> |"No"| n15["Was it pure code styling/format/semantics?"]
-n15 --> |"Yes"| n16["style"]
-n15 --> |"No"| n17["refactor"]
+n1["Was it a bug fix or a new/changed feature?"]
+n1 --> |"Bug Fix"| n2["fix"]
+n1 --> |"New/Changed Feature"| n3["feat"]
+n1 --> |"No"| n5["Were only internal config files changed?"]
+n5 --> |"Yes"| n6["chore"]
+n5 --> |"No"| n7["Was it only documentation content?"]
+n7 --> |"Yes"| n8["docs"]
+n7 --> |"No"| n9["Was it a CI or build change?"]
+n9 --> |"Yes, CI change"| n10["ci"]
+n9 --> |"Yes, Build change"| n11["build"]
+n9 --> |"No"| n12["Were only tests changed?"]
+n12 --> |"Yes"| n13["tests"]
+n12 --> |"No"| n14["Are they only performance optimizations?"]
+n14 --> |"Yes"| n15["perf"]
+n14 --> |"No"| n16["Was it pure code styling/format/semantics?"]
+n16 --> |"Yes"| n17["style"]
+n16 --> |"No"| n18["refactor"]
+```
+
+#### Scope Parameters
+
+##### First level
+```mermaid
+flowchart TD
+n1["Is there a visual difference in the UI?"]
+n1 --> |"Yes"| n2["ui"]
+n1 --> |"No"| n3["Are the changes only Back-End?"]
+n3 --> |"Yes"| n4["api"]
+n3 --> |"No"| n5["Leave Scope Blank"]
+```
+
+##### Second level
+
+```mermaid
+flowchart TD
+n1["Which platform(s) was affected?"]
+n1 --> |"Marketing Site"| n2["marketing"]
+n1 --> |"Hacker Portal App"| n3["app"]
+n1 --> |"Docs Site" | n4["docs"]
+n1 --> n5["More than one"]
+n5 --> n6["marketing,app,docs"]
 ```
