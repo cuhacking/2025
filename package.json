@@ -20,7 +20,8 @@
     "lint:inspect": "npx @eslint/config-inspector --no-open",
     "lint:inspect-open": "npx @eslint/config-inspector",
     "start": "next start",
-    "test:playwright": "npx playwright test"
+    "test:playwright": "npx playwright test",
+    "prepare": "husky"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^1.6.0",
