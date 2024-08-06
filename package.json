@@ -21,7 +21,8 @@
     "lint:inspect-open": "npx @eslint/config-inspector",
     "start": "next start",
     "test:playwright": "npx playwright test",
-    "prepare": "husky"
+    "prepare": "husky",
+    "commit": "cz"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^1.6.0",
