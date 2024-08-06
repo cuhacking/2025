@@ -2,11 +2,11 @@
   "name": "hackathon",
   "type": "module",
   "version": "0.1.0",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/cuhacking/hackathon.git"
   },
-  "private": true,
   "scripts": {
     "build": "next build",
     "db:generate": "prisma migrate dev",
@@ -66,6 +66,7 @@
     "eslint-plugin-react-refresh": "^0.4.9",
     "katex": "^0.16.11",
     "husky": "^9.1.4",
+    "lint-staged": "^15.2.8",
     "postcss": "^8.4.34",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.14",
@@ -75,6 +76,9 @@
     "remark-math": "^6.0.0",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.2"
+  },
+  "lint-staged": {
+    "*": "eslint --cache --fix"
   },
   "ct3aMetadata": {
     "initVersion": "7.36.0"

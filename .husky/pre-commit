@@ -1,1 +1,1 @@
-# echo 'Running pre-commit command'
+pnpm lint-staged
