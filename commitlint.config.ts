@@ -2,15 +2,14 @@ import type { UserConfig } from '@commitlint/types'
 import { RuleConfigSeverity } from '@commitlint/types'
 
 const Configuration: UserConfig = {
-  // Extend the conventional commit configurations
+  // Extend conventional commit configurations
   // https://www.conventionalcommits.org/en/v1.0.0/
   extends: ['@commitlint/config-conventional'],
-
-  // Custom rules for commit message validation
   rules: {
-    // Ensure the type is one of the specified values
+    // -------------- TYPE ----------------
+    // Ensure type is one of the specified values
     'type-enum': [
-      RuleConfigSeverity.Error, // Level: Error (2)
+      RuleConfigSeverity.Error,
       'always', // Always enforce this rule
       [
         'build', // Build-related changes (e.g., compile, package)
@@ -26,24 +25,19 @@ const Configuration: UserConfig = {
         'test', // Adding or updating tests
       ],
     ],
-    // Ensure the scope is in PascalCase
-    // "scope-case": [RuleConfigSeverity.Error, "always", "pascal-case"],
-
-    // Ensure the subject is in Sentence case
-    // "subject-case": [RuleConfigSeverity.Error, "always", "sentence-case"],
-
-    // Ensure the type is in lowercase
     'type-case': [RuleConfigSeverity.Error, 'always', 'lower-case'],
-
-    // Ensure that the type is not empty
     'type-empty': [RuleConfigSeverity.Error, 'never'],
 
-    // Ensure that the scope is not empty
+    // -------------- SCOPE ----------------
+    // TODO: ADD SCOPE ENUMS
+    // "scope-case": [RuleConfigSeverity.Error, "always", "pascal-case"],
     // 'scope-empty': [RuleConfigSeverity.Error, 'never'],
 
-    // Ensure that the subject is not empty
+    // -------------- SUBJECT ----------------
+    // "subject-case": [RuleConfigSeverity.Error, "always", "sentence-case"],
     'subject-empty': [RuleConfigSeverity.Error, 'never'],
 
+    // -------------- HEADER ----------------
     // Ensure the header does not exceed 72 characters
     // "header-max-length": [RuleConfigSeverity.Error, "always", 72],
   },
