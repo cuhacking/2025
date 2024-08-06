@@ -1,14 +1,14 @@
-name: Playwright Tests
+name: End-to-End Tests
 
 on:
   push:
-    branches: [main, master]
+    branches: '*'
   pull_request:
-    branches: [main, master]
+    branches: '*'
 
 jobs:
   test:
-    timeout-minutes: 60
+    timeout-minutes: 5
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -20,32 +20,26 @@ jobs:
         with:
           fetch-depth: 0 # All history for branches and tags
 
-      - name: 📦 Install pnpm
-        uses: pnpm/action-setup@v4
+      - name: 🍞 Install Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          version: 9
-
-      - name: 🛠️ Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: '${{ matrix.node-version }}'
-          cache: pnpm
+          bun-version: latest
 
       - name: 📂 Install Dependencies
-        run: pnpm i
+        run: bun install
 
-      - name: Install Playwright Browsers
-        run: pnpm playwright install --with-deps
+      - name: 🎭 Install Playwright Browsers
+        run: bun run --bun playwright install --with-deps
 
-      - name: Run E2E tests
+      - name: 💀 Run E2E tests
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
-        run: pnpm playwright test
+        run: bun run --bun playwright test
 
-      - name: Upload Artifact
+      - name: 📄 Upload Artifact
         uses: actions/upload-artifact@v4
         if: always()
         with:
