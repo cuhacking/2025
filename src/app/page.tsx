@@ -2,12 +2,10 @@ import Link from 'next/link'
 
 import { UserProfile } from '~/app/_components/userProfile/UserProfile'
 import { getServerAuthSession } from '~/server/auth'
-import { HydrateClient, api } from '~/trpc/server'
+import { HydrateClient } from '~/trpc/server'
 
 export default async function Home() {
   const session = await getServerAuthSession()
-
-  void api.post.getLatest.prefetch()
 
   if (!session) {
     return (
