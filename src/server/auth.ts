@@ -28,9 +28,9 @@ declare module 'next-auth' {
     PrismaUser
   }
 
-  interface User {
-    // ...other properties
-  }
+  // interface User {
+  //   // ...other properties
+  // }
 }
 
 function getFirstNameAndLastName(name: string): { firstName: string, lastName: string } {
@@ -67,26 +67,22 @@ async function createUserEventHandler(message: { user: User }) {
 
   // create a default UserInformation object with all values set to null
   const userInformation: UserInformation = {
-    email: user.email,
     id: user.id,
+    email: user.email,
     first_name: firstName,
     last_name: lastName,
-    school: null,
+    levels_of_study: null,
     major: null,
     date_of_birth: null,
+    gender: null,
     phone_number: null,
-    levels_of_study: null,
+    school: null,
     userId: user.id,
   }
 
   await db.userInformation.create({
     data: {
       ...userInformation,
-      user: {
-        connect: {
-          id: user.id,
-        },
-      },
     },
   })
 }
