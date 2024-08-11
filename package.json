@@ -9,17 +9,18 @@
   },
   "scripts": {
     "build": "next build",
+    "start": "next start",
+    "dev": "next dev -p 8000",
     "db:generate": "prisma migrate dev",
     "db:migrate": "prisma migrate deploy",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
-    "dev": "next dev -p 8000",
     "postinstall": "prisma generate && playwright install",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "lint:inspect": "npx @eslint/config-inspector --no-open",
     "lint:inspect-open": "npx @eslint/config-inspector",
-    "start": "next start",
+    "test:unit": "vitest",
     "test:playwright": "npx playwright test",
     "prepare": "husky",
     "commit": "cz"
@@ -85,7 +86,8 @@
     "remark-math": "^6.0.0",
     "semantic-release": "^24.0.0",
     "tailwindcss": "^3.4.3",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.2",
+    "vitest": "^2.0.5"
   },
   "lint-staged": {
     "*": "eslint --cache --fix"
