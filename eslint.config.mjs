@@ -8,5 +8,6 @@ export default antfu(
   },
   {
     ...playwright.configs['flat/recommended'],
+    ignores: ['tests/unit-tests/**/*.ts'],
   },
 )
