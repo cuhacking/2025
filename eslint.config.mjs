@@ -1,5 +1,5 @@
 import antfu from '@antfu/eslint-config'
-import playwright from 'eslint-plugin-playwright'
+// import playwright from 'eslint-plugin-playwright'
 
 export default antfu(
   {
@@ -7,6 +7,7 @@ export default antfu(
     react: true,
   },
   {
-    ...playwright.configs['flat/recommended'],
+    // TODO: Separate out to E2E app as it's conflicting with Vitest files
+    // ...playwright.configs['flat/recommended'],
   },
 )
