@@ -1,5 +1,5 @@
 const { FlatCompat } = require('@eslint/eslintrc');
-const baseConfig = require('../../eslint.config.js');
+// const baseConfig = require('../../eslint.config.js');
 const js = require('@eslint/js');
 
 const compat = new FlatCompat({
@@ -8,7 +8,7 @@ const compat = new FlatCompat({
 });
 
 module.exports = [
-  ...baseConfig,
+  // ...baseConfig,
   ...compat.extends('plugin:playwright/recommended'),
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
