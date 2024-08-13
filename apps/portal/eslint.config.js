@@ -1,9 +1,10 @@
+// TODO: merge with antfu eslint config
 // const { FlatCompat } = require('@eslint/eslintrc');
-const baseConfigPromise = require('../../eslint.config.js');
+const baseConfigPromise = require('../../eslint.config.js')
 // const js = require('@eslint/js');
 
 module.exports = (async () => {
-  const baseConfig = await baseConfigPromise;
+  const baseConfig = await baseConfigPromise
 
   return [
     ...baseConfig,
@@ -35,5 +36,5 @@ module.exports = (async () => {
     //   },
     // })),
     // { ignores: ['.next/**/*'] },
-  ];
-})();
+  ]
+})()

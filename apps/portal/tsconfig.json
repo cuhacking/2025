@@ -1,23 +1,23 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "jsx": "preserve",
-    "allowJs": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
     "incremental": true,
+    "jsx": "preserve",
+    "resolveJsonModule": true,
+    "types": [
+      "node"
+    ],
+    "allowJs": true,
+    "strict": true,
+    "noEmit": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
     "plugins": [
       {
         "name": "next"
       }
-    ],
-    "types": [
-      "node"
     ]
   },
   "include": [

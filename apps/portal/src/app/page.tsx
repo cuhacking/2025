@@ -325,7 +325,8 @@ export default function Index() {
                   rel="noreferrer"
                 >
                   {' '}
-                  What is Nx Cloud?{' '}
+                  What is Nx Cloud?
+                  {' '}
                 </a>
               </div>
               <a
@@ -463,5 +464,5 @@ export default function Index() {
         </div>
       </div>
     </div>
-  );
+  )
 }
