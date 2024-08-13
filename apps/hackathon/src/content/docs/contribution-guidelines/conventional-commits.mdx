@@ -32,13 +32,14 @@ The slight learning curve of writing conventional commits is well worth the effo
 ### Commit Message Decision Tree
 
 #### Type
+
 ```mermaid
 flowchart TD
 n1["Was it a bug fix or a new/changed feature?"]
 n1 --> |"Bug Fix"| n2["fix"]
 n1 --> |"New/Changed Feature"| n3["feat"]
 n1 --> |"No"| n5["Were only internal config files changed?"]
-n5 --> |"Yes"| n6["chore"]
+n5 --> |"Yes, just configs"| n6["chore(config/...):"]
 n5 --> |"No"| n7["Was it only documentation content?"]
 n7 --> |"Yes"| n8["docs"]
 n7 --> |"No"| n9["Was it a CI or build change?"]
@@ -56,13 +57,16 @@ n16 --> |"No"| n18["refactor"]
 #### Scope Parameters
 
 ##### First level
+
 ```mermaid
 flowchart TD
 n1["Is there a visual difference in the UI?"]
 n1 --> |"Yes"| n2["ui"]
-n1 --> |"No"| n3["Are the changes only Back-End?"]
-n3 --> |"Yes"| n4["api"]
-n3 --> |"No"| n5["Leave Scope Blank"]
+n1 --> |"No"| n3["Was it just configs?"]
+n3 --> |"Yes"| n4["config"]
+n3 --> |"No"| n5["Are the changes only Back-End?"]
+n5 --> |"Yes"| n6["api"]
+n5 --> |"No"| n7["Leave Scope Blank"]
 ```
 
 ##### Second level
@@ -70,9 +74,44 @@ n3 --> |"No"| n5["Leave Scope Blank"]
 ```mermaid
 flowchart TD
 n1["Which platform(s) was affected?"]
-n1 --> |"Marketing Site"| n2["marketing"]
-n1 --> |"Hacker Portal App"| n3["app"]
+n1 --> |"Marketing Website"| n2["web"]
+n1 --> |"Hacker Portal"| n3["portal"]
 n1 --> |"Docs Site" | n4["docs"]
 n1 --> n5["More than one"]
-n5 --> n6["marketing,app,docs"]
+n5 --> n6["web+portal+docs"]
+```
+
+The platforms should always be in the same order: `web`, `portal`, `docs`.
+If you have changes in the `portal` only, the scope should be `portal`.
+If you have changes in all three platforms, the scope should be `web+portal+docs`.
+So if you have changes in the `web` and `docs`, the scope should be `web+docs`, not `docs+web`.
+
+### Examples
+
+Here are some examples of commit messages following the decision tree guidelines:
+
+```bash
+# Hacker Portal bugfix that affects the UI
+fix(ui/portal): dashboard login button misaligned on mobile
+
+# A new feature in the API for both the Marketing Website and Hacker Portal, no change in the UI
+feat(api/web+portal): create user data retrieval endpoints
+
+# A change in the build process for the Docs Site
+build(docs): update webpack configuration for bundling mdx files
+
+# Change in documentation content on the Docs Site
+docs(contribution-guidelines): add pnpm install commands
+
+# Change in UI feature on the Docs Site
+feat(ui/docs): change header search bar background to purple-300
+
+# A performance optimization in the API for the Hacker Portal
+perf(api/portal): optimize database queries for sponsor data
+
+# A code styling update for button components in the marketing website
+style(web/components): change button border radius to 5px
+
+# Testcase refactor for Hacker Portal
+refactor(tests): re-structure user registration cases
 ```
