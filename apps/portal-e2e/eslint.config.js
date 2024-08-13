@@ -1,3 +1,4 @@
+// TODO: merge with antfu eslint config
 const { FlatCompat } = require('@eslint/eslintrc');
 // const baseConfig = require('../../eslint.config.js');
 const js = require('@eslint/js');

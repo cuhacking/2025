@@ -1,12 +1,12 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc",
+    "jsx": "react",
     "module": "commonjs",
     "types": [
       "node"
     ],
-    "jsx": "react"
+    "outDir": "../../dist/out-tsc"
   },
   "include": [
     "src/**/*.test.ts",
