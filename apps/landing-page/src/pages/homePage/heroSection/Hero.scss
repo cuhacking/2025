@@ -1,0 +1,132 @@
+.hero {
+	position: relative;
+	width: 100svw;
+	height: 100svh;
+
+	z-index: 0;
+	//overflow: hidden;
+
+	&__content {
+		position: relative;
+		top: -10vh;
+		left: 0;
+	}
+
+	&__background {
+		position: absolute;
+		width: 100%;
+		height: 100vh;
+	}
+}
+
+.image {
+	position: absolute;
+    
+}
+
+.carleton {
+	bottom: -19vw;
+	left: 0;
+    width: 100%;
+}
+
+.snow {
+    bottom: -13vw;
+}
+
+.mountain-small {
+    bottom: 10vw;
+    width: 100%;
+}
+
+.mountain-big {
+    bottom: 13vw;
+}
+
+.background-gradient {
+    position: absolute;
+    width: 100%;
+    height: 99%;
+    background-image: linear-gradient(#7DBDF1, #C5DFF8, #f69fb5, transparent);
+}
+
+// if screen is smaller than 640px than change the gradient to black
+@media (max-width: 1200px) {
+    .background-gradient {
+        background-image: linear-gradient(#7DBDF1, #C5DFF8,  #f69fb5 80%, transparent );
+    }
+
+    .carleton {
+        bottom: -8vw;
+    }
+    
+    .snow {
+        bottom: 0px;
+    }
+
+    .mountain-small {
+        bottom: 20vw;
+    }
+    
+    .mountain-big {
+        bottom: 2vw;
+    }
+}
+
+// if screen is smaller than 640px than change the gradient to black
+@media (max-width: 640px) {
+    .background-gradient {
+        background-image: linear-gradient(#7DBDF1, #C5DFF8, #f69fb5);;
+    }
+}
+
+#raven {
+    position: absolute;
+    top: -1.5em;
+    left: 3em;
+
+}
+
+.carleton-foreground {
+    display: inline-block;
+    //position: absolute;
+    bottom: -1vw;
+
+}
+
+.text-shadow-white {
+    text-shadow: #ffffff 1px 0 10px;
+}
+
+// .mountain-big {
+//     position: absolute;
+//     top: 15vw;
+//     width: 60vw;
+// }
+
+// .mountain-small {
+//     position: absolute;
+//     left: 10vw;
+//     top: 35vw;
+// }
+
+// .land {
+//     position: absolute;
+// }
+
+// .carleton {
+//     top: -35vw;
+//     right: 0px;
+// }
+
+// .snow {
+//     scale: 3;
+// }
+
+// .sunrise-gradient {
+//     width: 100%;
+//     height: 80%;
+//     opacity: 0.5;
+//     position: absolute;
+//     background-image: linear-gradient(#7DBDF1, #C5DFF8, #F4C8D3);
+// }
