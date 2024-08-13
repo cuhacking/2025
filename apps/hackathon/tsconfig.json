@@ -1,0 +1,61 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "target": "es2022",
+    "jsx": "preserve",
+    /* Bundled projects */
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "ES2022"
+    ],
+    "moduleDetection": "force",
+    /* Path Aliases */
+    "baseUrl": ".",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "paths": {
+      "~/*": [
+        "./src/*"
+      ],
+      "@/*": [
+        "./src/*"
+      ],
+      "@root/*": [
+        "./*"
+      ]
+    },
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "checkJs": true,
+    /* Strictness */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noEmit": true,
+    /* Base Options: */
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    ".eslintrc.cjs",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.cjs",
+    "**/*.js",
+    ".next/types/**/*.ts",
+    "postcss.config.cjs",
+    "next.config.mjs",
+    ".map.ts",
+    "eslint.config.mjs"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
