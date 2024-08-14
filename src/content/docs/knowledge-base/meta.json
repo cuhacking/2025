@@ -2,6 +2,7 @@
   "title": "Knowledge Base",
   "icon": "Library",
   "pages": [
-    "index"
+    "index",
+    "nextauth"
   ]
 }

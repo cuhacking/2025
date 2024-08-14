@@ -1,0 +1,364 @@
+---
+title: NextAuth.js Flow
+description: Documenting authorization and authentication in our platform
+---
+## ⚙️Setup for NextAuth
+
+### Create your prisma models
+
+We first need to create a database for NextAuth to store user and token data. NextAuth can be used without a database, but we need it in 
+order to persist user accounts.
+
+```jsx
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique @map("session_token")
+  userId       String   @map("user_id")
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@map("sessions")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  emailVerified DateTime? @map("email_verified")
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
+  sessions      Session[]
+  @@map("users")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+```
+
+With these models, NextAuth automatically handles all authentication. Once a user is successfully logged in, NextAuth populates these fields to provide automatic authentication. 
+Users can very easily be authenticated with hooks that will be explained below. The great thing with NextAuth is that we don’t need to worry about these at all.
+
+### Configuration for NextAuth
+
+Next, we need to configure NextAuth by adding a dynamic API route handler. This route lets NextAuth automatically handle NextAuth-related requests (i.e. signIn, signOut, 
+callback, etc.). Our NextAuth config (`authOptions`) is located in `~/server/auth.ts` . Then, we let NextAuth access `authOptions` through a `route.ts` file located in 
+`~/app/api/auth/[...nextauth]/route.ts` . 
+
+<Callout>
+NextAuth needs to use the `[...nextauth]` route. Before Next.js added App Routers in 13.2, you could have your authOptions in `pages/api/auth/[...nextauth].js` directly. 
+Since we’re using a Next.js version above 13.2, NextAuth reccommends a setup like the one I described. Their tutorial can be found 
+[here](https://next-auth.js.org/configuration/initialization#route-handlers-app).
+
+</Callout>
+
+Our code should look something like this:
+
+```tsx
+// ~/app/api/auth/[...nextauth]/route.ts
+import NextAuth from 'next-auth'
+
+import { authOptions } from '~/server/auth'
+
+const handler = NextAuth(authOptions)
+export { handler as GET, handler as POST }
+```
+
+```tsx
+// ~/server/auth.ts
+...
+export const authOptions: NextAuthOptions = {
+  events: {
+    ...
+  },
+  callbacks: {
+		...
+  },
+  adapter: PrismaAdapter(db) as Adapter,
+  providers: [
+    ...
+  ],
+}
+...
+```
+
+There’s a lot more in authOptions than what you see above, but our source code should be fairly easy to read and understand with its comments.
+
+### Adding a provider
+
+In this project, we are exclusively using providers (e.g. Google, Discord, Github, etc.) to sign in our users. We define these providers in 
+the `providers` array in our authOptions like so:
+
+```tsx
+export const authOptions: NextAuthOptions = {
+	...
+  providers: [
+    GoogleProvider({
+      clientId: env.GOOGLE_CLIENT_ID,
+      clientSecret: env.GOOGLE_CLIENT_SECRET,
+    }),
+  ],
+}
+```
+
+Providers like Google require additional setup to get the client id and client secret. There should be many tutorials for other providers, but our instructions 
+for google can be found in [Contribution Guildines → Quick Start](/docs/contribution-guidelines#additional-setup).
+
+### Wrapping components around \<SessionProvider>
+
+The last piece of setup is wrapping our components with a `<SessionProvider>` .
+
+```tsx
+<SessionProvider>
+  {children}
+</SessionProvider>
+```
+
+There are two ways to retrieve a user’s session. You can do so through `getServerSession(authOptions)` (or our wrapper: `getServerAuthSession()`) on the server-side or `useSession()` 
+on the client side. If you want to use the `useSession()` hook, then you need it to be wrapped around `<SessionProvider>`. This allows instances of `useSession()` to share the session 
+object across components and takes care of keeping the session updated and synced between tabs/windows. If you have pages that support both client and server-side rendering, then you
+can pass in a `session={getServerSession(authOptions)}` page prop to avoid checking the session twice.
+
+## 🔒Login Flow
+
+### Creating a custom sign-in page
+
+In the same folder where `[…nextauth]` is located (`~/app/api/auth/` ), create `/signIn/page.tsx`. `page.tsx` is your React sign-in page.
+
+To make this the sign-in page used by NextAuth, add the `pages` option to authOptions. Then add the signIn callback and the route that your sign-in page is located in. 
+It should look like this:
+
+```tsx
+export const authOptions: NextAuthOptions = {
+  ...
+  pages: {
+    signIn: '/api/auth/signIn',
+  },
+  ...
+}
+```
+
+### Using the sign-in page
+
+Now, you can use the `signIn()` method by NextAuth to send the user to your custom sign-in page. It’s not necessary, but it’s nice for creating standards. 
+An example of a sign-in button component can be seen below:
+
+```tsx
+"use client";
+
+import { signIn } from "next-auth/react";
+
+export const SignInButton = () => {
+  return (
+    <button onClick={() => signIn()}>
+      Sign in
+    </button>
+  );
+}
+```
+
+In the sign-in page, a button to sign-in with Google can be added like so:
+
+```tsx
+"use client";
+
+import { signIn } from 'next-auth/react';
+
+export const GoogleSignInButton = () => {
+  return (
+    <button onClick={() => signIn('google')}>
+      Sign in with Google
+    </button>
+  );
+}
+```
+
+## 🛡️Protecting Our Pages and Role-Based Authentication
+
+In general, this works by adding a `role` property (if using jwt) to our users’ tokens. We use that token to check the role of our users in our pages or in middleware. 
+If the role is an admin, we allow them to access the admin page. Otherwise, we redirect them to an “unauthorized” page.
+
+### Adding a role property
+
+We first want to start by customizing what is in our users’ sessions and adding a `role` property to it. We can do this through the `profile()` callback in our providers 
+like so:
+
+```tsx
+import NextAuth from "next-auth";
+import Google from "next-auth/providers/google";
+ 
+export const authOptions: NextAuthOptions = {
+  providers: [
+    Google({
+	    clientId: env.GOOGLE_CLIENT_ID,
+      clientSecret: env.GOOGLE_CLIENT_SECRET,
+      profile(profile) {
+      
+	      // "user" will be the default
+	      let userRole = "user";
+	      
+	      // add logic here to assign roles, for example:
+	      if (profile?.email === "admin@gmail.com")
+		      userRole = "admin";
+	      
+	      // add role to the user's profile object
+        return { 
+	        ...profile,
+	        role: userRole
+        };
+      },
+    })
+  ],
+}
+```
+
+### Allowing the role property to be used in our program
+
+Now, we need to be able to use this `role` property inside our program. We do this by adding the `jwt()` and `session()` 
+callback into our authOptions.
+
+```tsx
+import NextAuth from "next-auth";
+import Google from "next-auth/providers/google";
+ 
+export const authOptions: NextAuthOptions = {
+  providers: [
+    Google({
+	    clientId: env.GOOGLE_CLIENT_ID,
+      clientSecret: env.GOOGLE_CLIENT_SECRET,
+      profile(profile) {
+	      let userRole = "user";
+	      
+	      if (profile?.email === "admin@gmail.com")
+		      userRole = "admin";
+	      
+        return { 
+	        ...profile,
+	        role: userRole
+        };
+      },
+    })
+  ],
+  callbacks: {
+    jwt({ token, user }) {
+	    // add role to token to use on SERVER side
+      if(user) 
+	      token.role = user.role;
+      return token;
+    },
+    session({ session, token }) {
+	    // add role to session to use on CLIENT side, optional
+	    if (session?.user)
+		    session.user.role = token.role;
+      return session;
+    }
+  }
+}
+```
+
+### Protecting our pages
+
+#### Option 1: Add protection to each page
+
+This option is very simple and can be used if we have very little pages to protect. You can simply use the `getServerSession()` or `useSession()` 
+hooks inside a page to access the user’s `role`. Using that, you can decide what to do based on their role. Below is a simple example of using 
+`useSession()` to check if the user is an admin.
+
+```tsx
+import { useSession } from "next-auth/react";
+ 
+export default function Page() {
+  const session = await useSession();
+	
+  if (session?.user.role === "admin") {
+	  // can redirect here
+    return <p>You are an admin, welcome!</p>;
+  }
+ 
+  return <p>You are not authorized to view this page!</p>;
+}
+```
+
+#### Option 2: Protection through middleware
+
+This is only supported if we use the `jwt` session strategy.
+
+Create a `middleware.ts` file on the root or src directory (same level as where you store your pages) to protect all pages. Adding this 
+file makes users **require authentication**. If they aren’t authenticated, it redirects them to the sign-in page by default. Below is an 
+example of basic `middleware.ts` setup:
+
+```tsx
+/*
+if you only have this line, it protects all pages from unauthenticated users
+and redirects them to the sign in page by default
+*/
+export { default } from "next-auth/middleware"
+
+// add this line to choose/whitelist pages to secure
+export const config = { matcher: ["/dashboard", "/admin"] }
+```
+
+If we want something more advanced then just securing pages from unauthenticated users, we need to wrap the middleware with `withAuth`. 
+Using this wrapper, we have 2 more options to protect our admin pages. **(Option 1)** we can use the `authorized` callback, which if 
+false, redirects the user to the sign in page (I’m not aware if you can customize the redirection). **(Option 2)** we can use the 
+middleware function inside the wrapper and add our own custom logic. Below is an example that shows both options:
+
+```tsx
+import { withAuth } from "next-auth/middleware";
+
+export default withAuth(
+	/* Option 1 */
+  // `withAuth` augments your `Request` with the user's token.
+  function middleware(req) {
+    if (
+      req.nextUrl.pathname.startsWith("/admin") && // not sure if first condition is necessary, just saw it in an example
+      req.nextauth.token.role != "admin"
+    )
+      return NextResponse.rewrite(new URL("/Denied", req.url));
+  },
+  /* Option 2 */
+  {
+    callbacks: {
+      authorized: ({ token }) => token?.role === "admin",
+    },
+  },
+)
+
+export const config = { matcher: ["/admin"] }
+```
+
+## 📖Sources and Further Reading
+
+[https://authjs.dev/getting-started/adapters/prisma](https://authjs.dev/getting-started/adapters/prisma)
+
+- Contains information about setting up Prisma to use with NextAuth
+
+[https://next-auth.js.org/configuration/providers/oauth](https://next-auth.js.org/configuration/providers/oauth)
+
+- Adding in an OAuth provider
+
+[https://next-auth.js.org/getting-started/client#sessionprovider](https://next-auth.js.org/getting-started/client#sessionprovider)
+
+- What `<SessionProvider>` does
+
+[https://next-auth.js.org/configuration/pages](https://next-auth.js.org/configuration/pages)
+
+- Adding a custom sign-in page
+
+[https://authjs.dev/guides/role-based-access-control](https://authjs.dev/guides/role-based-access-control)
+
+- General role-based auth information
+
+[https://next-auth.js.org/tutorials/securing-pages-and-api-routes](https://next-auth.js.org/tutorials/securing-pages-and-api-routes)
+
+- Ways to secure pages and API routes
+
+[https://next-auth.js.org/configuration/nextjs#middleware](https://next-auth.js.org/configuration/nextjs#middleware)
+
+- Setting up middleware to protect pages
+
+[https://youtu.be/MNm1XhDjX1s?si=lxIV3mX0GxLGYAyM](https://youtu.be/MNm1XhDjX1s?si=lxIV3mX0GxLGYAyM)
+
+- A general and beginner tutorial for NextAuth
