@@ -23,17 +23,20 @@ html {
   tab-size: 4;
   scroll-behavior: smooth;
 }
+
 body {
   font-family: inherit;
   line-height: inherit;
   margin: 0;
 }
+
 h1,
 h2,
 p,
 pre {
   margin: 0;
 }
+
 *,
 ::before,
 ::after {
@@ -42,15 +45,18 @@ pre {
   border-style: solid;
   border-color: currentColor;
 }
+
 h1,
 h2 {
   font-size: inherit;
   font-weight: inherit;
 }
+
 a {
   color: inherit;
   text-decoration: inherit;
 }
+
 pre {
   font-family:
     ui-monospace,
@@ -62,12 +68,14 @@ pre {
     Courier New,
     monospace;
 }
+
 svg {
   display: block;
   vertical-align: middle;
   shape-rendering: auto;
   text-rendering: optimizeLegibility;
 }
+
 pre {
   background-color: rgba(55, 65, 81, 1);
   border-radius: 0.25rem;
@@ -92,12 +100,15 @@ pre {
     0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
+
 .rounded {
   border-radius: 1.5rem;
 }
+
 .wrapper {
   width: 100%;
 }
+
 .container {
   margin-left: auto;
   margin-right: auto;
@@ -108,15 +119,18 @@ pre {
   color: rgba(55, 65, 81, 1);
   width: 100%;
 }
+
 #welcome {
   margin-top: 2.5rem;
 }
+
 #welcome h1 {
   font-size: 3rem;
   font-weight: 500;
   letter-spacing: -0.025em;
   line-height: 1;
 }
+
 #welcome span {
   display: block;
   font-size: 1.875rem;
@@ -124,6 +138,7 @@ pre {
   line-height: 2.25rem;
   margin-bottom: 0.5rem;
 }
+
 #hero {
   align-items: center;
   background-color: hsla(214, 62%, 21%, 1);
@@ -134,15 +149,18 @@ pre {
   grid-template-columns: 1fr;
   margin-top: 3.5rem;
 }
+
 #hero .text-container {
   color: rgba(255, 255, 255, 1);
   padding: 3rem 2rem;
 }
+
 #hero .text-container h2 {
   font-size: 1.5rem;
   line-height: 2rem;
   position: relative;
 }
+
 #hero .text-container h2 svg {
   color: hsla(162, 47%, 50%, 1);
   height: 2rem;
@@ -151,9 +169,11 @@ pre {
   top: 0;
   width: 2rem;
 }
+
 #hero .text-container h2 span {
   margin-left: 2.5rem;
 }
+
 #hero .text-container a {
   background-color: rgba(255, 255, 255, 1);
   border-radius: 0.75rem;
@@ -469,14 +489,17 @@ summary {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
+
 summary:hover {
   background-color: rgba(243, 244, 246, 1);
 }
+
 summary svg {
   height: 1.5rem;
   margin-right: 1rem;
   width: 1.5rem;
 }
+
 #love {
   color: rgba(107, 114, 128, 1);
   font-size: 0.875rem;
@@ -485,6 +508,7 @@ summary svg {
   opacity: 0.6;
   text-align: center;
 }
+
 #love svg {
   color: rgba(252, 165, 165, 1);
   width: 1.25rem;
@@ -492,6 +516,7 @@ summary svg {
   display: inline;
   margin-top: -0.25rem;
 }
+
 @media screen and (min-width: 768px) {
   #hero {
     grid-template-columns: repeat(2, minmax(0, 1fr));

@@ -29,7 +29,9 @@
     "../../dist/apps/portal/.next/types/**/*.ts",
     "next-env.d.ts",
     ".next/types/**/*.ts",
-    "next.config.mjs"
+    "next.config.mjs",
+    "postcss.config.js",
+    "tailwind.config.js"
   ],
   "exclude": [
     "node_modules",

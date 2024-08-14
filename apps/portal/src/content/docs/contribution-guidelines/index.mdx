@@ -1,0 +1,228 @@
+---
+title: Quick Start
+description: Why read docs when you can just read the code?
+---
+
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+<Callout title="Preface">
+    'Best practices' vary between:
+    <ul>
+      <li>Organizations</li>
+      <li>Teams</li>
+      <li>Projects</li>
+    </ul>
+    <>They're heavily influenced by:</>
+<section className="flex flex-row gap-4">
+  <ul>
+    <li>Budget</li>
+    <li>Timelines</li>
+    <li>Team Size</li>
+  </ul>
+  <ul>
+    <li>Team Skillset</li>
+    <li>Team Culture</li>
+    <li>Project Scale</li>
+  </ul>
+  <ul>
+    <li>Project Stage</li>
+    <li>Technologies</li>
+    <li>Technical debt</li>
+  </ul>
+</section>
+
+There is no one perfect solution. Every decision is always a trade-off. Solutions tend to create new problems, and the best solution is the one that solves the most pressing problems while creating the least amount of new ones.
+
+We strive for the following:
+
+- Adhere to common open-source standards to maximize transferable skills
+- Maintain high developer experience with tools and processes
+- Automate repetitive tasks
+- Provide a clear path to learning and growth
+- Set aside time to evaluate new technologies
+
+By contributing to this project, you'll be exposed to the following disciplines:
+
+- Project Management
+- UI/UX Design
+- Front-End Development
+- Back-End Development
+- Tools & Infrastructure Development
+- Automation Testing
+- DevOps
+- Security
+- Artificial Intelligence/Machine Learning
+
+</Callout>
+
+## Steps
+
+<Callout type="warn" title="Woah there 10xer, just a moment!">
+  If you use Windows, read [System
+  Requirements](/docs/contribution-guidelines/system-requirements) before
+  proceeding.
+</Callout>
+
+<Callout type="warn" title="Woah there 10xer, just another moment!">
+  We are also in the process of a colossal monorepo migration. Ensure to
+  navigate to the correct directory before running any commands.
+
+So if you're looking to contribute to the hackathon app, navigate to `apps/hackathon`.
+For the landing page, navigate to `apps/landing-page`.
+See more information [here](https://github.com/cuhacking/hackathon/issues/40).
+
+</Callout>
+
+<div className="steps">
+  <div className="step">
+    Read [Tools Overview](/docs/tools-overview) to understand the technologies used.
+  </div>
+
+  <div className="step">
+    Install [Docker](https://www.docker.com).
+  </div>
+  [Docker Desktop](https://www.docker.com/products/docker-desktop/) provides a
+  nice UI if you prefer clickity clicks
+  <div className="step">
+    Install [Node.js](https://nodejs.org).
+  </div>
+  <div className="step">
+    Install [pnpm](https://pnpm.io/).
+
+```sh title="Terminal"
+npm i -g pnpm
+```
+
+</div>
+<div className="step">
+Clone [source repository](https://github.com/cuhacking/hackathon).
+
+<Tabs groupId="git-clone-method" items={['HTTPS', 'SSH', 'GitHub CLI']} persist>
+  <Tab value="HTTPS">
+
+```sh title="Terminal"
+ git clone https://github.com/cuhacking/hackathon.git
+```
+
+</Tab>
+<Tab value="SSH">
+
+```sh title="Terminal"
+ git clone git@github.com:cuhacking/hackathon.git
+```
+
+</Tab>
+<Tab value="GitHub CLI">
+
+```sh title="Terminal"
+ gh repo clone cuhacking/hackathon
+```
+
+</Tab>
+</Tabs>
+
+  </div>
+  <div className="step">
+    Navigate to directory and install dependencies.
+
+```bash
+cd hackathon
+pnpm i
+```
+
+  </div>
+
+  <div className="step">
+Copy `.env.example` to `.env` and fill in environment variables.
+
+```sh title="Terminal"
+cp .env.example .env
+```
+
+You will need to set `NEXTAUTH_SECRET` to a random string.
+We recommend using a password generator to create a secure secret or you can use the following command to generate a random string:
+
+```bash
+openssl rand -base64 32
+```
+
+You will also need to set `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` if you want to enable Google OAuth.
+
+There is information about how to install Google OAuth credentials in the [Additional Setup](#additional-setup) section.
+
+  </div>
+<div className="step">
+Run PostgreSQL in Docker
+
+    <Callout type="warn">
+      If you have a local PostgreSQL server running, you may need to stop it before running the Docker container.
+    </Callout>
+
+```sh title="Terminal"
+docker-compose up -d db
+```
+
+<Callout >
+You can also build and run the app itself with [Docker Compose](https://docs.docker.com/compose/).
+
+```sh title="Terminal"
+docker-compose up -d --build
+```
+
+</Callout>
+</div>
+
+<div className="step">
+Run Prisma Migrate
+
+```sh title="Terminal"
+pnpm prisma migrate dev
+```
+
+</div>
+
+<div className="step">
+Run development server
+
+```sh title="Terminal"
+pnpm dev
+```
+
+</div>
+
+Open [http://localhost:8000](http://localhost:8000) in your browser to see the app.
+
+Docs are on [http://localhost:8000/docs](http://localhost:8000/docs).
+
+</div>
+
+## Additional Setup
+
+### Enable Google OAuth
+
+<div className="steps">
+  <div className="step">
+    Go to the [Google Developer Console](https://console.developers.google.com)
+    and create a new project.
+  </div>
+  <div className="step">
+    Go to the "Credentials" tab and click "Create credentials" > "OAuth client
+    ID".
+  </div>
+  <div className="step">Select "Web application" as the application type.</div>
+  <div className="step">
+    Add `http://localhost:8000/api/auth/callback/google` as an authorized
+    redirect URI.
+  </div>
+  <div className="step">
+    Copy the client ID and client secret into your `.env` file as
+    `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`.
+  </div>
+  <div className="step">Restart the development server.</div>
+</div>
+
+You should now be able to sign in with Google.
+
+### Final Step
+
+[Profit](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
