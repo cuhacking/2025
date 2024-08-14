@@ -1,3 +1,5 @@
+import './global.css'
+
 export default function Index() {
   /*
    * Replace the elements below with your own.
