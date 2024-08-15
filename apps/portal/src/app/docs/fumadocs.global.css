@@ -22,7 +22,7 @@
 
 /* Fix this by making the sidebar sticky, and setting the height to be viewport height minus the header height.*/
 #nd-sidebar {
-  @apply md:sticky md:top-16 md:h-[calc(100vh-4rem)];
+  @apply md:sticky md:top-14 md:h-[calc(100vh-3.5rem)];
 }
 
 /*First container with title, horizontal rule, search bar, and dots button*/
