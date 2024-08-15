@@ -35,7 +35,7 @@ export const baseOptions: HomeLayoutProps = {
         },
         {
           text: 'Source',
-          url: 'https://www.cuhacking.ca',
+          url: 'https://github.com/cuhacking/landing-page',
           icon: <Github />,
         },
       ],
