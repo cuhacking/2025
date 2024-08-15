@@ -4,7 +4,7 @@ description: Explore the suite of software we use.
 icon: LayoutTemplate
 ---
 
-import { Image } from "next/image";
+import { Image } from 'next/image';
 
 Written in a beginner-friendly language in order to provide a smooth onboarding experience for [cuHacking's](https://www.cuhacking.ca) 2024-25 development team, and also act as a general open-source reference for other projects.
 
@@ -12,7 +12,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
 
 <Cards>
   <Card
-    title={"GitHub Projects"}
+    title={'GitHub Projects'}
     description={
       <>
         <li>Tracking issues, tasks, and progress directly within GitHub.</li>
@@ -33,7 +33,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
     }
   />
   <Card
-    title={"Notion"}
+    title={'Notion'}
     description={
       <>
         <li>Powerful all-in-one workspace used by all teams at cuHacking.</li>
@@ -59,7 +59,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
 
 <Cards>
   <Card
-    title={"Figma"}
+    title={'Figma'}
     description={
       <>
         <li>
@@ -85,70 +85,73 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
 </Cards>
 
 ## 🐞 Development
+ <Cards >
+<div>
+<h3> 🌐 Monorepo Manager </h3>
 
-### 🌐 Monorepo Manager
+<Card
+  title={'Nx'}
+  description={
+    <>
+      <li>
+        Allows sharing code and assets between projects, and makes using many
+        different technologies together possible.
+      </li>
+      <li>
+        Massively improves productivity as you don't have to context switch
+        between different git repos with different version histories.
+      </li>
+    </>
+  }
+  href={`https://nx.dev`}
+  icon={
+    <img
+      src="https://avatars.githubusercontent.com/u/23692104?s=200&v=4.svg"
+      alt="Nx Logo"
+      width={24}
+      height={24}
+    />
+  }
+/>
 
-<Cards>
-  <Card
-    title={"Nx"}
-    description={
-      <>
-        <li>
-          Allows sharing code and assets between projects, and makes using many
-          different technologies together possible.
-        </li>
-        <li>
-          Massively improves productivity as you don't have to context switch
-          between different git repos with different version histories.
-        </li>
-      </>
-    }
-    href={`https://nx.dev`}
-    icon={
-      <img
-        src="https://avatars.githubusercontent.com/u/23692104?s=200&v=4.svg"
-        alt="Nx Logo"
-        width={24}
-        height={24}
-      />
-    }
-  />
-</Cards>
+</div>
 
-### 📦 Package Manager
+<div>
+<h3> 📦 Package Manager </h3>
 
-<Cards>
-  <Card
-    title={"pnpm"}
-    description={
-      <>
-        <li>
-          Drop-in replacement for npm that is faster and better in almost every
-          way.
-        </li>
-        <li>
-          Better for both the disk health of your computer and the speed of our
-          CI/CD pipelines
-        </li>
-      </>
-    }
-    href={`https://pnpm.io/`}
-    icon={
-      <img
-        src="https://pnpm.io/assets/images/pnpm-light-477811893d2e1c4ad4b10345c442282e.svg"
-        alt="pnpm Logo"
-        width={24}
-        height={24}
-      />
-    }
-  />
-</Cards>
+<Card
+  title={'pnpm'}
+  description={
+    <>
+      <li>
+        Drop-in replacement for npm that is faster and better in almost every
+        way.
+      </li>
+      <li>
+        Better for both the disk health of your computer and the speed of our
+        CI/CD pipelines
+      </li>
+    </>
+  }
+  href={`https://pnpm.io/`}
+  icon={
+    <img
+      src="https://pnpm.io/assets/images/pnpm-light-477811893d2e1c4ad4b10345c442282e.svg"
+      alt="pnpm Logo"
+      width={24}
+      height={24}
+    />
+  }
+/>
+
+</div>
+  </Cards >
 
 ### ✨ Front-End
 
 <Cards>
   <Card
-    title={"TypeScript"}
+    title={'TypeScript'}
     description={
       <>
         <li>Javascript on steroids.</li>
@@ -166,7 +169,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
     }
   />
   <Card
-    title={"React"}
+    title={'React'}
     description={
       <>
         <li>A JavaScript view layer library for building user interfaces.</li>
@@ -192,7 +195,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
     }
   />
   <Card
-    title={"Next.js"}
+    title={'Next.js'}
     description={
       <>
         <li>
@@ -217,7 +220,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
     }
   />
   <Card
-    title={"Storybook"}
+    title={'Storybook'}
     description={
       <>
         <li>
@@ -245,7 +248,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
     }
   />
   <Card
-    title={"TailwindCSS"}
+    title={'TailwindCSS'}
     description={
       <>
         <li>A utility-first CSS framework to style components super fast.</li>
@@ -271,7 +274,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
     }
   />
   <Card
-    title={"Radix UI Primitives"}
+    title={'Radix UI Primitives'}
     description={
       <>
         <li>
@@ -295,7 +298,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
     }
   />
   <Card
-    title={"Shadcn/ui"}
+    title={'Shadcn/ui'}
     description={
       <>
         <li>
@@ -334,7 +337,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
 
 <Cards>
   <Card
-    title={"Redux"}
+    title={'Redux'}
     description={
       <>
         <li>Purpose-built and highly opinionated state management library.</li>
@@ -367,7 +370,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
 
 <Cards>
   <Card
-    title={"NextAuth.js"}
+    title={'NextAuth.js'}
     description={
       <>
         <li>Handling authentication safely and securely.</li>
@@ -389,7 +392,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
     }
   />
   <Card
-    title={"tRPC"}
+    title={'tRPC'}
     description={
       <>
         <li>End-to-end typesafe API layer for interfacing with databases.</li>
@@ -406,7 +409,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
     }
   />
   <Card
-    title={"PostgreSQL"}
+    title={'PostgreSQL'}
     description={
       <>
         <li>Open-source relational database system where we store data.</li>
@@ -423,7 +426,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
     }
   />
   <Card
-    title={"Prisma"}
+    title={'Prisma'}
     description={
       <>
         <li>
@@ -443,7 +446,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
     }
   />
   <Card
-    title={"Payload CMS"}
+    title={'Payload CMS'}
     description={
       <>
         <li>
@@ -477,7 +480,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
 
 <Cards>
   <Card
-    title={"ESLint"}
+    title={'ESLint'}
     description={
       <>
         <li>
@@ -510,7 +513,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
     }
   />
   <Card
-    title={"Prettier"}
+    title={'Prettier'}
     description={
       <>
         <li>An opinionated code formatter to make code look Prettier.</li>
@@ -531,7 +534,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
     }
   />
   <Card
-    title={"Conventional Commits"}
+    title={'Conventional Commits'}
     description={
       <>
         <li>Standardized open-source specification for commit messages.</li>
@@ -548,14 +551,14 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
     }
   />
   <Card
-    title={"Commitizen"}
+    title={'Commitizen'}
     description={
       <>
         <li>
-          A tool to create standardized commit messages that adhere to the{" "}
+          A tool to create standardized commit messages that adhere to the{' '}
           <a href="https://www.conventionalcommits.org/en/v1.0.0/">
             conventional commits specification
-          </a>{" "}
+          </a>{' '}
           + our sprinkles on top.
         </li>
       </>
@@ -571,7 +574,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
     }
   />
   <Card
-    title={"Commitlint"}
+    title={'Commitlint'}
     description={
       <>
         <li>Lint commit messages according to our specifications.</li>
@@ -579,15 +582,15 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
           <a href="https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional">
             Commitlint/config-conventional
           </a>
-          - Plugin that enforces conventional commits for commit messages and
-          allows us to modify them.
+          - Plugin that enforces conventional commits for commit messages and allows
+          us to modify them.
         </li>
         <li>
           <a href="https://github.com/conventional-changelog/commitlint/tree/master/@commitlint/cz-commitlint">
             Commitlint/cz-commitlint
           </a>
-          - Provides an integration for Commitizen so that the only options
-          displayed to you are the same ones defined in Commitlint.
+          - Provides an integration for Commitizen so that the only options displayed
+          to you are the same ones defined in Commitlint.
         </li>
         <li>
           In a nutshell, blocks commit messages that do not meet our specs,
@@ -607,7 +610,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
     }
   />
   <Card
-    title={"Lint-staged"}
+    title={'Lint-staged'}
     description={
       <>
         <li>
@@ -627,7 +630,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
     }
   />
   <Card
-    title={"Husky"}
+    title={'Husky'}
     description={
       <>
         <li>
@@ -652,7 +655,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
 
 <Cards>
   <Card
-    title={"Vitest"}
+    title={'Vitest'}
     description={
       <>
         <li>For writing both unit tests and integration tests.</li>
@@ -673,7 +676,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
     }
   />
   <Card
-    title={"Playwright"}
+    title={'Playwright'}
     description={
       <>
         <li>For End-to-end testing of our entire app.</li>
@@ -695,7 +698,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
     }
   />
   <Card
-    title={"Storybook Test Runner"}
+    title={'Storybook Test Runner'}
     description={
       <>
         <li>
@@ -716,7 +719,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
     }
   />
   <Card
-    title={"Chromatic"}
+    title={'Chromatic'}
     description={
       <>
         <li>
@@ -746,11 +749,11 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
 
 <Cards>
   <Card
-    title={"Semantic Release"}
+    title={'Semantic Release'}
     description={
       <>
         <li>
-          Automated versioning and package publishing as per the{" "}
+          Automated versioning and package publishing as per the{' '}
           <a href="https://semver.org/">Semantic Versioning</a> specification.
         </li>
         <li>
@@ -774,7 +777,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
     }
   />
   <Card
-    title={"GitHub Actions"}
+    title={'GitHub Actions'}
     description={
       <>
         <li>
@@ -801,7 +804,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
     }
   />
   <Card
-    title={"Vercel"}
+    title={'Vercel'}
     description={
       <>
         <li>
@@ -836,7 +839,7 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
     }
   />
   <Card
-    title={"Docker"}
+    title={'Docker'}
     description={
       <>
         <li>
