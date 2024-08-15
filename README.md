@@ -29,13 +29,13 @@
 <!---[![Coverage Status](https://coveralls.io/repos/github/Sulstice/global-chem/badge.svg?branch=master)](https://github.com/cuhacking/2025/tree/main) --->
 <hr/>
 
-2025 edition of [cuHacking's](https://www.cuhacking.ca) flagship platform, containing all software and hardware projects for organizing the hackathon.
+2025 edition of [cuHacking's](https://www.cuhacking.ca) flagship platform, containing all software and hardware projects that power all events throughout the year.
 
-Aiming to be WCAG Compliant, and fully accessible in order to provide the best user experience for hackers, sponsors, and organizers alike.
+Aiming to be [WCAG 2 Compliant](https://www.w3.org/WAI/standards-guidelines/wcag/) regardless of development cost. Strong focus on accessibility in order to provide the best experience for hackers, sponsors, and organizers alike.
 
-Built with the latest stable technologies, and a strong commitment to the best developer experience through automation, tooling, and documentation.
+Built with some of the most cutting-edge and stable open-source technologies, and a strong commitment to the best developer experience through automation, tooling, and documentation.
 
-Installation instructions available in the [cuHacking DevDocs - Contribution Guidelines](https://cuhacking-portal-test-deployment.netlify.app/docs/contribution-guidelines).
+Installation instructions, contribution guidelines, and technology stacks are available in the [cuHacking DevDocs](https://cuhacking-portal-test-deployment.netlify.app/docs/contribution-guidelines).
 
 |                                         [📚 Documentation](https://cuhacking-portal-test-deployment.netlify.app/docs)                                          |                                         [🗓️ Project Board](https://github.com/orgs/cuhacking/projects/4)                                          |                                         [💅 Figma](https://www.figma.com/files/team/1400857924219798056/project/261344209/2025?fuid=1196916890248607098)                                          |                                      [🌟 Design System (WIP)](#)                                       |
 | :------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------: |
