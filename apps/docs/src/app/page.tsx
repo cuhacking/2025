@@ -1,4 +1,4 @@
-import "./global.css";
+import './global.css'
 
 export default function Index() {
   /*
@@ -13,7 +13,7 @@ export default function Index() {
           <div id="welcome">
             <h1>
               <span> Hello there, </span>
-              Welcome portal 👋
+              Welcome docs 👋
             </h1>
           </div>
 
@@ -36,6 +36,7 @@ export default function Index() {
                 <span>You&apos;re up and running</span>
               </h2>
               <a href="#commands"> What&apos;s next? </a>
+              <a href="/docs">cuHacking DevDocs</a>
             </div>
             <div className="logo-container">
               <svg
@@ -326,8 +327,9 @@ export default function Index() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {" "}
-                  What is Nx Cloud?{" "}
+                  {' '}
+                  What is Nx Cloud?
+                  {' '}
                 </a>
               </div>
               <a
@@ -465,5 +467,5 @@ export default function Index() {
         </div>
       </div>
     </div>
-  );
+  )
 }
