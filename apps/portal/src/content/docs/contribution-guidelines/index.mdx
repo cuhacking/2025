@@ -3,9 +3,10 @@ title: Quick Start
 description: Why read docs when you can just read the code?
 ---
 
-import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
 
-<Callout title="Preface">
+    <Callout title="Preface">
+
     'Best practices' vary between:
     <ul>
       <li>Organizations</li>
@@ -13,6 +14,7 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
       <li>Projects</li>
     </ul>
     <>They're heavily influenced by:</>
+
 <section className="flex flex-row gap-4">
   <ul>
     <li>Budget</li>
@@ -33,7 +35,14 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 There is no one perfect solution. Every decision is always a trade-off. Solutions tend to create new problems, and the best solution is the one that solves the most pressing problems while creating the least amount of new ones.
 
-We strive for the following:
+<Accordions>
+  <Accordion title="What is the most important and highest priority project?">
+This docs site. No questions asked. All other projects are secondary to this our docs.
+</Accordion>
+</Accordions>
+
+<Accordions>
+  <Accordion title="What do you strive for?">
 
 - Adhere to common open-source standards to maximize transferable skills
 - Maintain high developer experience with tools and processes
@@ -52,8 +61,31 @@ By contributing to this project, you'll be exposed to the following disciplines:
 - DevOps
 - Security
 - Artificial Intelligence/Machine Learning
+</Accordion>
+</Accordions>
+
+<Accordions>
+  <Accordion title="What can I learn by contributing to this project?">
+
+    We regularly operate in the following areas:
+
+- Project Management
+- UI/UX Design
+- Front-End Development
+- Back-End Development
+- Tools & Infrastructure Development
+- Automation Testing
+- DevOps
+- Security
+- Artificial Intelligence/Machine Learning
+
+Read [Tools Overview](/docs/tools-overview) to understand the technologies used.
+</Accordion>
+</Accordions>
+
 
 </Callout>
+
 
 ## Steps
 
