@@ -9,6 +9,10 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 For Windows users, the use of [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) is highly encouraged in order to avoid those rare, maddening, a-tiny-part-of-this-one-library-breaks issues that can be very hard to debug.
 
+  <Callout type="warn">
+Ubuntu LTS' `apt` package manager is version locked. Use [Homebrew](https://brew.sh/) instead to install the latest versions of packages.
+  </Callout>
+
 The use of [Lazygit](https://github.com/jesseduffield/lazygit) is highly encouraged, as it provides a visual [terminal user interface (TUI)](https://en.wikipedia.org/wiki/Text-based_user_interface) to manage your commits, branches, staging areas, stashes, and much more. It is also significantly easier to resolve merge conflicts, cherry-pick commits between branches, squash them, amend a few commits back, checkout a specific commit, stage in hunks, etc. You will be able to unlock the full power of Git without having to memorize all the commands.
 
 TODO: Add demo gif of Lazygit in action
