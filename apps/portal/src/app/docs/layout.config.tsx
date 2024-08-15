@@ -52,7 +52,7 @@ export const baseOptions: HomeLayoutProps = {
         },
         {
           text: 'Source',
-          url: 'https://github.com/cuhacking/hackathon',
+          url: 'https://github.com/cuhacking/2025',
           icon: <Github />,
         },
         {
