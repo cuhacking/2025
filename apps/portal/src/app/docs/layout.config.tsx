@@ -34,7 +34,7 @@ export const baseOptions: HomeLayoutProps = {
           icon: <LandingPageIcon />,
         },
         {
-          text: 'Source',
+          text: 'Source (legacy)',
           url: 'https://github.com/cuhacking/landing-page',
           icon: <Github />,
         },
