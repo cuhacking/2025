@@ -25,7 +25,7 @@ export const baseOptions: HomeLayoutProps = {
   links: [
     {
       type: 'menu',
-      text: 'Landing Page',
+      text: 'Website',
       icon: <LandingPageIcon />,
       items: [
         {
