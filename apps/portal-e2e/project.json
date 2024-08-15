@@ -3,7 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/portal-e2e/src",
   "tags": [],
-  "implicitDependencies": ["portal"],
+  "implicitDependencies": ["docs"],
   "// targets": "to see all targets run: nx show project portal-e2e --web",
   "targets": {}
 }

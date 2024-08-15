@@ -1,0 +1,412 @@
+---
+title: Quick Start
+description: Why read docs when you can just read the code?
+---
+
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+    <Callout title="Preface">
+
+    'Best practices' vary between:
+    <ul>
+      <li>Organizations</li>
+      <li>Teams</li>
+      <li>Projects</li>
+    </ul>
+    <>They're heavily influenced by:</>
+
+<section className="flex flex-row gap-4">
+  <ul>
+    <li>Budget</li>
+    <li>Timelines</li>
+    <li>Team Size</li>
+  </ul>
+  <ul>
+    <li>Team Skillset</li>
+    <li>Team Culture</li>
+    <li>Project Scale</li>
+  </ul>
+  <ul>
+    <li>Project Stage</li>
+    <li>Technologies</li>
+    <li>Technical debt</li>
+  </ul>
+</section>
+
+There is no one perfect solution. Every decision is always a trade-off. Solutions tend to create new problems, and the best solution is the one that solves the most pressing problems while creating the least amount of new ones.
+
+<Accordions>
+  <Accordion title="What is the most important and highest priority project?">
+    This docs site. No questions asked. All other projects are secondary to this
+    our docs.
+  </Accordion>
+</Accordions>
+
+<Accordions>
+  <Accordion title="What do you strive for?">
+
+- Adhere to common open-source standards to maximize transferable skills
+- Maintain high developer experience with tools and processes
+- Automate repetitive tasks
+- Provide a clear path to learning and growth
+- Set aside time to evaluate new technologies
+
+By contributing to this project, you'll be exposed to the following disciplines:
+
+- Project Management
+- UI/UX Design
+- Front-End Development
+- Back-End Development
+- Tools & Infrastructure Development
+- Automation Testing
+- DevOps
+- Security
+- Artificial Intelligence/Machine Learning
+  </Accordion>
+</Accordions>
+
+<Accordions>
+  <Accordion title="What can I learn by contributing to this project?">
+
+    We regularly operate in the following areas:
+
+- Project Management
+- UI/UX Design
+- Front-End Development
+- Back-End Development
+- Tools & Infrastructure Development
+- Automation Testing
+- DevOps
+- Security
+- Artificial Intelligence/Machine Learning
+
+Read [Tools Overview](/docs/tools-overview) to understand the technologies used.
+
+</Accordion>
+</Accordions>
+
+</Callout>
+
+## Steps
+
+<Callout type="warn" title="Woah there 10xer, just a moment!">
+  If you use Windows, read [System
+  Requirements](/docs/contribution-guidelines/system-requirements) before
+  proceeding.
+</Callout>
+
+<Callout type="warn" title="Woah there 10xer, just another moment!">
+  We are also in the process of a colossal monorepo migration. Ensure to
+  navigate to the correct directory before running any directory-specific commands.
+
+See more information [here](https://github.com/cuhacking/hackathon/issues/40).
+
+</Callout>
+
+<div className="steps">
+  <div className="step">
+    Read [Tools Overview](/docs/tools-overview) to understand the technologies used.
+  </div>
+
+  <div className="step">
+    Install [Docker](https://www.docker.com).
+  </div>
+  [Docker Desktop](https://www.docker.com/products/docker-desktop/) provides a
+  nice UI if you prefer clickity clicks
+  <div className="step">
+    Install [Node.js](https://nodejs.org) (v20+).
+  </div>
+  <div className="step">
+    Install [pnpm](https://pnpm.io/).
+
+```sh title="Terminal"
+npm i -g pnpm
+```
+
+</div>
+
+  <div className="step">
+    Install [Nx](https://nx.dev).
+
+```sh title="Terminal"
+pnpm i -g nx@latest
+```
+
+    Nice, now you're an
+
+<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer">
+  <img
+    src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png"
+    width="45"
+  />
+</a>
+dev.
+
+</div>
+<div className="step">
+Clone [source repository](https://github.com/cuhacking/hackathon).
+
+<Tabs groupId="git-clone-method" items={['HTTPS', 'SSH', 'GitHub CLI']} persist>
+  <Tab value="HTTPS">
+
+```sh title="Terminal"
+ git clone https://github.com/cuhacking/2025.git
+```
+
+</Tab>
+<Tab value="SSH">
+
+```sh title="Terminal"
+ git clone git@github.com:cuhacking/2025.git
+```
+
+</Tab>
+<Tab value="GitHub CLI">
+
+```sh title="Terminal"
+ gh repo clone cuhacking/2025
+```
+
+</Tab>
+</Tabs>
+
+  </div>
+  <div className="step">
+    Navigate to directory and install dependencies.
+
+```sh title="terminal"
+cd 2025
+pnpm i
+```
+
+  </div>
+
+<Accordions>
+  <Accordion title="Legacy steps (will be removed soon)">
+This is what the steps looked like from this point onwards prior to the monorepo migration.
+
+<div className="steps">
+<div className="step">
+Run PostgreSQL in Docker
+
+    <Callout type="warn">
+      If you have a local PostgreSQL server running, you may need to stop it before running the Docker container.
+    </Callout>
+
+```sh title="Terminal"
+docker-compose up -d db
+```
+
+<Callout >
+You can also build and run the app itself with [Docker Compose](https://docs.docker.com/compose/).
+
+```sh title="Terminal"
+docker-compose up -d --build
+```
+
+</Callout>
+</div>
+
+<div className="step">
+Run Prisma Migrate
+
+```sh title="Terminal"
+pnpm prisma migrate dev
+```
+
+</div>
+
+<div className="step">
+Run development server
+
+```sh title="Terminal"
+pnpm dev
+```
+
+</div>
+
+### Enable Google OAuth
+
+<div className="steps">
+  <div className="step">
+    Go to the [Google Developer Console](https://console.developers.google.com)
+    and create a new project.
+  </div>
+  <div className="step">
+    Go to the "Credentials" tab and click "Create credentials" > "OAuth client
+    ID".
+  </div>
+  <div className="step">Select "Web application" as the application type.</div>
+  <div className="step">
+    Add `http://localhost:8000/api/auth/callback/google` as an authorized
+    redirect URI.
+  </div>
+  <div className="step">
+    Copy the client ID and client secret into your `.env` file as
+    `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`.
+  </div>
+  <div className="step">Restart the development server.</div>
+</div>
+
+You should now be able to sign in with Google.
+
+</div>
+
+</Accordion>
+</Accordions>
+
+  <div className="step">
+  Run the project of your choice.
+
+<Tabs groupId="projects" items={['Website', 'Hacker Portal', 'DevDocs']} persist>
+  <Tab value="Website">
+    <Tabs groupId="website-project-nx-commands" items={['dev', 'build', 'start']} persist>
+      <Tab value="dev">
+        ```sh title="Terminal"
+        nx dev web
+        ```
+        Or
+        ```sh title="Terminal"
+        nx run web:dev
+        ```
+      </Tab>
+      <Tab value="build">
+        ```sh title="Terminal"
+        nx build web
+        ```
+        Or
+        ```sh title="Terminal"
+        nx run web:build
+        ```
+      </Tab>
+      <Tab value="start">
+        ```sh title="Terminal"
+        nx start web
+        ```
+        Or
+        ```sh title="Terminal"
+        nx run web:start
+        ```
+      </Tab>
+    </Tabs>
+  </Tab>
+
+{" "}
+<Tab value="Hacker Portal">
+  <Tabs
+    groupId="hacker-portal-project-nx-commands"
+    items={["dev", "build", "start"]}
+    persist
+  >
+    <Tab value="dev">
+      ```sh title="Terminal" nx dev portal ``` Or ```sh title="Terminal" nx run
+      portal:dev ```
+    </Tab>
+    <Tab value="build">
+      ```sh title="Terminal" nx build portal ``` Or ```sh title="Terminal" nx
+      run portal:build ```
+    </Tab>
+    <Tab value="start">
+      ```sh title="Terminal" nx start portal ``` Or ```sh title="Terminal" nx
+      run portal:start ```
+    </Tab>
+  </Tabs>
+</Tab>
+
+  <Tab value="DevDocs">
+    <Tabs groupId="devdocs-project-nx-commands" items={['dev', 'build', 'start']} persist>
+      <Tab value="dev">
+        ```sh title="Terminal"
+        nx dev docs
+        ```
+        Or
+        ```sh title="Terminal"
+        nx run docs:dev
+        ```
+      </Tab>
+      <Tab value="build">
+        ```sh title="Terminal"
+        nx build docs
+        ```
+        Or
+        ```sh title="Terminal"
+        nx run docs:build
+        ```
+      </Tab>
+      <Tab value="start">
+        ```sh title="Terminal"
+        nx start docs
+        ```
+        Or
+        ```sh title="Terminal"
+        nx run docs:start
+        ```
+      </Tab>
+    </Tabs>
+  </Tab>
+</Tabs>
+
+<Accordions>
+  <Accordion title="What's the general syntax of Nx commands?">
+  <img src="https://nx.dev/documentation/shared/images/run-target-syntax.svg" />
+
+To execute tasks with Nx use the following syntax:
+
+```sh title="Terminal"
+nx <target> <project> <...options>
+```
+
+You can also run multiple targets:
+
+```sh title="Terminal"
+nx run-many -t <target1> <target2>
+```
+
+..or add `-p` to filter specific projects
+
+```sh title="Terminal"
+nx run-many -t <target1> <target2> -p <proj1> <proj2>
+```
+
+Targets can be defined in the `package.json` or `projects.json`. [Learn more](https://nx.dev/features/run-tasks).
+
+Explore the project graph to see the projects in the monorepo and the tasks you can run with Nx.
+
+```sh title="Terminal"
+nx graph
+```
+
+[Learn more](https://nx.dev/core-features/explore-graph).
+
+Use [Nx Console](https://nx.dev/nx-console) to integrate with editors.
+
+<img src="https://nx.dev/documentation/shared/images/nx-console/nx-console-screenshot.webp" />
+
+### Build for production
+
+Run `nx build portal` to build the application. The build artifacts are stored in the output directory (e.g. `dist/` or `build/`), ready to be deployed.
+
+### Set up CI
+
+Nx comes with local caching already built-in (check your `nx.json`). On CI you might want to go a step further.
+
+- [Set up remote caching](https://nx.dev/features/share-your-cache)
+- [Set up task distribution across multiple machines](https://nx.dev/nx-cloud/features/distribute-task-execution)
+- [Learn more how to setup CI](https://nx.dev/recipes/ci)
+
+</Accordion>
+</Accordions>
+
+  </div>
+  <div className="step">
+Open the url(s) in your browser for the project(s) you're running.
+
+Open [http://localhost:8000](http://localhost:8000) in your browser to see the app.
+Docs are on [http://localhost:8000/docs](http://localhost:8000/docs).
+
+  </div>
+</div>
+
+### Final Step
+
+[Profit](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
