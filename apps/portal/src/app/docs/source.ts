@@ -14,7 +14,7 @@ import { map } from '../../../.map'
 export const pages = [
   {
     title: 'Home',
-    description: 'Read the docs, and suffer less - Wise Person',
+    description: 'Leave none behind regardless of our development cost.',
     url: '',
     icon: HomeIcon,
   },
