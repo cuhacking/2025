@@ -1,0 +1,992 @@
+---
+title: Quick Start
+description: Explore the suite of software we use.
+icon: LayoutTemplate
+---
+
+import { Image } from "next/image";
+
+Written in a beginner-friendly language in order to provide a smooth onboarding experience for [cuHacking's](https://www.cuhacking.ca) 2024-25 development team, and also act as a general open-source reference for other projects.
+
+## 🔭 Project Management
+
+<Cards>
+  <Card
+    title={"GitHub Projects"}
+    description={
+      <>
+        <li>Tracking issues, tasks, and progress directly within GitHub.</li>
+        <li>
+          Allows everyone to see what everyone else is up to, and do work
+          without blocking each other.
+        </li>
+      </>
+    }
+    href={`https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects`}
+    icon={
+      <img
+        src="https://www.logo.wine/a/logo/GitHub/GitHub-Icon-White-Dark-Background-Logo.wine.svg"
+        alt="GitHub Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Notion"}
+    description={
+      <>
+        <li>Powerful all-in-one workspace used by all teams at cuHacking.</li>
+        <li>
+          Mostly to keep an open line of communication with other teams,
+          technical tasks will be on GitHub Projects.
+        </li>
+      </>
+    }
+    href={`https://www.notion.so/`}
+    icon={
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg"
+        alt="Notion Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+</Cards>
+
+## 🪄 UI/UX Design
+
+<Cards>
+  <Card
+    title={"Figma"}
+    description={
+      <>
+        <li>
+          An outrageously powerful collaborative design tool for wireframing
+          ideas and prototyping mockups.
+        </li>
+        <li>
+          Allows you to sort out your UI/UX first, saving you from writing code
+          and end up building the wrong thing which also may look like potato 🥔
+        </li>
+      </>
+    }
+    href={`https://www.figma.com/`}
+    icon={
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg"
+        alt="Figma Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+</Cards>
+
+## 🐞 Development
+
+ <Cards >
+<div>
+<h3> 🌐 Monorepo Manager </h3>
+
+<Card
+  title={"Nx"}
+  description={
+    <>
+      <li>
+        Allows sharing code and assets between projects, and makes using many
+        different technologies together possible.
+      </li>
+      <li>
+        Massively improves productivity as you don't have to context switch
+        between different git repos with different version histories.
+      </li>
+    </>
+  }
+  href={`https://nx.dev`}
+  icon={
+    <img
+      src="https://avatars.githubusercontent.com/u/23692104?s=200&v=4.svg"
+      alt="Nx Logo"
+      width={24}
+      height={24}
+    />
+  }
+/>
+
+</div>
+
+<div>
+<h3> 📦 Package Manager </h3>
+
+<Card
+  title={"pnpm"}
+  description={
+    <>
+      <li>
+        Drop-in replacement for npm that is faster and better in almost every
+        way.
+      </li>
+      <li>
+        Better for both the disk health of your computer and the speed of our
+        CI/CD pipelines
+      </li>
+    </>
+  }
+  href={`https://pnpm.io/`}
+  icon={
+    <img
+      src="https://pnpm.io/assets/images/pnpm-light-477811893d2e1c4ad4b10345c442282e.svg"
+      alt="pnpm Logo"
+      width={24}
+      height={24}
+    />
+  }
+/>
+
+</div>
+  </Cards >
+
+### ✨ Front-End
+
+<Cards>
+  <Card
+    title={"TypeScript"}
+    description={
+      <>
+        <li>Javascript on steroids.</li>
+        <li>Catches your silly bugs before you can even run the code.</li>
+      </>
+    }
+    href={`https://www.typescriptlang.org/`}
+    icon={
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg"
+        alt="TypeScript Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"React"}
+    description={
+      <>
+        <li>A JavaScript view layer library for building user interfaces.</li>
+        <li>Emphasis on the library part, it's not a framework.</li>
+        <li>
+          Very bueno for saving you from writing all the HTML yourself, and
+          adding small bits of interactivity.
+        </li>
+        <li>
+          Not so bueno for heavyweight interactivity, need bigger guns and
+          external libraries for that.
+        </li>
+      </>
+    }
+    href={`https://reactjs.org/`}
+    icon={
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+        alt="React Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Next.js (may be replaced with Remix)"}
+    description={
+      <>
+        <li>
+          An unopinionated and batteries-not-included React framework with
+          routing, server-side rendering, image optimizations, and many other
+          things.
+        </li>
+        <li>
+          In a nutshell, pulls all kinds of strings that allow you to use React
+          without setting the user's computer on fire.
+        </li>
+        <li>Maintained by Vercel.</li>
+      </>
+    }
+    href={`https://nextjs.org/`}
+    icon={
+      <img
+        src="https://www.svgrepo.com/show/354113/nextjs-icon.svg"
+        alt="Next.js Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Remix"}
+    description={
+      <>
+        <li>More performant than Next.js for dynamic applications.</li>
+        <li>
+          More 'guts-out' and modular with a clearer separation between client
+          and server.
+        </li>
+        <li>Maintained by Shopify & the React Router team.</li>
+      </>
+    }
+    href={`https://remix.run`}
+    icon={
+      <img
+        src="https://avatars.githubusercontent.com/u/64235328?s=200&v=4.svg"
+        alt="Remix Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Storybook"}
+    description={
+      <>
+        <li>
+          A framework for developing and testing UI components in isolation.
+        </li>
+        <li>
+          Allows you to make your buttons in peace, without having to launch the
+          entire main app to see it.
+        </li>
+        <li>
+          Also doubles as documentation for our design system and a playground
+          for anything and everything the user sees in the main app, in any
+          state; saving you valuable clickity clicks.
+        </li>
+      </>
+    }
+    href={`https://storybook.js.org/`}
+    icon={
+      <img
+        src="https://www.svgrepo.com/show/354397/storybook-icon.svg"
+        alt="Storybook Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"TailwindCSS"}
+    description={
+      <>
+        <li>A utility-first CSS framework to style components super fast.</li>
+        <li>
+          No more separate stylesheets. Won't necessarily fix your potato UI but
+          will allow you to make them faster and with less debugging.
+        </li>
+        <li>
+          Does not scale well and makes codebases unreadable by mixing styling
+          and business logic. This is addressed by good React component
+          architecture in tandem with other libraries.
+        </li>
+      </>
+    }
+    href={`https://tailwindcss.com/`}
+    icon={
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg"
+        alt="TailwindCSS Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Radix UI Primitives"}
+    description={
+      <>
+        <li>
+          Unstyled headless components that we can easily lay our design system
+          on top of.
+        </li>
+        <li>
+          Also handles accessibility, saving us from writing and maintaining a
+          lot of code + tests.
+        </li>
+      </>
+    }
+    href={`https://www.radix-ui.com/primitives`}
+    icon={
+      <img
+        src="https://avatars.githubusercontent.com/u/75042455?s=200&v=4.svg"
+        alt="Radix UI Primitives Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Shadcn/ui"}
+    description={
+      <>
+        <li>
+          A modern component library built on top of Radix UI Primitives and
+          styled with Tailwind, combining accessibility, customizability, and
+          business logic into one.
+        </li>
+        <li>
+          Has an entire ecosystem of other libraries and heavily supported by
+          the community, making it easy for us to find any component we need.
+        </li>
+        <li>
+          Also has maintained Figma files and Storybooks, allowing us to tightly
+          integrate design mockups with the frontend.
+        </li>
+        <li>
+          Not an npm package, and therefore easily modifiable because we have
+          direct access to code. Even comes with tools so that we can track how
+          much we changed the original look.
+        </li>
+      </>
+    }
+    href={`https://ui.shadcn.dev/`}
+    icon={
+      <img
+        src="https://bestofjs.org/logos/shadcnui.dark.svg"
+        alt="Shadcn/ui Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+</Cards>
+
+### ⁉️ State Management
+
+<Cards>
+  <Card
+    title={"Redux"}
+    description={
+      <>
+        <li>Purpose-built and highly opinionated state management library.</li>
+        <li>
+          Lots of documentation, large community, and rich ecosystem of plugins.
+        </li>
+        <li>
+          Helps you manage variables that are highly susceptible to change, and
+          upon which lots of other variables may depend on.
+        </li>
+        <li>
+          Separates state management from the React view layer and other
+          business logic entirely, and therefore scales well + easy to debug.
+        </li>
+      </>
+    }
+    href={`https://redux.js.org/`}
+    icon={
+      <img
+        src="https://www.svgrepo.com/show/303557/redux-logo.svg"
+        alt="Redux Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+</Cards>
+
+### ⚙️ Back-End & Middleware
+
+<Cards>
+  <Card
+    title={'NextAuth.js (may be replaced, not sure with what)'}
+    description={
+      <>
+        <li>Handling authentication safely and securely.</li>
+        <li>
+          Allows people to log in to our app with pre-existing
+          Google/Microsoft/Apple accounts, saving us from having to deal with
+          their sensitive data.
+        </li>
+      </>
+    }
+    href={`https://next-auth.js.org`}
+    icon={
+      <img
+        src="https://user-images.githubusercontent.com/7461010/229049976-db6b9733-0215-437e-9922-41c2da34e18d.svg"
+        alt="NextAuth.js Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={'tRPC'}
+    description={
+      <>
+        <li>End-to-end typesafe API layer for interfacing with databases.</li>
+      </>
+    }
+    href={`https://trpc.io/`}
+    icon={
+      <img
+        src="https://bestofjs.org/logos/trpc.dark.svg"
+        alt="tRPC Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={'PostgreSQL'}
+    description={
+      <>
+        <li>Open-source relational database system where we store data.</li>
+      </>
+    }
+    href={`https://www.postgresql.org/`}
+    icon={
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg"
+        alt="PostgreSQL Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={'Prisma (being replaced by Drizzle)'}
+    description={
+      <>
+        <li>
+          An ORM that saves us from writing raw SQL queries, plays well with the
+          Node.ts ecosystem.
+        </li>
+      </>
+    }
+    href={`https://www.prisma.io/`}
+    icon={
+      <img
+        src="https://cdn.worldvectorlogo.com/logos/prisma-3.svg"
+        alt="Prisma Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={'Drizzle'}
+    description={
+      <>
+        <li>
+          An ORM that saves us from writing raw SQL queries, plays well with the
+          Node.ts ecosystem.
+        </li>
+      </>
+    }
+    href={`https://orm.drizzle.team`}
+    icon={
+      <img
+        src="https://avatars.githubusercontent.com/u/108468352?s=48&v=4.svg"
+        alt="Drizzle Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+
+  <Card
+    title={'Payload CMS'}
+    description={
+      <>
+        <li>
+          Content Management System to hold static data displayed across our
+          websites and apps.
+        </li>
+        <li>
+          Provides a database that stores static content such as text and images
+          away from our codebase, so that other teams can change them directly
+          through a nice admin dashboard without having to contact us.
+        </li>
+        <li>
+          Gives us the power of WordPress without getting in our way for
+          customizability.
+        </li>
+      </>
+    }
+    href={`https://payloadcms.com`}
+    icon={
+      <img
+        src="https://avatars.githubusercontent.com/u/62968818?s=200&v=4.svg"
+        alt="Payload CMS Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+</Cards>
+
+## 🧹 Code Quality
+
+<Cards>
+  <Card
+    title={"ESLint"}
+    description={
+      <>
+        <li>
+          Find and fix problems in code, and enforce style guide and best
+          practices.
+        </li>
+        <li>
+          Saves you from having to memorize and study our style guide by giving
+          you instant feedback while coding.
+        </li>
+        <li>
+          Saves us from having to make our entire style guide and re-invent best
+          practices from scratch using plugins.
+        </li>
+        <li>
+          Can catch lightweight surface bugs. Cannot catch deep business logic
+          bugs, but prevents the likelihood of them happening by catching the
+          surface bugs.
+        </li>
+      </>
+    }
+    href={`https://eslint.org/`}
+    icon={
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/e/e3/ESLint_logo.svg"
+        alt="ESLint Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Prettier"}
+    description={
+      <>
+        <li>An opinionated code formatter to make code look Prettier.</li>
+        <li>
+          Cannot catch bugs. Only handles fixing inconsistencies in spacing,
+          quotes, semicolons, parentheses, brackets, etc.
+        </li>
+      </>
+    }
+    href={`https://prettier.io/`}
+    icon={
+      <img
+        src="https://cdn.worldvectorlogo.com/logos/prettier-1.svg"
+        alt="Prettier Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Conventional Commits"}
+    description={
+      <>
+        <li>Standardized open-source specification for commit messages.</li>
+      </>
+    }
+    href={`https://www.conventionalcommits.org/en/v1.0.0/`}
+    icon={
+      <img
+        src="https://avatars.githubusercontent.com/u/42154238?s=200&v=4.svg"
+        alt="Conventional Commits Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Commitizen"}
+    description={
+      <>
+        <li>
+          A tool to create standardized commit messages that adhere to the{" "}
+          <a href="https://www.conventionalcommits.org/en/v1.0.0/">
+            conventional commits specification
+          </a>{" "}
+          + our sprinkles on top.
+        </li>
+      </>
+    }
+    href={`https://commitizen.github.io/cz-cli/`}
+    icon={
+      <img
+        src="https://avatars.githubusercontent.com/u/62252524?s=48&v=4.svg"
+        alt="Commitizen Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Commitlint"}
+    description={
+      <>
+        <li>Lint commit messages according to our specifications.</li>
+        <li>
+          <a href="https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional">
+            Commitlint/config-conventional
+          </a>
+          - Plugin that enforces conventional commits for commit messages and allows
+          us to modify them.
+        </li>
+        <li>
+          <a href="https://github.com/conventional-changelog/commitlint/tree/master/@commitlint/cz-commitlint">
+            Commitlint/cz-commitlint
+          </a>
+          - Provides an integration for Commitizen so that the only options displayed
+          to you are the same ones defined in Commitlint.
+        </li>
+        <li>
+          In a nutshell, blocks commit messages that do not meet our specs,
+          which in turn saves our CI pipelines from crashing or creating the
+          wrong versions, which in turn ensures our whole app doesn't blow up.
+        </li>
+      </>
+    }
+    href={`https://commitlint.js.org/`}
+    icon={
+      <img
+        src="https://www.svgrepo.com/show/373518/commitlint.svg"
+        alt="Commitlint Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Lint-staged"}
+    description={
+      <>
+        <li>
+          Runs ESLint and Prettier on Git staged files so that there are no code
+          style diffs at the PR level.
+        </li>
+      </>
+    }
+    href={`https://github.com/okonet/lint-staged`}
+    icon={
+      <img
+        src="https://avatars.githubusercontent.com/u/142687600?s=200&v=4.svg"
+        alt="Lint-staged Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Husky"}
+    description={
+      <>
+        <li>
+          Library that allows us to quickly and easily trigger Git hooks, which
+          in turn trigger commands to run the tools mentioned above.
+        </li>
+      </>
+    }
+    href={`https://typicode.github.io/husky/#/`}
+    icon={
+      <img
+        src="https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/icons/file_type_husky.svg"
+        alt="Husky Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+</Cards>
+
+## ⚗️ Testing
+
+<Cards>
+  <Card
+    title={"Vitest"}
+    description={
+      <>
+        <li>For writing both Unit Tests and Integration Tests.</li>
+        <li>
+          Code with peace of mind and get instant feedback if you break
+          something.
+        </li>
+      </>
+    }
+    href={`https://vitest.dev/`}
+    icon={
+      <img
+        src="https://vitest.dev/logo.svg"
+        alt="Vitest Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Playwright"}
+    description={
+      <>
+        <li>For End-to-End Testing of our entire app.</li>
+        <li>
+          Instead of clicking around the entire app yourself to see if it still
+          works after every single time you make a change, why not let a robot
+          do it for you?
+        </li>
+      </>
+    }
+    href={`https://playwright.dev/`}
+    icon={
+      <img
+        src="https://playwright.dev/img/playwright-logo.svg"
+        alt="Playwright Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Storybook Test Runner"}
+    description={
+      <>
+        <li>
+          Executes Vitest and Playwright test suites on design system
+          components, along with handling accessibility testing, and coverage
+          testing using plugins.
+        </li>
+      </>
+    }
+    href={`https://storybook.js.org/docs/writing-tests/test-runner`}
+    icon={
+      <img
+        src="https://www.svgrepo.com/show/354397/storybook-icon.svg"
+        alt="Storybook Test Runner Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Chromatic"}
+    description={
+      <>
+        <li>
+          Visual test server platform to easily spot differences in UI and
+          discuss them as a team, integrated with Storybook.
+        </li>
+        <li>
+          Can catch visual bugs by comparing new renders with a specified
+          baseline, and block the changes from making it to production prior to
+          being reviewed.
+        </li>
+      </>
+    }
+    href={`https://www.chromatic.com/`}
+    icon={
+      <img
+        src="https://www.svgrepo.com/show/353552/chromatic-icon.svg"
+        alt="Chromatic Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+</Cards>
+
+## ☁️ Deployment
+
+<Cards>
+  <Card
+    title={"Semantic Release (being replaced by Nx Release)"}
+    description={
+      <>
+        <li>
+          Automated versioning and package publishing as per the{" "}
+          <a href="https://semver.org/">Semantic Versioning</a> specification.
+        </li>
+        <li>
+          Parses the history of commit messages to automatically generate
+          changelogs.
+        </li>
+        <li>
+          Requires conventional commit specs to be followed in order to work
+          properly.
+        </li>
+      </>
+    }
+    href={`https://semantic-release.gitbook.io/semantic-release/`}
+    icon={
+      <img
+        src="https://avatars.githubusercontent.com/u/12867925?s=200&v=4.svg"
+        alt="Semantic Release Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"GitHub Actions"}
+    description={
+      <>
+        <li>
+          Automated CI/CD pipelines to run linting, test suites, and handle
+          versioning.
+        </li>
+        <li>
+          The final boss you need to defeat before human eyes even see your
+          code.
+        </li>
+        <li>
+          Very fun to configure and watch at work. Not very fun to debug ☁️
+        </li>
+      </>
+    }
+    href={`https://github.com/features/actions`}
+    icon={
+      <img
+        src="https://icon.icepanel.io/Technology/svg/GitHub-Actions.svg"
+        alt="GitHub Actions Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Docker"}
+    description={
+      <>
+        <li>
+          Containerization platform to develop, ship, and run the app anywhere.
+        </li>
+        <li>
+          Your computer is a box. Someone else's computer is a box. Your box is
+          different from their box. The thing works on their box but not yours.
+          What if both of you used the same box with the same configs and could
+          easily pass it around like hot potato? 📦🤔
+        </li>
+        <li>
+          Docker is that box, more fancily referred to as a 'container'. Both of
+          you run this box inside your box. It works for both of you by
+          boxception.
+        </li>
+      </>
+    }
+    href={`https://www.docker.com/`}
+    icon={
+      <img
+        src="https://www.svgrepo.com/show/349342/docker.svg"
+        alt="Docker Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Vercel (being replaced by Netlify)"}
+    description={
+      <>
+        <li>
+          For safely deploying our app to the web so that people can see and use
+          it from their browsers.
+        </li>
+        <li>
+          Uses <a href="https://aws.amazon.com/">AWS</a> under the hood.
+        </li>
+        <li>
+          Integrates well with Next.js and also allows for demo deployments for
+          our own purposes which are not indexed on google.
+        </li>
+        <li>
+          If we push a version that makes it past all our tests but somehow
+          breaks at the build stage, Vercel will provide instant feedback and
+          not deploy it, leaving up the previous functional version.
+        </li>
+        <li>
+          Also allows quick and easy rollbacks to previously deployed versions.
+        </li>
+      </>
+    }
+    href={`https://vercel.com/`}
+    icon={
+      <img
+        src="https://avatars.githubusercontent.com/u/14985020?s=200&v=4.svg"
+        alt="Vercel Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Netlify"}
+    description={
+      <>
+        <li>
+          For safely deploying our app to the web so that people can see and use
+          it from their browsers.
+        </li>
+        <li>
+          Uses <a href="https://aws.amazon.com/">AWS</a> under the hood.
+        </li>
+        <li>
+          Integrates well with Next.js and also allows for demo deployments for
+          our own purposes which are not indexed on google.
+        </li>
+        <li>
+          If we push a version that makes it past all our tests but somehow
+          breaks at the build stage, Netlify will provide instant feedback and
+          not deploy it, leaving up the previous functional version.
+        </li>
+        <li>
+          Also allows quick and easy rollbacks to previously deployed versions.
+        </li>
+      </>
+    }
+    href={`https://www.netlify.com`}
+    icon={
+      <img
+        src="https://avatars.githubusercontent.com/u/7892489?s=200&v=4.svg"
+        alt="Netlify Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Terraform"}
+    description={
+      <>
+        <li>Open-source infrastructure as code software tool.</li>
+        <li>Define and provision data center infrastructure with code.</li>
+      </>
+    }
+    href={`https://www.terraform.io`}
+    icon={
+      <img
+        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/terraform/terraform-original.svg"
+        alt="Terraform Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"AWS"}
+    description={
+      <>
+        <li>
+          Definitely uses <a href="https://aws.amazon.com/">AWS</a> under the
+          hood.
+        </li>
+        <li>
+          Provisioning and managing variety of cloud services for our apps.
+        </li>
+      </>
+    }
+    href={`https://aws.amazon.com`}
+    icon={
+      <img
+        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg"
+        alt="AWS Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+</Cards>
