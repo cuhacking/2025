@@ -97,10 +97,8 @@ Read [Tools Overview](/docs/tools-overview) to understand the technologies used.
 
 <Callout type="warn" title="Woah there 10xer, just another moment!">
   We are also in the process of a colossal monorepo migration. Ensure to
-  navigate to the correct directory before running any commands.
+  navigate to the correct directory before running any directory-specific commands.
 
-So if you're looking to contribute to the hackathon app, navigate to `apps/hackathon`.
-For the landing page, navigate to `apps/landing-page`.
 See more information [here](https://github.com/cuhacking/hackathon/issues/40).
 
 </Callout>
@@ -116,7 +114,7 @@ See more information [here](https://github.com/cuhacking/hackathon/issues/40).
   [Docker Desktop](https://www.docker.com/products/docker-desktop/) provides a
   nice UI if you prefer clickity clicks
   <div className="step">
-    Install [Node.js](https://nodejs.org).
+    Install [Node.js](https://nodejs.org) (v20+).
   </div>
   <div className="step">
     Install [pnpm](https://pnpm.io/).
@@ -126,6 +124,25 @@ npm i -g pnpm
 ```
 
 </div>
+
+  <div className="step">
+    Install [Nx](https://nx.dev).
+
+```sh title="Terminal"
+pnpm i -g nx@latest
+```
+    Nice, now you're an
+<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer">
+  <img
+    src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png"
+    width="45"
+  />
+</a>
+    dev.
+
+
+
+</div>
 <div className="step">
 Clone [source repository](https://github.com/cuhacking/hackathon).
 
@@ -133,21 +150,21 @@ Clone [source repository](https://github.com/cuhacking/hackathon).
   <Tab value="HTTPS">
 
 ```sh title="Terminal"
- git clone https://github.com/cuhacking/hackathon.git
+ git clone https://github.com/cuhacking/2025.git
 ```
 
 </Tab>
 <Tab value="SSH">
 
 ```sh title="Terminal"
- git clone git@github.com:cuhacking/hackathon.git
+ git clone git@github.com:cuhacking/2025.git
 ```
 
 </Tab>
 <Tab value="GitHub CLI">
 
 ```sh title="Terminal"
- gh repo clone cuhacking/hackathon
+ gh repo clone cuhacking/2025
 ```
 
 </Tab>
@@ -157,32 +174,18 @@ Clone [source repository](https://github.com/cuhacking/hackathon).
   <div className="step">
     Navigate to directory and install dependencies.
 
-```bash
-cd hackathon
+```sh title="terminal"
+cd 2025
 pnpm i
 ```
 
   </div>
 
-  <div className="step">
-Copy `.env.example` to `.env` and fill in environment variables.
+<Accordions>
+  <Accordion title="Legacy steps (will be removed soon)">
+This is what the steps looked like from this point onwards prior to the monorepo migration.
 
-```sh title="Terminal"
-cp .env.example .env
-```
-
-You will need to set `NEXTAUTH_SECRET` to a random string.
-We recommend using a password generator to create a secure secret or you can use the following command to generate a random string:
-
-```bash
-openssl rand -base64 32
-```
-
-You will also need to set `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` if you want to enable Google OAuth.
-
-There is information about how to install Google OAuth credentials in the [Additional Setup](#additional-setup) section.
-
-  </div>
+<div className="steps">
 <div className="step">
 Run PostgreSQL in Docker
 
@@ -222,14 +225,6 @@ pnpm dev
 
 </div>
 
-Open [http://localhost:8000](http://localhost:8000) in your browser to see the app.
-
-Docs are on [http://localhost:8000/docs](http://localhost:8000/docs).
-
-</div>
-
-## Additional Setup
-
 ### Enable Google OAuth
 
 <div className="steps">
@@ -254,7 +249,176 @@ Docs are on [http://localhost:8000/docs](http://localhost:8000/docs).
 </div>
 
 You should now be able to sign in with Google.
+</div>
+
+</Accordion>
+</Accordions>
+
+  <div className="step">
+  Run the project of your choice.
+
+<Tabs groupId="projects" items={['Website', 'Hacker Portal', 'DevDocs']} persist>
+  <Tab value="Website">
+    <Tabs groupId="website-project-nx-commands" items={['dev', 'build', 'start']} persist>
+      <Tab value="dev">
+        ```sh title="Terminal"
+        nx dev web
+        ```
+        Or
+        ```sh title="Terminal"
+        nx run web:dev
+        ```
+      </Tab>
+      <Tab value="build">
+        ```sh title="Terminal"
+        nx build web
+        ```
+        Or
+        ```sh title="Terminal"
+        nx run web:build
+        ```
+      </Tab>
+      <Tab value="start">
+        ```sh title="Terminal"
+        nx start web
+        ```
+        Or
+        ```sh title="Terminal"
+        nx run web:start
+        ```
+      </Tab>
+    </Tabs>
+  </Tab>
+
+  <Tab value="Hacker Portal">
+    <Tabs groupId="hacker-portal-project-nx-commands" items={['dev', 'build', 'start']} persist>
+      <Tab value="dev">
+        ```sh title="Terminal"
+        nx dev portal
+        ```
+        Or
+        ```sh title="Terminal"
+        nx run portal:dev
+        ```
+      </Tab>
+      <Tab value="build">
+        ```sh title="Terminal"
+        nx build portal
+        ```
+        Or
+        ```sh title="Terminal"
+        nx run portal:build
+        ```
+      </Tab>
+      <Tab value="start">
+        ```sh title="Terminal"
+        nx start portal
+        ```
+        Or
+        ```sh title="Terminal"
+        nx run portal:start
+        ```
+      </Tab>
+    </Tabs>
+  </Tab>
+
+  <Tab value="DevDocs">
+    <Tabs groupId="devdocs-project-nx-commands" items={['dev', 'build', 'start']} persist>
+      <Tab value="dev">
+        ```sh title="Terminal"
+        nx dev docs
+        ```
+        Or
+        ```sh title="Terminal"
+        nx run docs:dev
+        ```
+      </Tab>
+      <Tab value="build">
+        ```sh title="Terminal"
+        nx build docs
+        ```
+        Or
+        ```sh title="Terminal"
+        nx run docs:build
+        ```
+      </Tab>
+      <Tab value="start">
+        ```sh title="Terminal"
+        nx start docs
+        ```
+        Or
+        ```sh title="Terminal"
+        nx run docs:start
+        ```
+      </Tab>
+    </Tabs>
+  </Tab>
+</Tabs>
+
+
+<Accordions>
+  <Accordion title="What's the general syntax of Nx commands?">
+  <img src="https://nx.dev/documentation/shared/images/run-target-syntax.svg" />
+
+To execute tasks with Nx use the following syntax:
+
+```sh title="Terminal"
+nx <target> <project> <...options>
+```
+
+You can also run multiple targets:
+
+```sh title="Terminal"
+nx run-many -t <target1> <target2>
+```
+
+..or add `-p` to filter specific projects
+
+```sh title="Terminal"
+nx run-many -t <target1> <target2> -p <proj1> <proj2>
+```
+
+Targets can be defined in the `package.json` or `projects.json`. [Learn more](https://nx.dev/features/run-tasks).
+
+Explore the project graph to see the projects in the monorepo and the tasks you can run with Nx.
+
+```sh title="Terminal"
+nx graph
+```
+
+[Learn more](https://nx.dev/core-features/explore-graph).
+
+Use [Nx Console](https://nx.dev/nx-console) to integrate with editors.
+
+<img src="https://nx.dev/documentation/shared/images/nx-console/nx-console-screenshot.webp" />
+
+### Build for production
+
+Run `nx build portal` to build the application. The build artifacts are stored in the output directory (e.g. `dist/` or `build/`), ready to be deployed.
+
+
+### Set up CI
+
+Nx comes with local caching already built-in (check your `nx.json`). On CI you might want to go a step further.
+
+- [Set up remote caching](https://nx.dev/features/share-your-cache)
+- [Set up task distribution across multiple machines](https://nx.dev/nx-cloud/features/distribute-task-execution)
+- [Learn more how to setup CI](https://nx.dev/recipes/ci)
+
+</Accordion>
+</Accordions>
+
+  </div>
+  <div className="step">
+Open the url(s) in your browser for the project(s) you're running.
+
+Open [http://localhost:8000](http://localhost:8000) in your browser to see the app.
+Docs are on [http://localhost:8000/docs](http://localhost:8000/docs).
+
+  </div>
+</div>
 
 ### Final Step
 
 [Profit](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
+
