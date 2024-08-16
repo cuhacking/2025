@@ -46,7 +46,7 @@ n7 --> |"No"| n9["Was it a CI or build change?"]
 n9 --> |"Yes, CI change"| n10["ci"]
 n9 --> |"Yes, Build change"| n11["build"]
 n9 --> |"No"| n12["Were only tests changed?"]
-n12 --> |"Yes"| n13["tests"]
+n12 --> |"Yes"| n13["test"]
 n12 --> |"No"| n14["Are they only performance optimizations?"]
 n14 --> |"Yes"| n15["perf"]
 n14 --> |"No"| n16["Was it pure code styling/format/semantics?"]
@@ -74,17 +74,19 @@ n5 --> |"No"| n7["Leave Scope Blank"]
 ```mermaid
 flowchart TD
 n1["Which platform(s) was affected?"]
+n1 --> |"Docs Site"| n4["docs"]
 n1 --> |"Marketing Website"| n2["web"]
 n1 --> |"Hacker Portal"| n3["portal"]
-n1 --> |"Docs Site" | n4["docs"]
 n1 --> n5["More than one"]
-n5 --> n6["web+portal+docs"]
+n5 --> n6["docs+web+portal"]
 ```
 
-The platforms should always be in the same order: `web`, `portal`, `docs`.
+The platforms should always be in the same order: `docs`, `web`, `portal`.
 If you have changes in the `portal` only, the scope should be `portal`.
-If you have changes in all three platforms, the scope should be `web+portal+docs`.
-So if you have changes in the `web` and `docs`, the scope should be `web+docs`, not `docs+web`.
+If you have changes in all three platforms, the scope should be `docs+web+portal`.
+If you have changes in `docs`, and `web` , the scope should be `docs+web`, and `web+docs`,
+
+If it was E2E tests, change them to be their e2e counterparts, for example, `docs-e2e`, `web-e2e`, `portal-e2e`.
 
 ### Examples
 
@@ -113,5 +115,5 @@ perf(api/portal): optimize database queries for sponsor data
 style(web/components): change button border radius to 5px
 
 # Testcase refactor for Hacker Portal
-refactor(tests): re-structure user registration cases
+refactor(test): re-structure user registration cases
 ```
