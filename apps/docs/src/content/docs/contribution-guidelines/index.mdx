@@ -431,12 +431,29 @@ Nx comes with local caching already built-in (check your `nx.json`). On CI you m
 
   </div>
   <div className="step">
-Open the url(s) in your browser for the project(s) you're running.
+You'll see the url(s) in your terminal for the project(s) you're running, simply paste those in to your browser address bar.
 
-Open [http://localhost:8000](http://localhost:8000) in your browser to see the app.
-Docs are on [http://localhost:8000/docs](http://localhost:8000/docs).
+    For example you may see:
 
-  </div>
+```sh title="Terminal"
+╰─ nx dev docs
+
+> nx run docs:dev
+
+> next dev
+
+▲ Next.js 14.2.3
+
+- Local: <http://localhost:3000>
+✓ Starting...
+automatically enabled Fast Refresh for 1 custom loader
+```
+
+As the project is in its early stages, these URLs may change. If you have multiple apps running or have another server using that network port, yours may be different from someone else's and that's okay.
+
+Always look at your terminal for the correct URL.
+
+</div>
 </div>
 
 ### Final Step
