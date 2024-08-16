@@ -1,24 +1,24 @@
-import type { Metadata } from "next";
-import { DocsBody, DocsPage } from "fumadocs-ui/page";
-import { notFound } from "next/navigation";
-import { Edit } from "lucide-react";
-import packageJson from "../../../../../../package.json";
-import { getPage, getPages } from "../source";
+import type { Metadata } from 'next'
+import { DocsBody, DocsPage } from 'fumadocs-ui/page'
+import { notFound } from 'next/navigation'
+import { Edit } from 'lucide-react'
+import packageJson from '../../../../../../package.json'
+import { getPage, getPages } from '../source'
 
 export default async function Page({
   params,
 }: {
-  params: { slug?: string[] };
+  params: { slug?: string[] }
 }) {
-  const page = getPage(params.slug);
+  const page = getPage(params.slug)
 
   if (page == null) {
-    notFound();
+    notFound()
   }
 
-  const MDX = page.data.exports.default;
-  const path = `src/content/docs/${page.file.path}`;
-  const gitHubRepoUrl = packageJson.repository.url.replace(/\.git$/, ""); // Remove .git suffix
+  const MDX = page.data.exports.default
+  const path = `src/content/docs/${page.file.path}`
+  const gitHubRepoUrl = packageJson.repository.url.replace(/\.git$/, '') // Remove .git suffix
 
   const footer = (
     <>
@@ -40,7 +40,7 @@ export default async function Page({
         Made with 🩶 for Hackers by Hackers
       </a>
     </>
-  );
+  )
 
   return (
     <DocsPage
@@ -60,22 +60,23 @@ export default async function Page({
         <MDX />
       </DocsBody>
     </DocsPage>
-  );
+  )
 }
 
 export async function generateStaticParams() {
-  return getPages().map((page) => ({
+  return getPages().map(page => ({
     slug: page.slugs,
-  }));
+  }))
 }
 
 export function generateMetadata({ params }: { params: { slug?: string[] } }) {
-  const page = getPage(params.slug);
+  const page = getPage(params.slug)
 
-  if (page == null) notFound();
+  if (page == null)
+    notFound()
 
   return {
     title: page.data.title,
     description: page.data.description,
-  } satisfies Metadata;
+  } satisfies Metadata
 }

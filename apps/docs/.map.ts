@@ -1,4 +1,4 @@
-/** Auto-generated **/
-declare const map: Record<string, unknown>;
+/** Auto-generated */
+declare const map: Record<string, unknown>
 
-export { map };
+export { map }

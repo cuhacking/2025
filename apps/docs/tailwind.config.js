@@ -1,22 +1,22 @@
 // import type { Config } from 'tailwindcss'
 // const { fontFamily } = require('tailwindcss/defaultTheme')
-const { join } = require("node:path");
+const { join } = require('node:path')
 
-const { createPreset } = require("fumadocs-ui/tailwind-plugin");
+const { createPreset } = require('fumadocs-ui/tailwind-plugin')
 
-const { createGlobPatternsForDependencies } = require("@nx/react/tailwind");
+const { createGlobPatternsForDependencies } = require('@nx/react/tailwind')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: ["class"],
+  darkMode: ['class'],
   content: [
     join(
       __dirname,
-      "{src,pages,components,app}/**/*!(*.stories|*.spec).{ts,tsx,html}"
+      '{src,pages,components,app}/**/*!(*.stories|*.spec).{ts,tsx,html}',
     ),
     ...createGlobPatternsForDependencies(__dirname),
-    "./mdx-components.tsx",
-    "../../node_modules/fumadocs-ui/dist/**/*.js",
+    './mdx-components.tsx',
+    '../../node_modules/fumadocs-ui/dist/**/*.js',
   ],
   theme: {
     extend: {
@@ -32,8 +32,8 @@ module.exports = {
       // preset: 'dusk',
       // preset: 'purple',
       // preset: 'ocean',
-      preset: "catppuccin",
+      preset: 'catppuccin',
     }),
   ],
   plugins: [],
-};
+}

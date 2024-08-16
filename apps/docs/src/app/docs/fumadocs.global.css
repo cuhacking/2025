@@ -46,7 +46,7 @@
 }
 
 /*Make the theme toggle button invisible on desktop screens, as the header already has a theme toggle button*/
-#nd-sidebar > div:nth-child(3) > [aria-label="Toggle Theme"] {
+#nd-sidebar > div:nth-child(3) > [aria-label='Toggle Theme'] {
   @apply md:invisible;
 }
 

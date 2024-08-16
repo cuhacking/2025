@@ -1,13 +1,13 @@
-import type { DocsLayoutProps } from "fumadocs-ui/layout";
-import { RootToggle } from "fumadocs-ui/components/layout/root-toggle";
+import type { DocsLayoutProps } from 'fumadocs-ui/layout'
+import { RootToggle } from 'fumadocs-ui/components/layout/root-toggle'
 import {
   Github,
   Laptop as HackerPortalIcon,
   Bird as LandingPageIcon,
-} from "lucide-react";
-import Image from "next/image";
-import type { HomeLayoutProps } from "fumadocs-ui/home-layout";
-import { pageTree, pages } from "./source";
+} from 'lucide-react'
+import Image from 'next/image'
+import type { HomeLayoutProps } from 'fumadocs-ui/home-layout'
+import { pageTree, pages } from './source'
 
 // shared configuration
 export const baseOptions: HomeLayoutProps = {
@@ -23,56 +23,56 @@ export const baseOptions: HomeLayoutProps = {
         <span className="text-lg font-bold">cuHacking DevDocs</span>
       </>
     ),
-    url: "/docs",
+    url: '/docs',
   },
-  githubUrl: "https://github.com/cuhacking/hackathon",
+  githubUrl: 'https://github.com/cuhacking/hackathon',
   links: [
     {
-      type: "menu",
-      text: "Website",
+      type: 'menu',
+      text: 'Website',
       icon: <LandingPageIcon />,
       items: [
         {
-          text: "Website",
-          url: "https://www.cuhacking.ca",
+          text: 'Website',
+          url: 'https://www.cuhacking.ca',
           icon: <LandingPageIcon />,
         },
         {
-          text: "Source (legacy)",
-          url: "https://github.com/cuhacking/landing-page",
+          text: 'Source (legacy)',
+          url: 'https://github.com/cuhacking/landing-page',
           icon: <Github />,
         },
       ],
     },
     {
-      type: "menu",
-      text: "Hacker Portal",
+      type: 'menu',
+      text: 'Hacker Portal',
       icon: <HackerPortalIcon />,
       items: [
         {
-          text: "App",
-          url: "/",
+          text: 'App',
+          url: '/',
           icon: <HackerPortalIcon />,
         },
         {
-          text: "Source",
-          url: "https://github.com/cuhacking/2025",
+          text: 'Source',
+          url: 'https://github.com/cuhacking/2025',
           icon: <Github />,
         },
         {
-          text: "Project Board",
-          url: "https://github.com/orgs/cuhacking/projects/4",
+          text: 'Project Board',
+          url: 'https://github.com/orgs/cuhacking/projects/4',
           icon: <Github />,
         },
       ],
     },
   ],
-};
+}
 
 // home layout configuration
 export const homeOptions = {
   ...baseOptions,
-};
+}
 
 // docs layout configuration
 export const docsOptions: DocsLayoutProps = {
@@ -80,7 +80,7 @@ export const docsOptions: DocsLayoutProps = {
   sidebar: {
     banner: (
       <RootToggle
-        options={pages.map((page) => ({
+        options={pages.map(page => ({
           title: page.title,
           description: page.description,
           url: `/docs/${page.url}`,
@@ -98,4 +98,4 @@ export const docsOptions: DocsLayoutProps = {
     ),
   },
   tree: pageTree,
-};
+}
