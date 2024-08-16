@@ -65,7 +65,7 @@ test.describe('should contain desktop header elements', {
   test('should take user to Hacker Portal App when Hacker Portal App link inside Hacker Portal Dropdown is clicked', async ({ docsLayoutPage }) => {
     await docsLayoutPage.hackerPortalDropdownButton.click()
     await docsLayoutPage.hackerPortalLink.click()
-    await expect(docsLayoutPage.page).toHaveURL('http://localhost:8000')
+    await expect(docsLayoutPage.page).toHaveURL('http://localhost:3000')
   })
 
   test('should contain Hacker Portal Source link inside Hacker Portal Dropdown', async ({ docsLayoutPage }) => {
