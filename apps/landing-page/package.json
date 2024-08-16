@@ -27,6 +27,7 @@
     "styletron-react": "^6.1.0"
   },
   "devDependencies": {
+    "@nx/remix": "19.5.7",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
