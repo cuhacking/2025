@@ -1,7 +1,7 @@
 // TODO: merge with antfu eslint config
-const { FlatCompat } = require('@eslint/eslintrc');
+const { FlatCompat } = require("@eslint/eslintrc");
 // const baseConfig = require('../../eslint.config.js');
-const js = require('@eslint/js');
+const js = require("@eslint/js");
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
@@ -10,21 +10,21 @@ const compat = new FlatCompat({
 
 module.exports = [
   // ...baseConfig,
-  ...compat.extends('plugin:playwright/recommended'),
+  ...compat.extends("plugin:playwright/recommended"),
   {
-    files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
+    files: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
     rules: {},
   },
   {
-    files: ['**/*.ts', '**/*.tsx'],
+    files: ["**/*.ts", "**/*.tsx"],
     rules: {},
   },
   {
-    files: ['**/*.js', '**/*.jsx'],
+    files: ["**/*.js", "**/*.jsx"],
     rules: {},
   },
   {
-    files: ['src/**/*.{ts,js,tsx,jsx}'],
+    files: ["src/**/*.{ts,js,tsx,jsx}"],
     rules: {},
   },
 ];
