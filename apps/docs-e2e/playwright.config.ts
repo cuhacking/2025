@@ -1,10 +1,12 @@
-import { defineConfig, devices } from "@playwright/test";
-import { nxE2EPreset } from "@nx/playwright/preset";
+// TODO: Investigate node global process usage
+/* eslint-disable node/prefer-global/process */
+import { defineConfig, devices } from '@playwright/test'
+import { nxE2EPreset } from '@nx/playwright/preset'
 
-import { workspaceRoot } from "@nx/devkit";
+import { workspaceRoot } from '@nx/devkit'
 
 // For CI, you may want to set BASE_URL to the deployed application.
-const baseURL = process.env["BASE_URL"] || "http://127.0.0.1:3000";
+const baseURL = process.env.BASE_URL || 'http://127.0.0.1:3000'
 
 /**
  * Read environment variables from file.
@@ -16,34 +18,34 @@ const baseURL = process.env["BASE_URL"] || "http://127.0.0.1:3000";
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  ...nxE2EPreset(__filename, { testDir: "./src" }),
+  ...nxE2EPreset(__filename, { testDir: './src' }),
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     baseURL,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: "on-first-retry",
+    trace: 'on-first-retry',
   },
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: "nx start docs",
-    url: "http://127.0.0.1:3000",
+    command: 'nx start docs',
+    url: 'http://127.0.0.1:3000',
     reuseExistingServer: !process.env.CI,
     cwd: workspaceRoot,
   },
   projects: [
     {
-      name: "chromium",
-      use: { ...devices["Desktop Chrome"] },
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
     },
 
     {
-      name: "firefox",
-      use: { ...devices["Desktop Firefox"] },
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
     },
 
     {
-      name: "webkit",
-      use: { ...devices["Desktop Safari"] },
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
     },
 
     // Uncomment for mobile browsers support
@@ -66,4 +68,4 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     } */
   ],
-});
+})
