@@ -53,4 +53,3 @@ module.exports = antfu({
   formatters: true,
   react: true,
 })
-
