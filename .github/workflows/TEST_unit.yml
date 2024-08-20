@@ -20,16 +20,19 @@ jobs:
         with:
           fetch-depth: 0 # All history for branches and tags
 
-      - name: 🍞 Install Bun
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
+      - name: 📦 Install pnpm
+        uses: pnpm/action-setup@v4
+        # with:
+        #   run_install: false
 
-      - name: 📂 Install Dependencies
-        run: bun install
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
 
       - name: 💀 Run Unit Tests
-        run: bun run test:vitest
+        run: pnpm i; pnpm nx test website --verbose
 
       - name: 💰 Profit
         run: echo 🐞
