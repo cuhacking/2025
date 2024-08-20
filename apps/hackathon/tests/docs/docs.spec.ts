@@ -10,9 +10,9 @@ const test = base.extend<{ docsLayoutPage: DocsLayout }>({
   },
 })
 
-const DOCS_HOME_PAGE_URL = 'http://localhost:8000/docs'
-const CUHACKING_HACKER_PORTAL_GITHUB_REPOSITORY_URL = 'https://github.com/cuhacking/hackathon'
-const CUHACKING_HACKER_PORTAL_GITHUB_PROJECT_BOARD_URL = 'https://github.com/orgs/cuhacking/projects/4'
+const DOCS_SITE_URL = 'http://localhost:8000/docs'
+const CUHACKING_2025_PLATFORM_GITHUB_REPOSITORY_URL = 'https://github.com/cuhacking/hackathon'
+const CUHACKING_2025_PLATFORM_GITHUB_PROJECT_BOARD_URL = 'https://github.com/orgs/cuhacking/projects/4'
 
 test('should contain page title', async ({ docsLayoutPage }) => {
   await expect(docsLayoutPage.page).toHaveTitle(/Welcome to the Docs/)
@@ -27,7 +27,7 @@ test.describe('should contain desktop header elements', {
 
   test('should take user to docs home page when cuHacking logo icon is clicked', async ({ docsLayoutPage }) => {
     await docsLayoutPage.cuHackingLogoIcon.click()
-    await expect(docsLayoutPage.page).toHaveURL(DOCS_HOME_PAGE_URL)
+    await expect(docsLayoutPage.page).toHaveURL(DOCS_SITE_URL)
   })
 
   test('should contain cuHacking logo Text in desktop header', async ({ docsLayoutPage }) => {
@@ -36,20 +36,20 @@ test.describe('should contain desktop header elements', {
 
   test('should take user to docs home page when cuHacking logo text is clicked', async ({ docsLayoutPage }) => {
     await docsLayoutPage.cuHackingLogoText.click()
-    await expect(docsLayoutPage.page).toHaveURL(DOCS_HOME_PAGE_URL)
+    await expect(docsLayoutPage.page).toHaveURL(DOCS_SITE_URL)
   })
 
-  test('should contain Landing Page dropdown button in desktop header', async ({ docsLayoutPage }) => {
-    await expect(docsLayoutPage.landingPageDropdownButton).toBeVisible()
+  test('should contain Website dropdown button in desktop header', async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.websiteDropdownButton).toBeVisible()
   })
 
-  test('should contain Landing Page Website link inside Landing Page Dropdown', async ({ docsLayoutPage }) => {
-    await docsLayoutPage.landingPageDropdownButton.click()
+  test('should contain Website Website link inside Website Dropdown', async ({ docsLayoutPage }) => {
+    await docsLayoutPage.websiteDropdownButton.click()
     await expect(docsLayoutPage.landingPageWebsiteLink).toBeVisible()
   })
 
-  test('should contain Landing Page Website Source link inside Landing Page Dropdown', async ({ docsLayoutPage }) => {
-    await docsLayoutPage.landingPageDropdownButton.click()
+  test('should contain Website Website Source link inside Website Dropdown', async ({ docsLayoutPage }) => {
+    await docsLayoutPage.websiteDropdownButton.click()
     await expect(docsLayoutPage.landingPageWebsiteSourceLink).toBeVisible()
   })
 
@@ -78,7 +78,7 @@ test.describe('should contain desktop header elements', {
     const pagePromise = docsLayoutPage.page.context().waitForEvent('page')
     await docsLayoutPage.hackerPortalSourceLink.click()
     const newPage = await pagePromise
-    await expect(newPage).toHaveURL(CUHACKING_HACKER_PORTAL_GITHUB_REPOSITORY_URL)
+    await expect(newPage).toHaveURL(CUHACKING_2025_PLATFORM_GITHUB_REPOSITORY_URL)
   })
 
   test('should contain Hacker Portal Project Board link inside Hacker Portal Dropdown', async ({ docsLayoutPage }) => {
@@ -91,7 +91,7 @@ test.describe('should contain desktop header elements', {
     const pagePromise = docsLayoutPage.page.context().waitForEvent('page')
     await docsLayoutPage.hackerPortalProjectBoardLink.click()
     const newPage = await pagePromise
-    await expect(newPage).toHaveURL(CUHACKING_HACKER_PORTAL_GITHUB_PROJECT_BOARD_URL)
+    await expect(newPage).toHaveURL(CUHACKING_2025_PLATFORM_GITHUB_PROJECT_BOARD_URL)
   })
 
   test('should contain search bar in desktop header', async ({ docsLayoutPage }) => {
@@ -115,7 +115,7 @@ test.describe('should contain desktop header elements', {
     const pagePromise = docsLayoutPage.page.context().waitForEvent('page')
     await docsLayoutPage.gitHubIcon.click()
     const newPage = await pagePromise
-    await expect(newPage).toHaveURL(CUHACKING_HACKER_PORTAL_GITHUB_REPOSITORY_URL)
+    await expect(newPage).toHaveURL(CUHACKING_2025_PLATFORM_GITHUB_REPOSITORY_URL)
   })
 })
 
@@ -138,7 +138,7 @@ test.describe('should contain floating table of contents elements', {
     const pagePromise = docsLayoutPage.page.context().waitForEvent('page')
     await docsLayoutPage.editOnGitHubButton.click()
     const newPage = await pagePromise
-    await expect(newPage).toHaveURL(`${CUHACKING_HACKER_PORTAL_GITHUB_REPOSITORY_URL}/blob/main/src/content/docs/index.mdx`)
+    await expect(newPage).toHaveURL(`${CUHACKING_2025_PLATFORM_GITHUB_REPOSITORY_URL}/blob/main/src/content/docs/index.mdx`)
   })
 })
 

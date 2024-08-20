@@ -7,7 +7,7 @@ export class DocsLayout {
   // Desktop Header
   readonly cuHackingLogoIcon: Locator
   readonly cuHackingLogoText: Locator
-  readonly landingPageDropdownButton: Locator
+  readonly websiteDropdownButton: Locator
   readonly landingPageWebsiteLink: Locator
   readonly landingPageWebsiteSourceLink: Locator
   readonly hackerPortalDropdownButton: Locator
@@ -41,7 +41,7 @@ export class DocsLayout {
     // Desktop Header
     this.cuHackingLogoIcon = page.getByRole('img', { name: 'cuHacking logo' })
     this.cuHackingLogoText = page.getByRole('link', { name: 'cuHacking logo cuHacking' })
-    this.landingPageDropdownButton = page.getByRole('button', { name: 'Landing Page' })
+    this.websiteDropdownButton = page.getByRole('button', { name: 'Website' })
     this.landingPageWebsiteLink = page.getByRole('dialog').getByRole('link', { name: 'Website' })
     this.landingPageWebsiteSourceLink = page.getByRole('dialog').getByRole('link', { name: 'Source' })
     this.hackerPortalDropdownButton = page.getByRole('button', { name: 'Hacker Portal' })
