@@ -78,13 +78,13 @@ n1 --> |"Docs Site"| n4["docs"]
 n1 --> |"Marketing Website"| n2["web"]
 n1 --> |"Hacker Portal"| n3["portal"]
 n1 --> n5["More than one"]
-n5 --> n6["docs+web+portal"]
+n5 --> n6["docs,web,portal"]
 ```
 
 The platforms should always be in the same order: `docs`, `web`, `portal`.
 If you have changes in the `portal` only, the scope should be `portal`.
-If you have changes in all three platforms, the scope should be `docs+web+portal`.
-If you have changes in `docs`, and `web` , the scope should be `docs+web`, and `web+docs`,
+If you have changes in all three platforms, the scope should be `docs,web,portal`.
+If you have changes in `docs`, and `web` , the scope should be `docs,web`, and `web,docs`,
 
 If it was E2E tests, change them to be their e2e counterparts, for example, `docs-e2e`, `web-e2e`, `portal-e2e`.
 
@@ -96,8 +96,11 @@ Here are some examples of commit messages following the decision tree guidelines
 # Hacker Portal bugfix that affects the UI
 fix(ui/portal): dashboard login button misaligned on mobile
 
+# Change in a configuration file in the Hacker Portal
+fix(config/portal): add default coverage directory to jest config
+
 # A new feature in the API for both the Marketing Website and Hacker Portal, no change in the UI
-feat(api/web+portal): create user data retrieval endpoints
+feat(api/web,portal): create user data retrieval endpoints
 
 # A change in the build process for the Docs Site
 build(docs): update webpack configuration for bundling mdx files
@@ -115,5 +118,5 @@ perf(api/portal): optimize database queries for sponsor data
 style(web/components): change button border radius to 5px
 
 # Testcase refactor for Hacker Portal
-refactor(test): re-structure user registration cases
+refactor(test/portal): re-structure user registration cases
 ```
