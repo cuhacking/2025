@@ -20,24 +20,22 @@ jobs:
         with:
           fetch-depth: 0 # All history for branches and tags
 
-      - name: 🍞 Install Bun
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
+      - name: 📦 Install pnpm
+        uses: pnpm/action-setup@v4
+        # with:
+        #   run_install: false
 
-      - name: 📂 Install Dependencies
-        run: bun install
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
 
       - name: 🎭 Install Playwright Browsers
-        run: bun run --bun playwright install --with-deps
+        run: pnpm i; pnpm playwright install --with-deps
 
-      - name: 💀 Run E2E tests
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
-          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
-          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
-        run: bun run --bun playwright test
+      - name: 💀 Run E2E Tests
+        run: pnpm nx run-many -t e2e -p docs-e2e website-e2e portal-e2e --parallel=false --verbose
 
       - name: 📄 Upload Artifact
         uses: actions/upload-artifact@v4
