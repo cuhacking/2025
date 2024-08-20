@@ -19,22 +19,21 @@ jobs:
         with:
           fetch-depth: 0 # All history for branches and tags
 
-      - name: 🍞 Install Bun
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
+      - name: 📦 Install pnpm
+        uses: pnpm/action-setup@v4
+        # with:
+        #   run_install: false
 
-      - name: 📂 Install Dependencies
-        run: bun install
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
 
       - name: 🤖 Run Semantic Release
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
-          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
-          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
-        run: bun run --bun semantic-release
+        run: pnpm i; pnpm semantic-release
 
       - name: 💰 Profit
         run: echo 🐞
