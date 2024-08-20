@@ -26,7 +26,7 @@ export default defineConfig({
   },
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'npx nx start portal',
+    command: 'pnpm nx start portal',
     url: 'http://127.0.0.1:3000',
     reuseExistingServer: !process.env.CI,
     cwd: workspaceRoot,
