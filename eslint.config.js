@@ -52,4 +52,6 @@ const antfu = require('@antfu/eslint-config').default
 module.exports = antfu({
   formatters: true,
   react: true,
+}, {
+  ignores: ['apps/hackathon', 'apps/landing-page'],
 })
