@@ -7,9 +7,9 @@ export class DocsLayout {
   // Desktop Header
   readonly cuHackingLogoIcon: Locator
   readonly cuHackingLogoText: Locator
-  readonly landingPageDropdownButton: Locator
-  readonly landingPageWebsiteLink: Locator
-  readonly landingPageWebsiteSourceLink: Locator
+  readonly websiteDropdownButton: Locator
+  readonly websiteLink: Locator
+  readonly websiteSourceLink: Locator
   readonly hackerPortalDropdownButton: Locator
   readonly hackerPortalLink: Locator
   readonly hackerPortalSourceLink: Locator
@@ -41,9 +41,9 @@ export class DocsLayout {
     // Desktop Header
     this.cuHackingLogoIcon = page.getByRole('img', { name: 'cuHacking logo' })
     this.cuHackingLogoText = page.getByRole('link', { name: 'cuHacking logo cuHacking' })
-    this.landingPageDropdownButton = page.getByRole('button', { name: 'Landing Page' })
-    this.landingPageWebsiteLink = page.getByRole('dialog').getByRole('link', { name: 'Website' })
-    this.landingPageWebsiteSourceLink = page.getByRole('dialog').getByRole('link', { name: 'Source' })
+    this.websiteDropdownButton = page.getByRole('button', { name: 'Website' })
+    this.websiteLink = page.getByRole('dialog').getByRole('link', { name: 'Website' })
+    this.websiteSourceLink = page.getByRole('dialog').getByRole('link', { name: 'Source' })
     this.hackerPortalDropdownButton = page.getByRole('button', { name: 'Hacker Portal' })
     this.hackerPortalLink = page.getByRole('dialog').getByRole('link', { name: 'App' })
     this.hackerPortalSourceLink = page.getByRole('dialog').getByRole('link', { name: 'Source' })
