@@ -22,6 +22,18 @@ export class DocsLayout {
 
   // Mobile Header
   readonly hamburgerIcon: Locator
+  readonly searchIcon: Locator
+  readonly searchModal: Locator
+  readonly quickLinks: Locator
+
+  // Mobile + Tablet Elements
+  readonly sectionsDropdownButton: Locator
+  readonly mobileWebsiteLink: Locator
+  readonly mobileHackerPortalSourceLink: Locator
+  readonly mobileHackerAppLink: Locator
+  readonly mobileWebsiteSourceLink: Locator
+  readonly mobileGithubIcon: Locator
+  readonly mobileHackerPortalProjectBoardLink: Locator
 
   // Desktop Sidebar
   readonly sideBarToggle: Locator
@@ -34,6 +46,9 @@ export class DocsLayout {
 
   // Search Dialog
   readonly searchDialog: Locator
+
+  // Tablet Header
+  readonly kebabIcon: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -57,6 +72,18 @@ export class DocsLayout {
 
     // Mobile Header
     this.hamburgerIcon = page.getByLabel('Toggle Sidebar')
+    this.searchIcon = page.getByRole('button', { name: 'Open Search' })
+    this.searchModal = page.getByPlaceholder('Search')
+    this.quickLinks = page.getByRole('button', { name: 'On this page Quick Links' })
+
+    // Mobile + Tablet Elements
+    this.sectionsDropdownButton = page.getByRole('button', { name: 'Home Leave none behind' })
+    this.mobileWebsiteLink = page.getByRole('link', { name: 'Website' })
+    this.mobileHackerPortalSourceLink = page.getByRole('link', { name: 'Source', exact: true })
+    this.mobileHackerAppLink = page.getByRole('link', { name: 'App' })
+    this.mobileWebsiteSourceLink = page.getByRole('link', { name: 'Source (legacy)' })
+    this.mobileGithubIcon = page.getByRole('link', { name: 'Github' })
+    this.mobileHackerPortalProjectBoardLink = page.getByRole('link', { name: 'Project Board' })
 
     // Desktop Sidebar
     this.sideBarToggle = page.getByLabel('Collapse Sidebar')
@@ -69,6 +96,9 @@ export class DocsLayout {
 
     // Search Dialog
     this.searchDialog = page.getByRole('dialog').getByPlaceholder('Search')
+
+    // Tablet Header
+    this.kebabIcon = page.locator('#nd-nav').getByRole('button').nth(1)
   }
 
   async goto() {
