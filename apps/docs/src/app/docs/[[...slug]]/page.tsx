@@ -23,7 +23,7 @@ export default async function Page({
   const footer = (
     <>
       <a
-        href={`${gitHubRepoUrl}/blob/main/${path}`}
+        href={`${gitHubRepoUrl}/blob/main/apps/docs/${path}`}
         target="_blank"
         rel="noreferrer noopener"
         className="inline-flex items-center justify-center rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border bg-fd-secondary text-fd-secondary-foreground hover:bg-fd-secondary/80 h-9 px-3 text-xs gap-1.5"
