@@ -21,16 +21,19 @@
     "@remix-run/node": "^2.8.1",
     "@remix-run/react": "^2.8.1",
     "@remix-run/serve": "^2.8.1",
+    "drizzle-orm": "^0.33.0",
     "fumadocs-core": "^13.0.4",
     "fumadocs-docgen": "^1.1.0",
     "fumadocs-mdx": "^9.0.0",
     "fumadocs-ui": "^13.0.4",
     "isbot": "^4.4.0",
     "next": "14.2.3",
+    "postgres": "^3.4.4",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "tailwind": "link:@nx/react/tailwind",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.25.1",
@@ -45,12 +48,12 @@
     "@nx/eslint": "19.5.7",
     "@nx/eslint-plugin": "19.5.7",
     "@nx/jest": "19.5.7",
-    "@nx/js": "19.5.7",
+    "@nx/js": "19.6.0",
     "@nx/next": "19.5.7",
     "@nx/playwright": "19.5.7",
     "@nx/remix": "19.5.7",
     "@nx/vite": "^19.6.0",
-    "@nx/web": "19.5.7",
+    "@nx/web": "19.6.0",
     "@nx/workspace": "19.5.7",
     "@playwright/test": "^1.36.0",
     "@remix-run/dev": "^2.8.1",
@@ -58,6 +61,7 @@
     "@swc-node/register": "~1.9.1",
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
+    "@t3-oss/env-core": "^0.11.1",
     "@testing-library/jest-dom": "6.4.2",
     "@testing-library/react": "15.0.6",
     "@testing-library/user-event": "^14.5.2",
@@ -76,6 +80,7 @@
     "babel-jest": "^29.4.1",
     "commitizen": "^4.3.0",
     "commitlint": "^19.3.0",
+    "drizzle-kit": "^0.24.2",
     "eslint": "~8.57.0",
     "eslint-config-next": "14.2.3",
     "eslint-config-prettier": "^9.0.0",
@@ -105,10 +110,15 @@
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
     "typescript": "~5.5.2",
+    "verdaccio": "^5.0.4",
     "vite": "^5.0.0",
+    "vite-plugin-dts": "~3.8.1",
     "vitest": "^2.0.5"
   },
   "lint-staged": {
     "*": "eslint --cache --fix"
+  },
+  "nx": {
+    "includedScripts": []
   }
 }
