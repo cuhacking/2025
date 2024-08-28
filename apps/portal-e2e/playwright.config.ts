@@ -1,8 +1,11 @@
 /* eslint-disable node/prefer-global/process */
+import { fileURLToPath } from 'node:url'
 import { defineConfig, devices } from '@playwright/test'
 import { nxE2EPreset } from '@nx/playwright/preset'
 
 import { workspaceRoot } from '@nx/devkit'
+
+const __filename = fileURLToPath(import.meta.url)
 
 // For CI, you may want to set BASE_URL to the deployed application.
 const baseURL = process.env.BASE_URL || 'http://127.0.0.1:3000'

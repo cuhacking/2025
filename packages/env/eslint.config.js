@@ -4,7 +4,7 @@
 import baseConfigPromise from '../../eslint.config.js'
 // const js = require('@eslint/js');
 
-module.exports = (async () => {
+export default (async () => {
   const baseConfig = await baseConfigPromise
 
   return [

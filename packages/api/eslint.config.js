@@ -1,9 +1,9 @@
 // TODO: merge with antfu eslint config
 // const { FlatCompat } = require('@eslint/eslintrc');
-const baseConfigPromise = require('../../eslint.config.js')
+import baseConfigPromise from '../../eslint.config.js'
 // const js = require('@eslint/js');
 
-module.exports = (async () => {
+export default (async () => {
   const baseConfig = await baseConfigPromise
 
   return [
