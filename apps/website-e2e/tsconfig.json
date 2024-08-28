@@ -1,10 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "module": "commonjs",
-    "allowJs": true,
-    "outDir": "../../dist/out-tsc",
-    "sourceMap": false
+    "outDir": "../../dist/out-tsc"
   },
   "include": [
     "**/*.ts",

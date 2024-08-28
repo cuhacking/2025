@@ -4,7 +4,9 @@
     "incremental": true,
     "jsx": "preserve",
     "resolveJsonModule": true,
-    "types": ["node"],
+    "types": [
+      "node"
+    ],
     "allowJs": true,
     "strict": true,
     "noEmit": true,
@@ -28,8 +30,12 @@
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "next.config.mjs",
-    "postcss.config.js",
-    "tailwind.config.js"
+    "postcss.config.cjs",
+    "tailwind.config.cjs"
   ],
-  "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"]
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+    "**/*.test.ts"
+  ]
 }
