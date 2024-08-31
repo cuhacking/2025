@@ -2,8 +2,13 @@
 title: Welcome to the Docs
 description: Leave none behind regardless of our development cost.
 ---
+import process from 'node:process';
 
 import { pages } from "../../app/docs/source";
+
+import { Calendar }  from "../../components/calendar/Calendar.tsx";
+
+<Calendar googleApiKey={process.env.GOOGLE_CALENDAR_API_KEY} calendarId={process.env.GOOGLE_CALENDAR_ID}/>
 
 <Callout type="warn">
   This is our highest priority project. No questions asked. All other projects
