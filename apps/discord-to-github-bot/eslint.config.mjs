@@ -5,5 +5,6 @@ export default antfu(
   {
     formatters: true,
     react: true,
+
   },
 )
