@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ES2022",
+    "moduleResolution": "Bundler",
+    "paths": {
+      "@src/*": ["src/*"],
+      "@services/*": ["src/services/*"],
+      "@controllers/*": ["src/controllers/*"]
+    },
+    "types": ["node", "express"],
+    "outDir": "../../dist/out-tsc"
+  },
+  "include": ["src/**/*.ts"]
+}

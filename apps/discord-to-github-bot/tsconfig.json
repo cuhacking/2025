@@ -1,0 +1,26 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "target": "ES2022",
+    "baseUrl": ".",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "paths": {
+      "@src/*": ["src/*"],
+      "@services/*": ["src/services/*"],
+      "@controllers/*": ["src/controllers/*"]
+    },
+    "resolveJsonModule": true,
+    "typeRoots": [".src/types"],
+    "esModuleInterop": true
+  },
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ],
+  "files": [],
+  "include": [
+    "apps/discord-to-github-bot/src/**/*"
+  ]
+}
