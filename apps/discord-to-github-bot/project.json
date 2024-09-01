@@ -1,0 +1,35 @@
+{
+  "name": "discord-to-github-bot",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/discord-to-github-bot/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "discord-to-github-bot:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "discord-to-github-bot:build:development"
+        },
+        "production": {
+          "buildTarget": "discord-to-github-bot:build:production"
+        }
+      }
+    },
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "ts-node-dev --respawn src/main.ts",
+        "cwd": "apps/discord-to-github-bot",
+        "parallel": false
+      }
+    }
+
+  }
+}
