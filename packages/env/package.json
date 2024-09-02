@@ -2,5 +2,11 @@
   "name": "@cuhacking/env",
   "type": "module",
   "version": "0.0.1",
+  "exports": {
+    "./website/server": "./src/website/server.ts",
+    "./website/db": "./src/website/db.ts"
+  },
+  "main": "./src/index",
+  "types": "./src/index",
   "dependencies": {}
 }

@@ -6,7 +6,7 @@
   "release": {
     "version": {
       "generatorOptions": {
-        "packageRoot": "dist\\{projectRoot}",
+        "packageRoot": "dist/{projectRoot}",
         "currentVersionResolver": "git-tag"
       }
     }
@@ -14,7 +14,7 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@nx/vite:build",
+      "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/db",
@@ -25,8 +25,9 @@
     },
     "nx-release-publish": {
       "options": {
-        "packageRoot": "dist\\{projectRoot}"
-      }
+        "packageRoot": "dist/{projectRoot}"
+      },
+      "dependsOn": ["build"]
     }
   }
 }

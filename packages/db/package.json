@@ -2,8 +2,7 @@
   "name": "@cuhacking/db",
   "type": "module",
   "version": "0.0.1",
-  "main": "./index.js",
-  "module": "./index.mjs",
-  "dependencies": {},
-  "typings": "./index.d.ts"
+  "main": "./src/index",
+  "types": "./src/index",
+  "dependencies": {}
 }
