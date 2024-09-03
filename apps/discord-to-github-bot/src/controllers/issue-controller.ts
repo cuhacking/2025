@@ -1,4 +1,4 @@
-import { gaurdAgainstInvalidGetIssueParams, getAllGitHubIssues, getIssueTemplateNames } from '../services/get-issue-templates.js'
+import { gaurdAgainstInvalidGetIssueParams, getAllGitHubIssues } from '../services/get-issue-templates.js'
 import { getAccessToken } from '../services/auth.js'
 
 export async function getAllIssues(req: Record<string, any>) {
