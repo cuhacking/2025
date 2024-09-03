@@ -1,5 +1,7 @@
 import { postRouter } from '~/server/api/routers/post'
 import { createCallerFactory, createTRPCRouter } from '~/server/api/trpc'
+import { userInformationRouter } from '~/server/api/routers/applicationForm/procedures/setUserInformation'
+import { subscribeToNewsletterRouter } from '~/server/api/routers/subscribeToNewsLetter/procedures/subscribeToNewsLetter'
 
 /**
  * This is the primary router for your server.
@@ -8,6 +10,8 @@ import { createCallerFactory, createTRPCRouter } from '~/server/api/trpc'
  */
 export const appRouter = createTRPCRouter({
   post: postRouter,
+  userInformation: userInformationRouter,
+  subscribeToNewsletter: subscribeToNewsletterRouter,
 })
 
 // export type definition of API
