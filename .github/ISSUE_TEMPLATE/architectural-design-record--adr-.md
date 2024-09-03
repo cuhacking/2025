@@ -1,8 +1,8 @@
 ---
 name: Architectural Design Record (ADR)
-about: Describe this issue template's purpose here.
-title: "[ADR]"
-labels: documentation, enhancement
+about: Share your design record here
+title: "[ADR]: description"
+labels: 'documentation'
 assignees: ''
 
 ---
