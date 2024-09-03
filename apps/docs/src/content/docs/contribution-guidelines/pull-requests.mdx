@@ -8,10 +8,79 @@ description: The diplomatic way to sneak your changes into main.
   secret to happiness.
 </Callout>
 
+## Always Simple Rebase
+
 Always simple rebase your branch onto main before creating a pull request. This ensures that your branch is up to date with the latest changes in the main branch. Branch and PR rules are set up for the repo just in case as a guardrail.
 
 Do your best to close a single issue per pull request, and always use the exact same PR title as the issue name. This makes debugging easier later. If the current issue is blocking the next, simply create a new branch off the branch for the pull request and continue working on the next issue on that branch. This technique is called [branch stacking](https://medium.com/@lneves12/git-how-to-stack-multiple-git-branches-and-rebase-them-like-a-pro-91c0cdf67ef). With the power of `git rebase`, you can continually apply PR feedback for the first branch while making progress for the next task on the second branch. Once again, [Lazygit](https://github.com/jesseduffield/lazygit) makes this very quick and easy to do cleanly.
 
-Ensure that the issue is linked to your PR, and is part of a milestone. However, do not add it to the project board, because it shows up as a card and causes visual pollution. We can easily just see your linked PR from the closed issue if we need to find it.
+## Pull Request Guidelines
+
+When creating a Pull Request (PR), be mindful about what you're trying to contribute and the type of contribution: 
+- Be sure to checkout [Branching Guidelines](/docs/contribution-guidelines/branching-guidelines), [Coding Guidelines](/docs/contribution-guidelines/coding-guidelines) and [Commit Conventions](/docs/contribution-guidelines/conventional-commits) before making a PR.
+- Use the appropriate template that matches with your branch type.
+- Ensure your PR scope and subject align with your main commit(s).
+- If your code isn’t fully ready to be merged, consider creating a draft PR instead.
+- Be sure to link your PR branches with the according issue (if applicable).
 
 If you're getting tired of storing work in progress by stashing changes or amending commits and then switching branches, it's a great sign to look into using [Git Worktrees](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Use-this-git-worktree-add-example-and-never-switch-branches-again).
+
+Here are a few PR templates to get you started:
+
+### Features
+Title your PR with the following format: 
+```bash
+feat(<scope of PR>): <description (similar to commits)>
+```
+Describe your PR with the following sections and questions:
+
+- **What feature(s) does this PR add?**
+- **Why do we need this feature? How does this PR address the issue?**
+- **Before and After Screenshots (if applicable)**
+- **Additional comments (if applicable)**
+
+
+### Tests
+Title your PR with the following format: 
+```bash
+test(<scope of PR>): <description (similar to commits)>
+```
+
+- **What tests does this PR add?**
+- **Why do we need this? How does this PR address the issue?**
+- **Screenshots (if applicable)**
+- **Additional comments (if applicable)**
+
+
+### Docs
+Title your PR with the following format: 
+```bash
+docs(<scope of PR>): <description (similar to commits)>
+```
+
+- **What does this PR add to the docs?**
+- **Why do we need this? How does this PR address the issue?**
+- **Screenshots (if applicable)**
+- **Additional comments (if applicable)**
+
+{/*TODO: Create frontend interactive-checklist*/}
+## Pull Request Checklist
+
+### **Code Quality**
+
+- [ ] Code is clean and readable (functions used appropriately)
+- [ ] Code is commented appropriately (no unnecessary comments, follows guidelines)
+- [ ] Code is DRY (no repeated code)
+- [ ] Functions are named appropriately (camelCase)
+- [ ] Variables are named appropriately (camelCase)
+- [ ] Files are named appropriately (kebab-case)
+- [ ] Code performs as expected (no errors or issues when running)
+- [ ] Code is committed and branched accordingly 
+
+### **PR Review**
+
+- [ ] PR is linked to an issue (if applicable)
+- [ ] PR is clear and comprehensible
+- [ ] PR is ready for review (if not, consider using a draft PR)
+- [ ] PR title follows template guidelines
+- [ ] PR description follows template guidelines
