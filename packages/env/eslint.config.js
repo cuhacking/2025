@@ -9,6 +9,11 @@ export default (async () => {
 
   return [
     ...baseConfig,
+    {
+      rules: {
+        'dot-notation': ['error', { allowPattern: '^[A-Z_]+$' }],
+      },
+    },
 
     // The following configurations are commented out
     // ...compat.extends(
