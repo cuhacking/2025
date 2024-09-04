@@ -25,198 +25,163 @@ const CUHACKING_2025_DOCS_URL = `${DOCS_BASE_URL}/docs`
 
 const CUHACKING_2025_LANDING_PAGE_URL = 'https://www.cuhacking.ca/'
 
-const DEVICES: { DEVICE: string, VIEWPORT: { width: number, height: number } }[] = [
-  { DEVICE: 'desktop', VIEWPORT: { width: 1024, height: 1440 } },
-  { DEVICE: 'tablet', VIEWPORT: { width: 768, height: 1024 } },
-  { DEVICE: 'mobile', VIEWPORT: { width: 320, height: 480 } },
-]
-
-const NARROW_DEVICES = DEVICES.filter(device => device.DEVICE !== 'desktop')
-const WIDE_DEVICES = DEVICES.filter(device => device.DEVICE !== 'mobile')
-
-const MOBILE_DEVICE = DEVICES.find(device => device.DEVICE === 'mobile')!
-const TABLET_DEVICE = DEVICES.find(device => device.DEVICE === 'tablet')!
-
 /* ---------------- MOBILE + DESKTOP + TABLET ---------------- */
-for (const { DEVICE, VIEWPORT } of DEVICES) {
-  test.describe(`[${DEVICE.toUpperCase()}] - Common Layout Elements`, {
-    tag: '@smoke',
-  }, () => {
-    test.beforeEach(async ({ docsLayoutPage }) => {
-      await docsLayoutPage.page.setViewportSize(VIEWPORT)
-      await docsLayoutPage.goto()
-    })
-
-    test(`should contain ${DEVICE} title page`, async ({ docsLayoutPage }) => {
-      await expect(docsLayoutPage.page).toHaveTitle(/Welcome to the Docs/)
-    })
-
-    test(`should contain cuHacking logo icon in ${DEVICE} header`, async ({ docsLayoutPage }) => {
-      await expect(docsLayoutPage.cuHackingLogoIcon).toBeVisible()
-    })
-
-    test(`should take user to docs home page when cuHacking logo icon is clicked in ${DEVICE} header`, async ({ docsLayoutPage }) => {
-      await docsLayoutPage.cuHackingLogoIcon.click()
-      await expect(docsLayoutPage.page).toHaveURL(CUHACKING_2025_DOCS_URL)
-    })
-
-    test(`should contain cuHacking logo Text in ${DEVICE} header`, async ({ docsLayoutPage }) => {
-      await expect(docsLayoutPage.cuHackingLogoText).toBeVisible()
-    })
-
-    test(`should take user to docs home page when cuHacking logo text is clicked in ${DEVICE} header`, async ({ docsLayoutPage }) => {
-      await docsLayoutPage.cuHackingLogoText.click()
-      await expect(docsLayoutPage.page).toHaveURL(CUHACKING_2025_DOCS_URL)
-    })
-
-    test(`should contain last updated text in docs page footer for ${DEVICE}`, async ({ docsLayoutPage }) => {
-      await expect(docsLayoutPage.lastUpdatedText).toBeVisible()
-    })
+test.describe(`Common MOBILE, TABLET and DESKTOP Layout Elements`, {
+  tag: '@smoke',
+}, () => {
+  test(`should contain title page`, async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.page).toHaveTitle(/Welcome to the Docs/)
   })
-}
+
+  test(`should contain cuHacking logo icon in header`, async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.cuHackingLogoIcon).toBeVisible()
+  })
+
+  test(`should take user to docs home page when cuHacking logo icon is clicked in header`, async ({ docsLayoutPage }) => {
+    await docsLayoutPage.cuHackingLogoIcon.click()
+    await expect(docsLayoutPage.page).toHaveURL(CUHACKING_2025_DOCS_URL)
+  })
+
+  test(`should contain cuHacking logo Text in header`, async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.cuHackingLogoText).toBeVisible()
+  })
+
+  test(`should take user to docs home page when cuHacking logo text is clicked in header`, async ({ docsLayoutPage }) => {
+    await docsLayoutPage.cuHackingLogoText.click()
+    await expect(docsLayoutPage.page).toHaveURL(CUHACKING_2025_DOCS_URL)
+  })
+
+  test(`should contain last updated text in docs page footer for`, async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.lastUpdatedText).toBeVisible()
+  })
+})
 
 /* ---------------- MOBILE + TABLET ---------------- */
-for (const { DEVICE, VIEWPORT } of NARROW_DEVICES) {
-  test.describe(`[${DEVICE.toUpperCase()}] - Common Mobile and Tablet Layout Elements`, {
-    tag: '@smoke',
-  }, () => {
-    test.beforeEach(async ({ docsLayoutPage }) => {
-      await docsLayoutPage.page.setViewportSize(VIEWPORT)
-      await docsLayoutPage.goto()
-    })
-
-    test(`should have quick links section visible in ${DEVICE} header`, async ({ docsLayoutPage }) => {
-      await expect(docsLayoutPage.quickLinks).toBeVisible()
-    })
-
-    test(`should have "Edit on Github" button visible in ${DEVICE} quick links`, async ({ docsLayoutPage }) => {
-      await docsLayoutPage.quickLinks.click()
-      await expect(docsLayoutPage.editOnGitHubButton).toBeVisible()
-    })
-
-    test(`should take user to github index page when "Edit on Github" button is clicked from ${DEVICE}`, async ({ docsLayoutPage }) => {
-      await docsLayoutPage.quickLinks.click()
-      await clickAndGoToPage(docsLayoutPage, docsLayoutPage.editOnGitHubButton, CUHACKING_2025_PLATFORM_GITHUB_INDEX_PAGE_URL)
-    })
+test.describe(`Common MOBILE and TABLET Layout Elements`, {
+  tag: '@smoke',
+}, () => {
+  test(`should have quick links section visible in mobile/tablet header`, async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.quickLinks).toBeVisible()
   })
-}
+
+  test(`should have "Edit on Github" button visible in mobile/tablet quick links`, async ({ docsLayoutPage }) => {
+    await docsLayoutPage.quickLinks.click()
+    await expect(docsLayoutPage.editOnGitHubButton).toBeVisible()
+  })
+
+  test(`should take user to github index page when "Edit on Github" button is clicked from mobile/tablet`, async ({ docsLayoutPage }) => {
+    await docsLayoutPage.quickLinks.click()
+    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.editOnGitHubButton, CUHACKING_2025_PLATFORM_GITHUB_INDEX_PAGE_URL)
+  })
+})
 
 /* ---------------- MOBILE + TABLET MENU ---------------- */
-for (const { DEVICE, VIEWPORT } of NARROW_DEVICES) {
-  test.describe(`[${DEVICE.toUpperCase()}] - Common Mobile and Tablet Menu Elements`, {
-    tag: '@smoke',
-  }, () => {
-    test.beforeEach(async ({ docsLayoutPage }) => {
-      await docsLayoutPage.goto()
-      await docsLayoutPage.page.setViewportSize(VIEWPORT)
-      if (DEVICE === 'mobile') {
-        await docsLayoutPage.hamburgerIcon.click()
-      }
-      else if (DEVICE === 'tablet') {
-        await docsLayoutPage.kebabIcon.click()
-      }
-    })
-
-    test(`should have docs pages section dropdown menu visible for ${DEVICE}`, async ({ docsLayoutPage }) => {
-      await expect(docsLayoutPage.sectionsDropdownButton).toBeVisible()
-    })
-
-    test(`should have website button visible from website dropdown for ${DEVICE}`, async ({ docsLayoutPage }) => {
-      await docsLayoutPage.websiteDropdownButton.click()
-      await expect(docsLayoutPage.mobileWebsiteLink).toBeVisible()
-    })
-
-    test(`should take user to landing page when website button is clicked for ${DEVICE}`, async ({ docsLayoutPage }) => {
-      await docsLayoutPage.websiteDropdownButton.click()
-      await clickAndGoToPage(docsLayoutPage, docsLayoutPage.mobileWebsiteLink, CUHACKING_2025_LANDING_PAGE_URL)
-    })
-
-    test(`should have website source button visible from website dropdown for ${DEVICE}`, async ({ docsLayoutPage }) => {
-      await docsLayoutPage.websiteDropdownButton.click()
-      await expect(docsLayoutPage.mobileWebsiteSourceLink).toBeVisible()
-    })
-
-    test(`should take user to landing page repository when website source button is clicked for ${DEVICE}`, async ({ docsLayoutPage }) => {
-      await docsLayoutPage.websiteDropdownButton.click()
-      await clickAndGoToPage(docsLayoutPage, docsLayoutPage.mobileWebsiteSourceLink, CUHACKING_2025_LANDING_PAGE_GITHUB_REPOSITORY_URL)
-    })
-
-    test(`should have hacker portal app button visible from hacker portal dropdown for ${DEVICE}`, async ({ docsLayoutPage }) => {
-      await docsLayoutPage.hackerPortalDropdownButton.click()
-      await expect(docsLayoutPage.mobileHackerAppLink).toBeVisible()
-    })
-
-    test(`should take user to hacker portal app when app button is clicked for ${DEVICE}`, async ({ docsLayoutPage }) => {
-      await docsLayoutPage.hackerPortalDropdownButton.click()
-      await docsLayoutPage.mobileHackerAppLink.click()
-      await expect(docsLayoutPage.page).toHaveURL(DOCS_BASE_URL)
-    })
-
-    test(`should have hacker portal source button visible from hacker portal dropdown for ${DEVICE}`, async ({ docsLayoutPage }) => {
-      await docsLayoutPage.hackerPortalDropdownButton.click()
-      await expect(docsLayoutPage.mobileHackerPortalSourceLink).toBeVisible()
-    })
-
-    test(`should take user to hacker portal source repository when source button is clicked for ${DEVICE}`, async ({ docsLayoutPage }) => {
-      await docsLayoutPage.hackerPortalDropdownButton.click()
-      await clickAndGoToPage(docsLayoutPage, docsLayoutPage.mobileHackerPortalSourceLink, CUHACKING_2025_PLATFORM_GITHUB_REPOSITORY_URL)
-    })
-
-    test(`should have hacker portal project board button visible from hacker portal dropdown for ${DEVICE}`, async ({ docsLayoutPage }) => {
-      await docsLayoutPage.hackerPortalDropdownButton.click()
-      await expect(docsLayoutPage.mobileHackerPortalProjectBoardLink).toBeVisible()
-    })
-
-    test(`should take user to hacker portal project board when project board button is clicked ${DEVICE}`, async ({ docsLayoutPage }) => {
-      await docsLayoutPage.hackerPortalDropdownButton.click()
-      await clickAndGoToPage(docsLayoutPage, docsLayoutPage.mobileHackerPortalProjectBoardLink, CUHACKING_2025_PLATFORM_GITHUB_PROJECT_BOARD_URL)
-    })
-
-    test(`should have github button visible from ${DEVICE} menu`, async ({ docsLayoutPage }) => {
-      await expect(docsLayoutPage.mobileGithubIcon).toBeVisible()
-    })
-
-    test(`should take user to github repository when github button is clicked for ${DEVICE}`, async ({ docsLayoutPage }) => {
-      await clickAndGoToPage(docsLayoutPage, docsLayoutPage.mobileGithubIcon, CUHACKING_2025_PLATFORM_GITHUB_REPOSITORY_URL)
-    })
-
-    test(`should have theme toggle visible for ${DEVICE}`, async ({ docsLayoutPage }) => {
-      await expect(docsLayoutPage.themeToggle).toBeVisible()
-    })
+test.describe(`Common MOBILE and TABLET Menu Elements`, {
+  tag: '@smoke',
+}, () => {
+  test.beforeEach(async ({ docsLayoutPage }) => {
+    await docsLayoutPage.goto()
+    const device = test.info().project.name
+    if (device.includes('mobile')) {
+      await docsLayoutPage.hamburgerIcon.click()
+    }
+    else if (device.includes('tablet')) {
+      await docsLayoutPage.kebabIcon.click()
+    }
   })
-}
+
+  test(`should have docs pages section dropdown menu visible for mobile/tablet`, async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.sectionsDropdownButton).toBeVisible()
+  })
+
+  test(`should have website button visible from website dropdown for mobile/tablet`, async ({ docsLayoutPage }) => {
+    await docsLayoutPage.websiteDropdownButton.click()
+    await expect(docsLayoutPage.mobileWebsiteLink).toBeVisible()
+  })
+
+  test(`should take user to landing page when website button is clicked for mobile/tablet`, async ({ docsLayoutPage }) => {
+    await docsLayoutPage.websiteDropdownButton.click()
+    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.mobileWebsiteLink, CUHACKING_2025_LANDING_PAGE_URL)
+  })
+
+  test(`should have website source button visible from website dropdown for mobile/tablet`, async ({ docsLayoutPage }) => {
+    await docsLayoutPage.websiteDropdownButton.click()
+    await expect(docsLayoutPage.mobileWebsiteSourceLink).toBeVisible()
+  })
+
+  test(`should take user to landing page repository when website source button is clicked for mobile/tablet`, async ({ docsLayoutPage }) => {
+    await docsLayoutPage.websiteDropdownButton.click()
+    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.mobileWebsiteSourceLink, CUHACKING_2025_LANDING_PAGE_GITHUB_REPOSITORY_URL)
+  })
+
+  test(`should have hacker portal app button visible from hacker portal dropdown for mobile/tablet`, async ({ docsLayoutPage }) => {
+    await docsLayoutPage.hackerPortalDropdownButton.click()
+    await expect(docsLayoutPage.mobileHackerAppLink).toBeVisible()
+  })
+
+  test(`should take user to hacker portal app when app button is clicked for mobile/tablet`, async ({ docsLayoutPage }) => {
+    await docsLayoutPage.hackerPortalDropdownButton.click()
+    await docsLayoutPage.mobileHackerAppLink.click()
+    await expect(docsLayoutPage.page).toHaveURL(DOCS_BASE_URL)
+  })
+
+  test(`should have hacker portal source button visible from hacker portal dropdown for mobile/tablet`, async ({ docsLayoutPage }) => {
+    await docsLayoutPage.hackerPortalDropdownButton.click()
+    await expect(docsLayoutPage.mobileHackerPortalSourceLink).toBeVisible()
+  })
+
+  test(`should take user to hacker portal source repository when source button is clicked for mobile/tablet`, async ({ docsLayoutPage }) => {
+    await docsLayoutPage.hackerPortalDropdownButton.click()
+    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.mobileHackerPortalSourceLink, CUHACKING_2025_PLATFORM_GITHUB_REPOSITORY_URL)
+  })
+
+  test(`should have hacker portal project board button visible from hacker portal dropdown for mobile/tablet`, async ({ docsLayoutPage }) => {
+    await docsLayoutPage.hackerPortalDropdownButton.click()
+    await expect(docsLayoutPage.mobileHackerPortalProjectBoardLink).toBeVisible()
+  })
+
+  test(`should take user to hacker portal project board when project board button is clicked mobile/tablet`, async ({ docsLayoutPage }) => {
+    await docsLayoutPage.hackerPortalDropdownButton.click()
+    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.mobileHackerPortalProjectBoardLink, CUHACKING_2025_PLATFORM_GITHUB_PROJECT_BOARD_URL)
+  })
+
+  test(`should have github button visible from mobile/tablet menu`, async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.mobileGithubIcon).toBeVisible()
+  })
+
+  test(`should take user to github repository when github button is clicked for mobile/tablet`, async ({ docsLayoutPage }) => {
+    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.mobileGithubIcon, CUHACKING_2025_PLATFORM_GITHUB_REPOSITORY_URL)
+  })
+
+  test(`should have theme toggle visible for mobile/tablet`, async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.themeToggle).toBeVisible()
+  })
+})
 
 /* ---------------- TABLET + DESKTOP ---------------- */
-for (const { DEVICE, VIEWPORT } of WIDE_DEVICES) {
-  test.describe(`[${DEVICE.toUpperCase()}] - Common Tablet and Desktop Layout Elements`, {
-    tag: '@smoke',
-  }, () => {
-    test.beforeEach(async ({ docsLayoutPage }) => {
-      await docsLayoutPage.page.setViewportSize(VIEWPORT)
-      await docsLayoutPage.goto()
-    })
-
-    test(`should contain search bar in ${DEVICE} header`, async ({ docsLayoutPage }) => {
-      await expect(docsLayoutPage.searchBar).toBeVisible()
-    })
-
-    test(`should show search modal when search bar clicked in ${DEVICE} header`, async ({ docsLayoutPage }) => {
-      await docsLayoutPage.searchBar.click()
-      await expect(docsLayoutPage.searchDialog).toBeVisible()
-    })
-
-    test(`should have docs pages section dropdown menu visible in ${DEVICE} sidebar`, async ({ docsLayoutPage }) => {
-      await expect(docsLayoutPage.sectionsDropdownButton).toBeVisible()
-    })
-
-    test(`should contain sidebar toggle in ${DEVICE} sidebar`, async ({ docsLayoutPage }) => {
-      await expect(docsLayoutPage.sideBarToggle).toBeVisible()
-    })
+test.describe('Common TABLET and DESKTOP Layout Elements', {
+  tag: '@smoke',
+}, () => {
+  test(`should contain search bar in tablet/desktop header`, async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.searchBar).toBeVisible()
   })
-}
+
+  test(`should show search modal when search bar clicked in tablet/desktop header`, async ({ docsLayoutPage }) => {
+    await docsLayoutPage.searchBar.click()
+    await expect(docsLayoutPage.searchDialog).toBeVisible()
+  })
+
+  test(`should have docs pages section dropdown menu visible in tablet/desktop sidebar`, async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.sectionsDropdownButton).toBeVisible()
+  })
+
+  test(`should contain sidebar toggle in tablet/desktop sidebar`, async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.sideBarToggle).toBeVisible()
+  })
+})
 
 /* ---------------- UNIQUE DESKTOP HEADER ---------------- */
-test.describe('[DESKTOP] - Unique Header Elements', {
+test.describe('Unique DESKTOP Header Elements', {
   tag: '@smoke',
 }, () => {
   test('should contain Website dropdown button in desktop header', async ({ docsLayoutPage }) => {
@@ -282,7 +247,7 @@ test.describe('[DESKTOP] - Unique Header Elements', {
 })
 
 /* ---------------- UNIQUE DESKTOP FLOATING TABLE ---------------- */
-test.describe('[DESKTOP]- Unique Floating Table of Contents Elements', {
+test.describe('Unique Floating Table of Contents DESKTOP Elements', {
   tag: '@smoke',
 }, () => {
   test('should contain \'Edit on GitHub\' button in floating table of contents', async ({ docsLayoutPage }) => {
@@ -295,14 +260,9 @@ test.describe('[DESKTOP]- Unique Floating Table of Contents Elements', {
 })
 
 /* ---------------- UNIQUE MOBILE HEADER ---------------- */
-test.describe('[MOBILE] - Unique Header Elements', {
+test.describe('Unique MOBILE Header Elements', {
   tag: '@smoke',
 }, () => {
-  test.beforeEach(async ({ docsLayoutPage }) => {
-    await docsLayoutPage.goto()
-    await docsLayoutPage.page.setViewportSize(MOBILE_DEVICE.VIEWPORT)
-  })
-
   test('should contain hamburger icon', async ({ docsLayoutPage }) => {
     await expect(docsLayoutPage.hamburgerIcon).toBeVisible()
   })
@@ -318,14 +278,9 @@ test.describe('[MOBILE] - Unique Header Elements', {
 })
 
 /* ---------------- UNIQUE TABLET HEADER ---------------- */
-test.describe('[TABLET] - Unique Header Elements', {
+test.describe('Unique TABLET Header Elements', {
   tag: '@smoke',
 }, () => {
-  test.beforeEach(async ({ docsLayoutPage }) => {
-    await docsLayoutPage.goto()
-    await docsLayoutPage.page.setViewportSize(TABLET_DEVICE.VIEWPORT)
-  })
-
   test('should have kebab icon visible', async ({ docsLayoutPage }) => {
     await expect(docsLayoutPage.kebabIcon).toBeVisible()
   })
