@@ -9,6 +9,7 @@ export default (async () => {
 
   return [
     ...baseConfig,
+
     // The following configurations are commented out
     // ...compat.extends(
     //   'plugin:@nx/react-typescript',

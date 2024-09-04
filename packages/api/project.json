@@ -27,7 +27,7 @@
       "options": {
         "packageRoot": "dist/{projectRoot}"
       },
-      "dependsOn": ["build"]
+      "dependsOn": ["build", "test"]
     }
   }
 }
