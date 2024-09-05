@@ -1,0 +1,132 @@
+**[project: Latios](https://github.com/cuhacking/cuHacking-iOS) | [project: Latias](https://github.com/cuhacking/cuHacking-android)**
+
+---
+Latios and Latias create mobile gateways into the Dashboard. The app will use the bottom navigation pattern with an option for each of the major features listed below. 
+
+Design-wise, the app will follow its appropriate design guidelines for each platform (Material on Android, Human Interface Guidelines on iOS) but branded appropriately for cuHacking. This refers to the specific components used as well as specific textures/shapes. The general structure will be the same between both apps.
+
+#### Development Note
+Depending on what features we decide to add as development progresses, we may need to reevaluate whether this pattern is suitable, or which of the major features we will consider “top level” destinations. It is recommended that we only have at most 5 destinations in a bottom navigation implementation.
+
+# Home/Information
+This will be the screen that is displayed when the user launches the app for the first time. It will include all the information (FAQ, WiFi, Announcements, etc.) in an easily accessible location.
+
+Prior to the hackathon beginning, this screen would simply display the WiFi connection info, and the FAQ questions/welcoming paragraph. Once the event begins, the screen will be a bit more dynamic and contain the recent announcements, as well as other “ongoing”-type info, such as a "time left for hacking" timer, or “ongoing events”.
+
+### Announcements
+A history of all announcements will be displayed on this screen during the event. It will show the 5 latest announcements with an option to view the full history of announcements. 
+
+#### Announcement Detail Screen
+When a user taps on an announcement, it will open up a full screen details page showing a full description of the message.
+
+This screen will also be used to view the full announcements whenever they are dispatched as push notifications.
+
+### WiFi Info
+A card (or a “section”) will display the WiFi info for the event. It will display the network SSID as well as the password to allow them to join the network from any of their devices. A button will also be provided to allow users to easily and quickly join the network from directly in the app (this is possible on both Android, and iOS as of iOS 11). If we launch the app in advance of the event and encourage users to download the app beforehand, this will be very useful to get people onto the network as quickly as possible (especially for those who may not have data).
+
+Since “joining” a network outside of the network’s range will simply save the network for later, prior to the event this button will say “Save Network” instead of “Join Network” to encourage users to have the network saved so that they are connected as soon as they arrive at the venue.
+
+### Live Info/Countdown
+Once the hackathon begins, the info screen will dynamically update to include a countdown timer to indicate how much time remains for hacking. Immediately before hacking starts (when registration begins), this countdown timer will simply say “24:00:00” and a smaller line of text indicating when hacking officially begins.
+
+This section can also be used to display important “ongoing events” at the Hackathon. This would be used to display things such as “Opening ceremonies happening now!” or “Food is being served to `${color}`”, etc. These can be thought of as prominent, or featured announcements. Only one announcement will be displayed as a featured announcement (probably the latest). This will be displayed below the countdown timer and above the announcements and will be in a larger, bolder, and more colourful typeface.
+
+### Control Panel/Onboarding Setup
+When the user first launches the app, a card can be displayed with some of the basic settings that the user can customize, specifically the theme and their notification preferences for different types of announcements. This card will also inform the user that these preferences can be changed at any time in the App Settings.
+
+# Schedule
+The schedule is another top level destination which displays the schedule of all events/activities/workshops that occur over the duration of the hackathon. It will display in a method similar to Google Calendar's schedule view:
+
+![Schedule Layout Image](https://github.com/cuhacking/cuHacking-wiki/blob/master/resources/schedule-layout.png)
+
+#### Development Note
+There are three potential designs we should consider for this screen:
+
+**Schedule Layout** - In this layout, all events are displayed as a simple list in sequential order based on their starting time. This is similar to the “Schedule” layout in Google Calendar.
+
+**Grouped by Time Layout** - In this layout, all events are displayed sequentially by their starting time but are grouped by their starting times. A sticky header would be displayed for each group that indicates the start time. This is similar to the “Schedule” screen in the Google I/O app.
+
+**Calendar Layout** - In this view, time is displayed vertically and linearly. Each event is displayed as a box that extends for its duration. This is similar to the “Day” layout in Google Calendar, as well as the layout used on cuHacking 2019’s website. It should be noted that this would be the most difficult to implement... but perhaps also the most intuitive.
+
+![Calendar Layout Image](https://github.com/cuhacking/cuHacking-wiki/blob/master/resources/calendar-layout.png)
+
+We're starting with the Schedule Layout, as it's the easiest. If we have more time we can explore the others.
+
+### Event Details Screen
+When a user interacts with a schedule item, it will open up a full screen with more details about an event. This screen can feature a paragraph detailing the event, or a picture related to the event, as well as indicating which sponsors are involved with the event or the names of any speakers who may be running the event.
+
+This screen will also have an option to open up the building map to indicate where the event is taking place. 
+There will also be an option given to set a reminder for an event. When the user sets a reminder for an event, they will be prompted to select how long in advance of the even they would like to be notified (5, 10, or 15 minutes). When the user sets a reminder this way, the reminder will be handled locally using the system’s alarm scheduler rather than use push notifications.
+
+#### Development Note
+The reminder might just come in a fixed time, for the sake of less taps on the screen.
+
+# Map
+The map will be used to help attendees navigate the campus, and more specifically the River Building. The map will be constrained to the Carleton campus (i.e. panning will be limited to that area).
+Attribution to the data owners (FMP Carleton) will be provided alongside the existing attributions for [map software](https://github.com/cuhacking/cuHacking-wiki/wiki/Map-Software).
+
+### River Building
+The map will feature the full floor plan of the River Building. All rooms will be marked with labels and colour. This includes all classrooms, offices, bathrooms, etc.
+
+Unfortunately, we will have to name this building Richcraft Hall in the map.
+
+Hacker rooms will be indicated with a certain colour, workshop/activity rooms with another, and other rooms can be marked accordingly. Rooms where hackers are not permitted can be simply grayed out.
+
+### Floors
+Since the hackathon will take place across multiple floors, we will need a way to allow the user to change which floor is being displayed. This will be done simply using a stack of buttons with each floor labeled. Tapping on the button for a floor will display that floor’s plan and hide all other floors being displayed.
+
+### Rooms
+The rooms displayed on the map will be interactive. Tapping on a room will open a dialog (or, a bottom sheet) that contains more information about the room, as well as a list of all events that will be taking place in that room. For instance, tapping on RB2200 could display the schedule items for the opening and closing ceremonies, as well as a tech talk that will be held some time during the event.
+
+We can dynamically update the labels displayed for each room based on upcoming or ongoing events. Google Maps does something similar for upcoming events. These would be displayed alongside the room’s number.
+
+# User Profile (and Authentication)
+The user profile is also a top-level destination, but will not be included in the bottom navigation bar. Instead, it will be provided as a dedicated icon in the top right hand side of the screen as part of the app’s toolbar.
+
+When the user first launches the app, they will be prompted by an onboarding overlay which lets them know that they can and should sign in to their cuHacking account to unlock all of the app’s features. (such as food alerts, and other things).
+
+### [WIP] Before Authentication
+When the user interacts with the User Profile menu item before authenticating, a dialog (either modal or fullscreen, depending on design) will popup asking them to sign in. The sign in screen will be pretty simple simply featuring a username and password field, a “sign in” button, and a “forgot password” link. A “create account” button could also be provided for walk-in attendees.. Note: Single-use login emails for walk-ins
+
+Ideally, we will be able to integrate the sign in feature with the corresponding platform’s autocomplete or authentication systems which will make the sign in process easier.
+
+One idea was to offer one-time email sign in links. The sign in screen could also display a button to obtain one of these by allowing the user to simply enter their email.
+
+### After Authentication
+After the user has authenticated, all future interactions with the user profile menu item will open up a full screen detail page for the user.
+
+It will prominently feature the user’s QR code which will make it easy for the user to access their QR code whenever they need to be scanned. It will also contain simple information about the user such as their name, school, program, and food group colour. The layout will be similar to what a “Contact” looks like in your favourite contacts app.
+
+If dark mode is enabled, the user’s QR code will still need to be displayed as black with a white background due to the way QR codes work.
+
+We can also use the QR codes as “user profile icons”. When the user is signed in, the user profile menu item’s icon can be replaced with their QR code. This is similar to how many services offer randomly generated default profile pictures. (This also allows for some neat transition animations on Android…)
+
+# Organizer Features
+If an organizer signs into the app, the user profile screen will be replaced with a QR code scanner for scanning hacker codes.
+ 
+When this screen is opened, the user will be prompted to select an event that they are scanning for (i.e. which meal, or other event that requires QR codes to be scanned). Once this is selected, they will be ready to scan QR codes.
+
+The screen will display a live view of the camera with a highlighted area in the center to help guide the user to place the QR code being scanned. Once the QR code has been detected, a progress bar will be displayed followed by a green indicator (a checkmark or something) indicating success/approval, or a red indicator (an X) along with a message detailing what went wrong (internet connection problem? Already got food? Not registered for a workshop? Whatever it is). 
+
+Special care should be made to ensure that this process is as fast as possible. We may consider a buffered approach to updating the database, or other ways to optimize the speed of QR code scanning (specifically the “approval” part).
+
+# App Settings
+The settings screen in the app will have toggles for a few parts of the app’s functionality. These will include a manual toggle for light/dark mode (if the user’s system doesn’t have support for it) as well as an opt-in/out toggle for anonymous analytics collection. There will also be a set of options for notifications for announcements (all types) and locally set event reminders.
+
+The settings screen can also contain a link to the cuPlatform’s privacy policy, license notices for the open source libraries used in making the app, the app version, or any other “technical” information we want to include.
+
+### Dark Mode
+The app will have a built-in dark mode. All components of the app will be darkened if possible. This includes the map (a dark basemap will be used), but does not include the QR codes since they require the data to be black. Most colours should be slightly different for the dark mode in order to maintain appropriate and accessible contrast ratios.
+
+On compatible systems (Android Q, iOS 13) dark mode will, by default, be governed by the system setting for dark mode. For all users, manual toggles between light and dark will be provided.
+
+---
+An extra thing to think about.
+
+# Feature Rollout
+A staged feature rollout could be put in place to help build hype for the hackathon leading up to it. We can consider publishing the app roughly a week beforehand containing only the Information Screen described above which has all the must-know info about the hackathon. The Schedule and Map screens can be present in the bottom navigation bar, but when viewed a simple message is displayed saying “Check back later!” (or something like that).
+
+During the course of the week, these features can be enabled remotely. All features should be present in the app when it is first launched, but simply disabled by a remote flag. This ensures that we don’t have to handle the mess of publishing updates to the app (especially on iOS). The map could be the next feature revealed, followed by the Schedule closer to the event.
+
+Display banner when the app is open - but no push notifications. 
+

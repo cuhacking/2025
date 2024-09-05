@@ -1,0 +1,9 @@
+{
+  "title": "The Original Playbook",
+  "icon": "Library",
+  "pages": [
+    "index",
+    "dashboard",
+    "design"
+  ]
+}

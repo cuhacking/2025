@@ -1,0 +1,33 @@
+`Work in progress`
+
+# [Postman](https://www.getpostman.com/)
+*If you're just interested in learning how to run Postman tests, skip down to the **[Running Postman Tests](https://github.com/cuhacking/cuHacking-wiki/wiki/Postman#running-postman-tests)** section below.*
+
+Postman is an application made to help build and test APIs. While Postman offers some tools for designing APIs, we're mostly interested in Postman's ability to test APIs. 
+
+It's used for two purposes: first, to test an endpoint while developing. Postman allows you to just enter a URL and specific bodies and headers, and send a request with a click. This essentially saves you the trouble of using cURL or writing a client application to see if an endpoint works. Second, it allows you to write 'unit tests' for your endpoints. You can write tests in JavaScript to automatically check if the response is correct, as well as set up collections to run in a big testsuite. 
+
+## Basics of Testing
+[Credit to this Medium post for providing a good reference the ideas in this section.](https://hackernoon.com/a-crash-course-on-testing-with-node-js-6c7428d3da02)
+
+Before we get into Postman specific things, there are some steps any good test should follow:
+
+1. Setup. In this step, setup any variables that you might need. This might include things like tokens (if your API uses token-based authentication), variables that come from other calls, or the body for your REST request.
+
+2. Call your function.
+
+3. Check the result. In most cases, this means that you should already know the result of the function call, and you check that the actual result returned matches what you expected. For example, you might check that the result to `multiply(2, 2) == 4`. If it does, the test passes. If it doesn't, the test fails.
+
+## Introduction to Postman
+I won't be writing a full tutorial on using Postman. [The official site has plenty of resources](https://learning.getpostman.com/getting-started/) if you need to learn to use Postman a lot (i.e. you're an API developer).
+
+*Section WIP.*
+
+## Running Postman Tests
+In order to run tests made in Postman, you'll need to have the Postman program installed, and have the collection downloaded. It may also come with an environments collection.
+
+Postman tests come as JSON files. In order to run them, you just need to open up Postman, and **import** them with the button in the top-left. If your collection came with an environment collection, you can hit the gear in the top right corner and press "Import" to import that. The collection should appear in the collection list on the left side. From there, you have 2 options:
+
+1. Run the collection using the collection runner. This is a tool that runs every test in the collection in the folder in order and reports the number of tests that passed, and the number of tests that failed. This is great if your goal is just to check if whatever you're testing works or not. To use it, just press "Runner" in the top left, pick the collection that you want to run, the correct environment (if you imported one earlier, then pick that one), and press the "Start Run" button (you may need to scroll down to see it).
+
+2. Run each test manually. What this means is to literally click every test in the collection one by one, and press the send button. From there, you can see if all the tests passed (the tests tab in the response pane tells you how many tests passed), as well as the response for each request. While it is much more tedious than using the runner, this method is great if you want to examine the actual responses, play around with the body or parameters of the tests, or just have more control over which requests you want to run. (For example, you might want to skip a GET request that has a known, but unrelated, issue so that you can still test the rest of the feature).
