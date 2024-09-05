@@ -5,7 +5,7 @@ export const URLS = {
 }
 
 export const GITHUB_CONFIGS = {
-  OWNER: 'cuHacking',
+  OWNER: 'cuhacking',
   REPO: '2025',
-  ISSUE_TEMPLATE_PATH: '/.github/ISSUE_TEMPLATE/',
+  ISSUE_TEMPLATE_PATH: '/.github/ISSUE_TEMPLATE',
 }

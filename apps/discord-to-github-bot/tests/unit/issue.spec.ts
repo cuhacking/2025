@@ -1,12 +1,8 @@
 import { describe, expect, it } from 'vitest'
-import { getAllIssues, getIssue, getIssueTemplateNames } from '@services/get-issue-templates'
+import { getIssue, getIssueTemplateNames } from '@services/get-issue-templates'
 import { gaurdAgainstInvalidIssues } from '@services/create-issue'
 
 describe('retrieving issue tests', () => {
-  it('should recieve the name of all issue tempaltes', () => {
-    const res = getAllIssues()
-    expect(res).toBe(['architectural-design-record--adr-.md', 'bug_report.md', 'feature-improvement.md', 'task.md'])
-  })
   it('should recieve the issue template for a Bug Report', () => {
     const res = getIssue('bug_report.md')
     expect(res.name).toBe('Bug Report')
@@ -29,23 +25,26 @@ describe('retrieving issue tests', () => {
   })
 
   it('should return an array with all the issue template names', () => {
-    const mockIssueTemplates = [
-      {
-        name: 'template-1.md',
-        content: 'content 1',
-        labels: ['label 1'],
-      },
-      {
-        name: 'template-2.md',
-        content: 'content 2',
-        labels: ['label 1', 'label 2'],
-      },
-      {
-        name: 'template-3.md',
-        content: 'content 3',
-        labels: ['label 3'],
-      },
-    ]
+    const mockIssueTemplates = {
+      data:
+      [
+        {
+          name: 'template-1.md',
+          content: 'content 1',
+          labels: ['label 1'],
+        },
+        {
+          name: 'template-2.md',
+          content: 'content 2',
+          labels: ['label 1', 'label 2'],
+        },
+        {
+          name: 'template-3.md',
+          content: 'content 3',
+          labels: ['label 3'],
+        },
+      ],
+    }
     const res = getIssueTemplateNames(mockIssueTemplates)
     expect(res).toStrictEqual(['template-1.md', 'template-2.md', 'template-3.md'])
   })

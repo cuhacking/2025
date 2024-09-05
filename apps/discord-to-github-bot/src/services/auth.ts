@@ -10,6 +10,7 @@ export function generateServerLink(discordChannelID: string) {
   return `${URLS.DISCORD_URL}/channels/${discordChannelID}`
 }
 
-export function getAccessToken(_discordID: string): string {
+export async function getAccessToken(_discordID: string): Promise<string> {
+  // The acutal funciton here would query the DB
   return process.env.GITHUB_PERSONAL_ACCESS_TOKEN_FOR_CUHACKING ?? ''
 }

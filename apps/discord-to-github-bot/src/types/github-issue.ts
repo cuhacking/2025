@@ -1,7 +1,3 @@
-export interface GitHubIssue {
-  title: string
-  labels: string[]
-  body: string
-  milestone: number
-  assignees: string[]
-}
+import type { Endpoints } from '@octokit/types'
+
+export type OctokitRepoContentResponse = Endpoints['GET /repos/{owner}/{repo}/contents/{path}']['response']
