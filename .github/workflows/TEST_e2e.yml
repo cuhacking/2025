@@ -34,15 +34,37 @@ jobs:
       - name: 🎭 Install Playwright Browsers
         run: pnpm i; pnpm playwright install --with-deps
 
-      - name: 💀 Run E2E Tests
-        run: pnpm nx run-many -t e2e -p docs-e2e website-e2e portal-e2e --parallel=false --verbose
+      - name: 💀 Run Docs E2E Tests
+        run: pnpm nx run docs-e2e:e2e --reporter=html --verbose
 
-      - name: 📄 Upload Artifact
+      - name: 📄 Upload Docs E2E Playwright Report
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: playwright-report
-          path: playwright-report/
+          name: playwright-report-docs-e2e
+          path: playwright-report/**/*
+          retention-days: 30
+
+      - name: 💀 Run Portal E2E Tests
+        run: pnpm nx run portal-e2e:e2e --reporter=html --verbose
+
+      - name: 📄 Upload Portal E2E Playwright Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report-portal-e2e
+          path: playwright-report/**/*
+          retention-days: 30
+
+      - name: 💀 Run Website E2E Tests
+        run: pnpm nx run website-e2e:e2e --reporter=html --verbose
+
+      - name: 📄 Upload Website E2E Playwright Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report-website-e2e
+          path: playwright-report/**/*
           retention-days: 30
 
       - name: 💰 Profit
