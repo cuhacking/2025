@@ -60,6 +60,13 @@ test.describe(`Common MOBILE, TABLET and DESKTOP Layout Elements`, {
 test.describe(`Common MOBILE and TABLET Layout Elements`, {
   tag: '@smoke',
 }, () => {
+  test.beforeEach(async () => {
+    const device = test.info().project.name
+    if (device.includes('desktop')) {
+      test.skip()
+    }
+  })
+
   test(`should have quick links section visible in mobile/tablet header`, async ({ docsLayoutPage }) => {
     await expect(docsLayoutPage.quickLinks).toBeVisible()
   })
@@ -87,6 +94,9 @@ test.describe(`Common MOBILE and TABLET Menu Elements`, {
     }
     else if (device.includes('tablet')) {
       await docsLayoutPage.kebabIcon.click()
+    }
+    else {
+      test.skip()
     }
   })
 
@@ -162,6 +172,13 @@ test.describe(`Common MOBILE and TABLET Menu Elements`, {
 test.describe('Common TABLET and DESKTOP Layout Elements', {
   tag: '@smoke',
 }, () => {
+  test.beforeEach(async () => {
+    const device = test.info().project.name
+    if (device.includes('mobile')) {
+      test.skip()
+    }
+  })
+
   test(`should contain search bar in tablet/desktop header`, async ({ docsLayoutPage }) => {
     await expect(docsLayoutPage.searchBar).toBeVisible()
   })
@@ -184,6 +201,13 @@ test.describe('Common TABLET and DESKTOP Layout Elements', {
 test.describe('Unique DESKTOP Header Elements', {
   tag: '@smoke',
 }, () => {
+  test.beforeEach(async () => {
+    const device = test.info().project.name
+    if (device.includes('mobile') || device.includes('tablet')) {
+      test.skip()
+    }
+  })
+
   test('should contain Website dropdown button in desktop header', async ({ docsLayoutPage }) => {
     await expect(docsLayoutPage.websiteDropdownButton).toBeVisible()
   })
@@ -250,6 +274,13 @@ test.describe('Unique DESKTOP Header Elements', {
 test.describe('Unique Floating Table of Contents DESKTOP Elements', {
   tag: '@smoke',
 }, () => {
+  test.beforeEach(async () => {
+    const device = test.info().project.name
+    if (device.includes('mobile') || device.includes('tablet')) {
+      test.skip()
+    }
+  })
+
   test('should contain \'Edit on GitHub\' button in floating table of contents', async ({ docsLayoutPage }) => {
     await expect(docsLayoutPage.editOnGitHubButton).toBeVisible()
   })
@@ -263,6 +294,13 @@ test.describe('Unique Floating Table of Contents DESKTOP Elements', {
 test.describe('Unique MOBILE Header Elements', {
   tag: '@smoke',
 }, () => {
+  test.beforeEach(async () => {
+    const device = test.info().project.name
+    if (device.includes('desktop') || device.includes('tablet')) {
+      test.skip()
+    }
+  })
+
   test('should contain hamburger icon', async ({ docsLayoutPage }) => {
     await expect(docsLayoutPage.hamburgerIcon).toBeVisible()
   })
@@ -281,6 +319,13 @@ test.describe('Unique MOBILE Header Elements', {
 test.describe('Unique TABLET Header Elements', {
   tag: '@smoke',
 }, () => {
+  test.beforeEach(async () => {
+    const device = test.info().project.name
+    if (device.includes('desktop') || device.includes('mobile')) {
+      test.skip()
+    }
+  })
+
   test('should have kebab icon visible', async ({ docsLayoutPage }) => {
     await expect(docsLayoutPage.kebabIcon).toBeVisible()
   })

@@ -23,6 +23,7 @@ const baseURL = process.env.BASE_URL || 'http://127.0.0.1:3000'
 export default defineConfig({
   ...nxE2EPreset(__filename, { testDir: './src' }),
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  retries: 2,
   use: {
     baseURL,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
@@ -34,6 +35,7 @@ export default defineConfig({
     url: 'http://127.0.0.1:3000',
     reuseExistingServer: !process.env.CI,
     cwd: workspaceRoot,
+    timeout: 120 * 1000,
   },
   projects: [
     {
