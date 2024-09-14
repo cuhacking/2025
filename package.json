@@ -22,6 +22,7 @@
     "@remix-run/node": "^2.8.1",
     "@remix-run/react": "^2.8.1",
     "@remix-run/serve": "^2.8.1",
+    "@t3-oss/env-nextjs": "^0.11.1",
     "fumadocs-core": "^13.0.4",
     "fumadocs-docgen": "^1.1.0",
     "fumadocs-mdx": "^9.0.0",
@@ -31,7 +32,8 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "tailwind": "link:@nx/react/tailwind",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.25.1",
