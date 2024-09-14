@@ -2,17 +2,16 @@
   "compileOnSave": false,
   "compilerOptions": {
     "target": "ES2015",
-    "lib": [
-      "ESNext",
-      "DOM",
-      "DOM.Iterable"
-    ],
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "baseUrl": ".",
     "rootDir": ".",
     "module": "ESNext",
     "moduleResolution": "Node",
+    "paths": {
+      "@cuhacking/env": ["libs/env/src/index.ts"]
+    },
     "resolveJsonModule": true,
     "strict": true,
     "declaration": false,
@@ -23,8 +22,5 @@
     "skipDefaultLibCheck": true,
     "skipLibCheck": true
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }

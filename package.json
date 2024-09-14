@@ -46,12 +46,12 @@
     "@nx/eslint": "19.5.7",
     "@nx/eslint-plugin": "19.5.7",
     "@nx/jest": "19.5.7",
-    "@nx/js": "19.5.7",
+    "@nx/js": "19.6.0",
     "@nx/next": "19.5.7",
     "@nx/playwright": "19.5.7",
     "@nx/remix": "19.5.7",
     "@nx/vite": "^19.6.0",
-    "@nx/web": "19.5.7",
+    "@nx/web": "19.6.0",
     "@nx/workspace": "19.5.7",
     "@playwright/test": "^1.36.0",
     "@remix-run/dev": "^2.8.1",
@@ -106,10 +106,14 @@
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
     "typescript": "~5.5.2",
+    "verdaccio": "^5.0.4",
     "vite": "^5.0.0",
     "vitest": "^2.0.5"
   },
   "lint-staged": {
     "*": "eslint --cache --fix"
+  },
+  "nx": {
+    "includedScripts": []
   }
 }
