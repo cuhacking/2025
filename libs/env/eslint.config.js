@@ -9,6 +9,12 @@ export default (async () => {
 
   return [
     ...baseConfig,
+    {
+      rules: {
+        // Disable dot-notation rule
+        'dot-notation': 'off',
+      },
+    },
 
     // The following configurations are commented out
     // ...compat.extends(
