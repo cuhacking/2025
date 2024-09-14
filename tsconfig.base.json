@@ -10,6 +10,7 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "paths": {
+      "@cuhacking/api": ["libs/api/src/index.ts"],
       "@cuhacking/db": ["libs/db/src/index.ts"],
       "@cuhacking/env": ["libs/env/src/index.ts"]
     },
