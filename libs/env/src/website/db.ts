@@ -4,7 +4,7 @@ import { z } from 'zod'
 
 import { sharedEnv } from '../shared'
 
-export const env = createEnv({
+export const envWebsiteDb = createEnv({
   extends: [sharedEnv],
   server: {
     DATABASE_URL: z.string().url().startsWith('postgres'),
