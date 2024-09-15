@@ -3,10 +3,10 @@ import { createEnv } from '@t3-oss/env-nextjs'
 import { z } from 'zod'
 
 import { sharedEnv } from '../shared'
-import { env as dbEnv } from './db'
+import { envWebsiteDb } from './db'
 
-export const env = createEnv({
-  extends: [sharedEnv, dbEnv],
+export const envWebsiteServer = createEnv({
+  extends: [sharedEnv, envWebsiteDb],
   shared: {
     PORT: z.coerce.number().default(3000),
   },
