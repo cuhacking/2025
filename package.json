@@ -19,6 +19,7 @@
     "postinstall": "pnpx playwright install"
   },
   "dependencies": {
+    "@lucia-auth/adapter-drizzle": "^1.1.0",
     "@remix-run/node": "^2.8.1",
     "@remix-run/react": "^2.8.1",
     "@remix-run/serve": "^2.8.1",
@@ -31,6 +32,7 @@
     "fumadocs-mdx": "^9.0.0",
     "fumadocs-ui": "^13.0.4",
     "isbot": "^4.4.0",
+    "lucia": "^3.2.0",
     "next": "14.2.3",
     "postgres": "^3.4.4",
     "react": "18.3.1",
