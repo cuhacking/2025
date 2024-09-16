@@ -83,3 +83,68 @@ Now take this concept and apply it to code. You'll find that the parallels are u
 People before reading the [Knowledge Base](/docs/knowledge-base): 🐈
 
 People after reading the [Knowledge Base](/docs/knowledge-base): 🐅
+
+## Best Practices
+### **Testing**
+#### E2E Test catagorization
+End to end Testing broken down into 2 different parts
+	- Desktop
+	- Mobile
+	- Tablet
+These above tests are broken down into further subsections: 
+	- Mobile and tablet 
+	- Desktop tabet
+	- Desktop
+#### E2E test organization
+All E2E tests located inside of a directory(Organized based on what overall page/tool the tests are using)
+- For example, all E2E tests relating to the cuhacking portal are stored inside of the portal--e2e directory. 
+ - All related tests are stored in a .ts file. 
+	 - For example, all tests related to the docs pages are stored inside one .ts file
+	 - There may be other files that contain helper functions for these tests. 
+		 - These helper functions are stored in a dedicated 
+For tests involving different environments, a playwright.config file is used. 
+
+Once you think that all the tests are good to go, you can run the code using playwright or in visual studio code. 
+
+#### Creating E2E tests
+Using code gen to generate the difference events that happen in the docs. 
+
+General structure of the tests: 
+
+``
+test('name", async ((.docsLayoutPage))) => ({
+	events_from_codegen
+})
+``
+
+pom.ts is used to create specific variables to represent different elements in the page. 
+
+#### Naming conventions
+Constants are all caps with words being separated by underscores. 
+
+#### Running tests
+2 commands to run tests: 
+For running the tests through cmd line->1. `pnpm nx run docs-e2e:e2e --verbose`
+    
+For running this command to run codegen event generator->npx playwright codegen http:localhost:3000/docs
+
+For different tests, indicate DESKTOP, MOBILE, TABLET depending on the environment
+
+If you run a bunch of tests at the same time, they might time out
+It is advised to run each test individually
+
+#### Viewing tests
+All tests can be viewed on the github workflow. 
+- Can access them in the PR
+	- Can get the report from here.
+	- Report is produced regardless of whether you push code that makes changes to these E2E tests. 
+
+When running different tests, make sure you select the right environments for each of these tests. 
+
+
+
+
+
+
+
+
