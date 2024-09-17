@@ -1,1 +1,2 @@
-export * from './lib/auth'
+export * from './lucia'
+export * from './auth'
