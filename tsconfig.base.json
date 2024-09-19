@@ -13,7 +13,8 @@
       "@cuhacking/api": ["libs/api/src/index.ts"],
       "@cuhacking/auth": ["libs/auth/src/index.ts"],
       "@cuhacking/db": ["libs/db/src/index.ts"],
-      "@cuhacking/env": ["libs/env/src/index.ts"]
+      "@cuhacking/env": ["libs/env/src/index.ts"],
+      "@cuhacking/utils": ["libs/utils/src/index.ts"]
     },
     "resolveJsonModule": true,
     "strict": true,
