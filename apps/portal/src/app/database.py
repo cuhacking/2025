@@ -135,7 +135,7 @@ def create_tables(cursor):
 
 
 def load_tables(cursor):
-    file_path = '/home/jeremyfriesen/2025/apps/portal/public/User_mock_data.csv'
+    file_path = '../../public/User_mock_data.csv'
     with open(file_path, 'r', encoding='utf-8') as file:
         users = csv.DictReader(file)
         for user in users:
