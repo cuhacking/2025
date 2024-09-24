@@ -2,6 +2,7 @@
   "name": "@cuhacking/utils",
   "type": "module",
   "version": "0.0.1",
+  "private": "false",
   "main": "./src/index.js",
   "dependencies": {},
   "typings": "./src/index.d.ts"

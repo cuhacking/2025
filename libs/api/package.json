@@ -2,6 +2,7 @@
   "name": "@cuhacking/api",
   "type": "module",
   "version": "0.0.1",
+  "private": "false",
   "main": "./src/index.js",
   "dependencies": {
     "tslib": "^2.3.0"
