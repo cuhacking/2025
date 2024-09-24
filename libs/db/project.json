@@ -26,6 +26,59 @@
     "nx-release-publish": {
       "options": {
         "packageRoot": "dist/{projectRoot}"
+      },
+      "dependsOn": ["^build"]
+    },
+    "check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "drizzle-kit check --config {projectRoot}/drizzle.config.ts"
+      }
+    },
+    "generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "drizzle-kit generate --config {projectRoot}/drizzle.config.ts"
+      },
+      "outputs": ["{workspaceRoot}/dist/libs/db"],
+      "cache": true
+    },
+    "migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "drizzle-kit migrate --config {projectRoot}/drizzle.config.ts"
+      },
+      "outputs": ["{workspaceRoot}/dist/libs/db"],
+      "cache": true
+    },
+    "migrate:drop": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "drizzle-kit drop --config {projectRoot}/drizzle.config.ts"
+      }
+    },
+    "pull": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "drizzle-kit introspect --config {projectRoot}/drizzle.config.ts"
+      }
+    },
+    "push": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "drizzle-kit push --config {projectRoot}/drizzle.config.ts"
+      }
+    },
+    "studio": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "drizzle-kit studio --config {projectRoot}/drizzle.config.ts"
+      }
+    },
+    "up": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "drizzle-kit up --config {projectRoot}/drizzle.config.ts"
       }
     }
   }
