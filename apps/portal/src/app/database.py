@@ -117,7 +117,7 @@ def create_tables(cursor):
             last_name VARCHAR(255) NOT NULL,
             preferred_name VARCHAR(255) NULL,
             email VARCHAR(255) NOT NULL,
-            date_of_birth VARCHAR(255), 
+            date_of_birth VARCHAR(255), -- might not want to collect this 
             gender gender_type,
             phone_number_country_code INTEGER CHECK (phone_number_country_code IN (1, 44, 81, 86, 91, 971, 972, 995, 998)),
             phone_number VARCHAR(15),
@@ -125,7 +125,7 @@ def create_tables(cursor):
             any_other_comments TEXT NULL,
             international_or_domestic BOOLEAN NULL,
             ethnicity ethnicity_type NULL,
-            estimated_grad_year INTEGER NULL,
+            estimated_grad_year INTEGER NULL, 
             mlh_reqs BOOLEAN DEFAULT FALSE NOT NULL
             );
         """
