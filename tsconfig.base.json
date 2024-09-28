@@ -8,7 +8,7 @@
     "baseUrl": ".",
     "rootDir": ".",
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "Bundler",
     "paths": {
       "@cuhacking/api": ["libs/api/src/index.ts"],
       "@cuhacking/auth": ["libs/auth/src/index.ts"],
