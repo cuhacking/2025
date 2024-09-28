@@ -1,12 +1,12 @@
-import type { Config } from 'drizzle-kit'
+import { defineConfig } from 'drizzle-kit'
 
 import { envWebsiteDb } from '@cuhacking/env'
 
-export default {
+export default defineConfig({
   dialect: 'postgresql',
-  schema: './src/schema/index.ts',
+  schema: './libs/db/src/schema/index.ts',
   out: './drizzle',
   dbCredentials: {
     url: envWebsiteDb.DATABASE_URL,
   },
-} satisfies Config
+})
