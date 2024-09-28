@@ -1,9 +1,13 @@
-export default function Index() {
+import { api } from '../lib/trpc/server'
+
+export default async function Index() {
   /*
    * Replace the elements below with your own.
-   *
    * Note: The corresponding styles are in the ./index.tailwind file.
    */
+
+  const hello = await api.user.hello()
+
   return (
     <div>
       <div className="wrapper">
@@ -12,6 +16,7 @@ export default function Index() {
             <h1>
               <span> Hello there, </span>
               Welcome portal 👋
+              {hello.message}
             </h1>
           </div>
 
