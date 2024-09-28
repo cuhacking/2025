@@ -14,18 +14,33 @@ export async function GET() {
   try {
     const client = await pool.connect()
 
+    if (!client) {
+      return NextResponse.json({ error: 'Database connection failed' }, { status: 500 })
+    }
+
     const query = `
       SELECT gender, COUNT(*) as count
       FROM "User"
       GROUP BY gender;
     `
     const result = await client.query(query)
+
+    if (result.rows.length === 0) {
+      return NextResponse.json({ data: [] }) // Return an empty array instead of throwing an error
+    }
+
     client.release()
 
     return NextResponse.json({ data: result.rows })
   }
-  catch (err) {
+  catch (err: any) {
     console.error('Error fetching data from PostgreSQL', err)
-    return NextResponse.json({ error: 'Error fetching data' }, { status: 500 })
+
+    if (err.message.includes('database connection')) { // Handle database connection errors specifically
+      return NextResponse.json({ error: 'Database connection failed' }, { status: 500 })
+    }
+    else {
+      return NextResponse.json({ error: 'Server error' }, { status: 500 })
+    }
   }
 }
