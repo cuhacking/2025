@@ -20,5 +20,5 @@ export const envWebsiteServer = createEnv({
     PORT: process.env.PORT,
   },
   emptyStringAsUndefined: true,
-  // skipValidation: !!process.env.['SKIP_ENV_VALIDATION'],
+  skipValidation: !!process.env.SKIP_ENV_VALIDATION,
 })
