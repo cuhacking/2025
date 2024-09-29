@@ -4,6 +4,7 @@ import type { ReactNode } from 'react'
 import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
 import { Step, Steps } from 'fumadocs-ui/components/steps'
 import { Callout } from 'fumadocs-ui/components/callout'
+import Link from 'fumadocs-core/link'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -25,5 +26,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     Step,
     Steps,
     Callout,
+    Link,
   }
 }
