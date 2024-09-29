@@ -1,0 +1,39 @@
+---
+title: Application Server
+---
+
+**[project: Magneton](https://github.com/cuhacking/cuHacking-API)**
+
+---
+The application server is the application which transmits data between the front-end (the website and apps) and the back-end (the database, Mailchimp, etc).
+
+It provides a cross-platform method of accessing the data in the form of a REST API, so that no additional wrappers have to be written for the different platforms.
+
+## Content
+The application server provides access to a few different resources. To see the list of endpoints and how to use them, click here (*coming soon*).
+
+### Database
+The database is our primary method of storing data, whether it be for applications, mailing lists, or the event itself. The application server aims to provide all **reasonable** operations that can be done on the data. In general, this means that it provides basic operations such as adding, getting, and removing, as well as some other specific ones that the even might require, such as getting based on a specific constraint.
+
+### Mailchimp
+This section allows for much of the interaction with Mailchimp to be automated. For example, subscribing users to a mailing list should have all the steps done automatically. The website should be able to make a single API call which will handle the data approriately.
+
+## Structure
+The application server's structure was inspired by the Fractal design laid out [in this page](https://codeburst.io/fractal-a-nodejs-app-structure-for-infinite-scale-d74dda57ee11), as well as the typical MVC architecture. The code is split into: **routes**, **controllers**, and **models**.
+
+### Model
+The model defines each back-end component being used. You can think of them like classes, in that they provide a set of general, related functions for the component. For example, the Database model has functions that let you add to it, delete from it, and get data from it.
+
+It is important that the models be **general**. What this means is that it should be reusable for different projects without many changes. This means that, for example, a function such as `getAllHackersOverTheAgeOf18` should not exist. That should be left to the controller.
+
+### Controller
+The controller is the middleman between the route (the endpoint) and the model. It essentially takes the endpoint, and translates it into a sequence of model function calls. For example, the controller for an endpoint that updates a flag on every item in the database, then returns it as a response might be a chain of 2 database model calls: `Database.update()` followed by `Database.get()`
+
+### Route
+The routes of the application server define the endpoint, and which controller function corresponds to it. That's it. The entire file should look somewhat like just the list of endpoints, meaning that there should be no logic in the routes at all.
+
+## Frameworks Used
+The following frameworks and packages are used to create the application server (note that this excludes any packages used for a specific component).
+
+* node.js - node.js is the base of the entire application
+* express.js - express provides routers, which provides an easy way of defining all the endpoints of the API
