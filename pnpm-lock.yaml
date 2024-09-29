@@ -17,6 +17,9 @@ importers:
       '@remix-run/serve':
         specifier: ^2.8.1
         version: 2.11.2(typescript@5.5.4)
+      class-variance-authority:
+        specifier: ^0.7.0
+        version: 0.7.0
       fumadocs-core:
         specifier: ^13.0.4
         version: 13.2.2(@types/react@18.3.1)(next@14.2.3(@babel/core@7.25.2)(@playwright/test@1.46.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)

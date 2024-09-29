@@ -22,6 +22,7 @@
     "@remix-run/node": "^2.8.1",
     "@remix-run/react": "^2.8.1",
     "@remix-run/serve": "^2.8.1",
+    "class-variance-authority": "^0.7.0",
     "fumadocs-core": "^13.0.4",
     "fumadocs-docgen": "^1.1.0",
     "fumadocs-mdx": "^9.0.0",
