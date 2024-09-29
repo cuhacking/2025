@@ -105,7 +105,7 @@ def create_tables(cursor):
 
     cursor.execute("""
         CREATE TYPE gender_type AS ENUM (
-            'Male', 'Female', 'Agender', 'Bigender', 'Genderfluid', 'Genderqueer', 'Non-binary', 'Polygender'
+            'Male', 'Female', 'Agender', 'Bigender', 'Genderfluid', 'Queer', 'Non-binary', 'Polygender'
         );
     """)
 
