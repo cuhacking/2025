@@ -2,7 +2,8 @@
 
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from 'recharts'
 import { TrendingUp } from 'lucide-react'
-import { Button } from '../components/ui/button/button'
+import { useEffect, useState } from 'react'
+// import { Button } from '../components/ui/button/button'
 import {
   Card,
   CardContent,
@@ -20,14 +21,14 @@ import {
   ChartTooltipContent,
 } from '../components/ui/chart/chart'
 
-const chartData = [
-  { month: 'January', desktop: 186, mobile: 80 },
-  { month: 'February', desktop: 305, mobile: 200 },
-  { month: 'March', desktop: 237, mobile: 120 },
-  { month: 'April', desktop: 73, mobile: 190 },
-  { month: 'May', desktop: 209, mobile: 130 },
-  { month: 'June', desktop: 214, mobile: 140 },
-]
+// const chartData = [
+//   { month: 'January', desktop: 186, mobile: 80 },
+//   { month: 'February', desktop: 305, mobile: 200 },
+//   { month: 'March', desktop: 237, mobile: 120 },
+//   { month: 'April', desktop: 73, mobile: 190 },
+//   { month: 'May', desktop: 209, mobile: 130 },
+//   { month: 'June', desktop: 214, mobile: 140 },
+// ]
 
 const chartConfig = {
   desktop: {
@@ -41,13 +42,38 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export default function Index() {
+  const [chartData, setChartData] = useState([])
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch('/api/chart/gender-distribution')
+        const result = await response.json()
+
+        if (response.ok) {
+          // Assuming the result data is in the format [{ month: 'January', desktop: 186, mobile: 80 }, ...]
+          // eslint-disable-next-line no-console
+          console.log(result.data)
+          setChartData(result.data)
+        }
+        else {
+          console.error('Error fetching data:', result.error)
+        }
+      }
+      catch (error) {
+        console.error('Error fetching data:', error)
+      }
+    }
+
+    fetchData()
+  }, [])
   return (
     <div>
       <div className="wrapper">
         <div className="container">
           <div id="welcome">
             <h1>
-              <Button>HIII</Button>
+              {/* <Button>HIII</Button> */}
               <span> Hello there, </span>
               Welcome portal 👋
             </h1>
