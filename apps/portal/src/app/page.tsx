@@ -1,6 +1,6 @@
 'use client'
 
-import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from 'recharts'
+import { Bar, BarChart, CartesianGrid, LabelList, XAxis, YAxis } from 'recharts'
 import { TrendingUp } from 'lucide-react'
 import { useEffect, useState } from 'react'
 // import { Button } from '../components/ui/button/button'
@@ -8,7 +8,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from '../components/ui/card/card'
@@ -21,23 +20,10 @@ import {
   ChartTooltipContent,
 } from '../components/ui/chart/chart'
 
-// const chartData = [
-//   { month: 'January', desktop: 186, mobile: 80 },
-//   { month: 'February', desktop: 305, mobile: 200 },
-//   { month: 'March', desktop: 237, mobile: 120 },
-//   { month: 'April', desktop: 73, mobile: 190 },
-//   { month: 'May', desktop: 209, mobile: 130 },
-//   { month: 'June', desktop: 214, mobile: 140 },
-// ]
-
 const chartConfig = {
-  desktop: {
-    label: 'Desktop',
+  gender: {
+    label: 'Gender',
     color: '#2563eb',
-  },
-  mobile: {
-    label: 'Mobile',
-    color: '#60a5fa',
   },
 } satisfies ChartConfig
 
@@ -47,11 +33,10 @@ export default function Index() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch('/api/chart/gender-distribution')
+        const response = await fetch('/api/chart')
         const result = await response.json()
 
         if (response.ok) {
-          // Assuming the result data is in the format [{ month: 'January', desktop: 186, mobile: 80 }, ...]
           // eslint-disable-next-line no-console
           console.log(result.data)
           setChartData(result.data)
@@ -73,17 +58,15 @@ export default function Index() {
         <div className="container">
           <div id="welcome">
             <h1>
-              {/* <Button>HIII</Button> */}
               <span> Hello there, </span>
               Welcome portal 👋
             </h1>
           </div>
-
           <div id="chart">
             <Card>
               <CardHeader>
-                <CardTitle>Bar Chart - Label</CardTitle>
-                <CardDescription>January - June 2024</CardDescription>
+                <CardTitle>Bar Chart - Gender Distribution</CardTitle>
+                <CardDescription>Gender distribution of users</CardDescription>
               </CardHeader>
               <CardContent>
                 <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
@@ -94,32 +77,19 @@ export default function Index() {
                   >
                     <CartesianGrid vertical={false} />
                     <XAxis
-                      dataKey="month"
+                      dataKey="gender"
                       tickLine={false}
                       tickMargin={10}
                       axisLine={false}
-                      tickFormatter={value => value.slice(0, 3)}
                     />
+                    <YAxis />
                     <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-                    <Bar dataKey="desktop" fill={chartConfig.desktop.color} radius={8}>
-                      <LabelList position="top" offset={12} className="fill-foreground" fontSize={12} />
-                    </Bar>
-                    <Bar dataKey="mobile" fill={chartConfig.mobile.color} radius={8}>
+                    <Bar dataKey="count" fill={chartConfig.gender.color} radius={8}>
                       <LabelList position="top" offset={12} className="fill-foreground" fontSize={12} />
                     </Bar>
                   </BarChart>
                 </ChartContainer>
               </CardContent>
-              <CardFooter className="flex-col items-start gap-2 text-sm">
-                <div className="flex gap-2 font-medium leading-none">
-                  Trending up by 5.2% this month
-                  {' '}
-                  <TrendingUp className="h-4 w-4" />
-                </div>
-                <div className="leading-none text-muted-foreground">
-                  Showing total visitors for the last 6 months
-                </div>
-              </CardFooter>
             </Card>
           </div>
         </div>
