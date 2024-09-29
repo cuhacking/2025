@@ -9,7 +9,9 @@ export const envWebsiteDb = createEnv({
   server: {
     DATABASE_URL: z.string().url().startsWith('postgres'),
   },
-  experimental__runtimeEnv: {},
+  experimental__runtimeEnv: {
+    DATABASE_URL: process.env.DATABASE_URL,
+  },
   emptyStringAsUndefined: true,
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,
 })
