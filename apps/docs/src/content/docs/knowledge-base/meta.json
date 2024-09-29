@@ -1,5 +1,5 @@
 {
   "title": "Knowledge Base",
   "icon": "Library",
-  "pages": ["nextauth"]
+  "pages": ["nextauth", "cuHacking-2020-wiki"]
 }
