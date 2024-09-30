@@ -1,11 +1,12 @@
 'use client'
 
-import { Bar, BarChart, CartesianGrid, LabelList, Line, LineChart, XAxis, YAxis } from 'recharts'
+import { Bar, BarChart, CartesianGrid, LabelList, Line, LineChart, Pie, PieChart, XAxis, YAxis } from 'recharts'
 import { TrendingUp } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
 import { useTheme } from 'next-themes'
 import { Button } from '../components/ui/button/button'
+
 import {
   Card,
   CardContent,
@@ -19,6 +20,8 @@ import type {
 } from '../components/ui/chart/chart'
 import {
   ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from '../components/ui/chart/chart'
@@ -72,47 +75,67 @@ export default function Index() {
   const [genderData, setGenderData] = useState([])
   const [internationalDomesticData, setInternationalDomesticData] = useState([])
   const [gradYearData, setGradYearData] = useState([])
+  const [phoneNumberData, setPhoneNumberData] = useState([])
 
   const chartConfig = theme === 'dark' ? darkChartConfig : lightChartConfig
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const [genderResponse, internationalDomesticResponse, gradYearResponse] = await Promise.all([
+        const [genderResponse, internationalDomesticResponse, gradYearResponse, phoneNumberResponse] = await Promise.all([
           fetch('/api/gender-distribution'),
           fetch('/api/international-or-domestic'),
           fetch('/api/estimated-grad-year'),
+          fetch('/api/phone-number-country-code'),
         ])
 
         const genderResult = await genderResponse.json()
         const internationalDomesticResult = await internationalDomesticResponse.json()
         const gradYearResult = await gradYearResponse.json()
+        const phoneNumberResult = await phoneNumberResponse.json()
 
         if (genderResponse.ok) {
-          // eslint-disable-next-line no-console
-          console.log(genderResult.data)
-          setGenderData(genderResult.data)
+          const formattedGenderData = genderResult.data.map(item => ({
+            ...item,
+            count: Number(item.count),
+          }))
+          setGenderData(formattedGenderData)
         }
         else {
           console.error('Error fetching gender data:', genderResult.error)
         }
 
         if (internationalDomesticResponse.ok) {
-          // eslint-disable-next-line no-console
-          console.log(internationalDomesticResult.data)
-          setInternationalDomesticData(internationalDomesticResult.data)
+          const formattedInternationalDomesticData = internationalDomesticResult.data.map(item => ({
+            ...item,
+            count: Number(item.count),
+          }))
+          setInternationalDomesticData(formattedInternationalDomesticData)
         }
         else {
           console.error('Error fetching international/domestic data:', internationalDomesticResult.error)
         }
 
         if (gradYearResponse.ok) {
-          // eslint-disable-next-line no-console
-          console.log(gradYearResult.data)
-          setGradYearData(gradYearResult.data)
+          const formattedGradYearData = gradYearResult.data.map(item => ({
+            ...item,
+            count: Number(item.count),
+          }))
+          setGradYearData(formattedGradYearData)
         }
         else {
           console.error('Error fetching graduation year data:', gradYearResult.error)
+        }
+
+        if (phoneNumberResponse.ok) {
+          const formattedPhoneNumberData = phoneNumberResult.data.map(item => ({
+            ...item,
+            count: Number(item.count),
+          }))
+          setPhoneNumberData(formattedPhoneNumberData)
+        }
+        else {
+          console.error('Error fetching country code data:', phoneNumberResult.error)
         }
       }
       catch (error) {
@@ -239,6 +262,21 @@ export default function Index() {
                       />
                     </Line>
                   </LineChart>
+                </ChartContainer>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Pie Chart - Legend</CardTitle>
+                <CardDescription>January - June 2024</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ChartContainer config={chartConfig}>
+                  <PieChart>
+                    <Pie data={phoneNumberData} dataKey="count" nameKey="phone_number_country_code" cx="50%" cy="50%" outerRadius={80} fill={chartConfig.gender.color} label />
+                    <ChartLegend />
+                  </PieChart>
                 </ChartContainer>
               </CardContent>
             </Card>
