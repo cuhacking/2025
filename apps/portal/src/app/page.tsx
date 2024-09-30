@@ -5,7 +5,9 @@ import { TrendingUp } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
 import { useTheme } from 'next-themes'
+import { ResizableBox } from 'react-resizable'
 import { Button } from '../components/ui/button/button'
+import 'react-resizable/css/styles.css'
 
 import {
   Card,
@@ -33,42 +35,62 @@ import {
 } from '../components/ui/dropdown-menu/dropdown-menu'
 
 const lightChartConfig = {
-  gender: {
-    label: 'Gender',
+  bar: {
+    label: 'blue',
     color: '#2563eb',
   },
-  international: {
-    label: 'International',
-    color: '#60a5fa',
+
+  line: {
+    label: 'orange',
+    color: '#A84300',
   },
-  domestic: {
-    label: 'Domestic',
-    color: '#34d399',
-  },
-  gradYear: {
-    label: 'Graduation Year',
-    color: 'hsl(var(--chart-1))',
+
+  pie: {
+    label: 'black',
+    color: '#000000',
   },
 } satisfies ChartConfig
 
 const darkChartConfig = {
-  gender: {
-    label: 'Gender',
-    color: 'hsl(var(--chart-5))', // red
+  bar: {
+    label: 'red',
+    color: '#FF6347',
   },
-  international: {
-    label: 'International',
-    color: 'hsl(var(--chart-2))', // green
+
+  line: {
+    label: 'neon green',
+    color: '#00FF00',
   },
-  domestic: {
-    label: 'Domestic',
-    color: 'hsl(var(--chart-1))', // blue
-  },
-  gradYear: {
-    label: 'Graduation Year',
-    color: '#ffffff', // white
+
+  pie: {
+    label: 'cyan',
+    color: '#00FFFF',
   },
 } satisfies ChartConfig
+
+const colors = [
+  '#B80000', // Dark Red
+  '#007B00', // Dark Green
+  '#004C99', // Dark Blue
+  '#99004C', // Dark Pink
+  '#CC6600', // Dark Orange
+  '#006699', // Dark Cyan
+  '#660099', // Dark Purple
+  '#993300', // Dark Brown
+  '#006633', // Dark Teal
+]
+
+const countryCodeMapping = {
+  1: 'US-Can',
+  44: 'UK',
+  81: 'Japan',
+  86: 'China',
+  91: 'India',
+  971: 'UAE',
+  972: 'Israel-Palestine',
+  995: 'Georgia',
+  998: 'Uzbekistan',
+}
 
 export default function Index() {
   const { theme, setTheme } = useTheme()
@@ -76,6 +98,7 @@ export default function Index() {
   const [internationalDomesticData, setInternationalDomesticData] = useState([])
   const [gradYearData, setGradYearData] = useState([])
   const [phoneNumberData, setPhoneNumberData] = useState([])
+  const [chartsVisible, setChartsVisible] = useState(false)
 
   const chartConfig = theme === 'dark' ? darkChartConfig : lightChartConfig
 
@@ -95,7 +118,7 @@ export default function Index() {
         const phoneNumberResult = await phoneNumberResponse.json()
 
         if (genderResponse.ok) {
-          const formattedGenderData = genderResult.data.map(item => ({
+          const formattedGenderData = genderResult.data.map((item: { count: any }) => ({
             ...item,
             count: Number(item.count),
           }))
@@ -106,7 +129,7 @@ export default function Index() {
         }
 
         if (internationalDomesticResponse.ok) {
-          const formattedInternationalDomesticData = internationalDomesticResult.data.map(item => ({
+          const formattedInternationalDomesticData = internationalDomesticResult.data.map((item: { count: any }) => ({
             ...item,
             count: Number(item.count),
           }))
@@ -117,7 +140,7 @@ export default function Index() {
         }
 
         if (gradYearResponse.ok) {
-          const formattedGradYearData = gradYearResult.data.map(item => ({
+          const formattedGradYearData = gradYearResult.data.map((item: { count: any }) => ({
             ...item,
             count: Number(item.count),
           }))
@@ -128,9 +151,11 @@ export default function Index() {
         }
 
         if (phoneNumberResponse.ok) {
-          const formattedPhoneNumberData = phoneNumberResult.data.map(item => ({
+          const formattedPhoneNumberData = phoneNumberResult.data.map((item: { count: any }, index: number) => ({
             ...item,
             count: Number(item.count),
+            country: countryCodeMapping[item.phone_number_country_code] || item.phone_number_country_code,
+            fill: colors[index % colors.length],
           }))
           setPhoneNumberData(formattedPhoneNumberData)
         }
@@ -159,128 +184,140 @@ export default function Index() {
 
           <ModeToggle setTheme={setTheme} />
 
-          <div id="chart">
-            <Card>
-              <CardHeader>
-                <CardTitle>Bar Chart - Gender Distribution</CardTitle>
-                <CardDescription>Gender distribution of users</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
-                  <BarChart
-                    accessibilityLayer
-                    data={genderData}
-                    margin={{ top: 20 }}
-                  >
-                    <CartesianGrid vertical={false} />
-                    <XAxis
-                      dataKey="gender"
-                      tickLine={true}
-                      tickMargin={10}
-                      axisLine={true}
-                    />
-                    <YAxis />
-                    <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-                    <Bar dataKey="count" fill={chartConfig.gender.color} radius={8}>
-                      <LabelList position="top" offset={12} className="fill-foreground" fontSize={12} />
-                    </Bar>
-                  </BarChart>
-                </ChartContainer>
-              </CardContent>
-            </Card>
+          <Button onClick={() => setChartsVisible(!chartsVisible)}>
+            {chartsVisible ? 'Hide Charts' : 'Show Charts'}
+          </Button>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Bar Chart - International vs Domestic</CardTitle>
-                <CardDescription>International vs Domestic users</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
-                  <BarChart
-                    accessibilityLayer
-                    data={internationalDomesticData}
-                    margin={{ top: 20 }}
-                  >
-                    <CartesianGrid vertical={false} />
-                    <XAxis
-                      tickLine={true}
-                      tickMargin={10}
-                      axisLine={true}
-                    />
-                    <YAxis />
-                    <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-                    <Bar dataKey="count" fill={chartConfig.gender.color} radius={8}>
-                      <LabelList position="top" offset={12} className="fill-foreground" fontSize={12} />
-                    </Bar>
-                  </BarChart>
-                </ChartContainer>
-              </CardContent>
-            </Card>
+          {chartsVisible && (
+            <div id="chart" className="flex flex-wrap justify-between">
+              <Card className="w-full mb-4">
+                <CardHeader>
+                  <CardTitle>Bar Chart - Gender Distribution</CardTitle>
+                  <CardDescription>Gender distribution of users</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
+                    <BarChart
+                      accessibilityLayer
+                      data={genderData}
+                      margin={{ top: 20 }}
+                    >
+                      <CartesianGrid vertical={false} />
+                      <XAxis
+                        dataKey="gender"
+                        // eslint-disable-next-line react/prefer-shorthand-boolean
+                        tickLine={true}
+                        tickMargin={10}
+                        // eslint-disable-next-line react/prefer-shorthand-boolean
+                        axisLine={true}
+                      />
+                      <YAxis />
+                      <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
+                      <Bar dataKey="count" fill={chartConfig.bar.color} radius={8}>
+                        <LabelList position="top" offset={12} className="fill-foreground" fontSize={12} />
+                      </Bar>
+                    </BarChart>
+                  </ChartContainer>
+                </CardContent>
+              </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Line Chart - Estimated Graduation Year</CardTitle>
-                <CardDescription>Estimated graduation year of users</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ChartContainer config={chartConfig}>
-                  <LineChart
-                    accessibilityLayer
-                    data={gradYearData}
-                    margin={{
-                      top: 20,
-                      left: 12,
-                      right: 12,
-                    }}
-                  >
-                    <CartesianGrid vertical={false} />
-                    <XAxis
-                      dataKey="estimated_grad_year"
-                      tickLine={true}
-                      axisLine={true}
-                      tickMargin={8}
-                    />
-                    <YAxis domain={[0, 120]} />
-                    <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" />} />
-                    <Line
-                      dataKey="count"
-                      type="natural"
-                      stroke={chartConfig.gender.color}
-                      strokeWidth={4}
-                      dot={{
-                        fill: chartConfig.gender.color,
-                      }}
-                      activeDot={{
-                        r: 6,
+              <Card className="w-full mb-4">
+                <CardHeader>
+                  <CardTitle>Pie Chart - Phone number country code</CardTitle>
+                  <CardDescription>Country codes of users phone numbers</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ChartContainer config={chartConfig}>
+                    <PieChart>
+                      <Pie data={phoneNumberData} dataKey="count" nameKey="country" cx="50%" cy="50%" outerRadius={80} label />
+                      <ChartLegend />
+                    </PieChart>
+                  </ChartContainer>
+                </CardContent>
+              </Card>
+
+              <Card className="w-[49%] mb-4">
+                <CardHeader>
+                  <CardTitle>Line Chart - Estimated Graduation Year</CardTitle>
+                  <CardDescription>Estimated graduation year of users</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ChartContainer config={chartConfig}>
+                    <LineChart
+                      accessibilityLayer
+                      data={gradYearData}
+                      margin={{
+                        top: 20,
+                        left: 12,
+                        right: 12,
                       }}
                     >
-                      <LabelList
-                        position="top"
-                        offset={12}
-                        className="fill-foreground"
-                        fontSize={12}
+                      <CartesianGrid vertical={false} />
+                      <XAxis
+                        dataKey="estimated_grad_year"
+                        // eslint-disable-next-line react/prefer-shorthand-boolean
+                        tickLine={true}
+                        // eslint-disable-next-line react/prefer-shorthand-boolean
+                        axisLine={true}
+                        tickMargin={8}
                       />
-                    </Line>
-                  </LineChart>
-                </ChartContainer>
-              </CardContent>
-            </Card>
+                      <YAxis domain={[0, 120]} />
+                      <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" />} />
+                      <Line
+                        dataKey="count"
+                        type="natural"
+                        stroke={chartConfig.line.color}
+                        strokeWidth={4}
+                        // dot={{
+                        //   fill: chartConfig.line.color,
+                        // }}
+                        activeDot={{
+                          r: 6,
+                        }}
+                      >
+                        <LabelList
+                          position="top"
+                          offset={12}
+                          className="fill-foreground"
+                          fontSize={12}
+                        />
+                      </Line>
+                    </LineChart>
+                  </ChartContainer>
+                </CardContent>
+              </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Pie Chart - Legend</CardTitle>
-                <CardDescription>January - June 2024</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ChartContainer config={chartConfig}>
-                  <PieChart>
-                    <Pie data={phoneNumberData} dataKey="count" nameKey="phone_number_country_code" cx="50%" cy="50%" outerRadius={80} fill={chartConfig.gender.color} label />
-                    <ChartLegend />
-                  </PieChart>
-                </ChartContainer>
-              </CardContent>
-            </Card>
-          </div>
+              <Card className="w-[49%] mb-4">
+                <CardHeader>
+                  <CardTitle>Bar Chart - International vs Domestic</CardTitle>
+                  <CardDescription>International vs Domestic users</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
+                    <BarChart
+                      accessibilityLayer
+                      data={internationalDomesticData}
+                      margin={{ top: 20 }}
+                    >
+                      <CartesianGrid vertical={false} />
+                      <XAxis
+                        // eslint-disable-next-line react/prefer-shorthand-boolean
+                        tickLine={true}
+                        tickMargin={10}
+                        // eslint-disable-next-line react/prefer-shorthand-boolean
+                        axisLine={true}
+                      />
+                      <YAxis />
+                      <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
+                      <Bar dataKey="count" fill={chartConfig.bar.color} radius={8}>
+                        <LabelList position="top" offset={12} className="fill-foreground" fontSize={12} />
+                      </Bar>
+                    </BarChart>
+                  </ChartContainer>
+                </CardContent>
+              </Card>
+            </div>
+          )}
         </div>
       </div>
     </div>
