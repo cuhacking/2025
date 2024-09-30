@@ -3,7 +3,9 @@
 import { Bar, BarChart, CartesianGrid, LabelList, Line, LineChart, XAxis, YAxis } from 'recharts'
 import { TrendingUp } from 'lucide-react'
 import { useEffect, useState } from 'react'
-// import { Button } from '../components/ui/button/button'
+import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
+import { useTheme } from 'next-themes'
+import { Button } from '../components/ui/button/button'
 import {
   Card,
   CardContent,
@@ -20,8 +22,14 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from '../components/ui/chart/chart'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '../components/ui/dropdown-menu/dropdown-menu'
 
-const chartConfig = {
+const lightChartConfig = {
   gender: {
     label: 'Gender',
     color: '#2563eb',
@@ -40,10 +48,32 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
+const darkChartConfig = {
+  gender: {
+    label: 'Gender',
+    color: 'hsl(var(--chart-5))', // red
+  },
+  international: {
+    label: 'International',
+    color: 'hsl(var(--chart-2))', // green
+  },
+  domestic: {
+    label: 'Domestic',
+    color: 'hsl(var(--chart-1))', // blue
+  },
+  gradYear: {
+    label: 'Graduation Year',
+    color: '#ffffff', // white
+  },
+} satisfies ChartConfig
+
 export default function Index() {
+  const { theme, setTheme } = useTheme()
   const [genderData, setGenderData] = useState([])
   const [internationalDomesticData, setInternationalDomesticData] = useState([])
   const [gradYearData, setGradYearData] = useState([])
+
+  const chartConfig = theme === 'dark' ? darkChartConfig : lightChartConfig
 
   useEffect(() => {
     async function fetchData() {
@@ -103,6 +133,8 @@ export default function Index() {
               Welcome portal 👋
             </h1>
           </div>
+
+          <ModeToggle setTheme={setTheme} />
 
           <div id="chart">
             <Card>
@@ -185,7 +217,7 @@ export default function Index() {
                       axisLine={true}
                       tickMargin={8}
                     />
-                    <YAxis />
+                    <YAxis domain={[0, 120]} />
                     <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" />} />
                     <Line
                       dataKey="count"
@@ -214,5 +246,30 @@ export default function Index() {
         </div>
       </div>
     </div>
+  )
+}
+
+function ModeToggle({ setTheme }: { setTheme: (theme: string) => void }) {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="icon">
+          <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <span className="sr-only">Toggle theme</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => setTheme('light')}>
+          Light
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme('dark')}>
+          Dark
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme('system')}>
+          System
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }
