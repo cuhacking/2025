@@ -5,7 +5,8 @@ import { createElement } from 'react'
 import {
   GitPullRequestCreateArrow as ContributionGuidelinesIcon,
   Dock as HomeIcon,
-  Library as KnowledgeBaseIcon,
+  BookOpenText as KnowledgeBaseIcon,
+  Library as LibrariesIcon,
   Layers as ToolsIcon,
   icons,
 } from 'lucide-react'
@@ -35,6 +36,12 @@ export const pages = [
     description: 'Curated resources to accelerate your learning.',
     url: 'knowledge-base',
     icon: KnowledgeBaseIcon,
+  },
+  {
+    title: 'Libraries',
+    description: 'Libraries within this monorepo used within the applications.',
+    url: 'libraries',
+    icon: LibrariesIcon,
   },
 ]
 

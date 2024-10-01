@@ -128,24 +128,7 @@ npm i -g pnpm
 
 </div>
 
-  <div className="step">
-    Install [Nx](https://nx.dev).
 
-```sh title="Terminal"
-pnpm i -g nx@19.5.7
-```
-
-    Nice, now you're an
-
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer">
-  <img
-    src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png"
-    width="45"
-  />
-</a>
-dev.
-
-</div>
 <div className="step">
 Clone [source repository](https://github.com/cuhacking/hackathon).
 
@@ -182,6 +165,14 @@ cd 2025
 pnpm i
 ```
 
+  </div>
+
+  <div className="step">
+    Spin up development docker containers, one of which contains the PostgreSQL database.
+
+    ```sh title="terminal"
+    docker-compose up -d
+    ```
   </div>
 
 <Accordions>
@@ -258,6 +249,15 @@ You should now be able to sign in with Google.
 </Accordion>
 </Accordions>
 
+<div className="step">
+  Run Drizzle Migrate
+
+  ```sh title="Terminal"
+  pnpm nx run db:migrate
+  ```
+
+</div>
+
   <div className="step">
   Run the project of your choice.
 
@@ -266,112 +266,65 @@ You should now be able to sign in with Google.
     <Tabs groupId="website-project-nx-commands" items={['dev', 'build', 'start']} persist>
       <Tab value="dev">
         ```sh title="Terminal"
-        nx dev web
-        ```
-        Or
-        ```sh title="Terminal"
-        nx run web:dev
+        pnpm nx run web:dev
         ```
       </Tab>
       <Tab value="build">
         ```sh title="Terminal"
-        nx build web
-        ```
-        Or
-        ```sh title="Terminal"
-        nx run web:build
+        pnpm nx run web:build
         ```
       </Tab>
       <Tab value="start">
         ```sh title="Terminal"
-        nx start web
-        ```
-        Or
         ```sh title="Terminal"
-        nx run web:start
+        pnpm nx run web:start
         ```
       </Tab>
     </Tabs>
   </Tab>
 
-{" "}
+  <Tab value="Hacker Portal">
+    <Tabs
+      groupId="hacker-portal-project-nx-commands"
+      items={["dev", "build", "start"]}
+      persist
+    >
+      <Tab value="dev">
+        ```sh title="Terminal"
+        pnpm nx run portal:dev
+        ```
+      </Tab>
 
-<Tab value="Hacker Portal">
-  <Tabs
-    groupId="hacker-portal-project-nx-commands"
-    items={["dev", "build", "start"]}
-    persist
-  >
-    <Tab value="dev">
+      <Tab value="build">
+        ```sh title="Terminal"
+        pnpm nx run portal:build
+        ```
+      </Tab>
 
-    ```sh title="Terminal"
-    nx dev portal
-    ```
-      Or
+      <Tab value="start">
+        ```sh title="Terminal"
+        pnpm nx run portal:start
+        ```
+      </Tab>
 
-    ```sh title="Terminal"
-    nx run portal:dev
-    ```
-
-    </Tab>
-
-    <Tab value="build">
-
-      ```sh title="Terminal"
-      nx build portal
-      ```
-
-          Or
-
-      ```sh title="Terminal"
-      nx run portal:build
-      ```
-    </Tab>
-
-    <Tab value="start">
-
-      ```sh title="Terminal"
-      nx start portal
-      ```
-
-      Or
-
-      ```sh title="Terminal"
-      nx run portal:start
-      ```
-
-    </Tab>
-
-  </Tabs>
-</Tab>
+    </Tabs>
+  </Tab>
 
   <Tab value="DevDocs">
     <Tabs groupId="devdocs-project-nx-commands" items={['dev', 'build', 'start']} persist>
       <Tab value="dev">
         ```sh title="Terminal"
-        nx dev docs
-        ```
-        Or
-        ```sh title="Terminal"
-        nx run docs:dev
+        pnpm nx run docs:dev
         ```
       </Tab>
       <Tab value="build">
         ```sh title="Terminal"
-        nx build docs
-        ```
-        Or
-        ```sh title="Terminal"
-        nx run docs:build
+        pnpm nx run docs:build
         ```
       </Tab>
       <Tab value="start">
         ```sh title="Terminal"
-        nx start docs
-        ```
-        Or
-        ```sh title="Terminal"
-        nx run docs:start
+        pnpm nx run docs:start
         ```
       </Tab>
     </Tabs>
@@ -385,19 +338,19 @@ You should now be able to sign in with Google.
 To execute tasks with Nx use the following syntax:
 
 ```sh title="Terminal"
-nx <target> <project> <...options>
+pnpm nx run <project>:<target> <...options>
 ```
 
 You can also run multiple targets:
 
 ```sh title="Terminal"
-nx run-many -t <target1> <target2>
+pnpm nx run-many -t <target1> <target2>
 ```
 
 ..or add `-p` to filter specific projects
 
 ```sh title="Terminal"
-nx run-many -t <target1> <target2> -p <proj1> <proj2>
+pnpm nx run-many -t <target1> <target2> -p <proj1> <proj2>
 ```
 
 Targets can be defined in the `package.json` or `projects.json`. [Learn more](https://nx.dev/features/run-tasks).
@@ -405,7 +358,7 @@ Targets can be defined in the `package.json` or `projects.json`. [Learn more](ht
 Explore the project graph to see the projects in the monorepo and the tasks you can run with Nx.
 
 ```sh title="Terminal"
-nx graph
+pnpm nx graph
 ```
 
 [Learn more](https://nx.dev/core-features/explore-graph).
@@ -416,7 +369,7 @@ Use [Nx Console](https://nx.dev/nx-console) to integrate with editors.
 
 ### Build for production
 
-Run `nx build portal` to build the application. The build artifacts are stored in the output directory (e.g. `dist/` or `build/`), ready to be deployed.
+Run `pnpm nx run portal:build` to build the application. The build artifacts are stored in the output directory (e.g. `dist/` or `build/`), ready to be deployed.
 
 ### Set up CI
 
@@ -436,9 +389,9 @@ You'll see the url(s) in your terminal for the project(s) you're running, simply
     For example you may see:
 
 ```sh title="Terminal"
-╰─ nx dev docs
+╰─ pnpm nx run docs:dev
 
-> nx run docs:dev
+> pnpm nx run docs:dev
 
 > next dev
 
