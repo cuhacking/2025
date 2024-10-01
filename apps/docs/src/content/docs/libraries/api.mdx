@@ -1,0 +1,119 @@
+---
+title: api
+description: Type-safe API using tRPC
+---
+
+## 📦 Overview
+
+### What it does
+
+This library brings a single tRPC API endpoint to perform actions on procedures easily with type-safety™️.
+
+### Key Features
+
+- Single endpoint
+- Organized routing directories
+- Context easily provided to endpoints
+- Full type-safety
+
+### How to use
+
+#### Basic Usage Example
+
+Assume a `hello` procedure defined in the `api` library, in a `user` route:
+```ts
+import { createRouter, publicProcedure } from '../../trpc'
+
+export const userRouter = createRouter({
+  hello: publicProcedure.query(({ ctx }: { ctx: any }) => {
+    return {
+      message: `Hello, ${ctx?.user?.name ?? 'world'} from tRPC!`,
+    }
+  }),
+})
+```
+
+Here, `ctx` is the context provided by the user on every request (containing the user, session, etc).
+This is `publicProcedure`, meaning authentication is not required to access it.
+
+To call this procedure, import `api` from the tRPC implementation in the app or library, and use it:
+
+```ts
+import { api } from '../lib/trpc/server'
+
+const hello = await api.user.hello()
+```
+
+---
+
+## 📖 API Reference
+
+### `api` Function
+
+- **Description**: Function containing all API procedures to the server.
+- **Parameters**: Depending on the procedure defined.
+- **Return Type**: Promise depending on the procedure return type.
+
+### Error Handling
+
+Errors should be handled properly within each API route procedure.
+
+---
+
+## 🛠️ Commands
+
+### View all commands
+
+To view all commands from the library's `project.json`, `package.json` and inheritted:
+```sh title="Terminal"
+pnpm nx show project api
+```
+
+### Focus library usage
+
+To view/focus on all the apps & libraries which use this library:
+```sh title="Terminal"
+pnpm nx graph --focus api
+```
+
+---
+
+## 📝 Contributing
+
+### Best Practices
+
+#### Code Formatting
+
+Include instructions or links to code style guides, like Prettier/ESLint.
+
+The library should be linted without any errors:
+```sh title="Terminal"
+pnpm nx run api:lint
+```
+
+#### Testing
+
+To run tests for this library:
+```sh title="Terminal"
+pnpm nx run api:test
+```
+
+---
+
+## ❓ FAQs
+
+### How can I add a new route?
+
+Begin by copying the template for routes. Define your procedures, and then make sure to import the router
+into the `AppRouter`, found in `src/index.ts`.
+
+---
+
+## 🛑 Troubleshooting
+
+### Common Errors
+
+#### Error accessing a route / Redirected to login page
+
+The user accessing a protected route needs to be authenticated, no matter the authorization levels.
+Additionally, authentication needs to be properly configured with its environment variables.
