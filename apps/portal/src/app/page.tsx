@@ -1,13 +1,12 @@
 'use client'
 
 import { Bar, BarChart, CartesianGrid, LabelList, Line, LineChart, Pie, PieChart, XAxis, YAxis } from 'recharts'
-import { TrendingUp } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
 import { useTheme } from 'next-themes'
-import { ResizableBox } from 'react-resizable'
 import { Button } from '../components/ui/button/button'
 import 'react-resizable/css/styles.css'
+// import { ResizableBox } from 'react-resizable'
 
 import {
   Card,
@@ -23,7 +22,7 @@ import type {
 import {
   ChartContainer,
   ChartLegend,
-  ChartLegendContent,
+  // ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from '../components/ui/chart/chart'
@@ -190,13 +189,14 @@ export default function Index() {
 
           {chartsVisible && (
             <div id="chart" className="flex flex-wrap justify-between">
-              <Card className="w-full mb-4">
+              {/* <ResizableBox width={600} height={400} minConstraints={[300, 200]} maxConstraints={[1200, 800]} className="min-h-[200px] w-full h-full"> */}
+              <Card className="w-full h-full">
                 <CardHeader>
                   <CardTitle>Bar Chart - Gender Distribution</CardTitle>
                   <CardDescription>Gender distribution of users</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
+                  <ChartContainer config={chartConfig} className="min-h-[200px] w-full h-full">
                     <BarChart
                       accessibilityLayer
                       data={genderData}
@@ -220,7 +220,9 @@ export default function Index() {
                   </ChartContainer>
                 </CardContent>
               </Card>
+              {/* </ResizableBox> */}
 
+              {/* <ResizableBox width={600} height={400} minConstraints={[300, 200]} maxConstraints={[1200, 800]} className="w-full mb-4"> */}
               <Card className="w-full mb-4">
                 <CardHeader>
                   <CardTitle>Pie Chart - Phone number country code</CardTitle>
@@ -235,7 +237,9 @@ export default function Index() {
                   </ChartContainer>
                 </CardContent>
               </Card>
+              {/* </ResizableBox> */}
 
+              {/* <ResizableBox width={600} height={400} minConstraints={[300, 200]} maxConstraints={[1200, 800]} className="mb-4 w-[49%]"> */}
               <Card className="w-[49%] mb-4">
                 <CardHeader>
                   <CardTitle>Line Chart - Estimated Graduation Year</CardTitle>
@@ -286,7 +290,9 @@ export default function Index() {
                   </ChartContainer>
                 </CardContent>
               </Card>
+              {/* </ResizableBox> */}
 
+              {/* <ResizableBox width={600} height={400} minConstraints={[300, 200]} maxConstraints={[1200, 800]} className="mb-4 w-[49%]"> */}
               <Card className="w-[49%] mb-4">
                 <CardHeader>
                   <CardTitle>Bar Chart - International vs Domestic</CardTitle>
@@ -316,6 +322,7 @@ export default function Index() {
                   </ChartContainer>
                 </CardContent>
               </Card>
+              {/* </ResizableBox> */}
             </div>
           )}
         </div>
