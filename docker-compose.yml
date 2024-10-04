@@ -1,7 +1,7 @@
 services:
   db:
     image: postgres:13
-    container_name: db
+    container_name: 2025-db
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
