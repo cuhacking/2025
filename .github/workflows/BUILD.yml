@@ -21,8 +21,6 @@ jobs:
 
       - name: 📦 Install pnpm
         uses: pnpm/action-setup@v4
-        # with:
-        #   run_install: false
 
       - name: Install Node.js
         uses: actions/setup-node@v4
@@ -32,9 +30,6 @@ jobs:
 
       - name: 🧹 Lint Projects
         run: pnpm i; pnpm nx run-many -t lint -p docs docs-e2e website website-e2e portal portal-e2e --verbose
-
-      - name: 🎭 Install Playwright Browsers
-        run: pnpm exec playwright install --with-deps
 
       - name: 🏗️ Build Projects
         env:
