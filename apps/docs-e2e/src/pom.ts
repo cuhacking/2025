@@ -54,8 +54,8 @@ export class DocsLayout {
     this.page = page
 
     // Desktop Header
-    this.cuHackingLogoIcon = page.getByRole('img', { name: 'cuHacking logo' })
-    this.cuHackingLogoText = page.getByRole('link', { name: 'cuHacking logo cuHacking' })
+    this.cuHackingLogoIcon = page.getByRole('img', { name: 'cuHacking logo' }).first()
+    this.cuHackingLogoText = page.getByRole('link', { name: 'cuHacking logo cuHacking' }).first()
     this.websiteDropdownButton = page.getByRole('button', { name: 'Website' })
     this.websiteLink = page.getByRole('dialog').getByRole('link', { name: 'Website' })
     this.websiteSourceLink = page.getByRole('dialog').getByRole('link', { name: 'Source' })
@@ -80,7 +80,7 @@ export class DocsLayout {
     this.sectionsDropdownButton = page.getByRole('button', { name: 'Home Leave none behind' })
     this.mobileWebsiteLink = page.getByRole('link', { name: 'Website' })
     this.mobileHackerPortalSourceLink = page.getByRole('link', { name: 'Source', exact: true })
-    this.mobileHackerAppLink = page.getByRole('link', { name: 'App' })
+    this.mobileHackerAppLink = page.getByRole('link', { name: 'App', exact: true })
     this.mobileWebsiteSourceLink = page.getByRole('link', { name: 'Source (legacy)' })
     this.mobileGithubIcon = page.getByRole('link', { name: 'Github' })
     this.mobileHackerPortalProjectBoardLink = page.getByRole('link', { name: 'Project Board' })
