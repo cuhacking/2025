@@ -12,9 +12,9 @@ const nextConfig = {
   nx: {
     // Set this to true if you would like to use SVGR
     // See: https://github.com/gregberge/svgr
-    svgr: false,
-    reactStrictMode: true,
-    output: 'standalone',
+    // svgr: false,
+    // reactStrictMode: true,
+    // output: 'standalone',
   },
 }
 
