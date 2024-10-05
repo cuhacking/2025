@@ -7,7 +7,7 @@ on:
     branches: '*'
 
 jobs:
-  release:
+  build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -37,6 +37,11 @@ jobs:
         run: pnpm exec playwright install --with-deps
 
       - name: 🏗️ Build Projects
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
         run: pnpm nx run-many -t build -p docs website portal --verbose
 
       - name: 💰 Profit
