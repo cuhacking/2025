@@ -38,6 +38,7 @@
     "postgres": "^3.4.4",
     "react": "18.3.1",
     "react-dom": "18.3.1",
+    "sharp": "^0.33.5",
     "superjson": "^2.2.1",
     "tailwind": "link:@nx/react/tailwind",
     "tslib": "^2.3.0",
