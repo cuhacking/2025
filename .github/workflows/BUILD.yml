@@ -17,7 +17,7 @@ jobs:
       - name: 🛎️ Checkout Code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # All history for branches and tags
+          fetch-depth: 1 # Shallow clone (only take latest commit)
 
       - name: 📦 Install pnpm
         uses: pnpm/action-setup@v4
