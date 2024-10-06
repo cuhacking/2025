@@ -1,3 +1,4 @@
+import process from 'node:process'
 import { composePlugins, withNx } from '@nx/next'
 import createMDX from 'fumadocs-mdx/config'
 import { fileGenerator, remarkDocGen, remarkInstall } from 'fumadocs-docgen'
@@ -15,6 +16,14 @@ const nextConfig = {
     svgr: false,
     reactStrictMode: true,
     output: 'standalone',
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: process.env.ALLOWED_IMAGE_HOSTNAME || 'avatars.githubusercontent.com',
+      },
+    ],
   },
 }
 
