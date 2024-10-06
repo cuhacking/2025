@@ -10,6 +10,111 @@ description: Database interactor with DrizzleORM.
 This library holds the schemas and commands for making and using the database using DrizzleORM and Drizzle-Kit.
 It puts together the schemas in a configuration, and provides one database object to interact with databases with type-safety.
 
+### Mermaid Entity-Relationship Diagram
+
+Here is the Mermaid ERD for the portal database schema:
+
+```mermaid
+erDiagram
+    User {
+        serial id "Primary key, unique"
+        varchar(32) firstName "First name of the user"
+        varchar(32) middleName "Middle name of the user, optional"
+        varchar(32) lastName "Last name of the user"
+        varchar(32) preferredName "Preferred name of the user, optional"
+        varchar(64) email "Email of the user, must be unique, verification required"
+        bool isEmailVerified "Whether the email is verified, default is 'no'"
+        varchar(128) avatarUrl "URL to the user's profile picture, optional"
+        text profileDescription "Profile description, optional"
+        date dateOfBirth "Date of birth of the user, verification required"
+        enum gender "Gender of the user, e.g., male, female, other, optional"
+        enum phoneNumberCountryCode "Country code of phone number, e.g., +1"
+        varchar(16) phoneNumber "Phone number of the user, must be unique, verification required"
+        bool isPhoneNumberVerified "Whether the phone number is verified, default is 'no'"
+        smallint numHackathonsAttended "Number of hackathons attended by the user"
+        text anyOtherComments "Any additional comments from the user, optional"
+        bool isDomestic "Whether the user is international or domestic, optional"
+        enum ethnicity "Ethnicity of the user, optional, black, white, asian, hispanic, middle-eastern,"
+        int estimatedGradYear "Estimated graduation year of the user, optional"
+        bool agreeToMlhReqs "MLH requirements, default is 'No'"
+        int resumeId "References Resume.id, mandatory relationship"
+        int schoolId "References School.id, mandatory relationship"
+        int emergencyContactId "References EmergencyContact.id, mandatory relationship"
+        int teamId "References Team.id, mandatory relationship"
+    }
+
+    EmergencyContact {
+        serial id "Primary key, unique"
+        varchar(32) name "Name of the emergency contact"
+        enum relationship "Relationship to the user, e.g., mother, father, sibling, friend, relative, other"
+        varchar(16) phoneNumber "Phone number of the contact, must be unique, verification required"
+        bool isPhoneNumberVerified "Whether the phone number is verified, default is 'no'"
+    }
+
+    Team {
+        serial id "Primary key, unique"
+        varchar(64) name "Name of the team"
+        varchar(128) profileImageUrl "URL to the user's profile picture, optional"
+        varchar(256) projectLinkUrl "URL to the project, verification required"
+        int teamOwnerId "References User.id, one-to-one relationship"
+        bool hasSubmitted "Whether the team has submitted a project, default is 'No'"
+        varchar(128) teamProfileImageUrl "URL to the user's profile picture, optional"
+    }
+
+    School {
+        serial id "Primary key, unique"
+        varchar(128) name "Name of the school, verification required"
+        enum levelOfStudy "Level of study, e.g., graduate school, high school, etc."
+    }
+
+    Program {
+        serial id "Primary key, unique"
+        varchar(128) name "Name of the program"
+        int schoolId "References School.id"
+        enum programType "Type of program, e.g., bachelor, master, diploma, certificate, etc."
+    }
+
+    Resume {
+        serial id "Primary key, unique"
+        varchar(128) fileLink "URL to the resume file, verification required"
+        bool hasPrivacyToggle "Privacy setting for the resume, default is false"
+        timestamp uploadedAt "Timestamp when the resume was uploaded, default is CURRENT_TIMESTAMP"
+    }
+
+    SocialMedia {
+        serial id "Primary key, unique"
+        int userId "References User.id, optional relationship"
+        varchar(16) platformName "Name of the social media platform, e.g., LinkedIn, GitHub, etc."
+        varchar(128) profileUrl "URL to the social media profile, verification required"
+    }
+
+    UserPreferences {
+        serial id "Primary key, unique"
+        int userId "References User.id, mandatory relationship"
+        enum preferredLanguage "Preferred language of the user, default is 'EN'"
+        enum eventPreferences "Event preferences, e.g., hardware, software, etc."
+        %% bool darkMode "Whether the user prefers dark mode, default is false"
+        bool privacyMode "Privacy mode, to be defined, default is 'No'"
+        bool isSubscribedToNewsletter "Whether the user is subscribed newsletter, default is 'No'"
+        enum shirtSize "Shirt size of the user"
+        enum pronouns "Preferred pronouns of the user, e.g., he/him, she/her, they/them, other"
+        enum[] dietRestrictions "Dietary restrictions, e.g., allergies, vegan, none, etc."
+        enum[] trackPreferences "Track preferences, e.g., hardware, software, etc., optional"
+        enum[] interests "Interests of the user, e.g., languages, etc., optional"
+        enum[] disabilities "Disabilities, if any"
+        enum[] applicableSkills "Applicable skills of the user"
+    }
+
+    %% Relationships
+    User ||--|| Resume : "References"
+    User ||--|| School : "References"
+    User ||--o{ EmergencyContact : "References"
+    User }o--|| Team : "References"
+    Program ||--o{ School : "References"
+    SocialMedia }o--|| User : "References"
+    UserPreferences ||--|| User : "References"
+```
+
 ### Key Features
 
 - One source of truth
