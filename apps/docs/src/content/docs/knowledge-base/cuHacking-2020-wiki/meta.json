@@ -2,7 +2,6 @@
   "title": "cuHacking 2020 wiki",
   "icon": "Bird",
   "pages": [
-    "index",
     "development-timeline",
     "admin-console",
     "application-server",
