@@ -108,6 +108,9 @@ importers:
       '@eslint/js':
         specifier: ~8.57.0
         version: 8.57.0
+      '@netlify/plugin-nextjs':
+        specifier: ^5.7.3
+        version: 5.7.3
       '@nx/devkit':
         specifier: 19.5.7
         version: 19.5.7(nx@19.5.7(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.12))(@swc/types@0.1.12)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.12)))
@@ -2104,6 +2107,10 @@ packages:
 
   '@napi-rs/wasm-runtime@0.2.4':
     resolution: {integrity: sha512-9zESzOO5aDByvhIAsOy9TbpZ0Ur2AJbUI7UT73kcUTS2mxAMHOBaa1st/jAymNoCtvrit99kkzT1FZuXVcgfIQ==}
+
+  '@netlify/plugin-nextjs@5.7.3':
+    resolution: {integrity: sha512-J4q4VBv63I+1/DfUiaqtmHzkoLWz+m+fTiSyb299bonC6SNGr1WeChgXNseVO/jzpuxCGUirEabA3LKrbxov+A==}
+    engines: {node: '>=18.0.0'}
 
   '@next/env@14.2.3':
     resolution: {integrity: sha512-W7fd7IbkfmeeY2gXrzJYDx8D2lWKbVoTIj1o1ScPHNzvp30s1AuoEFSdr39bC5sjxJaxTtq3OTCZboNp0lNWHA==}
@@ -13841,6 +13848,8 @@ snapshots:
       '@emnapi/core': 1.2.0
       '@emnapi/runtime': 1.2.0
       '@tybys/wasm-util': 0.9.0
+
+  '@netlify/plugin-nextjs@5.7.3': {}
 
   '@next/env@14.2.3': {}
 
