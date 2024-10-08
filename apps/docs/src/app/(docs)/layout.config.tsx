@@ -23,7 +23,7 @@ export const baseOptions: HomeLayoutProps = {
         <span className="text-lg font-bold">cuHacking DevDocs</span>
       </>
     ),
-    url: '/docs',
+    url: '/',
   },
   githubUrl: 'https://github.com/cuhacking/hackathon',
   links: [
@@ -83,7 +83,7 @@ export const docsOptions: DocsLayoutProps = {
         options={pages.map(page => ({
           title: page.title,
           description: page.description,
-          url: `/docs/${page.url}`,
+          url: `/${page.url}`,
           icon: (
             <page.icon
               className="size-9 shrink-0 rounded-md bg-gradient-to-t from-background/80 p-1.5"
