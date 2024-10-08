@@ -1,0 +1,11 @@
+[build]
+base = "/"
+publish = "/apps/portal/.next"
+command = "pnpm i && pnpm exec playwright install && pnpm nx build portal"
+
+[dev]
+base = "/apps/portal/"
+command = "nx dev portal"
+
+[build.environment]
+NODE_VERSION = "20.0.0"
