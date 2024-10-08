@@ -16,6 +16,15 @@ const nextConfig = {
     // reactStrictMode: true,
     // output: 'standalone',
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        // eslint-disable-next-line node/prefer-global/process
+        hostname: process.env.ALLOWED_IMAGE_HOSTNAME || 'avatars.githubusercontent.com',
+      },
+    ],
+  },
 }
 
 const withMDX = createMDX({
