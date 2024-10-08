@@ -1,0 +1,11 @@
+[build]
+base = "/"
+publish = "apps/docs/.next"
+command = "pnpm i && pnpm exec playwright install && pnpm nx build docs"
+
+[dev]
+base = "/apps/docs/"
+command = "nx dev docs"
+
+[build.environment]
+NODE_VERSION = "20.0.0"
