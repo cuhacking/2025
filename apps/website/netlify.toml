@@ -1,0 +1,22 @@
+[build]
+base = "/apps/website/"
+publish = "./build"
+command = "pnpm i && pnpm exec playwright install && nx build website"
+
+[[redirects]]
+from = "/*"
+to = "/.netlify/functions-internal"
+status = 200
+
+[dev]
+base = "/apps/website/"
+command = "nx dev website"
+
+[[headers]]
+for = "/build/*"
+
+[headers.values]
+Cache-Control = "public, max-age=31536000, s-maxage=31536000"
+
+[build.environment]
+NODE_VERSION = "20.0.0"
