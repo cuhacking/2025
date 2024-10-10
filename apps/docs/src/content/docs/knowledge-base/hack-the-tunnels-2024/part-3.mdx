@@ -1,0 +1,503 @@
+---
+title: 3. Share cool automated things with others
+description: Convince someone's thing to depend on your thing, and then push a change that breaks their thing.
+---
+
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+<div className="steps">
+<div className="step">
+### Creating repositories
+
+You're at Hack the Tunnels. Your friend wants to impress their crush somehow.
+
+We need a way to share the cool thing we made with them. Let's turn that into a repository.
+
+<Accordions>
+<Accordion title="What's a repository?">
+_Repository_ is just a fancy term for a _directory_ that is version controlled by Git.
+</Accordion>
+</Accordions>
+
+Navigate back to your VS Code Terminal and do the following.
+
+```sh title="Terminal"
+git init .
+```
+
+Now let's make a commit.
+
+```sh title="Terminal"
+git commit
+```
+
+You should see.
+```sh
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        file.sh
+
+nothing added to commit but untracked files present (use "git add" to track)
+```
+</div>
+
+<Accordions>
+<Accordion title="Why did that not work?">
+Git won't version control files unless you to tell it to.
+
+This gives you flexibility and saves you from oopsie situations where you may end up sharing files you didn't mean to, such as those containing your passwords.
+</Accordion>
+</Accordions>
+
+<div className="step">
+### Adding files
+
+Let's tell git to **track** changes to the file we want to commit.
+```sh title="Terminal"
+git add file.sh
+```
+```sh title="Terminal"
+git commit -m "initial commit"
+```
+
+You should see:
+```sh
+git commit -m "first commit"
+[master (root-commit) d8f6d74] first commit
+ 1 file changed, 11 insertions(+)
+ create mode 100755 file.sh
+```
+</div>
+
+
+<div className="step">
+### Pushing to remote
+
+Great, now we need to actually send the link to this somehow. We can use GitHub for this.
+
+It will host a **remote** version of the repository that our friend can download.
+
+```sh title="Terminal"
+gh repo create
+```
+We don't want to create a new repository, but rather push an existing one.
+
+```txt
+? What would you like to do?  [Use arrows to move, type to filter]
+  Create a new repository on GitHub from scratch
+  Create a new repository on GitHub from a template repository
+> Push an existing local repository to GitHub // [!code highlight]
+```
+Leave the path as is, and hit enter.
+```txt
+? What would you like to do? Push an existing local repository to GitHub
+? Path to local repository (.) // [!code highlight]
+```
+
+Leave the Repository name as is, and hit enter.
+```txt
+? What would you like to do? Push an existing local repository to GitHub
+? Path to local repository .
+? Repository name (hack-the-tunnels-git-workshop) // [!code highlight]
+```
+
+Select your personal account as the owner, and hit enter.
+```txt
+? What would you like to do? Push an existing local repository to GitHub
+? Path to local repository .
+? Repository name hack-the-tunnels-git-workshop
+? Repository owner  [Use arrows to move, type to filter]
+  CarletonComputerScienceSociety
+> MFarabi619 // [!code highlight]
+  cuhacking
+  cusec
+  ieee-spac
+  ```
+
+You can provide it any description you like. Since we're in a hurry, we'll leave it blank.
+```txt
+? What would you like to do? Push an existing local repository to GitHub
+? Path to local repository .
+? Repository name hack-the-tunnels-git-workshop
+? Repository owner MFarabi619
+? Description // [!code highlight]
+```
+
+Leave it as public.
+```txt
+? What would you like to do? Push an existing local repository to GitHub
+? Path to local repository .
+? Repository name hack-the-tunnels-git-workshop
+? Repository owner MFarabi619
+? Description
+? Visibility  [Use arrows to move, type to filter]
+> Public // [!code highlight]
+  Private
+  ```
+
+Hit enter to add the remote.
+```
+? What would you like to do? Push an existing local repository to GitHub
+? Path to local repository .
+? Repository name hack-the-tunnels-git-workshop
+? Repository owner MFarabi619
+? Description
+? Visibility Public
+✓ Created repository MFarabi619/hack-the-tunnels-git-workshop on GitHub
+  https://github.com/MFarabi619/hack-the-tunnels-git-workshop
+? Add a remote? (Y/n) // [!code highlight]
+```
+
+Hit enter, leave it as origin.
+```
+? What would you like to do? Push an existing local repository to GitHub
+? Path to local repository .
+? Repository name hack-the-tunnels-git-workshop
+? Repository owner MFarabi619
+? Description
+? Visibility Public
+✓ Created repository MFarabi619/hack-the-tunnels-git-workshop on GitHub
+  https://github.com/MFarabi619/hack-the-tunnels-git-workshop
+? Add a remote? Yes
+? What should the new remote be called? (origin) // [!code highlight]
+```
+
+```txt
+? What would you like to do? Push an existing local repository to GitHub
+? Path to local repository .
+? Repository name hack-the-tunnels-git-workshop
+? Repository owner MFarabi619
+? Description
+? Visibility Public
+✓ Created repository MFarabi619/hack-the-tunnels-git-workshop on GitHub
+  https://github.com/MFarabi619/hack-the-tunnels-git-workshop
+? Add a remote? Yes
+? What should the new remote be called? origin
+✓ Added remote https://github.com/MFarabi619/hack-the-tunnels-git-workshop.git
+? Would you like to push commits from the current branch to "origin"? (Y/n) // [!code highlight]
+```
+
+At this point you're done :)
+```txt
+? What would you like to do? Push an existing local repository to GitHub
+? Path to local repository .
+? Repository name hack-the-tunnels-git-workshop
+? Repository owner MFarabi619
+? Description
+? Visibility Public
+✓ Created repository MFarabi619/hack-the-tunnels-git-workshop on GitHub
+  https://github.com/MFarabi619/hack-the-tunnels-git-workshop
+? Add a remote? Yes
+? What should the new remote be called? origin
+✓ Added remote https://github.com/MFarabi619/hack-the-tunnels-git-workshop.git
+? Would you like to push commits from the current branch to "origin"? Yes
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 270 bytes | 270.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/MFarabi619/hack-the-tunnels-git-workshop.git
+ * [new branch]      HEAD -> master
+branch 'master' set up to track 'origin/master'.
+✓ Pushed commits to https://github.com/MFarabi619/hack-the-tunnels-git-workshop.git
+```
+
+Navigate to the url in the final line to see your git repository hosted on GitHub.
+
+Nice, now your friend can get your cool stuff with:
+
+```sh title="Terminal"
+# Replace my GitHub user ID with yours
+gh repo clone MFarabi619/hack-the-tunnels-git-workshop
+```
+
+<Callout title="The format for what comes after `gh repo clone` is the same as shown on the top left of your GitHub repo.">
+</Callout>
+
+
+</div>
+
+<div className="step">
+### Creating and renaming branches
+
+Your friend calls you over...
+
+<Callout type="warn" title="UH OH">
+Your crush is there too. We need to impress them somehow.
+</Callout>
+
+Your friend has the same code as you and your crush has probably already seen it.
+
+Your cool thing must not look the same as theirs. You need to quickly make changes and save them to a different version of the file.
+
+Let's see the branch we're currently on.
+```sh title="Terminal"
+git branch
+```
+```
+* master
+```
+If you see `(END)`, press <kbd>q</kbd> to quit.
+
+Make a new branch called `main`.
+```sh title="Terminal"
+git checkout -b main
+```
+```
+Switched to a new branch 'main'
+```
+
+Check the branch you're on again.
+```sh title="Terminal"
+git branch
+```
+
+```
+* main
+  master
+```
+
+Make some changes to your file, run them to check that they work and commit them.
+```txt title="file.sh"
+#!/bin/bash
+echo "Hack the Tunnels"
+cowsay -f milk "Hack the Tunnels" | lolcat // [!code highlight]
+cowsay -f dragon "Hack the Tunnels" | lolcat // [!code highlight]
+cowsay -f cupcake "Hack the Tunnels" | lolcat // [!code highlight]
+cowsay -f meow "Hack the Tunnels" | lolcat // [!code highlight]
+```
+
+```sh title="Terminal"
+./file.sh
+```
+
+```sh title="Terminal"
+git commit -m "change cowsays"
+```
+
+That didn't seem to work. This is because git doesn't automatically mark your changes to be committed.
+
+Let's stage them.
+```sh title="Terminal"
+git stage file.sh
+```
+
+Now try again.
+```sh title="Terminal"
+git commit -m "change cowsays"
+```
+
+```txt
+git commit -m "change cowsays"
+[main 94251e9] change cowsays
+1 file changed, 4 insertions(+), 9 deletions(-)`
+```
+
+<Accordions>
+<Accordion title="Why did that happen?">
+Similar to how we had to `git add` the file, to **track** it, we also need to `git stage` our changes to the file.
+
+The staging area holds the changes we want to be included in the commit. It's like a truck into which you choose what to load before it's sent.
+
+This may seem a bit odd at first. Over time you'll realize that it's incredibly powerful as it provides you flexibility to pick and choose what you want to commit.
+</Accordion>
+</Accordions>
+
+Nice.
+
+Let's change the `echo` to something cooler, like `figlet`, and RGB it as well.
+```txt title="file.sh"
+#!/bin/bash
+figlet "Hack the Tunnels" | lolcat // [!code highlight]
+cowsay -f milk "Hack the Tunnels" | lolcat
+cowsay -f dragon "Hack the Tunnels" | lolcat
+cowsay -f cupcake "Hack the Tunnels" | lolcat
+cowsay -f meow "Hack the Tunnels" | lolcat
+```
+
+```
+./file.sh: line 2: figlet: command not found
+```
+
+Uh oh, do we have `figlet` installed? Let's check.
+
+```sh title="Terminal"
+figlet
+```
+```
+bash: command not found: figlet
+```
+
+Looks like we don't. Let's install it and try again.
+```sh title="Terminal"
+brew install figlet
+```
+```sh title="Terminal"
+./file.sh
+```
+
+It works! We can both stage and commit it in one go with `-am`
+```sh title="Terminal"
+git commit -am "replace echo with figlet"
+```
+See if everything worked and what the current state of our repository is.
+```sh title="Terminal"
+git status
+```
+
+```sh title="Terminal"
+git log
+```
+
+Let's push our changes to remote.
+```sh title="Terminal"
+git push
+```
+You will see:
+```
+fatal: The current branch main has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin main
+
+To have this happen automatically for branches without a tracking
+upstream, see 'push.autoSetupRemote' in 'git help config'.
+```
+
+This is because GitHub (upstream) doesn't have the `main` branch that we created locally.
+
+So we do:
+```sh title="Terminal"
+git push --set-upstream origin main
+```
+
+```txt
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (6/6), 622 bytes | 622.00 KiB/s, done.
+Total 6 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 1 local object.
+remote:
+remote: Create a pull request for 'main' on GitHub by visiting:
+remote:      https://github.com/MFarabi619/hack-the-tunnels-git-workshop/pull/new/main
+remote:
+To https://github.com/MFarabi619/hack-the-tunnels-git-workshop.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+```
+
+Now you can find your branch on GitHub.
+
+</div>
+
+<div className="step">
+### Switching between branches
+
+Let's see what the file looked like before on the other branch.
+```sh title="Terminal"
+git checkout master
+```
+
+You'll see `file.sh` change to the version it was before.
+
+Back to main:
+```sh title="Terminal"
+git checkout main
+```
+
+There are many more git commands, and this barely scratches the surface.
+
+What will be the outcome of your adventure? It's the one you create here in present :)
+
+</div>
+</div>
+
+To be continued...
+
+
+## Git commands review
+| **Action**                               | **Command**                            |
+|-------------------------------------------|----------------------------------------|
+| Create repository in the current directory | `git init .`                           |
+| Clone repository from GitHub            | `gh repo clone username/reponame`      |
+| Upload repository to GitHub (also creates repo) | `gh repo create`                |
+| Create new branch                      | `git checkout -b newbranch`            |
+| Switch to existing branch              | `git checkout oldbranch`               |
+| Track file                              | `git add filename`                     |
+| Stage changes for file                  | `git stage filename`                   |
+| Commit changes with message             | `git commit -m "your message"`         |
+| View commit history                       | `git log`                              |
+| View status of changes                    | `git status`                           |
+| Push changes to remote repository     | `git push`                             |
+| Pull changes from remote repository   | `git pull`                             |
+
+
+## 📕 Learning Resources
+
+<Cards>
+
+<Card
+  title={"Linux Journey"}
+  description={
+    <ul style={{ paddingLeft: '1rem', listStyleType: 'disc' }}>
+      <li>Learn the basics of different Linux features through simple step-by-step tutorials.</li>
+    </ul>
+  }
+  href={`https://linuxjourney.com`}
+/>
+<Card
+  title={"Git How to"}
+  description={
+    <ul style={{ paddingLeft: '1rem', listStyleType: 'disc' }}>
+      <li>Web app to easily demo basic git commands visually.</li>
+      <li>Very limited in functionality.</li>
+    </ul>
+  }
+  href={`https://githowto.com`}
+/>
+<Card
+  title={"Learn Git Branching"}
+  description={
+    <ul style={{ paddingLeft: '1rem', listStyleType: 'disc' }}>
+      <li>Web app to learn Git commands interactively with guided lessons.</li>
+    </ul>
+  }
+  href={`https://learngitbranching.js.org`}
+/>
+<Card
+  title={"Git Visualizer"}
+  description={
+    <ul style={{ paddingLeft: '1rem', listStyleType: 'disc' }}>
+      <li>Web app to learn simple Git commands visually.</li>
+    </ul>
+  }
+  href={`https://github.com/git-school/visualizing-git`}
+/>
+<Card
+  title={"Shortcutfoo"}
+  description={
+    <ul style={{ paddingLeft: '1rem', listStyleType: 'disc' }}>
+      <li>Web app to drill commands, keyboard shortcuts and programming language syntax.</li>
+    </ul>
+  }
+  href={`https://www.shortcutfoo.com/app/dojos`}
+/>
+<Card
+  title={"Lazygit"}
+  description={
+    <ul style={{ paddingLeft: '1rem', listStyleType: 'disc' }}>
+      <li>A TUI (Terminal User Interface) version of Git.</li>
+      <li>Saves you from typing out all the commands and makes you faster.</li>
+    </ul>
+  }
+  href={`https://github.com/jesseduffield/lazygit`}
+/>
+
+</Cards>
