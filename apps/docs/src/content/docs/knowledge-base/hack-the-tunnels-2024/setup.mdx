@@ -1,0 +1,236 @@
+---
+title: Setup
+icon: Cog
+description: Things to automate the process of automating things.
+---
+
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+<Tabs items={["MacOS","Windows"]}>
+<Tab value="MacOS">
+MacOS is a UNIX-based operating system, so you can run everything in this workshop without any special configuration and can skip ahead :)
+
+In simple terms, it's kind of like two people being from different countries but speaking the same language and understanding each other.
+
+  <Accordions>
+    <Accordion title="How does this work exactly?">
+This is because both UNIX and Linux adhere to the [IEEE POSIX](https://en.wikipedia.org/wiki/POSIX) (Portable Operating System Interface) standard.
+
+[IEEE](https://en.wikipedia.org/wiki/Institute_of_Electrical_and_Electronics_Engineers) stands for 'Institute of Electrical and Electronics' engineers. It's a global not-for-profit that does many cool things, one of which is getting people to agree on common standards so that different technologies can work well with each other.
+
+Many of the programs that work on Linux also work for MacOS. As a matter of fact, MacOS is actually powered by the [Darwin OS](https://en.wikipedia.org/wiki/Darwin_(operating_system)), which is based on [FreeBSD](https://en.wikipedia.org/wiki/FreeBSD).
+
+FreeBSD powers extreme high-performance and cutting-edge network needs, such as Netflix's famous server infrastructure, Sony's Playstation OS (Orbis), and countless more.
+    </Accordion>
+  </Accordions>
+
+</Tab>
+
+<Tab value="Windows">
+Install [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install).
+
+<Accordions>
+<Accordion title="What's WSL?">
+Introduced by Microsoft in 2016, WSL allows people to run a real Linux kernel inside Windows.
+
+Before WSL, people had to:
+- Use a virtual machine, slow
+- Dual boot on the same machine, tedious and risks bricking the machine
+- Replace their main OS with Linux altogether, scary but the best option
+
+You can learn more [here](https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux).
+</Accordion>
+</Accordions>
+
+      <div className="steps">
+        <div className="step">
+          Open PowerShell as Administrator:
+          <kbd> Win+X, A</kbd>
+          ```sh title="Terminal"
+          wsl --install # Will install WSL2 by default
+          ```
+        </div>
+        <div className="step">
+          Choose Ubuntu as your Linux distribution.
+        </div>
+        <div className="step">
+          Create your UNIX account.
+          <Callout title="Keep your password short and simple for now">
+You'll need to type it often to install packages.
+          </Callout>
+          <Callout type="warn" title="Don't forget your UNIX username & password">
+          Otherwise you'll be locked out and will have to re-install WSL.
+          </Callout>
+        </div>
+        <div className="step">
+        Update all programs in the currently installed version of Ubuntu
+          ```sh title="Terminal"
+sudo apt update && sudo apt upgrade -y
+          ```
+      </div>
+      </div>
+</Tab>
+</Tabs>
+
+
+
+## System Requirements
+    <div className="steps">
+      <div className="step">
+    ### Install Homebrew
+    [Homebrew](https://brew.sh) is a package manager for that simplifies installing software, and works on both MacOS and Linux.
+    ```sh title="Terminal"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
+
+        Follow the on-screen instructions to add Homebrew to your `PATH`.
+
+<Accordions>
+<Accordion title="Why are we using Homebrew for Ubuntu instead of apt?">
+- Homebrew and `apt` [(Advanced Package Tool)](https://en.wikipedia.org/wiki/APT_(software)) are both package managers.
+- Yes, Ubuntu does ship with `apt`. We chose to go with `brew` to keep the documentation simpler.
+- If someone downloads the LTS version of Ubuntu, they wouldn't be able to get the latest packages due to the version lock.
+- Homebrew's Linux compatibility is fantastic, and it also has a very large package registry.
+</Accordion>
+</Accordions>
+      </div>
+
+      <div className="step">
+      ### Install [Git](https://git-scm.com)
+    ```sh title="Terminal"
+    brew install git
+    ```
+
+
+      <div className="step">
+### Configure Git
+
+Your username and email will be used to identify you in the Git commit history.
+    ```sh title="Terminal"
+    # Set your username
+git config --global user.name "Your Name"
+    ```
+
+    ```sh title="Terminal"
+    # Set your email
+git config --global user.email "your_email@example.com"
+    ```
+
+    Git's default branch is `master`, let's change it to `main` to match the convention used by GitHub.
+    ```sh title="Terminal"
+    # Set the default branch to main
+git config --global init.defaultBranch main
+    ```
+
+      </div>
+      </div>
+
+      <div className="step">
+
+    ### Install GitHub CLI
+
+This simplifies GitHub tasks like cloning repositories, and authentication without needing to copy-paste URLs.
+```sh title="Terminal"
+brew install gh
+```
+
+Login with your GitHub account.
+```sh title="Terminal"
+gh auth login
+```
+
+Provide the following answers.
+```
+? Where do you use GitHub? [Use arrows] to move, type to filter]
+> GitHub.com
+  Other
+```
+
+```
+? What is your preferred protocol for Git operations on this host? [Use arrows] to move, type to filter]
+> HTTPS
+  SSH
+```
+
+```
+? Authenticate Git with your GitHub credentials? [Use arrows] to move, type to filter]
+> Yes
+  No
+```
+
+```
+? How would you like to authenticate GitHub CLI? [Use arrows] to move, type to filter]
+> Login with a web browser
+  Paste an authentication token
+```
+
+Your one-time code will be different.
+```
+! First copy your one-time code: 95i2-DAE6
+Press Enter to open github.com in your browser...
+```
+
+Open your browser, log in to GitHub and provide it permissions, and then come back to the terminal when you see the `Congratulations, you're all set!` screen.
+
+You should see the following in your terminal
+```
+✔ Authentication complete.
+- gh config set -h github.com git_protocol https
+✔ Configured git protocol
+✔ Logged in as YourGitHubUsername
+```
+      </div>
+
+      <div className="step">
+
+    ### Install [VS Code](https://code.visualstudio.com)
+```sh title="Terminal"
+brew install --cask visual-studio-code
+```
+
+<Callout title="Wondering where to find these commands?">
+- Go to [brew.sh](https://brew.sh)
+- Search `VS Code`
+
+You can search and find the commands for all of the packages we've installed so far.
+</Callout>
+
+    </div>
+      </div>
+
+
+### Check Your Setup
+
+Confirm that your setup is correct by running these commands. If any fail, refer back to the corresponding setup instructions.
+
+If it's working correctly, you'll see the relevant version number and configuration details.
+
+```sh title="Terminal"
+# Check Homebrew installation
+brew --version
+```
+
+```sh title="Terminal"
+# Check Git version
+git --version
+```
+
+```sh title="Terminal"
+# Confirm GitHub CLI installation
+gh --version
+```
+
+```sh title="Terminal"
+# Verify global Git config
+git config --list
+```
+Press `q` to quit.
+
+
+```sh title="Terminal"
+# Open VS Code
+code
+```
+
+<Callout type="error" title="Please ensure that your setup is complete before proceeding.">
+</Callout>
