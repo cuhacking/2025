@@ -33,7 +33,7 @@ jobs:
       - name: 🤖 Run Semantic Release
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: pnpm i; pnpm semantic-release
+        run: pnpm i; pnpm semantic-release@24
 
       - name: 💰 Profit
         run: echo 🐞
