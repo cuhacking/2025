@@ -4,6 +4,7 @@ export enum Typo {
 	TITLE_3,
 	TITLE_4,
 	SUBTITLE,
+	SUBTITLE_2,
 	PARAGRAPH,
 }
 
@@ -22,6 +23,8 @@ export const Text: React.FC<{ children: React.ReactNode; typo?: Typo; className?
 			return <h4 className={"md:text-2xl sm:text-xl text-lg font-bold " + props.className}>{props.children}</h4>;
 		case Typo.SUBTITLE:
 			return <h5 className={"sm:text-base text-xs " + props.className}>{props.children}</h5>;
+		case Typo.SUBTITLE_2:
+			return <h5 className={"sm:text-[13.5px] text-[11px] " + props.className}>{props.children}</h5>;
 		case Typo.PARAGRAPH:
 			return <p className={"" + props.className}>{props.children}</p>;
 		default:
