@@ -1,3 +1,4 @@
+import { Button } from '@cuhacking/ui'
 /*
  * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  This is a starter component and can be deleted.
@@ -434,6 +435,11 @@ export function NxWelcome({ title }: { title: string }) {
               {' '}
               👋
             </h1>
+            This is a
+            {' '}
+            <Button> Shadcn button </Button>
+            {' '}
+            imported from the ui lib.
           </div>
 
           <div id="hero" className="rounded">

@@ -1,3 +1,4 @@
+@config '../../../libs/ui/tailwind.config.js';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
