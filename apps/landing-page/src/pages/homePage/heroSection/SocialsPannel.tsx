@@ -2,7 +2,7 @@ import { FrostedPanel } from "../../../components/FrostedPanel";
 import { Text, Typo } from "../../../components/Typography";
 import { FaGithub, FaFigma, FaInstagram, FaEnvelope, FaBookOpen } from "react-icons/fa";
 
-export const EmailSignup = (props: { id?: string; className?: string }) => {
+export const SocialsPannel = (props: { id?: string; className?: string }) => {
   return (
     <FrostedPanel className={props.className} id={props.id}>
       <div className="flex flex-col items-center justify-center space-y-5">

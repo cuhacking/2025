@@ -5,7 +5,7 @@ import mountainSmall from "/hero-svgs/mountain_small.svg";
 import raven from "/hero-svgs/raven.svg";
 import snow from "/hero-svgs/snow.svg";
 
-import { EmailSignup } from "./EmailSignup";
+import { SocialsPannel } from "./SocialsPannel";
 
 export const Hero = () => {
   const addAnchor = () => {
@@ -22,9 +22,9 @@ export const Hero = () => {
           src={mountainSmall}
           alt="Mountain"
         />
-        <div className="background-gradient opacity-25"></div>
+        <div className="opacity-25 background-gradient"></div>
         <img className="image mountain-big" src={mountainBig} alt="Mountain" />
-        <div className="background-gradient opacity-50"></div>
+        <div className="opacity-50 background-gradient"></div>
         <div className="carleton-foreground">
           <img className="image snow" src={snow} alt="Snow" />
           <img
@@ -35,7 +35,7 @@ export const Hero = () => {
         </div>
       </div>
       <div className="hero__content">
-        <EmailSignup id="email-signup-anchor"/>
+        <SocialsPannel id="email-signup-anchor"/>
         <div id="raven" className=" w-96">
           <img className="image " src={raven} alt="Raven" />
         </div>
