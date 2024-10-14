@@ -21,6 +21,11 @@
   "dependencies": {
     "@eslint/config-inspector": "^0.5.4",
     "@lucia-auth/adapter-drizzle": "^1.1.0",
+    "@netlify/edge-functions": "^2.3.1",
+    "@netlify/functions": "^2.6.0",
+    "@netlify/remix-adapter": "^2.3.1",
+    "@netlify/remix-edge-adapter": "^3.2.1",
+    "@netlify/remix-runtime": "^2.2.0",
     "@remix-run/node": "^2.8.1",
     "@remix-run/react": "^2.8.1",
     "@remix-run/serve": "^2.8.1",
