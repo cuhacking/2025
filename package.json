@@ -14,8 +14,8 @@
     "commit": "cz",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "lint:inspect": "npx @eslint/config-inspector --no-open",
-    "lint:inspect-open": "npx @eslint/config-inspector"
+    "lint:inspect": "pnpx @eslint/config-inspector --no-open",
+    "lint:inspect-open": "pnpx @eslint/config-inspector"
   },
   "dependencies": {
     "@lucia-auth/adapter-drizzle": "^1.1.0",
