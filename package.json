@@ -108,6 +108,7 @@
     "katex": "^0.16.11",
     "lint-staged": "^15.2.8",
     "lucide-react": "^0.427.0",
+    "netlify-cli": "^17.37.0",
     "nx": "19.5.7",
     "postcss": "8.4.38",
     "prettier": "^2.6.2",
