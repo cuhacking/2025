@@ -15,7 +15,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "lint:inspect": "pnpx @eslint/config-inspector --no-open",
-    "lint:inspect-open": "pnpx @eslint/config-inspector"
+    "lint:inspect-open": "pnpx @eslint/config-inspector",
+    "lint:inspect-build": "pnpx @eslint/config-inspector build --outDir dist/lint-inspect"
   },
   "dependencies": {
     "@lucia-auth/adapter-drizzle": "^1.1.0",
