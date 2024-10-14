@@ -8,10 +8,6 @@ from = "/*"
 to = "/.netlify/functions-internal"
 status = 200
 
-[dev]
-base = "/apps/website/"
-command = "nx dev website"
-
 [[headers]]
 for = "/build/*"
 
