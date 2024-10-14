@@ -18,6 +18,7 @@
     "lint:inspect-open": "npx @eslint/config-inspector"
   },
   "dependencies": {
+    "@eslint/config-inspector": "^0.5.4",
     "@lucia-auth/adapter-drizzle": "^1.1.0",
     "@remix-run/node": "^2.8.1",
     "@remix-run/react": "^2.8.1",
