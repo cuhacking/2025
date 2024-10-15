@@ -46,7 +46,7 @@ export const pages = [
 ]
 
 export const { getPage, getPages, pageTree } = loader({
-  baseUrl: '/docs',
+  baseUrl: '/',
   rootDir: 'docs',
   icon(icon) {
     if (!icon) {

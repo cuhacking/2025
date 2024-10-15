@@ -8,7 +8,11 @@
   "engines": {
     "node": ">=14"
   },
-  "scripts": {},
+  "scripts": {
+    "build": "pnpm remix vite:build",
+    "dev": "pnpm remix vite:dev",
+    "start": "pnpm netlify serve"
+  },
   "dependencies": {
     "@remix-run/node": "^2.8.1",
     "@remix-run/react": "^2.8.1",
