@@ -1,15 +1,13 @@
 [build]
-base = "/apps/website/"
-publish = "./build"
-command = "pnpm i && pnpm exec playwright install && nx build website"
+command = "pnpm i && pnpm remix vite:build apps/website"
+publish = "apps/website/build/client"
 
-[[redirects]]
-from = "/*"
-to = "/.netlify/functions-internal"
-status = 200
+[dev]
+command = "pnpm remix vite:dev apps/website"
+publish = "apps/website/build/client"
 
 [[headers]]
-for = "/build/*"
+for = "apps/website/build/*"
 
 [headers.values]
 Cache-Control = "public, max-age=31536000, s-maxage=31536000"
