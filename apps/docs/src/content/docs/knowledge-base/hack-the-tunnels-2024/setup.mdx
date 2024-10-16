@@ -49,6 +49,30 @@ You can learn more [here](https://en.wikipedia.org/wiki/Windows_Subsystem_for_Li
           ```sh title="Terminal"
           wsl --install # Will install WSL2 by default
           ```
+                    <Callout title="WSL may already be installed!">
+Run `wsl -v` to check. Your terminal should output:
+          ```sh
+          WSL version: 2.3.24.0
+Kernel version: 5.15.153.1-2
+WSLg version: 1.0.65
+MSRDC version: 1.2.5620
+Direct3D version: 1.611.1-81528511
+DXCore version: 10.0.26100.1-240331-1435.ge-release
+Windows version: 10.0.22631.4317
+          ```
+          </Callout>
+          <Accordions>
+<Accordion title="What if WSL is already installed?">
+              <div className="steps">
+        <div className="step">
+          Go to the Microsoft Store.
+        </div>
+                <div className="step">
+          Search, then install **Ubuntu**.
+        </div>
+        </div>
+</Accordion>
+</Accordions>
         </div>
         <div className="step">
           Choose Ubuntu as your Linux distribution.
@@ -75,15 +99,74 @@ sudo apt update && sudo apt upgrade -y
 
 
 ## System Requirements
+    ### Install Homebrew
+<Accordions>
+<Accordion title="What's Homebrew?">
+  [Homebrew](https://brew.sh) is a **package manager**, which is a fancy term for **installer**. It's software for installing software, and works on both MacOS and Linux by softwareception. 🤯
+</Accordion>
+</Accordions>
+
+First, let's check if homebrew is installed on your machine.
+
+```sh title="Terminal"
+# Check Homebrew installation
+brew --version
+```
+
+If you see something like `command not found`, continue with the installation. Otherwise, you can skip ahead to [Install Git](#install-git).
+
     <div className="steps">
       <div className="step">
-    ### Install Homebrew
-    [Homebrew](https://brew.sh) is a package manager for that simplifies installing software, and works on both MacOS and Linux.
+
+
     ```sh title="Terminal"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     ```
 
-        Follow the on-screen instructions to add Homebrew to your `PATH`.
+        After the installation, is complete, you'll see something like this.
+
+<Callout>
+
+Your output may be different. (In this case, `name` will be replaced with your username.)
+
+Follow the on-screen instructions to add Homebrew to your `PATH`.
+</Callout>
+```txt
+// [!code word:name]
+- Run these commands in your terminal to add Homebrew to your PATH:
+    echo >> /home/name/.bashrc // [!code highlight]
+    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/name/.bashrc // [!code highlight]
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+- Install Homebrew's dependencies if you have sudo access:
+    sudo apt-get install build-essential
+  For more information, see:
+    https://docs.brew.sh/Homebrew-on-Linux
+- We recommend that you install GCC:
+    brew install gcc
+- Run brew help to get started
+- Further documentation:
+    https://docs.brew.sh
+    ```
+
+<Callout type="error" title="Don't copy-paste what's here on the site, look at your terminal! Replace `name` with your username.">
+</Callout>
+
+```sh title="Terminal"
+    echo >> /home/name/.bashrc
+```
+
+<Callout type="error" title="This will be slightly different for MacOS.">
+</Callout>
+```sh title="Terminal"
+    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/name/.bashrc
+```
+
+<Callout  title="After you're done the two steps above, do this.">
+</Callout>
+```sh title="Terminal"
+    brew install gcc
+```
+
 
 <Accordions>
 <Accordion title="Why are we using Homebrew for Ubuntu instead of apt?">
@@ -94,16 +177,28 @@ sudo apt update && sudo apt upgrade -y
 </Accordion>
 </Accordions>
       </div>
+      </div>
 
-      <div className="step">
       ### Install [Git](https://git-scm.com)
+
+      <div className="steps">
+      <div className="step">
     ```sh title="Terminal"
     brew install git
     ```
 
 
       <div className="step">
-### Configure Git
+Continue if you get `command not found`, otherwise skip ahead to [Install GitHub CLI](#install-github-cli).
+```sh title="Terminal"
+# Check Git version
+git --version
+```
+</div>
+
+      <div className="step">
+
+#### Configure Git
 
 Your username and email will be used to identify you in the Git commit history.
     ```sh title="Terminal"
@@ -124,10 +219,22 @@ git config --global init.defaultBranch main
 
       </div>
       </div>
-
-      <div className="step">
+      </div>
 
     ### Install GitHub CLI
+
+      <div className="steps">
+
+      <div className="step">
+If you see something like `command not found`, continue with the installation. Otherwise, you can skip ahead to [Install VS Code](#install-vs-code).
+
+  ```sh title="Terminal"
+  # Confirm GitHub CLI installation
+  gh --version
+  ```
+  </div>
+
+      <div className="step">
 
 This simplifies GitHub tasks like cloning repositories, and authentication without needing to copy-paste URLs.
 ```sh title="Terminal"
@@ -180,10 +287,13 @@ You should see the following in your terminal
 ✔ Logged in as YourGitHubUsername
 ```
       </div>
-
-      <div className="step">
+      </div>
 
     ### Install [VS Code](https://code.visualstudio.com)
+
+      <div className="steps">
+      <div className="step">
+
 ```sh title="Terminal"
 brew install --cask visual-studio-code
 ```
