@@ -4,10 +4,10 @@ import { user } from './user'
 
 export const session = pgTable('session', {
   id: text('id').primaryKey(),
-  userId: text('user_id')
+  userId: text('userId')
     .notNull()
     .references(() => user.id),
-  expiresAt: timestamp('expires_at', {
+  expiresAt: timestamp('expiresAt', {
     withTimezone: true,
     mode: 'date',
   }).notNull(),
