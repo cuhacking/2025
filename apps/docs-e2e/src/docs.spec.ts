@@ -23,7 +23,7 @@ const CUHACKING_2025_LANDING_PAGE_GITHUB_REPOSITORY_URL = `${GITHUB_BASE_URL}/la
 
 const CUHACKING_2025_DOCS_URL = `${DOCS_BASE_URL}/docs`
 
-const CUHACKING_2025_LANDING_PAGE_URL = 'https://www.cuhacking.ca/'
+const CUHACKING_2025_LANDING_PAGE_URL = 'https://cuhacking.ca/'
 
 /* ---------------- MOBILE + DESKTOP + TABLET ---------------- */
 test.describe(`Common MOBILE, TABLET and DESKTOP Layout Elements`, {
