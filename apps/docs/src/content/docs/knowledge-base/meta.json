@@ -1,5 +1,5 @@
 {
   "title": "Knowledge Base",
-  "icon": "Library",
+  "icon": "BookOpenText",
   "pages": ["hack-the-tunnels-2024", "nextauth", "cuHacking-2020-wiki"]
 }
