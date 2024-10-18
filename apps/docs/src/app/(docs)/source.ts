@@ -32,16 +32,16 @@ export const pages = [
     icon: ContributionGuidelinesIcon,
   },
   {
-    title: 'Knowledge Base',
-    description: 'Curated resources to accelerate your learning.',
-    url: 'knowledge-base',
-    icon: KnowledgeBaseIcon,
-  },
-  {
     title: 'Libraries',
     description: 'Libraries within this monorepo used within the applications.',
     url: 'libraries',
     icon: LibrariesIcon,
+  },
+  {
+    title: 'Knowledge Base',
+    description: 'Curated resources to accelerate your learning.',
+    url: 'knowledge-base',
+    icon: KnowledgeBaseIcon,
   },
 ]
 
