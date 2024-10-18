@@ -66,8 +66,7 @@ git commit -m "initial commit"
 
 You should see:
 ```sh
-git commit -m "first commit"
-[master (root-commit) d8f6d74] first commit
+[main (root-commit) d8f6d74] first commit
  1 file changed, 11 insertions(+)
  create mode 100755 file.sh
 ```
@@ -166,6 +165,7 @@ Hit enter, leave it as origin.
 ? What should the new remote be called? (origin) // [!code highlight]
 ```
 
+Hit enter, leave it as origin.
 ```txt
 ? What would you like to do? Push an existing local repository to GitHub
 ? Path to local repository .
@@ -213,7 +213,7 @@ Nice, now your friend can get your cool stuff with:
 
 ```sh title="Terminal"
 # Replace my GitHub user ID with yours
-gh repo clone MFarabi619/hack-the-tunnels-git-workshop
+gh repo clone <your-github-id>/hack-the-tunnels-git-workshop
 ```
 
 <Callout title="The format for what comes after `gh repo clone` is the same as shown on the top left of your GitHub repo.">
@@ -240,16 +240,16 @@ Let's see the branch we're currently on.
 git branch
 ```
 ```
-* master
+* main
 ```
 If you see `(END)`, press <kbd>q</kbd> to quit.
 
-Make a new branch called `main`.
+Make a new branch called `my-branch`.
 ```sh title="Terminal"
 git checkout -b main
 ```
 ```
-Switched to a new branch 'main'
+Switched to a new branch 'my-branch'
 ```
 
 Check the branch you're on again.
@@ -258,8 +258,8 @@ git branch
 ```
 
 ```
-* main
-  master
+* my-branch
+  main
 ```
 
 Make some changes to your file, run them to check that they work and commit them.
@@ -293,7 +293,6 @@ git commit -m "change cowsays"
 ```
 
 ```txt
-git commit -m "change cowsays"
 [main 94251e9] change cowsays
 1 file changed, 4 insertions(+), 9 deletions(-)`
 ```
@@ -402,14 +401,14 @@ Now you can find your branch on GitHub.
 
 Let's see what the file looked like before on the other branch.
 ```sh title="Terminal"
-git checkout master
+git checkout main
 ```
 
 You'll see `file.sh` change to the version it was before.
 
-Back to main:
+Back to `my-branch`:
 ```sh title="Terminal"
-git checkout main
+git checkout my-branch
 ```
 
 There are many more git commands, and this barely scratches the surface.
