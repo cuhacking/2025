@@ -1,0 +1,55 @@
+name: ADR
+description: Record a design decision
+title: '[ADR]: description'
+body:
+  - type: markdown
+    attributes:
+      value: |-
+        Have you searched for similar [issues](https://github.com/cuhacking/2025/issues)?
+
+        Insufficiently described issues will be closed, so please provide as much information as possible
+  - type: dropdown
+    id: platforms
+    attributes:
+      label: Platforms
+      multiple: true
+      options:
+        - all
+        - Website
+        - Docs
+        - Portal
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A brief description of the what the issue of the design decision is
+    validations:
+      required: true
+  - type: textarea
+    id: decision
+    attributes:
+      label: Decision
+      description: A brief description of the architectural decision taken
+    validations:
+      required: true
+  - type: textarea
+    id: consequences
+    attributes:
+      label: Consequences and Results
+      description: A description of the consequences and results of the decision
+      placeholder: |-
+        What are the consequences of the decision?
+        What are the pros and cons of using one technology over another?
+        Are there any alternatives that were considered?
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solution
+      description: What is the solution to the issue?
+    validations:
+      required: true
