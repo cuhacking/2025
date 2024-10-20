@@ -1,0 +1,17 @@
+name: Build
+description: Create a build issue
+title: 'build(scope-of-issue): description'
+body:
+  - type: markdown
+    attributes:
+      value: |-
+        Have you searched for similar [issues](https://github.com/cuhacking/2025/issues)?
+
+        Insufficiently described issues will be closed, so please provide as much information as possible
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A brief description of what the build is intended to do
+    validations:
+      required: true
