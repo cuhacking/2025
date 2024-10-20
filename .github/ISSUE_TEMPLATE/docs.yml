@@ -1,0 +1,30 @@
+name: Docs
+description: Create a documentation issue
+title: 'docs(scope-of-issue): description'
+body:
+  - type: markdown
+    attributes:
+      value: |-
+        Have you searched for similar [issues](https://github.com/cuhacking/2025/issues)?
+
+        Insufficiently described issues will be closed, so please provide as much information as possible.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A brief description of the problem
+      placeholder: |-
+        Describe what is the problem with our current docs and the scope of the issue
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solution
+      description: What is the solution to the issue?
+      placeholder: |-
+        What is the solution at hand?
+        Why does this issue need to be fixed?
+        What is an appropriate plan of action to fix our docs site?
+    validations:
+      required: true
