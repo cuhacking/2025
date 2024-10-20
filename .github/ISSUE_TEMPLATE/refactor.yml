@@ -1,0 +1,30 @@
+name: Refactor
+description: Make a refactor issue
+title: 'refactor(scope-of-issue): description'
+body:
+  - type: markdown
+    attributes:
+      value: |-
+        Have you searched for similar [issues](https://github.com/cuhacking/2025/issues)?
+
+        Insufficiently described issues will be closed, so please provide as much information as possible
+  - type: dropdown
+    id: platforms
+    attributes:
+      label: Platforms
+      multiple: true
+      options:
+        - all
+        - Website
+        - Docs
+        - Portal
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What is being refactored and why?
+    validations:
+      required: true

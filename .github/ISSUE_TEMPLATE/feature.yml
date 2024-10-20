@@ -1,0 +1,37 @@
+name: Feature
+description: Request a new feature
+title: 'feat(scope-of-issue): description'
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |-
+        Have you searched for similar [issues](https://github.com/cuhacking/2025/issues)?
+
+        Insufficiently described issues will be closed, so please provide as much information as possible
+  - type: dropdown
+    id: platforms
+    attributes:
+      label: Platforms
+      multiple: true
+      options:
+        - all
+        - Website
+        - Docs
+        - Portal
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A brief description of the feature
+      placeholder: |-
+        Describe the feature you'd like to see:
+        - What problem does it solve?
+        - How do you envision it working?
+        - Are there any alternatives you've considered?
+    validations:
+      required: true
