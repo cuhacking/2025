@@ -82,7 +82,7 @@ export class DocsLayout {
     this.mobileHackerPortalSourceLink = page.getByRole('link', { name: 'Source', exact: true })
     this.mobileHackerAppLink = page.getByRole('link', { name: 'App', exact: true })
     this.mobileWebsiteSourceLink = page.getByRole('link', { name: 'Source (legacy)' })
-    this.mobileGithubIcon = page.getByRole('link', { name: 'Github' })
+    this.mobileGithubIcon = page.getByRole('link', { name: 'Github', exact: true })
     this.mobileHackerPortalProjectBoardLink = page.getByRole('link', { name: 'Project Board' })
 
     // Desktop Sidebar
@@ -102,6 +102,6 @@ export class DocsLayout {
   }
 
   async goto() {
-    await this.page.goto('http://localhost:3000/docs')
+    await this.page.goto('http://localhost:3000')
   }
 }
