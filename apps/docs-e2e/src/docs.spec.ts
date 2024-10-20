@@ -18,10 +18,8 @@ const DOCS_BASE_URL = 'http://localhost:3000'
 
 const CUHACKING_2025_PLATFORM_GITHUB_PROJECT_BOARD_URL = `${GITHUB_ORG_BASE_URL}/projects/4`
 const CUHACKING_2025_PLATFORM_GITHUB_REPOSITORY_URL = `${GITHUB_BASE_URL}/2025`
-const CUHACKING_2025_PLATFORM_GITHUB_INDEX_PAGE_URL = `${GITHUB_BASE_URL}/2025/blob/main/apps/docs/src/content/docs/index.mdx`
+const CUHACKING_2025_PLATFORM_GITHUB_INDEX_PAGE_URL = `${GITHUB_BASE_URL}/2025/blob/main/apps/(docs)/src/content/(docs)/index.mdx`
 const CUHACKING_2025_LANDING_PAGE_GITHUB_REPOSITORY_URL = `${GITHUB_BASE_URL}/landing-page`
-
-const CUHACKING_2025_DOCS_URL = `${DOCS_BASE_URL}/docs`
 
 const CUHACKING_2025_LANDING_PAGE_URL = 'https://cuhacking.ca/'
 
@@ -39,7 +37,7 @@ test.describe(`Common MOBILE, TABLET and DESKTOP Layout Elements`, {
 
   test(`should take user to docs home page when cuHacking logo icon is clicked in header`, async ({ docsLayoutPage }) => {
     await docsLayoutPage.cuHackingLogoIcon.click()
-    await expect(docsLayoutPage.page).toHaveURL(CUHACKING_2025_DOCS_URL)
+    await expect(docsLayoutPage.page).toHaveURL(DOCS_BASE_URL)
   })
 
   test(`should contain cuHacking logo Text in header`, async ({ docsLayoutPage }) => {
@@ -48,7 +46,7 @@ test.describe(`Common MOBILE, TABLET and DESKTOP Layout Elements`, {
 
   test(`should take user to docs home page when cuHacking logo text is clicked in header`, async ({ docsLayoutPage }) => {
     await docsLayoutPage.cuHackingLogoText.click()
-    await expect(docsLayoutPage.page).toHaveURL(CUHACKING_2025_DOCS_URL)
+    await expect(docsLayoutPage.page).toHaveURL(DOCS_BASE_URL)
   })
 
   test(`should contain last updated text in docs page footer for`, async ({ docsLayoutPage }) => {
