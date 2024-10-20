@@ -1,0 +1,52 @@
+name: Feature Request
+description: Request a new feature
+title: 'feat(scope-of-issue): description'
+labels:
+  - enhancement
+body:
+  - type: checkboxes
+    id: search
+    attributes:
+      label: Search checkbox
+      description: Insufficiently described issues will be closed, so please provide as much information as possible
+      options:
+        - label: Have you searched for similar [issues](https://github.com/cuhacking/2025/issues)?
+  - type: dropdown
+    id: platforms
+    attributes:
+      label: Platforms
+      multiple: true
+      options:
+        - all
+        - Website
+        - Docs
+        - Portal
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: A brief description of what the issue of the feature request is
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solution
+      description: A brief description of the solution taken
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives
+      description: A brief description of any alternatives considered
+    validations:
+      required: true
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional Context
+      description: Any additional context or information (screenshots can be placed here)
