@@ -185,51 +185,9 @@ pnpm i
     ```
   </div>
 
-<Accordions>
-  <Accordion title="Legacy steps (will be removed soon)">
-This is what the steps looked like from this point onwards prior to the monorepo migration.
-
-<div className="steps">
-<div className="step">
-Run PostgreSQL in Docker
-
-    <Callout type="warn">
-      If you have a local PostgreSQL server running, you may need to stop it before running the Docker container.
-    </Callout>
-
-```sh title="Terminal"
-docker-compose up -d db
-```
-
-<Callout >
-You can also build and run the app itself with [Docker Compose](https://docs.docker.com/compose/).
-
-```sh title="Terminal"
-docker-compose up -d --build
-```
-
-</Callout>
-</div>
 
 <div className="step">
-Run Prisma Migrate
 
-```sh title="Terminal"
-pnpm prisma migrate dev
-```
-
-</div>
-
-<div className="step">
-Run development server
-
-```sh title="Terminal"
-pnpm dev
-```
-
-</div>
-
-### Enable Google OAuth
 
 <div className="steps">
   <div className="step">
