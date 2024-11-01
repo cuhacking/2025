@@ -3,7 +3,7 @@ import postgres from 'postgres'
 import { envWebsiteDb } from '@cuhacking/env'
 import * as schema from './schema'
 
-const sql = postgres(envWebsiteDb.DATABASE_URL)
+const sql = postgres(envWebsiteDb.DATABASE_URL || 'postgresql://postgres:password@localhost:5432/hackathon')
 
 export const db = drizzle(sql, {
   schema,
