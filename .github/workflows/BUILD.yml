@@ -34,6 +34,9 @@ jobs:
         run: pnpm playwright install --with-deps
 
       - name: 📚 Build Docs
+        env:
+          GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
+          GOOGLE_CALENDAR_SECRET: ${{ secrets.GOOGLE_CALENDAR_SECRET }}
         run: pnpm nx build docs --verbose
 
       - name: 🌐 Build Website
