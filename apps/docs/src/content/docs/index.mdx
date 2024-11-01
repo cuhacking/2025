@@ -9,6 +9,152 @@ import { pages } from "../../app/(docs)/source";
 import { Calendar }  from "../../components/calendar/Calendar.tsx";
 
 <Calendar googleApiKey={process.env.GOOGLE_CALENDAR_API_KEY} calendarId={process.env.GOOGLE_CALENDAR_ID}/>
+---
+title: Welcome to the Docs
+description: Leave none behind regardless of our development cost.
+---
+import process from 'node:process';
+
+import { pages } from "../../app/(docs)/source";
+
+import { Calendar }  from "../../components/calendar/Calendar.tsx";
+
+import { envDocsCalendar } from '@cuhacking/env'
+
+<Calendar googleApiKey={envDocsCalendar.GOOGLE_CALENDAR_API_KEY} calendarId={envDocsCalendar.GOOGLE_CALENDAR_ID}/>
+
+<Callout type="warn">
+  This is our highest priority project. No questions asked. All other projects
+  are secondary to keeping our docs up-to-date.
+</Callout>
+
+<Callout type="info">
+  Our docs site is inspired by [SCESoc's Knowledge
+  Base](https://wiki.scesoc.ca/knowledge-base), a project by [Dharshatharan
+  Jayatharan Aronan](https://github.com/dharshatharan).
+</Callout>
+
+## Quick Links
+
+<Cards>
+  <Card
+    title={"GitHub Projects"}
+    description={
+      <>
+        <li>Tracking issues, tasks, and progress directly within GitHub.</li>
+        <li>
+          Allows everyone to see what everyone else is up to, and do work
+          without blocking each other.
+        </li>
+      </>
+    }
+    href={`https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects`}
+    icon={
+      <img
+        src="https://www.logo.wine/a/logo/GitHub/GitHub-Icon-White-Dark-Background-Logo.wine.svg"
+        alt="GitHub Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title="Figma Organization"
+    description={
+      <>
+        <li>Contains all design assets for both development and marketing.</li>
+        <li>Verified education email required for edit access.</li>
+      </>
+    }
+    href={`https://www.figma.com/team_invite/redeem/Uaj8zxZJYNLjGIbrhd97yx`}
+    icon={
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg"
+        alt="Figma Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+</Cards>
+
+## Categories
+
+<Cards>
+  {pages
+    .filter((page) => page.title !== "Home") // Filter out the Home page
+    .map((page) => (
+      <Card
+        key={page.title}
+        title={page.title}
+        description={page.description}
+        href={`/${page.url}`}
+        icon={
+          <page.icon
+            style={{
+              color: `hsl(var(--accent-foreground))`,
+            }}
+          />
+        }
+      />
+    ))}
+</Cards>
+
+## Carleton Open-Source Student Community
+
+TODOS:
+
+- Add project demos, screenshots, and descriptions.
+- Add auto-generated contributor profiles.
+
+[Learn more](https://github.com/cuhacking/hackathon/issues/52)
+
+<Cards>
+  <Card
+    title="Carleton Scheduler"
+    description={
+      <>
+        <li>Noah Hammoud</li>
+        <li>Connor Marcus</li>
+        <li>Vahid Foroughi</li>
+        <li>Muad Almangush</li>
+        <li>George Pantazopoulos</li>
+      </>
+    }
+    href={`https://www.carletonuniversityscheduler.systems`}
+  />
+  <Card
+    title="cuScheduling"
+    description={
+      <>
+        <li>Nathan Coulas</li>
+      </>
+    }
+    href={`https://cuscheduling.com`}
+  />
+  <Card
+    title="Carleton Scheduler"
+    description={
+      <>
+        <li>Matthew Macrae-Bovell</li>
+        <li>John Lu</li>
+        <li>Cameron Stirrup</li>
+        <li>AJaccP</li>
+        <li>Nguyen-Hanh Nong</li>
+      </>
+    }
+    href={`https://questions.carletoncomputerscience.ca/comp2804`}
+  />
+  <Card
+    title="SCESoc Knowledge Base"
+    description={
+      <>
+        <li>Dharshatharan Jayatharan Aronan</li>
+      </>
+    }
+    href={`https://wiki.scesoc.ca/knowledge-base`}
+  />
+</Cards>
 
 <Callout type="warn">
   This is our highest priority project. No questions asked. All other projects
