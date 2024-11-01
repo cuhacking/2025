@@ -180,6 +180,7 @@ pnpm i
     <Callout type="warn" title="Hold your horses!">
       Docker daemon (i.e. Docker Desktop) should be running before proceeding!
     </Callout>
+
     ```sh title="terminal"
     docker-compose up -d
     ```
@@ -187,7 +188,10 @@ pnpm i
 
 
 <div className="step">
+Enable authentication providers. OAuth providers need to be configured for you to use authentication in your development environment.
 
+<Accordions>
+  <Accordion title="Google OAuth">
 
 <div className="steps">
   <div className="step">
@@ -204,18 +208,18 @@ pnpm i
     redirect URI.
   </div>
   <div className="step">
-    Copy the client ID and client secret into your `.env` file as
-    `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`.
+    Make a copy of the `.env.example` file in the `apps/portal` directory, and rename it to `.env.local`.
+    Then, copy & paste the google client ID and secret into your the `.env.local` file as
+    `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` respectively.
   </div>
   <div className="step">Restart the development server.</div>
 </div>
 
 You should now be able to sign in with Google.
 
-</div>
-
 </Accordion>
 </Accordions>
+</div>
 
 <div className="step">
   Run Drizzle Migrate
