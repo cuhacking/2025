@@ -35,6 +35,9 @@ jobs:
         run: pnpm i; pnpm playwright install --with-deps
 
       - name: 💀 Run Docs E2E Tests
+        env:
+          GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
+          GOOGLE_CALENDAR_SECRET: ${{ secrets.GOOGLE_CALENDAR_SECRET }}
         run: pnpm nx run docs-e2e:e2e --reporter=html --verbose
 
       - name: 📄 Upload Docs E2E Playwright Report
