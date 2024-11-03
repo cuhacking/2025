@@ -1,0 +1,45 @@
+---
+title: External Contributors Guide
+description: Learn how to contribute to cuHacking as an external developer
+---
+
+There are several ways to get started at cuHacking. This is a page that will show you a couple of ways on how to contribute to cuHacking. 
+
+
+## Fork the repo 🍴
+
+Traditionally, forking the repository (creating a personal copy) would be the most effective way for commiting changes into the codebase directly as an external contributor. This gives you complete personalization and flexibility of the changes you'd want to incorporate into the project. 
+
+To do this, you can fork [our repository](https://github.com/cuhacking/2025) by clicking the fork button on the top right of the repository page in GitHub.
+
+Don't forget to clone your forked repository to your local machine and set the remote upstream: 
+
+```sh title="Terminal"
+git clone https://github.com/YOUR_USERNAME/2025.git
+git remote add upstream https://github.com/cuhacking/2025.git 
+```
+
+Our codebase is constantly changing and evolving, so make sure to keep your fork up to date with the main repository. You can do so with the following commands: 
+
+```sh title="Terminal"
+git fetch upstream
+git checkout main
+git merge upstream/main
+git push origin main
+```
+
+Now you are all set! Look at [this page](../contribution-guidelines) for a proper setup guide on how to run your project locally. Make sure to also follow the contribution guidelines when creating [branches](../contribution-guidelines/branching-guidelines) and [commits](../contribution-guidelines/conventional-commits) to your fork. 
+
+## GitHub issues ❗
+
+### See something that needs fixing? Want to add a new feature? Is something not working as expected? 
+
+You can submit a GitHub issue to get the ball rolling. To do this, navigate to the [issues tab](https://github.com/cuhacking/2025/issues). Click on the "New Issue" button and fill out the template with the necessary information. For figuring out your type, visit [this page](../contribution-guidelines/writing-documentation#finding-your-type) of the docs site. Creating an issue will document the changes that you want to incorporate and will let everyone know what you are working on.
+
+### Resolving open issues
+
+Alternatively, you can also look at the open issues and see if there is anything that you can help with or that interests you. Just make sure to let us know that you are interested in working on an issue by commenting on the issue or by reaching out to [us](https://linktr.ee/cuhacking_). We would be more than happy to help you tackle any issue! 🚀
+
+## Volunteer meetings 📆
+
+We host weekly volunteer meetings where you can meet the team, learn about the project, and ask any questions you may have regarding cuHacking. We hold them on the cuHacking community discord server, so make sure to [join the server](https://discord.gg/w3QjHDAucd) to get the latest updates from the development team at cuHacking.
