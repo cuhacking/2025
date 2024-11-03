@@ -7,7 +7,7 @@ import { sharedEnv } from '../shared'
 export const envWebsiteDb = createEnv({
   extends: [sharedEnv],
   server: {
-    DATABASE_URL: z.string().url().startsWith('postgres'),
+    DATABASE_URL: z.string().url().startsWith('postgres').optional(),
   },
   experimental__runtimeEnv: {
     DATABASE_URL: process.env.DATABASE_URL,

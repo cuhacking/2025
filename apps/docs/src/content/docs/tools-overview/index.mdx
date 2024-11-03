@@ -360,28 +360,26 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
 ### ⁉️ State Management
 
 <Cards>
-  <Card
-    title={"Redux"}
+    <Card
+    title={"XState"}
     description={
-      <>
-        <li>Purpose-built and highly opinionated state management library.</li>
-        <li>
-          Lots of documentation, large community, and rich ecosystem of plugins.
-        </li>
-        <li>
-          Helps you manage variables that are highly susceptible to change, and
-          upon which lots of other variables may depend on.
-        </li>
-        <li>
-          Separates state management from the React view layer and other
-          business logic entirely, and therefore scales well + easy to debug.
-        </li>
-      </>
+    <>
+      <li>Powerful and flexible state management library based on finite state machines and statecharts.</li>
+      <li>
+        Strong focus on predictability and control over state transitions, allowing for more reliable and well-defined workflows.
+      </li>
+      <li>
+        Ideal for managing complex or multi-step processes, where each state and transition can be explicitly defined and visualized.
+      </li>
+      <li>
+        Separates business logic from UI, making it framework-agnostic and easy to integrate with React, Vue, and other libraries.
+      </li>
+    </> 
     }
-    href={`https://redux.js.org/`}
+    href={`https://stately.ai/docs/xstate`}
     icon={
       <img
-        src="https://www.svgrepo.com/show/303557/redux-logo.svg"
+        src="https://www.svgrepo.com/show/354581/xstate.svg"
         alt="Redux Logo"
         width={24}
         height={24}
@@ -393,28 +391,6 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
 ### ⚙️ Back-End & Middleware
 
 <Cards>
-  <Card
-    title={'Lucia Auth'}
-    description={
-      <>
-        <li>Handling authentication safely and securely.</li>
-        <li>
-          Allows people to log in to our app with pre-existing
-          Google/Microsoft/Apple accounts, saving us from having to deal with
-          their sensitive data.
-        </li>
-      </>
-    }
-    href={`https://lucia-auth.com/`}
-    icon={
-      <img
-        src="https://avatars.githubusercontent.com/u/124423533?s=200&v=4.png"
-        alt="Lucia Auth Logo"
-        width={24}
-        height={24}
-      />
-    }
-  />
   <Card
     title={'tRPC'}
     description={
@@ -859,41 +835,6 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
     }
   />
   <Card
-    title={"Vercel (being replaced by Netlify)"}
-    description={
-      <>
-        <li>
-          For safely deploying our app to the web so that people can see and use
-          it from their browsers.
-        </li>
-        <li>
-          Uses <a href="https://aws.amazon.com/">AWS</a> under the hood.
-        </li>
-        <li>
-          Integrates well with Next.js and also allows for demo deployments for
-          our own purposes which are not indexed on google.
-        </li>
-        <li>
-          If we push a version that makes it past all our tests but somehow
-          breaks at the build stage, Vercel will provide instant feedback and
-          not deploy it, leaving up the previous functional version.
-        </li>
-        <li>
-          Also allows quick and easy rollbacks to previously deployed versions.
-        </li>
-      </>
-    }
-    href={`https://vercel.com/`}
-    icon={
-      <img
-        src="https://avatars.githubusercontent.com/u/14985020?s=200&v=4.svg"
-        alt="Vercel Logo"
-        width={24}
-        height={24}
-      />
-    }
-  />
-  <Card
     title={"Netlify"}
     description={
       <>
@@ -923,47 +864,6 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
       <img
         src="https://avatars.githubusercontent.com/u/7892489?s=200&v=4.svg"
         alt="Netlify Logo"
-        width={24}
-        height={24}
-      />
-    }
-  />
-  <Card
-    title={"Terraform"}
-    description={
-      <>
-        <li>Open-source infrastructure as code software tool.</li>
-        <li>Define and provision data center infrastructure with code.</li>
-      </>
-    }
-    href={`https://www.terraform.io`}
-    icon={
-      <img
-        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/terraform/terraform-original.svg"
-        alt="Terraform Logo"
-        width={24}
-        height={24}
-      />
-    }
-  />
-  <Card
-    title={"AWS"}
-    description={
-      <>
-        <li>
-          Definitely uses <a href="https://aws.amazon.com/">AWS</a> under the
-          hood.
-        </li>
-        <li>
-          Provisioning and managing variety of cloud services for our apps.
-        </li>
-      </>
-    }
-    href={`https://aws.amazon.com`}
-    icon={
-      <img
-        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg"
-        alt="AWS Logo"
         width={24}
         height={24}
       />

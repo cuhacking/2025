@@ -168,58 +168,30 @@ pnpm i
   </div>
 
   <div className="step">
+    Install [playwright](https://playwright.dev/) browsers.
+    ```sh title="terminal"
+    pnpm exec playwright install
+    ```
+  </div>
+
+  <div className="step">
     Spin up development docker containers, one of which contains the PostgreSQL database.
+
+    <Callout type="warn" title="Hold your horses!">
+      Docker daemon (i.e. Docker Desktop) should be running before proceeding!
+    </Callout>
 
     ```sh title="terminal"
     docker-compose up -d
     ```
   </div>
 
+
+<div className="step">
+Enable authentication providers. OAuth providers need to be configured for you to use authentication in your development environment.
+
 <Accordions>
-  <Accordion title="Legacy steps (will be removed soon)">
-This is what the steps looked like from this point onwards prior to the monorepo migration.
-
-<div className="steps">
-<div className="step">
-Run PostgreSQL in Docker
-
-    <Callout type="warn">
-      If you have a local PostgreSQL server running, you may need to stop it before running the Docker container.
-    </Callout>
-
-```sh title="Terminal"
-docker-compose up -d db
-```
-
-<Callout >
-You can also build and run the app itself with [Docker Compose](https://docs.docker.com/compose/).
-
-```sh title="Terminal"
-docker-compose up -d --build
-```
-
-</Callout>
-</div>
-
-<div className="step">
-Run Prisma Migrate
-
-```sh title="Terminal"
-pnpm prisma migrate dev
-```
-
-</div>
-
-<div className="step">
-Run development server
-
-```sh title="Terminal"
-pnpm dev
-```
-
-</div>
-
-### Enable Google OAuth
+  <Accordion title="Google OAuth">
 
 <div className="steps">
   <div className="step">
@@ -236,24 +208,24 @@ pnpm dev
     redirect URI.
   </div>
   <div className="step">
-    Copy the client ID and client secret into your `.env` file as
-    `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`.
+    Make a copy of the `.env.example` file in the `apps/portal` directory, and rename it to `.env.local`.
+    Then, copy & paste the google client ID and secret into your the `.env.local` file as
+    `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` respectively.
   </div>
   <div className="step">Restart the development server.</div>
 </div>
 
 You should now be able to sign in with Google.
 
-</div>
-
 </Accordion>
 </Accordions>
+</div>
 
 <div className="step">
-  Run Drizzle Migrate
+  Run Drizzle Push, to push the latest migration to your development database.
 
   ```sh title="Terminal"
-  pnpm nx run db:migrate
+  pnpm nx run db:push
   ```
 
 </div>
@@ -266,18 +238,17 @@ You should now be able to sign in with Google.
     <Tabs groupId="website-project-nx-commands" items={['dev', 'build', 'start']} persist>
       <Tab value="dev">
         ```sh title="Terminal"
-        pnpm nx run web:dev
+        pnpm nx run website:dev
         ```
       </Tab>
       <Tab value="build">
         ```sh title="Terminal"
-        pnpm nx run web:build
+        pnpm nx run website:build
         ```
       </Tab>
       <Tab value="start">
         ```sh title="Terminal"
-        ```sh title="Terminal"
-        pnpm nx run web:start
+        pnpm nx run website:start
         ```
       </Tab>
     </Tabs>
