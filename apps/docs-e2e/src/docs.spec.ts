@@ -24,6 +24,7 @@ const CUHACKING_2025_LANDING_PAGE_GITHUB_REPOSITORY_URL = `${GITHUB_BASE_URL}/la
 const CUHACKING_2025_DOCS_URL = `${DOCS_BASE_URL}/docs`
 
 const CUHACKING_2025_LANDING_PAGE_URL = 'https://cuhacking.ca/'
+const CUHACKING_2025_LINKTREE_URL = 'https://linktr.ee/cuhacking_'
 
 /* ---------------- MOBILE + DESKTOP + TABLET ---------------- */
 test.describe(`Common MOBILE, TABLET and DESKTOP Layout Elements`, {
@@ -155,6 +156,16 @@ test.describe(`Common MOBILE and TABLET Menu Elements`, {
     await clickAndGoToPage(docsLayoutPage, docsLayoutPage.mobileHackerPortalProjectBoardLink, CUHACKING_2025_PLATFORM_GITHUB_PROJECT_BOARD_URL)
   })
 
+  test(`should have linktree button visible from linktree dropdown for mobile/tablet`, async ({ docsLayoutPage }) => {
+    await docsLayoutPage.linktreeDropdownButton.click()
+    await expect(docsLayoutPage.mobileLinktreeLink).toBeVisible()
+  })
+
+  test(`should take user to linktree when linktree button is clicked mobile/tablet`, async ({ docsLayoutPage }) => {
+    await docsLayoutPage.linktreeDropdownButton.click()
+    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.mobileLinktreeLink, CUHACKING_2025_LINKTREE_URL)
+  })
+
   test(`should have github button visible from mobile/tablet menu`, async ({ docsLayoutPage }) => {
     await expect(docsLayoutPage.mobileGithubIcon).toBeVisible()
   })
@@ -255,6 +266,16 @@ test.describe('Unique DESKTOP Header Elements', {
   test('should take user to Hacker Portal Project Board when Hacker Portal App link inside Hacker Portal Dropdown is clicked', async ({ docsLayoutPage }) => {
     await docsLayoutPage.hackerPortalDropdownButton.click()
     await clickAndGoToPage(docsLayoutPage, docsLayoutPage.hackerPortalProjectBoardLink, CUHACKING_2025_PLATFORM_GITHUB_PROJECT_BOARD_URL)
+  })
+
+  test('should contain Linktree link inside Linktree Dropdown', async ({ docsLayoutPage }) => {
+    await docsLayoutPage.linktreeDropdownButton.click()
+    await expect(docsLayoutPage.linktreeLink).toBeVisible()
+  })
+
+  test('should take user to Linktree when Linktree link inside Linktree Dropdown is clicked', async ({ docsLayoutPage }) => {
+    await docsLayoutPage.linktreeDropdownButton.click()
+    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.linktreeLink, CUHACKING_2025_LINKTREE_URL)
   })
 
   test('should contain theme toggle in desktop header', async ({ docsLayoutPage }) => {
