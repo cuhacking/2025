@@ -14,6 +14,8 @@ export class DocsLayout {
   readonly hackerPortalLink: Locator
   readonly hackerPortalSourceLink: Locator
   readonly hackerPortalProjectBoardLink: Locator
+  readonly linktreeDropdownButton: Locator
+  readonly linktreeLink: Locator
   readonly searchBar: Locator
   readonly themeToggle: Locator
   // TODO: add test for language toggle once it's implemented
@@ -34,6 +36,7 @@ export class DocsLayout {
   readonly mobileWebsiteSourceLink: Locator
   readonly mobileGithubIcon: Locator
   readonly mobileHackerPortalProjectBoardLink: Locator
+  readonly mobileLinktreeLink: Locator
 
   // Desktop Sidebar
   readonly sideBarToggle: Locator
@@ -63,6 +66,9 @@ export class DocsLayout {
     this.hackerPortalLink = page.getByRole('dialog').getByRole('link', { name: 'App' })
     this.hackerPortalSourceLink = page.getByRole('dialog').getByRole('link', { name: 'Source' })
     this.hackerPortalProjectBoardLink = page.getByRole('dialog').getByRole('link', { name: 'Project Board' })
+    this.linktreeDropdownButton = page.getByRole('button', { name: 'Linktree' })
+    this.linktreeLink = page.getByRole('dialog').getByRole('link', { name: 'Linktree' })
+
     this.searchBar = page.getByRole('button', { name: 'Search ⌘ K' })
     this.themeToggle = page.getByRole('button', { name: 'Toggle Theme' })
 
@@ -84,6 +90,7 @@ export class DocsLayout {
     this.mobileWebsiteSourceLink = page.getByRole('link', { name: 'Source (legacy)' })
     this.mobileGithubIcon = page.getByRole('link', { name: 'Github', exact: true })
     this.mobileHackerPortalProjectBoardLink = page.getByRole('link', { name: 'Project Board' })
+    this.mobileLinktreeLink = page.getByRole('link', { name: 'Linktree' })
 
     // Desktop Sidebar
     this.sideBarToggle = page.getByLabel('Collapse Sidebar')
