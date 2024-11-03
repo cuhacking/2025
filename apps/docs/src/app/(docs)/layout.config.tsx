@@ -4,6 +4,7 @@ import {
   Github,
   Laptop as HackerPortalIcon,
   Bird as LandingPageIcon,
+  Trees as LinktreeIcon,
 } from 'lucide-react'
 import Image from 'next/image'
 import type { HomeLayoutProps } from 'fumadocs-ui/home-layout'
@@ -63,6 +64,15 @@ export const baseOptions: HomeLayoutProps = {
           text: 'Project Board',
           url: 'https://github.com/orgs/cuhacking/projects/4',
           icon: <Github />,
+        },
+      ],
+    },
+    {
+      type: 'menu',
+      text: 'Linktree',
+      icon: <LinktreeIcon />,
+      items: [
+        { text: 'Linktree', icon: <LinktreeIcon />, url: 'https://linktr.ee/cuhacking_',
         },
       ],
     },
