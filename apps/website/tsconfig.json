@@ -1,20 +1,18 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "lib": ["DOM", "DOM.Iterable", "ES2019"],
-    "isolatedModules": true,
-    "esModuleInterop": true,
+    "target": "ES2019",
     "jsx": "react-jsx",
+    "lib": ["DOM", "DOM.Iterable", "ES2019"],
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "target": "ES2019",
-    "strict": true,
     "allowJs": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true
+    "isolatedModules": true
   },
-  "include": [],
-  "files": [],
   "references": [
     {
       "path": "./tsconfig.app.json"
@@ -22,5 +20,7 @@
     {
       "path": "./tsconfig.spec.json"
     }
-  ]
+  ],
+  "files": [],
+  "include": []
 }
