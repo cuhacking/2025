@@ -1,19 +1,32 @@
-import type { DocsLayoutProps } from 'fumadocs-ui/layout'
-import { RootToggle } from 'fumadocs-ui/components/layout/root-toggle'
-import {
-  Github,
-  Laptop as HackerPortalIcon,
-  Bird as LandingPageIcon,
-  Trees as LinktreeIcon,
-} from 'lucide-react'
 import Image from 'next/image'
+
+import type { DocsLayoutProps } from 'fumadocs-ui/layout'
 import type { HomeLayoutProps } from 'fumadocs-ui/home-layout'
+
+import { RootToggle } from 'fumadocs-ui/components/layout/root-toggle'
+
+import {
+  Figma as BrandIcon,
+  /* Code as ESLintIcon, */
+  Smartphone as HackerPortalIcon,
+  Instagram as InstagramIcon,
+  AppWindowMac as LandingPageIcon,
+  Linkedin as LinkedinIcon,
+  Trees as LinktreeIcon,
+  SquareKanban as ProjectBoardIcon,
+  /* Drill as UtilsIcon, */
+} from 'lucide-react'
+
+import { SiStorybook as StorybookIcon } from 'react-icons/si'
+import { AiOutlineDiscord as DiscordIcon } from 'react-icons/ai'
+
 import { pageTree, pages } from './source'
 
 // shared configuration
 export const baseOptions: HomeLayoutProps = {
   nav: {
     title: (
+    /* TODO: use cms */
       <>
         <Image
           src="/cuhacking-logo.svg"
@@ -26,57 +39,71 @@ export const baseOptions: HomeLayoutProps = {
     ),
     url: '/',
   },
-  githubUrl: 'https://github.com/cuhacking/hackathon',
+  /* TODO: use cms  */
   links: [
     {
-      type: 'menu',
       text: 'Website',
+      url: 'https://cuhacking.ca',
       icon: <LandingPageIcon />,
-      items: [
-        {
-          text: 'Website',
-          url: 'https://www.cuhacking.ca',
-          icon: <LandingPageIcon />,
-        },
-        {
-          text: 'Source (legacy)',
-          url: 'https://github.com/cuhacking/landing-page',
-          icon: <Github />,
-        },
-      ],
     },
     {
-      type: 'menu',
-      text: 'Hacker Portal',
+      text: 'Portal',
+      url: 'https://portal.cuhacking.ca',
       icon: <HackerPortalIcon />,
-      items: [
-        {
-          text: 'App',
-          url: '/',
-          icon: <HackerPortalIcon />,
-        },
-        {
-          text: 'Source',
-          url: 'https://github.com/cuhacking/2025',
-          icon: <Github />,
-        },
-        {
-          text: 'Project Board',
-          url: 'https://github.com/orgs/cuhacking/projects/4',
-          icon: <Github />,
-        },
-      ],
     },
     {
-      type: 'menu',
+      text: 'Design',
+      url: 'https://www.figma.com/design/wc1JOWR48tBNkjcjwY3AzB/%E2%8C%A8%EF%B8%8F-cuHacking-Design-System?node-id=0-1&t=YTR1ET4Qw1wG1cjz-1',
+      icon: <StorybookIcon />,
+    },
+    /* {
+     *   text: 'Utils (Coming Soon)',
+     *   url: 'https://utils.cuhacking.ca',
+     *   icon: <UtilsIcon />,
+     * },
+     * {
+     *   text: 'ESLint (Coming Soon)',
+     *   url: 'https://eslint.cuhacking.ca/rules',
+     *   icon: <ESLintIcon />,
+     * }, */
+    {
+      text: 'Discord',
+      url: 'https://discord.gg/h2cQqF9aZf',
+      icon: <DiscordIcon />,
+      type: 'icon',
+    },
+    {
+      text: 'Instagram',
+      url: 'https://www.instagram.com/cuhacking/',
+      icon: <InstagramIcon />,
+      type: 'icon',
+    },
+    {
+      text: 'LinkedIn',
+      url: 'https://www.linkedin.com/company/cuhacking/',
+      icon: <LinkedinIcon />,
+      type: 'icon',
+    },
+    {
       text: 'Linktree',
+      url: 'https://linktr.ee/cuhacking_',
       icon: <LinktreeIcon />,
-      items: [
-        { text: 'Linktree', icon: <LinktreeIcon />, url: 'https://linktr.ee/cuhacking_',
-        },
-      ],
+      type: 'icon',
+    },
+    {
+      text: 'Brand',
+      url: 'https://www.figma.com/design/wc1JOWR48tBNkjcjwY3AzB/%E2%8C%A8%EF%B8%8F-cuHacking-Design-System?node-id=0-1&t=YTR1ET4Qw1wG1cjz-1',
+      icon: <BrandIcon />,
+      type: 'icon',
+    },
+    {
+      text: 'Project Board',
+      url: 'https://github.com/orgs/cuhacking/projects/4',
+      icon: <ProjectBoardIcon />,
+      type: 'icon',
     },
   ],
+  githubUrl: 'https://github.com/cuhacking/2025',
 }
 
 // home layout configuration
