@@ -1,18 +1,10 @@
-import type { MetaFunction } from '@remix-run/node'
 import {
   Links,
-  LiveReload,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react'
-
-export const meta: MetaFunction = () => [
-  {
-    title: 'New Remix App',
-  },
-]
 
 export default function App() {
   return (
@@ -27,7 +19,6 @@ export default function App() {
         <Outlet />
         <ScrollRestoration />
         <Scripts />
-        <LiveReload />
       </body>
     </html>
   )
