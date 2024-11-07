@@ -1,1 +1,0 @@
-export { FaqSection } from "./FaqSection";
