@@ -1,8 +1,11 @@
+import { fileURLToPath } from 'node:url'
 /* eslint-disable node/prefer-global/process */
 import { workspaceRoot } from '@nx/devkit'
 import { nxE2EPreset } from '@nx/playwright/preset'
 
 import { defineConfig, devices } from '@playwright/test'
+
+const __filename = fileURLToPath(import.meta.url)
 
 // For CI, you may want to set BASE_URL to the deployed application.
 const baseURL = process.env.BASE_URL || 'http://localhost:3000'
@@ -26,7 +29,7 @@ export default defineConfig({
   },
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'pnpm exec nx run website:serve-static',
+    command: 'pnpm nx dev website --verbose',
     url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
     cwd: workspaceRoot,

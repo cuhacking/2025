@@ -11,25 +11,26 @@
     ],
     "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
-  "nxCloudId": "672c3bbe9eb3702453d897db",
+  // "nxCloudId": "672c3bbe9eb3702453d897db",
   "plugins": [
     {
       "plugin": "@nx/remix/plugin",
       "options": {
-        "startTargetName": "start",
-        "buildTargetName": "build",
         "devTargetName": "dev",
-        "typecheckTargetName": "typecheck",
-        "serveStaticTargetName": "serve-static"
+        "buildTargetName": "build",
+        "startTargetName": "start",
+        "serveStaticTargetName": "serve-static",
+        "typecheckTargetName": "typecheck"
       }
     },
     {
       "plugin": "@nx/vite/plugin",
+      "exclude": ["apps/website/**/*"],
       "options": {
-        "buildTargetName": "build",
         "testTargetName": "test",
-        "serveTargetName": "serve",
         "previewTargetName": "preview",
+        "serveTargetName": "serve",
+        "buildTargetName": "build",
         "serveStaticTargetName": "serve-static",
         "typecheckTargetName": "typecheck"
       }
@@ -44,6 +45,15 @@
       "plugin": "@nx/playwright/plugin",
       "options": {
         "targetName": "e2e"
+      }
+    },
+    {
+      "plugin": "@nx/next/plugin",
+      "options": {
+        "devTargetName": "dev",
+        "buildTargetName": "build",
+        "startTargetName": "start",
+        "serveStaticTargetName": "serve-static"
       }
     }
   ],

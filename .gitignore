@@ -42,3 +42,11 @@ Thumbs.db
 .nx/workspace-data
 
 vite.config.*.timestamp*
+
+# Remix
+.cache
+build
+public/build
+
+# Local Netlify folder
+.netlify

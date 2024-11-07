@@ -5,5 +5,26 @@
   "projectType": "application",
   "tags": [],
   "// targets": "to see all targets run: nx show project website --web",
-  "targets": {}
+  "targets": {
+    "dev": {
+      "command": "remix vite:dev",
+      "options": {
+        "cwd": "apps/website"
+      }
+    },
+    "build": {
+      "command": "remix vite:build",
+      "cache": true,
+      "outputs": ["{projectRoot}/build", "{projectRoot}/public/build"],
+      "options": {
+        "cwd": "apps/website"
+      }
+    },
+    "serve": {
+      "command": "netlify serve --filter website",
+      "options": {
+        "cwd": "apps/website"
+      }
+    }
+  }
 }
