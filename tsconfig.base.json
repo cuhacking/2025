@@ -1,41 +1,35 @@
 {
-  "---------- GENERAL REFERENCE ---------": "",
-  "Typescript Reference": "https://typescriptlang.org/tsconfig",
-  "Additional Guide": "https://pkerschbaum.com/tidbits/sensible-tsconfig-defaults",
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ],
+  // "---------- GENERAL REFERENCE ---------": "",
+  // "Typescript Reference": "https://typescriptlang.org/tsconfig",
+  // "Additional Guide": "https://pkerschbaum.com/tidbits/sensible-tsconfig-defaults",
+  "exclude": ["node_modules", "tmp"],
   "compileOnSave": false,
   "compilerOptions": {
-    "---------- TYPE CHECKING ---------": "",
-    "---------- MODULES ---------": "",
+    // "---------- TYPE CHECKING ---------": "",
+    // "---------- MODULES ---------": "",
     "baseUrl": ".",
     "rootDir": ".",
     "module": "esnext",
     "moduleResolution": "node",
     "paths": {},
-    "---------- EMIT ---------": "",
+    // "---------- EMIT ---------": "",
     "declaration": false,
     "importHelpers": true,
     "sourceMap": true,
-    "---------- JAVASCRIPT SUPPORT ---------": "",
-    "---------- EDITOR SUPPORT ---------": "",
-    "---------- INTEROP CONSTRAINTS ---------": "",
-    "---------- BACKWARDS COMPATIBILITY ---------": "",
-    "---------- LANGUAGE AND ENVIRONMENT ---------": "",
+    // "---------- JAVASCRIPT SUPPORT ---------": "",
+    // "---------- EDITOR SUPPORT ---------": "",
+    // "---------- INTEROP CONSTRAINTS ---------": "",
+    // "---------- BACKWARDS COMPATIBILITY ---------": "",
+    // "---------- LANGUAGE AND ENVIRONMENT ---------": "",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es2015",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
-    "---------- COMPILER DIAGNOSTICS ---------": "",
-    "---------- PROJECTS ---------": "",
-    "---------- OUTPUT FORMATTING ---------": "",
-    "---------- COMPLETENESS ---------": "",
-    "skipDefaultLibCheck": true,
-    "---------- WATCH OPTIONS ---------": ""
+    "lib": ["es2020", "dom"],
+    // "---------- COMPILER DIAGNOSTICS ---------": "",
+    // "---------- PROJECTS ---------": "",
+    // "---------- OUTPUT FORMATTING ---------": "",
+    // "---------- COMPLETENESS ---------": "",
+    "skipDefaultLibCheck": true
+    // "---------- WATCH OPTIONS ---------": ""
   }
 }
