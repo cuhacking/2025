@@ -1,20 +1,48 @@
 {
+  "---------- GENERAL REFERENCE ---------": "",
+  "Typescript Reference": "https://typescriptlang.org/tsconfig",
+  "Additional Guide": "https://pkerschbaum.com/tidbits/sensible-tsconfig-defaults",
+
+  "exclude": ["node_modules", "tmp"],
+
   "compileOnSave": false,
+
   "compilerOptions": {
-    "target": "es2015",
-    "lib": ["es2020", "dom"],
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
+    "---------- TYPE CHECKING ---------": "",
+
+    "---------- MODULES ---------": "",
     "baseUrl": ".",
     "rootDir": ".",
     "module": "esnext",
     "moduleResolution": "node",
     "paths": {},
+
+    "---------- EMIT ---------": "",
     "declaration": false,
     "importHelpers": true,
     "sourceMap": true,
+
+    "---------- JAVASCRIPT SUPPORT ---------": "",
+
+    "---------- EDITOR SUPPORT ---------": "",
+
+    "---------- INTEROP CONSTRAINTS ---------": "",
+
+    "---------- BACKWARDS COMPATIBILITY ---------": "",
+
+    "---------- LANGUAGE AND ENVIRONMENT ---------": "",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es2015",
+    "lib": ["es2020", "dom"],
+
+    "---------- COMPILER DIAGNOSTICS ---------": "",
+
+    "---------- PROJECTS ---------": "",
+    "---------- OUTPUT FORMATTING ---------": "",
+    "---------- COMPLETENESS ---------": "",
     "skipDefaultLibCheck": true,
-    "skipLibCheck": true
-  },
-  "exclude": ["node_modules", "tmp"]
+
+    "---------- WATCH OPTIONS ---------": ""
+  }
 }
