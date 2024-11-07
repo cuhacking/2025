@@ -1,4 +1,4 @@
-import type { MetaFunction } from '@remix-run/node';
+import type { MetaFunction } from '@remix-run/node'
 import {
   Links,
   LiveReload,
@@ -6,13 +6,13 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-} from '@remix-run/react';
+} from '@remix-run/react'
 
 export const meta: MetaFunction = () => [
   {
     title: 'New Remix App',
   },
-];
+]
 
 export default function App() {
   return (
@@ -30,5 +30,5 @@ export default function App() {
         <LiveReload />
       </body>
     </html>
-  );
+  )
 }

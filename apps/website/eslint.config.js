@@ -8,6 +8,6 @@ export default (async () => {
 
   return [
     ...baseConfig,
-    {ignores: ['build', 'public/build']}
+    { ignores: ['build', 'public/build'] },
   ]
 })()
