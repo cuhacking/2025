@@ -1,5 +1,0 @@
-{
-  "title": "Libraries",
-  "icon": "Library",
-  "pages": ["env", "utils", "db", "auth", "api", "template"]
-}
