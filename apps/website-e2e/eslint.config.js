@@ -1,13 +1,29 @@
-const playwright = require('eslint-plugin-playwright');
-const baseConfig = require('../../eslint.config.js');
+// const playwright = require('eslint-plugin-playwright');
+// const baseConfig = require('../../eslint.config.js');
 
-module.exports = [
+// module.exports = [
+//   playwright.configs['flat/recommended'],
+//   ...baseConfig,
+//   {
+//     files: ['**/*.ts', '**/*.js'],
+//     // Override or add rules here
+//     rules: {},
+//   },
+// ]
+
+import baseConfigPromise from '../../eslint.config.js'
+import playwright from 'eslint-plugin-playwright'
+
+export default (async () => {
+  const baseConfig = await baseConfigPromise
+
+  return [
   playwright.configs['flat/recommended'],
-
-  ...baseConfig,
+    ...baseConfig,
   {
-    files: ['**/*.ts', '**/*.js'],
+    files: ['**.ts', '**.js'],
     // Override or add rules here
     rules: {},
   },
-];
+  ]
+})()
