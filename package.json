@@ -17,6 +17,7 @@
     "@remix-run/react": "^2.13.1",
     "@remix-run/serve": "^2.13.1",
     "isbot": "^4.4.0",
+    "next": "14.2.16",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
@@ -32,6 +33,7 @@
     "@nx/eslint": "20.0.10",
     "@nx/eslint-plugin": "20.0.10",
     "@nx/js": "20.0.10",
+    "@nx/next": "20.0.10",
     "@nx/playwright": "20.0.10",
     "@nx/vite": "20.0.10",
     "@nx/web": "20.0.10",
