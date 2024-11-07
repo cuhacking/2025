@@ -2,8 +2,14 @@
   "name": "@cuhacking/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
-  "private": true,
+  "private": false,
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "lint:inspect": "pnpx @eslint/config-inspector --no-open",
+    "lint:inspect-open": "pnpx @eslint/config-inspector",
+    "lint:inspect-build": "pnpx @eslint/config-inspector build --outDir dist/lint-inspect"
+  },
   "dependencies": {
     "@nx/remix": "20.0.10",
     "@remix-run/node": "^2.8.1",
@@ -14,6 +20,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@eslint/config-inspector": "^0.5.6",
     "@eslint/js": "^9.8.0",
     "@nx/devkit": "20.0.10",
     "@nx/eslint": "20.0.10",
