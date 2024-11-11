@@ -1,0 +1,68 @@
+name: Architecture Decision Record
+description: Record a design decision
+title: '[ADR]: description'
+body:
+  - type: checkboxes
+    id: search
+    attributes:
+      label: Search checkbox
+      description: Insufficiently described issues will be closed, so please provide as much information as possible
+      options:
+        - label: Have you searched for similar [issues](https://github.com/cuhacking/2025/issues)?
+  - type: dropdown
+    id: platforms
+    attributes:
+      label: Platforms
+      multiple: true
+      options:
+        - all
+        - Website
+        - Docs
+        - Portal
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: A brief description of what the issue of the design decision is
+    validations:
+      required: true
+  - type: textarea
+    id: decision
+    attributes:
+      label: Decision
+      description: A brief description of the architectural decision taken
+    validations:
+      required: true
+  - type: textarea
+    id: comparative_table
+    attributes:
+      label: Comparative Table of Technologies
+      description: |-
+        Create a table comparing the different technologies that were considered and show pros and cons for specific use cases. You can copy the template for a table here:
+
+        ```bash
+        | Use Case | Tech 1 | Tech 2 |
+        |----------|--------|--------|
+        | Use Case 1 |        |        |
+        | Use Case 2 |        |        |
+        | Use Case 3 |        |        |
+        ```
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solution Summary
+      description: A summary of the solution of this decision
+      placeholder: |-
+        What is there to do next?
+        What features need to be implemented?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative Options
+      description: Are there any alternative options that were considered?

@@ -1,0 +1,76 @@
+name: Bug issue
+description: Report a bug affecting cuHacking 2025 (includes website, portal and docs)
+title: '[BUG]: description-of-issue'
+labels:
+  - bug
+body:
+  - type: checkboxes
+    id: search
+    attributes:
+      label: Search checkbox
+      description: Insufficiently described issues will be closed, so please provide as much information as possible
+      options:
+        - label: Have you searched for similar [issues](https://github.com/cuhacking/2025/issues)?
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A brief description of the issue
+    validations:
+      required: true
+  - type: textarea
+    id: str
+    attributes:
+      label: Steps to reproduce
+      description: A series of steps to reproduce the issue
+      value: |-
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Actual result
+      description: What happened
+      placeholder: include screenshots if needed
+    validations:
+      required: true
+  - type: textarea
+    id: expectation
+    attributes:
+      label: Expected result
+      description: What should've happened
+      placeholder: include screenshots if needed
+    validations:
+      required: true
+  - type: dropdown
+    id: reproduces
+    attributes:
+      label: Reproduces how often
+      multiple: false
+      options:
+        - Easily reproduced
+        - Intermittent issue
+        - No steps to reproduce
+      default: 0
+    validations:
+      required: true
+  - type: checkboxes
+    id: reproducibility
+    attributes:
+      label: Reproducibility
+      description: Does this issue occur...
+      options:
+        - label: in Safari?
+        - label: in Firefox?
+        - label: in Chrome?
+        - label: for mobile devices?
+        - label: for tablet devices?
+        - label: for desktop devices?
+  - type: textarea
+    id: misc
+    attributes:
+      label: Miscellaneous information
+      description: Any additional information, related issues, extra QA steps, configuration or data that might be necessary to reproduce the issue

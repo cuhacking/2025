@@ -1,0 +1,14 @@
+{
+  "title": "Contribution Guidelines",
+  "icon": "GitPullRequestCreateArrow",
+  "pages": [
+    "writing-documentation",
+    "system-requirements",
+    "branching-guidelines",
+    "coding-guidelines",
+    "conventional-commits",
+    "pull-requests",
+    "external-contributors-guide",
+    "final-step"
+  ]
+}

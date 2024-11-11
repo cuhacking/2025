@@ -1,0 +1,302 @@
+---
+title: 2. Save the cool automated things
+description: Would be a shame if someone were to delete that thing you spent 5 hours on.
+---
+
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+When you type things into Google docs, it autosaves and you can see the version history.
+
+What if we want to see the version history of our file?
+What if we want to have multiple versions of the file without having multiple copies?
+What if we want to let others change our file without over-writing our changes?
+
+Git solves these problems for us. Let's use it.
+
+<div className="steps">
+
+<div className="step">
+### Experience Git Visually
+
+Just like we learned how to move first inside Linux, we'll learn to move with Git.
+
+Let's have some fun with this [Git Visualizer](https://git-school.github.io/visualizing-git/#free) first and find out it is :)
+</div>
+
+<div className="step">
+### Making commits
+
+```txt title="git-school.github.io/visualizing-git/"
+git commit
+```
+
+You'll see a new bubble. Bubbles are fun, let's make another one.
+
+```txt title="git-school.github.io/visualizing-git/"
+git commit
+```
+
+You'll see another bubble. Nice.
+
+Do this as many times as you like to see more commits.
+</div>
+
+<div className="step">
+
+### See history
+
+```txt title="git-school.github.io/visualizing-git/"
+git log
+```
+
+This is the history of the commits you've made so far, similar to the version history of a Google Doc.
+
+We can see that the first commit has a message, that says `first commit`. The commits after don't have messages.
+</div>
+
+<div className="step">
+### Commit with messages
+
+Let's start over. Press 'OK' for the browser popup after running the command.
+```txt title="git-school.github.io/visualizing-git/"
+clear
+```
+
+Now, we've all got that one friend that claims that they've got a degree in rizzology. Somehow, this one friend always happens to be the single one.
+
+One day, your friend tells you they have a crush on someone.
+
+<Accordions>
+
+
+<Accordion title="What do friends do when they have a crush on someone?">
+ Why of course! They ask you for advice 😂
+</Accordion >
+</Accordions>
+
+You give your friend all the advice you can, and they still completely goof it up.
+
+We ask our friend if they're using git, and they're not. No wonder why their crush left them on read. Your friend says:
+
+> But git's so hard to learn 😭
+
+What do you do? Well of course, you just hit 'em with the good old....
+
+> Plenty of fish in sea 🐟️
+
+It hasn't even been two weeks, and your friend has a crush on another person.
+
+<Accordions>
+<Accordion title="What do friends do when they have a crush on someone?">
+ Why of course! They show you pictures. 📱
+</Accordion >
+</Accordions>
+
+Your friend shows you their crushes' instagram, and let's be honest, you don't really care. But you want to be a good friend so you roll with it.
+
+As friends always do, they hit you with the good old:
+
+> Oh it's just a bad picture I swear they look better in real life
+
+You're curious so you look at it.
+
+<Callout type="warn" title="UH OH">
+Oh no, your friend's crush's friend do be looking kinda cute. 😶
+</Callout>
+
+So you start gassing up your friend and asking them to text their crush, and they hit you with:
+
+> I'm not following your advice and getting left on read again
+
+Now, that's outrageous 😡
+
+To be honest, git do be a little initimidating. And you care about our friend. You don't want them to goof up again. A win for your friend is a win for you, right?.
+
+So we're going to show them how rizzology is done right using git.
+
+Let's get to work and text our friend's crush.
+
+```txt title="git-school.github.io/visualizing-git/"
+git commit -m "you: hey"
+```
+
+```txt title="git-school.github.io/visualizing-git/"
+git commit -m "them: hi"
+```
+
+```txt title="git-school.github.io/visualizing-git/"
+git commit -m "you: how's everything going"
+```
+
+```txt title="git-school.github.io/visualizing-git/"
+git commit -m "them: good hbu"
+```
+
+```txt title="git-school.github.io/visualizing-git/"
+git commit -m "you: pretty good hbu"
+```
+
+```txt title="git-school.github.io/visualizing-git/"
+git commit -m "them: lol"
+```
+
+Huh? 🤨
+
+Your friend is excited that your rizzology degree is paying off, and you made their crush **lol**.
+
+But deep down, you know you didn't say anything funny. You're a little worried.🤔
+
+Time to investigate. Let's put on our hacker hoodies, and find out.
+
+```txt title="git-school.github.io/visualizing-git/"
+git log
+```
+
+```txt
+ b10f6d7 them: lol
+ fce5c0b you: pretty good hbu  // [!code highlight]
+ f212002 them: good hbu
+ 56c6023 you: how's everything going
+ b7d0046 them: hi
+ b27172 you: hey
+```
+
+<Callout type="warn" title="UH OH">
+We put a 'hbu' at the end 😱 Whoops 😬
+</Callout>
+
+🚨 You scramble. 🚨
+
+```txt title="git-school.github.io/visualizing-git/"
+git commit -m "you: pretty good*"
+```
+
+GG. You embarrassed yourself, and you're also about to get your friend left on read.💀
+
+Your friend starts to panic, and you tell them to calm down.
+
+Git to the rescue. Let's show our friend its time travel powers.
+</div>
+
+<div className="step">
+### Resetting commits
+We need to pick a point in time to travel back to and try to un-oopsie this.
+
+```txt title="git-school.github.io/visualizing-git/"
+git reset
+```
+
+It doesn't work. And your friend panics, as friends always do.
+
+Looking closer at the log we notice that each commit has a **hash identifier**.
+
+Let's find the hash of `pretty good hbu` and reset to it.
+
+```txt
+// [!code word:fce5c0b]
+ ef29994 you: pretty good
+ b10f6d7 them: lol
+ fce5c0b you: pretty good hbu  // [!code highlight]
+ f212002 them: good hbu
+ 56c6023 you: how's everything going
+ b7d0046 them: hi
+ b27172 you: hey
+```
+
+Bingo. The hash is pretty long, but it looks like it's **unique**.
+
+Let's try just the **first three** characters.
+
+```txt title="git-school.github.io/visualizing-git/"
+git reset fce
+```
+
+Did it work? Let's check.
+
+```txt title="git-school.github.io/visualizing-git/"
+git log
+```
+
+```txt
+ fce5c0b you: pretty good hbu
+ f212002 them: good hbu
+ 56c6023 you: how's everything going
+ b7d0046 them: hi
+ b27172 you: hey
+```
+
+Okay, looks like that worked. Phew. 😅
+</div>
+
+<div className="step">
+### Renaming commits
+
+Now let's quickly fix our oopsie.
+
+```txt title="git-school.github.io/visualizing-git/"
+git commit --amend -m "you: pretty good"
+```
+
+You'll see that the previous commit turned white, and a new one appeared at the same level.
+
+We've erased the white commits forever, or have we? Time will tell.
+</div>
+
+<div className="step">
+### Resetting commits
+
+Time elapses, and it tells nothing. Our friend's crush doesn't reply.
+
+This is concerning. The imposter syndrome starts to hit you.
+
+Are you truly a rizzologist? Is it truly GG? 😰
+
+Let's find out.
+
+```txt title="git-school.github.io/visualizing-git/"
+git log
+```
+
+Looking at the conversation, you start to feel very thirsty. 🌵
+
+```txt
+ 662c147 you: pretty good // [!code highlight]
+ f212002 them: good hbu // [!code highlight]
+ 56c6023 you: how's everything going
+ b7d0046 them: hi
+ b27172 you: hey
+```
+
+
+<Callout type="warn" title="UH OH">
+🚨 Houston, we got a very dry conversation. 🚨
+</Callout>
+</div>
+
+Quick quick, let's see if they'll be at hack the tunnels.
+
+With our rizzology skills, let's abbreviate it so that they they can't help but reply when they read it.
+
+```txt title="git-school.github.io/visualizing-git/"
+git commit -m "you: you going to htt?"
+```
+
+You get a reply.
+
+```txt title="git-school.github.io/visualizing-git/"
+git commit -m "them: htt?"
+```
+
+Phew. Looks, like your friend won't doubt your rizzology skills after all.
+
+```txt title="git-school.github.io/visualizing-git/"
+git commit -m "you: hack the tunnels"
+```
+
+```txt title="git-school.github.io/visualizing-git/"
+git commit -m "them: yes, git workshop"
+```
+
+</div>
+
+To be continued...
