@@ -5,9 +5,5 @@
   "projectType": "application",
   "tags": [],
   "// targets": "to see all targets run: nx show project docs --web",
-  "targets": {
-    "postinstall": {
-      "command": "fumadocs-mdx"
-    }
-  }
+  "targets": {}
 }

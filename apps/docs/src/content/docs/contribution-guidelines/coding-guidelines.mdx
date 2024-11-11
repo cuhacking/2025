@@ -1,0 +1,173 @@
+---
+title: Coding Guidelines
+description: Spaghetti belongs on plates, not in our codebase.
+---
+
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+<Callout>
+  In case we haven't already mentioned it, make sure to rebase onto `main`
+  before continuing work.
+</Callout>
+
+We're huge on clean code. Code will be read more than it is written. Thankfully you don't have to memorize all of the conventions, as most of them have been automated by [ESLint](https://eslint.org/).
+
+If you have the ESLint extension in your IDE, you will immediately see some annoying red and yellow squigglies underneath your code. Thankfully, most of these squigglies can be made to go away using the format command in your IDE, or by running `pnpm lint:fix` in your terminal.
+
+<Accordions>
+  <Accordion title="But these squigglies are so annoying 😭 Can I just do `eslint ignore`? 🥺👉👈">
+    <ul>
+      <li>Yes, they're very annoying, we understand 😫</li>
+      <li>We feel tempted to just throw in an `eslint ignore` too. We learned over time that these squigglies are invaluable in ensuring that all code everyone writes follows the same style guide. Following the same conventions also makes migrations and automated codebase re-writes significantly easier using tools such as [codemods](https://github.com/facebook/jscodeshift).</li>
+      <li>It's either the squigglies or trying to memorize many pages of documentation on style guides which vary from team to team. Having PRs nitpicked at or argued over by different opinions is also very time consuming. It wears the team down and increases the chances of bugs. Whenever possible, we do our best to automate fixes for the squigglies.</li>
+    </ul>
+  </Accordion>
+
+  <Accordion title="The error message isn't helpful, should I google the error or is there a quicker way?">
+Googling is great, but the ESLint config inspector is better. Get with the times. It's an interactive solution to find which rules come from which plugins, and hyperlink you to their docs directly.
+
+<img
+  src="https://eslint.org/assets/images/blog/2024/config-inspector-intro.png"
+  alt="ESLint Config Inspector"
+/>
+
+Simply do `pnpm lint:inspect-open` in your terminal, and you'll see a little web app pop up in your browser. Click around and explore :)
+
+You can also view the `eslint.config.mjs` file to view a list of the presets and plugins we use.
+
+  </Accordion>
+ </Accordions>
+
+### Refactoring
+
+`Refactoring` is a misleading term, as the `factoring` part needs to happen first.
+
+Let's say we have:
+
+```math
+c = x + xy
+```
+
+We can make it easier to read by factoring out the `x`:
+
+```math
+c = x(1 + y)
+```
+
+This is great, and we can go even further:
+
+```math
+\begin{align*}
+c &= x^2\left(\frac{1}{x} + \frac{y}{x}\right) \\
+  &= x^3\left(\frac{1}{x^2} + \frac{y}{x^2}\right) \\
+  &= x^4\left(\frac{1}{x^3} + \frac{y}{x^3}\right)
+\end{align*}
+```
+
+Now compare the two equations, which one is easier to understand?
+
+<div className="flex justify-center items-center gap-4">
+
+    ```math
+    c = x^4\left(\frac{1}{x^3} + \frac{y}{x^3}\right)
+    ```
+
+    ```math
+    c = x(1 + y)
+    ```
+
+</div>
+
+Now take this concept and apply it to code. You'll find that the parallels are uncanny.
+
+People before reading the [Knowledge Base](/docs/knowledge-base): 🐈
+
+People after reading the [Knowledge Base](/docs/knowledge-base): 🐅
+
+## Best Practices
+### **Testing**
+#### E2E Test catagorization
+End to end Testing broken down into 2 different parts
+	- Desktop
+	- Mobile
+	- Tablet
+These above tests are broken down into further subsections: 
+	- Mobile and tablet 
+	- Desktop tabet
+	- Desktop
+#### E2E test organization
+All E2E tests located inside of a directory(Organized based on what overall page/tool the tests are using)
+- For example, all E2E tests relating to the cuhacking portal are stored inside of the portal--e2e directory. 
+ - All related tests are stored in a .ts file. 
+	 - For example, all tests related to the docs pages are stored inside one .ts file
+	 - There may be other files that contain helper functions for these tests. 
+		 - These helper functions are stored in a dedicated 
+For tests involving different environments, a playwright.config file is used. 
+
+Once you think that all the tests are good to go, you can run the code using playwright or in visual studio code. 
+
+#### Creating E2E tests
+Using code gen to generate the difference events that happen in the docs. 
+
+General structure of the tests: 
+
+``
+test('name", async ((.docsLayoutPage))) => ({
+	events_from_codegen
+})
+``
+
+pom.ts is used to create specific variables to represent different elements in the page. 
+
+#### Naming conventions
+Constants are all caps with words being separated by underscores. 
+
+#### Running tests
+2 commands to run tests: 
+For running the tests through cmd line->1. `pnpm nx run docs-e2e:e2e --verbose`
+    
+For running this command to run codegen event generator->npx playwright codegen http:localhost:3000/docs
+
+For different tests, indicate DESKTOP, MOBILE, TABLET depending on the environment
+
+If you run a bunch of tests at the same time, they might time out
+It is advised to run each test individually
+
+#### Viewing tests
+All tests can be viewed on the github workflow. 
+- Can access them in the PR
+	- Can get the report from here.
+	- Report is produced regardless of whether you push code that makes changes to these E2E tests. 
+
+When running different tests, make sure you select the right environments for each of these tests. 
+
+### **Backend**
+
+#### Adding issues
+When working on an issue, making commits with description when necessary. 
+- For example, when generating a library(ex: a database library) that will be used,
+  indicate the command used to generate that library in the commit description. 
+- Additionally, when working on an issue, begin with defining the requirements to a given issue 
+  before attempting to resolve it. 
+
+Be cautious when modifying tsconfig files.
+- Frequent modifications to tsconfig files can lead to a snowball effect when adding features
+  or modifying existing features. 
+
+
+### **Features**
+TBD
+
+
+### **API**
+TBD
+
+### **Design**
+
+
+
+
+
+
+
+

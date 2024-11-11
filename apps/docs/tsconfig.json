@@ -1,29 +1,42 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "target": "ESNext",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
     "incremental": true,
-    "paths": {
-      "@/*": ["./*"]
-    },
+    "jsx": "preserve",
+    "resolveJsonModule": true,
+    "types": [
+      "node"
+    ],
+    "allowJs": true,
+    "strict": true,
+    "noEmit": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
     "plugins": [
       {
         "name": "next"
       }
-    ]
+    ],
+    "skipLibCheck": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    "../../apps/portal/.next/types/**/*.ts",
+    "../../dist/apps/portal/.next/types/**/*.ts",
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "next.config.mjs",
+    "postcss.config.cjs",
+    "tailwind.config.cjs"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+    "**/*.test.ts"
+  ]
 }

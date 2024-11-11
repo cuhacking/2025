@@ -1,0 +1,51 @@
+name: Build
+
+on:
+  push:
+    branches: '*'
+  pull_request:
+    branches: '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20]
+
+    steps:
+      - name: 🛎️ Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1 # Shallow clone (only take latest commit)
+
+      - name: 📦 Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 🧹 Lint Projects
+        run: pnpm i; pnpm nx run-many -t lint -p docs docs-e2e website website-e2e portal portal-e2e --verbose
+
+      - name: 🎭 Install Playwright Browsers
+        run: pnpm playwright install --with-deps
+
+      - name: 📚 Build Docs
+        run: pnpm nx build docs --verbose
+
+      - name: 🌐 Build Website
+        run: pnpm nx build website --verbose
+
+      - name: 🌀 Build Portal
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+        run: pnpm nx build portal --verbose
+
+      - name: 💰 Profit
+        run: echo 🐞
