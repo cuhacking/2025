@@ -1,81 +1,42 @@
-# Cuhacking
+<div align="center">
+  <h1><a href="https://docs.cuhacking.ca">cuHacking 2025 Platform</a></h1>
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+🏗️ Major monorepo migration in progress. 🚧
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
+<hr/>
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/remix?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+  <a href="https://conventionalcommits.org">
+    <img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white" alt="Conventional Commits">
+  </a>
+  <a href="http://commitizen.github.io/cz-cli/">
+    <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg" alt="Commitizen friendly">
+  </a>
+  <a href="https://semantic-release.gitbook.io/semantic-release">
+    <img src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square" alt="Semantic Release">
+  </a>
+  <a href="https://github.com/antfu/eslint-config">
+    <img src="https://antfu.me/badge-code-style.svg" alt="Code Style">
+  </a>
+  <a href="https://github.com/storybooks/storybook">
+    <img src="https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg" alt="Storybook">
+  </a>
+  <img src="https://img.shields.io/github/repo-size/cuhacking/2025" alt="Repo Size">
+  <a href="https://github.com/tophat/getting-started/blob/master/scorecard.md">
+    <img src="https://img.shields.io/badge/Maturity-Level%201%20--%20New%20Project-yellow.svg" alt="Maturity badge - level 1">
+  </a>
+</div>
+<!--[![App Status](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://www.chemicalgraphtheory.com) -->
+<!---[![Coverage Status](https://coveralls.io/repos/github/Sulstice/global-chem/badge.svg?branch=master)](https://github.com/cuhacking/2025/tree/main) --->
+<hr/>
 
-## Finish your CI setup
+2025 edition of [cuHacking's](https://www.cuhacking.ca) flagship platform, containing all software and hardware projects that power all events throughout the year.
 
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/QQnrczPR98)
+Aiming to be [WCAG 2 Compliant](https://www.w3.org/WAI/standards-guidelines/wcag/) regardless of development cost. Strong focus on accessibility in order to provide the best experience for hackers, sponsors, and organizers alike.
 
-## Run tasks
+Built with some of the most cutting-edge and stable open-source technologies, and a strong commitment to the best developer experience through automation, tooling, and documentation.
 
-To run the dev server for your app, use:
+Installation instructions, contribution guidelines, and technology stacks are available in the [cuHacking Docs](https://docs.cuhacking.ca).
 
-```sh
-npx nx serve website
-```
-
-To create a production bundle:
-
-```sh
-npx nx build website
-```
-
-To see all available targets to run for a project, run:
-
-```sh
-npx nx show project website
-```
-
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
-
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Add new projects
-
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
-
-Use the plugin's generator to create new projects.
-
-To generate a new application, use:
-
-```sh
-npx nx g @nx/remix:app demo
-```
-
-To generate a new library, use:
-
-```sh
-npx nx g @nx/react:lib mylib
-```
-
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
-
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/nx-api/remix?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+|                                         [📚 Documentation](https://docs.cuhacking.ca)                                          |                                         [🗓️ Project Board](https://github.com/orgs/cuhacking/projects/4)                                          |                                         [💅 Figma](https://www.figma.com/files/team/1400857924219798056/project/261344209/2025?fuid=1196916890248607098)                                          |                                      [🌟 Design System (WIP)](#)                                       |
+| :---------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------: |
+| [![Documentation](https://github.com/user-attachments/assets/a09af068-4187-4d98-9f2d-5312678a5348)](https://docs.cuhacking.ca) | [![Project Board](https://github.com/user-attachments/assets/b10ddf82-4a8e-4892-bc45-ffdb596cd678)](https://github.com/orgs/cuhacking/projects/4) | [![Figma](https://github.com/user-attachments/assets/8c0cedcf-ce27-4a9c-9bf3-eed8ab3af5d6)](https://www.figma.com/files/team/1400857924219798056/project/261344209/2025?fuid=1196916890248607098) | [![Design System](https://github.com/user-attachments/assets/c7ccdb15-f911-4a5e-b0b4-7c9984baa30a)](#) |
