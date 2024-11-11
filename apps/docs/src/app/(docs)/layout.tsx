@@ -1,11 +1,11 @@
+import type { Metadata } from 'next'
+import type { ReactNode } from 'react'
+import { HomeLayout } from 'fumadocs-ui/home-layout'
+import { DocsLayout } from 'fumadocs-ui/layout'
+import { RootProvider } from 'fumadocs-ui/provider'
+import { docsOptions, homeOptions } from './layout.config'
 import './fumadocs.global.css'
 import 'katex/dist/katex.css'
-import { DocsLayout } from 'fumadocs-ui/layout'
-import { HomeLayout } from 'fumadocs-ui/home-layout'
-import type { ReactNode } from 'react'
-import { RootProvider } from 'fumadocs-ui/provider'
-import type { Metadata } from 'next'
-import { docsOptions, homeOptions } from './layout.config'
 
 export const metadata: Metadata = {
   title: 'cuHacking DevDocs',

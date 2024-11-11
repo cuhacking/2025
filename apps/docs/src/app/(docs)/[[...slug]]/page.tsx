@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { DocsBody, DocsPage } from 'fumadocs-ui/page'
-import { notFound } from 'next/navigation'
 import { Edit } from 'lucide-react'
+import { notFound } from 'next/navigation'
 import packageJson from '../../../../../../package.json'
 import { getPage, getPages } from '../source'
 

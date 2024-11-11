@@ -1,15 +1,15 @@
-import { createMDXSource } from 'fumadocs-mdx'
 import { loader } from 'fumadocs-core/source'
-import { createElement } from 'react'
-
+import { createMDXSource } from 'fumadocs-mdx'
 import {
   GitPullRequestCreateArrow as ContributionGuidelinesIcon,
   Dock as HomeIcon,
+  icons,
   BookOpenText as KnowledgeBaseIcon,
   Library as LibrariesIcon,
   Layers as ToolsIcon,
-  icons,
 } from 'lucide-react'
+
+import { createElement } from 'react'
 import { map } from '../../../.map'
 
 export const pages = [

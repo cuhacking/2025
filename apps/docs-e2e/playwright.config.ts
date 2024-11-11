@@ -1,10 +1,10 @@
 // TODO: Investigate node global process usage
 /* eslint-disable node/prefer-global/process */
 import { fileURLToPath } from 'node:url'
-import { defineConfig, devices } from '@playwright/test'
+import { workspaceRoot } from '@nx/devkit'
 import { nxE2EPreset } from '@nx/playwright/preset'
 
-import { workspaceRoot } from '@nx/devkit'
+import { defineConfig, devices } from '@playwright/test'
 
 const __filename = fileURLToPath(import.meta.url)
 

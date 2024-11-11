@@ -432,7 +432,11 @@ export function NxWelcome({ title }: { title: string }) {
           <div id="welcome">
             <h1>
               <span> Hello there, </span>
-              Welcome {title} 👋
+              Welcome
+              {' '}
+              {title}
+              {' '}
+              👋
             </h1>
           </div>
 
@@ -753,13 +757,23 @@ export function NxWelcome({ title }: { title: string }) {
               </summary>
               <pre>
                 <span># Build</span>
-                nx build {title}
+                nx build
+                {' '}
+                {title}
                 <span># Test</span>
-                nx test {title}
+                nx test
+                {' '}
+                {title}
                 <span># Lint</span>
-                nx lint {title}
+                nx lint
+                {' '}
+                {title}
                 <span># Run them together!</span>
-                nx run-many -p {title} -t build test lint
+                nx run-many -p
+                {' '}
+                {title}
+                {' '}
+                -t build test lint
               </pre>
             </details>
 
@@ -780,7 +794,10 @@ export function NxWelcome({ title }: { title: string }) {
                 </svg>
                 View project details
               </summary>
-              <pre>nx show project {title}</pre>
+              <pre>
+                nx show project
+                {title}
+              </pre>
             </details>
             <details>
               <summary>
@@ -846,7 +863,7 @@ export function NxWelcome({ title }: { title: string }) {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default NxWelcome;
+export default NxWelcome
