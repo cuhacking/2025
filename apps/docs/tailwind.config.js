@@ -2,9 +2,9 @@
 // const { fontFamily } = require('tailwindcss/defaultTheme')
 import { join } from 'node:path'
 
-import { createPreset } from 'fumadocs-ui/tailwind-plugin'
-
 import { createGlobPatternsForDependencies } from '@nx/react/tailwind'
+
+import { createPreset } from 'fumadocs-ui/tailwind-plugin'
 
 /** @type {import('tailwindcss').Config} */
 export const darkMode = ['class']

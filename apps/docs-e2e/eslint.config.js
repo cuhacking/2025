@@ -1,40 +1,29 @@
-// TODO: merge with antfu eslint config
-// const { FlatCompat } = require('@eslint/eslintrc');
+// const playwright = require('eslint-plugin-playwright');
+// const baseConfig = require('../../eslint.config.js');
+
+// module.exports = [
+//   playwright.configs['flat/recommended'],
+//   ...baseConfig,
+//   {
+//     files: ['**/*.ts', '**/*.js'],
+//     // Override or add rules here
+//     rules: {},
+//   },
+// ]
+
+import playwright from 'eslint-plugin-playwright'
 import baseConfigPromise from '../../eslint.config.js'
 
 export default (async () => {
   const baseConfig = await baseConfigPromise
 
   return [
+    playwright.configs['flat/recommended'],
     ...baseConfig,
-    // ...compat.extends("plugin:playwright/recommended"),
-    // The following configurations are commented out
-    // ...compat.extends(
-    //   'plugin:@nx/react-typescript',
-    //   'next',
-    //   'next/core-web-vitals'
-    // ),
-    // {
-    //   files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
-    //   rules: {
-    //     '@next/next/no-html-link-for-pages': ['error', 'apps/portal/pages'],
-    //   },
-    // },
-    // {
-    //   files: ['**/*.ts', '**/*.tsx'],
-    //   rules: {},
-    // },
-    // {
-    //   files: ['**/*.js', '**/*.jsx'],
-    //   rules: {},
-    // },
-    // ...compat.config({ env: { jest: true } }).map((config) => ({
-    //   ...config,
-    //   files: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.spec.js', '**/*.spec.jsx'],
-    //   rules: {
-    //     ...config.rules,
-    //   },
-    // })),
-    // { ignores: ['.next/**/*'] },
+    {
+      files: ['**.ts', '**.js'],
+      // Override or add rules here
+      rules: {},
+    },
   ]
 })()

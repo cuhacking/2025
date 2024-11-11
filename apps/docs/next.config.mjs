@@ -1,9 +1,9 @@
 import { composePlugins, withNx } from '@nx/next'
-import createMDX from 'fumadocs-mdx/config'
 import { fileGenerator, remarkDocGen, remarkInstall } from 'fumadocs-docgen'
+import createMDX from 'fumadocs-mdx/config'
 import rehypeKatex from 'rehype-katex'
-import remarkMath from 'remark-math'
 import rehypeMermaid from 'rehype-mermaid'
+import remarkMath from 'remark-math'
 
 /**
  * @type {import('@nx/next/plugins/with-nx').WithNxOptions}

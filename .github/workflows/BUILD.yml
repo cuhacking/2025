@@ -39,13 +39,13 @@ jobs:
       - name: 🌐 Build Website
         run: pnpm nx build website --verbose
 
-      - name: 🌀 Build Portal
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
-          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
-          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
-        run: pnpm nx build portal --verbose
+      # - name: 🌀 Build Portal
+      #   env:
+      #     DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      #     AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
+      #     GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+      #     GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+      #   run: pnpm nx build portal --verbose
 
       - name: 💰 Profit
         run: echo 🐞

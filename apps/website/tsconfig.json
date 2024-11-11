@@ -4,22 +4,21 @@
     "target": "ES2022",
     "jsx": "react-jsx",
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
-    "types": ["@remix-run/node", "vite/client"],
-    "isolatedModules": true,
-    "esModuleInterop": true,
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "resolveJsonModule": true,
-    "strict": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
     "paths": {
       "~/*": ["./app/*"]
     },
+    "resolveJsonModule": true,
+    "types": ["@remix-run/node", "vite/client"],
     "allowJs": true,
-    "noEmit": true
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "skipLibCheck": true
   },
-  "include": ["env.d.ts", "**/*.ts", "**/*.tsx", "netlify-edge-plugin.ts"],
   "references": [
     {
       "path": "./tsconfig.app.json"
@@ -27,5 +26,6 @@
     {
       "path": "./tsconfig.spec.json"
     }
-  ]
+  ],
+  "include": ["env.d.ts", "**/*.ts", "**/*.tsx", "netlify-edge-plugin.ts"]
 }

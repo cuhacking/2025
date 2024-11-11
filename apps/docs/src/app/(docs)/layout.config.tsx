@@ -1,8 +1,6 @@
-import Image from 'next/image'
-
-import type { DocsLayoutProps } from 'fumadocs-ui/layout'
 import type { HomeLayoutProps } from 'fumadocs-ui/home-layout'
 
+import type { DocsLayoutProps } from 'fumadocs-ui/layout'
 import { RootToggle } from 'fumadocs-ui/components/layout/root-toggle'
 
 import {
@@ -17,10 +15,12 @@ import {
   /* Drill as UtilsIcon, */
 } from 'lucide-react'
 
-import { SiStorybook as StorybookIcon } from 'react-icons/si'
-import { AiOutlineDiscord as DiscordIcon } from 'react-icons/ai'
+import Image from 'next/image'
 
-import { pageTree, pages } from './source'
+import { AiOutlineDiscord as DiscordIcon } from 'react-icons/ai'
+import { SiStorybook as StorybookIcon } from 'react-icons/si'
+
+import { pages, pageTree } from './source'
 
 // shared configuration
 export const baseOptions: HomeLayoutProps = {

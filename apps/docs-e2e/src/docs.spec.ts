@@ -1,13 +1,14 @@
 import { test as base, expect } from '@playwright/test'
 
-import { DocsLayout } from './pom'
-
 import { clickAndGoToPage } from './helpers/click-and-go-to-page'
+
+import { DocsLayout } from './pom'
 
 const test = base.extend<{ docsLayoutPage: DocsLayout }>({
   docsLayoutPage: async ({ page }, use) => {
     const docsLayoutPage = new DocsLayout(page)
     await docsLayoutPage.goto()
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     await use(docsLayoutPage)
   },
 })

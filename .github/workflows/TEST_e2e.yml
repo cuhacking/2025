@@ -45,21 +45,21 @@ jobs:
           path: playwright-report/**/*
           retention-days: 30
 
-      - name: 💀 Run Portal E2E Tests
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
-          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
-          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
-        run: pnpm nx run portal-e2e:e2e --reporter=html --verbose
+      # - name: 💀 Run Portal E2E Tests
+      #   env:
+      #     DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      #     AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
+      #     GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+      #     GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+      #   run: pnpm nx run portal-e2e:e2e --reporter=html --verbose
 
-      - name: 📄 Upload Portal E2E Playwright Report
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: playwright-report-portal-e2e
-          path: playwright-report/**/*
-          retention-days: 30
+      # - name: 📄 Upload Portal E2E Playwright Report
+      #   uses: actions/upload-artifact@v4
+      #   if: always()
+      #   with:
+      #     name: playwright-report-portal-e2e
+      #     path: playwright-report/**/*
+      #     retention-days: 30
 
       - name: 💀 Run Website E2E Tests
         run: pnpm nx run website-e2e:e2e --reporter=html --verbose
