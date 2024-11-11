@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "private": false,
   "license": "MIT",
+  "packageManager": "pnpm@9.12.3",
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
