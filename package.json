@@ -1,7 +1,12 @@
 {
   "name": "@cuhacking/source",
-  "type": "module",
+  "homepage": "https://cuhacking.ca",
   "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cuhacking/2025.git"
+  },
+  "type": "module",
   "private": false,
   "license": "MIT",
   "packageManager": "pnpm@9.12.3",
