@@ -3,7 +3,7 @@ import { createGlobPatternsForDependencies } from '@nx/react/tailwind'
 
 export default {
   content: [
-    './app/**/*.{js,jsx,ts,tsx}',
+    '{src,pages,components,app}/**/*!(*.stories|*.spec).{ts,tsx,html}',
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {

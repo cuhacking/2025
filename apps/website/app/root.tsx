@@ -1,4 +1,4 @@
-import type { LinksFunction, MetaFunction } from '@remix-run/node'
+import type { LinksFunction } from '@remix-run/node'
 
 import {
   Links,
@@ -7,16 +7,10 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react'
-import twStyles from './tailwind.css'
 
-export const meta: MetaFunction = () => [
-  {
-    title: 'New Remix App',
-  },
-]
+import '@cuhacking/utils/global.css'
 
 export const links: LinksFunction = () => [
-  { rel: 'stylesheet', href: twStyles },
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
   {
     rel: 'preconnect',

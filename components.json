@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "default",
+  "rsc": false,
+  "tailwind": {
+    "config": "libs/shared/utils/tailwind.config.js",
+    "css": "libs/shared/utils/global.css",
+    "baseColor": "neutral",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "@cuhacking/ui",
+    "utils": "@cuhacking/utils"
+  }
+}
