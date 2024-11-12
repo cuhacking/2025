@@ -427,7 +427,7 @@ export function NxWelcome({ title }: { title: string }) {
           `,
         }}
       />
-      <div className="wrapper">
+      <div className="wrapper bg-black">
         <div className="container">
           <div id="welcome">
             <h1>
