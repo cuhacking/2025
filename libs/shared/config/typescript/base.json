@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "lib": ["es2020", "dom"],
+    // "---------- JAVASCRIPT SUPPORT ---------": "",
+    // "---------- EDITOR SUPPORT ---------": "",
+    // "---------- INTEROP CONSTRAINTS ---------": "",
+    // "---------- BACKWARDS COMPATIBILITY ---------": "",
+    // "---------- LANGUAGE AND ENVIRONMENT ---------": "",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    // "---------- TYPE CHECKING ---------": "",
+    // "---------- MODULES ---------": "",
+    "baseUrl": ".",
+    "rootDir": ".",
+    "module": "esnext",
+    "moduleResolution": "node",
+    // "---------- EMIT ---------": "",
+    "paths": {
+      "@cuhacking/ui": ["libs/shared/ui/src/index.ts"]
+    },
+    "declaration": false,
+    "importHelpers": true,
+    "sourceMap": true,
+    // "---------- COMPILER DIAGNOSTICS ---------": "",
+    // "---------- PROJECTS ---------": "",
+    // "---------- OUTPUT FORMATTING ---------": "",
+    // "---------- COMPLETENESS ---------": "",
+    "skipDefaultLibCheck": true,
+    // "---------- WATCH OPTIONS ---------": ""
+    "skipLibCheck": true
+  },
+  // "---------- GENERAL REFERENCE ---------": "",
+  // "Typescript Reference": "https://typescriptlang.org/tsconfig",
+  // "Additional Guide": "https://pkerschbaum.com/tidbits/sensible-tsconfig-defaults",
+  "exclude": ["node_modules", "tmp"],
+  "compileOnSave": false
+}
