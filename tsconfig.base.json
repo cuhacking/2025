@@ -9,9 +9,9 @@
     "module": "esnext",
     "moduleResolution": "node",
     "paths": {
-      "@cuhacking/ui": ["libs/shared/ui/src/index.ts"],
+      "@shadcn/ui": ["libs/shared/ui/src/shadcn/index.ts"],
       "@cuhacking/utils": ["libs/shared/utils/src/index.ts"],
-      "@cuhacking/ui/*": ["libs/shared/ui/src/*"],
+      "@shadcn/ui/*": ["libs/shared/ui/src/shadcn/*"],
       "@cuhacking/utils/*": ["libs/shared/utils/src/*"]
     },
     "declaration": false,
