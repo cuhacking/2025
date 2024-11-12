@@ -3,8 +3,8 @@ import NxWelcome from '../nx-welcome'
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'New Remix App' },
-    { name: 'description', content: 'Welcome to Remix!' },
+    { title: 'cuHacking 2025' },
+    { name: 'description', content: 'Carleton University\'s Official Hackathon.' },
   ]
 }
 
