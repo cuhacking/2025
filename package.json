@@ -8,7 +8,10 @@
   "homepage": "https://cuhacking.ca",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cuhacking/2025.git"
+    "url": "git+https://github.com/cuhacking/2025.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cuhacking/2025/issues"
   },
   "engines": {
     "node": ">=20.0.0 <=22.11.0"
@@ -22,7 +25,8 @@
     "lint:fix": "eslint . --fix",
     "lint:inspect": "pnpx @eslint/config-inspector --no-open",
     "lint:inspect-open": "pnpx @eslint/config-inspector",
-    "lint:inspect-build": "pnpx @eslint/config-inspector build --outDir dist/config-inspector"
+    "lint:inspect-build": "pnpx @eslint/config-inspector build --outDir dist/config-inspector",
+    "chromatic": "pnpx chromatic"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.1",
@@ -104,6 +108,7 @@
     "@vitest/ui": "^2.1.4",
     "@whitespace/storybook-addon-html": "^6.1.1",
     "autoprefixer": "^10.4.20",
+    "chromatic": "^11.18.1",
     "class-variance-authority": "^0.7.0",
     "commitizen": "^4.3.1",
     "commitlint": "^19.5.0",
