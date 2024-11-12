@@ -21,7 +21,7 @@
     "lint:fix": "eslint . --fix",
     "lint:inspect": "pnpx @eslint/config-inspector --no-open",
     "lint:inspect-open": "pnpx @eslint/config-inspector",
-    "lint:inspect-build": "pnpx @eslint/config-inspector build --outDir dist/lint-inspect"
+    "lint:inspect-build": "pnpx @eslint/config-inspector build --outDir dist/config-inspector"
   },
   "dependencies": {
     "@nx/remix": "20.0.10",
