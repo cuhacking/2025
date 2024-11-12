@@ -25,13 +25,17 @@
     "lint:inspect-build": "pnpx @eslint/config-inspector build --outDir dist/config-inspector"
   },
   "dependencies": {
+    "@radix-ui/react-accordion": "^1.2.1",
+    "@radix-ui/react-slot": "^1.1.0",
     "@remix-run/node": "2.14.0",
     "@remix-run/react": "2.14.0",
     "@remix-run/serve": "2.14.0",
     "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
     "isbot": "^4.4.0",
     "next": "14.2.3",
     "react": "^18.3.1",
+    "react-day-picker": "8.10.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
