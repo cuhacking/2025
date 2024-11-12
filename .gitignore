@@ -25,6 +25,7 @@ node_modules
 !.vscode/extensions.json
 
 # misc
+.eslintcache
 /.sass-cache
 /connect.lock
 /libpeerconnection.log
@@ -77,3 +78,5 @@ yarn-error.log*
 .env*.local
 .vercel
 next-env.d.ts
+
+storybook-static
