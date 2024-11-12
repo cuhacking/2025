@@ -15,8 +15,10 @@
     "rootDir": ".",
     "module": "esnext",
     "moduleResolution": "node",
-    "paths": {},
     // "---------- EMIT ---------": "",
+    "paths": {
+      "@cuhacking/ui": ["libs/shared/ui/src/index.ts"]
+    },
     "declaration": false,
     "importHelpers": true,
     "sourceMap": true,
@@ -24,8 +26,9 @@
     // "---------- PROJECTS ---------": "",
     // "---------- OUTPUT FORMATTING ---------": "",
     // "---------- COMPLETENESS ---------": "",
-    "skipDefaultLibCheck": true
+    "skipDefaultLibCheck": true,
     // "---------- WATCH OPTIONS ---------": ""
+    "skipLibCheck": true
   },
   // "---------- GENERAL REFERENCE ---------": "",
   // "Typescript Reference": "https://typescriptlang.org/tsconfig",
