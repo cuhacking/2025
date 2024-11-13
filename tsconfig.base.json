@@ -13,8 +13,8 @@
       "@cuhacking/utils/*": ["libs/shared/utils/src/*"],
       "@shadcn/ui": ["libs/shared/ui/src/shadcn/index.ts"],
       "@shadcn/ui/*": ["libs/shared/ui/src/shadcn/*"],
-      "@cuhacking/ui": ["libs/shared/ui/src/cuhacking/index.ts"],
-      "@cuhacking/ui/*": ["libs/shared/ui/src/cuhacking/*"]
+      "@cuhacking/ui": ["libs/shared/ui/src/cuHacking/index.ts"],
+      "@cuhacking/ui/*": ["libs/shared/ui/src/cuHacking/*"]
     },
     "declaration": false,
     "importHelpers": true,
