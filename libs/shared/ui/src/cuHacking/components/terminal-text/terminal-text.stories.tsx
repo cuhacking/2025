@@ -3,7 +3,7 @@ import { EIcons } from '@cuhacking/utils/enums/icons'
 import TerminalText from './terminal-text'
 
 const meta = {
-  title: 'cuHacking Design System/TerminalText',
+  title: 'cuHacking Design System/Terminal Text',
   component: TerminalText,
   tags: ['autodocs'],
   parameters: {
