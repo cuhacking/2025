@@ -4,8 +4,8 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@shadcn/ui/accordion'
-import { Calendar } from '@shadcn/ui/calendar'
+} from '@shadcn/components/ui/accordion'
+import { Calendar } from '@shadcn/components/ui/calendar'
 
 import { useState } from 'react'
 

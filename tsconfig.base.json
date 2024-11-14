@@ -9,12 +9,10 @@
     "module": "esnext",
     "moduleResolution": "node",
     "paths": {
-      "@cuhacking/utils": ["libs/shared/utils/src/index.ts"],
-      "@cuhacking/utils/*": ["libs/shared/utils/src/*"],
-      "@shadcn/ui": ["libs/shared/ui/src/shadcn/index.ts"],
-      "@shadcn/ui/*": ["libs/shared/ui/src/shadcn/*"],
-      "@cuhacking/ui": ["libs/shared/ui/src/cuhacking/index.ts"],
-      "@cuhacking/ui/*": ["libs/shared/ui/src/cuhacking/*"]
+      "@shadcn": ["libs/external/shadcn/index.ts"],
+      "@shadcn/*": ["libs/external/shadcn/*"],
+      "@cuhacking/": ["libs/shared/index.ts"],
+      "@cuhacking/shared/*": ["libs/shared/*"]
     },
     "declaration": false,
     "importHelpers": true,

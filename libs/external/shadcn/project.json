@@ -1,0 +1,15 @@
+{
+  "name": "shadcn",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/external/shadcn",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "add-component": {
+      "executor": "@nx-extend/shadcn-ui:add",
+      "options": {
+        "cwd": "libs/external/shadcn"
+      }
+    }
+  }
+}

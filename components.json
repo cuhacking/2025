@@ -3,13 +3,14 @@
   "style": "default",
   "rsc": false,
   "tailwind": {
-    "config": "libs/shared/utils/tailwind.config.js",
-    "css": "libs/shared/utils/global.css",
+    "config": "libs/shared/external/shadcn/tailwind.config.ts",
+    "css": "libs/shared/external/shadcn/global.css",
     "baseColor": "neutral",
     "cssVariables": true
   },
   "aliases": {
-    "components": "@shadcn",
-    "utils": "@cuhacking/utils"
+    "utils": "@shadcn/lib/utils",
+    "components": "@shadcn/components",
+    "hooks": "@shadcn/hooks"
   }
 }
