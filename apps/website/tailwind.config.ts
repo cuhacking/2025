@@ -12,6 +12,6 @@
 //   plugins: [],
 // } satisfies Config
 
-import { buildConfig } from '../../libs/shared/utils/src/tailwind.config'
+import { buildConfig } from '../../libs/shared/config/tailwind/shadcn'
 
 export default buildConfig(__dirname)

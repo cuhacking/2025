@@ -79,5 +79,5 @@ yarn-error.log*
 .vercel
 next-env.d.ts
 
-storybook-static
+**/*/storybook-static
 build-storybook.log
