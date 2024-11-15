@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.1",
+    "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@remix-run/node": "2.14.0",
     "@remix-run/react": "2.14.0",
