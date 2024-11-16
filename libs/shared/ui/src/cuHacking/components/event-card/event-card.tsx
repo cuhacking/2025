@@ -4,7 +4,6 @@ import GlassmorphicCard from '@cuhacking/ui/components/glassmorphic-card/glassmo
 import { Separator } from '@cuhacking/ui/components/separator/separator'
 import TerminalText from '@cuhacking/ui/components/terminal-text/terminal-text'
 import { cn } from '@cuhacking/utils'
-import { cva } from 'class-variance-authority'
 import { getDatePostfix, getDayOfMonth, getMonth } from '../../../../../../website/utils/helpers/date.helpers'
 
 interface EventProps {
@@ -17,12 +16,8 @@ function EventCard({ event, className }: EventProps) {
   const month = getMonth(date)
   const datePostfix = getDatePostfix(date)
 
-  const glassmorphicCardVariant = cva(
-    'flex flex-col lg:flex-row px-3 py-4 gap-x-3 gap-y-2.5 items-center',
-  )
-
   return (
-    <GlassmorphicCard variant="nested" className={cn(glassmorphicCardVariant({ className }))}>
+    <GlassmorphicCard variant="nested" className={cn('flex flex-col lg:flex-row px-3 py-4 gap-x-3 gap-y-2.5 items-center h-full', className)}>
       <section className="flex flex-col items-center">
         <time className="text-3xl">
           {day}
@@ -32,7 +27,7 @@ function EventCard({ event, className }: EventProps) {
           {month}
         </time>
       </section>
-      <Separator orientation="vertical" className="h-[100px] hidden lg:block" decorative />
+      <Separator orientation="vertical" className="self-stretch hidden h-auto lg:block" decorative />
       <Separator orientation="horizontal" className="block w-full lg:hidden" decorative />
       <article className="flex flex-col">
         <header className="px-2">
