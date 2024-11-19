@@ -1,0 +1,40 @@
+/* INDEX URL */
+export const CUHACKING_2020_WIKI_URL = '/knowledge-base/cuHacking-2020-wiki'
+
+/* PAGE URLS */
+export const GETTING_STARTED = `${CUHACKING_2020_WIKI_URL}/getting-started`
+export const HOW_TO_SLACK = `${CUHACKING_2020_WIKI_URL}/getting-started/how-to-slack`
+export const HOW_TO_TRELLO = `${CUHACKING_2020_WIKI_URL}/getting-started/how-to-trello`
+export const HOW_TO_WIKI = `${CUHACKING_2020_WIKI_URL}/getting-started/how-to-wiki`
+export const HOW_TO_ZOHO = `${CUHACKING_2020_WIKI_URL}/getting-started/how-to-zoho`
+export const HOW_TO_GOOGLE_DOCS = `${CUHACKING_2020_WIKI_URL}/getting-started/how-to-google-docs`
+export const HOW_TO_GOOGLE_SHEETS = `${CUHACKING_2020_WIKI_URL}/getting-started/how-to-google-sheets`
+export const LEADERSHIP_TEAM_MANAGEMENT = `${CUHACKING_2020_WIKI_URL}/getting-started/leadership-team-management`
+export const CUSA_FUNDING_NON_TUITION_FEES = `${CUHACKING_2020_WIKI_URL}getting-started//cusa-funding-non-tuition-fees`
+export const COLEADS = `${CUHACKING_2020_WIKI_URL}/co-leads`
+export const TRANSITIONS = `${CUHACKING_2020_WIKI_URL}/co-leads/transitions`
+export const ROADMAP = `${CUHACKING_2020_WIKI_URL}/roadmap`
+export const DESIGN_GUIDE = `${CUHACKING_2020_WIKI_URL}/design/design-guide`
+export const DESIGN = `${CUHACKING_2020_WIKI_URL}/design`
+export const DEVELOPMENT = `${CUHACKING_2020_WIKI_URL}/dev-team`
+export const DEVELOPMENT_TIMELINE = `${CUHACKING_2020_WIKI_URL}/dev-team/development-timeline`
+export const POSTMAN = `${CUHACKING_2020_WIKI_URL}/dev-team/postman`
+export const ADMIN_CONSOLE = `${CUHACKING_2020_WIKI_URL}/dev-team/admin-console`
+export const APPLICATION_SERVER = `${CUHACKING_2020_WIKI_URL}/dev-team/application-server`
+export const CODING_GUIDELINES = `${CUHACKING_2020_WIKI_URL}/dev-team/coding-guidelines`
+export const MAP_SOFTWARE = `${CUHACKING_2020_WIKI_URL}/dev-team/map-software`
+export const WEBSITE = `${CUHACKING_2020_WIKI_URL}/dev-team/website`
+export const MOBILE_APP = `${CUHACKING_2020_WIKI_URL}/dev-team/mobile-app`
+export const PARTICLES = `${CUHACKING_2020_WIKI_URL}/dev-team/particles`
+export const DASHBOARD = `${CUHACKING_2020_WIKI_URL}/dev-team/dashboard`
+export const HACKER_EXPERIENCE = `${CUHACKING_2020_WIKI_URL}/hacker-experience`
+export const MARKETING = `${CUHACKING_2020_WIKI_URL}/marketing`
+export const HACKER_FAQS = `${CUHACKING_2020_WIKI_URL}/marketing/hacker-faqs`
+export const OPERATIONS = `${CUHACKING_2020_WIKI_URL}/operations`
+export const EMAIL_TEMPLATE_INVITING_A_PROFESSOR_TO_JUDGE = `${CUHACKING_2020_WIKI_URL}/operations/email-template-inviting-a-professor-to-judge`
+export const EMAIL_TEMPLATE_SOLICITING_A_HIGH_SCHOOL_FOR_JUDGES = `${CUHACKING_2020_WIKI_URL}/operations/email-template-soliciting-a-high-school-for-judges`
+export const LOGISTICS = `${CUHACKING_2020_WIKI_URL}/logistics`
+export const SPONSORSHIP = `${CUHACKING_2020_WIKI_URL}/sponsorship`
+export const SIGNATURES = `${CUHACKING_2020_WIKI_URL}/sponsorship/signatures`
+export const SPONSORSHIP_FAQS = `${CUHACKING_2020_WIKI_URL}/sponsorship/sponsorship-faqs`
+export const CONSTANT = `${CUHACKING_2020_WIKI_URL}/constant`

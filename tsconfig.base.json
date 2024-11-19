@@ -11,8 +11,10 @@
     "paths": {
       "@shadcn": ["libs/external/shadcn/index.ts"],
       "@shadcn/*": ["libs/external/shadcn/*"],
-      "@cuhacking/": ["libs/shared/index.ts"],
+      "@cuhacking/shared": ["libs/shared/index.ts"],
       "@cuhacking/shared/*": ["libs/shared/*"],
+      "@cuhacking/docs": ["libs/docs/index.ts"],
+      "@cuhacking/docs/*": ["libs/docs/*"],
       "@website/*": ["libs/website/*"]
     },
     "declaration": false,
