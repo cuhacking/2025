@@ -6,6 +6,7 @@ function Stat({ imgUrl, title }: StatsProps) {
   return (
     <div className="flex flex-col items-center gap-y-4">
       <img
+      className="w-auto h-16"
         src={imgUrl}
         loading="lazy"
         alt={`${title} icon`}

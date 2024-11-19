@@ -32,6 +32,7 @@
     "@remix-run/node": "2.14.0",
     "@remix-run/react": "2.14.0",
     "@remix-run/serve": "2.14.0",
+    "@splinetool/react-spline": "^4.0.0",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "isbot": "^4.4.0",

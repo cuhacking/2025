@@ -6,7 +6,7 @@ interface StatContainerProps {
 }
 function StatContainer({ stats }: StatContainerProps) {
   return (
-    <GlassmorphicCard variant="default" className="flex flex-col px-20 py-12 gap-x-24 lg:flex-row">
+    <GlassmorphicCard variant="default" className="grid grid-cols-1 gap-24 px-5 py-12 sm:grid-cols-2 xl:grid-cols-4 ">
       {stats.map(({ imgUrl, title }) => <Stat key={title} imgUrl={imgUrl} title={title} />)}
     </GlassmorphicCard>
   )

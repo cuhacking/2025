@@ -8,10 +8,10 @@ declare module '@remix-run/node' {
     v3_singleFetch: true
   }
 }
-
 export default defineConfig({
   root: __dirname,
   cacheDir: '../../node_modules/.vite/apps/website',
+  publicDir: '../../libs/shared/ui/src/cuHacking/assets',
   plugins: [
     remix({
       future: {
@@ -28,7 +28,7 @@ export default defineConfig({
   server: {
     port: 3000,
     fs: {
-      allow: ['..'],
+      allow: ['..', '../../libs/shared/ui/src/cuHacking/assets'],
     },
   },
 })

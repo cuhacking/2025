@@ -13,8 +13,8 @@ const sponsorPresenterVariation = cva(
   {
     variants: {
       isPresent: {
-        true: 'h-32 min-w-24',
-        false: 'h-24 min-w-16',
+        true: 'h-32 w-auto',
+        false: 'h-24 w-auto',
       },
     },
   },

@@ -6,7 +6,7 @@ import { cva } from 'class-variance-authority'
 
 interface TerminalTextProps {
   children: ReactNode
-  icon?: EIcons
+  icon?: { src: string, alt: string }
   className?: string
   callToAction?: boolean
 }
@@ -36,7 +36,7 @@ function TerminalText({ icon, children, className = '', callToAction }: Terminal
               ~
             </div>
           )
-        : <Icon variant={icon} />}
+        : <Icon  media={icon} />}
       <div className={cn(callToActionVariation({ callToAction }))}>
         {children}
       </div>

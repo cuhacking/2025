@@ -13,7 +13,7 @@ function useIcons({ fileName, prefix }: useIconsProps) {
   useEffect(() => {
     const fetchImage = async () => {
       try {
-        const response = await import(`./../../../ui/src/cuHacking/assets/icons${prefix ?? ''}/${fileName}`)
+        const response = await import(`./../../../ui/src/cuHacking/assets/icons${prefix ?? ''}/${fileName}.svg`)
         setImage(response.default.src)
       }
       catch (err) {

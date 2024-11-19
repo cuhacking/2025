@@ -37,7 +37,7 @@ function EventCard({ event, className }: EventProps) {
           <TerminalText className="text-sm">{event.description}</TerminalText>
         </main>
         <div className="flex justify-end w-full text-xl">
-          <Button variant="default" className="border" size="sm">REGISTER NOW</Button>
+          <Button variant="default" size="sm">REGISTER NOW</Button>
         </div>
       </article>
     </GlassmorphicCard>

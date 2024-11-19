@@ -7,9 +7,9 @@ interface FAQContainerProps {
 }
 function FAQContainer({ questions }: FAQContainerProps) {
   return (
-    <GlassmorphicCard className="flex flex-col w-full px-5 py-6 gap-y-6">
+    <GlassmorphicCard className="flex flex-col w-full gap-6 px-5 py-6">
       <h2 className="text-4xl font-bold">FAQ</h2>
-      <Accordion type="multiple" className="flex-grow-0 w-full gap-y-6">
+      <Accordion type="multiple" className="flex flex-col flex-grow-0 w-full gap-2">
         {questions.map(({ question, answer }) => (
           <FAQItem key={question} question={question} answer={answer} />
         ))}

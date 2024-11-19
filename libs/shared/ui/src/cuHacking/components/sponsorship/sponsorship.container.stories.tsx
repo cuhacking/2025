@@ -4,10 +4,8 @@ import balsamiq from '@cuhacking/ui/assets/logos/sponsors/balsamiq.white.svg'
 import digitalOcean from '@cuhacking/ui/assets/logos/sponsors/digital-ocean.white.svg'
 import ea from '@cuhacking/ui/assets/logos/sponsors/ea.white.svg'
 import SponsorshipContainer from './sponsorship.container'
-// Logos
 import rbc from '@cuhacking/ui/assets/logos/sponsors/rbc.white.svg'
 
-// Define sponsors
 const presentSponsors = [
   { name: 'RBC', logo: rbc.src, link: 'https://www.rbc.com' },
   { name: 'Balsamiq', logo: balsamiq.src, link: 'https://balsamiq.com' },
@@ -18,13 +16,11 @@ const pastSponsors = [
   { name: 'Digital Ocean', logo: digitalOcean.src, link: 'https://www.digitalocean.com' },
 ]
 
-// Define text content
 const sponsorshipText = [
   { content: 'Support the brightest minds shaping the future.', isCallToAction: false },
   { content: 'Join us as a sponsor today!', isCallToAction: true },
 ]
 
-// Meta configuration
 const meta: Meta<typeof SponsorshipContainer> = {
   title: 'cuHacking Design System/Sponsorship/Container',
   component: SponsorshipContainer,

@@ -21,14 +21,14 @@ export function buildConfig(
           sans: ['JetBrains Mono', 'sans-serif'],
         },
         backgroundImage: {
-          'greendiant': 'linear-gradient(to right, hsl(var(--greendiant-start)) 40%, hsl(var(--greendiant-end)) 60%)',
-          'g-keyboardBlack': 'linear-gradient(to right, hsl(var(--g-keyboardblack-start)) 30%, hsl(var(--background)) 60%)',
+          'greendiant': 'linear-gradient(200deg, hsl(var(--secondary)) 10%, hsl(var(--primary)) 90%)',
+          'g-keyboardBlack': 'linear-gradient(300deg , hsl(var(--g-keyboardblack-start)) -10%, hsl(var(--background)) 100%)',
           'g-nav-drawer-background': `
             linear-gradient(
               90deg,
               hsl(var(--background)) 0%,
-              hsl(var(--black-light)) 25%,
-              hsl(var(--black-light)) 75%,
+              hsl(var(--light-black)) 25%,
+              hsl(var(--light-black)) 75%,
               hsl(var(--background)) 100%
             )
           `,
@@ -94,6 +94,8 @@ export function buildConfig(
         boxShadow: {
           dropShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
           innerShadow: 'inset 0 4px 4px rgba(0, 0, 0, 0.25)',
+          buttonKeyboard: '0.5px 0.5px 0px 0.6px rgba(0, 0, 0, 0.70), 0.35px 0.35px 0.2px 0.75px rgba(255, 255, 255, 0.15) inset, 4px 2px 4px -1px rgba(0, 0, 0, 0.25)',
+          buttonKeyboardHover: '0.25px 0.25px 0px 0.5px #0A0A0A, 0.2px 0.2px 0.2px 0.35px rgba(255, 255, 255, 0.25) inset, 0.2px 0.2px 0px 0.75px rgba(137, 237, 16, 0.25), 0px 0px 10px -4px rgba(137, 237, 16, 0.60), 4px 2px 4px -1px rgba(0, 0, 0, 0.25)',
         },
       },
     },

@@ -2,10 +2,14 @@ import type { EIcons } from '@cuhacking/utils/enums/icons'
 import Icon from '@cuhacking/ui/components/icons/icon'
 import { cn } from '@cuhacking/utils/cn'
 
+interface Media {
+  src: string
+  alt: string
+}
 interface SocialsProps {
   socials: {
     link: string
-    icon: EIcons
+    media: Media
   }[]
   className: string
 }
@@ -13,9 +17,9 @@ interface SocialsProps {
 function Socials({ socials, className }: SocialsProps) {
   return (
     <div className={cn('flex flex-wrap gap-x-5 gap-y-3', className)}>
-      {socials.map(({ link, icon }) => (
+      {socials.map(({ link, media }) => (
         <a key={link} href={link}>
-          <Icon variant={icon} prefix="/socials" />
+          <Icon media={media} prefix="/socials" />
         </a>
       ))}
     </div>

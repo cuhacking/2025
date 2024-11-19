@@ -13,7 +13,7 @@ function FAQItem({ question, answer }: FAQItemProps) {
         <p>
           <span className="text-primary">faq(</span>
           {question}
-          <span>)</span>
+          <span className="text-primary">)</span>
         </p>
       </AccordionTrigger>
       <AccordionContent>
