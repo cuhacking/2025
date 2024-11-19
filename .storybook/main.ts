@@ -1,11 +1,13 @@
 import type { StorybookConfig } from '@storybook/nextjs'
 
-// import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin'
+import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin'
 
 export default {
   stories: [
     '../libs/external/shadcn/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
     '../libs/shared/ui/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
+    '../libs/website/feature/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
+    '../libs/website/shared/ui/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
   ],
   framework: {
     name: '@storybook/nextjs',
@@ -89,15 +91,15 @@ export default {
     // https://github.com/whitespace-se/storybook-addon-html
     '@whitespace/storybook-addon-html',
   ],
-  // webpackFinal: async (config) => {
-  //   if (config.resolve) {
-  //     config.resolve.plugins = [
-  //       ...(config.resolve.plugins || []),
-  //       new TsconfigPathsPlugin({
-  //         configFile: './tsconfig.storybook.json',
-  //       }),
-  //     ]
-  //   }
-  //   return config
-  // },
+  webpackFinal: async (config) => {
+    if (config.resolve) {
+      config.resolve.plugins = [
+        ...(config.resolve.plugins || []),
+        new TsconfigPathsPlugin({
+          configFile: './.storybook/tsconfig.storybook.json',
+        }),
+      ]
+    }
+    return config
+  },
 } satisfies StorybookConfig
