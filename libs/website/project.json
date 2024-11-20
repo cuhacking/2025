@@ -1,0 +1,8 @@
+{
+  "name": "website-lib",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/website/",
+  "projectType": "library",
+  "tags": [],
+  "targets": {}
+}
