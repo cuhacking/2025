@@ -12,7 +12,8 @@
       "@shadcn": ["libs/external/shadcn/index.ts"],
       "@shadcn/*": ["libs/external/shadcn/*"],
       "@cuhacking/": ["libs/shared/index.ts"],
-      "@cuhacking/shared/*": ["libs/shared/*"]
+      "@cuhacking/shared/*": ["libs/shared/*"],
+      "@website/*": ["libs/website/*"]
     },
     "declaration": false,
     "importHelpers": true,
