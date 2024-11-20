@@ -21,7 +21,7 @@ const sponsorshipText = [
 ]
 
 const meta: Meta<typeof SponsorshipPresenter> = {
-  title: 'cuHacking Design System/Sponsorship/Container',
+  title: 'Website/Sponsorship',
   component: SponsorshipPresenter,
   tags: ['autodocs'],
   parameters: {
