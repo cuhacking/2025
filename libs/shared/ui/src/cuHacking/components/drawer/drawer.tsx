@@ -1,4 +1,4 @@
-import { cn } from '@shadcn/lib/utils'
+import { cn } from '@cuhacking/shared/utils/cn'
 import * as React from 'react'
 
 import { Drawer as DrawerPrimitive } from 'vaul'
