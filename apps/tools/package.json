@@ -1,0 +1,22 @@
+{
+  "name": "risk-forms",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "online": "tsc src/input/online-input.ts && node src/input/online-input.js",
+    "in-person": "tsc src/input/in-person-input.ts && node src/input/in-person-input.js",
+    "hybrid": "tsc src/input/hybrid-input.ts && node src/input/hybrid-input.js"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.48.2",
+    "inquirer": "^12.1.0",
+    "playwright": "^1.48.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  }
+}
