@@ -2,8 +2,8 @@
   "root": true,
   "pages": [
     "index",
-    "--- Categories ---",
     "tools-overview",
+    "--- Categories ---",
     "contribution-guidelines",
     "knowledge-base"
   ]
