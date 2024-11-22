@@ -7,40 +7,9 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
     <Callout title="Preface">
 
-    'Best practices' vary between:
-    <ul>
-      <li>Organizations</li>
-      <li>Teams</li>
-      <li>Projects</li>
-    </ul>
-    <>They're heavily influenced by:</>
+There's no one perfect solution. Every decision is always a trade-off.
 
-<section className="flex flex-row gap-4">
-  <ul>
-    <li>Budget</li>
-    <li>Timelines</li>
-    <li>Team Size</li>
-  </ul>
-  <ul>
-    <li>Team Skillset</li>
-    <li>Team Culture</li>
-    <li>Project Scale</li>
-  </ul>
-  <ul>
-    <li>Project Stage</li>
-    <li>Technologies</li>
-    <li>Technical debt</li>
-  </ul>
-</section>
-
-There is no one perfect solution. Every decision is always a trade-off. Solutions tend to create new problems, and the best solution is the one that solves the most pressing problems while creating the least amount of new ones.
-
-<Accordions>
-  <Accordion title="What is the most important and highest priority project?">
-    This docs site. No questions asked. All other projects are secondary to this
-    our docs.
-  </Accordion>
-</Accordions>
+Solutions tend to create new problems, and the best solution is the one that solves the most pressing problems while creating the least amount of new ones.
 
 <Accordions>
   <Accordion title="What do you strive for?">
@@ -50,29 +19,9 @@ There is no one perfect solution. Every decision is always a trade-off. Solution
 - Provide a clear path to learning and growth
 - Set aside time to evaluate new technologies
 
-By contributing to this project, you'll be exposed to the following disciplines:
-
-- Project Management
-- UI/UX Design
-- Front-End Development
-- Back-End Development
-- Tools & Infrastructure Development
-- Automation Testing
-- DevOps
-- Security
-- Artificial Intelligence/Machine Learning
-
-And hopefully more, such as Robotics, Computer Vision, IoT.
-
 </Accordion>
-
-</Accordions>
-
-<Accordions>
   <Accordion title="What can I learn by contributing to this project?">
 
-We regularly operate in the following areas:
-
 - Project Management
 - UI/UX Design
 - Front-End Development
@@ -80,44 +29,30 @@ We regularly operate in the following areas:
 - Tools & Infrastructure Development
 - Automation Testing
 - DevOps
-- Security
+- Cybersecurity
 - Artificial Intelligence/Machine Learning
 
-Read [Tools Overview](/docs/tools-overview) to understand the technologies used.
+Read [Tools Overview](/tools-overview) to understand the technologies used.
 
 </Accordion>
 </Accordions>
 
 </Callout>
 
-## Steps
-
-<Callout type="warn" title="Woah there 10xer, just a moment!">
-  If you use Windows, read [System
-  Requirements](/docs/contribution-guidelines/system-requirements) before
-  proceeding.
-</Callout>
-
-<Callout type="warn" title="Woah there 10xer, just another moment!">
-  We are also in the process of a colossal monorepo migration. Ensure to
-  navigate to the correct directory before running any directory-specific commands.
-
-See more information [here](https://github.com/cuhacking/hackathon/issues/40).
-
-</Callout>
+## Installation
 
 <div className="steps">
   <div className="step">
-    Read [Tools Overview](/docs/tools-overview) to understand the technologies used.
+    Read [Tools Overview](/tools-overview) and [System Requirements](/system-requirements).
   </div>
 
   <div className="step">
     Install [Docker](https://www.docker.com).
   </div>
   [Docker Desktop](https://www.docker.com/products/docker-desktop/) provides a
-  nice UI if you prefer clickity clicks
+  nice UI if you prefer clickity clicks.
   <div className="step">
-    Install [Node.js](https://nodejs.org) (v20+).
+    Install [Node.js](https://nodejs.org) (v22.11.0).
   </div>
   <div className="step">
     Install [pnpm](https://pnpm.io/).
@@ -131,6 +66,10 @@ npm i -g pnpm
 
 <div className="step">
 Clone [source repository](https://github.com/cuhacking/hackathon).
+
+    <Callout type="warn">
+    If you're an external contributor, please see the [External Contributors Guide](/contribution-guidelines/external-contributors-guide) first.
+    </Callout>
 
 <Tabs groupId="git-clone-method" items={['HTTPS', 'SSH', 'GitHub CLI']} persist>
   <Tab value="HTTPS">
@@ -168,149 +107,176 @@ pnpm i
   </div>
 
   <div className="step">
-    Install [playwright](https://playwright.dev/) browsers.
+    Install [Playwright](https://playwright.dev/) browsers.
     ```sh title="terminal"
     pnpm exec playwright install
     ```
   </div>
 
   <div className="step">
-    Spin up development docker containers, one of which contains the PostgreSQL database.
-
-    <Callout type="warn" title="Hold your horses!">
-      Docker daemon (i.e. Docker Desktop) should be running before proceeding!
-    </Callout>
-
-    ```sh title="terminal"
-    docker-compose up -d
-    ```
-  </div>
-
-
-<div className="step">
-Enable authentication providers. OAuth providers need to be configured for you to use authentication in your development environment.
-
-<Accordions>
-  <Accordion title="Google OAuth">
-
-<div className="steps">
-  <div className="step">
-    Go to the [Google Developer Console](https://console.developers.google.com)
-    and create a new project.
-  </div>
-  <div className="step">
-    Go to the "Credentials" tab and click "Create credentials" > "OAuth client
-    ID".
-  </div>
-  <div className="step">Select "Web application" as the application type.</div>
-  <div className="step">
-    Add `http://localhost:8000/api/auth/callback/google` as an authorized
-    redirect URI.
-  </div>
-  <div className="step">
-    Make a copy of the `.env.example` file in the `apps/portal` directory, and rename it to `.env.local`.
-    Then, copy & paste the google client ID and secret into your the `.env.local` file as
-    `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` respectively.
-  </div>
-  <div className="step">Restart the development server.</div>
-</div>
-
-You should now be able to sign in with Google.
-
-</Accordion>
-</Accordions>
-</div>
-
-<div className="step">
-  Run Drizzle Push, to push the latest migration to your development database.
-
-  ```sh title="Terminal"
-  pnpm nx run db:push
-  ```
-
-</div>
-
-  <div className="step">
   Run the project of your choice.
 
-<Tabs groupId="projects" items={['Website', 'Hacker Portal', 'DevDocs']} persist>
+<Tabs groupId="projects" items={['Website', 'Portal', 'Docs', 'Storybook', 'ESLint Config Inspector']} persist>
   <Tab value="Website">
     <Tabs groupId="website-project-nx-commands" items={['dev', 'build', 'start']} persist>
       <Tab value="dev">
         ```sh title="Terminal"
-        pnpm nx run website:dev
+        pnpm nx dev website --verbose
+        ```
+        Or
+        ```sh title="Terminal"
+        pnpm nx run website:dev --verbose
         ```
       </Tab>
       <Tab value="build">
         ```sh title="Terminal"
-        pnpm nx run website:build
+        pnpm nx build website --verbose
+        ```
+        Or
+        ```sh title="Terminal"
+        pnpm nx run website:build --verbose
         ```
       </Tab>
       <Tab value="start">
         ```sh title="Terminal"
-        pnpm nx run website:start
+        pnpm nx start website --verbose
+        ```
+        Or
+        ```sh title="Terminal"
+        pnpm nx run website:start --verbose
         ```
       </Tab>
     </Tabs>
   </Tab>
 
-  <Tab value="Hacker Portal">
+  <Tab value="Portal">
     <Tabs
-      groupId="hacker-portal-project-nx-commands"
+      groupId="portal-project-nx-commands"
       items={["dev", "build", "start"]}
       persist
     >
       <Tab value="dev">
         ```sh title="Terminal"
-        pnpm nx run portal:dev
+        pnpm nx dev portal --verbose
+        ```
+        Or
+        ```sh title="Terminal"
+        pnpm nx run portal:dev --verbose
         ```
       </Tab>
 
       <Tab value="build">
         ```sh title="Terminal"
-        pnpm nx run portal:build
+        pnpm nx build portal --verbose
+        ```
+        Or
+        ```sh title="Terminal"
+        pnpm nx run portal:build --verbose
         ```
       </Tab>
 
       <Tab value="start">
         ```sh title="Terminal"
-        pnpm nx run portal:start
+        pnpm nx start portal --verbose
+        ```
+        Or
+        ```sh title="Terminal"
+        pnpm nx run portal:start --verbose
         ```
       </Tab>
 
     </Tabs>
   </Tab>
 
-  <Tab value="DevDocs">
-    <Tabs groupId="devdocs-project-nx-commands" items={['dev', 'build', 'start']} persist>
+  <Tab value="Docs">
+    <Tabs groupId="docs-project-nx-commands" items={['dev', 'build', 'start']} persist>
       <Tab value="dev">
         ```sh title="Terminal"
-        pnpm nx run docs:dev
+        pnpm nx dev docs --verbose
+        ```
+        Or
+        ```sh title="Terminal"
+        pnpm nx run docs:dev --verbose
         ```
       </Tab>
       <Tab value="build">
         ```sh title="Terminal"
-        pnpm nx run docs:build
+        pnpm nx build docs --verbose
+        ```
+        Or
+        ```sh title="Terminal"
+        pnpm nx run docs:build --verbose
         ```
       </Tab>
       <Tab value="start">
         ```sh title="Terminal"
-        pnpm nx run docs:start
+        pnpm nx start docs --verbose
+        ```
+        Or
+        ```sh title="Terminal"
+        pnpm nx run docs:start --verbose
         ```
       </Tab>
     </Tabs>
   </Tab>
+
+  <Tab value="Storybook">
+    <Tabs
+      groupId="storybook-project-nx-commands"
+      items={["dev", "build", "start"]}
+      persist
+    >
+      <Tab value="dev">
+        ```sh title="Terminal"
+        pnpm nx dev storybook --verbose
+        ```
+        Or
+        ```sh title="Terminal"
+        pnpm nx run storybook:dev --verbose
+        ```
+      </Tab>
+
+      <Tab value="build">
+        ```sh title="Terminal"
+        pnpm nx build storybook --verbose
+        ```
+        Or
+        ```sh title="Terminal"
+        pnpm nx run storybook:build --verbose
+        ```
+      </Tab>
+
+      <Tab value="start">
+        ```sh title="Terminal"
+        pnpm nx start storybook --verbose
+        ```
+        Or
+        ```sh title="Terminal"
+        pnpm nx run storybook:start --verbose
+        ```
+      </Tab>
+
+    </Tabs>
+  </Tab>
+  <Tab value="ESLint Config Inspector">
+        ```sh title="Terminal"
+        pnpm lint:inspect
+        ```
+      </Tab>
+
 </Tabs>
+
+`--verbose` provides detailed error logs.
+
+Explore the project graph to see the projects in the monorepo and the tasks you can run with Nx.
+
+```sh title="Terminal"
+pnpm nx graph --verbose
+```
 
 <Accordions>
   <Accordion title="What's the general syntax of Nx commands?">
   <img src="https://nx.dev/documentation/shared/images/run-target-syntax.svg" />
-
-To execute tasks with Nx use the following syntax:
-
-```sh title="Terminal"
-pnpm nx run <project>:<target> <...options>
-```
 
 You can also run multiple targets:
 
@@ -326,29 +292,11 @@ pnpm nx run-many -t <target1> <target2> -p <proj1> <proj2>
 
 Targets can be defined in the `package.json` or `projects.json`. [Learn more](https://nx.dev/features/run-tasks).
 
-Explore the project graph to see the projects in the monorepo and the tasks you can run with Nx.
-
-```sh title="Terminal"
-pnpm nx graph
-```
-
 [Learn more](https://nx.dev/core-features/explore-graph).
 
 Use [Nx Console](https://nx.dev/nx-console) to integrate with editors.
 
 <img src="https://nx.dev/documentation/shared/images/nx-console/nx-console-screenshot.webp" />
-
-### Build for production
-
-Run `pnpm nx run portal:build` to build the application. The build artifacts are stored in the output directory (e.g. `dist/` or `build/`), ready to be deployed.
-
-### Set up CI
-
-Nx comes with local caching already built-in (check your `nx.json`). On CI you might want to go a step further.
-
-- [Set up remote caching](https://nx.dev/features/share-your-cache)
-- [Set up task distribution across multiple machines](https://nx.dev/nx-cloud/features/distribute-task-execution)
-- [Learn more how to setup CI](https://nx.dev/recipes/ci)
 
 </Accordion>
 </Accordions>
