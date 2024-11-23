@@ -1,5 +1,5 @@
 import { exit, stdout } from 'node:process'
-import readline from 'node:readline'
+import { getUserConfirmation } from '../../helpers/get-user-confirmation'
 import { scheduleOnline } from '../online'
 
 (async function getInputAndRunPlaywright() {
@@ -74,21 +74,9 @@ import { scheduleOnline } from '../online'
  `
   stdout.write(output)
 
-  const confirmation = await new Promise<string>((resolve) => {
-    const rl = readline.createInterface({
-      // eslint-disable-next-line node/prefer-global/process
-      input: process.stdin,
-      // eslint-disable-next-line node/prefer-global/process
-      output: process.stdout,
-    })
-    rl.question('Is this information correct? Otherwise change the input file... (yes/y to proceed): ', (answer) => {
-      stdout.write('\n')
-      rl.close()
-      resolve(answer.trim().toLowerCase())
-    })
-  })
+  const isConfirmed = await getUserConfirmation('Is this information correct? Otherwise change the input file... (yes/y to proceed): ')
 
-  if (confirmation === 'yes' || confirmation === 'y') {
+  if (isConfirmed) {
     try {
       await scheduleOnline(
         organizer1FirstName,
