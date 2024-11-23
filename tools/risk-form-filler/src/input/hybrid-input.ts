@@ -1,4 +1,4 @@
-import { stdout } from 'node:process'
+import { exit, stdout } from 'node:process'
 import readline from 'node:readline'
 import { scheduleHybrid } from '../hybrid'
 
@@ -133,9 +133,11 @@ import { scheduleHybrid } from '../hybrid'
     }
     catch (error) {
       stdout.write(`Error filling the form: ${error.message}\n`)
+      exit(1)
     }
   }
   else {
     stdout.write('Operation cancelled.\n')
+    exit(1)
   }
 })()
