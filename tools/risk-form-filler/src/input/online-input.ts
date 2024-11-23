@@ -6,16 +6,16 @@ import { scheduleOnline } from '../online'
   // PRIMARY ORGANIZER
   const organizer1FirstName = 'Raef'
   const organizer1LastName = 'Sarofiem'
-  const organizer1StudentID = '101266475'
+  const organizer1StudentID = 'INPUT_STUDENT_ID_HERE'
   const organizer1Email = 'raefsarofiem@cmail.carleton.ca'
   const organizer1Phone = 'RAEF_PHONE_NUMBER'
 
   // SECONDARY ORGANIZER
   const organizer2FirstName = 'Ajaan'
   const organizer2LastName = 'Nalliah'
-  const organizer2StudentID = '101325463'
+  const organizer2StudentID = 'INPUT_STUDENT_ID_HERE'
   const organizer2Email = 'ajaannalliah@cmail.carleton.ca'
-  const organizer2Phone = '6478773250'
+  const organizer2Phone = 'AJAAN_PHONE_NUMBER'
 
   // EVENT DETAILS
   const eventTitle = 'cuHacking Event Title'
