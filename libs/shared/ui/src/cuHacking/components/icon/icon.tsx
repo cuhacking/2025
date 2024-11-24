@@ -1,5 +1,5 @@
 import type Media from '@cuhacking/types/media'
-import { cn } from '@shadcn/lib/utils'
+import { cn } from '@cuhacking/shared/utils/cn'
 import React from 'react'
 
 interface IconProps {
@@ -11,7 +11,7 @@ interface IconProps {
 export function Icon({ media, className }: IconProps) {
   return (
     <>
-      { media
+      {media
         ? (
             <img
               src={media.src}
@@ -22,6 +22,5 @@ export function Icon({ media, className }: IconProps) {
           )
         : null}
     </>
-
   )
 }
