@@ -8,7 +8,39 @@ import instagram_white from '@cuhacking/shared/assets/icons/socials/instagram-wh
 import linkedin_white from '@cuhacking/shared/assets/icons/socials/linkedin-white-1.svg'
 import linktree_white from '@cuhacking/shared/assets/icons/socials/linktree-white-1.svg'
 import cuHackingLogo from '@cuhacking/shared/assets/logos/cuHacking/cuhacking-logo-1.svg'
+import { createRemixStub } from '@remix-run/testing'
 import { FooterPresenter } from './footer.presenter'
+
+const meta: Meta<typeof FooterPresenter> = {
+  title: 'cuHacking Design System/Footer',
+  component: FooterPresenter,
+  tags: ['autodocs'],
+  args: {},
+  decorators: [
+    (story) => {
+      const remixStub = createRemixStub([
+        {
+          path: '/*',
+          action: () => ({ redirect: '/' }),
+          loader: () => ({ redirect: '/' }),
+          Component: () => story(),
+        },
+      ])
+
+      return remixStub({ initialEntries: ['/'] })
+    },
+  ],
+  argTypes: {
+    logo: {
+      control: { type: 'text' },
+      description: 'Logo image source URL',
+    },
+    socials: {
+      control: { type: 'object' },
+      description: 'Array of social media links with icons',
+    },
+  },
+}
 
 const socials = [
   {
@@ -68,23 +100,6 @@ const socials = [
     },
   },
 ]
-
-const meta: Meta<typeof FooterPresenter> = {
-  title: 'cuHacking Design System/Footer',
-  component: FooterPresenter,
-  tags: ['autodocs'],
-  args: {},
-  argTypes: {
-    logo: {
-      control: { type: 'text' },
-      description: 'Logo image source URL',
-    },
-    socials: {
-      control: { type: 'object' },
-      description: 'Array of social media links with icons',
-    },
-  },
-}
 
 export default meta
 
