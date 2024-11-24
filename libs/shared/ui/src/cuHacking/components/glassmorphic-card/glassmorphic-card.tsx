@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import InfoIcon from '@cuhacking/shared/assets/icons/general/info-1.svg'
-import { cn } from '@shadcn/lib/utils'
+import { cn } from '@cuhacking/shared/utils/cn'
 import { cva } from 'class-variance-authority'
 import React from 'react'
 
@@ -26,7 +26,11 @@ const glassmorphicCardVariants = cva(
   },
 )
 
-export function GlassmorphicCard({ children, variant = 'default', className }: GlassmorphicCardProps) {
+export function GlassmorphicCard({
+  children,
+  variant = 'default',
+  className,
+}: GlassmorphicCardProps) {
   return (
     <div className={cn(glassmorphicCardVariants({ variant, className }))}>
       {variant === 'info'

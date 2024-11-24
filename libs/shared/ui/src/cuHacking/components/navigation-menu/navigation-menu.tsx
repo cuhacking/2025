@@ -1,5 +1,5 @@
+import { cn } from '@cuhacking/shared/utils/cn'
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu'
-import { cn } from '@shadcn/lib/utils'
 import { cva } from 'class-variance-authority'
 import { ChevronDown } from 'lucide-react'
 import * as React from 'react'

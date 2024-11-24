@@ -1,6 +1,6 @@
 import type { Sponsor } from '../../types/sponsorship'
 import { GlassmorphicCard } from '@cuhacking/shared/ui/src/cuHacking/components/glassmorphic-card'
-import { cn } from '@shadcn/lib/utils'
+import { cn } from '@cuhacking/shared/utils/cn'
 import { cva } from 'class-variance-authority'
 import React from 'react'
 
@@ -22,14 +22,22 @@ const sponsorPresenterVariation = cva(
 )
 export function SponsorItem({ sponsor, isPresent }: SponsorPresenterProps) {
   return (
-    <GlassmorphicCard variant="nested" className="p-2.5 hover:scale-105 transition-transform">
+    <GlassmorphicCard
+      variant="nested"
+      className="p-2.5 hover:scale-105 transition-transform"
+    >
       <a
         href={sponsor.link}
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`Visit ${sponsor.name}'s website`}
       >
-        <img src={sponsor.logo} alt={`${sponsor.name} logo`} loading="lazy" className={cn(sponsorPresenterVariation({ isPresent }))} />
+        <img
+          src={sponsor.logo}
+          alt={`${sponsor.name} logo`}
+          loading="lazy"
+          className={cn(sponsorPresenterVariation({ isPresent }))}
+        />
       </a>
     </GlassmorphicCard>
   )
