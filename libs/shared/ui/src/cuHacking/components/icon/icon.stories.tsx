@@ -24,10 +24,25 @@ import linkedin_green from '@cuhacking/shared/assets/icons/socials/linkedin-gree
 import linkedin_white from '@cuhacking/shared/assets/icons/socials/linkedin-white-1.svg'
 import linktree_green from '@cuhacking/shared/assets/icons/socials/linktree-green-1.svg'
 import linktree_white from '@cuhacking/shared/assets/icons/socials/linktree-white-1.svg'
+import { createRemixStub } from '@remix-run/testing'
 import { Icon } from './icon'
 
 const meta = {
   title: 'cuHacking Design System/Icon',
+  decorators: [
+    (story) => {
+      const remixStub = createRemixStub([
+        {
+          path: '/*',
+          action: () => ({ redirect: '/' }),
+          loader: () => ({ redirect: '/' }),
+          Component: () => story(),
+        },
+      ])
+
+      return remixStub({ initialEntries: ['/'] })
+    },
+  ],
   component: Icon,
   tags: ['autodocs'],
   parameters: {

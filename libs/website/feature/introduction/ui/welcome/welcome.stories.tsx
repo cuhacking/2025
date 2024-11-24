@@ -8,6 +8,7 @@ import github_green from '@cuhacking/shared/assets/icons/socials/github-green-1.
 import instagram_green from '@cuhacking/shared/assets/icons/socials/instagram-green-1.svg'
 import linkedin_green from '@cuhacking/shared/assets/icons/socials/linkedin-green-1.svg'
 import linktree_green from '@cuhacking/shared/assets/icons/socials/linktree-green-1.svg'
+import { createRemixStub } from '@remix-run/testing'
 import { Welcome } from './welcome'
 
 const socials: { link: string, media: Media }[] = [
@@ -49,6 +50,20 @@ const meta: Meta<typeof Welcome> = {
   title: 'cuHacking Design System/Intro',
   component: Welcome,
   tags: ['autodocs'],
+  decorators: [
+    (story) => {
+      const remixStub = createRemixStub([
+        {
+          path: '/*',
+          action: () => ({ redirect: '/' }),
+          loader: () => ({ redirect: '/' }),
+          Component: () => story(),
+        },
+      ])
+
+      return remixStub({ initialEntries: ['/'] })
+    },
+  ],
   parameters: {
     layout: 'centered',
   },
