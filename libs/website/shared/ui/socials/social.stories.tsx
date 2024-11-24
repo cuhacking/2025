@@ -7,8 +7,9 @@ import figma_green from '@cuhacking/shared/assets/icons/socials/figma-green-1.sv
 import github_green from '@cuhacking/shared/assets/icons/socials/github-green-1.svg'
 import instagram_green from '@cuhacking/shared/assets/icons/socials/instagram-green-1.svg'
 import linkedin_green from '@cuhacking/shared/assets/icons/socials/linkedin-green-1.svg'
-
 import linktree_green from '@cuhacking/shared/assets/icons/socials/linktree-green-1.svg'
+
+import { createRemixStub } from '@remix-run/testing'
 import { Socials } from './socials'
 
 const meta: Meta<typeof Socials> = {
@@ -18,6 +19,20 @@ const meta: Meta<typeof Socials> = {
   parameters: {
     layout: 'centered',
   },
+  decorators: [
+    (story) => {
+      const remixStub = createRemixStub([
+        {
+          path: '/*',
+          action: () => ({ redirect: '/' }),
+          loader: () => ({ redirect: '/' }),
+          Component: () => story(),
+        },
+      ])
+
+      return remixStub({ initialEntries: ['/'] })
+    },
+  ],
   argTypes: {
     socials: {
       control: { type: 'object' },
