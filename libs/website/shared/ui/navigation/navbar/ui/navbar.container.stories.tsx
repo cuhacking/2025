@@ -9,15 +9,28 @@ import instagram_white from '@cuhacking/shared/assets/icons/socials/instagram-wh
 import linkedin_white from '@cuhacking/shared/assets/icons/socials/linkedin-white-1.svg'
 import linktree_white from '@cuhacking/shared/assets/icons/socials/linktree-white-1.svg'
 import logo from '@cuhacking/shared/assets/logos/cuHacking/cuhacking-logo-1.svg'
-import { NavbarPresenter } from './navbar.presenter'
+import { createRemixStub } from '@remix-run/testing'
+import { NavbarContainer } from './navbar.container'
 
 const meta = {
   title: 'cuHacking Design System/Navigation/Navbar',
-  component: NavbarPresenter,
+  component: NavbarContainer,
   tags: ['autodocs'],
-  args: {
+  args: {},
+  decorators: [
+    (story) => {
+      const remixStub = createRemixStub([
+        {
+          path: '/*',
+          action: () => ({ redirect: '/' }),
+          loader: () => ({ redirect: '/' }),
+          Component: () => story(),
+        },
+      ])
 
-  },
+      return remixStub({ initialEntries: ['/'] })
+    },
+  ],
   argTypes: {
     links: {
       control: { type: 'object' },
@@ -26,7 +39,7 @@ const meta = {
       control: { type: 'text' },
     },
   },
-} satisfies Meta<typeof NavbarPresenter>
+} satisfies Meta<typeof NavbarContainer>
 
 const socials = [
   {
@@ -89,9 +102,9 @@ const socials = [
 
 export default meta
 
-type Story = StoryObj<typeof Navbar>
+type Story = StoryObj<typeof NavbarContainer>
 
-export const CustomNavbar: Story = {
+export const Default: Story = {
   args: {
     links: [
       { name: 'ABOUT', link: '/#about' },
