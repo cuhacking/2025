@@ -3,12 +3,11 @@ import React from 'react'
 
 export function SplineMission() {
   return (
-    <div className="overflow-x-hidden">
+    <div className="absolute -bottom-[15vh] w-screen overflow-x-hidden">
       <Spline
-        className="absolute -bottom-[15vh] lg:-bottom-[5vh] left-0 scale-1 md:scale-[1.2]"
-        scene="https://prod.spline.design/TGlqj05806lq8PRV/scene.splinecode"
+        className="!w-[calc(100%+40em)] !translate-x-[-20em]"
+        scene="https://prod.spline.design/FgSgCtcB4no42JfA/scene.splinecode"
       />
     </div>
-
   )
 }
