@@ -31,6 +31,16 @@ const nextConfig = {
         // eslint-disable-next-line node/prefer-global/process
         hostname: process.env.ALLOWED_IMAGE_HOSTNAME || 'feature-sliced.design',
       },
+      {
+        protocol: 'https',
+        // eslint-disable-next-line node/prefer-global/process
+        hostname: process.env.ALLOWED_IMAGE_HOSTNAME || 'diataxis.fr',
+      },
+      {
+        protocol: 'https',
+        // eslint-disable-next-line node/prefer-global/process
+        hostname: process.env.ALLOWED_IMAGE_HOSTNAME || 'conventionalcomments.org',
+      },
     ],
   },
 }

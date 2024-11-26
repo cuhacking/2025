@@ -1,12 +1,10 @@
 ---
-title: Tools Overview
-description: Explore the suite of software we use.
+title: Technology Stack
+description: For those wondering about our specs.
 icon: Layers
 ---
 
 import { Image } from "next/image";
-
-Written in a beginner-friendly language in order to provide a smooth onboarding experience for [cuHacking's](https://www.cuhacking.ca) 2024-25 development team, and also act as a general open-source reference for other projects.
 
 ## 🔭 Project Management
 
@@ -143,14 +141,14 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
     title={"Bulletproof React"}
     description={
       <>
-        <li>Scalable architectural methodology used with React.</li>
+        <li>Common architectural pattern used with React projects.</li>
       </>
     }
     href={`https://reacthandbook.dev/project-standards`}
     icon={
       <img
-        src="https://feature-sliced.design/img/brand/logo-primary.png"
-        alt="Bulletproof React Logo"
+        src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+        alt="React Logo"
         width={24}
         height={24}
       />
@@ -178,6 +176,23 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
 ### 📜 Technical Documentation
 
  <Cards >
+  <Card
+    title={"Diátaxis Model"}
+    description={
+      <>
+        <li>Systematic documentation authoring pattern commonly used in open-source projects.</li>
+      </>
+    }
+    href={`https://diataxis.fr/`}
+    icon={
+      <img
+        src="https://diataxis.fr/_static/favicon.png"
+        alt="Diataxis Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
   <Card
     title={"Mermaid.js"}
     description={
@@ -214,67 +229,6 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
   />
  </Cards >
 
- <Cards >
-<div>
-<h3> 🌐 Monorepo Manager </h3>
-
-<Card
-  title={"Nx"}
-  description={
-    <>
-      <li>
-        Makes using many
-        different technologies together possible by sharing code and assets between projects.
-      </li>
-      <li>
-        Massively improves productivity as you don't have to context switch
-        between different git repos with different version histories.
-      </li>
-    </>
-  }
-  href={`https://nx.dev`}
-  icon={
-    <img
-      src="https://avatars.githubusercontent.com/u/23692104?s=200&v=4.svg"
-      alt="Nx Logo"
-      width={24}
-      height={24}
-    />
-  }
-/>
-
-</div>
-
-<div>
-<h3> 📦 Package Manager </h3>
-
-<Card
-  title={"pnpm"}
-  description={
-    <>
-      <li>
-        Drop-in replacement for npm that is faster and better in almost every
-        way.
-      </li>
-      <li>
-        Better for both the disk health of your computer and the speed of our
-        CI/CD pipelines
-      </li>
-    </>
-  }
-  href={`https://pnpm.io/`}
-  icon={
-    <img
-      src="https://pnpm.io/assets/images/pnpm-light-477811893d2e1c4ad4b10345c442282e.svg"
-      alt="pnpm Logo"
-      width={24}
-      height={24}
-    />
-  }
-/>
-
-</div>
-  </Cards >
 
 ### ✨ Front-End
 
@@ -641,7 +595,70 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
   />
 </Cards>
 
-## 🧹 Code Quality
+## ☁️ DevOps
+
+<Cards >
+<div>
+### 📦 Package Manager
+<Card
+  title={"pnpm"}
+  description={
+    <>
+      <li>
+        Drop-in replacement for npm that's faster and better in almost every
+        way.
+      </li>
+      <li>
+        Better for both the disk health of your computer and the speed of our
+        CI/CD pipelines
+      </li>
+    </>
+  }
+  href={`https://pnpm.io/`}
+  icon={
+    <img
+      src="https://pnpm.io/assets/images/pnpm-light-477811893d2e1c4ad4b10345c442282e.svg"
+      alt="pnpm Logo"
+      width={24}
+      height={24}
+    />
+  }
+/>
+</div>
+
+<div>
+### 🌐 Monorepo Manager
+
+<Card
+  title={"Nx"}
+  description={
+    <>
+      <li>
+        Makes using many
+        different technologies together possible by sharing code and assets between projects.
+      </li>
+      <li>
+        Massively improves productivity as you don't have to context switch
+        between different git repos with different version histories.
+      </li>
+    </>
+  }
+  href={`https://nx.dev`}
+  icon={
+    <img
+      src="https://avatars.githubusercontent.com/u/23692104?s=200&v=4.svg"
+      alt="Nx Logo"
+      width={24}
+      height={24}
+    />
+  }
+/>
+
+</div>
+
+  </Cards >
+
+### 🧹 Code Quality and Style Guide Automation
 
 <Cards>
   <Card
@@ -698,6 +715,79 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
       />
     }
   />
+</Cards>
+
+### ⚗️ Test Automation
+
+<Cards>
+  <Card
+    title={"Vitest"}
+    description={
+      <>
+        <li>For both Unit Tests and Integration Tests.</li>
+        <li>
+          Code with peace of mind and get instant feedback if you break
+          something.
+        </li>
+      </>
+    }
+    href={`https://vitest.dev/`}
+    icon={
+      <img
+        src="https://vitest.dev/logo.svg"
+        alt="Vitest Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Playwright"}
+    description={
+      <>
+        <li>For End-to-End Testing of our entire platform.</li>
+        <li>
+          Instead of clicking around the entire app yourself to see if it still
+          works after every single time you make a change, why not let a robot
+          do it for you?
+        </li>
+      </>
+    }
+    href={`https://playwright.dev/`}
+    icon={
+      <img
+        src="https://playwright.dev/img/playwright-logo.svg"
+        alt="Playwright Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Storybook Test Runner"}
+    description={
+      <>
+        <li>
+          Executes Vitest and Playwright test suites on design system
+          components, along with handling accessibility testing, and coverage
+          testing using plugins.
+        </li>
+      </>
+    }
+    href={`https://storybook.js.org/docs/writing-tests/test-runner`}
+    icon={
+      <img
+        src="https://www.svgrepo.com/show/354397/storybook-icon.svg"
+        alt="Storybook Test Runner Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+</Cards>
+
+### 🌵 GitOps
+<Cards>
   <Card
     title={"Trunk-Based Development"}
     description={
@@ -728,6 +818,23 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
       <img
         src="https://avatars.githubusercontent.com/u/42154238?s=200&v=4.svg"
         alt="Conventional Commits Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Conventional Branch"}
+    description={
+      <>
+        <li>Standardized open-source specification for branch names.</li>
+      </>
+    }
+    href={`https://conventional-branch.github.io/`}
+    icon={
+      <img
+        src="https://avatars.githubusercontent.com/u/179835931?s=200&v=4.svg"
+        alt="Conventional Branch Logo"
         width={24}
         height={24}
       />
@@ -832,95 +939,18 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
       />
     }
   />
-</Cards>
-
-## ⚗️ Testing
-
-<Cards>
   <Card
-    title={"Vitest"}
+    title={"Conventional Comments"}
     description={
       <>
-        <li>For both Unit Tests and Integration Tests.</li>
-        <li>
-          Code with peace of mind and get instant feedback if you break
-          something.
-        </li>
+        <li>Standardized open-source specification for sane PR review comments.</li>
       </>
     }
-    href={`https://vitest.dev/`}
+    href={`https://conventionalcomments.org/`}
     icon={
       <img
-        src="https://vitest.dev/logo.svg"
-        alt="Vitest Logo"
-        width={24}
-        height={24}
-      />
-    }
-  />
-  <Card
-    title={"Playwright"}
-    description={
-      <>
-        <li>For End-to-End Testing of our entire platform.</li>
-        <li>
-          Instead of clicking around the entire app yourself to see if it still
-          works after every single time you make a change, why not let a robot
-          do it for you?
-        </li>
-      </>
-    }
-    href={`https://playwright.dev/`}
-    icon={
-      <img
-        src="https://playwright.dev/img/playwright-logo.svg"
-        alt="Playwright Logo"
-        width={24}
-        height={24}
-      />
-    }
-  />
-  <Card
-    title={"Storybook Test Runner"}
-    description={
-      <>
-        <li>
-          Executes Vitest and Playwright test suites on design system
-          components, along with handling accessibility testing, and coverage
-          testing using plugins.
-        </li>
-      </>
-    }
-    href={`https://storybook.js.org/docs/writing-tests/test-runner`}
-    icon={
-      <img
-        src="https://www.svgrepo.com/show/354397/storybook-icon.svg"
-        alt="Storybook Test Runner Logo"
-        width={24}
-        height={24}
-      />
-    }
-  />
-  <Card
-    title={"Chromatic"}
-    description={
-      <>
-        <li>
-          Visual test server platform to easily spot differences in UI and
-          discuss them as a team, integrated with Storybook.
-        </li>
-        <li>
-          Can catch visual bugs by comparing new renders with a specified
-          baseline, and block the changes from making it to production prior to
-          being reviewed.
-        </li>
-      </>
-    }
-    href={`https://www.chromatic.com/`}
-    icon={
-      <img
-        src="https://www.svgrepo.com/show/353552/chromatic-icon.svg"
-        alt="Chromatic Logo"
+        src="https://conventionalcomments.org/favicon.ico"
+        alt="Conventional Comments Logo"
         width={24}
         height={24}
       />
@@ -928,7 +958,8 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
   />
 </Cards>
 
-## ☁️ Deployment
+
+### ♻️Continous Integration
 
 <Cards>
   <Card
@@ -1016,6 +1047,10 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
       />
     }
   />
+</Cards>
+
+### 🚢Continous Deployment
+  <Cards>
   <Card
     title={"Netlify"}
     description={
@@ -1046,6 +1081,31 @@ Written in a beginner-friendly language in order to provide a smooth onboarding 
       <img
         src="https://avatars.githubusercontent.com/u/7892489?s=200&v=4.svg"
         alt="Netlify Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Chromatic"}
+    description={
+      <>
+        <li>
+          Visual test server platform to easily spot differences in UI and
+          discuss them as a team, integrated with Storybook.
+        </li>
+        <li>
+          Can catch visual bugs by comparing new renders with a specified
+          baseline, and block the changes from making it to production prior to
+          being reviewed.
+        </li>
+      </>
+    }
+    href={`https://www.chromatic.com/`}
+    icon={
+      <img
+        src="https://www.svgrepo.com/show/353552/chromatic-icon.svg"
+        alt="Chromatic Logo"
         width={24}
         height={24}
       />
