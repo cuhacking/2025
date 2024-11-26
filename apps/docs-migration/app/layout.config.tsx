@@ -37,7 +37,12 @@ export const baseOptions: BaseLayoutProps = {
           height={24}
           width={24}
         />
-        <span className="text-lg font-bold">cuHacking DevDocs</span>
+        <span className="text-lg font-bold text-lime-500">
+          cuHacking
+          {' '}
+          <span className="text-yellow-500">Dev</span>
+          <span className="text-orange-500">Docs</span>
+        </span>
       </>
     ),
     url: '/',
