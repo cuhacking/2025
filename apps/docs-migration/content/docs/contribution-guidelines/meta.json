@@ -3,12 +3,6 @@
   "icon": "GitPullRequestCreateArrow",
   "pages": [
     "getting-started",
-    "trunk-based-development",
-    "coding-guidelines",
-    "conventional-commits",
-    "pull-requests",
-    "code-review",
-    "external-contributors-guide",
-    "authoring-documentation"
+    "pull-requests"
   ]
 }

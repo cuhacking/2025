@@ -1,0 +1,12 @@
+{
+  "title": "Trunk-Based Development",
+  "pages": [
+    "monorepo-architecture",
+    "trunk-based-development",
+    "conventional-branch",
+    "conventional-commits",
+    "conventional-comments",
+    "diataxis-model",
+    "clean-code"
+  ]
+}

@@ -1,0 +1,93 @@
+---
+title: Monorepo Architecture
+icon: Eclipse
+---
+
+import { File, Folder, Files } from 'fumadocs-ui/components/files';
+import {Atom as TSX} from 'lucide-react'
+import { DiJavascript1 } from "react-icons/di";
+import { BsFiletypeJson } from "react-icons/bs";
+import { DiCss3 } from "react-icons/di";
+
+<Files>
+  <Folder name=".github">
+  </Folder>
+  <Folder name=".husky">
+  </Folder>
+  <Folder name=".storybook" className="text-pink-500 bg-pink-500/5">
+    <File name="custom-viewports.ts"/>
+    <File name="main.ts"/>
+    <File name="preview-head.html"/>
+    <File name="preview.tsx"/>
+    <File name="themes-storybook-ui.ts"/>
+    <File name="tsconfig.storybook.json"/>
+  </Folder>
+  <Folder name="apps" defaultOpen>
+  <Folder name="docs" className="text-blue-500 bg-blue-500/5">
+    <File name="layout.tsx" icon={<TSX/>}/>
+    <File name="page.tsx" />
+    <File name="global.css" icon={<DiCss3 />}/>
+  </Folder>
+  <Folder name="docs-e2e">
+  </Folder>
+  <Folder name="portal" className="text-green-500 bg-green-500/5">
+  </Folder>
+  <Folder name="portal-e2e">
+  </Folder>
+  <Folder name="website" className="text-lime-500 bg-lime-500/5">
+  </Folder>
+  <Folder name="website-e2e">
+  </Folder>
+  </Folder>
+  <Folder name="libs" defaultOpen>
+  <Folder name="docs">
+  </Folder>
+  <Folder name="external">
+  </Folder>
+  <Folder name="shared" className="text-yellow-500 bg-yellow-500/5" defaultOpen>
+  <Folder name="assets">
+  </Folder>
+  <Folder name="config">
+  </Folder>
+  <Folder name="features">
+  </Folder>
+  <Folder name="providers">
+  </Folder>
+  <Folder name="routes">
+  </Folder>
+  <Folder name="ui">
+    <File name="button.tsx" />
+    <File name="tabs.tsx" />
+    <File name="dialog.tsx" />
+  </Folder>
+  <Folder name="utils">
+  </Folder>
+  <File name="project.json" icon={<BsFiletypeJson />} />
+  <File name="tsconfig.json" icon={<BsFiletypeJson />} />
+  <File name="tsconfig.lib.json" icon={<BsFiletypeJson />} />
+  </Folder>
+  <Folder name="website" className="text-cyan-500 bg-cyan-500/5" defaultOpen>
+  <Folder name="assets">
+  </Folder>
+  <Folder name="feature">
+  </Folder>
+  <Folder name="layouts">
+  </Folder>
+  <Folder name="pages">
+  </Folder>
+  <Folder name="shared">
+  </Folder>
+  </Folder>
+  </Folder>
+  <Folder name="tools" className="text-orange-500 bg-orange-500/5">
+  </Folder>
+  <File name="cz.json" icon={<BsFiletypeJson />} />
+  <File name="package.json" icon={<BsFiletypeJson />} />
+  <File name="pnpm-lock.yaml"/>
+  <File name="postcss.config.ts"/>
+  <File name="README.md"/>
+  <File name="release.config.ts"/>
+  <File name="tailwind.config.ts"/>
+  <File name="tsconfig.base.json"/>
+  <File name="vitest.workspace.ts"/>
+</Files>
