@@ -3,6 +3,7 @@
   "icon": "GitPullRequestCreateArrow",
   "pages": [
     "getting-started",
+    "authoring-documentation",
     "pull-requests"
   ]
 }
