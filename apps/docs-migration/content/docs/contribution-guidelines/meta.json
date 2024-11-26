@@ -3,7 +3,14 @@
   "icon": "GitPullRequestCreateArrow",
   "pages": [
     "getting-started",
+    "coding-standards",
+    "e2e-testing",
+    "unit-testing",
+    "front-end",
+    "back-end",
+    "tooling",
     "authoring-documentation",
-    "pull-requests"
+    "pull-requests",
+    "code-review"
   ]
 }

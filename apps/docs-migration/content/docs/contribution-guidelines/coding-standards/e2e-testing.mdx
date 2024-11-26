@@ -1,0 +1,77 @@
+---
+title: End-to-End Testing
+icon: FlaskConical
+---
+
+import { File, Folder, Files } from 'fumadocs-ui/components/files';
+
+
+## Architecture (WIP)
+
+<Files>
+  <Folder name="app-e2e" defaultOpen>
+  <Folder name="src" defaultOpen>
+  <Folder name="data" defaultOpen>
+    <File name="hackers.data.ts"/>
+    <File name="organizers.data.ts"/>
+    <File name="sponsors.data.ts"/>
+  </Folder>
+  <Folder name="object-models" defaultOpen>
+  <Folder name="pages" defaultOpen>
+    <File name="dashboard.page.ts"/>
+    <File name="application-form.page.ts"/>
+    <File name="profile.page.ts"/>
+  <Folder name="components" defaultOpen>
+    <File name="something-dialog.component.ts"/>
+    <File name="some-other-compound-component-that-exists-in-multiple-pages.component.ts"/>
+  </Folder>
+  </Folder>
+  </Folder>
+    <File name="hacker.actions.spec.ts"/>
+    <File name="organizer.actions.spec.ts"/>
+  <Folder name="visual" defaultOpen>
+    <File name="dashboard.visual.spec.ts"/>
+    <File name="application-form.visual.spec.ts"/>
+  </Folder>
+  </Folder>
+  </Folder>
+    <File name="playwright.config.ts"/>
+</Files>
+
+
+Screen sizes:
+	- Desktop
+	- Mobile
+	- Tablet
+
+## Creating E2E tests
+Using code gen to generate the difference events that happen in the docs.
+
+General structure of the tests:
+
+``
+test('name", async ((.docsLayoutPage))) => ({
+	events_from_codegen
+})
+``
+
+pom.ts is used to create specific variables to represent different elements in the page.
+
+#### Naming conventions
+Constants are all caps with words being separated by underscores.
+
+#### Running tests
+For running the tests through cmd line->1. `pnpm nx run docs-e2e:e2e --verbose`
+
+For running this command to run codegen event generator->npx playwright codegen http:localhost:3000/docs
+
+For different tests, indicate DESKTOP, MOBILE, TABLET depending on the environment
+
+#### Viewing tests
+
+All tests can be viewed on the github workflow.
+- Can access them in the PR
+	- Can get the report from here.
+	- Report is produced regardless of whether you push code that makes changes to these E2E tests.
+
+When running different tests, make sure you select the right environments for each of these tests.
