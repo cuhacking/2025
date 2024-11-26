@@ -1,9 +1,9 @@
 {
   "$schema": "https://www.chromatic.com/config-file.schema.json",
-  "projectId": "Project:...",
+  "projectId": "chpt_6dcee0e44c7b960",
   "autoAcceptChanges": false,
-  "storybookBaseDir": "libs/shared/ui",
-  "storybookConfigDir": "libs/shared/ui/.storybook",
-  "buildCommand": "pnpm nx build-storybook ui --verbose",
-  "outputDir": "libs/shared/ui/storybook-static"
+  "storybookBaseDir": "./.storybook",
+  "storybookConfigDir": "./.storybook",
+  "buildCommand": "pnpm nx build-storybook --verbose",
+  "outputDir": "./storybook-static"
 }
