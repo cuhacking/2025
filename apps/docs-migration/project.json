@@ -1,9 +1,0 @@
-{
-  "name": "docs-migration",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/docs-migration",
-  "projectType": "application",
-  "tags": [],
-  "// targets": "to see all targets run: nx show project docs-migration --web",
-  "targets": {}
-}
