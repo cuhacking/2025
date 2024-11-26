@@ -5,6 +5,7 @@ import { source } from '../../source'
 /* import { DocsLayout } from 'fumadocs-ui/layouts/docs' */
 import { DocsLayout } from 'fumadocs-ui/layouts/notebook'
 import { baseOptions } from '../layout.config'
+import 'katex/dist/katex.css'
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
