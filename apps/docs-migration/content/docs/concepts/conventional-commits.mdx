@@ -1,5 +1,5 @@
 ---
-title: Commit Conventions
+title: Conventional Commits
 description: Which one of the types is it again?
 icon: GitCommitVertical
 ---
@@ -31,7 +31,21 @@ The slight learning curve of writing conventional commits is well worth the effo
 To ease the process of learning the specification and writing compliant commit messages, we've configured [Commitizen](https://commitizen-tools.github.io/commitizen/) to guide you through the process of writing a commit message interactively.
 You can run `pnpm commit` to use this tool. This will guarantee that your commit messages are formatted correctly.
 
-#### Type
+#### Types
+
+| Label   | Description |
+|---------|-------------|
+| `fix`   | A bug fix in the project (e.g., fixing an errant hyperlink in the docs) |
+| `feat`  | New feature(s) being added to the project (e.g., creating a calendar feature) |
+| `docs`  | A new addition or update to the docs site and/or documentation (e.g., adding a new docs site page) |
+| `test`  | New tests being added to the project (e.g., new Playwright tests for the mobile docs site) |
+| `chore` | Tasks that don't modify any business logic code and that help maintain the project (e.g., updating dependencies, reorganizing file structure, renaming files, etc.) |
+| `style` | Changes that do not affect the meaning of the code and that improve readability (e.g., adding only white-space, adding indents, adding comments, etc.) |
+| `refactor` | A change that improves the readability of code itself without modifying behavior (e.g., renaming a variable, creating a helper function, renaming a function, etc.) |
+| `perf`   | A code change that improves code performance (e.g., changing a function to be more memory-efficient, fixing code to improve runtime, etc.) |
+| `build`  | Changes that affect the build system or external dependencies (e.g., upgrading dependencies, adding a new dependency, etc.) |
+| `ci`     | Changes to our CI configuration files and scripts (e.g., adding a new script to the CI) |
+| `revert` | Reverting a previous commit (e.g., reverting a commit that caused a bug) |
 
 ```mermaid
 flowchart TD

@@ -1,9 +1,0 @@
-{
-  "title": "Trunk-Based Development",
-  "pages": [
-    "introduction",
-    "branching-conventions",
-    "commit-conventions",
-    "pull-requests"
-  ]
-}

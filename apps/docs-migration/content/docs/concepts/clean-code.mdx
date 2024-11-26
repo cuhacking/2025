@@ -1,0 +1,44 @@
+---
+title: Clean Code
+icon: CodeXml
+---
+
+## IDE Comment Keywords (WIP)
+
+Comment keywords are special annotations in your code that various IDEs and tools can recognize. These keywords help developers flag areas needing attention, such as bugs, optimizations, or questions.
+
+### Common Keywords
+
+| Keyword    | Description                                                                                     |
+|------------|-------------------------------------------------------------------------------------------------|
+| **TODO**   | Something to be done later.                                                         |
+| **NOTE**   | General comments about code decisions.                                                          |
+| **HACK**   | A workaround or quick fix that should be improved later.                                        |
+| **BUG**    | Known bugs that need to be addressed.                                                           |
+| **OPTIMIZE** | Suggestions where code performance can be improved.                                             |
+| **DEPRECATED** | Features that are obsolete and should be avoided.                                               |
+| **IMPORTANT** | Highlights critical aspects of the code that must be understood.                                |
+| **WARNING**  | Indicates potential issues that could cause problems.                                           |
+| **REVIEW** | Areas of code that require additional scrutiny from a reviewer.                                 |
+| **QUESTION** | Uncertainties or requests for clarification from other developers.                              |
+| **CLEANUP** | Areas where code can be made cleaner or more readable.                                          |
+| **TEMP**   | Temporary code that is expected to be replaced.                                                 |
+| **TEST**   | Code that is used for testing purposes and not part of the final product.                       |
+| **UNDONE** | Incomplete implementations that need to be revisited.                                           |
+
+### Tooling Support
+
+- [**todo-comments.nvim**](https://github.com/folke/todo-comments.nvim): A plugin for Neovim that highlights and searches for TODO comments and other keywords in your project.
+- [**Codetag (PEP 0350)**](https://peps.python.org/pep-0350/): Python Enhancement Proposals specifying conventions for comments used to annotate code.
+- [**JetBrains IDEs**](https://www.jetbrains.com/help/idea/using-todo.html): Documentation on how JetBrains products like IntelliJ IDEA handle TODOs and other code annotations.
+- [**FixmeComment**](https://wiki.c2.com/?FixmeComment): A discussion on the use of FIXME comments in code, highlighting practices and considerations.
+
+### Best Practices
+
+1. **Be Specific**: Always accompany a keyword with a clear and concise explanation of what needs to be done.
+2. **Review Regularly**: Periodically review comments to address important issues and ensure comments remain relevant.
+3. **Prioritize**: Use the urgency and importance of the comment to prioritize development tasks.
+4. **Keep Updated**: Update or remove comments as changes are made to ensure that they accurately reflect the state of your codebase.
+
+### Variable Naming Conventions (WIP)
+Constants are all caps with words being separated by underscores.
