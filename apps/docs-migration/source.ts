@@ -18,9 +18,9 @@ export const pages = [
     icon: HomeIcon,
   },
   {
-    title: 'Tools Overview',
-    description: 'Explore the suite of software we use.',
-    url: 'tools-overview',
+    title: 'Technology Stack',
+    description: 'For those wondering about our specs.',
+    url: 'technology-stack',
     icon: ToolsIcon,
   },
   {
