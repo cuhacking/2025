@@ -3,7 +3,7 @@ import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared'
 
 import {
   Figma as BrandIcon,
-  /* Code as ESLintIcon, */
+  Code as ESLintIcon,
   Smartphone as HackerPortalIcon,
   Instagram as InstagramIcon,
   AppWindowMac as LandingPageIcon,
@@ -62,12 +62,12 @@ export const baseOptions: BaseLayoutProps = {
      *   text: 'Utils (Coming Soon)',
      *   url: 'https://utils.cuhacking.ca',
      *   icon: <UtilsIcon />,
-     * },
-     * {
-     *   text: 'ESLint (Coming Soon)',
-     *   url: 'https://eslint.cuhacking.ca/rules',
-     *   icon: <ESLintIcon />,
      * }, */
+    {
+      text: 'ESLint',
+      url: 'https://eslint.cuhacking.ca/rules',
+      icon: <ESLintIcon />,
+    },
     {
       text: 'Discord',
       url: 'https://discord.gg/h2cQqF9aZf',
