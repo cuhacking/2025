@@ -1,10 +1,17 @@
 {
   "root": true,
   "pages": [
+    "--- Introduction ---",
     "index",
-    "tools-overview",
-    "--- Categories ---",
-    "contribution-guidelines",
-    "knowledge-base"
+    "projects",
+    "installation",
+    "technology-stack",
+    "--- Contribution Guidelines ---",
+    "...contribution-guidelines",
+    "--- Reference ---",
+    "glossary",
+    "knowledge-base",
+    "--- Troubleshooting ---",
+    "common-issues"
   ]
 }

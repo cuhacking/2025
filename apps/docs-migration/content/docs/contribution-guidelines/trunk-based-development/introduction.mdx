@@ -1,0 +1,22 @@
+---
+title: Introduction
+description: Am I looking at git history or a plate of spaghetti?
+icon: GitPullRequestArrow
+---
+
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+<Callout>Always rebase onto `main` before continuing work.</Callout>
+
+[Trunk-based development](https://tilburgsciencehub.com/topics/automation/version-control/advanced-git/git-branching-strategies/) is a no-merge, no-squash, rebase-only workflow that influences many of our conventions and tooling. Understanding this philosophy and its purpose is crucial to having contributions merged in quickly and easily.
+
+## Motivation
+
+- We want to ship extremely fast, with outstanding quality and with extreme reliability.
+- Our core team size is extremely small (three at time of writing). Bandwidth for review labor is extremely limited.
+- We hate doing repetitive work and want to let technology do the heavy lifing.
+- Code is read far more often than it is written.
+- Time spent debugging is time spent not shipping features.
+- Majority of time is generally spent debugging.
+
+Therefore, optimize to reduce debugging and wasted effort.

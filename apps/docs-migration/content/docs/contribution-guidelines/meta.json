@@ -2,13 +2,13 @@
   "title": "Contribution Guidelines",
   "icon": "GitPullRequestCreateArrow",
   "pages": [
-    "writing-documentation",
-    "system-requirements",
-    "branching-guidelines",
+    "getting-started",
+    "trunk-based-development",
     "coding-guidelines",
     "conventional-commits",
     "pull-requests",
+    "code-review",
     "external-contributors-guide",
-    "final-step"
+    "authoring-documentation"
   ]
 }

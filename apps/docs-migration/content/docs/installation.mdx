@@ -1,77 +1,35 @@
 ---
-title: Quick Start
-description: Why read docs when you can just read the code?
+title: Installation
+icon: SquareChevronRight
 ---
 
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
-    <Callout title="Preface">
-
-There's no one perfect solution. Every decision is always a trade-off.
-
-Solutions tend to create new problems, and the best solution is the one that solves the most pressing problems while creating the least amount of new ones.
-
-<Accordions>
-  <Accordion title="What do you strive for?">
-- Adhere to common open-source standards to maximize transferable skills
-- Maintain high developer experience with tools and processes
-- Automate repetitive tasks
-- Provide a clear path to learning and growth
-- Set aside time to evaluate new technologies
-
-</Accordion>
-  <Accordion title="What can I learn by contributing to this project?">
-
-- Project Management
-- UI/UX Design
-- Front-End Development
-- Back-End Development
-- Tools & Infrastructure Development
-- Automation Testing
-- DevOps
-- Cybersecurity
-- Artificial Intelligence/Machine Learning
-
-Read [Tools Overview](/tools-overview) to understand the technologies used.
-
-</Accordion>
-</Accordions>
-
-</Callout>
-
-## Installation
+## Setup Guide
 
 <div className="steps">
-  <div className="step">
-    Read [Tools Overview](/tools-overview) and [System Requirements](/system-requirements).
-  </div>
-
-  <div className="step">
-    Install [Docker](https://www.docker.com).
-  </div>
-  [Docker Desktop](https://www.docker.com/products/docker-desktop/) provides a
-  nice UI if you prefer clickity clicks.
-  <div className="step">
-    Install [Node.js](https://nodejs.org) (v22.11.0).
-  </div>
-  <div className="step">
-    Install [pnpm](https://pnpm.io/).
-
-```sh title="Terminal"
-npm i -g pnpm
-```
-
-</div>
-
 
 <div className="step">
 Clone [source repository](https://github.com/cuhacking/hackathon).
 
     <Callout type="warn">
-    If you're an external contributor, please see the [External Contributors Guide](/contribution-guidelines/external-contributors-guide) first.
+    If you'd like to contribute, please fork first and then clone your fork.
+
+    See the [Contribution Guidelines - Getting Started](/contribution-guidelines/getting-started) to learn more.
     </Callout>
 
-<Tabs groupId="git-clone-method" items={['HTTPS', 'SSH', 'GitHub CLI']} persist>
+<Tabs groupId="git-clone-method" items={['GitHub CLI (recommended)','HTTPS', 'SSH']} persist>
+<Tab value="GitHub CLI (recommended)">
+
+GitHub CLI handles much of the authentication and other configuration for you. It can also be used to view/make issues and pull requests, and also access the project board from the terminal.
+
+Ensure [GitHub CLI](https://cli.github.com/) is installed.
+
+```sh title="Terminal"
+ gh repo clone cuhacking/2025
+```
+
+</Tab>
   <Tab value="HTTPS">
 
 ```sh title="Terminal"
@@ -83,13 +41,6 @@ Clone [source repository](https://github.com/cuhacking/hackathon).
 
 ```sh title="Terminal"
  git clone git@github.com:cuhacking/2025.git
-```
-
-</Tab>
-<Tab value="GitHub CLI">
-
-```sh title="Terminal"
- gh repo clone cuhacking/2025
 ```
 
 </Tab>
@@ -115,6 +66,8 @@ pnpm i
 
   <div className="step">
   Run the project of your choice.
+
+`--verbose` provides detailed error logs.
 
 <Tabs groupId="projects" items={['Website', 'Portal', 'Docs', 'Storybook', 'ESLint Config Inspector']} persist>
   <Tab value="Website">
@@ -266,8 +219,6 @@ pnpm i
 
 </Tabs>
 
-`--verbose` provides detailed error logs.
-
 Explore the project graph to see the projects in the monorepo and the tasks you can run with Nx.
 
 ```sh title="Terminal"
@@ -308,26 +259,45 @@ You'll see the url(s) in your terminal for the project(s) you're running, simply
     For example you may see:
 
 ```sh title="Terminal"
-╰─ pnpm nx run docs:dev
+╰─ pnpm nx dev docs --verbose                                                                                                                   ─╯
 
-> pnpm nx run docs:dev
+> nx run docs:dev
 
 > next dev
 
-▲ Next.js 14.2.3
+[MDX] initialized map file
+   ▲ Next.js 15.0.3
+   - Local:        http://localhost:3000
+   - Experiments (use with caution):
+     · turbo
 
-- Local: <http://localhost:3000>
-✓ Starting...
-automatically enabled Fast Refresh for 1 custom loader
+ ✓ Starting...
+   automatically enabled Fast Refresh for 1 custom loader
+ ✓ Ready in 1790ms
 ```
 
-As the project is in its early stages, these URLs may change. If you have multiple apps running or have another server using that network port, yours may be different from someone else's and that's okay.
+<Callout type="warn" title="URLs may change as the project matures.">
+
+If multiple apps are running or another server using that network port, your URLs may be different from someone else's and that's okay.
 
 Always look at your terminal for the correct URL.
+</Callout>
 
 </div>
 </div>
 
-### Final Step
+## What's next?
 
-[Profit](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
+Explore the [Technology Stack](/technology-stack) to learn what powers our meta-framework.
+
+### Get Involved
+
+Looking to contribute? If you've already read the [Overview](/) then head on over to the [Contribution Guidelines](/contribution-guidelines).
+
+### Connect With Us
+
+Connect on our channels and with the cuHacking team to ask questions, get help and keep up to date with the latest events.
+
+- ⭐ [Star us on GitHub](https://github.com/cuhacking/2025) to show your support.
+- Join our [Discord Community](https://discord.com/invite/h2cQqF9aZf).
+- Follow us on [Social Media](https://linktr.ee/cuhacking_).
