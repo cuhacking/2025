@@ -3,9 +3,9 @@
   "pages": [
     "--- Introduction ---",
     "index",
+    "technology-stack",
     "projects",
     "installation",
-    "technology-stack",
     "--- Contribution Guidelines ---",
     "...contribution-guidelines",
     "--- Reference ---",
