@@ -55,7 +55,7 @@ export const baseOptions: BaseLayoutProps = {
     },
     {
       text: 'Design',
-      url: 'https://www.figma.com/design/wc1JOWR48tBNkjcjwY3AzB/%E2%8C%A8%EF%B8%8F-cuHacking-Design-System?node-id=0-1&t=YTR1ET4Qw1wG1cjz-1',
+      url: 'https://design.cuhacking.ca',
       icon: <StorybookIcon />,
     },
     /* {
