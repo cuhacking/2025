@@ -1,66 +1,80 @@
 ---
-title: Welcome to the Docs
+title: Overview
 description: Leave none behind regardless of our development cost.
 icon: House
 ---
 
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 import { pages } from "../../source";
 
-<Callout type="warn">
-  This is our highest priority project. No questions asked. All other projects
-  are secondary to keeping our docs up-to-date.
-</Callout>
+## Introduction
 
-## Quick Links
+Welcome to the documentation site for the [cuHacking 2025](https://www.cuhacking.ca) hackathon platform.
 
-<Cards>
-  <Card
-    title={"GitHub Projects"}
-    description={
-      <>
-        <li>Tracking issues, tasks, and progress directly within GitHub.</li>
-        <li>
-          Allows everyone to see what everyone else is up to, and do work
-          without blocking each other.
-        </li>
-      </>
-    }
-    href={`https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects`}
-    icon={
-      <img
-        src="https://www.logo.wine/a/logo/GitHub/GitHub-Icon-White-Dark-Background-Logo.wine.svg"
-        alt="GitHub Logo"
-        width={24}
-        height={24}
-      />
-    }
-  />
-  <Card
-    title="Figma Organization"
-    description={
-      <>
-        <li>Contains all design assets for both development and marketing.</li>
-        <li>Verified education email required for edit access.</li>
-      </>
-    }
-    href={`https://www.figma.com/team_invite/redeem/Uaj8zxZJYNLjGIbrhd97yx`}
-    icon={
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg"
-        alt="Figma Logo"
-        width={24}
-        height={24}
-      />
-    }
-  />
-</Cards>
+Planning, conventions, and references for our custom meta-framework that powers all projects reside here.
 
-<iframe
-className="mt-4 w-full h-[400px]"
-style={{ border: '1px solid rgba(0, 0, 0, 0.1)' }}
-src="https://embed.figma.com/design/wc1JOWR48tBNkjcjwY3AzB/%E2%8C%A8%EF%B8%8F-cuHacking-Design-System?node-id=464-1088&embed-host=share"
-allowFullScreen>
-</iframe>
+It's also written in a beginner-friendly language in order to provide a smooth onboarding experience for external contributors, and act as a general open-source reference for other projects.
+
+## What do we prioritize?
+- **User experience:** The platform should reliably meet the needs of hackers, judges, sponsors, and organizers.
+- **Developer experience:** Maintain outstanding quality of work with bleeding-edge tools and sensible processes.
+- **Creating Opportunities:** Maintain a transparent roadmap to encourage contributions from the student community.
+- **Evaluating Technologies:** Balance the needs of the hackathon with the learning curve of the platform to be inclusive to various skill levels, and provide a clear path to learning and growth.
+- **Open-source Standards:** Adhere to common standards to maximize transferable skills.
+- **Minimizing Effort:** Aggressively automate repetitive tasks to ship fast with a small team.
+
+## Frequently Asked Questions
+
+<Accordions>
+<Accordion title="Who can contribute to the project?">
+We know what it's like to grind for internships, and having to learn technologies through personal projects that will become abandonware.
+
+Our goal is to have as many people contribute to the project as possible, regardless of age, location, and/or educational institution. Priority is provided to undergraduate students at [Carleton University](https://carleton.ca/).
+
+Your contributions will be shipped to production and used by many people. We have many different technologies spanning multiple projects, and actively encourage you to browse and contribute to whichever area(s) you'd like.
+</Accordion>
+
+<Accordion title="How can I join the core team?">
+  - We don't do traditional interviews and technical assessments.
+  - We invite external contributors to join the core team on a case-by-case basis based on trust, proven reliability, and delivered results.
+  - We are extremely selective, as we need to move fast and our review bandwidth is very limited.
+    - All members of the core team are expected to take ownership over areas and operate independently.
+  - Get started by checking the [project board](https://github.com/orgs/cuhacking/projects/4), and commenting on an issue you'd like to take on.
+  - When opening pull requests, ensure to closely adhere to the outlined conventions to reduce review labor for the core team.
+    - We won't review your code if you repeatedly make the same mistakes.
+  - Attend meetings and working sessions to meet others, and stay up-to-date on initiatives.
+</Accordion>
+
+  <Accordion title="What can I learn by contributing to this project?">
+We regularly operate in the following areas:
+
+- Project Management
+- UI/UX Design
+- Front-End Development
+- Back-End Development
+- Tools & Infrastructure Development
+- Automation Testing
+- DevOps
+- Cybersecurity
+- Artificial Intelligence/Machine Learning
+
+Read [Technology Stack](/technology-stack) to understand the technologies used.
+
+If you have any proposals/initiatives, we heavily encourage you to bring your ideas forward and take the lead in implementing them.
+</Accordion>
+</Accordions>
+
+## Core Team
+
+The core team has direct push access to the repo. External contributors need to fork the repo first.
+
+All code and documentation is open-source. Meetings and working sessions are also open for anyone in the community to join in on.
+
+- [Hasith De Alwis](https://github.com/HasithDeAlwis) - Head of Development
+- [Jeremy Friesen](https://github.com/JeremyFriesenGitHub) - Feature Development and Internal Tools
+- [Mumtahin Farabi](https://github.com/MFarabi619) - System Design and Architecture
+
+We follow the [Extreme Programming](https://en.wikipedia.org/wiki/Extreme_programming) model, which is an implementation of the [Agile Methodology](https://agilemanifesto.org/). We prioritize regularly rotating areas of ownership and being well-rounded in all areas of the codebase.
 
 ## Categories
 

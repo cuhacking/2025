@@ -1,0 +1,183 @@
+---
+title: Getting Started
+description: Why read docs when you can just read the code?
+icon: Info
+---
+
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+import { SquareKanban as ProjectBoardIcon } from 'lucide-react';
+
+<Callout title='This guide helps you:'>
+- Learn how to contribute to cuHacking.
+- Understand the best practices.
+- Explore ways to participate and get involved in team activities.
+</Callout>
+
+### Something needs fixing? Want to add a new feature?
+
+Submit an issue on our project board to get the ball rolling.
+<Accordions>
+<Accordion title="What's an issue?">
+    A GitHub issue is essentially a task card that denotes **what** is being worked on, and by **whom**.
+
+Issues also act as a discussion thread used to report bugs, request features, or suggest improvements. It’s a way to collaborate with the community to solve problems and add enhancements.
+</Accordion>
+<Accordion title="How do I submit an issue?">
+Navigate to the [issues tab](https://github.com/cuhacking/2025/issues).
+
+Click on the "New Issue" button and fill out the template with the necessary information.
+</Accordion>
+</Accordions>
+
+Creating an issue will document the changes that you want to incorporate and will let everyone know what you are working on.
+
+#### Guidelines
+
+- **Title**: ``type(issue-scopes): issue title`` (unless it's an ``[ADR]``).
+- **Description**: Follow the issue template and stay problem-specific when writing issues.
+- **Labels**: Use labels to categorize the issue. This helps in organizing and prioritizing issues for the project board.
+- **Assignees**: Assign the issue to the appropriate person(s) who will be responsible for working on the issue (could be yourself).
+
+Here's an example of a [well-documented issue](https://github.com/cuhacking/2025/issues/49).
+
+---
+
+Explore our [knowledge base](/knowledge-base) if there's a technology or process you'd like to dig deeper into as you go through this document.
+
+If you find some great resources and/or have some of your own, we'd very much appreciate your contributions :)
+
+<div className='steps [&_h2]:step'>
+
+## Meet System Requirements
+
+Our project is developed on UNIX-based operating systems.
+
+For Windows users, the use of [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) is highly encouraged in order to avoid those rare, maddening, a-tiny-part-of-this-one-library-breaks issues that can be very hard to debug.
+
+<Callout type="warn">
+  Ubuntu LTS' `apt` package manager is version locked. Use
+  [Homebrew](https://brew.sh/) instead to install the latest versions of
+  packages.
+</Callout>
+
+Using a Git porcelain such as [Lazygit](https://github.com/jesseduffield/lazygit) is highly encouraged, as it provides a visual [terminal user interface (TUI)](https://en.wikipedia.org/wiki/Text-based_user_interface) to manage your commits, branches, staging areas, stashes, and much more. These are common occurences as we do [Trunk-Based Development](https://trunkbaseddevelopment.com/).
+
+It's also significantly easier to resolve merge conflicts, cherry-pick commits between branches, squash them, amend a few commits back, checkout a specific commit, stage in hunks, etc.
+
+You'll be able to unlock the full power of Git without having to memorize all the commands.
+
+<Accordions>
+<Accordion title="What's a Git Porcelain?">
+In strict Git terminology, "porcelain" commands are high-level, user-friendly commands designed for everyday Git operations, such as `git commit`, `git merge`, and `git pull`. These are wrappers for low-level "plumbing" commands, that handle the internal data structures of Git, intended for scripting and advanced manipulation.
+
+In this context, we mean tools such as [these](https://git-scm.com/downloads/guis) we say "porcelain".
+
+Porcelain commands simplify Git interaction by abstracting the complexities, making them ideal for regular use by developers.
+
+</Accordion>
+<Accordion title="What do Git Porcelains look like in action?">
+### Lazygit
+#### Cherry Pick
+
+<video className="w-max h-[240px]" controls>
+  <source src="https://github.com/user-attachments/assets/09ef1413-2fb2-4594-b404-e568df120150" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+#### Hunk Stage and Commitizen CLI
+
+<video className="w-max h-[240px]" controls>
+  <source src="https://github.com/user-attachments/assets/b2200b7b-d783-4401-87e2-8741456d4e7a" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+### Magit (Emacs)
+Demos coming soon.
+#### View diffs and Stage
+#### Commit
+#### Branch
+</Accordion>
+
+  <Accordion title="Do I need to switch to the dark side and code in shell?">
+    No you don't. WSL can run in the VS Code terminal, or any other
+    IDE terminal. Rather than cloning the repo on your Windows filesystem, you'd be
+    cloning it in a directory of your choice in the GNU/Linux OS.
+
+    You can still access the windows filesystem from WSL and vice versa, browsing through the Linux
+    directories with the Windows file explorer graphically.
+  </Accordion>
+</Accordions>
+
+## Learn the Fork and Pull Model
+
+The [Fork and Pull Model](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models) is used to merge external contributions into the project.
+
+Fork with all branches to quickly see what someone else is up to.
+
+<Accordions>
+<Accordion title="What is a fork?">
+    Forking is creating a personal copy of a repository under your own GitHub account. It allows you to freely experiment with changes without affecting the original project until you’re ready to submit them.
+</Accordion>
+<Accordion title="How do I fork the repo?">
+Click the fork button on the top right of [our GitHub repository](https://github.com/cuhacking/2025).
+
+[Learn More](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo).
+</Accordion>
+</Accordions>
+
+[Clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) your forked repository to your local machine and set the remote upstream.
+
+Our codebase is constantly changing and evolving. Keep your fork up-to-date with the main repository.
+
+See [Knowledge Base - Learn Git](/knowledge-base#-learn-git) and  for resources.
+
+## Check Project Status
+
+See what we're up to on the project board linked in the navbar. <ProjectBoardIcon />
+
+## Pick an Issue
+
+Comment on an issue on the project board that you're interested in to be assigned, or create one for yourself.
+
+### Resolving open issues
+
+Alternatively, you can also look at the open issues and see if there's anything that you can help with which interests you.
+
+Make sure to let us know that you're interested in working on an issue by commenting on it.
+
+## Create a Branch
+We follow a strict criteria of naming conventions that extend the [Conventional Branch](https://conventional-branch.github.io/) spec.
+
+See [Trunk-Based Development](/contribution-guidelines/trunk-based-development) to learn more.
+
+## Commit Changes with [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) spec
+
+See [Trunk-Based Development](/contribution-guidelines/trunk-based-development) to learn more.
+
+| Label   | Description |
+|---------|-------------|
+| `fix`   | A bug fix in the project (e.g., fixing an errant hyperlink in the docs) |
+| `feat`  | New feature(s) being added to the project (e.g., creating a calendar feature) |
+| `docs`  | A new addition or update to the docs site and/or documentation (e.g., adding a new docs site page) |
+| `test`  | New tests being added to the project (e.g., new Playwright tests for the mobile docs site) |
+| `chore` | Tasks that don't modify any code and that help maintain the project (e.g., updating dependencies, reorganizing file structure, renaming files, etc.) |
+| `style` | Changes that do not affect the meaning of the code and that improve readability (e.g., adding only white-space, adding indents, adding comments, etc.) |
+| `refactor` | A change that improves the readability of code itself without modifying behavior (e.g., renaming a variable, creating a helper function, renaming a function, etc.) |
+| `perf`   | A code change that improves code performance (e.g., changing a function to be more memory-efficient, fixing code to improve runtime, etc.) |
+| `build`  | Changes that affect the build system or external dependencies (e.g., upgrading dependencies, adding a new dependency, etc.) |
+| `ci`     | Changes to our CI configuration files and scripts (e.g., adding a new script to the CI) |
+| `revert` | Reverting a previous commit (e.g., reverting a commit that caused a bug) |
+
+Double-check your work and make sure you're using the correct type for your contributions.
+
+
+</div>
+
+
+## Volunteer meetings 📆
+
+Meet the team, learn about the project, get the latest updates, and ask any questions you may have regarding cuHacking at our meetings.
+
+TODO: Link Google Calendar
+
+Don't forget to join the [community server](https://discord.gg/w3QjHDAucd) as well.
