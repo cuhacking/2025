@@ -23,6 +23,19 @@ export default async function Page(props: {
 
   const MDX = page.data.body
 
+  const footer = (
+    <>
+      <a
+        href="https://github.com/cuhacking/2025/graphs/contributors"
+        target="_blank"
+        rel="noreferrer noopener"
+        className="text-xs text-center"
+      >
+        Made with 💚 for Hackers by Hackers
+      </a>
+    </>
+  )
+
   return (
     <DocsPage
       toc={page.data.toc}
@@ -34,6 +47,10 @@ export default async function Page(props: {
         sha: 'main',
         path: `apps/docs/content/docs/${page.file.path}`,
       }}
+      tableOfContent={{
+        footer,
+      }}
+      tableOfContentPopover={{ footer }}
     >
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription>{page.data.description}</DocsDescription>
