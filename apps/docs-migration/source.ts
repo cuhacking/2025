@@ -5,7 +5,6 @@ import {
   Dock as HomeIcon,
   icons,
   BookOpenText as KnowledgeBaseIcon,
-  Library as LibrariesIcon,
   Layers as ToolsIcon,
 } from 'lucide-react'
 import { createElement } from 'react'
@@ -29,12 +28,6 @@ export const pages = [
     description: 'Understand our collaboration process.',
     url: 'contribution-guidelines',
     icon: ContributionGuidelinesIcon,
-  },
-  {
-    title: 'Libraries',
-    description: 'Libraries within this monorepo used within the applications.',
-    url: 'libraries',
-    icon: LibrariesIcon,
   },
   {
     title: 'Knowledge Base',
