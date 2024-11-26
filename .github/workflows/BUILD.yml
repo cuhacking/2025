@@ -17,7 +17,7 @@ jobs:
       - name: 🛎️ Checkout Code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1 # Shallow clone (only take latest commit)
+          fetch-depth: 0 # Shallow clone (only take latest commit)
 
       - name: 📦 Install pnpm
         uses: pnpm/action-setup@v4
@@ -28,16 +28,20 @@ jobs:
           node-version: 20
 
       - name: 🧹 Lint Projects
-        run: pnpm i; pnpm nx run-many -t lint -p docs docs-e2e website website-e2e portal portal-e2e --verbose
+        # run: pnpm i; pnpm nx run-many -t lint -p docs docs-e2e website website-e2e portal portal-e2e --verbose
+        run: pnpm i; pnpm nx affected -t lint --verbose
 
-      - name: 🎭 Install Playwright Browsers
-        run: pnpm playwright install --with-deps
+      - name: 🏗️ Build Affected Projects
+        run: pnpm nx affected -t build --verbose
 
-      - name: 📚 Build Docs
-        run: pnpm nx build docs --verbose
+      # - name: 🎭 Install Playwright Browsers
+      #   run: pnpm playwright install --with-deps
 
-      - name: 🌐 Build Website
-        run: pnpm nx build website --verbose
+      # - name: 📚 Build Docs
+      #   run: pnpm nx build docs --verbose
+
+      # - name: 🌐 Build Website
+      #   run: pnpm nx build website --verbose
 
       # - name: 🌀 Build Portal
       #   env:
