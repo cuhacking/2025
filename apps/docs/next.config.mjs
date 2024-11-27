@@ -24,6 +24,16 @@ const nextConfig = {
       {
         protocol: 'https',
         // eslint-disable-next-line node/prefer-global/process
+        hostname: process.env.ALLOWED_IMAGE_HOSTNAME || 'ccss.carleton.ca',
+      },
+      {
+        protocol: 'https',
+        // eslint-disable-next-line node/prefer-global/process
+        hostname: process.env.ALLOWED_IMAGE_HOSTNAME || 'www.scesoc.ca',
+      },
+      {
+        protocol: 'https',
+        // eslint-disable-next-line node/prefer-global/process
         hostname: process.env.ALLOWED_IMAGE_HOSTNAME || 'trunkbaseddevelopment.com',
       },
       {
