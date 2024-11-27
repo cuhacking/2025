@@ -10,6 +10,15 @@ We follow the [Conventional
 Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification for
 commit messages.
 
+<iframe
+title="Conventional Commits Website"
+className="mt-4 w-full h-[400px] rounded-lg"
+src="https://www.conventionalcommits.org/en/v1.0.0/"
+allowFullScreen>
+</iframe>
+
+[Angular Commit Format Reference Sheet](https://gist.github.com/brianclements/841ea7bffdb01346392c)
+
 When you hit `enter` after doing `git commit`, it will trigger a [Git Hook](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) managed by [Husky](https://typicode.github.io/husky/), which triggers a [Commitlint](https://commitlint.js.org/) command to verify that your commit message meets the specified guidelines. Any messages that do not follow the specification will be rejected with feedback locally.
 
 With time, writing conventional commit messages will become second nature and you'll no longer need to use Commitizen :)
