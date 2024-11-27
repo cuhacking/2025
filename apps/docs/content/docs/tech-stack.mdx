@@ -1,5 +1,5 @@
 ---
-title: Technology Stack
+title: Tech Stack
 description: For those wondering about our specs.
 icon: Layers
 ---
@@ -7,6 +7,8 @@ icon: Layers
 import { Image } from "next/image";
 
 ## 🔭 Project Management
+
+### 📱 Communication
 
 <Cards>
   <Card
@@ -21,6 +23,48 @@ import { Image } from "next/image";
       <img
         src="https://avatars.githubusercontent.com/u/1965106?s=200&v=4"
         alt="Discord Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+</Cards>
+
+### 🏡 General Administration
+
+<Cards>
+  <Card
+    title={"Google Workspace"}
+    description={
+      <>
+        <li>Email, Calendar, File Storage & Sharing, and Domain Hosting.</li>
+      </>
+    }
+    href={`https://workspace.google.com/`}
+    icon={
+      <img
+        src="https://avatars.githubusercontent.com/u/3708359?s=200&v=4"
+        alt="Google Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Notion"}
+    description={
+      <>
+        <li>Powerful all-in-one workspace used by all teams at cuHacking.</li>
+        <li>
+        Not used by Development Team for task management. Development tasks are on GitHub Projects.
+        </li>
+      </>
+    }
+    href={`https://www.notion.so/`}
+    icon={
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg"
+        alt="Notion Logo"
         width={24}
         height={24}
       />
@@ -42,27 +86,6 @@ import { Image } from "next/image";
       <img
         src="https://www.logo.wine/a/logo/GitHub/GitHub-Icon-White-Dark-Background-Logo.wine.svg"
         alt="GitHub Logo"
-        width={24}
-        height={24}
-      />
-    }
-  />
-  <Card
-    title={"Notion"}
-    description={
-      <>
-        <li>Powerful all-in-one workspace used by all teams at cuHacking.</li>
-        <li>
-          Mostly to keep an open line of communication with other teams,
-          technical tasks will be on GitHub Projects.
-        </li>
-      </>
-    }
-    href={`https://www.notion.so/`}
-    icon={
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg"
-        alt="Notion Logo"
         width={24}
         height={24}
       />
@@ -231,7 +254,7 @@ import { Image } from "next/image";
 
 
 ### ✨ Front-End
-
+#### 🪛 Languages
 <Cards>
   <Card
     title={"MDX"}
@@ -269,6 +292,9 @@ import { Image } from "next/image";
       />
     }
   />
+</Cards>
+#### 🔨 Libraries
+<Cards>
   <Card
     title={"React"}
     description={
@@ -290,6 +316,122 @@ import { Image } from "next/image";
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
         alt="React Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Radix UI Primitives"}
+    description={
+      <>
+        <li>
+          Unstyled headless components that we can easily lay our design system
+          on top of.
+        </li>
+        <li>
+          Also handles accessibility, saving us from writing and maintaining a
+          lot of code + tests.
+        </li>
+      </>
+    }
+    href={`https://www.radix-ui.com/primitives`}
+    icon={
+      <img
+        src="https://avatars.githubusercontent.com/u/75042455?s=200&v=4.svg"
+        alt="Radix UI Primitives Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Shadcn/ui"}
+    description={
+      <>
+        <li>
+          Modern component library built on top of Radix UI Primitives and
+          styled with Tailwind, combining accessibility, customizability, and
+          business logic into one.
+        </li>
+        <li>
+          Has an entire ecosystem of other libraries and heavily supported by
+          the community, making it easy for us to find any component we need.
+        </li>
+        <li>
+          Also has maintained Figma files and Storybooks, allowing us to tightly
+          integrate design mockups with the frontend.
+        </li>
+        <li>
+          Not an npm package, and therefore easily modifiable because we have
+          direct access to code. Even comes with tools so that we can track how
+          much we changed the original look.
+        </li>
+      </>
+    }
+    href={`https://ui.shadcn.dev/`}
+    icon={
+      <img
+        src="https://bestofjs.org/logos/shadcnui.dark.svg"
+        alt="Shadcn/ui Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+</Cards>
+
+#### 🛠️ Frameworks
+<Cards>
+  <Card
+    title={"Tailwind CSS"}
+    description={
+      <>
+        <li>Utility-first CSS framework to style components super fast.</li>
+        <li>
+          No more separate stylesheets. Won't necessarily fix your potato UI but
+          will allow you to make them faster and with less debugging.
+        </li>
+        <li>
+          Does not scale well and makes codebases unreadable by mixing styling
+          and business logic. This is addressed by good React component
+          architecture in tandem with other libraries.
+        </li>
+      </>
+    }
+    href={`https://tailwindcss.com/`}
+    icon={
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg"
+        alt="TailwindCSS Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Storybook"}
+    description={
+      <>
+        <li>
+          Framework for developing and testing UI components in isolation.
+        </li>
+        <li>
+          Allows you to make your buttons in peace, without having to launch the
+          entire main app to see it.
+        </li>
+        <li>
+          Also doubles as documentation for our design system and a playground
+          for anything and everything the user sees in the main app, in any
+          state; saving you valuable clickity clicks.
+        </li>
+      </>
+    }
+    href={`https://storybook.js.org/`}
+    icon={
+      <img
+        src="https://www.svgrepo.com/show/354397/storybook-icon.svg"
+        alt="Storybook Logo"
         width={24}
         height={24}
       />
@@ -361,125 +503,13 @@ import { Image } from "next/image";
       />
     }
   />
-  <Card
-    title={"Storybook"}
-    description={
-      <>
-        <li>
-          Framework for developing and testing UI components in isolation.
-        </li>
-        <li>
-          Allows you to make your buttons in peace, without having to launch the
-          entire main app to see it.
-        </li>
-        <li>
-          Also doubles as documentation for our design system and a playground
-          for anything and everything the user sees in the main app, in any
-          state; saving you valuable clickity clicks.
-        </li>
-      </>
-    }
-    href={`https://storybook.js.org/`}
-    icon={
-      <img
-        src="https://www.svgrepo.com/show/354397/storybook-icon.svg"
-        alt="Storybook Logo"
-        width={24}
-        height={24}
-      />
-    }
-  />
-  <Card
-    title={"TailwindCSS"}
-    description={
-      <>
-        <li>Utility-first CSS framework to style components super fast.</li>
-        <li>
-          No more separate stylesheets. Won't necessarily fix your potato UI but
-          will allow you to make them faster and with less debugging.
-        </li>
-        <li>
-          Does not scale well and makes codebases unreadable by mixing styling
-          and business logic. This is addressed by good React component
-          architecture in tandem with other libraries.
-        </li>
-      </>
-    }
-    href={`https://tailwindcss.com/`}
-    icon={
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg"
-        alt="TailwindCSS Logo"
-        width={24}
-        height={24}
-      />
-    }
-  />
-  <Card
-    title={"Radix UI Primitives"}
-    description={
-      <>
-        <li>
-          Unstyled headless components that we can easily lay our design system
-          on top of.
-        </li>
-        <li>
-          Also handles accessibility, saving us from writing and maintaining a
-          lot of code + tests.
-        </li>
-      </>
-    }
-    href={`https://www.radix-ui.com/primitives`}
-    icon={
-      <img
-        src="https://avatars.githubusercontent.com/u/75042455?s=200&v=4.svg"
-        alt="Radix UI Primitives Logo"
-        width={24}
-        height={24}
-      />
-    }
-  />
-  <Card
-    title={"Shadcn/ui"}
-    description={
-      <>
-        <li>
-          Modern component library built on top of Radix UI Primitives and
-          styled with Tailwind, combining accessibility, customizability, and
-          business logic into one.
-        </li>
-        <li>
-          Has an entire ecosystem of other libraries and heavily supported by
-          the community, making it easy for us to find any component we need.
-        </li>
-        <li>
-          Also has maintained Figma files and Storybooks, allowing us to tightly
-          integrate design mockups with the frontend.
-        </li>
-        <li>
-          Not an npm package, and therefore easily modifiable because we have
-          direct access to code. Even comes with tools so that we can track how
-          much we changed the original look.
-        </li>
-      </>
-    }
-    href={`https://ui.shadcn.dev/`}
-    icon={
-      <img
-        src="https://bestofjs.org/logos/shadcnui.dark.svg"
-        alt="Shadcn/ui Logo"
-        width={24}
-        height={24}
-      />
-    }
-  />
 </Cards>
 
 ### ⁉️ State Management
 
 <Cards>
     <Card
-    title={"XState"}
+    title={"XState (Coming Soon)"}
     description={
     <>
       <li>Powerful and flexible state management library based on finite state machines and statecharts.</li>
@@ -506,58 +536,25 @@ import { Image } from "next/image";
   />
 </Cards>
 
-### ⚙️ Back-End & Middleware
+### ⚙️ Back-End (Coming Soon)
 
-<Cards>
+#### 🛠️ Frameworks
+
+  <Cards>
   <Card
-    title={'tRPC'}
-    description={
-      <>
-        <li>End-to-end typesafe API layer for interfacing with databases.</li>
-      </>
-    }
-    href={`https://trpc.io/`}
-    icon={
-      <img
-        src="https://bestofjs.org/logos/trpc.dark.svg"
-        alt="tRPC Logo"
-        width={24}
-        height={24}
-      />
-    }
-  />
-  <Card
-    title={'PostgreSQL'}
-    description={
-      <>
-        <li>Open-source relational database system where we store data.</li>
-      </>
-    }
-    href={`https://www.postgresql.org/`}
-    icon={
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg"
-        alt="PostgreSQL Logo"
-        width={24}
-        height={24}
-      />
-    }
-  />
-  <Card
-    title={'Drizzle'}
+    title="Nest.js"
     description={
       <>
         <li>
-          An ORM that saves us from writing raw SQL queries, plays well with the
-          Node.ts ecosystem.
+          Enterprise-grade batteries-included framework for robust server-side platforms.
         </li>
       </>
     }
-    href={`https://orm.drizzle.team`}
+    href={`https://nestjs.com/`}
     icon={
       <img
-        src="https://avatars.githubusercontent.com/u/108468352?s=48&v=4.svg"
-        alt="Drizzle Logo"
+        src="https://avatars.githubusercontent.com/u/28507035?s=200&v=4"
+        alt="Nest.js Logo"
         width={24}
         height={24}
       />
@@ -588,6 +585,70 @@ import { Image } from "next/image";
       <img
         src="https://avatars.githubusercontent.com/u/62968818?s=200&v=4.svg"
         alt="Payload CMS Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+</Cards>
+
+#### 🔌 API
+
+<Cards>
+  <Card
+    title={'tRPC'}
+    description={
+      <>
+        <li>End-to-end typesafe API layer for interfacing with databases.</li>
+      </>
+    }
+    href={`https://trpc.io/`}
+    icon={
+      <img
+        src="https://bestofjs.org/logos/trpc.dark.svg"
+        alt="tRPC Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  </Cards>
+
+#### 🗃️ Database
+
+  <Cards>
+  <Card
+    title={'Drizzle'}
+    description={
+      <>
+        <li>
+          An ORM that saves us from writing raw SQL queries, plays well with the
+          Node.ts ecosystem.
+        </li>
+      </>
+    }
+    href={`https://orm.drizzle.team`}
+    icon={
+      <img
+        src="https://avatars.githubusercontent.com/u/108468352?s=48&v=4.svg"
+        alt="Drizzle Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={'PostgreSQL'}
+    description={
+      <>
+        <li>Open-source relational database system where we store data.</li>
+      </>
+    }
+    href={`https://www.postgresql.org/`}
+    icon={
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg"
+        alt="PostgreSQL Logo"
         width={24}
         height={24}
       />
@@ -658,7 +719,9 @@ import { Image } from "next/image";
 
   </Cards >
 
-### 🧹 Code Quality and Style Guide Automation
+### 🧹 Code Quality
+
+#### 💅 Style Guide Automation
 
 <Cards>
   <Card
@@ -715,6 +778,11 @@ import { Image } from "next/image";
       />
     }
   />
+  </Cards>
+
+#### 🤖 PR Review Automation
+
+  <Cards>
   <Card
     title={"CodeRabbit"}
     description={
@@ -729,6 +797,23 @@ import { Image } from "next/image";
       <img
         src="https://avatars.githubusercontent.com/u/132028505?s=200&v=4.svg"
         alt="CodeRabbit Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Conventional Comments"}
+    description={
+      <>
+        <li>Standardized open-source specification for sane PR review comments.</li>
+      </>
+    }
+    href={`https://conventionalcomments.org/`}
+    icon={
+      <img
+        src="https://conventionalcomments.org/favicon.ico"
+        alt="Conventional Comments Logo"
         width={24}
         height={24}
       />
@@ -958,23 +1043,6 @@ import { Image } from "next/image";
       />
     }
   />
-  <Card
-    title={"Conventional Comments"}
-    description={
-      <>
-        <li>Standardized open-source specification for sane PR review comments.</li>
-      </>
-    }
-    href={`https://conventionalcomments.org/`}
-    icon={
-      <img
-        src="https://conventionalcomments.org/favicon.ico"
-        alt="Conventional Comments Logo"
-        width={24}
-        height={24}
-      />
-    }
-  />
 </Cards>
 
 
@@ -982,7 +1050,7 @@ import { Image } from "next/image";
 
 <Cards>
   <Card
-    title={"Semantic Release (being replaced by Nx Release)"}
+    title={"Semantic Release"}
     description={
       <>
         <li>
