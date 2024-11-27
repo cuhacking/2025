@@ -51,6 +51,11 @@ const nextConfig = {
         // eslint-disable-next-line node/prefer-global/process
         hostname: process.env.ALLOWED_IMAGE_HOSTNAME || 'conventionalcomments.org',
       },
+      {
+        protocol: 'https',
+        // eslint-disable-next-line node/prefer-global/process
+        hostname: process.env.ALLOWED_IMAGE_HOSTNAME || 'hairuochen.notion.site',
+      },
     ],
   },
 }
