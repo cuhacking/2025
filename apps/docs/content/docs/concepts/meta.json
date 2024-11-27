@@ -7,6 +7,7 @@
     "conventional-commits",
     "conventional-comments",
     "diataxis-model",
-    "clean-code"
+    "clean-code",
+    "design-systems"
   ]
 }
