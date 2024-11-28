@@ -33,6 +33,7 @@ interface NavbarProps {
     media: Media
   }[]
   hamburger: Media
+  cross: Media
 }
 // TODO: Refactor to have the drawer in separate components
 export function NavbarPresenter({
@@ -40,11 +41,13 @@ export function NavbarPresenter({
   logo,
   socials,
   hamburger,
+  cross,
 }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false)
   function toggleOpen() {
     setIsOpen(prev => !prev)
   }
+
   return (
     <div className="mx-auto max-w-screen-xl px-4 py-2.5 flex justify-between">
       <Link to="/" aria-label="Return to homepage">
@@ -72,7 +75,10 @@ export function NavbarPresenter({
           className="md:hidden"
           onClick={toggleOpen}
         >
-          <Icon media={hamburger} />
+          <Icon
+            media={isOpen ? cross : hamburger}
+            className={`transition-transform duration-300 ${isOpen ? 'rotate-90' : ''}`}
+          />
         </button>
         <VisuallyHidden>
           <DrawerTitle>Mobile Navigation</DrawerTitle>
@@ -84,7 +90,12 @@ export function NavbarPresenter({
           <div className="flex flex-col justify-center h-full text-center px-7">
             <nav className="flex flex-col justify-between gap-y-7">
               {links.map(({ name, link }) => (
-                <MobileNavItem key={name} link={link} name={name} />
+                <MobileNavItem
+                  onClick={toggleOpen}
+                  key={name}
+                  link={link}
+                  name={name}
+                />
               ))}
             </nav>
             <DrawerFooter className="pt-5 mt-0">
