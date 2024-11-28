@@ -1,13 +1,17 @@
-import { AccordionContent, AccordionItem, AccordionTrigger } from '@cuhacking/shared/ui/accordion'
+import {
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@cuhacking/shared/ui/accordion'
 import { TerminalText } from '@cuhacking/shared/ui/terminal-text'
 import React from 'react'
 
 interface FAQItemProps {
   question: string
-  answer: string
+  answers: string[]
 }
 
-export function FAQItem({ question, answer }: FAQItemProps) {
+export function FAQItem({ question, answers }: FAQItemProps) {
   return (
     <AccordionItem value={question}>
       <AccordionTrigger>
@@ -18,7 +22,11 @@ export function FAQItem({ question, answer }: FAQItemProps) {
         </p>
       </AccordionTrigger>
       <AccordionContent>
-        <TerminalText>{answer}</TerminalText>
+        {answers.map((answer: string) => (
+          <TerminalText key={answer}>
+            <p>{answer}</p>
+          </TerminalText>
+        ))}
       </AccordionContent>
     </AccordionItem>
   )
