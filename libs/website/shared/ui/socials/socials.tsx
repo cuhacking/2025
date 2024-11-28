@@ -20,7 +20,7 @@ export function Socials({ socials, className }: SocialsProps) {
           target="_blank"
           key={link}
           to={link}
-          aria-labl="social media link"
+          aria-label="social media link"
         >
           <Icon media={media} prefix="/socials" />
         </Link>

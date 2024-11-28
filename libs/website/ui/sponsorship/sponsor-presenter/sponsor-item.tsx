@@ -1,4 +1,4 @@
-import type { Sponsor } from '../../types/sponsorship'
+import type { Sponsor } from '../types/sponsorship'
 import { GlassmorphicCard } from '@cuhacking/shared/ui/src/cuHacking/components/glassmorphic-card'
 import { cn } from '@cuhacking/shared/utils/cn'
 import { cva } from 'class-variance-authority'

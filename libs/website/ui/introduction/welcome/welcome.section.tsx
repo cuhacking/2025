@@ -1,6 +1,7 @@
 import React from 'react'
-import { WELCOME_CONSTATNTS } from '../../constants/welcome.constants'
-import { SplineWelcome } from './spline-welcome'
+import { ClientOnly } from 'remix-utils/client-only'
+import { WELCOME_CONSTATNTS } from '../constants/welcome.constants'
+import { SplineWelcome } from './spline-welcome.client'
 import { Welcome } from './welcome'
 
 export function WelcomeSection() {

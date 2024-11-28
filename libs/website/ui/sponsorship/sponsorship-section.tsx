@@ -1,5 +1,5 @@
 import React from 'react'
-import { SPONSORSHIP_CONSTANTS } from '../constants/sponsorship.constants'
+import { SPONSORSHIP_CONSTANTS } from './constants/sponsorship.constants'
 import { SponsorshipPresenter } from './sponsorship-presenter/sponsorship.presenter'
 
 export function SponsorshipSection() {

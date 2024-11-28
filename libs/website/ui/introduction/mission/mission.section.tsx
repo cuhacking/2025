@@ -1,5 +1,6 @@
 import React from 'react'
-import { MISSION_CONSTANTS } from '../../constants/mission.constants'
+import { ClientOnly } from 'remix-utils/client-only'
+import { MISSION_CONSTANTS } from '../constants/mission.constants'
 import { Mission } from './mission'
 import { SplineMission } from './spline-mission'
 

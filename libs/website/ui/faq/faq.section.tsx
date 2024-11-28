@@ -1,5 +1,5 @@
 import React from 'react'
-import { FAQ_CONSTANTS } from '../constants/faq.constants'
+import { FAQ_CONSTANTS } from './constants/faq.constants'
 import { FAQPresenter } from './faq-presenter/faq.presenter'
 
 export function FAQSection() {

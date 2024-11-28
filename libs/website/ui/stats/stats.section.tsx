@@ -1,5 +1,5 @@
 import React from 'react'
-import { STATS_CONSTANTS } from '../constants/stats.constants'
+import { STATS_CONSTANTS } from './constants/stats.constants'
 import { StatPresenter } from './stats-presenter/stats.presenter'
 
 export function StatSection() {
