@@ -12,7 +12,7 @@ import { createRemixStub } from '@remix-run/testing'
 import { FooterPresenter } from './footer.presenter'
 
 const meta: Meta<typeof FooterPresenter> = {
-  title: 'cuHacking Design System/Footer',
+  title: 'Website/Navigation/Footer',
   component: FooterPresenter,
   tags: ['autodocs'],
   args: {},

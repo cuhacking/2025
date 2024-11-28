@@ -47,7 +47,7 @@ const socials: { link: string, media: Media }[] = [
 ]
 
 const meta: Meta<typeof Welcome> = {
-  title: 'cuHacking Design System/Intro',
+  title: 'Website/Introduction/Welcome',
   component: Welcome,
   tags: ['autodocs'],
   decorators: [

@@ -10,11 +10,11 @@ import linkedin_white from '@cuhacking/shared/assets/icons/socials/linkedin-whit
 import linktree_white from '@cuhacking/shared/assets/icons/socials/linktree-white-1.svg'
 import logo from '@cuhacking/shared/assets/logos/cuHacking/cuhacking-logo-1.svg'
 import { createRemixStub } from '@remix-run/testing'
-import { NavbarContainer } from './navbar.container'
+import { NavbarPresenter } from './navbar.presenter'
 
 const meta = {
-  title: 'cuHacking Design System/Navigation/Navbar',
-  component: NavbarContainer,
+  title: 'Website/Navigation/Navbar',
+  component: NavbarPresenter,
   tags: ['autodocs'],
   args: {},
   decorators: [
@@ -39,7 +39,7 @@ const meta = {
       control: { type: 'text' },
     },
   },
-} satisfies Meta<typeof NavbarContainer>
+} satisfies Meta<typeof NavbarPresenter>
 
 const socials = [
   {
