@@ -9,6 +9,8 @@
     "module": "esnext",
     "moduleResolution": "node",
     "paths": {
+      "@aceternity": ["libs/external/aceternity/index.ts"],
+      "@aceternity/*": ["libs/external/aceternity/*"],
       "@shadcn": ["libs/external/shadcn/index.ts"],
       "@shadcn/*": ["libs/external/shadcn/*"],
       "@cuhacking/shared": ["libs/shared/index.ts"],
