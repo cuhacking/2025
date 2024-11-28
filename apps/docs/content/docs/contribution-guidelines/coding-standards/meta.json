@@ -1,3 +1,9 @@
 {
-  "pages": ["e2e-testing", "unit-testing", "front-end", "back-end", "tooling"]
+  "pages": [
+    "end-to-end-testing",
+    "unit-testing",
+    "front-end",
+    "back-end",
+    "tooling"
+  ]
 }
