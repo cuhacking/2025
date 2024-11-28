@@ -1,5 +1,5 @@
-import { Accordion } from '@cuhacking/shared/ui/src/cuHacking/components/accordion'
-import { GlassmorphicCard } from '@cuhacking/shared/ui/src/cuHacking/components/glassmorphic-card'
+import { Accordion } from '@cuhacking/shared/ui/accordion'
+import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 import React from 'react'
 import { FAQItem } from '../faq-item/faq-item'
 

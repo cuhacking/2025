@@ -1,5 +1,5 @@
-import { AccordionContent, AccordionItem, AccordionTrigger } from '@cuhacking/shared/ui/src/cuHacking/components/accordion'
-import { TerminalText } from '@cuhacking/shared/ui/src/cuHacking/components/terminal-text'
+import { AccordionContent, AccordionItem, AccordionTrigger } from '@cuhacking/shared/ui/accordion'
+import { TerminalText } from '@cuhacking/shared/ui/terminal-text'
 import React from 'react'
 
 interface FAQItemProps {

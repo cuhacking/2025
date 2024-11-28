@@ -1,7 +1,7 @@
 import type { Sponsor } from './sponsorship.model'
-import { Button } from '@cuhacking/shared/ui/src/cuHacking/components/button'
-import { GlassmorphicCard } from '@cuhacking/shared/ui/src/cuHacking/components/glassmorphic-card'
-import { TerminalText } from '@cuhacking/shared/ui/src/cuHacking/components/terminal-text'
+import { Button } from '@cuhacking/shared/ui/button'
+import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
+import { TerminalText } from '@cuhacking/shared/ui/terminal-text'
 import React from 'react'
 import { SponsorPresenter } from '../sponsor-presenter/sponsor-presenter'
 

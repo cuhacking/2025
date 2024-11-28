@@ -1,5 +1,5 @@
 import type { Media } from '@cuhacking/shared/types/media'
-import { Icon } from '@cuhacking/shared/ui/src/cuHacking/components/icon'
+import { Icon } from '@cuhacking/shared/ui/icon'
 import { cn } from '@cuhacking/shared/utils/cn'
 import { Link } from '@remix-run/react'
 import React from 'react'

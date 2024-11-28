@@ -1,5 +1,5 @@
-import { GlassmorphicCard } from '@cuhacking/shared/ui/src/cuHacking/components/glassmorphic-card'
-import { TerminalText } from '@cuhacking/shared/ui/src/cuHacking/components/terminal-text'
+import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
+import { TerminalText } from '@cuhacking/shared/ui/terminal-text'
 import { Socials } from '@website/shared/ui/socials'
 import React from 'react'
 

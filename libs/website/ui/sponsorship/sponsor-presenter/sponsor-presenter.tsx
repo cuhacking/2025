@@ -1,5 +1,5 @@
 import type { Sponsor } from '../../types/sponsorship'
-import { TerminalText } from '@cuhacking/shared/ui/src/cuHacking/components/terminal-text'
+import { TerminalText } from '@cuhacking/shared/ui/terminal-text'
 import React from 'react'
 import { SponsorItem } from './sponsor-item'
 
