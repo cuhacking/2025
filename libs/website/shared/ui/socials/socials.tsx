@@ -22,7 +22,11 @@ export function Socials({ socials, className }: SocialsProps) {
           to={link}
           aria-label="social media link"
         >
-          <Icon media={media} prefix="/socials" />
+          <Icon
+            media={media}
+            prefix="/socials"
+            className="transition-transform duration-300 hover:scale-[1.2]"
+          />
         </Link>
       ))}
     </div>
