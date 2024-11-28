@@ -1,8 +1,8 @@
+import { SplineComponent } from '@website/shared/ui/spline/spline.client'
 import React from 'react'
 import { ClientOnly } from 'remix-utils/client-only'
 import { EVENT_CONSTANTS } from '../constants/event.constants.ts'
 import { EventPresenter } from './event-presenter/event-presenter'
-import { SplineEvent } from './spline-event.client.tsx'
 
 export function EventSection() {
   return (
@@ -14,7 +14,10 @@ export function EventSection() {
       </div>
       <ClientOnly>
         {() => (
-          <SplineEvent />
+          <SplineComponent
+            link="https://prod.spline.design/ApEljaMrr9NQtUwP/scene.splinecode"
+            className="absolute -bottom-[15vh] lg:-bottom-[5vh] left-0 scale-1 md:scale-[1.2] z-[-1]"
+          />
         )}
       </ClientOnly>
     </section>
