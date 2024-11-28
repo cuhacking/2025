@@ -14,36 +14,36 @@ interface Media {
 
 const socials: { link: string, media: Media }[] = [
   {
-    link: 'https://github.com',
-    media: { src: github_green, alt: 'GitHub' },
-  },
-  {
-    link: 'https://instagram.com',
+    link: 'https://www.instagram.com/cuhacking/',
     media: { src: instagram_green, alt: 'Instagram' },
   },
   {
-    link: 'https://linkedin.com',
-    media: { src: linkedin_green, alt: 'LinkedIn' },
+    link: 'https://github.com/cuhacking/2025',
+    media: { src: github_green, alt: 'GitHub' },
   },
   {
-    link: 'https://linktr.ee',
-    media: { src: linktree_green, alt: 'Linktree' },
-  },
-  {
-    link: 'mailto:example@email.com',
-    media: { src: email_green, alt: 'Email' },
-  },
-  {
-    link: 'https://discord.com',
+    link: 'https://discord.gg/fh2KseMysN',
     media: { src: discord_green, alt: 'Discord' },
   },
   {
-    link: 'https://docs.com',
+    link: 'https://docs.cuhacking.ca/',
     media: { src: docs_green, alt: 'Documentation' },
   },
   {
-    link: 'https://figma.com',
+    link: 'https://www.figma.com/design/wc1JOWR48tBNkjcjwY3AzB/%E2%8C%A8%EF%B8%8F-cuHacking-Design-System?node-id=1512-3204&t=aOMNy0KT02qD4MhD-1',
     media: { src: figma_green, alt: 'Figma' },
+  },
+  {
+    link: 'mailto:info@cuhacking.ca',
+    media: { src: email_green, alt: 'Email' },
+  },
+  {
+    link: 'https://ca.linkedin.com/company/cuhacking',
+    media: { src: linkedin_green, alt: 'LinkedIn' },
+  },
+  {
+    link: 'https://linktr.ee/cuhacking_?fbclid=PAZXh0bgNhZW0CMTEAAaZcB9hM3ZkwE4vR0NjpoFmPrg3gfXxlm5NdhqMy-eKHv-VXw8ekbvCznlM_aem_wSxlDGzbFI7sVeAAUVTAoQ',
+    media: { src: linktree_green, alt: 'Linktree' },
   },
 ]
 export const WELCOME_CONSTATNTS = {

@@ -10,13 +10,6 @@ import cuHackingLogo from '@cuhacking/shared/assets/logos/cuHacking/cuhacking-lo
 
 const socials = [
   {
-    link: 'https://github.com',
-    media: {
-      src: github_white,
-      alt: 'GitHub',
-    },
-  },
-  {
     link: 'https://instagram.com',
     media: {
       src: instagram_white,
@@ -24,24 +17,10 @@ const socials = [
     },
   },
   {
-    link: 'https://linkedin.com',
+    link: 'https://github.com',
     media: {
-      src: linkedin_white,
-      alt: 'LinkedIn',
-    },
-  },
-  {
-    link: 'https://linktr.ee',
-    media: {
-      src: linktree_white,
-      alt: 'Linktree',
-    },
-  },
-  {
-    link: 'mailto:example@email.com',
-    media: {
-      src: email_white,
-      alt: 'Email',
+      src: github_white,
+      alt: 'GitHub',
     },
   },
   {
@@ -63,6 +42,27 @@ const socials = [
     media: {
       src: figma_white,
       alt: 'Figma',
+    },
+  },
+  {
+    link: 'mailto:example@email.com',
+    media: {
+      src: email_white,
+      alt: 'Email',
+    },
+  },
+  {
+    link: 'https://linkedin.com',
+    media: {
+      src: linkedin_white,
+      alt: 'LinkedIn',
+    },
+  },
+  {
+    link: 'https://linktr.ee',
+    media: {
+      src: linktree_white,
+      alt: 'Linktree',
     },
   },
 ]
