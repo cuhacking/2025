@@ -16,7 +16,11 @@ export function FooterPresenter({ logo, socials }: FooterProps) {
     <footer className="max-w-screen-xl px-4 mx-auto pt-5 pb-3.5 gap-y-6 flex flex-col lg:flex-row justify-center lg:justify-between">
       <div className="flex flex-row items-center justify-center gap-2">
         <Link to="/" aria-label="Return to homepage">
-          <img src={logo} alt="cuHacking logo" />
+          <img
+            src={logo}
+            alt="cuHacking logo"
+            className="transition-transform duration-300 hover:scale-[1.2]"
+          />
         </Link>
         <h2 className="text-transparent bg-greendiant bg-clip-text font-extrabold text-[34px]">
           cuHacking
