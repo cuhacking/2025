@@ -22,7 +22,7 @@ const callToActionVariation = cva('', {
 })
 
 const terminalTextVariation = cva(
-  'flex flex-row gap-x-3 font-sans items-center',
+  'flex flex-row gap-x-3 font-sans items-start',
 )
 
 export function TerminalText({
