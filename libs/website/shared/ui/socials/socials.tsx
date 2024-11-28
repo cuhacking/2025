@@ -1,5 +1,5 @@
 import type { Media } from '@cuhacking/shared/types/media'
-import { Icon } from '@cuhacking/shared/ui/src/cuHacking/components/icon'
+import { Icon } from '@cuhacking/shared/ui/icon'
 import { cn } from '@cuhacking/shared/utils/cn'
 import { Link } from '@remix-run/react'
 import React from 'react'
@@ -20,7 +20,7 @@ export function Socials({ socials, className }: SocialsProps) {
           target="_blank"
           key={link}
           to={link}
-          aria-labl="social media link"
+          aria-label="social media link"
         >
           <Icon media={media} prefix="/socials" />
         </Link>

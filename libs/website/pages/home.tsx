@@ -1,9 +1,9 @@
+import { EventSection } from '@website/feature/events'
+import { Layout } from '@website/layouts/base'
+import { FAQSection } from '@website/ui/faq'
+import { MissionSection, WelcomeSection } from '@website/ui/introduction'
+import { SponsorshipSection } from '@website/ui/sponsorship'
 import React from 'react'
-import { EventSection } from '../feature/events'
-import { FAQSection } from '../feature/faq'
-import { MissionSection, WelcomeSection } from '../feature/introduction'
-import { SponsorshipSection } from '../feature/sponsorship'
-import { Layout } from '../layouts/base'
 
 export function Home() {
   return (
