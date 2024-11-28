@@ -4,7 +4,7 @@ import asciiLogo from '@website/assets/ascii-art/logos/cuhacking-1.svg'
 import { Mission } from './mission'
 
 const meta: Meta<typeof Mission> = {
-  title: 'cuHacking Design System/Mission',
+  title: 'Website/Introduction/Mission',
   component: Mission,
   tags: ['autodocs'],
   decorators: [

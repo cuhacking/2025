@@ -1,4 +1,4 @@
-import { FOOTER_CONSTANTS, FooterPresenter, NAVBAR_CONSTANTS, NavbarPresenter } from '@website/shared/ui/navigation'
+import { FOOTER_CONSTANTS, FooterPresenter, NAVBAR_CONSTANTS, NavbarContainer } from '@website/shared/ui/navigation'
 import React from 'react'
 import { ClientOnly } from 'remix-utils/client-only'
 
@@ -7,7 +7,7 @@ export function Layout({ children }) {
     <>
       <ClientOnly>
         {() => (
-          <NavbarPresenter
+          <NavbarContainer
             links={NAVBAR_CONSTANTS.LINKS}
             logo={NAVBAR_CONSTANTS.LOGO}
             socials={NAVBAR_CONSTANTS.SOCIALS}
