@@ -10,11 +10,11 @@ interface SponsorPresenterProps {
 }
 
 const sponsorPresenterVariation = cva(
-  'p-2.5 hover:scale-105 transition-transform',
+  'p-2.5 hover:scale-105 transition-transform m-x-auto',
   {
     variants: {
       isPresent: {
-        true: 'h-32 min-w-24',
+        true: 'h-32 min-w-24 ',
         false: 'h-24 min-w-16',
       },
     },
