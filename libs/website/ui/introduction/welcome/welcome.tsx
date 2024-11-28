@@ -25,9 +25,11 @@ export function Welcome({ socials }: IntroProps) {
             <span className="text-transparent bg-greendiant bg-clip-text">
               cuHacking
             </span>
+            {' '}
             is coming to you
             <span className="text-transparent bg-greendiant bg-clip-text">
-              Mar. 14 - 16 2025 @ Carleton University
+              {' '}
+              Mar. 14 - 16 2025 @ Carleton University 💚
             </span>
           </p>
         </TerminalText>
