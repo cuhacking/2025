@@ -6,6 +6,17 @@ icon: House
 
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 import { pages } from "../../source";
+import {
+  Cloud,
+  DraftingCompass,
+  Gauge,
+  GitPullRequestCreateArrow,
+  Search,
+  Spline,
+  User,
+  PersonStanding
+} from "lucide-react"
+import { Feature } from "@cuhacking/docs/components/ui/feature-section"
 
 Welcome to the documentation site for the [cuHacking 2025](https://www.cuhacking.ca) hackathon platform.
 
@@ -13,13 +24,60 @@ Planning, conventions, and references for our custom meta-framework that powers 
 
 It's also written in a beginner-friendly language in order to provide a smooth onboarding experience for external contributors, and act as a general open-source reference for other projects.
 
-## What do we prioritize?
-- **User Experience:** The platform should reliably meet the needs of hackers, judges, sponsors, and organizers.
-- **Developer Experience:** Maintain outstanding quality of work with bleeding-edge tools and sensible processes.
-- **Creating Opportunities:** Maintain a transparent roadmap to encourage contributions from the student community.
-- **Evaluating Technologies:** Balance the needs of the hackathon with the learning curve of the platform to be inclusive to various skill levels, and provide a clear path to learning and growth.
-- **Open-source Standards:** Adhere to common standards to maximize transferable skills.
-- **Minimizing Effort:** Aggressively automate repetitive tasks to ship fast with a small team.
+## Our Priorities
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  relative py-10 mx-auto">
+      {[
+    {
+      title: 'User Experience',
+      description:
+        'The platform should reliably meet the needs of hackers, judges, sponsors, and organizers.',
+      icon: <User />,
+    },
+    {
+      title: 'Accessibility',
+      description:
+        "Regardless of attendee numbers, all hackers' needs should be catered to.",
+      icon: <PersonStanding />,
+    },
+    {
+      title: 'Contribution  Opportunities',
+      description:
+        'Maintain a transparent roadmap to encourage contributions from the student community.',
+      icon: <GitPullRequestCreateArrow />,
+    },
+    {
+      title: 'Market Research',
+      description:
+        'No need to re-invent the wheel. Learn from others before us.',
+      icon: <Search />,
+    },
+    {
+      title: 'Developer Experience',
+      description:
+        'Maintain outstanding quality of work with bleeding-edge tools and sensible processes.',
+      icon: <Spline />,
+    },
+    {
+      title: 'Scalable Technologies',
+      description: 'Balance needs of the hackathon with the learning curve to be inclusive to various skill levels, and provide a clear learning path.',
+      icon: <Cloud />,
+    },
+    {
+      title: 'Open-Source Standards',
+      description: 'Adhere to common practices to maximize transferable skills.',
+      icon: <DraftingCompass />,
+    },
+    {
+      title: 'Minimal Effort',
+      description:
+        'Ship fast by aggressively automating repetitive tasks.',
+      icon: <Gauge />,
+    },
+  ].map((feature, index) => (
+        <Feature key={feature.title} {...feature} index={index} />
+      ))}
+    </div>
 
 ## Frequently Asked Questions
 
