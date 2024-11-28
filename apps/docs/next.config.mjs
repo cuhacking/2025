@@ -56,6 +56,16 @@ const nextConfig = {
         // eslint-disable-next-line node/prefer-global/process
         hostname: process.env.ALLOWED_IMAGE_HOSTNAME || 'hairuochen.notion.site',
       },
+      {
+        protocol: 'https',
+        // eslint-disable-next-line node/prefer-global/process
+        hostname: process.env.ALLOWED_IMAGE_HOSTNAME || 'lh3.googleusercontent.com',
+      },
+      {
+        protocol: 'https',
+        // eslint-disable-next-line node/prefer-global/process
+        hostname: process.env.ALLOWED_IMAGE_HOSTNAME || 'res.cloudinary.com',
+      },
     ],
   },
 }
