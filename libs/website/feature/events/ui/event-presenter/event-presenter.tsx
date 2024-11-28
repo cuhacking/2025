@@ -1,5 +1,5 @@
 import type { Event } from '../../types/event'
-import { GlassmorphicCard } from '@cuhacking/shared/ui/src/cuHacking/components/glassmorphic-card'
+import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 import React from 'react'
 import { EventItem } from '../event-item/event-item'
 

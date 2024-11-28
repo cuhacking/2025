@@ -3,13 +3,13 @@ import {
   DrawerContent,
   DrawerFooter,
   DrawerTitle,
-} from '@cuhacking/shared/ui/src/cuHacking/components/drawer'
-import { Icon } from '@cuhacking/shared/ui/src/cuHacking/components/icon'
+} from '@cuhacking/shared/ui/drawer'
+import { Icon } from '@cuhacking/shared/ui/icon'
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuList,
-} from '@cuhacking/shared/ui/src/cuHacking/components/navigation-menu'
+} from '@cuhacking/shared/ui/navigation-menu'
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import { Link } from '@remix-run/react'
 import React, { useState } from 'react'
