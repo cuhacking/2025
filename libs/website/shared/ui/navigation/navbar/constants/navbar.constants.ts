@@ -1,3 +1,4 @@
+import cross from '@cuhacking/shared/assets/icons/general/cross-1.svg'
 import hamburger from '@cuhacking/shared/assets/icons/general/hamburger-1.svg'
 import discord_white from '@cuhacking/shared/assets/icons/socials/discord-white-1.svg'
 import docs_white from '@cuhacking/shared/assets/icons/socials/docs-white-1.svg'
@@ -80,6 +81,10 @@ export const NAVBAR_CONSTANTS = {
   LOGO: cuHackingLogo,
   HAMBURGER: {
     src: hamburger,
-    alt: 'Hambuger Icon',
+    alt: 'Hambuger icon',
+  },
+  CROSS: {
+    src: cross,
+    alt: 'Cross icon',
   },
 }

@@ -1,4 +1,9 @@
-import { FOOTER_CONSTANTS, FooterPresenter, NAVBAR_CONSTANTS, NavbarContainer } from '@website/shared/ui/navigation'
+import {
+  FOOTER_CONSTANTS,
+  FooterPresenter,
+  NAVBAR_CONSTANTS,
+  NavbarContainer,
+} from '@website/shared/ui/navigation'
 import React from 'react'
 import { ClientOnly } from 'remix-utils/client-only'
 
@@ -12,12 +17,16 @@ export function Layout({ children }) {
             logo={NAVBAR_CONSTANTS.LOGO}
             socials={NAVBAR_CONSTANTS.SOCIALS}
             hamburger={NAVBAR_CONSTANTS.HAMBURGER}
+            cross={NAVBAR_CONSTANTS.CROSS}
           />
         )}
       </ClientOnly>
 
       <div className="mt-10">{children}</div>
-      <FooterPresenter logo={FOOTER_CONSTANTS.LOGO} socials={FOOTER_CONSTANTS.SOCIALS} />
+      <FooterPresenter
+        logo={FOOTER_CONSTANTS.LOGO}
+        socials={FOOTER_CONSTANTS.SOCIALS}
+      />
     </>
   )
 }
