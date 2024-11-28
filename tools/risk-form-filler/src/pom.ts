@@ -8,7 +8,6 @@ export class FormsLayout {
   readonly onlineButton: Locator
   readonly inPersonButton: Locator
   readonly hybridButton: Locator
-  readonly submitButton: Locator
 
   // ONLINE FORM
   readonly expectedOnlineAttendeesTextBox: Locator
@@ -100,7 +99,6 @@ export class FormsLayout {
     this.onlineButton = page.getByRole('link', { name: 'Online' })
     this.inPersonButton = page.getByRole('link', { name: 'In-Person' })
     this.hybridButton = page.getByRole('link', { name: 'Hybrid' })
-    this.submitButton = page.getByRole('button', { name: 'Submit' })
 
     // online form
     this.expectedOnlineAttendeesTextBox = page.getByLabel('Number of expected online')
@@ -191,289 +189,70 @@ export class FormsLayout {
     await this.page.goto('https://stuapps.carleton.ca/sarms/event-risk')
   }
 
-  // Buttons
-  async clickOnlineButton() {
-    await this.onlineButton.click()
-  }
-
-  async clickInPersonButton() {
-    await this.inPersonButton.click()
-  }
-
-  async clickHybridButton() {
-    await this.hybridButton.click()
-  }
-
-  async clickSubmitButton() {
-    await this.submitButton.click()
-  }
-
-  // ONLINE FORM
-  async fillExpectedOnlineAttendeesTextBox(attendees: string) {
-    await this.expectedOnlineAttendeesTextBox.fill(attendees)
-  }
-
-  async checkYesRegistrationRadioButton() {
-    await this.registrationRadioButton.check()
-  }
-
-  async fillSpecialConcernsOnlineTextBox(concerns: string) {
-    await this.specialConcernsOnlineTextBox.fill(concerns)
-  }
-
-  // IN-PERSON + HYBRID FORM
-  async fillEventLocationTextBox(location: string) {
-    await this.eventLocationTextBox.fill(location)
-  }
-
-  async checkYesEventLocationRadioButton() {
-    await this.eventLocationRadioButton.check()
-  }
-
-  async fillExpectedAttendeesTextBox(attendees: string) {
-    await this.expectedAttendeesTextBox.fill(attendees)
-  }
-
-  async checkNoFoodRadioButton() {
-    await this.foodRadioButton.check()
-  }
-
-  async checkNoHealthInsuranceRadioButton() {
-    await this.healthInsuranceRadioButton.check()
-  }
-
-  async checkNoPhotoIdRadioButton() {
-    await this.photoIdRadioButton.check()
-  }
-
-  async checkNoAlcoholRadioButton() {
-    await this.alcoholRadioButton.check()
-  }
-
-  async checkNoTransportationRadioButton() {
-    await this.transportationRadioButton.check()
-  }
-
-  async checkNoOutOfProvinceRadioButton() {
-    await this.outOfProvinceRadioButton.check()
-  }
-
-  async checkNoGarbageRadioButton() {
-    await this.garbageRadioButton.check()
-  }
-
-  async checkYesCleanupRadioButton() {
-    await this.cleanupRadioButton.check()
-  }
-
-  async fillCleanupTextBox(cleanup: string) {
-    await this.cleanupTextBox.fill(cleanup)
-  }
-
-  async checkNoOvernightRadioButton() {
-    await this.overnightRadioButton.check()
-  }
-
-  async fillRightsTextBox(rights: string) {
-    await this.rightsTextBox.fill(rights)
-  }
-
-  // HYBRID FORM
-  async checkYesHybridRegistrationRadioButton() {
-    await this.hybridRegistrationRadioButton.check()
-  }
-
-  // HELPER FUNCTIONS - RISK MANAGEMENT
-  async checkYesSpeakersRadioButton() {
-    await this.speakersRadioButton.check()
-  }
-
-  async fillSpeakersTopicsTextBox(topics: string) {
-    await this.speakersTopicsTextBox.fill(topics)
-  }
-
-  async fillSpeakersFullNamesTextBox(names: string) {
-    await this.speakersFullNamesTextBox.fill(names)
-  }
-
-  async fillSpeakersWebsiteUrlTextBox(url: string) {
-    await this.speakersWebsiteUrlTextBox.fill(url)
-  }
-
-  // HELPER FUNCTIONS - CONTACTS
-  async fillPrimaryFirstNameTextBox(firstName: string) {
-    await this.primaryFirstNameTextBox.fill(firstName)
-  }
-
-  async fillPrimaryLastNameTextBox(lastName: string) {
-    await this.primaryLastNameTextBox.fill(lastName)
-  }
-
-  async fillPrimaryCarletonIdTextBox(id: string) {
-    await this.primaryCarletonIdTextBox.fill(id)
-  }
-
-  async fillPrimaryOrganizationTextBox(organization: string) {
-    await this.primaryOrganizationTextBox.fill(organization)
-  }
-
-  async checkPrimaryStatusRadioButton() {
-    await this.primaryStatusRadioButton.check()
-  }
-
-  async fillPrimaryEmailTextBox(email: string) {
-    await this.primaryEmailTextBox.fill(email)
-  }
-
-  async fillPrimaryConfirmEmailTextBox(email: string) {
-    await this.primaryConfirmEmailTextBox.fill(email)
-  }
-
-  async fillPrimaryPhoneTextBox(phone: string) {
-    await this.primaryPhoneTextBox.fill(phone)
-  }
-
-  async fillSecondaryFirstNameTextBox(firstName: string) {
-    await this.secondaryFirstNameTextBox.fill(firstName)
-  }
-
-  async fillSecondaryLastNameTextBox(lastName: string) {
-    await this.secondaryLastNameTextBox.fill(lastName)
-  }
-
-  async fillSecondaryCarletonIdTextBox(id: string) {
-    await this.secondaryCarletonIdTextBox.fill(id)
-  }
-
-  async fillSecondaryOrganizationTextBox(organization: string) {
-    await this.secondaryOrganizationTextBox.fill(organization)
-  }
-
-  async checkSecondaryStatusRadioButton() {
-    await this.secondaryStatusRadioButton.check()
-  }
-
-  async fillSecondaryEmailTextBox(email: string) {
-    await this.secondaryEmailTextBox.fill(email)
-  }
-
-  async fillSecondaryPhoneTextBox(phone: string) {
-    await this.secondaryPhoneTextBox.fill(phone)
-  }
-
-  // HELPER FUNCTIONS - EVENT DETAILS
-  async fillEventTitleTextBox(title: string) {
-    await this.eventTitleTextBox.fill(title)
-  }
-
-  async fillEventDateTextBox(date: string) {
-    await this.eventDateTextBox.fill(date)
-  }
-
-  async fillEventStartTimeTextBox(time: string) {
-    await this.eventStartTimeTextBox.fill(time)
-  }
-
-  async fillEventEndTimeTextBox(time: string) {
-    await this.eventEndTimeTextBox.fill(time)
-  }
-
-  async fillEventDescriptionTextBox(description: string) {
-    await this.eventDescriptionTextBox.fill(description)
-  }
-
-  async checkYesCarletonStudentsRadioButton() {
-    await this.carletonStudentsRadioButton.check()
-  }
-
-  async checkYesStaffFacultyRadioButton() {
-    await this.staffFacultyRadioButton.check()
-  }
-
-  async checkYesAlumniRadioButton() {
-    await this.alumniRadioButton.check()
-  }
-
-  async checkNoMinorsRadioButton() {
-    await this.minorsRadioButton.check()
-  }
-
-  async checkNoVipRadioButton() {
-    await this.vipRadioButton.check()
-  }
-
-  // HELPER FUNCTIONS - EMERGENCY RESPONSE
-  async checkNoEmergencyFirstAidRadioButton() {
-    await this.emergencyFirstAidRadioButton.check()
-  }
-
-  async checkYesEmergencyHospitalRadioButton() {
-    await this.emergencyHospitalRadioButton.check()
-  }
-
-  async checkNoEmergencyEvacRadioButton() {
-    await this.emergencyEvacRadioButton.check()
-  }
-
-  async checkNoEmergencyFlamesRadioButton() {
-    await this.emergencyFlamesRadioButton.check()
-  }
-
-  async checkNoEmergencyCrowdControlRadioButton() {
-    await this.emergencyCrowdControlRadioButton.check()
-  }
-
-  async fillEmergencySafetyConcernsTextBox(concerns: string) {
-    await this.emergencySafetyConcernsTextBox.fill(concerns)
-  }
-
-  async fillEmergencySafetyRisksTextBox(risks: string) {
-    await this.emergencySafetyRisksTextBox.fill(risks)
-  }
-
-  // HELPER FUNCTIONS - LOGISTICS
-  async checkNoContractsVendorRadioButton() {
-    await this.logisticsContractsVendorRadioButton.check()
-  }
-
-  async checkNoContractsLiabilityRadioButton() {
-    await this.logisticsContractsLiabilityRadioButton.check()
-  }
-
-  async checkNoContractsInsuranceRentalRadioButton() {
-    await this.logisticsContractsInsuranceRentalRadioButton.check()
-  }
-
-  async checkNoContractsInsuranceCertificateRadioButton() {
-    await this.logisticsContractsInsuranceCertificateRadioButton.check()
-  }
-
-  async checkYesRightsImplicationsRadioButton() {
-    await this.logisticsRightsImplicationsRadioButton.check()
-  }
-
-  async checkNoRightsRisksRadioButton() {
-    await this.logisticsRightsRisksRadioButton.check()
-  }
-
-  // HELPER FUNCTIONS - ONLINE INFORMATION
-  async fillOnlinePlatformTextBox(platform: string) {
-    await this.onlinePlatformTextBox.fill(platform)
-  }
-
-  async fillOnlineTopicsTextBox(topics: string) {
-    await this.onlineTopicsTextBox.fill(topics)
-  }
-
-  async fillOnlineLocationTextBox(location: string) {
-    await this.onlineLocationTextBox.fill(location)
-  }
-
-  async fillOnlineOrganizersTextBox(organizers: string) {
-    await this.onlineOrganizersTextBox.fill(organizers)
-  }
-
-  async fillOnlineOrganizersAttendenceFromOriginTextBox(attendees: string) {
-    await this.onlineOrganizersAttendenceFromOriginTextBox.fill(attendees)
+  async fillContacts(formLayout: FormsLayout, PRIMARY_FIRST_NAME: string, PRIMARY_LAST_NAME: string, PRIMARY_CARLETON_ID: string, PRIMARY_EMAIL: string, PRIMARY_PHONE: string, SECONDARY_FIRST_NAME: string, SECONDARY_LAST_NAME: string, SECONDARY_CARLETON_ID: string, SECONDARY_EMAIL: string, SECONDARY_PHONE: string) {
+    await formLayout.primaryFirstNameTextBox.fill(PRIMARY_FIRST_NAME)
+    await formLayout.primaryLastNameTextBox.fill(PRIMARY_LAST_NAME)
+    await formLayout.primaryCarletonIdTextBox.fill(PRIMARY_CARLETON_ID)
+    await formLayout.primaryOrganizationTextBox.fill('cuHacking')
+    await formLayout.primaryStatusRadioButton.check()
+    await formLayout.primaryEmailTextBox.fill(PRIMARY_EMAIL)
+    await formLayout.primaryConfirmEmailTextBox.fill(PRIMARY_EMAIL)
+    await formLayout.primaryPhoneTextBox.fill(PRIMARY_PHONE)
+
+    await formLayout.secondaryFirstNameTextBox.fill(SECONDARY_FIRST_NAME)
+    await formLayout.secondaryLastNameTextBox.fill(SECONDARY_LAST_NAME)
+    await formLayout.secondaryCarletonIdTextBox.fill(SECONDARY_CARLETON_ID)
+    await formLayout.secondaryOrganizationTextBox.fill('Community Engagement')
+    await formLayout.secondaryStatusRadioButton.check()
+    await formLayout.secondaryEmailTextBox.fill(SECONDARY_EMAIL)
+    await formLayout.secondaryPhoneTextBox.fill(SECONDARY_PHONE)
+  }
+
+  async fillEmergencyResponse(formLayout: FormsLayout, EMERGENCY_SAFETY_CONCERNS: string, EMERGENCY_SAFETY_RISKS: string) {
+    await formLayout.emergencyFirstAidRadioButton.check()
+    await formLayout.emergencyHospitalRadioButton.check()
+    await formLayout.emergencyEvacRadioButton.check()
+    await formLayout.emergencyFlamesRadioButton.check()
+    await formLayout.emergencyCrowdControlRadioButton.check()
+    await formLayout.emergencySafetyConcernsTextBox.fill(EMERGENCY_SAFETY_CONCERNS)
+    await formLayout.emergencySafetyRisksTextBox.fill(EMERGENCY_SAFETY_RISKS)
+  }
+
+  async fillEventDetails(formLayout: FormsLayout, EVENT_TITLE: string, EVENT_DATE: string, EVENT_START_TIME: string, EVENT_END_TIME: string, EVENT_DESCRIPTION: string, EVENT_EXPECTED_ATTENDEES: string) {
+    await formLayout.eventTitleTextBox.fill(EVENT_TITLE)
+    await formLayout.eventDateTextBox.fill(EVENT_DATE) // date in yyyy/mm/dd format
+    await formLayout.eventStartTimeTextBox.fill(EVENT_START_TIME) // time in HH:MM AM/PM format
+    await formLayout.eventEndTimeTextBox.fill(EVENT_END_TIME) // time in HH:MM AM/PM format
+    await formLayout.eventDescriptionTextBox.fill(EVENT_DESCRIPTION)
+    await formLayout.expectedAttendeesTextBox.fill(EVENT_EXPECTED_ATTENDEES)
+    await formLayout.carletonStudentsRadioButton.check()
+    await formLayout.staffFacultyRadioButton.check()
+    await formLayout.alumniRadioButton.check()
+    await formLayout.minorsRadioButton.check()
+    await formLayout.vipRadioButton.check()
+  }
+
+  async fillLogistics(formLayout: FormsLayout) {
+    await formLayout.logisticsContractsVendorRadioButton.check()
+    await formLayout.logisticsContractsLiabilityRadioButton.check()
+    await formLayout.logisticsContractsInsuranceRentalRadioButton.check()
+    await formLayout.logisticsContractsInsuranceCertificateRadioButton.check()
+    await formLayout.logisticsRightsImplicationsRadioButton.check()
+    await formLayout.logisticsRightsRisksRadioButton.check()
+  }
+
+  async fillOnlineInformation(formLayout: FormsLayout, ONLINE_PLATFORM: string, ONLINE_TOPICS: string, ONLINE_LOCATION: string, ONLINE_ORGANIZERS: string, ONLINE_ORGANIZERS_ATTENDENCE_FROM_ORIGIN: string) {
+    await formLayout.onlinePlatformTextBox.fill(ONLINE_PLATFORM)
+    await formLayout.onlineTopicsTextBox.fill(ONLINE_TOPICS)
+    await formLayout.onlineLocationTextBox.fill(ONLINE_LOCATION)
+    await formLayout.onlineOrganizersTextBox.fill(ONLINE_ORGANIZERS)
+    await formLayout.onlineOrganizersAttendenceFromOriginTextBox.fill(ONLINE_ORGANIZERS_ATTENDENCE_FROM_ORIGIN)
+  }
+
+  async fillRiskManagement(formLayout: FormsLayout, RISK_SPEAKER_TOPICS: string, RISK_SPEAKER_FULL_NAMES: string, RISK_SPEAKER_WEBSITE_URL: string) {
+    await formLayout.speakersRadioButton.check()
+    await formLayout.speakersTopicsTextBox.fill(RISK_SPEAKER_TOPICS)
+    await formLayout.speakersFullNamesTextBox.fill(RISK_SPEAKER_FULL_NAMES)
+    await formLayout.speakersWebsiteUrlTextBox.fill(RISK_SPEAKER_WEBSITE_URL)
   }
 }
