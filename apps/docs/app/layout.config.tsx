@@ -32,7 +32,7 @@ export const baseOptions: BaseLayoutProps = {
     /* TODO: use cms */
       <>
         <Image
-          src="/cuhacking-logo.svg"
+          src="/cuhacking_logo_gradient.svg"
           alt="cuHacking logo"
           height={24}
           width={24}
