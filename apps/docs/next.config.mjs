@@ -1,4 +1,5 @@
 import { composePlugins, withNx } from '@nx/next'
+
 import { createMDX } from 'fumadocs-mdx/next'
 
 const nextConfig = {
@@ -7,8 +8,8 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
     reactStrictMode: true,
-    output: 'standalone',
   },
+  output: 'standalone',
   images: {
     remotePatterns: [
       {
