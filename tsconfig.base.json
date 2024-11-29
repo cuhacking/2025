@@ -7,7 +7,7 @@
     "baseUrl": ".",
     "rootDir": ".",
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "paths": {
       "@aceternity": ["libs/external/aceternity/index.ts"],
       "@aceternity/*": ["libs/external/aceternity/*"],

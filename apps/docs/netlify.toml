@@ -1,0 +1,3 @@
+[build]
+command = "pnpm i && pnpm exec nx build docs --prod --verbose"
+publish = "apps/docs/.next"
