@@ -29,10 +29,10 @@ jobs:
 
       - name: 🧹 Lint Projects
         # run: pnpm i; pnpm nx run-many -t lint -p docs docs-e2e website website-e2e portal portal-e2e --verbose
-        run: pnpm i; pnpm nx affected -t lint --verbose
+        run: pnpm i; pnpm nx affected -t lint --base=main --head=HEAD --verbose
 
       - name: 🏗️ Build Affected Projects
-        run: pnpm nx affected -t build --verbose
+        run: pnpm nx affected -t build --base=main --head=HEAD --verbose
 
       # - name: 🎭 Install Playwright Browsers
       #   run: pnpm playwright install --with-deps
