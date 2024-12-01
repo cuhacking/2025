@@ -68,7 +68,7 @@ export function FeaturesSectionDemo() {
   )
 }
 
-function Feature({
+export function Feature({
   title,
   description,
   icon,
