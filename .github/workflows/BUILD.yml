@@ -22,9 +22,6 @@ jobs:
       - name: Fetch main branch
         run: git fetch origin main:main # Explicitly fetch the 'main' branch to ensure it's available
 
-      - name: List all branches
-        run: git branch -a # Debugging step to list all branches fetched in the runner
-
       - name: 📦 Install pnpm
         uses: pnpm/action-setup@v4
 
@@ -32,12 +29,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-
-      - name: Debug Git Status
-        run: |
-          git status  # Show the current branch and changes
-          git branch -a  # List all local and remote branches
-          git log -1  # Show the last commit for debug purposes
 
       - name: 🧹 Lint Projects
         # TODO: Restore functionality after pipeline is fixed

@@ -11,7 +11,6 @@ declare module '@remix-run/node' {
 
 export default defineConfig({
   root: __dirname,
-  cacheDir: '../../node_modules/.vite/apps/website',
   plugins: [
     remix({
       future: {
@@ -25,6 +24,9 @@ export default defineConfig({
     nxViteTsPaths(),
     netlifyPlugin(),
   ],
+  optimizeDeps: {
+    include: ['@splinetool/react-spline'], // Force pre-bundling of the library
+  },
   server: {
     port: 3000,
     fs: {

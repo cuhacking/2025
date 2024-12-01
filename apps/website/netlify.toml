@@ -1,9 +1,9 @@
 [build]
-command = "pnpm nx build website"
+command = "pnpm nx build website --verbose"
 publish = "/apps/website/build/client"
 
 [dev]
-command = "pnpm nx dev website"
+command = "pnpm nx dev website --verbose"
 framework = "vite"
 
 # Set immutable caching for static files, because they have fingerprinted filenames

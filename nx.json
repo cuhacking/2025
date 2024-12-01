@@ -28,7 +28,6 @@
     },
     {
       "plugin": "@nx/vite/plugin",
-      "exclude": ["apps/website/**/*"],
       "options": {
         "testTargetName": "test",
         "previewTargetName": "preview",

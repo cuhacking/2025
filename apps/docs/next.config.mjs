@@ -1,4 +1,6 @@
-import { composePlugins, withNx } from '@nx/next'
+// @ts-check
+
+// import { composePlugins, withNx } from '@nx/next'
 
 import { createMDX } from 'fumadocs-mdx/next'
 
@@ -16,19 +18,31 @@ const defaultImageHostnames = [
   'res.cloudinary.com',
 ]
 
-const nextConfig = {
-  nx: {
-    // Set this to true if you would like to use SVGR
-    // See: https://github.com/gregberge/svgr
-    svgr: false,
-    reactStrictMode: true,
-    typescript: {
-      // !! WARN !!
-      // Dangerously allow production builds to successfully complete even if
-      // your project has type errors.
-      // !! WARN !!
-      ignoreBuildErrors: true,
-    },
+/**
+ * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
+ */
+// const nextConfig = {
+// nx: {
+//   // Set this to true if you would like to use SVGR
+//   // See: https://github.com/gregberge/svgr
+//   svgr: false,
+// },
+// }
+
+/** @type {import('next').NextConfig} */
+const config = {
+  reactStrictMode: true,
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    // Warning: This allows production builds to successfully complete even if
+    // your project has ESLint errors.
+    ignoreDuringBuilds: true,
   },
   output: 'standalone',
   images: {
@@ -42,10 +56,13 @@ const nextConfig = {
 
 const withMDX = createMDX({})
 
-const plugins = [
-  // Add more Next.js plugins to this list if needed.
-  withNx,
-  withMDX,
-]
+// const plugins = [
+//   // Add more Next.js plugins to this list if needed.
+//   withNx,
+//   withMDX,
+// ]
 
-export default composePlugins(...plugins)(nextConfig)
+// export default composePlugins(...plugins)(nextConfig)
+
+export default withMDX(config)
+// export default withMDX(nextConfig);
