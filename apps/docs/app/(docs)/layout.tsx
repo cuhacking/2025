@@ -1,9 +1,9 @@
 import type { ReactNode } from 'react'
 /* import { RootToggle } from 'fumadocs-ui/components/layout/root-toggle' */
+import { DocsLayout } from 'fumadocs-ui/layouts/notebook'
 import { source } from '../../source'
 /* https://fumadocs.vercel.app/docs/ui/blocks/layout#notebook */
 /* import { DocsLayout } from 'fumadocs-ui/layouts/docs' */
-import { DocsLayout } from 'fumadocs-ui/layouts/notebook'
 import { baseOptions } from '../layout.config'
 import 'katex/dist/katex.css'
 

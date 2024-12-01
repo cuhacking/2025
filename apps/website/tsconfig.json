@@ -6,9 +6,6 @@
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "paths": {
-      "~/*": ["./app/*"]
-    },
     "resolveJsonModule": true,
     "types": ["@remix-run/node", "vite/client"],
     "allowJs": true,

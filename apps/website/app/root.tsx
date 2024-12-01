@@ -1,4 +1,4 @@
-import type { LinksFunction } from '@remix-run/node'
+import type { LinksFunction, MetaFunction } from '@remix-run/node'
 
 import {
   Links,
@@ -10,6 +10,12 @@ import {
 
 import '@cuhacking/shared/ui/global.css'
 
+export const meta: MetaFunction = () => [
+  {
+    title: 'cuHacking 2025',
+  },
+]
+
 export const links: LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
   {
@@ -19,15 +25,11 @@ export const links: LinksFunction = () => [
   },
   {
     rel: 'stylesheet',
-    href: 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap',
-  },
-  {
-    rel: 'stylesheet',
     href: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap',
   },
 ]
 
-export default function App() {
+export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
@@ -40,10 +42,14 @@ export default function App() {
         <Links />
       </head>
       <body className="!pointer-events-auto">
-        <Outlet />
+        {children}
         <ScrollRestoration />
         <Scripts />
       </body>
     </html>
   )
+}
+
+export default function App() {
+  return <Outlet />
 }

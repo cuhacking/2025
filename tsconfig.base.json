@@ -11,12 +11,12 @@
     "paths": {
       "@aceternity": ["libs/external/aceternity/index.ts"],
       "@aceternity/*": ["libs/external/aceternity/*"],
-      "@shadcn": ["libs/external/shadcn/index.ts"],
-      "@shadcn/*": ["libs/external/shadcn/*"],
-      "@cuhacking/shared": ["libs/shared/index.ts"],
-      "@cuhacking/shared/*": ["libs/shared/*"],
       "@cuhacking/docs": ["libs/docs/index.ts"],
       "@cuhacking/docs/*": ["libs/docs/*"],
+      "@cuhacking/shared": ["libs/shared/index.ts"],
+      "@cuhacking/shared/*": ["libs/shared/*"],
+      "@shadcn": ["libs/external/shadcn/index.ts"],
+      "@shadcn/*": ["libs/external/shadcn/*"],
       "@website/*": ["libs/website/*"]
     },
     "declaration": false,

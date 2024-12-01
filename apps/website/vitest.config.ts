@@ -1,7 +1,9 @@
+/// <reference types='vitest' />
+/// <reference types='vite/client' />
+
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin'
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin'
 import react from '@vitejs/plugin-react'
-/// <reference types='vitest' />
 import { defineConfig } from 'vite'
 
 export default defineConfig({
@@ -9,9 +11,9 @@ export default defineConfig({
   cacheDir: '../../node_modules/.vite/apps/website',
   plugins: [react(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
   // Uncomment this if you are using workers.
-  // worker: {
-  //  plugins: [ nxViteTsPaths() ],
-  // },
+  worker: {
+    plugins: [nxViteTsPaths()],
+  },
   test: {
     setupFiles: ['test-setup.ts'],
     watch: false,
@@ -23,5 +25,6 @@ export default defineConfig({
       reportsDirectory: '../../coverage/apps/website',
       provider: 'v8',
     },
+    pool: 'forks',
   },
 })
