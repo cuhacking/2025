@@ -1,7 +1,5 @@
 import { test as base, expect } from '@playwright/test'
-
 import { clickAndGoToPage } from './helpers/click-and-go-to-page'
-
 import { DocsLayout } from './pom'
 
 const test = base.extend<{ docsLayoutPage: DocsLayout }>({
@@ -14,26 +12,28 @@ const test = base.extend<{ docsLayoutPage: DocsLayout }>({
 })
 
 const GITHUB_BASE_URL = 'https://github.com/cuhacking'
-// const GITHUB_ORG_BASE_URL = 'https://github.com/orgs/cuhacking'
+const GITHUB_ORG_BASE_URL = 'https://github.com/orgs/cuhacking'
 const DOCS_BASE_URL = 'http://localhost:3000'
 
-// const CUHACKING_2025_PLATFORM_GITHUB_PROJECT_BOARD_URL = `${GITHUB_ORG_BASE_URL}/projects/4`
-const CUHACKING_2025_PLATFORM_GITHUB_REPOSITORY_URL = `${GITHUB_BASE_URL}/2025`
-const CUHACKING_2025_PLATFORM_GITHUB_INDEX_PAGE_URL = `${GITHUB_BASE_URL}/2025/blob/main/apps/docs/content/docs/index.mdx`
-// const CUHACKING_2025_LANDING_PAGE_GITHUB_REPOSITORY_URL = `${GITHUB_BASE_URL}/landing-page`
-const CUHACKING_2025_FOR_HACKERS_BY_HACKERS = `${GITHUB_BASE_URL}/2025/graphs/contributors`
+const CUHACKING_2025_GITHUB_PROJECT_BOARD_URL = `${GITHUB_ORG_BASE_URL}/projects/4`
+const CUHACKING_2025_GITHUB_REPOSITORY_URL = `${GITHUB_BASE_URL}/2025`
+const CUHACKING_2025_GITHUB_INDEX_PAGE_URL = `${GITHUB_BASE_URL}/2025/blob/main/apps/docs/content/docs/index.mdx`
 
+const CUHACKING_2025_FOR_HACKERS_BY_HACKERS = `${GITHUB_BASE_URL}/2025/graphs/contributors`
 const CUHACKING_2025_LANDING_PAGE_URL = 'https://cuhacking.ca/'
-// const CUHACKING_2025_LINKTREE_URL = 'https://linktr.ee/cuhacking_'
-const portalLink_URL = 'https://portal.cuhacking.ca/'
-// const designLink_URL = 'https://design.cuhacking.ca/'//
-// const eslintLink_URL = 'https://eslint.cuhacking.ca/rules'
-const discordLink_URL = 'https://discord.com/invite/h2cQqF9aZf'
-const instagramLink_URL = 'https://www.instagram.com/cuhacking/'
-// const linkedinLink_URL = 'https://www.linkedin.com/company/cuhacking/'
-const figmaLink_URL = 'https://www.figma.com/design/wc1JOWR48tBNkjcjwY3AzB/%E2%8C%A8%EF%B8%8F-cuHacking-Design-System?node-id=0-1&t=YTR1ET4Qw1wG1cjz-1'
-const projectBoardLink_URL = 'https://github.com/orgs/cuhacking/projects/4'
-const linktreeLink_URL = 'https://linktr.ee/cuhacking_'
+const CUHACKING_2025_LINKTREE_URL = 'https://linktr.ee/cuhacking_'
+const CUHACKING_2025_PORTAL_URL = 'https://portal.cuhacking.ca/'
+
+// TODO: Uncomment when the links are available - see tests below
+// const CUHACKING_2025_DESIGN_URL = 'https://design.cuhacking.ca/'
+// const CUHACKING_2025_ESLINT_URL = 'https://eslint.cuhacking.ca/rules'
+
+const CUHACKING_2025_DISCORD_URL = 'https://discord.com/invite/h2cQqF9aZf'
+const CUHACKING_2025_INSTAGRAM_URL = 'https://www.instagram.com/cuhacking/'
+
+// TODO: Uncomment when the link works - see test below
+// const CUHACKING_2025_LINKED_IN_URL = 'https://www.linkedin.com/company/cuhacking/'
+const CUHACKING_2025_FIGMA_URL = 'https://www.figma.com/design/wc1JOWR48tBNkjcjwY3AzB/%E2%8C%A8%EF%B8%8F-cuHacking-Design-System?node-id=0-1&t=YTR1ET4Qw1wG1cjz-1'
 
 /* ---------------- MOBILE + DESKTOP + TABLET ---------------- */
 test.describe(`Common MOBILE, TABLET and DESKTOP Layout Elements`, {
@@ -61,12 +61,120 @@ test.describe(`Common MOBILE, TABLET and DESKTOP Layout Elements`, {
     await expect(docsLayoutPage.page).toHaveURL(DOCS_BASE_URL)
   })
 
-  test(`Should Check for 'Tech Stack' Button`, async ({ docsLayoutPage }) => {
+  test(`should check for 'Next page' Button`, async ({ docsLayoutPage }) => {
     await expect(docsLayoutPage.nextButton).toBeVisible()
   })
 
-  test(`Should load index page when 'Edit on Github' is clicked'`, async ({ docsLayoutPage }) => {
-    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.editOnGithubButton, CUHACKING_2025_PLATFORM_GITHUB_INDEX_PAGE_URL)
+  test(`should contain 'Edit on Github' button`, async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.editOnGithubButton).toBeVisible()
+  })
+
+  test(`should load index page when 'Edit on Github' is clicked`, async ({ docsLayoutPage }) => {
+    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.editOnGithubButton, CUHACKING_2025_GITHUB_INDEX_PAGE_URL)
+  })
+})
+
+/* ---------------- TABLET + DESKTOP + MOBILE LINKS---------------- */
+test.describe('Common MOBILE, TABLET and DESKTOP Links', {
+  tag: '@smoke',
+}, () => {
+  test.beforeEach(async ({ docsLayoutPage }) => {
+    const device = test.info().project.name
+    if (device.includes('mobile')) {
+      await docsLayoutPage.hamburgerIcon.click()
+    }
+  })
+  test('should contain website link', async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.websiteLink).toBeVisible()
+  })
+
+  test('should take user to website when website link clicked', async ({ docsLayoutPage }) => {
+    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.websiteLink, CUHACKING_2025_LANDING_PAGE_URL)
+  })
+
+  test('should contain Portal link', async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.portalLink).toBeVisible()
+  })
+
+  test('should take user to Portal when Portal link is clicked', async ({ docsLayoutPage }) => {
+    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.portalLink, CUHACKING_2025_PORTAL_URL)
+  })
+
+  test('should contain design link', async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.designLink).toBeVisible()
+  })
+
+  // TODO: Uncomment when the link is available
+
+  // test('should take user to design site when design link clicked', async ({ docsLayoutPage }) => {
+  //   await clickAndGoToPage(docsLayoutPage, docsLayoutPage.designLink, CUHACKING_2025_DESIGN_URL)
+  // })
+
+  test('should contain Eslint link', async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.eslintLink).toBeVisible()
+  })
+  // TODO: Uncomment when the link is available
+
+  // test('should take user to eslint site when eslint link clicked', async ({ docsLayoutPage }) => {
+  //   await clickAndGoToPage(docsLayoutPage, docsLayoutPage.eslintLink, CUHACKING_2025_ESLINT_URL)
+  // })
+
+  test('should contain discord link', async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.discordLink).toBeVisible()
+  })
+
+  test('should take user to Discord link site when Discord link clicked', async ({ docsLayoutPage }) => {
+    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.discordLink, CUHACKING_2025_DISCORD_URL)
+  })
+
+  test('should contain Instagram link', async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.instagramLink).toBeVisible()
+  })
+
+  test('should take user to Instagram when Instagram link clicked', async ({ docsLayoutPage }) => {
+    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.instagramLink, CUHACKING_2025_INSTAGRAM_URL)
+  })
+
+  test('should contain LinkedIn link', async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.linkedinLink).toBeVisible()
+  })
+
+  // TODO: LinkedIn link requires auth to view
+
+  // test('should take user to LinkedIn when LinkedIn link clicked', async ({ docsLayoutPage }) => {
+  //   await clickAndGoToPage(docsLayoutPage, docsLayoutPage.linkedinLink, CUHACKING_2025_LINKED_IN_URL)
+  // })
+
+  test('should contain Linktree link', async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.linktreeLink).toBeVisible()
+  })
+
+  test('should take user to Linktree when Linktree link is clicked', async ({ docsLayoutPage }) => {
+    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.linktreeLink, CUHACKING_2025_LINKTREE_URL)
+  })
+
+  test('should contain Figma link', async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.figmaLink).toBeVisible()
+  })
+
+  test('should take user to Figma when Figma link is clicked', async ({ docsLayoutPage }) => {
+    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.figmaLink, CUHACKING_2025_FIGMA_URL)
+  })
+
+  test('should contain Project board link', async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.projectBoardLink).toBeVisible()
+  })
+
+  test('should take user to Project board when Project board link is clicked', async ({ docsLayoutPage }) => {
+    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.projectBoardLink, CUHACKING_2025_GITHUB_PROJECT_BOARD_URL)
+  })
+
+  test('should contain Github link', async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.githubLink).toBeVisible()
+  })
+
+  test('should take user to Github repo when Github link is clicked', async ({ docsLayoutPage }) => {
+    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.githubLink, CUHACKING_2025_GITHUB_REPOSITORY_URL)
   })
 })
 
@@ -80,18 +188,17 @@ test.describe(`Common MOBILE and TABLET Layout Elements`, {
       test.skip()
     }
   })
-
-  test(`Should have 'on this page' section visible in mobile/tablet header`, async ({ docsLayoutPage }) => {
+  test(`should have 'On this page' section visible in mobile/tablet header`, async ({ docsLayoutPage }) => {
     await expect(docsLayoutPage.onThisPage).toBeVisible()
   })
 
-  test(`Should have "For Hackers by Hackers" text visible in mobile/tablet on this page`, async ({ docsLayoutPage }) => {
+  test(`should have "For Hackers by Hackers" text visible in mobile/tablet for On this page`, async ({ docsLayoutPage }) => {
     await docsLayoutPage.onThisPage.click()
     await expect(docsLayoutPage.forHackersByHackers).toBeVisible()
   })
-  test(`Should click "For Hackers by Hackers" link mobile/tablet`, async ({ docsLayoutPage }) => {
+
+  test(`should click "For Hackers by Hackers" link mobile/tablet`, async ({ docsLayoutPage }) => {
     await docsLayoutPage.onThisPage.click()
-    await expect(docsLayoutPage.forHackersByHackers).toBeVisible()
     await clickAndGoToPage(docsLayoutPage, docsLayoutPage.forHackersByHackers, CUHACKING_2025_FOR_HACKERS_BY_HACKERS)
   })
 })
@@ -106,89 +213,28 @@ test.describe('Common TABLET and DESKTOP Layout Elements', {
       test.skip()
     }
   })
-
-  test(`Should contain Search Bar`, async ({ docsLayoutPage }) => {
+  test(`should contain Search Bar`, async ({ docsLayoutPage }) => {
     await expect(docsLayoutPage.searchBar).toBeVisible()
   })
-  test(`Should check for theme toggle`, async ({ docsLayoutPage }) => {
+
+  // Disabled due to test hanging
+  // test(`should contain Search Modal`, async ({ docsLayoutPage }) => {
+  //   docsLayoutPage.page.on('dialog', dialog => dialog.accept())
+  //   await docsLayoutPage.searchBar.click()
+  //   await expect(docsLayoutPage.searchModal).toBeVisible()
+  // })
+
+  test(`should check for theme toggle`, async ({ docsLayoutPage }) => {
     await expect(docsLayoutPage.themeToggle).toBeVisible()
   })
-  test(`Should check for sidebar visability`, async ({ docsLayoutPage }) => {
+
+  test(`should check for sidebar visibility`, async ({ docsLayoutPage }) => {
     await expect(docsLayoutPage.sideBarToggle).toBeVisible()
   })
-})
 
-/* ---------------- UNIQUE DESKTOP HEADER ---------------- */
-test.describe('Unique DESKTOP Header Elements', {
-  tag: '@smoke',
-}, () => {
-  test.beforeEach(async () => {
-    const device = test.info().project.name
-    if (device.includes('mobile') || device.includes('tablet')) {
-      test.skip()
-    }
+  test(`should check for sidebar 'overview' visability`, async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.overviewSidebar).toBeVisible()
   })
-
-  test('should contain website link', async ({ docsLayoutPage }) => {
-    await expect(docsLayoutPage.websiteLink).toBeVisible()
-    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.websiteLink, CUHACKING_2025_LANDING_PAGE_URL)
-  })
-  test('should contain portal link', async ({ docsLayoutPage }) => {
-    await expect(docsLayoutPage.portalLink).toBeVisible()
-    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.portalLink, portalLink_URL)
-  })
-  // test('should contain design link', async ({ docsLayoutPage }) => {
-  //   await expect(docsLayoutPage.designLink).toBeVisible()
-  //   await clickAndGoToPage(docsLayoutPage, docsLayoutPage.designLink, designLink_URL)
-
-  // })
-  // test('should contain eslint link', async ({ docsLayoutPage }) => {
-  // await expect(docsLayoutPage.eslintLink).toBeVisible()
-  //  await clickAndGoToPage(docsLayoutPage, docsLayoutPage.eslintLink, eslintLink_URL)
-
-  // })
-  test('should contain instagram link', async ({ docsLayoutPage }) => {
-    await expect(docsLayoutPage.instagramLink).toBeVisible()
-    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.instagramLink, instagramLink_URL)
-  })
-  test('should contain discord link', async ({ docsLayoutPage }) => {
-    await expect(docsLayoutPage.discordLink).toBeVisible()
-    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.discordLink, discordLink_URL)
-  })
-  test('should contain linktree link', async ({ docsLayoutPage }) => {
-    await expect(docsLayoutPage.linktreeLink).toBeVisible()
-    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.linktreeLink, linktreeLink_URL)
-  })
-  test('should contain figma link', async ({ docsLayoutPage }) => {
-    await expect(docsLayoutPage.figmaLink).toBeVisible()
-    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.figmaLink, figmaLink_URL)
-  })
-  test('should contain project board link', async ({ docsLayoutPage }) => {
-    await expect(docsLayoutPage.projectBoardLink).toBeVisible()
-    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.projectBoardLink, projectBoardLink_URL)
-  })
-  test('should contain github link', async ({ docsLayoutPage }) => {
-    await expect(docsLayoutPage.githubLink).toBeVisible()
-    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.githubLink, CUHACKING_2025_PLATFORM_GITHUB_REPOSITORY_URL)
-  })
-})
-
-/* ---------------- UNIQUE DESKTOP FLOATING TABLE ---------------- */
-test.describe('Unique Floating Table of Contents DESKTOP Elements', {
-  tag: '@smoke',
-}, () => {
-  test.beforeEach(async () => {
-    const device = test.info().project.name
-    if (device.includes('mobile') || device.includes('tablet')) {
-      test.skip()
-    }
-  })
-
-  // test('should take user to current docs page file on the cuHacking Hacker Portal GitHub repository when the \'Edit on GitHub\' icon is clicked', async ({ docsLayoutPage }) => {
-  // FIXME: navigate to a different page, click the button, and check that the url is the corresponding file on the GitHub repo.
-  // Currently the test checks it against the index page instead of the current page. Also see TODO in `(docs)/page.tsx`.
-  // await clickAndGoToPage(docsLayoutPage, docsLayoutPage.editOnGitHubButton, CUHACKING_2025_PLATFORM_GITHUB_INDEX_PAGE_URL)
-  // })
 })
 
 /* ---------------- UNIQUE MOBILE HEADER ---------------- */
@@ -201,7 +247,6 @@ test.describe('Unique MOBILE Header Elements', {
       test.skip()
     }
   })
-
   test('should contain hamburger icon', async ({ docsLayoutPage }) => {
     await expect(docsLayoutPage.hamburgerIcon).toBeVisible()
   })
@@ -216,18 +261,32 @@ test.describe('Unique MOBILE Header Elements', {
   })
 })
 
-/* ---------------- UNIQUE TABLET HEADER ---------------- */
-test.describe('Unique TABLET Header Elements', {
+/* ---------------- UNIQUE DESKTOP FLOATING TABLE ---------------- */
+test.describe('Unique DESKTOP Floating Table Elements', {
   tag: '@smoke',
 }, () => {
   test.beforeEach(async () => {
     const device = test.info().project.name
-    if (device.includes('desktop') || device.includes('mobile')) {
+    if (device.includes('mobile') || device.includes('tablet')) {
       test.skip()
     }
   })
 
-  test('should have kebab icon visible', async ({ docsLayoutPage }) => {
-    await expect(docsLayoutPage.kebabIcon).toBeVisible()
+  test(`should have 'On this page' section visible in header`, async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.onThisPage).toBeVisible()
   })
+
+  test(`should have "For Hackers by Hackers" text visible in for On this page`, async ({ docsLayoutPage }) => {
+    await expect(docsLayoutPage.forHackersByHackers).toBeVisible()
+  })
+
+  test(`should click "For Hackers by Hackers" link`, async ({ docsLayoutPage }) => {
+    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.forHackersByHackers, CUHACKING_2025_FOR_HACKERS_BY_HACKERS)
+  })
+
+  // test('should take user to current docs page file on the cuHacking Hacker Portal GitHub repository when the \'Edit on GitHub\' icon is clicked', async ({ docsLayoutPage }) => {
+  // FIXME: navigate to a different page, click the button, and check that the url is the corresponding file on the GitHub repo.
+  // Currently the test checks it against the index page instead of the current page. Also see TODO in `(docs)/page.tsx`.
+  // await clickAndGoToPage(docsLayoutPage, docsLayoutPage.editOnGitHubButton, CUHACKING_2025_PLATFORM_GITHUB_INDEX_PAGE_URL)
+  // })
 })
