@@ -9,7 +9,7 @@ interface EventContainerProps {
 export function EventPresenter({ events }: EventContainerProps) {
   return (
     <GlassmorphicCard variant="default" className="p-3.5 sm:p-6 flex flex-col gap-6">
-      <h2 className="font-sans text-4xl text-left">
+      <h2 className="text-4xl text-left">
         EVENTS
       </h2>
       <section className="grid gap-4 grid-col-1 md:grid-cols-2">

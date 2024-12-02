@@ -1,5 +1,4 @@
-import type { LinksFunction, MetaFunction } from '@remix-run/node'
-
+import type { MetaFunction } from '@remix-run/node'
 import {
   Links,
   Meta,
@@ -16,24 +15,11 @@ export const meta: MetaFunction = () => [
   },
 ]
 
-export const links: LinksFunction = () => [
-  { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-  {
-    rel: 'preconnect',
-    href: 'https://fonts.gstatic.com',
-    crossOrigin: 'anonymous',
-  },
-  {
-    rel: 'stylesheet',
-    href: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap',
-  },
-]
-
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
-      className="dark scroll-smooth scroll-pt-16 overflow-x-hidden"
+      className="dark scroll-smooth scroll-pt-16 overflow-x-hidden font-mono"
     >
       <head>
         <meta charSet="utf-8" />
