@@ -34,6 +34,7 @@
     "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-visually-hidden": "^1.1.0",
+    "@react-three/fiber": "^8.17.10",
     "@remix-run/node": "2.14.0",
     "@remix-run/react": "2.14.0",
     "@remix-run/serve": "2.14.0",
@@ -47,6 +48,7 @@
     "react-day-picker": "8.10.1",
     "react-dom": "^18.3.1",
     "remix-utils": "^7.7.0",
+    "three": "^0.171.0",
     "vaul": "^1.1.1"
   },
   "devDependencies": {
@@ -111,6 +113,7 @@
     "@types/node": "22.8.6",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
+    "@types/three": "^0.170.0",
     "@unocss/eslint-plugin": "^0.62.4",
     "@vitejs/plugin-react": "^4.3.3",
     "@vitest/coverage-v8": "^2.1.4",

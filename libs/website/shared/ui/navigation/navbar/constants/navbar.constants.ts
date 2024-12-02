@@ -1,3 +1,4 @@
+import cross from '@cuhacking/shared/assets/icons/general/cross-1.svg'
 import hamburger from '@cuhacking/shared/assets/icons/general/hamburger-1.svg'
 import discord_white from '@cuhacking/shared/assets/icons/socials/discord-white-1.svg'
 import docs_white from '@cuhacking/shared/assets/icons/socials/docs-white-1.svg'
@@ -18,13 +19,6 @@ const links = [
 
 const socials = [
   {
-    link: 'https://github.com',
-    media: {
-      src: github_white,
-      alt: 'GitHub',
-    },
-  },
-  {
     link: 'https://instagram.com',
     media: {
       src: instagram_white,
@@ -32,24 +26,10 @@ const socials = [
     },
   },
   {
-    link: 'https://linkedin.com',
+    link: 'https://github.com',
     media: {
-      src: linkedin_white,
-      alt: 'LinkedIn',
-    },
-  },
-  {
-    link: 'https://linktr.ee',
-    media: {
-      src: linktree_white,
-      alt: 'Linktree',
-    },
-  },
-  {
-    link: 'mailto:example@email.com',
-    media: {
-      src: email_white,
-      alt: 'Email',
+      src: github_white,
+      alt: 'GitHub',
     },
   },
   {
@@ -73,6 +53,27 @@ const socials = [
       alt: 'Figma',
     },
   },
+  {
+    link: 'mailto:example@email.com',
+    media: {
+      src: email_white,
+      alt: 'Email',
+    },
+  },
+  {
+    link: 'https://linkedin.com',
+    media: {
+      src: linkedin_white,
+      alt: 'LinkedIn',
+    },
+  },
+  {
+    link: 'https://linktr.ee',
+    media: {
+      src: linktree_white,
+      alt: 'Linktree',
+    },
+  },
 ]
 export const NAVBAR_CONSTANTS = {
   SOCIALS: socials,
@@ -80,6 +81,10 @@ export const NAVBAR_CONSTANTS = {
   LOGO: cuHackingLogo,
   HAMBURGER: {
     src: hamburger,
-    alt: 'Hambuger Icon',
+    alt: 'Hambuger icon',
+  },
+  CROSS: {
+    src: cross,
+    alt: 'Cross icon',
   },
 }
