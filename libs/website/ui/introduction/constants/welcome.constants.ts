@@ -1,18 +1,18 @@
-import discord_green from '@cuhacking/shared/assets/icons/socials/discord-green-1.svg'
-import docs_green from '@cuhacking/shared/assets/icons/socials/docs-green-1.svg'
-import email_green from '@cuhacking/shared/assets/icons/socials/email-green-1.svg'
-import figma_green from '@cuhacking/shared/assets/icons/socials/figma-green-1.svg'
-import github_green from '@cuhacking/shared/assets/icons/socials/github-green-1.svg'
-import instagram_green from '@cuhacking/shared/assets/icons/socials/instagram-green-1.svg'
-import linkedin_green from '@cuhacking/shared/assets/icons/socials/linkedin-green-1.svg'
-import linktree_green from '@cuhacking/shared/assets/icons/socials/linktree-green-1.svg'
+import discord_green from '@cuhacking/shared/assets/icons/socials/discord-green-1.svg';
+import docs_green from '@cuhacking/shared/assets/icons/socials/docs-green-1.svg';
+import email_green from '@cuhacking/shared/assets/icons/socials/email-green-1.svg';
+import figma_green from '@cuhacking/shared/assets/icons/socials/figma-green-1.svg';
+import github_green from '@cuhacking/shared/assets/icons/socials/github-green-1.svg';
+import instagram_green from '@cuhacking/shared/assets/icons/socials/instagram-green-1.svg';
+import linkedin_green from '@cuhacking/shared/assets/icons/socials/linkedin-green-1.svg';
+import linktree_green from '@cuhacking/shared/assets/icons/socials/linktree-green-1.svg';
 
 interface Media {
-  src: string
-  alt: string
+  src: string;
+  alt: string;
 }
 
-const socials: { link: string, media: Media }[] = [
+const socials: { link: string; media: Media }[] = [
   {
     link: 'https://www.instagram.com/cuhacking/',
     media: { src: instagram_green, alt: 'Instagram' },
@@ -45,7 +45,7 @@ const socials: { link: string, media: Media }[] = [
     link: 'https://linktr.ee/cuhacking_?fbclid=PAZXh0bgNhZW0CMTEAAaZcB9hM3ZkwE4vR0NjpoFmPrg3gfXxlm5NdhqMy-eKHv-VXw8ekbvCznlM_aem_wSxlDGzbFI7sVeAAUVTAoQ',
     media: { src: linktree_green, alt: 'Linktree' },
   },
-]
-export const WELCOME_CONSTATNTS = {
+];
+export const WELCOME_CONSTANTS = {
   SOCIALS: socials,
-}
+};
