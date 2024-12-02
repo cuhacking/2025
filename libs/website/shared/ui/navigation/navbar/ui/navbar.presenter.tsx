@@ -12,7 +12,7 @@ import {
 } from '@cuhacking/shared/ui/navigation-menu'
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import { Link } from '@remix-run/react'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Socials } from '../../../socials'
 import { NavItem } from './nav-item'
 import { MobileNavItem } from './nav-item-mobile'

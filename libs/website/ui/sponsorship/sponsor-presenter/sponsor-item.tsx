@@ -2,7 +2,6 @@ import type { Sponsor } from '../types/sponsorship'
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 import { cn } from '@cuhacking/shared/utils/cn'
 import { cva } from 'class-variance-authority'
-import React from 'react'
 
 interface SponsorPresenterProps {
   sponsor: Sponsor

@@ -3,7 +3,6 @@ import { Button } from '@cuhacking/shared/ui/button'
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 import { TerminalText } from '@cuhacking/shared/ui/terminal-text'
 import { Link } from '@remix-run/react'
-import React from 'react'
 import { SponsorPresenter } from '../sponsor-presenter/sponsor.presenter'
 
 interface SponsorshipContainerProps {

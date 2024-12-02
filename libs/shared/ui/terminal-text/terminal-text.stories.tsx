@@ -5,7 +5,6 @@ import chevron_down from '@cuhacking/shared/assets/icons/general/chevron-down-1.
 import chevron_up from '@cuhacking/shared/assets/icons/general/chevron-up-1.svg'
 import link from '@cuhacking/shared/assets/icons/general/link-1.svg'
 import phone from '@cuhacking/shared/assets/icons/general/phone-1.svg'
-import React from 'react'
 import { TerminalText } from './terminal-text'
 
 const meta = {
