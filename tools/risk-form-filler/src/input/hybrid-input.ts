@@ -1,84 +1,90 @@
+import type { ScheduleHybridParams } from './schedule-hybrid-params'
 import { exit, stdout } from 'node:process'
+import { chromium } from '@playwright/test'
 import { getUserConfirmation } from '../../helpers/get-user-confirmation'
 import { scheduleHybrid } from '../hybrid'
+import { FormsLayout } from '../pom'
 
 (async function getInputAndRunPlaywright() {
-  // PRIMARY ORGANIZER
-  const organizer1FirstName = 'Raef'
-  const organizer1LastName = 'Sarofiem'
-  const organizer1StudentID = 'INPUT_STUDENT_ID_HERE'
-  const organizer1Email = 'raefsarofiem@cmail.carleton.ca'
-  const organizer1Phone = 'RAEF_PHONE_NUMBER'
-
-  // SECONDARY ORGANIZER
-  const organizer2FirstName = 'Ajaan'
-  const organizer2LastName = 'Nalliah'
-  const organizer2StudentID = 'INPUT_STUDENT_ID_HERE'
-  const organizer2Email = 'ajaannalliah@cmail.carleton.ca'
-  const organizer2Phone = 'AJAAN_PHONE_NUMBER'
-
-  // EVENT DETAILS
-  const eventTitle = 'cuHacking Event Title'
-  const eventDate = 'Today' // Format: 'YYYY/MM/DD'
-  const eventStartTime = 'Right Now' // Format: 'HH:MM AM/PM'
-  const eventEndTime = 'Right Now' // Format: 'HH:MM AM/PM'
-  const eventDescription = 'cuHacking Event Description'
-  const eventLocation = 'cuHacking Event Location'
-  const expectedAttendees = 'Number of Expected Attendees'
-
-  // ONLINE INFORMATION
-  const eventPlatform = 'Discord'
-  const onlineEventTopics = 'cuHacking Tech Stack'
-  const onlineEventLocation = 'Ottawa'
-  const numberOfOrganizers = 'Number of people organizing'
-  const numberOfOrganizersAttendingOnline = 'Number of Organizers attending'
-
-  // RISK MANAGEMENT
-  const speakerTopics = 'Speaker Topics'
-  const speakersList = 'Raef Sarofiem, Ajaan Nalliah'
-  const speakerSites = 'https://cuhacking.ca/'
-  const specialCircumstances = 'None'
-  const risks = 'None'
-  const cleanUpCrew = 'The organizers'
-  const additionalRemarks = 'None'
+  const params: ScheduleHybridParams = {
+    primaryOrganizer: {
+      firstName: 'Raef',
+      lastName: 'Sarofiem',
+      studentID: 111101111,
+      email: 'raefsarofiem@cmail.carleton.ca',
+      phone: 'RAEF_PHONE_NUMBER',
+    },
+    secondaryOrganizer: {
+      firstName: 'Ajaan',
+      lastName: 'Nalliah',
+      studentID: 111101112,
+      email: 'ajaannalliah@cmail.carleton.ca',
+      phone: 'AJAAN_PHONE_NUMBER',
+    },
+    eventDetails: {
+      title: 'cuHacking Event Title',
+      date: 'Today', // Format: 'YYYY/MM/DD'
+      startTime: 'Right Now', // Format: 'HH:MM AM/PM'
+      endTime: 'Right Now', // Format: 'HH:MM AM/PM'
+      description: 'cuHacking Event Description',
+      location: 'cuHacking Event Location',
+      expectedAttendees: 100,
+    },
+    onlineInformation: {
+      platform: 'Discord',
+      topics: 'cuHacking Tech Stack',
+      location: 'Ottawa',
+      numberOfOrganizers: 1,
+      organizersAttendingOnline: 2,
+    },
+    riskManagement: {
+      speakerTopics: 'Speaker Topics',
+      speakers: 'Raef Sarofiem, Ajaan Nalliah',
+      speakerSites: 'https://cuhacking.ca/',
+      specialCircumstances: 'None',
+      risks: 'None',
+      cleanUpCrew: 'The organizers',
+      additionalRemarks: 'None',
+    },
+  }
 
   const output = `
-   ===================== Event Details =====================
-   Primary Organizer's First Name:   ${organizer1FirstName} 
-   Primary Organizer's Last Name:    ${organizer1LastName} 
-   Primary Organizer's Student ID:   ${organizer1StudentID} 
-   Primary Organizer's Email:        ${organizer1Email} 
-   Primary Organizer's Phone:        ${organizer1Phone} 
+  ===================== Event Details =====================
+  Primary Organizer's First Name:   ${params.primaryOrganizer.firstName} 
+  Primary Organizer's Last Name:    ${params.primaryOrganizer.lastName} 
+  Primary Organizer's Student ID:   ${params.primaryOrganizer.studentID} 
+  Primary Organizer's Email:        ${params.primaryOrganizer.email} 
+  Primary Organizer's Phone:        ${params.primaryOrganizer.phone} 
 
-   Secondary Organizer's First Name: ${organizer2FirstName} 
-   Secondary Organizer's Last Name:  ${organizer2LastName} 
-   Secondary Organizer's Student ID: ${organizer2StudentID} 
-   Secondary Organizer's Email:      ${organizer2Email} 
-   Secondary Organizer's Phone:      ${organizer2Phone} 
+  Secondary Organizer's First Name: ${params.secondaryOrganizer.firstName} 
+  Secondary Organizer's Last Name:  ${params.secondaryOrganizer.lastName} 
+  Secondary Organizer's Student ID: ${params.secondaryOrganizer.studentID} 
+  Secondary Organizer's Email:      ${params.secondaryOrganizer.email} 
+  Secondary Organizer's Phone:      ${params.secondaryOrganizer.phone} 
 
-   Event Title:                      ${eventTitle} 
-   Event Date:                       ${eventDate} 
-   Event Start Time:                 ${eventStartTime} 
-   Event End Time:                   ${eventEndTime} 
-   Event Description:                ${eventDescription} 
-   Event Location:                   ${eventLocation} 
-   Expected Attendees:               ${expectedAttendees}
+  Event Title:                      ${params.eventDetails.title} 
+  Event Date:                       ${params.eventDetails.date} 
+  Event Start Time:                 ${params.eventDetails.startTime} 
+  Event End Time:                   ${params.eventDetails.endTime} 
+  Event Description:                ${params.eventDetails.description} 
+  Event Location:                   ${params.eventDetails.location} 
+  Expected Attendees:               ${params.eventDetails.expectedAttendees}
    
-   Event Platform:                   ${eventPlatform}
-   Online Event Topics:              ${onlineEventTopics}
-   Online Event Location:            ${onlineEventLocation}
-   Number of Organizers:             ${numberOfOrganizers}
-   Number of Organizers Attending:   ${numberOfOrganizersAttendingOnline}
+  Event Platform:                   ${params.onlineInformation.platform}
+  Online Event Topics:              ${params.onlineInformation.topics}
+  Online Event Location:            ${params.onlineInformation.location}
+  Number of Organizers:             ${params.onlineInformation.numberOfOrganizers}
+  Number of Organizers Attending:   ${params.onlineInformation.organizersAttendingOnline}
 
-   Speaker Topics:                   ${speakerTopics} 
-   Speakers List:                    ${speakersList} 
-   Speaker Sites:                    ${speakerSites} 
-   Special Circumstances:            ${specialCircumstances} 
-   Risks:                            ${risks} 
-   Clean-Up Crew:                    ${cleanUpCrew} 
-   Additional Remarks:               ${additionalRemarks} 
-   =========================================================
-
+  Speaker Topics:                   ${params.riskManagement.speakerTopics} 
+  Speakers List:                    ${params.riskManagement.speakers} 
+  Speaker Sites:                    ${params.riskManagement.speakerSites} 
+  Special Circumstances:            ${params.riskManagement.specialCircumstances} 
+  Risks:                            ${params.riskManagement.risks} 
+  Clean-Up Crew:                    ${params.riskManagement.cleanUpCrew} 
+  Additional Remarks:               ${params.riskManagement.additionalRemarks} 
+  =========================================================
+  
   `
   stdout.write(output)
 
@@ -86,37 +92,10 @@ import { scheduleHybrid } from '../hybrid'
 
   if (isConfirmed) {
     try {
-      await scheduleHybrid(
-        organizer1FirstName,
-        organizer1LastName,
-        organizer1StudentID,
-        organizer1Email,
-        organizer1Phone,
-        organizer2FirstName,
-        organizer2LastName,
-        organizer2StudentID,
-        organizer2Email,
-        organizer2Phone,
-        eventTitle,
-        eventDate,
-        eventStartTime,
-        eventEndTime,
-        eventDescription,
-        eventLocation,
-        expectedAttendees,
-        eventPlatform,
-        onlineEventTopics,
-        onlineEventLocation,
-        numberOfOrganizers,
-        numberOfOrganizersAttendingOnline,
-        speakerTopics,
-        speakersList,
-        speakerSites,
-        specialCircumstances,
-        risks,
-        cleanUpCrew,
-        additionalRemarks,
-      )
+      const browser = await chromium.launch({ headless: false })
+      const page = await browser.newPage()
+      const formLayout = new FormsLayout(page)
+      await scheduleHybrid(params, formLayout)
       stdout.write('Form filled successfully!\n')
     }
     catch (error) {
