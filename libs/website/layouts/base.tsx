@@ -4,22 +4,18 @@ import {
   NAVBAR_CONSTANTS,
   NavbarContainer,
 } from '@website/shared/ui/navigation'
-import { ClientOnly } from 'remix-utils/client-only'
-
-export function Layout({ children }) {
+import { ReactNode } from 'react'
+export function Layout({ children }: { children: ReactNode }) {
   return (
     <>
-      <ClientOnly>
-        {() => (
-          <NavbarContainer
+         <NavbarContainer
             links={NAVBAR_CONSTANTS.LINKS}
             logo={NAVBAR_CONSTANTS.LOGO}
             socials={NAVBAR_CONSTANTS.SOCIALS}
             hamburger={NAVBAR_CONSTANTS.HAMBURGER}
             cross={NAVBAR_CONSTANTS.CROSS}
           />
-        )}
-      </ClientOnly>
+
 
       <div className="mt-10">{children}</div>
       <FooterPresenter

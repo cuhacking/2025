@@ -13,6 +13,7 @@ import {
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import { Link } from '@remix-run/react'
 import { useState } from 'react'
+import { ClientOnly } from 'remix-utils/client-only'
 import { Socials } from '../../../socials'
 import { NavItem } from './nav-item'
 import { MobileNavItem } from './nav-item-mobile'
@@ -66,44 +67,48 @@ export function NavbarPresenter({
           ))}
         </NavigationMenuList>
       </NavigationMenu>
-      <Drawer direction="right" open={isOpen}>
-        <button
-          type="button"
-          aria-label={
-            isOpen ? 'Close Navigation Drawer' : 'Open Navigation Drawer'
-          }
-          className="md:hidden"
-          onClick={toggleOpen}
-        >
-          <Icon
-            media={isOpen ? cross : hamburger}
-            className={`transition-transform duration-300 ${isOpen ? 'rotate-90' : ''}`}
-          />
-        </button>
-        <VisuallyHidden>
-          <DrawerTitle>Mobile Navigation</DrawerTitle>
-        </VisuallyHidden>
-        <DrawerContent
-          className="h-full border-none overflow-x-hidden rounded-none bg-g-nav-drawer-background backdrop-blur-[3px]"
-          aria-describedby={undefined}
-        >
-          <div className="flex flex-col justify-center h-full text-center px-7">
-            <nav className="flex flex-col justify-between gap-y-7">
-              {links.map(({ name, link }) => (
-                <MobileNavItem
-                  onClick={toggleOpen}
-                  key={name}
-                  link={link}
-                  name={name}
-                />
-              ))}
-            </nav>
-            <DrawerFooter className="pt-5 mt-0">
-              <Socials socials={socials} className="justify-center" />
-            </DrawerFooter>
-          </div>
-        </DrawerContent>
-      </Drawer>
+      <ClientOnly fallback={null}>
+        {() => (
+          <Drawer direction="right" open={isOpen}>
+            <button
+              type="button"
+              aria-label={
+                isOpen ? 'Close Navigation Drawer' : 'Open Navigation Drawer'
+              }
+              className="md:hidden"
+              onClick={toggleOpen}
+            >
+              <Icon
+                media={isOpen ? cross : hamburger}
+                className={`transition-transform duration-300 ${isOpen ? 'rotate-90' : ''}`}
+              />
+            </button>
+            <VisuallyHidden>
+              <DrawerTitle>Mobile Navigation</DrawerTitle>
+            </VisuallyHidden>
+            <DrawerContent
+              className="h-full border-none overflow-x-hidden rounded-none bg-g-nav-drawer-background backdrop-blur-[3px]"
+              aria-describedby={undefined}
+            >
+              <div className="flex flex-col justify-center h-full text-center px-7">
+                <nav className="flex flex-col justify-between gap-y-7">
+                  {links.map(({ name, link }) => (
+                    <MobileNavItem
+                      onClick={toggleOpen}
+                      key={name}
+                      link={link}
+                      name={name}
+                    />
+                  ))}
+                </nav>
+                <DrawerFooter className="pt-5 mt-0">
+                  <Socials socials={socials} className="justify-center" />
+                </DrawerFooter>
+              </div>
+            </DrawerContent>
+          </Drawer>
+        )}
+      </ClientOnly>
     </div>
   )
 }
