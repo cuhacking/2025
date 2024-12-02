@@ -4,7 +4,6 @@ import {
   AccordionTrigger,
 } from '@cuhacking/shared/ui/accordion'
 import { TerminalText } from '@cuhacking/shared/ui/terminal-text'
-import React from 'react'
 
 interface FAQItemProps {
   question: string

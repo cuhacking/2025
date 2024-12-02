@@ -1,5 +1,4 @@
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
-import React from 'react'
 import { StatItem } from '../stat-item/stat-item'
 
 interface StatContainerProps {

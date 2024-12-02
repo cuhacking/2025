@@ -4,7 +4,6 @@ import {
   NAVBAR_CONSTANTS,
   NavbarContainer,
 } from '@website/shared/ui/navigation'
-import React from 'react'
 import { ClientOnly } from 'remix-utils/client-only'
 
 export function Layout({ children }) {
