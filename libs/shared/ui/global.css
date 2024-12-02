@@ -2,10 +2,11 @@
  * Don't forget to update your APPs global.css to include this file!
  */
 
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 @layer base {
   :root {
@@ -73,6 +74,7 @@
     @apply border-border;
   }
   body {
+    font-family: 'JetBrains Mono', monospace;
     @apply bg-background text-foreground;
     font-feature-settings:
       'rlig' 1,
