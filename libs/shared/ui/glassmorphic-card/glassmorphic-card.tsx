@@ -2,7 +2,6 @@ import type { ReactNode } from 'react'
 import InfoIcon from '@cuhacking/shared/assets/icons/general/info-1.svg'
 import { cn } from '@cuhacking/shared/utils/cn'
 import { cva } from 'class-variance-authority'
-import React from 'react'
 
 interface GlassmorphicCardProps {
   children: ReactNode

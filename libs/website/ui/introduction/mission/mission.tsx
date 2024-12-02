@@ -1,7 +1,6 @@
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 import { Separator } from '@cuhacking/shared/ui/separator'
 import { TerminalText } from '@cuhacking/shared/ui/terminal-text'
-import React from 'react'
 
 interface MissionProps {
   logo: string

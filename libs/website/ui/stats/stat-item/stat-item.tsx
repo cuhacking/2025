@@ -1,5 +1,3 @@
-import React from 'react'
-
 interface StatsProps {
   imgUrl: string
   title: string
@@ -14,7 +12,7 @@ export function StatItem({ imgUrl, title }: StatsProps) {
         loading="lazy"
         alt={`${title} icon`}
       />
-      <p className="font-sans text-lg font-medium">{title}</p>
+      <p className="text-lg font-medium">{title}</p>
     </div>
   )
 }
