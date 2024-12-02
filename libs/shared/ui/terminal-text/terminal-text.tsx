@@ -2,7 +2,6 @@ import type Media from '@cuhacking/types/media'
 import type { ReactNode } from 'react'
 import { cn } from '@cuhacking/shared/utils/cn'
 import { cva } from 'class-variance-authority'
-import React from 'react'
 import { Icon } from '../icon/icon'
 
 interface TerminalTextProps {
