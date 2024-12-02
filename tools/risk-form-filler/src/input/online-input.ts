@@ -1,6 +1,6 @@
 import { exit, stdout } from 'node:process'
 import { getUserConfirmation } from '../../helpers/get-user-confirmation'
-import { scheduleHybrid } from '../hybrid'
+import { scheduleOnline } from '../online'
 
 (async function getInputAndRunPlaywright() {
   // PRIMARY ORGANIZER
@@ -23,7 +23,6 @@ import { scheduleHybrid } from '../hybrid'
   const eventStartTime = 'Right Now' // Format: 'HH:MM AM/PM'
   const eventEndTime = 'Right Now' // Format: 'HH:MM AM/PM'
   const eventDescription = 'cuHacking Event Description'
-  const eventLocation = 'cuHacking Event Location'
   const expectedAttendees = 'Number of Expected Attendees'
 
   // ONLINE INFORMATION
@@ -33,60 +32,53 @@ import { scheduleHybrid } from '../hybrid'
   const numberOfOrganizers = 'Number of people organizing'
   const numberOfOrganizersAttendingOnline = 'Number of Organizers attending'
 
-  // RISK MANAGEMENT
+  // SPEAKER AND RESOURCES
   const speakerTopics = 'Speaker Topics'
   const speakersList = 'Raef Sarofiem, Ajaan Nalliah'
   const speakerSites = 'https://cuhacking.ca/'
-  const specialCircumstances = 'None'
-  const risks = 'None'
-  const cleanUpCrew = 'The organizers'
   const additionalRemarks = 'None'
 
   const output = `
-   ===================== Event Details =====================
-   Primary Organizer's First Name:   ${organizer1FirstName} 
-   Primary Organizer's Last Name:    ${organizer1LastName} 
-   Primary Organizer's Student ID:   ${organizer1StudentID} 
-   Primary Organizer's Email:        ${organizer1Email} 
-   Primary Organizer's Phone:        ${organizer1Phone} 
+  ===================== Event Details =====================
+  Primary Organizer's First Name:   ${organizer1FirstName} 
+  Primary Organizer's Last Name:    ${organizer1LastName} 
+  Primary Organizer's Student ID:   ${organizer1StudentID} 
+  Primary Organizer's Email:        ${organizer1Email} 
+  Primary Organizer's Phone:        ${organizer1Phone} 
 
-   Secondary Organizer's First Name: ${organizer2FirstName} 
-   Secondary Organizer's Last Name:  ${organizer2LastName} 
-   Secondary Organizer's Student ID: ${organizer2StudentID} 
-   Secondary Organizer's Email:      ${organizer2Email} 
-   Secondary Organizer's Phone:      ${organizer2Phone} 
+  Secondary Organizer's First Name: ${organizer2FirstName} 
+  Secondary Organizer's Last Name:  ${organizer2LastName} 
+  Secondary Organizer's Student ID: ${organizer2StudentID} 
+  Secondary Organizer's Email:      ${organizer2Email} 
+  Secondary Organizer's Phone:      ${organizer2Phone} 
 
-   Event Title:                      ${eventTitle} 
-   Event Date:                       ${eventDate} 
-   Event Start Time:                 ${eventStartTime} 
-   Event End Time:                   ${eventEndTime} 
-   Event Description:                ${eventDescription} 
-   Event Location:                   ${eventLocation} 
-   Expected Attendees:               ${expectedAttendees}
-   
-   Event Platform:                   ${eventPlatform}
-   Online Event Topics:              ${onlineEventTopics}
-   Online Event Location:            ${onlineEventLocation}
-   Number of Organizers:             ${numberOfOrganizers}
-   Number of Organizers Attending:   ${numberOfOrganizersAttendingOnline}
+  Event Title:                      ${eventTitle} 
+  Event Date:                       ${eventDate} 
+  Event Start Time:                 ${eventStartTime} 
+  Event End Time:                   ${eventEndTime} 
+  Event Description:                ${eventDescription} 
+  Expected Attendees:               ${expectedAttendees}
 
-   Speaker Topics:                   ${speakerTopics} 
-   Speakers List:                    ${speakersList} 
-   Speaker Sites:                    ${speakerSites} 
-   Special Circumstances:            ${specialCircumstances} 
-   Risks:                            ${risks} 
-   Clean-Up Crew:                    ${cleanUpCrew} 
-   Additional Remarks:               ${additionalRemarks} 
-   =========================================================
+  Event Platform:                   ${eventPlatform}
+  Online Event Topics:              ${onlineEventTopics}
+  Online Event Location:            ${onlineEventLocation}
+  Number of Organizers:             ${numberOfOrganizers}
+  Number of Organizers Attending:   ${numberOfOrganizersAttendingOnline}
 
-  `
+  Speaker Topics:                   ${speakerTopics} 
+  Speakers List:                    ${speakersList} 
+  Speaker Sites:                    ${speakerSites} 
+  Additional Remarks:               ${additionalRemarks} 
+  =========================================================
+
+ `
   stdout.write(output)
 
   const isConfirmed = await getUserConfirmation('Is this information correct? Otherwise change the input file... (yes/y to proceed): ')
 
   if (isConfirmed) {
     try {
-      await scheduleHybrid(
+      await scheduleOnline(
         organizer1FirstName,
         organizer1LastName,
         organizer1StudentID,
@@ -102,7 +94,6 @@ import { scheduleHybrid } from '../hybrid'
         eventStartTime,
         eventEndTime,
         eventDescription,
-        eventLocation,
         expectedAttendees,
         eventPlatform,
         onlineEventTopics,
@@ -112,9 +103,6 @@ import { scheduleHybrid } from '../hybrid'
         speakerTopics,
         speakersList,
         speakerSites,
-        specialCircumstances,
-        risks,
-        cleanUpCrew,
         additionalRemarks,
       )
       stdout.write('Form filled successfully!\n')

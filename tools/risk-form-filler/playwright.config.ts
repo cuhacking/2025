@@ -20,7 +20,7 @@ const __filename = fileURLToPath(import.meta.url)
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  ...nxE2EPreset(__filename, { testDir: './src/input' }),
+  ...nxE2EPreset(__filename, { testDir: './src' }),
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   retries: 2,
   use: {
