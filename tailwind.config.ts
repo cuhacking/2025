@@ -8,7 +8,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['JetBrains Mono', 'sans-serif'],
+        mono: ['JetBrains Mono'],
       },
       backgroundImage: {
         'greendiant': 'linear-gradient(200deg, hsl(var(--secondary)) 10%, hsl(var(--primary)) 90%)',

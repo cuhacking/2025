@@ -20,15 +20,15 @@ interface TypographyProps {
 const typographyVariants = cva('', {
   variants: {
     variant: {
-      'h1': 'text-6xl font-bold font-sans',
-      'h2': 'text-5xl font-normal font-sans',
-      'h3': 'font-sans font-medium leading-10 font-sans text-4xl tracking-normal uppercase no-underline',
-      'h4': 'text-2xl font-normal font-sans',
-      'h5': 'text-lg font-normal font-sans',
-      'h6': 'font-sans font-medium leading-5 text-sm tracking-normal uppercase no-underline',
-      'paragraph-base': 'text-base font-normal font-sans',
-      'paragraph-sm': 'text-sm font-normal font-sans',
-      'paragraph-xs': 'text-xs font-normal font-sans',
+      'h1': 'text-6xl font-bold',
+      'h2': 'text-5xl font-normal',
+      'h3': 'font-medium leading-10 text-4xl tracking-normal uppercase no-underline',
+      'h4': 'text-2xl font-normal',
+      'h5': 'text-lg font-normal',
+      'h6': 'font-medium leading-5 text-sm tracking-normal uppercase no-underline',
+      'paragraph-base': 'text-base font-normal',
+      'paragraph-sm': 'text-sm font-normal',
+      'paragraph-xs': 'text-xs font-normal',
     },
   },
 })
