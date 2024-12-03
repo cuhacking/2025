@@ -49,14 +49,17 @@ export default defineConfig({
     {
       name: 'firefox (desktop)',
       use: { ...devices['Desktop Firefox'] },
+      testIgnore: ['./src/lighthouse.spec.ts'],
     },
     {
       name: 'webkit (desktop)',
       use: { ...devices['Desktop Safari'] },
+      testIgnore: ['./src/lighthouse.spec.ts'],
     },
     {
       name: 'webkit (tablet)',
       use: { ...devices['iPad Mini'] },
+      testIgnore: ['./src/lighthouse.spec.ts'],
     },
     {
       name: 'chromium (mobile)',
@@ -65,6 +68,7 @@ export default defineConfig({
     {
       name: 'webkit (mobile)',
       use: { ...devices['iPhone 12'] },
+      testIgnore: ['./src/lighthouse.spec.ts'],
     },
   ],
   // Ignore Chromium projects in CI to speed up runs
