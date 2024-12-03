@@ -65,6 +65,8 @@ out
 /out/
 /build
 *.tsbuildinfo
+playwright-report
+lighthouse-report
 
 # misc
 *.pem
