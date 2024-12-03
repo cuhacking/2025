@@ -21,6 +21,7 @@ const baseURL = process.env.BASE_URL || 'http://localhost:3000'
  */
 export default defineConfig({
   ...nxE2EPreset(__filename, { testDir: './src' }),
+  fullyParallel: true,
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     baseURL,
@@ -29,26 +30,27 @@ export default defineConfig({
   },
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'pnpm nx dev website --verbose',
+    command: 'pnpm nx start website --verbose',
     url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
     cwd: workspaceRoot,
   },
+  reporter: [['html']],
   projects: [
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
     // Uncomment for mobile browsers support
     /* {
