@@ -21,7 +21,9 @@ const baseURL = process.env.BASE_URL || 'http://localhost:3000'
  */
 export default defineConfig({
   ...nxE2EPreset(__filename, { testDir: './src' }),
-  fullyParallel: true,
+  fullyParallel: !process.env.CI,
+  // Opt out of parallel tests on CI.
+  workers: process.env.CI ? 2 : undefined,
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     baseURL,
@@ -35,7 +37,7 @@ export default defineConfig({
     reuseExistingServer: !process.env.CI,
     cwd: workspaceRoot,
   },
-  reporter: [['html']],
+  // reporter: [['html']],
   projects: [
     {
       name: 'chromium',

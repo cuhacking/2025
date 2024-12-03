@@ -20,10 +20,13 @@ jobs:
         with:
           fetch-depth: 0 # All history for branches and tags
 
+      - name: Fetch main branch
+        run: git fetch origin main # Explicitly fetch the 'main' branch to ensure it's available
+
       - name: 📦 Install pnpm
         uses: pnpm/action-setup@v4
-        # with:
-        #   run_install: false
+        with:
+          run_install: true
 
       - name: Install Node.js
         uses: actions/setup-node@v4
@@ -32,21 +35,32 @@ jobs:
           cache: pnpm
 
       - name: 🎭 Install Playwright Browsers
-        run: pnpm i; pnpm playwright install --with-deps
+        run: pnpm playwright install --with-deps
 
-      - name: ⚗️ Run E2E Tests for Affected Projects
-        run: pnpm nx affected -t test --base=origin/main --head=HEAD --reporter=html --verbose
+      # - name: ⚗️ Run E2E Tests for Affected Projects
+      #   run: pnpm nx affected -t e2e --parallel=2 --base=origin/main --head=HEAD --verbose
 
-      # - name: 💀 Run Docs E2E Tests
-      #   run: pnpm nx run docs-e2e:e2e --reporter=html --verbose
+      - name: 💀 Run Docs E2E Tests
+        run: pnpm nx e2e docs-e2e --reporter=html --verbose
 
-      # - name: 📄 Upload Docs E2E Playwright Report
-      #   uses: actions/upload-artifact@v4
-      #   if: always()
-      #   with:
-      #     name: playwright-report-docs-e2e
-      #     path: playwright-report/**/*
-      #     retention-days: 30
+      - name: 📄 Upload Docs E2E Playwright Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report-docs-e2e
+          path: playwright-report/**/*
+          retention-days: 30
+
+      - name: 💀 Run Website E2E Tests
+        run: pnpm nx e2e website-e2e --reporter=html --verbose
+
+      - name: 📄 Upload Website E2E Playwright Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report-website-e2e
+          path: playwright-report/**/*
+          retention-days: 30
 
       # - name: 💀 Run Portal E2E Tests
       #   env:
@@ -61,17 +75,6 @@ jobs:
       #   if: always()
       #   with:
       #     name: playwright-report-portal-e2e
-      #     path: playwright-report/**/*
-      #     retention-days: 30
-
-      # - name: 💀 Run Website E2E Tests
-      #   run: pnpm nx run website-e2e:e2e --reporter=html --verbose
-
-      # - name: 📄 Upload Website E2E Playwright Report
-      #   uses: actions/upload-artifact@v4
-      #   if: always()
-      #   with:
-      #     name: playwright-report-website-e2e
       #     path: playwright-report/**/*
       #     retention-days: 30
 
