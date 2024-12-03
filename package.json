@@ -26,7 +26,8 @@
     "lint:inspect": "pnpx @eslint/config-inspector --no-open",
     "lint:inspect-open": "pnpx @eslint/config-inspector",
     "lint:inspect-build": "pnpx @eslint/config-inspector build --outDir dist/config-inspector",
-    "chromatic": "pnpx chromatic"
+    "chromatic": "pnpx chromatic",
+    "lighthouse": "pnpm exec serve lighthouse-report --no-clipboard & sleep 1 && xdg-open 'http://localhost:3000/latest-report'"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.1",
