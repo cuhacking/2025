@@ -29,7 +29,7 @@ const CUHACKING_2025_PORTAL_URL = 'https://portal.cuhacking.ca/'
 // const CUHACKING_2025_ESLINT_URL = 'https://eslint.cuhacking.ca/rules'
 
 const CUHACKING_2025_DISCORD_URL = 'https://discord.com/invite/h2cQqF9aZf'
-const CUHACKING_2025_INSTAGRAM_URL = 'https://www.instagram.com/cuhacking/'
+// const CUHACKING_2025_INSTAGRAM_URL = 'https://www.instagram.com/cuhacking/'
 
 // TODO: Uncomment when the link works - see test below
 // const CUHACKING_2025_LINKED_IN_URL = 'https://www.linkedin.com/company/cuhacking/'
@@ -131,9 +131,11 @@ test.describe('Common MOBILE, TABLET and DESKTOP Links', {
     await expect(docsLayoutPage.instagramLink).toBeVisible()
   })
 
-  test('should take user to Instagram when Instagram link clicked', async ({ docsLayoutPage }) => {
-    await clickAndGoToPage(docsLayoutPage, docsLayoutPage.instagramLink, CUHACKING_2025_INSTAGRAM_URL)
-  })
+  // TODO: Instagram link requires auth to view
+
+  // test('should take user to Instagram when Instagram link clicked', async ({ docsLayoutPage }) => {
+  //   await clickAndGoToPage(docsLayoutPage, docsLayoutPage.instagramLink, CUHACKING_2025_INSTAGRAM_URL)
+  // })
 
   test('should contain LinkedIn link', async ({ docsLayoutPage }) => {
     await expect(docsLayoutPage.linkedinLink).toBeVisible()

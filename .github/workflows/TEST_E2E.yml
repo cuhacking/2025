@@ -38,7 +38,7 @@ jobs:
         run: pnpm playwright install --with-deps
 
       # - name: ⚗️ Run E2E Tests for Affected Projects
-      #   run: pnpm nx affected -t e2e --parallel=2 --base=origin/main --head=HEAD --verbose
+      #   run: pnpm nx affected -t e2e --parallel=2 --reporter=html --base=origin/main --head=HEAD --verbose
 
       - name: 💀 Run Docs E2E Tests
         run: pnpm nx e2e docs-e2e --reporter=html --verbose
