@@ -67,4 +67,8 @@ export default defineConfig({
       use: { ...devices['iPhone 12'] },
     },
   ],
+  // Ignore Chromium projects in CI to speed up runs
+  ignore: process.env.CI
+    ? ['chromium (desktop)', 'chromium (mobile)']
+    : [],
 })
