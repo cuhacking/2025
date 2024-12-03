@@ -33,7 +33,16 @@ const thresholdsConfig = {
   // 'pwa': 50,
 }
 
-lighthouseTest('should pass lighthouse audits', async ({ page, port }) => {
+lighthouseTest('should pass lighthouse audits', async ({ page, port }, testInfo) => {
+  // Skip Lighthouse tests for specific projects
+  if (
+    ['firefox (desktop)', 'webkit (desktop)', 'webkit (tablet)', 'webkit (mobile)'].includes(
+      testInfo.project.name,
+    )
+  ) {
+    test.skip('Lighthouse is not supported for this project')
+  }
+
   await page.goto('/')
 
   await playAudit({
