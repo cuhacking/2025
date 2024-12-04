@@ -1,4 +1,4 @@
-import type { ScheduleOnlineParams } from './schedule-online-params'
+import type { ScheduleOnlineParams } from '../defs/online-input-defs'
 import { exit, stdout } from 'node:process'
 import { chromium } from '@playwright/test'
 import { getUserConfirmation } from '../../helpers/get-user-confirmation'
