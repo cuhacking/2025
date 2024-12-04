@@ -1,4 +1,4 @@
-import type { ScheduleInPersonParams } from './schedule-in-person-params'
+import type { ScheduleInPersonParams } from '../defs/in-person-input-defs'
 import { exit, stdout } from 'node:process'
 import { chromium } from '@playwright/test'
 import { getUserConfirmation } from '../../helpers/get-user-confirmation'
