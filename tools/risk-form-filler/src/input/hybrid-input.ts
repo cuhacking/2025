@@ -3,7 +3,7 @@ import { exit, stdout } from 'node:process'
 import { chromium } from '@playwright/test'
 import { getUserConfirmation } from '../../helpers/get-user-confirmation'
 import { scheduleHybrid } from '../hybrid'
-import { FormsLayout } from '../pom'
+import { HybridFormLayout } from '../pom'
 
 (async function getInputAndRunPlaywright() {
   const params: ScheduleHybridParams = {
@@ -94,7 +94,7 @@ import { FormsLayout } from '../pom'
     try {
       const browser = await chromium.launch({ headless: false })
       const page = await browser.newPage()
-      const formLayout = new FormsLayout(page)
+      const formLayout = new HybridFormLayout(page)
       await scheduleHybrid(params, formLayout)
       stdout.write('Form filled successfully!\n')
     }

@@ -1,38 +1,8 @@
 import type { Locator, Page } from '@playwright/test'
 
-export class FormsLayout {
+class FormsLayout {
   // Page object
   readonly page: Page
-
-  // Buttons
-  readonly onlineButton: Locator
-  readonly inPersonButton: Locator
-  readonly hybridButton: Locator
-  readonly submitButton: Locator
-
-  // ONLINE FORM
-  readonly expectedOnlineAttendeesTextBox: Locator
-  readonly registrationRadioButton: Locator
-  readonly specialConcernsOnlineTextBox: Locator
-
-  // IN-PERSON + HYBRID FORM
-  readonly eventLocationTextBox: Locator
-  readonly eventLocationRadioButton: Locator
-  readonly expectedAttendeesTextBox: Locator
-  readonly foodRadioButton: Locator
-  readonly healthInsuranceRadioButton: Locator
-  readonly photoIdRadioButton: Locator
-  readonly alcoholRadioButton: Locator
-  readonly transportationRadioButton: Locator
-  readonly outOfProvinceRadioButton: Locator
-  readonly garbageRadioButton: Locator
-  readonly cleanupRadioButton: Locator
-  readonly cleanupTextBox: Locator
-  readonly overnightRadioButton: Locator
-  readonly rightsTextBox: Locator
-
-  // HYBRID FORM
-  readonly hybridRegistrationRadioButton: Locator
 
   // HELPER FUNCTIONS - RISK MANAGEMENT
   readonly speakersRadioButton: Locator
@@ -63,20 +33,12 @@ export class FormsLayout {
   readonly eventStartTimeTextBox: Locator
   readonly eventEndTimeTextBox: Locator
   readonly eventDescriptionTextBox: Locator
+  readonly expectedAttendeesTextBox: Locator
   readonly carletonStudentsRadioButton: Locator
   readonly staffFacultyRadioButton: Locator
   readonly alumniRadioButton: Locator
   readonly minorsRadioButton: Locator
   readonly vipRadioButton: Locator
-
-  // HELPER FUNCTIONS - EMERGENCY RESPONSE
-  readonly emergencyFirstAidRadioButton: Locator
-  readonly emergencyHospitalRadioButton: Locator
-  readonly emergencyEvacRadioButton: Locator
-  readonly emergencyFlamesRadioButton: Locator
-  readonly emergencyCrowdControlRadioButton: Locator
-  readonly emergencySafetyConcernsTextBox: Locator
-  readonly emergencySafetyRisksTextBox: Locator
 
   // HELPER FUNCTIONS - LOGISTICS
   readonly logisticsContractsVendorRadioButton: Locator
@@ -86,45 +48,8 @@ export class FormsLayout {
   readonly logisticsRightsImplicationsRadioButton: Locator
   readonly logisticsRightsRisksRadioButton: Locator
 
-  // HELPER FUNCTIONS - ONLINE INFORMATION
-  readonly onlinePlatformTextBox: Locator
-  readonly onlineTopicsTextBox: Locator
-  readonly onlineLocationTextBox: Locator
-  readonly onlineOrganizersTextBox: Locator
-  readonly onlineOrganizersAttendenceFromOriginTextBox: Locator
-
   constructor(page: Page) {
     this.page = page
-
-    // Buttons
-    this.onlineButton = page.getByRole('link', { name: 'Online' })
-    this.inPersonButton = page.getByRole('link', { name: 'In-Person' })
-    this.hybridButton = page.getByRole('link', { name: 'Hybrid' })
-    this.submitButton = page.getByRole('button', { name: 'Submit' })
-
-    // online form
-    this.expectedOnlineAttendeesTextBox = page.getByLabel('Number of expected online')
-    this.registrationRadioButton = page.locator('input[name="event_tix"]').nth(3)
-    this.specialConcernsOnlineTextBox = page.getByLabel('Are there any other special')
-
-    // in-person + hybrid form
-    this.eventLocationTextBox = page.getByLabel('Event LocationIf on campus,')
-    this.eventLocationRadioButton = page.locator('input[name="event_location_res"]').nth(1)
-    this.expectedAttendeesTextBox = page.getByLabel('Number of expected')
-    this.foodRadioButton = page.locator('input[name="event_food"]').first()
-    this.healthInsuranceRadioButton = page.locator('input[name="event_health_insurance"]').first()
-    this.photoIdRadioButton = page.locator('input[name="event_photo_id"]').first()
-    this.alcoholRadioButton = page.locator('input[name="risk_alcohol"]').first()
-    this.transportationRadioButton = page.locator('input[name="travel_transportation"]').first()
-    this.outOfProvinceRadioButton = page.locator('input[name="out_of_province"]').first()
-    this.garbageRadioButton = page.locator('input[name="fmp_garbage"]').first()
-    this.cleanupRadioButton = page.locator('input[name="fmp_cleanup"]').nth(1)
-    this.cleanupTextBox = page.getByLabel('Please provide details as to')
-    this.overnightRadioButton = page.locator('input[name="fmp_overnight"]').first()
-    this.rightsTextBox = page.locator('#rights_other')
-
-    // hybrid form
-    this.hybridRegistrationRadioButton = page.locator('input[name="event_tix"]').nth(1)
 
     // helper functions - risk management
     this.speakersRadioButton = page.locator('fieldset').filter({ hasText: 'Will there be any speaker(s)' }).getByLabel('Yes', { exact: true })
@@ -155,20 +80,12 @@ export class FormsLayout {
     this.eventStartTimeTextBox = page.getByLabel('Event Start Time:')
     this.eventEndTimeTextBox = page.getByLabel('Event End Time:')
     this.eventDescriptionTextBox = page.getByLabel('Description of the')
+    this.expectedAttendeesTextBox = page.getByLabel('Number of expected')
     this.carletonStudentsRadioButton = page.getByLabel('Carleton University Students')
     this.staffFacultyRadioButton = page.getByLabel('Staff and Faculty')
     this.alumniRadioButton = page.getByLabel('Alumni')
     this.minorsRadioButton = page.locator('input[name="event_minors"]').first()
     this.vipRadioButton = page.locator('input[name="event_vip"]').first()
-
-    // helper functions - emergency response
-    this.emergencyFirstAidRadioButton = page.locator('input[name="emergency_firstaid"]').first()
-    this.emergencyHospitalRadioButton = page.locator('input[name="emergency_hospital"]').nth(1)
-    this.emergencyEvacRadioButton = page.locator('input[name="emergency_evac"]').first()
-    this.emergencyFlamesRadioButton = page.locator('input[name="emergency_flames"]').first()
-    this.emergencyCrowdControlRadioButton = page.locator('fieldset').filter({ hasText: 'Will crowd control measures' }).getByLabel('No')
-    this.emergencySafetyConcernsTextBox = page.getByLabel('Are there any other special')
-    this.emergencySafetyRisksTextBox = page.locator('#safety_risk')
 
     // helper functions - logistics
     this.logisticsContractsVendorRadioButton = page.locator('input[name="contracts_vendor"]').first()
@@ -177,13 +94,6 @@ export class FormsLayout {
     this.logisticsContractsInsuranceCertificateRadioButton = page.locator('input[name="contracts_insurance_certificate"]').first()
     this.logisticsRightsImplicationsRadioButton = page.locator('input[name="rights_implications"]').nth(1)
     this.logisticsRightsRisksRadioButton = page.locator('input[name="rights_risks"]').first()
-
-    // helper functions - online information
-    this.onlinePlatformTextBox = page.getByLabel('What platform will be used')
-    this.onlineTopicsTextBox = page.getByLabel('What topic will be discussed/')
-    this.onlineLocationTextBox = page.getByLabel('What is the location where')
-    this.onlineOrganizersTextBox = page.getByLabel('How many people will be')
-    this.onlineOrganizersAttendenceFromOriginTextBox = page.getByLabel('How many people will attend')
   }
 
   // goto
@@ -210,16 +120,6 @@ export class FormsLayout {
     await formLayout.secondaryPhoneTextBox.fill(SECONDARY_PHONE)
   }
 
-  async fillEmergencyResponse(formLayout: FormsLayout, EMERGENCY_SAFETY_CONCERNS: string, EMERGENCY_SAFETY_RISKS: string) {
-    await formLayout.emergencyFirstAidRadioButton.check()
-    await formLayout.emergencyHospitalRadioButton.check()
-    await formLayout.emergencyEvacRadioButton.check()
-    await formLayout.emergencyFlamesRadioButton.check()
-    await formLayout.emergencyCrowdControlRadioButton.check()
-    await formLayout.emergencySafetyConcernsTextBox.fill(EMERGENCY_SAFETY_CONCERNS)
-    await formLayout.emergencySafetyRisksTextBox.fill(EMERGENCY_SAFETY_RISKS)
-  }
-
   async fillEventDetails(formLayout: FormsLayout, EVENT_TITLE: string, EVENT_DATE: string, EVENT_START_TIME: string, EVENT_END_TIME: string, EVENT_DESCRIPTION: string, EVENT_EXPECTED_ATTENDEES: string) {
     await formLayout.eventTitleTextBox.fill(EVENT_TITLE)
     await formLayout.eventDateTextBox.fill(EVENT_DATE) // date in yyyy/mm/dd format
@@ -243,18 +143,225 @@ export class FormsLayout {
     await formLayout.logisticsRightsRisksRadioButton.check()
   }
 
-  async fillOnlineInformation(formLayout: FormsLayout, ONLINE_PLATFORM: string, ONLINE_TOPICS: string, ONLINE_LOCATION: string, ONLINE_ORGANIZERS: string, ONLINE_ORGANIZERS_ATTENDENCE_FROM_ORIGIN: string) {
+  async fillRiskManagement(formLayout: FormsLayout, RISK_SPEAKER_TOPICS: string, RISK_SPEAKER_FULL_NAMES: string, RISK_SPEAKER_WEBSITE_URL: string) {
+    await formLayout.speakersRadioButton.check()
+    await formLayout.speakersTopicsTextBox.fill(RISK_SPEAKER_TOPICS)
+    await formLayout.speakersFullNamesTextBox.fill(RISK_SPEAKER_FULL_NAMES)
+    await formLayout.speakersWebsiteUrlTextBox.fill(RISK_SPEAKER_WEBSITE_URL)
+  }
+}
+
+export class OnlineFormLayout extends FormsLayout {
+  // Buttons
+  readonly onlineButton: Locator
+
+  // ONLINE FORM
+  readonly expectedOnlineAttendeesTextBox: Locator
+  readonly registrationRadioButton: Locator
+  readonly specialConcernsOnlineTextBox: Locator
+
+  // HELPER FUNCTIONS - ONLINE INFORMATION
+  readonly onlinePlatformTextBox: Locator
+  readonly onlineTopicsTextBox: Locator
+  readonly onlineLocationTextBox: Locator
+  readonly onlineOrganizersTextBox: Locator
+  readonly onlineOrganizersAttendenceFromOriginTextBox: Locator
+
+  constructor(page: Page) {
+    super(page)
+
+    // Buttons
+    this.onlineButton = page.getByRole('link', { name: 'Online' })
+
+    // online form
+    this.expectedOnlineAttendeesTextBox = page.getByLabel('Number of expected online')
+    this.registrationRadioButton = page.locator('input[name="event_tix"]').nth(3)
+    this.specialConcernsOnlineTextBox = page.getByLabel('Are there any other special')
+
+    // helper functions - online information
+    this.onlinePlatformTextBox = page.getByLabel('What platform will be used')
+    this.onlineTopicsTextBox = page.getByLabel('What topic will be discussed/')
+    this.onlineLocationTextBox = page.getByLabel('What is the location where')
+    this.onlineOrganizersTextBox = page.getByLabel('How many people will be')
+    this.onlineOrganizersAttendenceFromOriginTextBox = page.getByLabel('How many people will attend')
+  }
+
+  async fillOnlineInformation(formLayout: OnlineFormLayout, ONLINE_PLATFORM: string, ONLINE_TOPICS: string, ONLINE_LOCATION: string, ONLINE_ORGANIZERS: string, ONLINE_ORGANIZERS_ATTENDENCE_FROM_ORIGIN: string) {
     await formLayout.onlinePlatformTextBox.fill(ONLINE_PLATFORM)
     await formLayout.onlineTopicsTextBox.fill(ONLINE_TOPICS)
     await formLayout.onlineLocationTextBox.fill(ONLINE_LOCATION)
     await formLayout.onlineOrganizersTextBox.fill(ONLINE_ORGANIZERS)
     await formLayout.onlineOrganizersAttendenceFromOriginTextBox.fill(ONLINE_ORGANIZERS_ATTENDENCE_FROM_ORIGIN)
   }
+}
 
-  async fillRiskManagement(formLayout: FormsLayout, RISK_SPEAKER_TOPICS: string, RISK_SPEAKER_FULL_NAMES: string, RISK_SPEAKER_WEBSITE_URL: string) {
-    await formLayout.speakersRadioButton.check()
-    await formLayout.speakersTopicsTextBox.fill(RISK_SPEAKER_TOPICS)
-    await formLayout.speakersFullNamesTextBox.fill(RISK_SPEAKER_FULL_NAMES)
-    await formLayout.speakersWebsiteUrlTextBox.fill(RISK_SPEAKER_WEBSITE_URL)
+export class InPersonFormLayout extends FormsLayout {
+  // Buttons
+  readonly inPersonButton: Locator
+
+  // IN-PERSON + HYBRID FORM
+  readonly eventLocationTextBox: Locator
+  readonly eventLocationRadioButton: Locator
+  readonly expectedAttendeesTextBox: Locator
+  readonly foodRadioButton: Locator
+  readonly healthInsuranceRadioButton: Locator
+  readonly photoIdRadioButton: Locator
+  readonly alcoholRadioButton: Locator
+  readonly transportationRadioButton: Locator
+  readonly outOfProvinceRadioButton: Locator
+  readonly garbageRadioButton: Locator
+  readonly cleanupRadioButton: Locator
+  readonly cleanupTextBox: Locator
+  readonly overnightRadioButton: Locator
+  readonly rightsTextBox: Locator
+
+  // HELPER FUNCTIONS - EMERGENCY RESPONSE
+  readonly emergencyFirstAidRadioButton: Locator
+  readonly emergencyHospitalRadioButton: Locator
+  readonly emergencyEvacRadioButton: Locator
+  readonly emergencyFlamesRadioButton: Locator
+  readonly emergencyCrowdControlRadioButton: Locator
+  readonly emergencySafetyConcernsTextBox: Locator
+  readonly emergencySafetyRisksTextBox: Locator
+
+  constructor(page: Page) {
+    super(page)
+
+    // Buttons
+    this.inPersonButton = page.getByRole('link', { name: 'In-Person' })
+
+    // in-person + hybrid form
+    this.eventLocationTextBox = page.getByLabel('Event LocationIf on campus,')
+    this.eventLocationRadioButton = page.locator('input[name="event_location_res"]').nth(1)
+    this.expectedAttendeesTextBox = page.getByLabel('Number of expected')
+    this.foodRadioButton = page.locator('input[name="event_food"]').first()
+    this.healthInsuranceRadioButton = page.locator('input[name="event_health_insurance"]').first()
+    this.photoIdRadioButton = page.locator('input[name="event_photo_id"]').first()
+    this.alcoholRadioButton = page.locator('input[name="risk_alcohol"]').first()
+    this.transportationRadioButton = page.locator('input[name="travel_transportation"]').first()
+    this.outOfProvinceRadioButton = page.locator('input[name="out_of_province"]').first()
+    this.garbageRadioButton = page.locator('input[name="fmp_garbage"]').first()
+    this.cleanupRadioButton = page.locator('input[name="fmp_cleanup"]').nth(1)
+    this.cleanupTextBox = page.getByLabel('Please provide details as to')
+    this.overnightRadioButton = page.locator('input[name="fmp_overnight"]').first()
+    this.rightsTextBox = page.locator('#rights_other')
+
+    // helper functions - emergency response
+    this.emergencyFirstAidRadioButton = page.locator('input[name="emergency_firstaid"]').first()
+    this.emergencyHospitalRadioButton = page.locator('input[name="emergency_hospital"]').nth(1)
+    this.emergencyEvacRadioButton = page.locator('input[name="emergency_evac"]').first()
+    this.emergencyFlamesRadioButton = page.locator('input[name="emergency_flames"]').first()
+    this.emergencyCrowdControlRadioButton = page.locator('fieldset').filter({ hasText: 'Will crowd control measures' }).getByLabel('No')
+    this.emergencySafetyConcernsTextBox = page.getByLabel('Are there any other special')
+    this.emergencySafetyRisksTextBox = page.locator('#safety_risk')
+  }
+
+  async fillEmergencyResponse(formLayout: InPersonFormLayout, EMERGENCY_SAFETY_CONCERNS: string, EMERGENCY_SAFETY_RISKS: string) {
+    await formLayout.emergencyFirstAidRadioButton.check()
+    await formLayout.emergencyHospitalRadioButton.check()
+    await formLayout.emergencyEvacRadioButton.check()
+    await formLayout.emergencyFlamesRadioButton.check()
+    await formLayout.emergencyCrowdControlRadioButton.check()
+    await formLayout.emergencySafetyConcernsTextBox.fill(EMERGENCY_SAFETY_CONCERNS)
+    await formLayout.emergencySafetyRisksTextBox.fill(EMERGENCY_SAFETY_RISKS)
+  }
+}
+
+export class HybridFormLayout extends FormsLayout {
+  readonly hybridButton: Locator
+
+  // IN-PERSON + HYBRID FORM
+  readonly eventLocationTextBox: Locator
+  readonly eventLocationRadioButton: Locator
+  readonly expectedAttendeesTextBox: Locator
+  readonly foodRadioButton: Locator
+  readonly healthInsuranceRadioButton: Locator
+  readonly photoIdRadioButton: Locator
+  readonly alcoholRadioButton: Locator
+  readonly transportationRadioButton: Locator
+  readonly outOfProvinceRadioButton: Locator
+  readonly garbageRadioButton: Locator
+  readonly cleanupRadioButton: Locator
+  readonly cleanupTextBox: Locator
+  readonly overnightRadioButton: Locator
+  readonly rightsTextBox: Locator
+
+  // HYBRID FORM
+  readonly hybridRegistrationRadioButton: Locator
+
+  // HELPER FUNCTIONS - EMERGENCY RESPONSE
+  readonly emergencyFirstAidRadioButton: Locator
+  readonly emergencyHospitalRadioButton: Locator
+  readonly emergencyEvacRadioButton: Locator
+  readonly emergencyFlamesRadioButton: Locator
+  readonly emergencyCrowdControlRadioButton: Locator
+  readonly emergencySafetyConcernsTextBox: Locator
+  readonly emergencySafetyRisksTextBox: Locator
+
+  // HELPER FUNCTIONS - ONLINE INFORMATION
+  readonly onlinePlatformTextBox: Locator
+  readonly onlineTopicsTextBox: Locator
+  readonly onlineLocationTextBox: Locator
+  readonly onlineOrganizersTextBox: Locator
+  readonly onlineOrganizersAttendenceFromOriginTextBox: Locator
+
+  constructor(page: Page) {
+    super(page)
+
+    // Buttons
+    this.hybridButton = page.getByRole('link', { name: 'Hybrid' })
+
+    // in-person + hybrid form
+    this.eventLocationTextBox = page.getByLabel('Event LocationIf on campus,')
+    this.eventLocationRadioButton = page.locator('input[name="event_location_res"]').nth(1)
+    this.expectedAttendeesTextBox = page.getByLabel('Number of expected')
+    this.foodRadioButton = page.locator('input[name="event_food"]').first()
+    this.healthInsuranceRadioButton = page.locator('input[name="event_health_insurance"]').first()
+    this.photoIdRadioButton = page.locator('input[name="event_photo_id"]').first()
+    this.alcoholRadioButton = page.locator('input[name="risk_alcohol"]').first()
+    this.transportationRadioButton = page.locator('input[name="travel_transportation"]').first()
+    this.outOfProvinceRadioButton = page.locator('input[name="out_of_province"]').first()
+    this.garbageRadioButton = page.locator('input[name="fmp_garbage"]').first()
+    this.cleanupRadioButton = page.locator('input[name="fmp_cleanup"]').nth(1)
+    this.cleanupTextBox = page.getByLabel('Please provide details as to')
+    this.overnightRadioButton = page.locator('input[name="fmp_overnight"]').first()
+    this.rightsTextBox = page.locator('#rights_other')
+
+    // hybrid form
+    this.hybridRegistrationRadioButton = page.locator('input[name="event_tix"]').nth(1)
+
+    // helper functions - emergency response
+    this.emergencyFirstAidRadioButton = page.locator('input[name="emergency_firstaid"]').first()
+    this.emergencyHospitalRadioButton = page.locator('input[name="emergency_hospital"]').nth(1)
+    this.emergencyEvacRadioButton = page.locator('input[name="emergency_evac"]').first()
+    this.emergencyFlamesRadioButton = page.locator('input[name="emergency_flames"]').first()
+    this.emergencyCrowdControlRadioButton = page.locator('fieldset').filter({ hasText: 'Will crowd control measures' }).getByLabel('No')
+    this.emergencySafetyConcernsTextBox = page.getByLabel('Are there any other special')
+    this.emergencySafetyRisksTextBox = page.locator('#safety_risk')
+
+    // helper functions - online information
+    this.onlinePlatformTextBox = page.getByLabel('What platform will be used')
+    this.onlineTopicsTextBox = page.getByLabel('What topic will be discussed/')
+    this.onlineLocationTextBox = page.getByLabel('What is the location where')
+    this.onlineOrganizersTextBox = page.getByLabel('How many people will be')
+    this.onlineOrganizersAttendenceFromOriginTextBox = page.getByLabel('How many people will attend')
+  }
+
+  async fillEmergencyResponse(formLayout: HybridFormLayout, EMERGENCY_SAFETY_CONCERNS: string, EMERGENCY_SAFETY_RISKS: string) {
+    await formLayout.emergencyFirstAidRadioButton.check()
+    await formLayout.emergencyHospitalRadioButton.check()
+    await formLayout.emergencyEvacRadioButton.check()
+    await formLayout.emergencyFlamesRadioButton.check()
+    await formLayout.emergencyCrowdControlRadioButton.check()
+    await formLayout.emergencySafetyConcernsTextBox.fill(EMERGENCY_SAFETY_CONCERNS)
+    await formLayout.emergencySafetyRisksTextBox.fill(EMERGENCY_SAFETY_RISKS)
+  }
+
+  async fillOnlineInformation(formLayout: HybridFormLayout, ONLINE_PLATFORM: string, ONLINE_TOPICS: string, ONLINE_LOCATION: string, ONLINE_ORGANIZERS: string, ONLINE_ORGANIZERS_ATTENDENCE_FROM_ORIGIN: string) {
+    await formLayout.onlinePlatformTextBox.fill(ONLINE_PLATFORM)
+    await formLayout.onlineTopicsTextBox.fill(ONLINE_TOPICS)
+    await formLayout.onlineLocationTextBox.fill(ONLINE_LOCATION)
+    await formLayout.onlineOrganizersTextBox.fill(ONLINE_ORGANIZERS)
+    await formLayout.onlineOrganizersAttendenceFromOriginTextBox.fill(ONLINE_ORGANIZERS_ATTENDENCE_FROM_ORIGIN)
   }
 }

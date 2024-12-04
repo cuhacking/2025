@@ -1,8 +1,8 @@
 import type { ScheduleOnlineParams } from './input/schedule-online-params'
 
-import type { FormsLayout } from './pom'
+import type { OnlineFormLayout } from './pom'
 
-export async function scheduleOnline(params: ScheduleOnlineParams, formLayout: FormsLayout) {
+export async function scheduleOnline(params: ScheduleOnlineParams, formLayout: OnlineFormLayout) {
   await formLayout.goto()
   await formLayout.onlineButton.click()
 

@@ -3,7 +3,7 @@ import { exit, stdout } from 'node:process'
 import { chromium } from '@playwright/test'
 import { getUserConfirmation } from '../../helpers/get-user-confirmation'
 import { scheduleInPerson } from '../in-person'
-import { FormsLayout } from '../pom'
+import { InPersonFormLayout } from '../pom'
 
 (async function getInputAndRunPlaywright() {
   const params: ScheduleInPersonParams = {
@@ -80,7 +80,7 @@ import { FormsLayout } from '../pom'
     try {
       const browser = await chromium.launch({ headless: false })
       const page = await browser.newPage()
-      const formLayout = new FormsLayout(page)
+      const formLayout = new InPersonFormLayout(page)
       await scheduleInPerson(params, formLayout)
       stdout.write('Form filled successfully!\n')
     }

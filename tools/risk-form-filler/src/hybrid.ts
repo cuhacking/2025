@@ -1,8 +1,8 @@
 import type { ScheduleHybridParams } from './input/schedule-hybrid-params'
 
-import type { FormsLayout } from './pom'
+import type { HybridFormLayout } from './pom'
 
-export async function scheduleHybrid(params: ScheduleHybridParams, formLayout: FormsLayout) {
+export async function scheduleHybrid(params: ScheduleHybridParams, formLayout: HybridFormLayout) {
   await formLayout.goto()
   await formLayout.hybridButton.click()
 

@@ -1,7 +1,7 @@
 import type { ScheduleInPersonParams } from './input/schedule-in-person-params'
-import type { FormsLayout } from './pom'
+import type { InPersonFormLayout } from './pom'
 
-export async function scheduleInPerson(params: ScheduleInPersonParams, formLayout: FormsLayout) {
+export async function scheduleInPerson(params: ScheduleInPersonParams, formLayout: InPersonFormLayout) {
   await formLayout.goto()
   await formLayout.inPersonButton.click()
 
