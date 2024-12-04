@@ -42,6 +42,7 @@ const Configuration: UserConfig = {
       'web-e2e',
       'portal',
       'portal-e2e',
+      'tools',
     ]],
     // 'scope-empty': [2, 'never'], // Scope should always be provided
 
