@@ -4,28 +4,29 @@ import { chromium } from '@playwright/test'
 import { getUserConfirmation } from '../../helpers/get-user-confirmation'
 import { scheduleOnline } from '../online'
 import { OnlineFormLayout } from '../pom'
+import { validateCarletonEmail, validateDate, validateStudentID, validateTime } from './validation'
 
 (async function getInputAndRunPlaywright() {
   const params: ScheduleOnlineParams = {
     primaryOrganizer: {
       firstName: 'Raef',
       lastName: 'Sarofiem',
-      studentID: 111101111,
+      studentID: 111211112, // Invalid student ID - should be >= 100000000 && <= 111111111
       email: 'raefsarofiem@cmail.carleton.ca',
       phone: 'RAEF_PHONE_NUMBER',
     },
     secondaryOrganizer: {
       firstName: 'Ajaan',
       lastName: 'Nalliah',
-      studentID: 111101112,
+      studentID: 111211112, // Invalid student ID - should be >= 100000000 && <= 111111111
       email: 'ajaannalliah@cmail.carleton.ca',
       phone: 'AJAAN_PHONE_NUMBER',
     },
     eventDetails: {
       title: 'cuHacking Event Title',
-      date: '2024/11/23',
-      startTime: '10:00 AM',
-      endTime: '12:00 PM',
+      date: '2024/12/19',
+      startTime: '10:24 AM',
+      endTime: '11:24 AM',
       description: 'cuHacking Event Description',
       expectedAttendees: 100,
     },
@@ -79,6 +80,37 @@ import { OnlineFormLayout } from '../pom'
 
   `
   stdout.write(output)
+
+  // Primary Organizer
+  if (!validateCarletonEmail(params.primaryOrganizer.email)) {
+    throw new Error('Invalid email format for primary organizer.')
+  }
+
+  if (!validateStudentID(params.primaryOrganizer.studentID)) {
+    throw new Error('Invalid studentID format for primary organizer.')
+  }
+
+  // Secondary Organizer
+  if (!validateCarletonEmail(params.secondaryOrganizer.email)) {
+    throw new Error('Invalid email format for secondary organizer.')
+  }
+
+  if (!validateStudentID(params.secondaryOrganizer.studentID)) {
+    throw new Error('Invalid Student ID format for secondary organizer.')
+  }
+
+  // Event Details
+  if (!validateDate(params.eventDetails.date)) {
+    throw new Error('Invalid event date format. Use YYYY/MM/DD')
+  }
+
+  if (!validateTime(params.eventDetails.startTime)) {
+    throw new Error('Invalid event time format. Use HH:MM AM/PM')
+  }
+
+  if (!validateTime(params.eventDetails.endTime)) {
+    throw new Error('Invalid event time format. Use HH:MM AM/PM')
+  }
 
   const isConfirmed = await getUserConfirmation('Is this information correct? Otherwise change the input file... (yes/y to proceed): ')
 
