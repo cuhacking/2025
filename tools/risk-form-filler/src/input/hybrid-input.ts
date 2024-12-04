@@ -1,4 +1,4 @@
-import type { ScheduleHybridParams } from './schedule-hybrid-params'
+import type { ScheduleHybridParams } from '../defs/hybrid-input-defs'
 import { exit, stdout } from 'node:process'
 import { chromium } from '@playwright/test'
 import { getUserConfirmation } from '../../helpers/get-user-confirmation'
