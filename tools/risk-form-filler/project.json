@@ -1,0 +1,28 @@
+{
+  "name": "risk-form-filler",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/risk-form-filler",
+  "projectType": "application",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project risk-form-filler --web",
+  "targets": {
+    "online": {
+      "command": "npx tsx src/input/online-input.ts",
+      "options": {
+        "cwd": "tools/risk-form-filler"
+      }
+    },
+    "in-person": {
+      "command": "npx tsx src/input/in-person-input.ts",
+      "options": {
+        "cwd": "tools/risk-form-filler"
+      }
+    },
+    "hybrid": {
+      "command": "npx tsx src/input/hybrid-input.ts",
+      "options": {
+        "cwd": "tools/risk-form-filler"
+      }
+    }
+  }
+}
