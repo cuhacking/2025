@@ -14,6 +14,7 @@ const links = [
   { name: 'EVENTS', link: '/#events' },
   { name: 'SPONSORS', link: '/#sponsors' },
   { name: 'FAQ', link: '/#faq' },
+  { name: 'CONTACT US', link: '/#contactpage' },
 ]
 
 const socials = [
