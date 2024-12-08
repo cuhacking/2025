@@ -62,7 +62,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="flex justify-center w-full bg-black text-white min-h-screen">
+    <div id="contactpage" className="flex justify-center w-full bg-black text-white min-h-screen">
       <div className="w-full max-w-screen-xl px-5 py-5 lg:px-20 lg:py-14">
         {/* GlassmorphicCard Wrapper */}
         <GlassmorphicCard className="flex flex-col justify-between gap-8 w-full h-auto p-6">
