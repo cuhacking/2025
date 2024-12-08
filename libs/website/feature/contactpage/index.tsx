@@ -8,7 +8,7 @@ import { StatusMessage } from './ui/StatusMessage'
 export function ContactPage(): React.JSX.Element {
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null)
 
-  // Auto-hide status message after 3 seconds
+  // hiding message after 3 seconds
   useEffect(() => {
     if (submitStatus) {
       const timer = setTimeout(() => {
@@ -34,7 +34,7 @@ export function ContactPage(): React.JSX.Element {
             {/* Hero */}
             <ContactHero />
 
-            {/* Status Message - Only shown when submitStatus is not null */}
+            {/* Status Message */}
             {submitStatus && (
               <div className="transition-all duration-300 ease-in-out">
                 <StatusMessage type={submitStatus} />

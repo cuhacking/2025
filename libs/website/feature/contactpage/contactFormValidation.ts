@@ -12,7 +12,6 @@ export interface FormErrors {
   message?: string
 }
 
-/* Correct function definition */
 export function validateForm(values: FormData): FormErrors {
   const errors: FormErrors = {}
 

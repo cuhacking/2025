@@ -27,7 +27,7 @@ export function ContactForm({ onSubmit }: ContactFormProps): React.JSX.Element {
       [name]: value,
     }))
 
-    // Clear errors as user types
+    // Cleaning errors as user types
     if (errors[name as keyof FormErrors]) {
       setErrors((prev: FormErrors) => ({
         ...prev,
@@ -49,7 +49,7 @@ export function ContactForm({ onSubmit }: ContactFormProps): React.JSX.Element {
 
     try {
       await new Promise<void>((resolve) => {
-        setTimeout(resolve, 1500) // Simulate API call
+        setTimeout(resolve, 1500)
       })
       onSubmit('success')
       setFormData({ name: '', email: '', subject: '', message: '' })
