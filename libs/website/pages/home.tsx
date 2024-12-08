@@ -1,5 +1,5 @@
 import React from 'react'
-import Contactcard from '../feature/contactpage/contact'
+import { ContactPage } from '../feature/contactpage'
 import { EventSection } from '../feature/events'
 import { FAQSection } from '../feature/faq'
 import { MissionSection, WelcomeSection } from '../feature/introduction'
@@ -15,7 +15,7 @@ export function Home() {
       <EventSection />
       <SponsorshipSection />
       <FAQSection />
-      <Contactcard />
+      <ContactPage />
     </Layout>
   )
 }
