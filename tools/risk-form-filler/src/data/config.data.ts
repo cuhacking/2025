@@ -106,10 +106,11 @@ export class Config {
     humanRights: {
       rightsImplications: 'Yes',
       rightsRisks: 'No',
-      // otherRisks: 'None identified.',
+      otherRisks: 'None identified.',
     },
     onlineInformation: {
       onlinePlatform: 'Zoom',
+      onlineTopic: 'cuHacking Weekly General Meeting',
       onlineLocation: 'NN 374',
       onlinePeople: '10',
       onlineOriginAttendance: '5',
