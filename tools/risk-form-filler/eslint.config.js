@@ -10,7 +10,10 @@ export default (async () => {
     {
       files: ['**/*.ts', '**/*.js'],
       // Override or add rules here
-      rules: {},
+      rules: {
+        'playwright/no-conditional-in-test': 'off',
+        'playwright/expect-expect': 'off',
+      },
     },
   ]
 })()
