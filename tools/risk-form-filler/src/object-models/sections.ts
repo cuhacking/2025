@@ -62,9 +62,9 @@ export class Event {
       eventStartTime: new Field('event_start_time', 'string', 'Event Start Time', true),
       eventEndTime: new Field('event_end_time', 'string', 'Event End Time', true),
       eventDescription: new Field('event_description', 'string', 'Description of the Event', false, undefined, undefined, 4),
-      // eventLocation: new Field('event_location', 'string', 'Event Location', true, undefined, 200),
-      // eventLocationReserved: new Field('event_location_res', 'string', 'Has this location been reserved?', true, ['No', 'Yes']),
-      // eventParticipantsNumber: new Field('event_participants_number', 'string', 'Number of expected participants?', true, undefined, 200),
+      eventLocation: new Field('event_location', 'string', 'Event Location', true, undefined, 200),
+      eventLocationReserved: new Field('event_location_res', 'string', 'Has this location been reserved?', true, ['No', 'Yes']),
+      eventParticipantsNumber: new Field('event_participants_number', 'string', 'Number of expected participants?', true, undefined, 200),
       eventAudience: new Field('event_audience', 'array', 'Who is this event open to:', false, [
         'Carleton University Students',
         'Staff and Faculty',
@@ -547,15 +547,15 @@ export class HumanRights {
         true,
         ['No', 'Yes'],
       ),
-      // otherRisks: new Field(
-      //   'rights_other',
-      //   'string',
-      //   'Are there any other risks that the group/organizer feels that attendees would be exposed to by participating in this event? Please provide full details.',
-      //   false,
-      //   undefined,
-      //   undefined,
-      //   4,
-      // ),
+      otherRisks: new Field(
+        'rights_other',
+        'string',
+        'Are there any other risks that the group/organizer feels that attendees would be exposed to by participating in this event? Please provide full details.',
+        false,
+        undefined,
+        undefined,
+        4,
+      ),
     }
   }
 }
@@ -571,6 +571,14 @@ export class OnlineInformation {
         false,
         ['Zoom', 'Google Meet', 'Microsoft Teams', 'Discord', 'Other'],
         50,
+      ),
+      onlineTopic: new Field(
+        'online_topic',
+        'string',
+        'What topic will be discussed/presented or activities that will be broadcast?',
+        false,
+        undefined,
+        200,
       ),
       onlineLocation: new Field(
         'online_location',
