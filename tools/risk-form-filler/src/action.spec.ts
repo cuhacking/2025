@@ -180,6 +180,9 @@ test('Fill out Hybrid Form', async ({ page }) => {
 
   const primaryOrganizer = form.getSection('primaryOrganizer')
   const secondaryOrganizer = form.getSection('secondaryOrganizer')
+  const generalEvent = form.getSection('event')
+  const contractsInsurance = form.getSection('contractsInsurance')
+  const humanRights = form.getSection('humanRights')
 
   // Navigate to form
   const url = `${Config.LINK.BASE}/${Config.LINK.HYBRID}`
@@ -203,6 +206,23 @@ test('Fill out Hybrid Form', async ({ page }) => {
   await page.locator(`[name=${secondaryOrganizer.role.name}][value=${Config.testData.secondaryOrganizer.role}]`).click()
   await page.locator(`[name=${secondaryOrganizer.email.name}]`).fill(Config.testData.secondaryOrganizer.email)
   await page.locator(`[name=${secondaryOrganizer.phone.name}]`).fill(Config.testData.secondaryOrganizer.phone)
+
+  // General Event Information Section
+  await page.locator(`[name=${generalEvent.eventTitle.name}]`).fill(Config.testData.generalEvent.eventTitle)
+  await page.locator(`[name=${generalEvent.eventDate.name}]`).fill(Config.testData.generalEvent.eventDate)
+  await page.locator(`[name=${generalEvent.eventStartTime.name}]`).fill(Config.testData.generalEvent.eventStartTime)
+  await page.locator(`[name=${generalEvent.eventEndTime.name}]`).fill(Config.testData.generalEvent.eventEndTime)
+  await page.locator(`[name=${generalEvent.eventDescription.name}]`).fill(Config.testData.generalEvent.eventDescription)
+
+  // Contracts and Insurance Section
+  await page.locator(`[name=${contractsInsurance.vendorContracts.name}][value=${Config.testData.contractsInsurance.vendorContracts}]`).check()
+  await page.locator(`[name=${contractsInsurance.liabilityInsurance.name}][value=${Config.testData.contractsInsurance.liabilityInsurance}]`).check()
+  await page.locator(`[name=${contractsInsurance.insuranceInRental.name}][value="${Config.testData.contractsInsurance.insuranceInRental}"]`).check()
+  await page.locator(`[name=${contractsInsurance.insuranceCertificate.name}][value="${Config.testData.contractsInsurance.insuranceCertificate}"]`).check()
+
+  // Human Rights Section
+  await page.locator(`[name=${humanRights.rightsImplications.name}][value=${Config.testData.humanRights.rightsImplications}]`).check()
+  await page.locator(`[name=${humanRights.rightsRisks.name}][value=${Config.testData.humanRights.rightsRisks}]`).check()
 })
 
 test('Fill out Online Form', async ({ page }) => {
@@ -212,6 +232,7 @@ test('Fill out Online Form', async ({ page }) => {
   const secondaryOrganizer = form.getSection('secondaryOrganizer')
   const generalEvent = form.getSection('event')
   const onlineInformation = form.getSection('onlineInformation')
+  const contractsInsurance = form.getSection('contractsInsurance')
   const humanRights = form.getSection('humanRights')
 
   // Navigate to form
@@ -252,6 +273,12 @@ test('Fill out Online Form', async ({ page }) => {
   await page.locator(`[name=${onlineInformation.onlineLocation.name}]`).fill(Config.testData.onlineInformation.onlineLocation)
   await page.locator(`[name=${onlineInformation.onlinePeople.name}]`).fill(Config.testData.onlineInformation.onlinePeople)
   await page.locator(`[name=${onlineInformation.onlineOriginAttendance.name}]`).fill(Config.testData.onlineInformation.onlineOriginAttendance)
+
+  // Contracts and Insurance Section
+  await page.locator(`[name=${contractsInsurance.vendorContracts.name}][value=${Config.testData.contractsInsurance.vendorContracts}]`).check()
+  await page.locator(`[name=${contractsInsurance.liabilityInsurance.name}][value=${Config.testData.contractsInsurance.liabilityInsurance}]`).check()
+  await page.locator(`[name=${contractsInsurance.insuranceInRental.name}][value="${Config.testData.contractsInsurance.insuranceInRental}"]`).check()
+  await page.locator(`[name=${contractsInsurance.insuranceCertificate.name}][value="${Config.testData.contractsInsurance.insuranceCertificate}"]`).check()
 
   // Human Rights Section
   await page.locator(`[name=${humanRights.rightsImplications.name}][value=${Config.testData.humanRights.rightsImplications}]`).check()
