@@ -4,6 +4,7 @@ import {
   Event,
   HumanRights,
   MaintenanceServices,
+  OnlineInformation,
   Organizer,
   OutOfProvinceEvents,
   RiskManagement,
@@ -36,6 +37,7 @@ export class Form {
     const sharedSections = {
       event: Event.create(),
       riskManagement: RiskManagement.create(),
+      contractsInsurance: ContractsInsurance.create(),
       humanRights: HumanRights.create(),
     }
 
@@ -46,7 +48,6 @@ export class Form {
           ...sharedSections,
           emergencyPreparedness: EmergencyPreparedness.create(),
           safetyRiskAssessment: SafetyRiskAssessment.create(),
-          contractsInsurance: ContractsInsurance.create(),
           travel: Travel.create(),
           outOfProvinceEvents: OutOfProvinceEvents.create(),
           maintenanceServices: MaintenanceServices.create(),
@@ -57,7 +58,6 @@ export class Form {
           ...sharedSections,
           emergencyPreparedness: EmergencyPreparedness.create(),
           safetyRiskAssessment: SafetyRiskAssessment.create(),
-          contractsInsurance: ContractsInsurance.create(),
           travel: Travel.create(),
           outOfProvinceEvents: OutOfProvinceEvents.create(),
         }
@@ -65,7 +65,7 @@ export class Form {
         return {
           ...organizerSections,
           ...sharedSections,
-          contractsInsurance: ContractsInsurance.create(),
+          onlineInformation: OnlineInformation.create(),
         }
       default:
         throw new Error('Unknown form type')
