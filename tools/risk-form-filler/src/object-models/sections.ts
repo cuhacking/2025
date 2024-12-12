@@ -62,8 +62,8 @@ export class Event {
       eventStartTime: new Field('event_start_time', 'string', 'Event Start Time', true),
       eventEndTime: new Field('event_end_time', 'string', 'Event End Time', true),
       eventDescription: new Field('event_description', 'string', 'Description of the Event', false, undefined, undefined, 4),
-      eventLocation: new Field('event_location', 'string', 'Event Location', true, undefined, 200),
-      eventLocationReserved: new Field('event_location_res', 'string', 'Has this location been reserved?', true, ['No', 'Yes']),
+      // eventLocation: new Field('event_location', 'string', 'Event Location', true, undefined, 200),
+      // eventLocationReserved: new Field('event_location_res', 'string', 'Has this location been reserved?', true, ['No', 'Yes']),
       // eventParticipantsNumber: new Field('event_participants_number', 'string', 'Number of expected participants?', true, undefined, 200),
       eventAudience: new Field('event_audience', 'array', 'Who is this event open to:', false, [
         'Carleton University Students',
@@ -547,14 +547,54 @@ export class HumanRights {
         true,
         ['No', 'Yes'],
       ),
-      otherRisks: new Field(
-        'rights_other',
+      // otherRisks: new Field(
+      //   'rights_other',
+      //   'string',
+      //   'Are there any other risks that the group/organizer feels that attendees would be exposed to by participating in this event? Please provide full details.',
+      //   false,
+      //   undefined,
+      //   undefined,
+      //   4,
+      // ),
+    }
+  }
+}
+// FIXME: This section is incomplete
+// needs to add online event attendance
+export class OnlineInformation {
+  static create(): Record<string, Field<any>> {
+    return {
+      onlinePlatform: new Field(
+        'online_platform',
         'string',
-        'Are there any other risks that the group/organizer feels that attendees would be exposed to by participating in this event? Please provide full details.',
+        'What platform will be used for the broadcast of the event? (i.e.: Zoom, Microsoft Teams, etc.)',
+        false,
+        ['Zoom', 'Google Meet', 'Microsoft Teams', 'Discord', 'Other'],
+        50,
+      ),
+      onlineLocation: new Field(
+        'online_location',
+        'string',
+        'What is the location where the broadcast will originate?',
         false,
         undefined,
+        200,
+      ),
+      onlinePeople: new Field(
+        'online_people',
+        'string',
+        'How many people will be involved in the production of the event?',
+        false,
         undefined,
         4,
+      ),
+      onlineOriginAttendance: new Field(
+        'online_origin_attendance',
+        'string',
+        'How many people will attend the location where the production of the online event originates?',
+        false,
+        undefined,
+        200,
       ),
     }
   }
@@ -572,6 +612,7 @@ const travel = Travel.create()
 const outOfProvinceEvents = OutOfProvinceEvents.create()
 const maintenanceServices = MaintenanceServices.create()
 const humanRights = HumanRights.create()
+const onlineInformation = OnlineInformation.create()
 
 export {
   contractsInsurance,
@@ -579,6 +620,7 @@ export {
   event,
   humanRights,
   maintenanceServices,
+  onlineInformation,
   outOfProvinceEvents,
   primaryOrganizer,
   riskManagement,
