@@ -37,21 +37,20 @@ class FormsLayout {
   readonly minorsRadioButton: Locator
   readonly vipRadioButton: Locator
 
-  // Risk Management
+  // Risk Management - Speakers
 
   readonly speakersRadioButton: Locator
   readonly speakersTopicsTextBox: Locator
   readonly speakersFullNamesTextBox: Locator
   readonly speakersWebsiteUrlTextBox: Locator
 
-  // Emergency Management and Response
-
-  // Event Logistics and Considerations
-
+  // Event Logistics and Considerations - Contracts and Insurance
   readonly logisticsContractsVendorRadioButton: Locator
   readonly logisticsContractsLiabilityRadioButton: Locator
   readonly logisticsContractsInsuranceRentalRadioButton: Locator
   readonly logisticsContractsInsuranceCertificateRadioButton: Locator
+
+  // Human Rights Considerations
   readonly logisticsRightsImplicationsRadioButton: Locator
   readonly logisticsRightsRisksRadioButton: Locator
 
