@@ -36,6 +36,7 @@ export class Form {
     const sharedSections = {
       event: Event.create(),
       riskManagement: RiskManagement.create(),
+      humanRights: HumanRights.create(),
     }
 
     switch (this.formType) {
@@ -49,7 +50,6 @@ export class Form {
           travel: Travel.create(),
           outOfProvinceEvents: OutOfProvinceEvents.create(),
           maintenanceServices: MaintenanceServices.create(),
-          humanRights: HumanRights.create(),
         }
       case FormType.Hybrid:
         return {
