@@ -64,7 +64,7 @@ export class Event {
       eventDescription: new Field('event_description', 'string', 'Description of the Event', false, undefined, undefined, 4),
       eventLocation: new Field('event_location', 'string', 'Event Location', true, undefined, 200),
       eventLocationReserved: new Field('event_location_res', 'string', 'Has this location been reserved?', true, ['No', 'Yes']),
-      eventParticipantsNumber: new Field('event_participants_number', 'string', 'Number of expected participants?', true, undefined, 200),
+      // eventParticipantsNumber: new Field('event_participants_number', 'string', 'Number of expected participants?', true, undefined, 200),
       eventAudience: new Field('event_audience', 'array', 'Who is this event open to:', false, [
         'Carleton University Students',
         'Staff and Faculty',
