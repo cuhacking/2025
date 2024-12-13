@@ -53,9 +53,9 @@ test('Fill out In-Person Form', async ({ page }) => {
   await page.locator(`[name=${riskManagement.speaker.name}][value=${Config.testData.riskManagement.speaker}]`).check()
   const speakerSubfields = riskManagement.speaker.subfields
   if (speakerSubfields) {
-    await page.locator(`[name=${speakerSubfields.topics.name}][value=${Config.testData.riskManagement.topics}]`).check()
-    await page.locator(`[name=${speakerSubfields.names.name}][value=${Config.testData.riskManagement.names}]`).check()
-    await page.locator(`[name=${speakerSubfields.website.name}][value="${Config.testData.riskManagement.website}"]`).check()
+    await page.locator(`[name=${speakerSubfields.topics.name}]`).fill(Config.testData.riskManagement.topics)
+    await page.locator(`[name=${speakerSubfields.names.name}]`).fill(Config.testData.riskManagement.names)
+    await page.locator(`[name=${speakerSubfields.website.name}]`).fill(Config.testData.riskManagement.website)
   }
 
   // Contracts and Insurance Section
@@ -233,11 +233,11 @@ test('Fill out Hybrid Form', async ({ page }) => {
 
   // Speakers
   await page.locator(`[name=${riskManagement.speaker.name}][value=${Config.testData.riskManagement.speaker}]`).check()
-  const speakersSubfields = riskManagement.speaker.subfields
-  if (speakersSubfields && Config.testData.riskManagement.speaker === 'Yes') {
-    await page.locator(`[name=${speakersSubfields.topics.name}][value=${Config.testData.riskManagement.topics}]`).check()
-    await page.locator(`[name=${speakersSubfields.names.name}][value=${Config.testData.riskManagement.names}]`).check()
-    await page.locator(`[name=${speakersSubfields.website.name}][value="${Config.testData.riskManagement.website}"]`).check()
+  const speakerSubfields = riskManagement.speaker.subfields
+  if (speakerSubfields) {
+    await page.locator(`[name=${speakerSubfields.topics.name}]`).fill(Config.testData.riskManagement.topics)
+    await page.locator(`[name=${speakerSubfields.names.name}]`).fill(Config.testData.riskManagement.names)
+    await page.locator(`[name=${speakerSubfields.website.name}]`).fill(Config.testData.riskManagement.website)
   }
 
   // Contracts and Insurance Section
@@ -296,11 +296,11 @@ test('Fill out Online Form', async ({ page }) => {
 
   // Speakers
   await page.locator(`[name=${riskManagement.speaker.name}][value=${Config.testData.riskManagement.speaker}]`).check()
-  const speakersSubfields = riskManagement.speaker.subfields
-  if (speakersSubfields && Config.testData.riskManagement.speaker === 'Yes') {
-    await page.locator(`[name=${speakersSubfields.topics.name}][value=${Config.testData.riskManagement.topics}]`).check()
-    await page.locator(`[name=${speakersSubfields.names.name}][value=${Config.testData.riskManagement.names}]`).check()
-    await page.locator(`[name=${speakersSubfields.website.name}][value="${Config.testData.riskManagement.website}"]`).check()
+  const speakerSubfields = riskManagement.speaker.subfields
+  if (speakerSubfields) {
+    await page.locator(`[name=${speakerSubfields.topics.name}]`).fill(Config.testData.riskManagement.topics)
+    await page.locator(`[name=${speakerSubfields.names.name}]`).fill(Config.testData.riskManagement.names)
+    await page.locator(`[name=${speakerSubfields.website.name}]`).fill(Config.testData.riskManagement.website)
   }
 
   // Contracts and Insurance Section
