@@ -326,6 +326,6 @@ test('Fill out Online Form', async ({ page }) => {
   await page.locator(`[name=${onlineInformation.onlinePlatform.name}]`).fill(Config.testData.onlineInformation.onlinePlatform)
   await page.locator(`[name=${onlineInformation.onlineTopic.name}]`).fill(Config.testData.onlineInformation.onlineTopic)
   await page.locator(`[name=${onlineInformation.onlineLocation.name}]`).fill(Config.testData.onlineInformation.onlineLocation)
-  // await page.locator(`[name=${onlineInformation.onlinePeople.name}]`).fill(Config.testData.onlineInformation.onlinePeople)
-  // await page.locator(`[name=${onlineInformation.onlineOriginAttendance.name}]`).fill(Config.testData.onlineInformation.onlineOriginAttendance)
+  await page.locator(`[name=${onlineInformation.onlinePeople.name}]`).fill(Config.testData.onlineInformation.onlinePeople)
+  await page.locator(`[name=${onlineInformation.onlineOriginAttendance.name}]`).fill(Config.testData.onlineInformation.onlineOriginAttendance)
 })
