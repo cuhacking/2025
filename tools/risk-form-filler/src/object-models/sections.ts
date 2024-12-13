@@ -589,7 +589,7 @@ export class OnlineInformation {
         200,
       ),
       onlinePeople: new Field(
-        'online_people',
+        'online_production_count',
         'string',
         'How many people will be involved in the production of the event?',
         false,
@@ -597,7 +597,7 @@ export class OnlineInformation {
         4,
       ),
       onlineOriginAttendance: new Field(
-        'online_origin_attendance',
+        'online_location_count',
         'string',
         'How many people will attend the location where the production of the online event originates?',
         false,
