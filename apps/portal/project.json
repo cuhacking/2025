@@ -1,0 +1,30 @@
+{
+  "name": "portal",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/portal",
+  "projectType": "application",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project portal --web",
+  "targets": {
+    "dev": {
+      "command": "remix vite:dev",
+      "options": {
+        "cwd": "apps/portal"
+      }
+    },
+    "build": {
+      "command": "remix vite:build",
+      "cache": true,
+      "outputs": ["{projectRoot}/build", "{projectRoot}/public/build"],
+      "options": {
+        "cwd": "apps/portal"
+      }
+    },
+    "serve": {
+      "command": "netlify serve --filter portal",
+      "options": {
+        "cwd": "apps/portal"
+      }
+    }
+  }
+}
