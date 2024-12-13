@@ -1,74 +1,81 @@
-import { test } from '@playwright/test'
+import { test as base } from '@playwright/test'
 import { Config } from './data/config.data'
 import { Form, FormType } from './pom'
 
-test('Fill out In-Person Form', async ({ page }) => {
-  const form = new Form(FormType.InPerson)
+const test = base.extend<{ form: Form }>({
+  form: async ({ page }, use) => {
+    const form = new Form(FormType.InPerson)
+    const url = `${Config.LINK.BASE}/${Config.LINK.IN_PERSON}`
+    await page.goto(url)
 
-  const primaryOrganizer = form.getSection('primaryOrganizer')
-  const secondaryOrganizer = form.getSection('secondaryOrganizer')
-  const generalEvent = form.getSection('event')
-  const riskManagement = form.getSection('riskManagement')
+    const primaryOrganizer = form.getSection('primaryOrganizer')
+    const secondaryOrganizer = form.getSection('secondaryOrganizer')
+    const generalEvent = form.getSection('event')
+    const riskManagement = form.getSection('riskManagement')
+    const contractsInsurance = form.getSection('contractsInsurance')
+    const humanRights = form.getSection('humanRights')
+
+    // Fill Primary Organizer Section
+    await page.locator(`[name=${primaryOrganizer.firstName.name}]`).fill(Config.testData.primaryOrganizer.firstName)
+    await page.locator(`[name=${primaryOrganizer.lastName.name}]`).fill(Config.testData.primaryOrganizer.lastName)
+    await page.locator(`[name=${primaryOrganizer.carletonId.name}]`).fill(Config.testData.primaryOrganizer.carletonId)
+    await page.locator(`[name=${primaryOrganizer.position.name}]`).fill(Config.testData.primaryOrganizer.position)
+    await page.locator(`[name=${primaryOrganizer.role.name}][value=${Config.testData.primaryOrganizer.role}]`).click()
+    await page.locator(`[name=${primaryOrganizer.email.name}]`).fill(Config.testData.primaryOrganizer.email)
+    await page.locator(`[name=${primaryOrganizer.emailConfirm.name}]`).fill(Config.testData.primaryOrganizer.emailConfirm)
+    await page.locator(`[name=${primaryOrganizer.phone.name}]`).fill(Config.testData.primaryOrganizer.phone)
+
+    // Fill Secondary Organizer Section
+    await page.locator(`[name=${secondaryOrganizer.firstName.name}]`).fill(Config.testData.secondaryOrganizer.firstName)
+    await page.locator(`[name=${secondaryOrganizer.lastName.name}]`).fill(Config.testData.secondaryOrganizer.lastName)
+    await page.locator(`[name=${secondaryOrganizer.carletonId.name}]`).fill(Config.testData.secondaryOrganizer.carletonId)
+    await page.locator(`[name=${secondaryOrganizer.position.name}]`).fill(Config.testData.secondaryOrganizer.position)
+    await page.locator(`[name=${secondaryOrganizer.role.name}][value=${Config.testData.secondaryOrganizer.role}]`).click()
+    await page.locator(`[name=${secondaryOrganizer.email.name}]`).fill(Config.testData.secondaryOrganizer.email)
+    await page.locator(`[name=${secondaryOrganizer.phone.name}]`).fill(Config.testData.secondaryOrganizer.phone)
+
+    // General Event Information Section
+    await page.locator(`[name=${generalEvent.eventTitle.name}]`).fill(Config.testData.generalEvent.eventTitle)
+    await page.locator(`[name=${generalEvent.eventDate.name}]`).fill(Config.testData.generalEvent.eventDate)
+    await page.locator(`[name=${generalEvent.eventStartTime.name}]`).fill(Config.testData.generalEvent.eventStartTime)
+    await page.locator(`[name=${generalEvent.eventEndTime.name}]`).fill(Config.testData.generalEvent.eventEndTime)
+    await page.locator(`[name=${generalEvent.eventDescription.name}]`).fill(Config.testData.generalEvent.eventDescription)
+
+    // Speakers
+    await page.locator(`[name=${riskManagement.speaker.name}][value=${Config.testData.riskManagement.speaker}]`).check()
+    const speakerSubfields = riskManagement.speaker.subfields
+    if (speakerSubfields) {
+      await page.locator(`[name=${speakerSubfields.topics.name}]`).fill(Config.testData.riskManagement.topics)
+      await page.locator(`[name=${speakerSubfields.names.name}]`).fill(Config.testData.riskManagement.names)
+      await page.locator(`[name=${speakerSubfields.website.name}]`).fill(Config.testData.riskManagement.website)
+    }
+
+    // Contracts and Insurance Section
+    await page.locator(`[name=${contractsInsurance.vendorContracts.name}][value=${Config.testData.contractsInsurance.vendorContracts}]`).check()
+    await page.locator(`[name=${contractsInsurance.liabilityInsurance.name}][value=${Config.testData.contractsInsurance.liabilityInsurance}]`).check()
+    await page.locator(`[name=${contractsInsurance.insuranceInRental.name}][value="${Config.testData.contractsInsurance.insuranceInRental}"]`).check()
+    await page.locator(`[name=${contractsInsurance.insuranceCertificate.name}][value="${Config.testData.contractsInsurance.insuranceCertificate}"]`).check()
+
+    // Human Rights Section
+    await page.locator(`[name=${humanRights.rightsImplications.name}][value=${Config.testData.humanRights.rightsImplications}]`).check()
+    await page.locator(`[name=${humanRights.rightsRisks.name}][value=${Config.testData.humanRights.rightsRisks}]`).check()
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    await use(form)
+  },
+})
+
+test('Fill out In-Person Form', async ({ form, page }) => {
   const emergencyPreparedness = form.getSection('emergencyPreparedness')
   const safetyRiskAssessment = form.getSection('safetyRiskAssessment')
-  const contractsInsurance = form.getSection('contractsInsurance')
   const travel = form.getSection('travel')
   const outOfProvinceEvents = form.getSection('outOfProvinceEvents')
   const maintenanceServices = form.getSection('maintenanceServices')
+  const generalEvent = form.getSection('event')
+  const riskManagement = form.getSection('riskManagement')
   const humanRights = form.getSection('humanRights')
 
-  // Navigate to form
-  const url = `${Config.LINK.BASE}/${Config.LINK.IN_PERSON}`
-  await page.goto(url)
-
-  // --------------------------------------------------------- SHARED TESTS -------------------------------------------------------
-
-  // Fill Primary Organizer Section
-  await page.locator(`[name=${primaryOrganizer.firstName.name}]`).fill(Config.testData.primaryOrganizer.firstName)
-  await page.locator(`[name=${primaryOrganizer.lastName.name}]`).fill(Config.testData.primaryOrganizer.lastName)
-  await page.locator(`[name=${primaryOrganizer.carletonId.name}]`).fill(Config.testData.primaryOrganizer.carletonId)
-  await page.locator(`[name=${primaryOrganizer.position.name}]`).fill(Config.testData.primaryOrganizer.position)
-  await page.locator(`[name=${primaryOrganizer.role.name}][value=${Config.testData.primaryOrganizer.role}]`).click()
-  await page.locator(`[name=${primaryOrganizer.email.name}]`).fill(Config.testData.primaryOrganizer.email)
-  await page.locator(`[name=${primaryOrganizer.emailConfirm.name}]`).fill(Config.testData.primaryOrganizer.emailConfirm)
-  await page.locator(`[name=${primaryOrganizer.phone.name}]`).fill(Config.testData.primaryOrganizer.phone)
-
-  // Fill Secondary Organizer Section
-  await page.locator(`[name=${secondaryOrganizer.firstName.name}]`).fill(Config.testData.secondaryOrganizer.firstName)
-  await page.locator(`[name=${secondaryOrganizer.lastName.name}]`).fill(Config.testData.secondaryOrganizer.lastName)
-  await page.locator(`[name=${secondaryOrganizer.carletonId.name}]`).fill(Config.testData.secondaryOrganizer.carletonId)
-  await page.locator(`[name=${secondaryOrganizer.position.name}]`).fill(Config.testData.secondaryOrganizer.position)
-  await page.locator(`[name=${secondaryOrganizer.role.name}][value=${Config.testData.secondaryOrganizer.role}]`).click()
-  await page.locator(`[name=${secondaryOrganizer.email.name}]`).fill(Config.testData.secondaryOrganizer.email)
-  await page.locator(`[name=${secondaryOrganizer.phone.name}]`).fill(Config.testData.secondaryOrganizer.phone)
-
-  // General Event Information Section
-  await page.locator(`[name=${generalEvent.eventTitle.name}]`).fill(Config.testData.generalEvent.eventTitle)
-  await page.locator(`[name=${generalEvent.eventDate.name}]`).fill(Config.testData.generalEvent.eventDate)
-  await page.locator(`[name=${generalEvent.eventStartTime.name}]`).fill(Config.testData.generalEvent.eventStartTime)
-  await page.locator(`[name=${generalEvent.eventEndTime.name}]`).fill(Config.testData.generalEvent.eventEndTime)
-  await page.locator(`[name=${generalEvent.eventDescription.name}]`).fill(Config.testData.generalEvent.eventDescription)
-
-  // Speakers
-  await page.locator(`[name=${riskManagement.speaker.name}][value=${Config.testData.riskManagement.speaker}]`).check()
-  const speakerSubfields = riskManagement.speaker.subfields
-  if (speakerSubfields) {
-    await page.locator(`[name=${speakerSubfields.topics.name}]`).fill(Config.testData.riskManagement.topics)
-    await page.locator(`[name=${speakerSubfields.names.name}]`).fill(Config.testData.riskManagement.names)
-    await page.locator(`[name=${speakerSubfields.website.name}]`).fill(Config.testData.riskManagement.website)
-  }
-
-  // Contracts and Insurance Section
-  await page.locator(`[name=${contractsInsurance.vendorContracts.name}][value=${Config.testData.contractsInsurance.vendorContracts}]`).check()
-  await page.locator(`[name=${contractsInsurance.liabilityInsurance.name}][value=${Config.testData.contractsInsurance.liabilityInsurance}]`).check()
-  await page.locator(`[name=${contractsInsurance.insuranceInRental.name}][value="${Config.testData.contractsInsurance.insuranceInRental}"]`).check()
-  await page.locator(`[name=${contractsInsurance.insuranceCertificate.name}][value="${Config.testData.contractsInsurance.insuranceCertificate}"]`).check()
-
-  // Human Rights Section
-  await page.locator(`[name=${humanRights.rightsImplications.name}][value=${Config.testData.humanRights.rightsImplications}]`).check()
-  await page.locator(`[name=${humanRights.rightsRisks.name}][value=${Config.testData.humanRights.rightsRisks}]`).check()
-
-  // --------------------------------------------------------- OTHER TESTS -------------------------------------------------------
+  // --------------------------------------------------------- OTHER -------------------------------------------------------
 
   await page.locator(`[name=${generalEvent.eventLocation.name}]`).fill(Config.testData.generalEvent.eventLocation)
   await page.locator(`[name=${generalEvent.eventLocationReserved.name}][value=${Config.testData.generalEvent.eventLocationReserved}]`).click()
@@ -203,7 +210,7 @@ test('Fill out Hybrid Form', async ({ page }) => {
   const url = `${Config.LINK.BASE}/${Config.LINK.HYBRID}`
   await page.goto(url)
 
-  // --------------------------------------------------------- SHARED TESTS -------------------------------------------------------
+  // --------------------------------------------------------- SHARED -------------------------------------------------------
 
   // Fill Primary Organizer Section
   await page.locator(`[name=${primaryOrganizer.firstName.name}]`).fill(Config.testData.primaryOrganizer.firstName)
@@ -266,7 +273,7 @@ test('Fill out Online Form', async ({ page }) => {
   const url = `${Config.LINK.BASE}/${Config.LINK.ONLINE}`
   await page.goto(url)
 
-  // --------------------------------------------------------- SHARED TESTS -------------------------------------------------------
+  // --------------------------------------------------------- SHARED -------------------------------------------------------
 
   // Fill Primary Organizer Section
   await page.locator(`[name=${primaryOrganizer.firstName.name}]`).fill(Config.testData.primaryOrganizer.firstName)
@@ -313,12 +320,12 @@ test('Fill out Online Form', async ({ page }) => {
   await page.locator(`[name=${humanRights.rightsImplications.name}][value=${Config.testData.humanRights.rightsImplications}]`).check()
   await page.locator(`[name=${humanRights.rightsRisks.name}][value=${Config.testData.humanRights.rightsRisks}]`).check()
 
-  // --------------------------------------------------------- OTHER TESTS ------------------------------------------------
+  // --------------------------------------------------------- OTHER ------------------------------------------------
 
   // Fill Online Information Section
   await page.locator(`[name=${onlineInformation.onlinePlatform.name}]`).fill(Config.testData.onlineInformation.onlinePlatform)
   await page.locator(`[name=${onlineInformation.onlineTopic.name}]`).fill(Config.testData.onlineInformation.onlineTopic)
   await page.locator(`[name=${onlineInformation.onlineLocation.name}]`).fill(Config.testData.onlineInformation.onlineLocation)
-  await page.locator(`[name=${onlineInformation.onlinePeople.name}]`).fill(Config.testData.onlineInformation.onlinePeople)
-  await page.locator(`[name=${onlineInformation.onlineOriginAttendance.name}]`).fill(Config.testData.onlineInformation.onlineOriginAttendance)
+  // await page.locator(`[name=${onlineInformation.onlinePeople.name}]`).fill(Config.testData.onlineInformation.onlinePeople)
+  // await page.locator(`[name=${onlineInformation.onlineOriginAttendance.name}]`).fill(Config.testData.onlineInformation.onlineOriginAttendance)
 })
