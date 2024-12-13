@@ -55,6 +55,10 @@ export class Config {
       },
       campusSafety: 'Yes',
       privateSecurity: 'No',
+      speaker: 'Yes',
+      topics: 'cuHacking',
+      names: 'Raef Sarofiem',
+      website: 'https://cuhacking.ca/',
     },
     emergencyPreparedness: {
       firstAid: 'Yes',
