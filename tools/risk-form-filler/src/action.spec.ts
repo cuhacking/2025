@@ -49,6 +49,15 @@ test('Fill out In-Person Form', async ({ page }) => {
   await page.locator(`[name=${generalEvent.eventEndTime.name}]`).fill(Config.testData.generalEvent.eventEndTime)
   await page.locator(`[name=${generalEvent.eventDescription.name}]`).fill(Config.testData.generalEvent.eventDescription)
 
+  // Speakers
+  await page.locator(`[name=${riskManagement.speaker.name}][value=${Config.testData.riskManagement.speaker}]`).check()
+  const speakerSubfields = riskManagement.speaker.subfields
+  if (speakerSubfields) {
+    await page.locator(`[name=${speakerSubfields.topics.name}][value=${Config.testData.riskManagement.topics}]`).check()
+    await page.locator(`[name=${speakerSubfields.names.name}][value=${Config.testData.riskManagement.names}]`).check()
+    await page.locator(`[name=${speakerSubfields.website.name}][value="${Config.testData.riskManagement.website}"]`).check()
+  }
+
   // Contracts and Insurance Section
   await page.locator(`[name=${contractsInsurance.vendorContracts.name}][value=${Config.testData.contractsInsurance.vendorContracts}]`).check()
   await page.locator(`[name=${contractsInsurance.liabilityInsurance.name}][value=${Config.testData.contractsInsurance.liabilityInsurance}]`).check()
@@ -188,6 +197,7 @@ test('Fill out Hybrid Form', async ({ page }) => {
   const generalEvent = form.getSection('event')
   const contractsInsurance = form.getSection('contractsInsurance')
   const humanRights = form.getSection('humanRights')
+  const riskManagement = form.getSection('riskManagement')
 
   // Navigate to form
   const url = `${Config.LINK.BASE}/${Config.LINK.HYBRID}`
@@ -221,6 +231,15 @@ test('Fill out Hybrid Form', async ({ page }) => {
   await page.locator(`[name=${generalEvent.eventEndTime.name}]`).fill(Config.testData.generalEvent.eventEndTime)
   await page.locator(`[name=${generalEvent.eventDescription.name}]`).fill(Config.testData.generalEvent.eventDescription)
 
+  // Speakers
+  await page.locator(`[name=${riskManagement.speaker.name}][value=${Config.testData.riskManagement.speaker}]`).check()
+  const speakersSubfields = riskManagement.speaker.subfields
+  if (speakersSubfields && Config.testData.riskManagement.speaker === 'Yes') {
+    await page.locator(`[name=${speakersSubfields.topics.name}][value=${Config.testData.riskManagement.topics}]`).check()
+    await page.locator(`[name=${speakersSubfields.names.name}][value=${Config.testData.riskManagement.names}]`).check()
+    await page.locator(`[name=${speakersSubfields.website.name}][value="${Config.testData.riskManagement.website}"]`).check()
+  }
+
   // Contracts and Insurance Section
   await page.locator(`[name=${contractsInsurance.vendorContracts.name}][value=${Config.testData.contractsInsurance.vendorContracts}]`).check()
   await page.locator(`[name=${contractsInsurance.liabilityInsurance.name}][value=${Config.testData.contractsInsurance.liabilityInsurance}]`).check()
@@ -241,6 +260,7 @@ test('Fill out Online Form', async ({ page }) => {
   const onlineInformation = form.getSection('onlineInformation')
   const contractsInsurance = form.getSection('contractsInsurance')
   const humanRights = form.getSection('humanRights')
+  const riskManagement = form.getSection('riskManagement')
 
   // Navigate to form
   const url = `${Config.LINK.BASE}/${Config.LINK.ONLINE}`
@@ -273,6 +293,15 @@ test('Fill out Online Form', async ({ page }) => {
   await page.locator(`[name=${generalEvent.eventStartTime.name}]`).fill(Config.testData.generalEvent.eventStartTime)
   await page.locator(`[name=${generalEvent.eventEndTime.name}]`).fill(Config.testData.generalEvent.eventEndTime)
   await page.locator(`[name=${generalEvent.eventDescription.name}]`).fill(Config.testData.generalEvent.eventDescription)
+
+  // Speakers
+  await page.locator(`[name=${riskManagement.speaker.name}][value=${Config.testData.riskManagement.speaker}]`).check()
+  const speakersSubfields = riskManagement.speaker.subfields
+  if (speakersSubfields && Config.testData.riskManagement.speaker === 'Yes') {
+    await page.locator(`[name=${speakersSubfields.topics.name}][value=${Config.testData.riskManagement.topics}]`).check()
+    await page.locator(`[name=${speakersSubfields.names.name}][value=${Config.testData.riskManagement.names}]`).check()
+    await page.locator(`[name=${speakersSubfields.website.name}][value="${Config.testData.riskManagement.website}"]`).check()
+  }
 
   // Contracts and Insurance Section
   await page.locator(`[name=${contractsInsurance.vendorContracts.name}][value=${Config.testData.contractsInsurance.vendorContracts}]`).check()
