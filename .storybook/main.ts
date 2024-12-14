@@ -4,6 +4,7 @@ import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin'
 
 export default {
   stories: [
+    './*.@(mdx|stories.@(js|jsx|ts|tsx))',
     '../libs/external/shadcn/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
     '../libs/external/aceternity/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
     '../libs/external/magic-ui/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
@@ -11,6 +12,10 @@ export default {
     '../libs/shared/ui/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
     '../libs/website/feature/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
     '../libs/website/shared/ui/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
+  ],
+  staticDirs: [
+    // './public',
+    // '../static',
   ],
   framework: {
     name: '@storybook/nextjs',

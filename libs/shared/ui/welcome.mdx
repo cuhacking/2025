@@ -1,0 +1,169 @@
+import { Meta } from "@storybook/blocks";
+import Image from "next/image";
+
+import cuhacking_2025_design_system_cover from "../assets/screenshots/cuhacking_2025_design_system_cover.png";
+import cuhacking_2025_figma_design_system_and_assets from "../assets/screenshots/cuhacking_2025_figma_design_system_and_assets.png";
+import cuhacking_2025_docs_site from "../assets/screenshots/cuhacking_2025_docs_site.png";
+import cuhacking_2025_architecture_site from "../assets/screenshots/cuhacking_2025_architecture_site.png";
+import cuhacking_2025_github_repo_readme from "../assets/screenshots/cuhacking_2025_github_repo_readme.png";
+import cuhacking_2025_project_board from "../assets/screenshots/cuhacking_2025_project_board.png";
+
+import aceternity_ui_website from "../assets/screenshots/aceternity_ui_website.png";
+import magic_ui_website from "../assets/screenshots/magic_ui_website.png";
+import shadcn_ui_website from "../assets/screenshots/shadcn_ui_website.png";
+import tailwindcss_website from "../assets/screenshots/tailwindcss_website.png";
+
+<Meta title="👋 Welcome" />
+
+<div className="space-y-8 p-8">
+  <h1 className="text-3xl font-bold text-center">Welcome to cuHacking's 2025 Platform Storybook 👋</h1>
+  <hr/>
+
+<Image
+  src={cuhacking_2025_design_system_cover}
+  alt="cuHacking 2025 Design System Cover"
+  className="w-full h-auto mb-4"
+/>
+
+
+<p> Here you can find the design guidelines, component documentation, and resources used for building the [cuHacking 2025 Platform](https://cuhacking.ca), using our very own design system. </p>
+
+
+<h2 className="text-2xl font-semibold">Foundations</h2>
+
+<table className="table-auto mx-auto">
+  <tr>
+    <th className="text-center font-semibold">Aceternity UI</th>
+    <th className="text-center font-semibold">Magic UI</th>
+  </tr>
+  <tr>
+    <td className="text-center p-4">
+      <a
+        href="https://ui.aceternity.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Image
+          src={aceternity_ui_website}
+          alt="Aceternity UI"
+          className="w-full h-auto"
+        />
+      </a>
+    </td>
+    <td className="text-center p-4">
+      <a
+        href="https://magicui.design/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Image
+          src={magic_ui_website}
+          alt="Magic UI"
+          className="w-full h-auto"
+        />
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <th className="text-center font-semibold">Shadcn UI</th>
+    <th className="text-center font-semibold">Tailwind CSS</th>
+  </tr>
+  <tr>
+    <td className="text-center p-4">
+      <a href="https://ui.shadcn.com" target="_blank" rel="noopener noreferrer">
+        <Image
+          src={shadcn_ui_website}
+          alt="Shadcn UI"
+          className="w-full h-auto"
+        />
+      </a>
+    </td>
+    <td className="text-center p-4">
+      <a
+        href="https://tailwindcss.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Image
+          src={tailwindcss_website}
+          alt="Tailwind CSS"
+          className="w-full h-auto"
+        />
+      </a>
+    </td>
+  </tr>
+</table>
+
+{" "}
+
+<h2 className="text-2xl font-semibold">Quick Links</h2>
+
+{" "}
+
+<table className="table-auto mx-auto">
+  <tr>
+    <th className="text-center font-semibold">Figma</th>
+    <th className="text-center font-semibold">Docs Site</th>
+  </tr>
+  <tr>
+    <td className="text-center p-4">
+      <a
+        href="https://figma.com/design/wc1JOWR48tBNkjcjwY3AzB/%E2%8C%A8%EF%B8%8F-cuHacking-Design-System?node-id=0-1&t=YTR1ET4Qw1wG1cjz-1"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Image
+          src={cuhacking_2025_figma_design_system_and_assets}
+          alt="Figma"
+          className="w-full h-auto"
+        />
+      </a>
+    </td>
+    <td className="text-center p-4">
+      <a
+        href="https://docs.cuhacking.ca"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Image
+          src={cuhacking_2025_docs_site}
+          alt="cuHacking 2025 Docs Site"
+          className="w-full h-auto"
+        />
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <th className="text-center font-semibold">GitHub Repository</th>
+    <th className="text-center font-semibold">Project Board</th>
+  </tr>
+  <tr>
+    <td className="text-center p-4">
+      <a
+        href="https://github.com/cuhacking/2025"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Image
+          src={cuhacking_2025_github_repo_readme}
+          alt="cuHacking 2025 GitHub Repository"
+          className="w-full h-auto"
+        />
+      </a>
+    </td>
+    <td className="text-center p-4">
+      <a
+        href="https://github.com/orgs/cuhacking/projects/4"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Image
+          src={cuhacking_2025_project_board}
+          alt="Project Board"
+          className="w-full h-auto"
+        />
+      </a>
+    </td>
+  </tr>
+</table>
+</div>
