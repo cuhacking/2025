@@ -35,6 +35,8 @@ const preview: Preview = {
           'Website',
           ['Hero', 'About'],
           'cuHacking Design System',
+          'Aceternity',
+          'Magic UI',
           'Shadcn-ui',
           [
             'Introduction',

@@ -6,6 +6,7 @@ export default {
   stories: [
     '../libs/external/shadcn/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
     '../libs/external/aceternity/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
+    '../libs/external/magic-ui/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
     '../libs/docs/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
     '../libs/shared/ui/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
     '../libs/website/feature/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',

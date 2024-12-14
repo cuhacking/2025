@@ -11,6 +11,8 @@
     "paths": {
       "@aceternity": ["libs/external/aceternity/index.ts"],
       "@aceternity/*": ["libs/external/aceternity/*"],
+      "@magic-ui": ["libs/external/magic-ui/index.ts"],
+      "@magic-ui/*": ["libs/external/magic-ui/*"],
       "@cuhacking/docs": ["libs/docs/index.ts"],
       "@cuhacking/docs/*": ["libs/docs/*"],
       "@cuhacking/shared": ["libs/shared/index.ts"],
