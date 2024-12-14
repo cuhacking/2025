@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { ScratchToReveal } from './scratch-to-reveal'
 
 const meta: Meta = {
-  title: 'Magic UI/Scratch Reveal',
+  title: '🪄 Magic UI/Scratch Reveal',
   component: ScratchToReveal,
   parameters: {
     layout: 'centered',

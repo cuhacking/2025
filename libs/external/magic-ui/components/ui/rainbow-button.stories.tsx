@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { RainbowButton } from './rainbow-button'
 
 const meta: Meta = {
-  title: 'Magic UI/Rainbow Button',
+  title: '🪄 Magic UI/Rainbow Button',
   component: RainbowButton,
   parameters: {
     layout: 'centered',

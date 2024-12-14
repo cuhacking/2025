@@ -31,12 +31,15 @@ const preview: Preview = {
       storySort: {
         method: 'alphabetical',
         order: [
-          'Docs',
+          '👋 Welcome',
+          '🏛 Architecture',
+          '📚 Docs Site',
+          '🌀 Portal',
           'Website',
           ['Hero', 'About'],
           'cuHacking Design System',
-          'Aceternity',
-          'Magic UI',
+          '✨ Aceternity',
+          '🪄 Magic UI',
           'Shadcn-ui',
           [
             'Introduction',

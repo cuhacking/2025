@@ -3,7 +3,7 @@ import { User } from 'lucide-react'
 import { Feature } from './feature-section'
 
 const meta: Meta<typeof Feature> = {
-  title: 'Docs/Feature',
+  title: '📚 Docs Site/Feature',
   parameters: {
     layout: 'centered',
   },

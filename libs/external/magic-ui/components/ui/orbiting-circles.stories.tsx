@@ -3,7 +3,7 @@ import { Icons } from './icons'
 import { OrbitingCircles } from './orbiting-circles'
 
 const meta: Meta = {
-  title: 'Magic UI/Orbiting Circles',
+  title: '🪄 Magic UI/Orbiting Circles',
   component: OrbitingCircles,
   parameters: {
     layout: 'centered',

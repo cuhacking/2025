@@ -3,7 +3,7 @@ import { User } from 'lucide-react'
 import { Feature } from './feature-section'
 
 const meta: Meta<typeof Feature> = {
-  title: 'Aceternity/Feature',
+  title: '✨ Aceternity/Feature',
   parameters: {
     layout: 'centered',
   },
