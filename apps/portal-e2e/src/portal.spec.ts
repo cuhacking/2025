@@ -5,7 +5,8 @@ import { playAudit } from 'playwright-lighthouse'
 
 const lighthouseTest = test.extend<{ Page }, { port: number, browser: Browser }>({
   port: [
-    async (use) => {
+    // eslint-disable-next-line no-empty-pattern
+    async ({}, use) => {
       // Assign a unique port for each playwright worker to support parallel tests
       const port = await getPort()
       await use(port)
