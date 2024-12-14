@@ -31,6 +31,7 @@ const preview: Preview = {
       storySort: {
         method: 'alphabetical',
         order: [
+          'Docs',
           'Website',
           ['Hero', 'About'],
           'cuHacking Design System',
