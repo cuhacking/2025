@@ -60,7 +60,8 @@ export const baseOptions: BaseLayoutProps = {
     },
     {
       text: 'Design',
-      url: 'https://design.cuhacking.ca',
+      // url: https://design.cuhacking.ca,
+      url: 'https://675d152974bdbc0008a41d90--design-cuhacking.netlify.app/?path=/docs/website-event-event-item--docs',
       icon: <StorybookIcon />,
     },
     /* {
