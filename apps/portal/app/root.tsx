@@ -12,7 +12,7 @@ import '@cuhacking/shared/ui/global.css'
 
 export const meta: MetaFunction = () => [
   {
-    title: 'cuHacking 2025',
+    title: 'cuHacking 2025 Portal',
   },
 ]
 
