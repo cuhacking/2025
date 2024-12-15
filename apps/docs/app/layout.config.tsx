@@ -72,7 +72,7 @@ export const baseOptions: BaseLayoutProps = {
     {
       text: 'ESLint',
       // url: 'https://eslint.cuhacking.ca/rules',
-      url: 'https://675d1529da6aa500081a505a--eslint-cuhacking.netlify.app/rules',
+      url: 'https://eslint-cuhacking.netlify.app/rules',
       icon: <ESLintIcon />,
     },
     {
