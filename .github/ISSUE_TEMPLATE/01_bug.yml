@@ -1,6 +1,6 @@
 name: Bug issue
 description: Report a bug affecting cuHacking 2025 (includes website, portal and docs)
-title: '[BUG]: description-of-issue'
+title: 'fix(scope): description'
 labels:
   - bug
 body:
