@@ -22,6 +22,7 @@
 
 #========== LIBRARIES ==========
 /libs/external/     @MFarabi619
+/libs/shared/       @MFarabi619
 /libs/website/      @MFarabi619 @HasithDeAlwis
 /libs/utils/        @MFarabi619
 /libs/ui/           @MFarabi619
