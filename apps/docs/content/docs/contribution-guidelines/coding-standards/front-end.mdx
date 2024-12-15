@@ -3,3 +3,28 @@ title: Front-End
 description: WIP
 icon: Atom
 ---
+
+[tsconfig.json with comments and explanations](https://gist.github.com/er-ant/e8c2f8c47ad871a4685c2a17800c86ae)
+
+## Scaffolding Shadcn Ecosystem Library
+
+- Find desired library from [Awesome Shadcn](https://github.com/birobirobiro/awesome-shadcn-ui) or elsewhere.
+
+- Create path aliases
+```ts title="tsconfig.base.json"
+    "paths": {
+      "@aceternity": ["libs/external/aceternity/index.ts"],
+      "@aceternity/*": ["libs/external/aceternity/*"],
+      "@magic-ui": ["libs/external/magic-ui/index.ts"],
+      "@magic-ui/*": ["libs/external/magic-ui/*"],
+      "@farm-ui": ["libs/external/farm-ui/index.ts"], // [!code highlight]
+      "@farm-ui/*": ["libs/external/farm-ui/*"], // [!code highlight]
+      "@cuhacking/docs": ["libs/docs/index.ts"],
+      "@cuhacking/docs/*": ["libs/docs/*"],
+      "@cuhacking/shared": ["libs/shared/index.ts"],
+      "@cuhacking/shared/*": ["libs/shared/*"],
+      "@shadcn": ["libs/external/shadcn/index.ts"],
+      "@shadcn/*": ["libs/external/shadcn/*"],
+      "@website/*": ["libs/website/*"]
+    },
+```
