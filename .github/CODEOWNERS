@@ -5,6 +5,8 @@
 /apps/*             @MFarabi619
 /apps/docs/         @JeremyFriesenGitHub
 /apps/docs-e2e/     @JeremyFriesenGitHub
+/apps/website/      @HasithDeAlwis
+/apps/website-e2e/  @HasithDeAlwis
 
 #========== CONFIGURATIONS ==========
 *config*            @MFarabi619
@@ -17,6 +19,7 @@
 /.editorconfig      @MFarabi619
 
 #========== LIBRARIES ==========
+/libs/website/      @MFarabi619 @HasithDeAlwis
 /libs/utils/        @MFarabi619
 /libs/ui/           @MFarabi619
 /libs/api           @MFarabi619
