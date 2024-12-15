@@ -1,12 +1,12 @@
-name: Architecture Decision Record
-description: Record a design decision
+name: 🔬 Architecture Decision Record
+description: Justify a major technical decision
 title: '[ADR]: description'
 body:
   - type: checkboxes
     id: search
     attributes:
       label: Search checkbox
-      description: Insufficiently described issues will be closed, so please provide as much information as possible
+      description: Insufficiently described issues will be closed, so please provide as much information as possible.
       options:
         - label: Have you searched for similar [issues](https://github.com/cuhacking/2025/issues)?
   - type: dropdown
@@ -16,9 +16,10 @@ body:
       multiple: true
       options:
         - all
-        - Website
-        - Docs
         - Portal
+        - Docs
+        - Tools
+        - Website
       default: 0
     validations:
       required: true
@@ -26,14 +27,14 @@ body:
     id: problem
     attributes:
       label: Problem Statement
-      description: A brief description of what the issue of the design decision is
+      description: A brief description of what the issue of the design decision is.
     validations:
       required: true
   - type: textarea
     id: decision
     attributes:
       label: Decision
-      description: A brief description of the architectural decision taken
+      description: A brief description of the architectural decision taken.
     validations:
       required: true
   - type: textarea
@@ -43,7 +44,7 @@ body:
       description: |-
         Create a table comparing the different technologies that were considered and show pros and cons for specific use cases. You can copy the template for a table here:
 
-        ```bash
+        ```sh
         | Use Case | Tech 1 | Tech 2 |
         |----------|--------|--------|
         | Use Case 1 |        |        |
@@ -54,7 +55,7 @@ body:
     id: solution
     attributes:
       label: Solution Summary
-      description: A summary of the solution of this decision
+      description: A summary of the solution of this decision.
       placeholder: |-
         What is there to do next?
         What features need to be implemented?
