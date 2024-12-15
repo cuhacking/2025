@@ -4,6 +4,7 @@
 #=========== APPS ==========
 /apps/*             @MFarabi619
 /apps/docs/         @JeremyFriesenGitHub
+/apps/docs-e2e/     @JeremyFriesenGitHub
 
 #========== CONFIGURATIONS ==========
 *config*            @MFarabi619
