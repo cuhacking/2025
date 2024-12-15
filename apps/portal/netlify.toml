@@ -1,5 +1,5 @@
 [build]
-command = "pnpm nx build portal --verbose"
+command = "pnpm nx affected -t=build --exclude='*,!portal' --verbose"
 publish = "/apps/portal/build/client"
 
 [dev]
