@@ -1,0 +1,106 @@
+---
+title: Extreme Programming (XP)
+description: When making an issue takes far more time than just doing the work itself. WIP.
+---
+
+TODO: Add lucide icons to mindmap
+
+import {
+  Figma as BrandIcon,
+  Code as ESLintIcon,
+   Smartphone as HackerPortalIcon,
+   Instagram as InstagramIcon,
+   AppWindowMac as LandingPageIcon,
+   Linkedin as LinkedinIcon,
+   Trees as LinktreeIcon,
+   SquareKanban as ProjectBoardIcon,
+ } from 'lucide-react'
+
+import { Feature } from "@cuhacking/docs/components/ui/feature-section"
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion"
+
+## Introduction
+
+<Callout title="What's Extreme Programming (XP)?">
+- A set of rigorous software development practices built on top of the Agile methodology.
+- Rapid release cadence over tiny development cycles.
+- Emphasizes Test-Driven Development (TDD), Pair Programming, Continuous Integration, and Collective Code Ownership.
+</Callout>
+
+### Core Principles
+TODO: Add color schema to mindmap
+```mermaid
+mindmap
+  root((Core Principles))
+    Communication
+        Constant and open communication between all  developers, designers, PMs and customers
+    Simplicity
+        Emphasize the simplest solution that works for the current problem
+    Feedback
+        Continuous feedback from testing, customers, and team members helps adjust the product
+    Courage
+        The team should be willing to embrace changes and make necessary, bold decisions
+    Respect
+        Team members should respect each other's contributions and abilities
+```
+
+### Feedback loop
+
+    TODO: Check color schema for diagram below
+    ```mermaid
+    flowchart TB
+    A("Code") --> B("Pair Programming") & C("Unit Test") & D("Pair Negotiation") & E("Stand-up meeting") & F("Acceptance Test") & G("Iteration Plan") & H("Release Plan")
+    B --> A
+    C --> B
+    D --> C
+    E --> D
+    F --> E
+    G --> F
+    H --> G
+
+    style A stroke:#000000,fill:#F97316,color:#000000,font-weight:bold
+    style B stroke:#000000,fill:#EAB308,color:#000000,font-weight:bold
+    style C stroke:#000000,fill:#60A5FA,color:#000000,font-weight:bold
+    style D stroke:#000000,fill:#02E53F,color:#000000,font-weight:bold
+    style E stroke:#000000,fill:#C9C9C9,color:#000000,font-weight:bold
+    style F stroke:#000000,fill:#DC2626,color:#000000,font-weight:bold
+    style G stroke:#000000,fill:#B6E400,color:#000000,font-weight:bold
+    style H stroke:#000000,fill:#116400,color:#000000,font-weight:bold
+    ```
+
+### Key Practices
+
+<Callout title='Key Practices of Extreme Programming (XP)'>
+1. **Pair Programming**: Two developers work together at one workstation, enhancing code quality and team collaboration.
+2. **Test-Driven Development (TDD)**: Write tests before writing code, ensuring every piece of code works as intended.
+3. **Continuous Integration**: Frequently integrate code into the main branch to detect issues early.
+4. **Small Releases**: Release working software frequently, often in small increments, to get feedback and improve based on customer needs.
+5. **Refactoring**: Regularly improve and optimize code without changing its functionality.
+6. **Sustainable Pace**: Avoid overworking the team to maintain a consistent and sustainable workflow.
+7. **Collective Code Ownership**: Everyone on the team is responsible for all the code. This encourages collaboration and reduces silos.
+8. **On-Site Customer**: Have someone from the customer side available to clarify requirements and provide immediate feedback.
+
+</Callout>
+
+<Accordions>
+    <Accordion title="What's Agile?">
+    - Project management methodology that emphasizes flexibility, rapid iteration, and customer satisfaction.
+    - Defined by the 4 values and 12 principles of the [Agile Manifesto](https://agilemanifesto.org/principles.html).
+    </Accordion>
+    
+    <Accordion title="How's Extreme Programming related to Agile?">
+    Strong emphasis on the following common values:
+    - Straightforward communication, simplicity, feedback, and courage.
+    - Highly iterative and incremental.
+    - User-centric.
+    - Encourage change, flexibility and adaptability
+    </Accordion>
+    
+    <Accordion title="How's Extreme Programming different from Agile?">
+    - Extreme Programming is a software development methodology, while Agile is a project management methodology.
+    - Strong emphasis on technical practices such as TDD, CI/CD, Pair Programming, and Documentation.
+    - More prescriptive approach that applies principles the broader Agile framework.
+    </Accordion>
+</Accordions>
+
+[Extreme Programming - Wikipedia](https://en.wikipedia.org/wiki/Extreme_programming).
