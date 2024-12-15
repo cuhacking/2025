@@ -1,5 +1,5 @@
 [build]
-command = "pnpm nx build website --verbose"
+command = "pnpm nx affected -t=build --exclude='*,!website' --verbose"
 publish = "/apps/website/build/client"
 
 [dev]
