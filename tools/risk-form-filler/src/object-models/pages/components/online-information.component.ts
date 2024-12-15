@@ -48,7 +48,7 @@ export class OnlineInformation {
   }
 
   static async fill(page: Page, data: any): Promise<void> {
-    if (page.url().includes('online')) {
+    if (page.url().includes('online') || page.url().includes('hybrid')) {
       await page.locator(`[name=online_platform]`).fill(data.onlinePlatform || '')
       await page.locator(`[name=online_topic]`).fill(data.onlineTopic || '')
       await page.locator(`[name=online_location]`).fill(data.onlineLocation || '')
