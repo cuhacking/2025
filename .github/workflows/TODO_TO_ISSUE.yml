@@ -1,38 +1,36 @@
-name: TODO to Issue
+# name: TODO to Issue
+# # commented out branches, workflow was made as an experiment to learn git: https://github.com/cuhacking/2025/issues/147
+# on:
+#   push:
+#   # branches: '*'
+#   # pull_request:
+#   # branches: '*'
 
-on:
-  push:
-    branches: '*'
-  pull_request:
-    branches: '*'
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: 🛎️ Checkout Code
+#         uses: actions/checkout@v4
+#         with:
+#           fetch-depth: 0 # All history for branches and tags
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 🛎️ Checkout Code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # All history for branches and tags
+#       - name: 📝 Create TODOs
+#         uses: alstr/todo-to-issue-action@v5
+#         with:
+#           INSERT_ISSUE_URLS: 'true'
 
-      - name: 📝 Create TODOs
-        uses: alstr/todo-to-issue-action@v5
-        with:
-          INSERT_ISSUE_URLS: 'true'
-
-      - name: Set Git user
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Commit and Push Changes
-        run: |
-          git add -A
-          if [[ `git status --porcelain` ]]; then
-            git commit -m "docs(issues): add issue(s)"
-            echo hello
-            git push origin HEAD:refs/heads/${GITHUB_REF_NAME}
-            echo goodbye
-          else
-            echo "No new issues to create!"
-          fi
+#       - name: Set Git user
+#         run: |
+#           git config --global user.name "github-actions[bot]"
+#           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+#       # fails on fork
+#       - name: Commit and Push Changes
+#         run: |
+#           git add -A
+#           if [[ `git status --porcelain` ]]; then
+#             git commit -m "docs(issues): add issue(s)"
+#             git push origin HEAD:refs/heads/${GITHUB_REF_NAME}
+#           else
+#             echo "No new issues to create!"
+#           fi
