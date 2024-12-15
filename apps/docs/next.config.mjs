@@ -16,6 +16,7 @@ const defaultImageHostnames = [
   'hairuochen.notion.site',
   'lh3.googleusercontent.com',
   'res.cloudinary.com',
+  'github.com',
 ]
 
 /**
