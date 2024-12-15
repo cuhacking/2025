@@ -2,6 +2,7 @@ import type { HomeLayoutProps } from 'fumadocs-ui/layouts/home'
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared'
 
 import {
+  Landmark as ArchitectureIcon,
   Figma as BrandIcon,
   Code as ESLintIcon,
   Smartphone as HackerPortalIcon,
@@ -10,7 +11,7 @@ import {
   Linkedin as LinkedinIcon,
   Trees as LinktreeIcon,
   SquareKanban as ProjectBoardIcon,
-  /* Drill as UtilsIcon, */
+  Drill as UtilsIcon,
 } from 'lucide-react'
 
 import Image from 'next/image'
@@ -64,11 +65,17 @@ export const baseOptions: BaseLayoutProps = {
       url: 'https://design-cuhacking.netlify.app',
       icon: <StorybookIcon />,
     },
-    /* {
-     *   text: 'Utils (Coming Soon)',
-     *   url: 'https://utils.cuhacking.ca',
-     *   icon: <UtilsIcon />,
-     * }, */
+    {
+      text: 'Architecture',
+      // url: 'https://arch.cuhacking.ca/#/projects/all?groupByFolder=true',
+      url: 'https://arch-cuhacking.netlify.app/#/projects/all?groupByFolder=true',
+      icon: <ArchitectureIcon />,
+    },
+    {
+      text: 'Tooling',
+      url: '/contribution-guidelines/coding-standards/tooling',
+      icon: <UtilsIcon />,
+    },
     {
       text: 'ESLint',
       // url: 'https://eslint.cuhacking.ca/rules',
