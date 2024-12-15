@@ -1,10 +1,9 @@
 <div align="center">
   <a href="https://docs.cuhacking.ca">
     
-![image](https://github.com/user-attachments/assets/b5202301-2a67-423e-986c-e7cf597ac4d4)
-    
-  </a>
+![image](https://github.com/user-attachments/assets/79f41e64-4bef-4df6-b3e8-a16e67e75f4c)
 
+  </a>
 
 🏗️ Major monorepo migration in progress. 🚧
 
@@ -42,6 +41,7 @@ Built with some of the most cutting-edge and stable open-source technologies, an
 
 Installation instructions, contribution guidelines, and technology stacks are available on the **[cuHacking Docs Site](https://docs.cuhacking.ca)**.
 
+
 |                                         [📚 Documentation](https://docs.cuhacking.ca)                                          |                                         [🗓️ Project Board](https://github.com/orgs/cuhacking/projects/4)                                          |                                         [💅 Brand Identity & UI/UX Research - Figma](https://www.figma.com/design/wc1JOWR48tBNkjcjwY3AzB/%E2%8C%A8%EF%B8%8F-cuHacking-Design-System?node-id=0-1&t=jIWodAehPEFHSEmv-1)                                          |                                      [🌟 Design System - Storybook](https://design-cuhacking.netlify.app)                                       |
 | :----------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------: |
-| [![Documentation](https://github.com/user-attachments/assets/e8cf023b-8057-40ea-94f7-cf8a2270137a)](https://docs.cuhacking.ca) | [![Project Board](https://github.com/user-attachments/assets/b10ddf82-4a8e-4892-bc45-ffdb596cd678)](https://github.com/orgs/cuhacking/projects/4) | [![Brand Identity & UI/UX Research](https://github.com/user-attachments/assets/d55ffa90-c8ed-4421-8f42-89d995c07409)](https://www.figma.com/design/wc1JOWR48tBNkjcjwY3AzB/%E2%8C%A8%EF%B8%8F-cuHacking-Design-System?node-id=0-1&t=jIWodAehPEFHSEmv-1) | [![Design System](https://github.com/user-attachments/assets/f5979280-fb29-4cfa-a7b1-161398b2c3ff)](https://design-cuhacking.netlify.app) |
+| [![Documentation](https://github.com/user-attachments/assets/e8cf023b-8057-40ea-94f7-cf8a2270137a)](https://docs.cuhacking.ca) | [![Project Board](https://github.com/user-attachments/assets/b10ddf82-4a8e-4892-bc45-ffdb596cd678)](https://github.com/orgs/cuhacking/projects/4) | [![Brand Identity & UI/UX Research](https://github.com/user-attachments/assets/d55ffa90-c8ed-4421-8f42-89d995c07409)](https://www.figma.com/design/wc1JOWR48tBNkjcjwY3AzB/%E2%8C%A8%EF%B8%8F-cuHacking-Design-System?node-id=0-1&t=jIWodAehPEFHSEmv-1) | [![Design System](https://github.com/user-attachments/assets/6aa19317-1247-48b1-b0b2-63e8d96d6549)](https://design-cuhacking.netlify.app) |
