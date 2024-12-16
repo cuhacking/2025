@@ -7,6 +7,7 @@ export default {
     './*.@(mdx|stories.@(js|jsx|ts|tsx))',
     '../libs/external/shadcn/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
     '../libs/external/aceternity/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
+    '../libs/external/farm-ui/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
     '../libs/external/magic-ui/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
     '../libs/docs/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
     '../libs/shared/ui/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
