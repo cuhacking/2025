@@ -3,6 +3,7 @@ import TailwindAnimate from 'tailwindcss-animate'
 export default {
   content: [
     '{libs,apps}/**/*!(*.stories|*.spec).{ts,tsx,html}',
+    './node_modules/fumadocs-ui/dist/**/*.js',
   ],
   theme: {
     extend: {
@@ -78,11 +79,11 @@ export default {
         'orbit': {
           '0%': {
             transform:
-                'rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg)',
+              'rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg)',
           },
           '100%': {
             transform:
-                'rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg)',
+              'rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg)',
           },
         },
       },

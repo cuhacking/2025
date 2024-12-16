@@ -7,6 +7,7 @@ import TailwindAnimate from 'tailwindcss-animate'
 export default {
   content: [
     '../../libs/docs/components/**/*.{ts,tsx}',
+    '../../libs/docs/components/**/*.stories.{ts,tsx}',
     './mdx-components.{ts,tsx}',
     '{src,components,app,content}/**/*!(*.stories|*.spec).{ts,tsx,md,mdx,html}',
     '../../node_modules/fumadocs-ui/dist/**/*.js',
