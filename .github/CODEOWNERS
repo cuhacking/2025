@@ -1,10 +1,11 @@
+#Commit spec - chore(config/codeowners):
 #========== DEPENDENCIES ==========
 *package*        @MFarabi619
 
 #=========== APPS ==========
 /apps/*             @MFarabi619
-/apps/docs/         @JeremyFriesenGitHub
-/apps/docs-e2e/     @JeremyFriesenGitHub
+/apps/docs/         @HasithDeAlwis
+/apps/docs-e2e/     @HasithDeAlwis
 /apps/portal/       @MFarabi619
 /apps/portal-e2e/   @MFarabi619
 /apps/website/      @HasithDeAlwis
@@ -23,10 +24,10 @@
 #========== LIBRARIES ==========
 /libs/external/     @MFarabi619
 /libs/shared/       @MFarabi619
-/libs/docs/         @MFarabi619 @JeremyFriesenGitHub
+/libs/docs/         @MFarabi619
 /libs/website/      @MFarabi619 @HasithDeAlwis
 /libs/utils/        @MFarabi619
 /libs/ui/           @MFarabi619
 /libs/api           @MFarabi619
 /libs/env           @MFarabi619
-/libs/db            @MFarabi619 @JeremyFriesenGitHub
+/libs/db            @MFarabi619
