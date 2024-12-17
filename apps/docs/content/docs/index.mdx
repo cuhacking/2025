@@ -14,7 +14,12 @@ import {
   Search,
   Spline,
   User,
-  PersonStanding
+  PersonStanding,
+  GitPullRequestCreateArrow as ContributionGuidelinesIcon,
+  Dock as HomeIcon,
+  icons,
+  BookOpenText as KnowledgeBaseIcon,
+  Layers as ToolsIcon,
 } from "lucide-react"
 
 import { Feature } from "@cuhacking/docs/components/ui/feature-section"
@@ -23,9 +28,9 @@ Welcome to the documentation site for the [cuHacking 2025](https://www.cuhacking
 
 ![2025 Docs Site Cover](https://github.com/user-attachments/assets/1a0a5cb7-95fd-49ce-a8b5-4742cccb1cc8)
 
-Planning, conventions, and references for our custom meta-framework that powers all projects reside here.
+<span className="text-orange-500 font-bold">Contribution Guidelines</span>, <span className="text-yellow-400 font-bold">Concepts</span>, and <span className="text-blue-400 font-bold">References</span> for our custom, batteries-supercharged <span className="text-primary font-bold">meta-framework</span> powering all projects reside here.
 
-It's also written in a beginner-friendly language in order to provide a smooth onboarding experience for external contributors, and act as a general open-source reference for other projects.
+Written with 💚 in a beginner-friendly language in order to provide a smooth onboarding experience for external contributors, and act as a general open-source reference for other projects.
 
 
 ## Our Priorities
@@ -87,8 +92,26 @@ It's also written in a beginner-friendly language in order to provide a smooth o
 ## Categories
 
 <Cards>
-  {pages
-    .filter((page) => page.title !== "Home") // Filter out the Home page
+  {[
+  {
+    title: 'Tech Stack',
+    description: 'For those wondering about our specs.',
+    url: 'tech-stack',
+    icon: ToolsIcon,
+  },
+  {
+    title: 'Contribution Guidelines',
+    description: 'Understand our collaboration process.',
+    url: 'contribution-guidelines',
+    icon: ContributionGuidelinesIcon,
+  },
+  {
+    title: 'Knowledge Base',
+    description: 'Curated resources to accelerate your learning.',
+    url: 'knowledge-base',
+    icon: KnowledgeBaseIcon,
+  },
+].filter((page) => page.title !== "Home") // Filter out the Home page
     .map((page) => (
       <Card
         key={page.title}
