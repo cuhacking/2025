@@ -1,110 +1,195 @@
 ---
 title: Installation
-icon: SquareChevronRight
+description: WIP. Writing and testing installation instructions is an absolute nightmare.
+icon: SquareTerminal
 ---
 
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
-## Setup Guide
+<Callout type="warn" title="Our project is developed on UNIX-based operating systems.">
+</Callout>
 
-<div className="steps">
-
-<div className="step">
-Install [pnpm](https://pnpm.io/).
-</div>
-
-<div className="step">
-Install [Node.js](https://nodejs.org/en) V22.11.0.
-</div>
-
-<div className="step">
-Clone [Repository](https://github.com/cuhacking/hackathon).
-
-    <Callout type="warn">
-    If you'd like to contribute, please **fork** first and then clone your fork.
-
-    See [Getting Started](/contribution-guidelines/getting-started) to learn more.
-    </Callout>
-
-<Tabs groupId="git-clone-method" items={['GitHub CLI (recommended)','HTTPS', 'SSH']} persist>
-<Tab value="GitHub CLI (recommended)">
-
-GitHub CLI handles much of the authentication and other configuration for you. It can also be used to view/make issues and pull requests, and also access the project board from the terminal.
-
-Ensure [GitHub CLI](https://cli.github.com/) is installed.
-
-```sh title="Terminal"
- gh repo clone cuhacking/2025
-```
-
+<Tabs items={["MacOS","Windows"]}>
+<Tab value="MacOS">
+MacOS is a UNIX-based operating system, so you can skip ahead.
 </Tab>
-  <Tab value="HTTPS">
 
-```sh title="Terminal"
- git clone https://github.com/cuhacking/2025.git
-```
+<Tab value="Windows">
+Install [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install).
 
-</Tab>
-<Tab value="SSH">
+<Accordions>
+<Accordion title="What's WSL?">
+Introduced by Microsoft in 2016, WSL allows people to run a real Linux kernel inside Windows.
 
-```sh title="Terminal"
- git clone git@github.com:cuhacking/2025.git
-```
+Before WSL, people had to:
+- Use a virtual machine, slow.
+- Dual boot on the same machine, tedious and risks bricking the machine.
+- Replace their main OS with Linux altogether, scary but the best option.
 
+[Learn more](https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux).
+</Accordion>
+  <Accordion title="Do I need to switch to the dark side and code in shell?">
+    No you don't. WSL can run in the VS Code terminal, or any other
+    IDE terminal. Rather than cloning the repo on your Windows filesystem, you'd be
+    cloning it in a directory of your choice in the GNU/Linux OS.
+
+    You can still access the windows filesystem from WSL and vice versa, browsing through the Linux
+    directories with the Windows file explorer graphically.
+  </Accordion>
+</Accordions>
+
+      <div className="steps">
+        <div className="step">
+          Open PowerShell as Administrator:
+          <kbd> Win+X, A</kbd>
+
+                    <Callout title="WSL may already be installed!">
+Run `wsl -v` to check. Your terminal should output:
+          ```sh
+          WSL version: 2.3.24.0
+Kernel version: 5.15.153.1-2
+WSLg version: 1.0.65
+MSRDC version: 1.2.5620
+Direct3D version: 1.611.1-81528511
+DXCore version: 10.0.26100.1-240331-1435.ge-release
+Windows version: 10.0.22631.4317
+          ```
+
+          </Callout>
+
+          ```sh title="Terminal"
+          wsl --install ubuntu # Will install WSL2 by default
+          ```
+
+        </div>
+
+        <div className="step">
+          Create your UNIX account.
+
+          Keep your password short and simple for now. You'll need to type it often to install packages.
+          <Callout type="warn" title="Don't forget your UNIX username & password">
+          You'll be locked out and will have to re-install WSL.
+          </Callout>
+        </div>
+        <div className="step">
+        Update all programs in the currently installed version of Ubuntu
+          ```sh title="Terminal"
+sudo apt update && sudo apt upgrade -y
+          ```
+      </div>
+      </div>
 </Tab>
 </Tabs>
 
-  </div>
+      <div className="steps">
+      <div className="step">
+
+## Install [Nix](https://nixos.org/).
+
+```sh title="Terminal"
+# Answer 'y' for all questions
+sh <(curl -L https://nixos.org/nix/install) --daemon
+```
+
+Enter Nix shell.
+
+```sh title="Terminal"
+nix-shell
+```
+
+</div>
+
+      <div className="step">
+## Clone [Repository](https://github.com/cuhacking/hackathon).
+
+[GitHub CLI](https://github.com/cli/cli#installation) handles much of the authentication and other configuration for you.
+
+View/make issues and pull requests from the terminal, and also access the project board.
+
+```sh title="Nix Shell"
+ # Login with your GitHub account.
+ gh auth login -p=https -w
+ gh repo fork cuhacking/2025 --clone
+```
+
+Provide the following answers.
+```
+? Where do you use GitHub? [Use arrows] to move, type to filter]
+> GitHub.com
+
+? Authenticate Git with your GitHub credentials? [Use arrows] to move, type to filter]
+> Yes
+
+# Your one-time code will be different.
+! First copy your one-time code: 95i2-DAE6
+Press Enter to open github.com in your browser...
+```
+
+Return to the terminal when you see the `Congratulations, you're all set!` screen.
+
+You should see the following:
+```
+✔ Authentication complete.
+- gh config set -h github.com git_protocol https
+✔ Configured git protocol
+✔ Logged in as YourGitHubUsername
+```
+      </div>
+
   <div className="step">
     Navigate to directory and install dependencies.
 
-```sh title="terminal"
-cd 2025
-pnpm i
+```sh title="Nix Shell"
+cd 2025; pnpm i; pnpm exec playwright install --with-deps
 ```
 
   </div>
 
   <div className="step">
-    Install [Playwright](https://playwright.dev/) browsers.
-    ```sh title="terminal"
-    pnpm exec playwright install
-    ```
-  </div>
+  ## Run projects.
 
-  <div className="step">
-  Run the project of your choice.
+  <img src="https://nx.dev/documentation/shared/images/run-target-syntax.svg" />
+
+Run all development servers.
+```sh title="Nix Shell"
+pnpm nx run-many -t dev --verbose
+```
+
+..or add `-p` to filter specific projects
+
+```sh title="Nix Shell"
+pnpm nx run-many -t dev -p website --verbose
+```
 
 `--verbose` provides detailed error logs.
 
-<Tabs groupId="projects" items={['Website', 'Portal', 'Docs', 'Storybook', 'ESLint Config Inspector']} persist>
+<Tabs groupId="projects" items={['Graph', 'Storybook', 'Docs', 'Portal', 'Website', 'ESLint Config Inspector']} persist>
+
+  <Tab value="Graph">
+
+```sh title="Nix Shell"
+pnpm nx graph --groupByFolder --verbose
+```
+
+  </Tab>
+
   <Tab value="Website">
     <Tabs groupId="website-project-nx-commands" items={['dev', 'build', 'start']} persist>
       <Tab value="dev">
-        ```sh title="Terminal"
+
+        ```sh title="Nix Shell"
         pnpm nx dev website --verbose
         ```
-        Or
-        ```sh title="Terminal"
-        pnpm nx run website:dev --verbose
-        ```
+
       </Tab>
       <Tab value="build">
-        ```sh title="Terminal"
+        ```sh title="Nix Shell"
         pnpm nx build website --verbose
-        ```
-        Or
-        ```sh title="Terminal"
-        pnpm nx run website:build --verbose
         ```
       </Tab>
       <Tab value="start">
-        ```sh title="Terminal"
+        ```sh title="Nix Shell"
         pnpm nx start website --verbose
-        ```
-        Or
-        ```sh title="Terminal"
-        pnpm nx run website:start --verbose
         ```
       </Tab>
     </Tabs>
@@ -117,32 +202,21 @@ pnpm i
       persist
     >
       <Tab value="dev">
-        ```sh title="Terminal"
+
+        ```sh title="Nix Shell"
         pnpm nx dev portal --verbose
-        ```
-        Or
-        ```sh title="Terminal"
-        pnpm nx run portal:dev --verbose
         ```
       </Tab>
 
       <Tab value="build">
-        ```sh title="Terminal"
+        ```sh title="Nix Shell"
         pnpm nx build portal --verbose
-        ```
-        Or
-        ```sh title="Terminal"
-        pnpm nx run portal:build --verbose
         ```
       </Tab>
 
       <Tab value="start">
-        ```sh title="Terminal"
+        ```sh title="Nix Shell"
         pnpm nx start portal --verbose
-        ```
-        Or
-        ```sh title="Terminal"
-        pnpm nx run portal:start --verbose
         ```
       </Tab>
 
@@ -152,106 +226,41 @@ pnpm i
   <Tab value="Docs">
     <Tabs groupId="docs-project-nx-commands" items={['dev', 'build', 'start']} persist>
       <Tab value="dev">
-        ```sh title="Terminal"
+        ```sh title="Nix Shell"
         pnpm nx dev docs --verbose
-        ```
-        Or
-        ```sh title="Terminal"
-        pnpm nx run docs:dev --verbose
         ```
       </Tab>
       <Tab value="build">
-        ```sh title="Terminal"
+        ```sh title="Nix Shell"
         pnpm nx build docs --verbose
-        ```
-        Or
-        ```sh title="Terminal"
-        pnpm nx run docs:build --verbose
         ```
       </Tab>
       <Tab value="start">
-        ```sh title="Terminal"
+        ```sh title="Nix Shell"
         pnpm nx start docs --verbose
-        ```
-        Or
-        ```sh title="Terminal"
-        pnpm nx run docs:start --verbose
         ```
       </Tab>
     </Tabs>
   </Tab>
 
   <Tab value="Storybook">
-    <Tabs
-      groupId="storybook-project-nx-commands"
-      items={["dev", "build", "start"]}
-      persist
-    >
-      <Tab value="dev">
-        ```sh title="Terminal"
+        ```sh title="Nix Shell"
         pnpm nx dev storybook --verbose
         ```
-        Or
-        ```sh title="Terminal"
-        pnpm nx run storybook:dev --verbose
-        ```
-      </Tab>
-
-      <Tab value="build">
-        ```sh title="Terminal"
-        pnpm nx build storybook --verbose
-        ```
-        Or
-        ```sh title="Terminal"
-        pnpm nx run storybook:build --verbose
-        ```
-      </Tab>
-
-      <Tab value="start">
-        ```sh title="Terminal"
-        pnpm nx start storybook --verbose
-        ```
-        Or
-        ```sh title="Terminal"
-        pnpm nx run storybook:start --verbose
-        ```
-      </Tab>
-
-    </Tabs>
   </Tab>
   <Tab value="ESLint Config Inspector">
-        ```sh title="Terminal"
+        ```sh title="Nix Shell"
         pnpm lint:inspect
         ```
       </Tab>
 
 </Tabs>
 
-Explore the project graph to see the projects in the monorepo and the tasks you can run with Nx.
-
-```sh title="Terminal"
-pnpm nx graph --verbose
-```
 
 <Accordions>
-  <Accordion title="What's the general syntax of Nx commands?">
-  <img src="https://nx.dev/documentation/shared/images/run-target-syntax.svg" />
+  <Accordion title="Where are these commands defined?">
 
-You can also run multiple targets:
-
-```sh title="Terminal"
-pnpm nx run-many -t <target1> <target2>
-```
-
-..or add `-p` to filter specific projects
-
-```sh title="Terminal"
-pnpm nx run-many -t <target1> <target2> -p <proj1> <proj2>
-```
-
-Targets can be defined in the `package.json` or `projects.json`. [Learn more](https://nx.dev/features/run-tasks).
-
-[Learn more](https://nx.dev/core-features/explore-graph).
+Targets can be defined in the `package.json` or `projects.json`.
 
 Use [Nx Console](https://nx.dev/nx-console) to integrate with editors.
 
@@ -266,7 +275,7 @@ You'll see the url(s) in your terminal for the project(s) you're running, simply
 
     For example you may see:
 
-```sh title="Terminal"
+```sh title="Nix Shell"
 ╰─ pnpm nx dev docs --verbose                                                                                                                   ─╯
 
 > nx run docs:dev
@@ -293,6 +302,7 @@ Always look at your terminal for the correct URL.
 
 </div>
 </div>
+
 
 ## What's next?
 
