@@ -7,64 +7,31 @@ icon: Info
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 import { SquareKanban as ProjectBoardIcon } from 'lucide-react';
 
-<Callout title='This guide helps you:'>
-- Learn how to contribute to cuHacking.
-- Understand the best practices.
-- Explore ways to participate and get involved in team activities.
-</Callout>
+## Something needs fixing? Want to add a new feature?
 
-### Something needs fixing? Want to add a new feature?
+Creating an issue documents changes to incorporate and lets everyone know what you're working on.
 
-Submit an issue on our project board to get the ball rolling.
 <Accordions>
 <Accordion title="What's an issue?">
-    A GitHub issue is essentially a task card that denotes **what** is being worked on, and by **whom**.
+ A GitHub issue is essentially a task card that denotes **what** is being worked on, and by **whom**.
 
 Issues also act as a discussion thread used to report bugs, request features, or suggest improvements. It’s a way to collaborate with the community to solve problems and add enhancements.
-</Accordion>
-<Accordion title="How do I submit an issue?">
-Navigate to the [issues tab](https://github.com/cuhacking/2025/issues).
 
-Click on the "New Issue" button and fill out the template with the necessary information.
+Submit isses [here](https://github.com/cuhacking/2025/issues).
 </Accordion>
 </Accordions>
 
-Creating an issue will document the changes that you want to incorporate and will let everyone know what you are working on.
-
-#### Guidelines
-
-- **Title**: ``type(issue-scopes): issue title`` (unless it's an ``[ADR]``).
-- **Description**: Follow the issue template and stay problem-specific when writing issues.
-- **Labels**: Use labels to categorize the issue. This helps in organizing and prioritizing issues for the project board.
-- **Assignees**: Assign the issue to the appropriate person(s) who will be responsible for working on the issue (could be yourself).
-
-Here's an example of a [well-documented issue](https://github.com/cuhacking/2025/issues/49).
+[Here](https://github.com/cuhacking/2025/issues/49)'s an example of a well-documented issue.
 
 ---
 
-Explore our [knowledge base](/knowledge-base) if there's a technology or process you'd like to dig deeper into as you go through this document.
-
-If you find some great resources and/or have some of your own, we'd very much appreciate your contributions :)
-
-<div className='steps [&_h2]:step'>
-
-## Meet System Requirements
-
-Our project is developed on UNIX-based operating systems.
-
-For Windows users, the use of [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) is highly encouraged in order to avoid those rare, maddening, a-tiny-part-of-this-one-library-breaks issues that can be very hard to debug.
-
-<Callout type="warn">
-  Ubuntu LTS' `apt` package manager is version locked. Use
-  [Homebrew](https://brew.sh/) instead to install the latest versions of
-  packages.
-</Callout>
-
-Using a Git porcelain such as [Lazygit](https://github.com/jesseduffield/lazygit) is highly encouraged, as it provides a visual [terminal user interface (TUI)](https://en.wikipedia.org/wiki/Text-based_user_interface) to manage your commits, branches, staging areas, stashes, and much more. These are common occurences as we do [Trunk-Based Development](https://trunkbaseddevelopment.com/).
+Using a [terminal user interface (TUI)](https://en.wikipedia.org/wiki/Text-based_user_interface) Git porcelain  is highly encouraged to manage your commits, branches, staging areas, stashes, and much more. These are common occurences as we do [Trunk-Based Development](https://trunkbaseddevelopment.com/).
 
 It's also significantly easier to resolve merge conflicts, cherry-pick commits between branches, squash them, amend a few commits back, checkout a specific commit, stage in hunks, etc.
 
 You'll be able to unlock the full power of Git without having to memorize all the commands.
+
+[Lazygit](https://github.com/jesseduffield/lazygit) is included in the Nix shell. Run `lazygit` in the Nix shell to use it.
 
 <Accordions>
 <Accordion title="What's a Git Porcelain?">
@@ -76,58 +43,44 @@ Porcelain commands simplify Git interaction by abstracting the complexities, mak
 
 </Accordion>
 <Accordion title="What do Git Porcelains look like in action?">
-### Lazygit
-#### Cherry Pick
+ Lazygit
+
+ Cherry Pick
 
 <video className="w-max h-[240px]" controls>
   <source src="https://github.com/user-attachments/assets/09ef1413-2fb2-4594-b404-e568df120150" type="video/mp4" />
   Your browser does not support the video tag.
 </video>
 
-#### Hunk Stage and Commitizen CLI
+ Hunk Stage and Commitizen CLI
 
 <video className="w-max h-[240px]" controls>
   <source src="https://github.com/user-attachments/assets/b2200b7b-d783-4401-87e2-8741456d4e7a" type="video/mp4" />
   Your browser does not support the video tag.
 </video>
 
-### Magit (Emacs)
+ Magit (Emacs)
 Demos coming soon.
-#### View diffs and Stage
-#### Commit
-#### Branch
+ View diffs and Stage
+ Commit
+ Branch
 </Accordion>
 
-  <Accordion title="Do I need to switch to the dark side and code in shell?">
-    No you don't. WSL can run in the VS Code terminal, or any other
-    IDE terminal. Rather than cloning the repo on your Windows filesystem, you'd be
-    cloning it in a directory of your choice in the GNU/Linux OS.
-
-    You can still access the windows filesystem from WSL and vice versa, browsing through the Linux
-    directories with the Windows file explorer graphically.
-  </Accordion>
 </Accordions>
+
+<div className='steps [&_h2]:step'>
 
 ## Learn the Fork and Pull Model
 
 The [Fork and Pull Model](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models) is used to merge external contributions into the project.
 
-Fork with all branches to quickly see what someone else is up to.
-
 <Accordions>
-<Accordion title="What is a fork?">
+<Accordion title="What's a fork?">
     Forking is creating a personal copy of a repository under your own GitHub account. It allows you to freely experiment with changes without affecting the original project until you’re ready to submit them.
-</Accordion>
-<Accordion title="How do I fork the repo?">
-Click the fork button on the top right of [our GitHub repository](https://github.com/cuhacking/2025).
-
-[Learn More](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo).
 </Accordion>
 </Accordions>
 
-[Clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) your forked repository to your local machine and set the remote upstream.
-
-Our codebase is constantly changing and evolving. Keep your fork up-to-date with the main repository.
+Our codebase is constantly changing and evolving. Keep your fork up-to-date with the main repository with `gh repo sync cuhacking/2025`.
 
 See [Knowledge Base - Learn Git](/knowledge-base#-learn-git) and  for resources.
 
@@ -138,8 +91,6 @@ See what we're up to on the project board linked in the navbar. <ProjectBoardIco
 ## Pick an Issue
 
 Comment on an issue on the project board that you're interested in to be assigned, or create one for yourself.
-
-### Resolving open issues
 
 Alternatively, you can also look at the open issues and see if there's anything that you can help with which interests you.
 
@@ -156,11 +107,11 @@ For example, the branch for issue #1 titled 'feat(portal): add login page' would
 
 `johndoe/feat/1-add-login-page`.
 
-See [Trunk-Based Development](/contribution-guidelines/trunk-based-development) to learn more.
+See [Conventional Branch](/conventional-branch) to learn more.
 
 ## Commit Changes with [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) spec
 
-See [Trunk-Based Development](/contribution-guidelines/trunk-based-development) to learn more.
+See [Conventional Commits](/conventiona-commits) to learn more.
 
 ## Create Draft PR
 
@@ -169,11 +120,8 @@ See [Trunk-Based Development](/contribution-guidelines/trunk-based-development) 
 ## Implement Feedback
 </div>
 
-
 ## Volunteer meetings 📆
 
-Meet the team, learn about the project, get the latest updates, and ask any questions you may have regarding cuHacking at our meetings.
-
-TODO: Link Google Calendar
+Meet the team, learn about the project, get the latest updates, and ask any questions you may have regarding cuHacking at our meetings. View our [calendar](/meet-the-team/calendar).
 
 Don't forget to join the [community server](https://discord.gg/w3QjHDAucd) as well.

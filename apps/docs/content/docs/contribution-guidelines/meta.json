@@ -3,6 +3,7 @@
   "icon": "GitPullRequestCreateArrow",
   "pages": [
     "getting-started",
+    "installation",
     "coding-standards",
     "e2e-testing",
     "unit-testing",
