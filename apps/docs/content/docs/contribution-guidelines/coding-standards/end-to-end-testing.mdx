@@ -45,27 +45,10 @@ Screen sizes to test:
 	- Tablet
 	- Mobile (320px)
 
-## Creating E2E tests
-Using code gen to generate the difference events that happen in the docs.
-
-General structure of the tests:
-
-``
-test('name", async ((.docsLayoutPage))) => ({
-	events_from_codegen
-})
-``
-
-pom.ts is used to create specific variables to represent different elements in the page.
-
 ## Run Tests
 
 ```sh title="Terminal"
 pnpm nx e2e docs-e2e --verbose
-```
-or
-```sh title="Terminal"
-pnpm nx run docs-e2e:e2e --verbose
 ```
 
 ## Generate Tests (Codegen)
@@ -77,8 +60,3 @@ pnpm exec playwright codegen
 Select DESKTOP, TABLET, and/or MOBILE in the 'Projects' tab on the top left of the Playwright UI.
 
 ## View Tests in CI
-
-All tests can be viewed on the GitHub Actions Workflow.
-- Can access them in the PR
-	- Can get the report from here.
-	- Report is produced regardless of whether you push code that makes changes to these E2E tests.
