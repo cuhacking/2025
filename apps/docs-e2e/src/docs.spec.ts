@@ -1,3 +1,4 @@
+// TODO: Refactor to move to libs/docs-e2e
 import { test as base, expect } from '@playwright/test'
 import { clickAndGoToPage } from './helpers/click-and-go-to-page'
 import { DocsLayout } from './pom'
