@@ -1,0 +1,8 @@
+{
+  "name": "libs/website-e2e",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/website-e2e/",
+  "projectType": "library",
+  "tags": [],
+  "targets": {}
+}
