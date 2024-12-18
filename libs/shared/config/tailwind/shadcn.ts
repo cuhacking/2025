@@ -3,7 +3,7 @@ import { join } from 'node:path'
 import { createGlobPatternsForDependencies } from '@nx/react/tailwind'
 
 import TailwindAnimate from 'tailwindcss-animate'
-
+// TODO: Refactor to not add custom styles to shadcn tailwind, needed for now
 export function buildConfig(
   appDir: string,
 ): Config {
@@ -17,6 +17,19 @@ export function buildConfig(
     ],
     theme: {
       extend: {
+        backgroundImage: {
+          'greendiant': 'linear-gradient(200deg, hsl(var(--secondary)) 10%, hsl(var(--primary)) 90%)',
+          'g-keyboardBlack': 'linear-gradient(300deg , hsl(var(--g-keyboardblack-start)) -10%, hsl(var(--background)) 100%)',
+          'g-nav-drawer-background': `
+          linear-gradient(
+            90deg,
+            hsl(var(--background)) 0%,
+            hsl(var(--light-black)) 25%,
+            hsl(var(--light-black)) 75%,
+            hsl(var(--background)) 100%
+          )
+        `,
+        },
         colors: {
           border: 'hsl(var(--border))',
           input: 'hsl(var(--input))',
