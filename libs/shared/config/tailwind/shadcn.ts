@@ -3,7 +3,7 @@ import { join } from 'node:path'
 import { createGlobPatternsForDependencies } from '@nx/react/tailwind'
 
 import TailwindAnimate from 'tailwindcss-animate'
-// TODO: Refactor to not add custom styles to shadcn tailwind, needed for now
+// TODO: Refactor to not add custom styles to shadcn tailwind, needed for now, DO NOT CHANGE
 export function buildConfig(
   appDir: string,
 ): Config {
@@ -100,6 +100,12 @@ export function buildConfig(
             '0%': { 'background-position': '0%' },
             '100%': { 'background-position': '200%' },
           },
+        },
+        boxShadow: {
+          dropShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+          innerShadow: 'inset 0 4px 4px rgba(0, 0, 0, 0.25)',
+          buttonKeyboard: '0.5px 0.5px 0px 0.6px rgba(0, 0, 0, 0.70), 0.35px 0.35px 0.2px 0.75px rgba(255, 255, 255, 0.15) inset, 4px 2px 4px -1px rgba(0, 0, 0, 0.25)',
+          buttonKeyboardHover: '0.25px 0.25px 0px 0.5px #0A0A0A, 0.2px 0.2px 0.2px 0.35px rgba(255, 255, 255, 0.25) inset, 0.2px 0.2px 0px 0.75px rgba(137, 237, 16, 0.25), 0px 0px 10px -4px rgba(137, 237, 16, 0.60), 4px 2px 4px -1px rgba(0, 0, 0, 0.25)',
         },
         animation: {
           'accordion-down': 'accordion-down 0.2s ease-out',
