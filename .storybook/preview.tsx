@@ -41,6 +41,7 @@ const preview: Preview = {
           'cuHacking Design System',
           '✨ Aceternity',
           'Farm UI',
+          'Indie UI',
           '🪄 Magic UI',
           'Shadcn-ui',
           [
