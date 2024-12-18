@@ -2,6 +2,12 @@
   "recommendations": [
     "nrwl.angular-console",
     "esbenp.prettier-vscode",
-    "ms-playwright.playwright"
+    "ms-playwright.playwright",
+    "unifiedjs.vscode-mdx",
+    "ms-vscode-remote.remote-wsl",
+    "bbenoist.nix",
+    "bradlc.vscode-tailwindcss",
+    "vitest.explorer",
+    "ms-azuretools.vscode-docker"
   ]
 }
