@@ -37,6 +37,8 @@
     --input: 0 0% 100%;
     --ring: 0 0% 100% / 15%;
     --radius: 0.5rem;
+    --greendiant-start: 78 100% 42%;
+    --greendiant-end: 136 98% 45%;
     --g-keyboardblack-start: 0 0% 5%;
     --light-black: 0 0% 0% / 5%;
     --color-1: 0 100% 63%;
@@ -45,7 +47,6 @@
     --color-4: 195 100% 63%;
     --color-5: 90 100% 63%;
   }
-
   .dark {
     --background: 0 0% 0%;
     --foreground: 0 0% 100%;
