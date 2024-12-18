@@ -22,9 +22,8 @@ const baseURL = process.env.BASE_URL || 'http://127.0.0.1:3000'
  */
 export default defineConfig({
   ...nxE2EPreset(__filename, { testDir: './src' }),
-  fullyParallel: !process.env.CI,
-  // Opt out of parallel tests on CI.
-  workers: process.env.CI ? 2 : undefined,
+  fullyParallel: true,
+  workers: '100%',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   retries: 2,
   use: {
@@ -72,7 +71,7 @@ export default defineConfig({
     },
   ],
   // Ignore Chromium projects in CI to speed up runs
-  ignore: process.env.CI
-    ? ['chromium (desktop)', 'chromium (mobile)']
-    : [],
+  // ignore: process.env.CI
+  //   ? ['chromium (desktop)', 'chromium (mobile)']
+  //   : [],
 })
