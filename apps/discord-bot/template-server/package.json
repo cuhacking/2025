@@ -1,0 +1,16 @@
+{
+  "name": "template-server",
+  "type": "module",
+  "private": "true",
+  "keywords": [],
+  "main": "src/server.ts",
+  "scripts": {
+    "start": "node src/server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1"
+  }
+}
