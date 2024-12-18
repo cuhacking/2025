@@ -7,6 +7,7 @@ icon: SquareTerminal
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 <Callout type="warn" title="Our project is developed on UNIX-based operating systems.">
+Please complete instructions in the 'Windows' tab before proceeding if you're a Windows user.
 </Callout>
 
 <Tabs items={["MacOS","Windows"]}>
@@ -40,25 +41,94 @@ Before WSL, people had to:
 
       <div className="steps">
         <div className="step">
-          Open PowerShell as Administrator:
-          <kbd> Win+X, A</kbd>
+          <kbd> Win+X, A</kbd> to open PowerShell as Administrator
 
-                    <Callout title="WSL may already be installed!">
-Run `wsl -v` to check. Your terminal should output:
-          ```sh
-          WSL version: 2.3.24.0
-Kernel version: 5.15.153.1-2
-WSLg version: 1.0.65
-MSRDC version: 1.2.5620
-Direct3D version: 1.611.1-81528511
-DXCore version: 10.0.26100.1-240331-1435.ge-release
-Windows version: 10.0.22631.4317
+          ```sh title="Powershell"
+          wsl --status
           ```
 
-          </Callout>
+If you see this, you already have both WSL and Ubuntu installed.
+```
+Default Distribution: Ubuntu
+Default Version: 2
+WSL1 is not supported with your current machine configuration.
+Please enable the "Windows Subsystem for Linux" optional component to use WSL1.
+```
 
+If you'd like to do a fresh install, delete the distribution first.
+```sh
+wsl --unregister ubuntu
+```
+
+If you see this, you have both WSL installed, but without a distribution.
+```
+Windows Subsystem for Linux has no installed distributions.
+
+Use 'wsl.exe --list --online' to list available distributions
+and 'wsl.exe --install <Distro>' to install.
+
+
+Distributions can also be installed by visiting the Microsoft Store:
+https://aka.ms/wslstore
+Error code: Wsl/Service/CreateInstance/GetDefaultDistro/WSL_E_DEFAULT_DISTRO_NOT_FOUND
+```
+
+
+If there's no output, install a WSL distribution.
+
+          ```sh title="Powershell"
+          wsl --install -d ubuntu # Will install WSL2 by default
+          ```
+          You should see:
+
+          ```
+          Installing: Windows Subsystem for Linux
+          Windows Subsystem for Linux has been installed.
+          Installing: Ubuntu
+          [                           0.0%
+          ```
+
+          Restart your machine once you see:
+          ```
+          Ubuntu has been installed.
+          The requested operation is successful. Changes will not be effective until the system is rebooted.
+          ```
+          ```sh title="Powershell"
+          Restart-Computer
+          ```
+          Open PowerShell as Administrator again with
+          <kbd> Win+X, A</kbd>
+
+You should immediately see WSL begin installing. Else if you're in a regular powershell session instead, do:
+
+          ```sh
+          wsl -v
+          ```
+
+          You should see something like:
+          ```
+          WSL version: 2.3.26.0
+          Kernel version: 5.15.167.4-1
+          WSLg version: 1.0.65
+          MSRDC version: 1.2.5620
+          Direct3D version: 1.611.1-81528511
+          DXCore version: 10.0.26100.1-240331-1435.ge-release
+          Windows version: 10.0.22631.4602
+          ```
+
+          Do:
           ```sh title="Terminal"
-          wsl --install ubuntu # Will install WSL2 by default
+          wsl --install -d ubuntu
+          ```
+
+          You should see something like:
+          ```
+          Ubuntu is already installed.
+          Launching Ubuntu...
+          Installing, this may take a few minutes...
+          Please create a default UNIX user account. The username does not need to match your Windows username.
+          For more information visit: https://aka.ms/wslusers
+          Enter new UNIX username:
           ```
 
         </div>
@@ -70,13 +140,52 @@ Windows version: 10.0.22631.4317
           <Callout type="warn" title="Don't forget your UNIX username & password">
           You'll be locked out and will have to re-install WSL.
           </Callout>
+
+            ```
+            Enter new UNIX username: user
+            New password:
+            Retype new password:
+            passwd: password updated successfully
+            Installation successful!
+            To run a command as administrator (user "root"), use "sudo <command>".
+            See "man sudo_root" for details.
+
+            Welcome to Ubuntu 24.04.1 LTS (GNU/Linux 5.15.167.4-microsoft-standard-WSL2 x86_64)
+
+
+            Documentation:  https://help.ubuntu.com/
+            Management:     https://landscape.canonical.com/
+            Support:        https://ubuntu.com/pro
+
+            System information as of Tue Dec 17 15:29:19 EST 2024
+
+            System load:  0.16                Processes:             49
+            Usage of /:   0.1% of 1006.85GB   Users logged in:       0
+            Memory usage: 5%                  IPv4 address for eth0: 172.19.92.39
+            Swap usage:   0%
+
+
+            This message is shown once a day. To disable it please create the
+            /home/user/.hushlogin file.
+            user@MSI:~$
+            ```
+
         </div>
-        <div className="step">
-        Update all programs in the currently installed version of Ubuntu
+
+ <kbd> Ctrl+, </kbd> to open settings, and set the default profile to Ubuntu.
+![Image](https://github.com/user-attachments/assets/888a1253-da04-479f-b56a-0433f6ecea19)
+
+Close the terminal and re-open it with:
+          <kbd> Win+I</kbd>
+
+You should see:
+![Image](https://github.com/user-attachments/assets/87e93aa1-0769-4dcf-a027-9cd85c5b5821)
+
+Update the system:
           ```sh title="Terminal"
-sudo apt update && sudo apt upgrade -y
+        sudo apt update && sudo apt upgrade -y
           ```
-      </div>
+
       </div>
 </Tab>
 </Tabs>
@@ -84,39 +193,45 @@ sudo apt update && sudo apt upgrade -y
       <div className="steps">
       <div className="step">
 
-## Install [Nix](https://nixos.org/).
+## Install [Nix](https://nixos.org/)
 
 ```sh title="Terminal"
 # Answer 'y' for all questions
-sh <(curl -L https://nixos.org/nix/install) --daemon
+sh <(curl -L https://nixos.org/nix/install) --daemon --yes
 ```
-
-Enter Nix shell.
 
 ```sh title="Terminal"
-nix-shell
+exit
 ```
+
+```
+logout
+
+[process exited with code 127 (0x0000007f)]
+You can now close this terminal with Ctrl+D, or press Enter to restart.
+```
+
+Hit <kbd>Enter</kbd>, and re-open the terminal.
 
 </div>
 
       <div className="step">
-## Clone [Repository](https://github.com/cuhacking/hackathon).
 
-[GitHub CLI](https://github.com/cli/cli#installation) handles much of the authentication and other configuration for you.
+## Configure [GitHub CLI](https://github.com/cli/cli#installation)
 
-View/make issues and pull requests from the terminal, and also access the project board.
 
-```sh title="Nix Shell"
+Create a GitHub account if you don't already have one.
+
+```sh title="Terminal"
  # Login with your GitHub account.
+ nix-env -iA nixpkgs.gh
  gh auth login -p=https -w
- gh repo fork cuhacking/2025 --clone
 ```
 
-Provide the following answers.
-```
-? Where do you use GitHub? [Use arrows] to move, type to filter]
-> GitHub.com
+![Image](https://github.com/user-attachments/assets/4a4171c4-0a6c-4e1f-9da9-981e4c3493d2)
 
+Provide the following answers if prompted.
+```
 ? Authenticate Git with your GitHub credentials? [Use arrows] to move, type to filter]
 > Yes
 
@@ -124,6 +239,12 @@ Provide the following answers.
 ! First copy your one-time code: 95i2-DAE6
 Press Enter to open github.com in your browser...
 ```
+Navigate to the github link shown if you see this and paste in the code as usual.
+ ```
+  Failed opening a web browser at https://github.com/login/device
+  exec: "xdg-open,x-www-browser,www-browser,wslview": executable file not found in $PATH
+  Please try entering the URL in your browser manually
+ ```
 
 Return to the terminal when you see the `Congratulations, you're all set!` screen.
 
@@ -132,15 +253,28 @@ You should see the following:
 ✔ Authentication complete.
 - gh config set -h github.com git_protocol https
 ✔ Configured git protocol
-✔ Logged in as YourGitHubUsername
+✔ Logged in as yourgithubusername
 ```
       </div>
 
   <div className="step">
-    Navigate to directory and install dependencies.
+Fork and Clone [Repository](https://github.com/cuhacking/hackathon).
 
-```sh title="Nix Shell"
-cd 2025; pnpm i; pnpm exec playwright install --with-deps
+Open VSCode (Or your preferred editor):
+          ```sh title="Nix Shell"
+          # Allow all hosts and trust the authors when you see a popup
+          # And install all recommended extensions
+          code .
+          ```
+
+    From the VSCode integrated terminal, navigate to directory and install dependencies.
+
+```sh title="Terminal"
+gh repo fork cuhacking/2025 --clone # Fork and clone repo
+cd 2025; # Navigate into directory
+nix-shell; # Enter Nix Shell
+pnpm i; # Install packages
+pnpm exec playwright install --with-deps # Install Playwright Browsers for E2E Testing
 ```
 
   </div>
