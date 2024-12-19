@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { ShinyButton } from './shiny-button'
 
 const meta: Meta<typeof ShinyButton> = {
-  title: '✨ Indie UI/Shiny Button',
+  title: '🐺 Indie UI/Shiny Button',
   parameters: {
     layout: 'centered',
   },
