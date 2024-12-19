@@ -1,22 +1,22 @@
-import { NavbarPresenter } from './navbar.presenter';
+import { NavbarPresenter } from './navbar.presenter'
 
 interface Media {
-  src: string;
-  alt: string;
+  src: string
+  alt: string
 }
 
 interface NavbarProps {
   links: {
-    name: string;
-    link: string;
-  }[];
-  logo: string;
+    name: string
+    link: string
+  }[]
+  logo: string
   socials: {
-    link: string;
-    media: Media;
-  }[];
-  hamburger: Media;
-  cross: Media;
+    link: string
+    media: Media
+  }[]
+  hamburger: Media
+  cross: Media
 }
 export function NavbarContainer({
   links,
@@ -26,7 +26,7 @@ export function NavbarContainer({
   cross,
 }: NavbarProps) {
   return (
-    <header id="#navbar" className="w-full fixed top-0 z-[60] backdrop-blur-sm">
+    <header id="navbar" className="w-full fixed top-0 z-[60] backdrop-blur-sm">
       <NavbarPresenter
         links={links}
         logo={logo}
@@ -35,5 +35,5 @@ export function NavbarContainer({
         cross={cross}
       />
     </header>
-  );
+  )
 }

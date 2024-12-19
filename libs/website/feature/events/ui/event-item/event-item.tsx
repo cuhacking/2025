@@ -23,6 +23,7 @@ export function EventItem({ event, className }: EventProps) {
   const datePostfix = getDatePostfix(date)
   const buttonMessage
     = event.status === 'upcoming' ? 'REGISTER NOW' : 'VIEW PHOTOS'
+  const ariaLabel = event.status === 'upcoming' ? `Register for ${event.title}` : `View photos from ${event.title}`
   return (
     <GlassmorphicCard
       variant="nested"
@@ -58,7 +59,7 @@ export function EventItem({ event, className }: EventProps) {
         {event.status !== 'in-progress'
           ? (
               <div className="flex justify-end w-full pt-1 text-xl">
-                <Button variant="default" size="sm">
+                <Button aria-label={ariaLabel} variant="default" size="sm">
                   <Link to={event.link} target="_blank">
                     {buttonMessage}
                   </Link>

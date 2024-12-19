@@ -30,6 +30,7 @@ interface NavbarProps {
   }[]
   logo: string
   socials: {
+    name: string
     link: string
     media: Media
   }[]
@@ -101,7 +102,7 @@ export function NavbarPresenter({
                     />
                   ))}
                 </nav>
-                <DrawerFooter className="pt-5 mt-0">
+                <DrawerFooter id="navbar-social-media-links" className="pt-5 mt-0">
                   <Socials socials={socials} className="justify-center" />
                 </DrawerFooter>
               </div>
