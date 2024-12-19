@@ -40,8 +40,8 @@ const preview: Preview = {
           ['Hero', 'About'],
           'cuHacking Design System',
           '✨ Aceternity',
-          'Farm UI',
-          'Indie UI',
+          '🚜 Farm UI',
+          '🐺 Indie UI',
           '🪄 Magic UI',
           'Shadcn-ui',
           [
