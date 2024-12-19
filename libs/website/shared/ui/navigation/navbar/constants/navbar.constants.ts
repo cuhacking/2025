@@ -1,3 +1,4 @@
+import type { Media } from '@cuhacking/shared/types'
 import cross from '@cuhacking/shared/assets/icons/general/cross-1.svg'
 import hamburger from '@cuhacking/shared/assets/icons/general/hamburger-1.svg'
 import discord_white from '@cuhacking/shared/assets/icons/socials/discord-white-1.svg'
@@ -17,58 +18,68 @@ const links = [
   { name: 'FAQ', link: '/#faq' },
 ]
 
-const socials = [
+const socials: { link: string, name: string, media: Media }[] = [
   {
-    link: 'https://instagram.com',
+    link: 'https://www.instagram.com/cuhacking/',
+    name: 'Instagram',
     media: {
       src: instagram_white,
       alt: 'Instagram',
     },
   },
   {
-    link: 'https://github.com',
+
+    link: 'https://github.com/cuhacking/2025',
+    name: 'Github',
     media: {
       src: github_white,
       alt: 'GitHub',
     },
   },
   {
-    link: 'https://discord.com',
+
+    link: 'https://discord.com/invite/h2cQqF9aZf',
+    name: 'Discord',
     media: {
       src: discord_white,
       alt: 'Discord',
     },
   },
   {
-    link: 'https://docs.com',
+    link: 'https://docs.cuhacking.ca/',
+    name: 'Docs',
     media: {
       src: docs_white,
       alt: 'Documentation',
     },
   },
   {
-    link: 'https://figma.com',
+    link: 'https://www.figma.com/design/wc1JOWR48tBNkjcjwY3AzB/%E2%8C%A8%EF%B8%8F-cuHacking-Design-System?node-id=0-1&t=YTR1ET4Qw1wG1cjz-1',
+    name: 'Figma',
     media: {
       src: figma_white,
       alt: 'Figma',
     },
   },
   {
-    link: 'mailto:example@email.com',
+    link: 'mailto:info@cuhacking.ca',
+    name: 'Email',
     media: {
       src: email_white,
       alt: 'Email',
     },
   },
   {
-    link: 'https://linkedin.com',
+    link: 'https://ca.linkedin.com/company/cuhacking',
+    name: 'LinkedIn',
     media: {
       src: linkedin_white,
       alt: 'LinkedIn',
     },
   },
   {
-    link: 'https://linktr.ee',
+    link: 'https://linktr.ee/cuhacking_',
+    name: 'Linktree',
     media: {
       src: linktree_white,
       alt: 'Linktree',
