@@ -19,7 +19,8 @@
       "@cuhacking/shared/*": ["libs/shared/*"],
       "@shadcn": ["libs/external/shadcn/index.ts"],
       "@shadcn/*": ["libs/external/shadcn/*"],
-      "@website/*": ["libs/website/*"]
+      "@website/*": ["libs/website/*"],
+      "@website-e2e/*": ["libs/website-e2e/*"]
     },
     "declaration": false,
     "importHelpers": true,
