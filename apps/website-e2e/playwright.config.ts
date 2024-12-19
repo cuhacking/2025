@@ -40,30 +40,33 @@ export default defineConfig({
   // reporter: [['html']],
   projects: [
     {
-      name: 'chromium',
+      name: 'chromium (desktop)',
       use: { ...devices['Desktop Chrome'] },
     },
-
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
-
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
-    // },
-
-    // Uncomment for mobile browsers support
-    /* {
-      name: 'Mobile Chrome',
+    {
+      name: 'firefox (desktop)',
+      use: { ...devices['Desktop Firefox'] },
+      testIgnore: ['./src/lighthouse.spec.ts'],
+    },
+    {
+      name: 'webkit (desktop)',
+      use: { ...devices['Desktop Safari'] },
+      testIgnore: ['./src/lighthouse.spec.ts'],
+    },
+    {
+      name: 'webkit (tablet)',
+      use: { ...devices['iPad Mini'] },
+      testIgnore: ['./src/lighthouse.spec.ts'],
+    },
+    {
+      name: 'chromium (mobile)',
       use: { ...devices['Pixel 5'] },
     },
     {
-      name: 'Mobile Safari',
+      name: 'webkit (mobile)',
       use: { ...devices['iPhone 12'] },
-    }, */
-
+      testIgnore: ['./src/lighthouse.spec.ts'],
+    },
     // Uncomment for branded browsers
     /* {
       name: 'Microsoft Edge',
@@ -74,4 +77,10 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     } */
   ],
+
+  // Ignore Chromium projects in CI to speed up runs
+  ignore: process.env.CI
+    ? ['chromium (desktop)', 'chromium (mobile)']
+    : [],
+
 })
