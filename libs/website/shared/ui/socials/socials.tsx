@@ -7,6 +7,7 @@ interface SocialsProps {
   socials: {
     link: string
     media: Media
+    name: string
   }[]
   className: string
 }
@@ -14,12 +15,12 @@ interface SocialsProps {
 export function Socials({ socials, className }: SocialsProps) {
   return (
     <div className={cn('flex flex-wrap gap-x-5 gap-y-3', className)}>
-      {socials.map(({ link, media }) => (
+      {socials.map(({ link, media, name }) => (
         <Link
           target="_blank"
           key={link}
           to={link}
-          aria-label="social media link"
+          aria-label={name}
         >
           <Icon
             media={media}

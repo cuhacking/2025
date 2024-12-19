@@ -35,7 +35,7 @@ export function SponsorshipPresenter({
         </Button>
   */}
         <Link to={packageLink} target="_blank">
-          <Button variant="default" size="lg" className="w-full">
+          <Button aria-label="Sponsorship Package" variant="default" size="lg" className="w-full">
             <p>OUR SPONSORSHIP PACKAGE</p>
           </Button>
         </Link>
