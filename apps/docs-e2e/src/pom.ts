@@ -50,7 +50,7 @@ export class DocsLayout {
     // Mobile + Tablet + Desktop
     this.cuHackingLogoIcon = page.getByRole('img', { name: 'cuHacking logo' }).first()
     this.cuHackingLogoText = page.getByRole('link', { name: 'cuHacking logo cuHacking' }).first()
-    this.nextButton = page.getByRole('link', { name: 'Next Tech Stack' })
+    this.nextButton = page.getByRole('link', { name: /Next/i })
     this.editOnGithubButton = page.getByRole('link', { name: 'Edit on GitHub' })
 
     // Mobile + Tablet + Desktop Links
