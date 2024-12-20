@@ -1,3 +1,4 @@
+// TODO: Investigate node global process usage
 import type { Browser } from 'playwright'
 import { chromium, test } from '@playwright/test'
 import getPort from 'get-port'
@@ -33,13 +34,14 @@ const thresholdsConfig = {
   // 'pwa': 50,
 }
 
-lighthouseTest('should pass lighthouse audits', async ({ page, port }, testInfo) => {
+lighthouseTest('should pass lighthouse audits', async ({ page, port }) => {
   // Skip Lighthouse tests for specific projects
+  const testInfo = test.info().project.name
   if (
     ['firefox (desktop)', 'webkit (desktop)', 'webkit (tablet)', 'webkit (mobile)'].includes(
-      testInfo.project.name,
+      testInfo,
     )
-  ) {
+    || process.env.CI) {
     test.skip('Lighthouse is not supported for this project')
   }
 

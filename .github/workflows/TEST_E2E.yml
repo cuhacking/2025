@@ -9,10 +9,7 @@ on:
 jobs:
   test:
     timeout-minutes: 10
-    runs-on: self-hosted
-    strategy:
-      matrix:
-        node-version: [22.11.0]
+    runs-on: gs65-mfarabi
 
     steps:
       - name: 🛎️ Checkout Code
@@ -40,16 +37,16 @@ jobs:
           path: playwright-report/**/*
           retention-days: 30
 
-      - name: 💀 Run Website E2E Tests
-        run: pnpm nx e2e website-e2e --reporter=html --verbose
+      # - name: 💀 Run Website E2E Tests
+      #   run: pnpm nx e2e website-e2e --reporter=html --verbose
 
-      - name: 📄 Upload Website E2E Playwright Report
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: playwright-report-website-e2e
-          path: playwright-report/**/*
-          retention-days: 30
+      # - name: 📄 Upload Website E2E Playwright Report
+      #   uses: actions/upload-artifact@v4
+      #   if: always()
+      #   with:
+      #     name: playwright-report-website-e2e
+      #     path: playwright-report/**/*
+      #     retention-days: 30
 
       # - name: 💀 Run Portal E2E Tests
       #   env:

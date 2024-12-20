@@ -70,8 +70,4 @@ export default defineConfig({
       testIgnore: ['./src/lighthouse.spec.ts'],
     },
   ],
-  // Ignore Chromium projects in CI to speed up runs
-  // ignore: process.env.CI
-  //   ? ['chromium (desktop)', 'chromium (mobile)']
-  //   : [],
 })
