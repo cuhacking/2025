@@ -5,9 +5,11 @@ export default antfu({
   // unocss: true,
   react: true,
   slidev: true,
-},
-// {}
-)
+}, {
+  ignores: [
+    'apps/scaffold-examples/',
+  ],
+})
 
 // export default [
 //   ...nx.configs['flat/base'],
