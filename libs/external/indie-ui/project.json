@@ -1,0 +1,8 @@
+{
+  "name": "indie-ui",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/external/indie-ui",
+  "projectType": "library",
+  "tags": [],
+  "targets": {}
+}
