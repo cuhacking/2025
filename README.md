@@ -11,6 +11,7 @@
 
 ![Static Badge](https://img.shields.io/badge/pnpm-F69220?logo=pnpm&logoColor=fff)
 ![Static Badge](https://img.shields.io/badge/Monorepo-%23143055?style=flat&logo=Nx&link=https%3A%2F%2Fnx.dev%2F)
+![CodeRabbit PR Reviews](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.coderabbit.ai%2Fstats%2Fgithub%2Fcuhacking%2F2025&query=reviews&suffix=%20Reviews&logoSize=auto&label=CodeRabbit&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai%2F)
 <a href="https://conventionalcommits.org">
 <img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white" alt="Conventional Commits">
 </a>
