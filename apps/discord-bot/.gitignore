@@ -1,0 +1,4 @@
+dist/
+node_modules/
+cooldownDB.sqlite
+tsconfig.tsbuildinfo

@@ -2,8 +2,8 @@ import type { Config } from 'tailwindcss'
 import { join } from 'node:path'
 import { createGlobPatternsForDependencies } from '@nx/react/tailwind'
 
-import { flattenColorPalette } from 'tailwindcss/lib/util/flattenColorPalette'
 import TailwindAnimate from 'tailwindcss-animate'
+import { flattenColorPalette } from 'tailwindcss/lib/util/flattenColorPalette'
 
 export function buildConfig(
   appDir: string,
