@@ -1,0 +1,325 @@
+---
+title: Self-Hosted Infrastructure
+description: Crypto farming.
+icon: Server
+---
+
+import { HomeIcon } from 'lucide-react'
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion"
+
+These instructions assume you're on a POSIX-compliant operating system. See [Installation](/installation).
+
+You'll need the following:
+- USB Thumb Drive - 8 GB minimum
+- A machine to download the `.iso` image. and burn it to the USB thumb drive.
+- Target machine with CPU, RAM, and a Network Interface Card
+  - Could even be a Raspberry Pi
+
+## Choose Operating System Kernel & User Space
+
+Download the corresponding `.iso` file.
+
+<Cards>
+<Card
+  title="Linux - Ubuntu Server"
+  href="https://ubuntu.com/download/server"
+  icon={
+      <img
+        src="https://assets.ubuntu.com/v1/9c69b268-COF%20android-chrome-192x192.png"
+        alt="Ubuntu Logo"
+        width={24}
+        height={24}
+      />
+  }
+/>
+<Card
+  title="Linux - Arch"
+  href="https://archlinux.org/download/#download-mirrors"
+  icon={
+      <img
+        src="https://avatars.githubusercontent.com/u/4673648?s=200&v=4"
+        alt="Arch Linux Logo"
+        width={24}
+        height={24}
+      />
+  }
+/>
+<Card
+  title="Linux - NixOS"
+  href="https://nixos.org/download/"
+  icon={
+      <img
+        src="https://avatars.githubusercontent.com/u/487568?s=200&v=4"
+        alt="NixOS Logo"
+        width={24}
+        height={24}
+      />
+  }
+/>
+<Card
+  title="UNIX - FreeBSD"
+  href="https://freebsd.org/where/"
+  icon={
+      <img
+        src="https://freebsd.org/favicon.ico"
+        alt="FreeBSD Logo"
+        width={24}
+        height={24}
+      />
+  }
+/>
+<Card
+  title="QNX"
+  href="https://qnx.com/download/"
+  icon={
+      <img
+        src="https://automate.org/images/imgLibrary/logo-325-1.png"
+        alt="QNX Logo"
+        width={24}
+        height={24}
+      />
+  }
+/>
+</Cards>
+
+## Burn ISO Image to USB
+
+```sh title="Shell"
+lsblk
+```
+
+Your output will look something like this.
+```ts
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda           8:0    1  7.5G  0 disk // [!code highlight]
+├─sda1        8:1    1  2.6G  0 part // [!code highlight]
+├─sda2        8:2    1    5M  0 part // [!code highlight]
+├─sda3        8:3    1  300K  0 part // [!code highlight]
+└─sda4        8:4    1  4.9G  0 part // [!code highlight]
+zram0       254:0    0    4G  0 disk [SWAP]
+nvme0n1     259:0    0  3.6T  0 disk
+├─nvme0n1p1 259:1    0    1G  0 part /boot
+└─nvme0n1p2 259:2    0  3.6T  0 part /var/log
+                                     /var/cache/pacman/pkg
+                                     /home
+                                     /.snapshots
+                                     /
+nvme1n1     259:3    0  1.9T  0 disk
+```
+
+The `sda` storage block is the USB and is highlighted in green above. Modern Linux systems use the `sd` prefix to indicate 'Storage Device'. `a` refers to the first detected device.
+
+If you had other external storage devices connected, the letter for your newly connected USB will be different because it was discovered later (`sdb`, `sdc`, etc.).
+
+The entries in the tree following `sda` such as `sda1`, `sda2` etc. indicate disk storage partitions.
+
+Unmount all partitions.
+```sh title="Shell"
+sudo umount /dev/sda1 /dev/sda2 /dev/sda3 /dev/sda4
+```
+
+```sh title="Shell"
+# Change location to whereever your .iso file is located
+sudo dd if=~/Downloads/ubuntu-24.04.1-live-server-amd64.iso of=/dev/sda bs=4M status=progress oflag=sync
+```
+
+After completion:
+```sh title="Shell"
+sudo eject /dev/sda
+```
+
+## Set up server
+
+### Flash OS from USB to Server Hardware
+Boot into USB from BIOS.
+
+<Accordions>
+    <Accordion title="Linux - Ubuntu Server">
+![image](https://github.com/user-attachments/assets/9435a515-345f-45da-8758-ead419b3d2e4)
+![image](https://github.com/user-attachments/assets/520bd42a-0b82-408e-b916-b9465750a630)
+![image](https://github.com/user-attachments/assets/aa404828-ca01-419e-a0db-1d12b5f9e41d)
+![image](https://github.com/user-attachments/assets/8abd7854-d13c-4888-bf74-1b5eda0ec962)
+![image](https://github.com/user-attachments/assets/308ab8d4-1ce3-402e-8f0b-6a9781d2c10c)
+![image](https://github.com/user-attachments/assets/5e45023a-5a1c-4da5-842f-743135db1f79)
+![image](https://github.com/user-attachments/assets/da796c3d-e84d-4f8e-8fdd-c2bb6939a24e)
+![image](https://github.com/user-attachments/assets/2b4c72c1-f2c2-40ab-ad73-a5b0a0fe4242)
+![image](https://github.com/user-attachments/assets/fc837942-336c-43db-a5f5-794649c48f26)
+![image](https://github.com/user-attachments/assets/c5fc93f2-5a74-4621-94c7-a69b10e240e6)
+![image](https://github.com/user-attachments/assets/9db72399-aa4b-48c6-bf1a-a051b2944a5c)
+![image](https://github.com/user-attachments/assets/a74b13a2-98ea-418f-b02c-d4b55e574049)
+![image](https://github.com/user-attachments/assets/f6ab70bc-09a1-47e7-8325-5c6a80f5e24f)
+![image](https://github.com/user-attachments/assets/d66a07d9-95ce-4e0d-b5d0-79603f7e16d6)
+![image](https://github.com/user-attachments/assets/00fffa14-ecae-489a-b10e-7f865d072142)
+![image](https://github.com/user-attachments/assets/4296da91-ed6d-43e2-92a5-724aaee01dad)
+![image](https://github.com/user-attachments/assets/61d2c705-ab7f-4420-baf7-3116a04f0582)
+![image](https://github.com/user-attachments/assets/e64545e7-6256-485e-bd65-14da040e84b3)
+![image](https://github.com/user-attachments/assets/cbd68ec8-1052-475f-9f5c-717e03c98e02)
+![image](https://github.com/user-attachments/assets/ec288abd-3487-42aa-bbf3-d857cc3968bb)
+![image](https://github.com/user-attachments/assets/61f925f4-f0df-4fce-9016-f448d875c2f9)
+![image](https://github.com/user-attachments/assets/32d3fb6c-2973-42fc-ab61-f6711ed1e698)
+![image](https://github.com/user-attachments/assets/8caddfe2-9fcc-426b-9307-1022d621917b)
+![image](https://github.com/user-attachments/assets/606d19f8-582a-41ff-a681-4e1162edfd9a)
+![image](https://github.com/user-attachments/assets/84b4d127-390f-4e86-8651-8c388881481a)
+![image](https://github.com/user-attachments/assets/482e4cd2-ebff-4f65-bdde-7e99aa84db03)
+![image](https://github.com/user-attachments/assets/2a3e82ae-8fb0-4a43-884b-729ab096e35d)
+![image](https://github.com/user-attachments/assets/3e6b4cb4-55f6-423f-804e-1537a245eb97)
+![image](https://github.com/user-attachments/assets/6f029380-96bb-4485-836f-ee8afb4c01ba)
+After rebooting, you may see this.
+![image](https://github.com/user-attachments/assets/4c546576-086d-4086-bc19-9080740bab34)
+Remove the USB and hit Enter.
+![image](https://github.com/user-attachments/assets/52543f6e-9b54-41d1-8db9-31cbc5c4ce99)
+
+    </Accordion>
+    <Accordion title="Linux - Arch (WIP)">
+    </Accordion>
+    <Accordion title="Linux - NixOS (WIP)">
+    </Accordion>
+    <Accordion title="UNIX - FreeBSD (WIP)">
+    </Accordion>
+    <Accordion title="QNX (WIP)">
+    </Accordion>
+</Accordions>
+
+After installation completes, log in to your machine.
+
+---
+
+```sh title="Shell (Server)"
+sudo apt update && sudo apt upgrade -y && \
+sudo apt install openssh-server net-tools && \
+sudo systemctl enable ssh && \
+sudo systemctl start ssh && \
+sudo systemctl status sshd # Verify service running
+```
+
+## Configure SSH for External Access
+
+### Same Network
+
+```sh title="Shell (Server)"
+ip addr
+```
+
+```sh title="Shell (Client)"
+ssh username@<machine_ip_addr>
+# ssh user@10.0.1.2
+```
+
+```sh title="Shell (Client SSH)"
+zellij attach
+```
+
+### Different Networks
+
+Set up port forwarding from router.
+
+Find public IP address
+
+```sh title="Shell (Server)"
+curl ifconfig.me
+```
+
+Harden SSH Security:
+
+Disable root login in `/etc/ssh/sshd_config`.
+
+```sh title="Shell (Server)"
+PermitRootLogin no
+Port 2222
+sudo systemctl restart sshd
+```
+
+
+## Install [Nix](https://nixos.org/)
+
+```sh title="Terminal"
+# Answer 'y' for all questions
+sh <(curl -L https://nixos.org/nix/install) --daemon --yes
+```
+
+```sh title="Terminal"
+exit
+```
+
+Log in again.
+
+```sh title="Shell (Server)"
+nix-env -iA nixpkgs.zellij
+```
+
+```sh title="Shell (Server)"
+zellij
+```
+
+```sh title="Shell (Client SSH)"
+zellij attach
+```
+
+## Install [Pnpm](https://pnpm.io/)
+
+```sh title="Shell (Server)"
+curl -fsSL https://get.pnpm.io/install.sh | sh - && source ~/.bashrc
+```
+
+```sh title="Shell (Server)"
+pnpm env use 22.11.0 --global
+```
+
+## Install [Playwright](https://playwright.dev/)
+```sh title="Shell (Server)"
+pnpx playwright install --with-deps
+```
+
+
+## Set up GitHub Actions Runner
+
+Visit https://github.com/organizations/cuhacking/settings/actions/runners/new for steps.
+
+
+## Optional
+
+```sh title="Shell (Server)"
+nix-env -iA nixpkgs.git nixpkgs.gh nixpkgs.stow nixpkgs.zsh nixpkgs.ripgrep nixpkgs.fd nixpkgs.yazi nixpkgs.eza nixpkgs.bat nixpkgs.cowsay nixpkgs.cmatrix nixpkgs.lolcat nixpkgs.nyancat nixpkgs.fastfetch
+
+```
+
+```sh title="Shell (Server)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+```sh title="Shell (Server)"
+git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k;
+```
+
+Open ~/.zshrc and change the the value of ZSH_THEME:
+
+```sh title="Shell (Server)"
+vim ~/.zshrc
+ZSH_THEME="powerlevel10k/powerlevel10k"
+```
+
+```sh title="Shell (Server)"
+p10k configure
+```
+
+```sh title="Shell (Server)"
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
+
+```sh title="~/.config/.zshrc"
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search)
+
+# Aliases
+alias l='eza -lh --icons=auto'
+alias ls='eza --icons=auto --sort=name --group-directories-first'
+alias ll='eza -lha --icons=auto --sort --group-directories-first'
+alias ld='eza -lhD --icons=auto'
+alias lt='eza --icons=auto --tree'
+alias y='yazi'
+alias mkdir='mkdir -p'
+```
+
+```sh title="Shell (Server)"
+source ~/.zshrc
+```
