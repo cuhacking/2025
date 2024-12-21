@@ -8,6 +8,8 @@ export default antfu({
 }, {
   ignores: [
     'apps/scaffold-examples/',
+    // TODO: remove after monorepo integration is complete
+    'apps/cms/',
   ],
 })
 
