@@ -17,6 +17,9 @@ const defaultImageHostnames = [
   'lh3.googleusercontent.com',
   'res.cloudinary.com',
   'github.com',
+  'automate.org',
+  'assets.ubuntu.com',
+  'freebsd.org',
 ]
 
 /**
