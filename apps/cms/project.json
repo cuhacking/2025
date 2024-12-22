@@ -1,0 +1,58 @@
+{
+  "name": "cms",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/cms",
+  "projectType": "application",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project cms --web",
+  "targets": {
+    "build": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation next build",
+      "options": {
+        "cwd": "apps/cms"
+      }
+    },
+    "dev": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation next dev",
+      "options": {
+        "cwd": "apps/cms"
+      }
+    },
+    "devsafe": {
+      "command": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
+      "options": {
+        "cwd": "apps/cms"
+      }
+    },
+    "generate:importmap": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
+      "options": {
+        "cwd": "apps/cms"
+      }
+    },
+    "generate:types": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
+      "options": {
+        "cwd": "apps/cms"
+      }
+    },
+    "lint": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation next lint",
+      "options": {
+        "cwd": "apps/cms"
+      }
+    },
+    "payload": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation payload",
+      "options": {
+        "cwd": "apps/cms"
+      }
+    },
+    "start": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation next start",
+      "options": {
+        "cwd": "apps/cms"
+      }
+    }
+  }
+}

@@ -11,12 +11,15 @@
     "paths": {
       "@aceternity": ["libs/external/aceternity/index.ts"],
       "@aceternity/*": ["libs/external/aceternity/*"],
-      "@magic-ui": ["libs/external/magic-ui/index.ts"],
-      "@magic-ui/*": ["libs/external/magic-ui/*"],
+      "@cuhacking/db": ["libs/db/index.ts"],
+      "@cuhacking/db/*": ["libs/db/*"],
       "@cuhacking/docs": ["libs/docs/index.ts"],
       "@cuhacking/docs/*": ["libs/docs/*"],
       "@cuhacking/shared": ["libs/shared/index.ts"],
       "@cuhacking/shared/*": ["libs/shared/*"],
+      "@magic-ui": ["libs/external/magic-ui/index.ts"],
+      "@magic-ui/*": ["libs/external/magic-ui/*"],
+      "@payload-config": ["apps/cms/src/payload.config.ts"],
       "@shadcn": ["libs/external/shadcn/index.ts"],
       "@shadcn/*": ["libs/external/shadcn/*"],
       "@website/*": ["libs/website/*"]
