@@ -20,18 +20,18 @@ export const seed = async ({
 
   // Seed new social media links
   payload.logger.info('— Adding new links...');
-  await Promise.all(
-    links.map((link) =>
-      payload.create({
-        collection: 'social-links',
-        data: {
-          platform: link.label || link.text,
-          url: link.url,
-          description: link.text,
-        },
-      }),
-    ),
-  );
+  // await Promise.all(
+  //   links.map((link) =>
+  //     payload.create({
+  //       collection: 'social-links',
+  //       data: {
+  //         platform: link.label || link.text,
+  //         url: link.url,
+  //         description: link.text,
+  //       },
+  //     }),
+  //   ),
+  // );
 
   payload.logger.info('Social media links seeded successfully!');
 };
