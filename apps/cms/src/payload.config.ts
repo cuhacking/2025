@@ -1,21 +1,21 @@
 // storage-adapter-import-placeholder
 import { postgresAdapter } from '@payloadcms/db-postgres'
-import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
+// import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 
-import { Users } from './collections/Users'
-import { Media } from './collections/Media'
-import { SocialLinks } from './collections/SocialLinks'
-import { Sponsors } from './collections/Sponsors'
-import { Hackathons } from './collections/Hackathons'
-import { Participants } from './collections/Participants'
-import { Events } from './collections/Events'
-import { Challenges } from './collections/Challenges'
-import { Schedule } from './collections/Schedule'
+import { Users } from '@cuhacking/db/collections/Users'
+import { Media } from '@cuhacking/db/collections/Media'
+import { SocialLinks } from '@cuhacking/db/collections/SocialLinks'
+import { Sponsors } from '@cuhacking/db/collections/Sponsors'
+import { Hackathons } from '@cuhacking/db/collections/Hackathons'
+import { Events } from '@cuhacking/db/collections/Events'
+import { Challenges } from '@cuhacking/db/collections/Challenges'
+import { Schedule } from '@cuhacking/db/collections/Schedule'
+import { Organizations } from '@cuhacking/db/collections/Organizations'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -33,10 +33,10 @@ export default buildConfig({
     Media,
     SocialLinks,
     Sponsors,
-    Participants,
     Events,
     Challenges,
-    Schedule
+    Schedule,
+    Organizations
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
@@ -50,7 +50,7 @@ export default buildConfig({
   }),
   sharp,
   plugins: [
-    payloadCloudPlugin(),
+    // payloadCloudPlugin(),
     // storage-adapter-placeholder
   ],
 })

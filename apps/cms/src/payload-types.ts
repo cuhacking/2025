@@ -16,10 +16,10 @@ export interface Config {
     media: Media;
     'social-links': SocialLink;
     sponsors: Sponsor;
-    participants: Participant;
     events: Event;
     challenges: Challenge;
     schedule: Schedule;
+    organizations: Organization;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -31,10 +31,10 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     'social-links': SocialLinksSelect<false> | SocialLinksSelect<true>;
     sponsors: SponsorsSelect<false> | SponsorsSelect<true>;
-    participants: ParticipantsSelect<false> | ParticipantsSelect<true>;
     events: EventsSelect<false> | EventsSelect<true>;
     challenges: ChallengesSelect<false> | ChallengesSelect<true>;
     schedule: ScheduleSelect<false> | ScheduleSelect<true>;
+    organizations: OrganizationsSelect<false> | OrganizationsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -78,36 +78,72 @@ export interface UserAuthOperations {
 export interface Hackathon {
   id: number;
   year: number;
-  theme?: string | null;
-  sponsors?: (number | Sponsor)[] | null;
-  description?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  participants?: (number | Participant)[] | null;
   updatedAt: string;
   createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "sponsors".
+ * via the `definition` "users".
  */
-export interface Sponsor {
+export interface User {
+  id: number;
+  firstName: string;
+  middleName?: string | null;
+  lastName: string;
+  phoneNumber: string;
+  role: 'organizer' | 'volunteer' | 'mentor' | 'judge' | 'sponsor-representative';
+  tShirtSize: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL';
+  dietaryRestrictions?: string | null;
+  allergies?: string | null;
+  socialLinks?: {
+    linkedin?: string | null;
+    website?: string | null;
+    instagram?: string | null;
+  };
+  emergencyContact: {
+    firstName: string;
+    middleName?: string | null;
+    lastName: string;
+    email: string;
+    phoneNumber: string;
+    relationship: string;
+  };
+  academicInfo?: {
+    school?: ('Carleton' | 'uOttawa' | 'Other') | null;
+    levelOfStudy?: ('Undergraduate' | 'Graduate' | 'PhD') | null;
+    major?: string | null;
+    yearStanding?: ('First Year' | 'Second Year' | 'Third Year' | 'Fourth Year' | 'Fifth Year' | 'Graduate') | null;
+    resume?: string | null;
+  };
+  organization?: (number | null) | Organization;
+  visibilitySettings?: {
+    visibleToOrganizers?: boolean | null;
+    visibleToVolunteers?: boolean | null;
+    visibleToMentors?: boolean | null;
+    visibleToJudges?: boolean | null;
+    visibleToSponsorReps?: boolean | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "organizations".
+ */
+export interface Organization {
   id: number;
   name: string;
-  logo?: (number | null) | Media;
-  link: string;
+  type: 'Company' | 'Student Club';
+  members?: (number | User)[] | null;
+  university?: ('Carleton' | 'uOttawa') | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -132,35 +168,6 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "participants".
- */
-export interface Participant {
-  id: number;
-  name: string;
-  role: 'organizer' | 'volunteer' | 'mentor' | 'judge' | 'sponsor-representative';
-  company?: (number | null) | Sponsor;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
- */
-export interface User {
-  id: number;
-  updatedAt: string;
-  createdAt: string;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  password?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "social-links".
  */
 export interface SocialLink {
@@ -179,6 +186,18 @@ export interface SocialLink {
     | 'github-project'
     | 'github-repo';
   url: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sponsors".
+ */
+export interface Sponsor {
+  id: number;
+  name: string;
+  logo?: (number | null) | Media;
+  link: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -251,10 +270,6 @@ export interface PayloadLockedDocument {
         value: number | Sponsor;
       } | null)
     | ({
-        relationTo: 'participants';
-        value: number | Participant;
-      } | null)
-    | ({
         relationTo: 'events';
         value: number | Event;
       } | null)
@@ -265,6 +280,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'schedule';
         value: number | Schedule;
+      } | null)
+    | ({
+        relationTo: 'organizations';
+        value: number | Organization;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -314,10 +333,6 @@ export interface PayloadMigration {
  */
 export interface HackathonsSelect<T extends boolean = true> {
   year?: T;
-  theme?: T;
-  sponsors?: T;
-  description?: T;
-  participants?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -326,6 +341,50 @@ export interface HackathonsSelect<T extends boolean = true> {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  firstName?: T;
+  middleName?: T;
+  lastName?: T;
+  phoneNumber?: T;
+  role?: T;
+  tShirtSize?: T;
+  dietaryRestrictions?: T;
+  allergies?: T;
+  socialLinks?:
+    | T
+    | {
+        linkedin?: T;
+        website?: T;
+        instagram?: T;
+      };
+  emergencyContact?:
+    | T
+    | {
+        firstName?: T;
+        middleName?: T;
+        lastName?: T;
+        email?: T;
+        phoneNumber?: T;
+        relationship?: T;
+      };
+  academicInfo?:
+    | T
+    | {
+        school?: T;
+        levelOfStudy?: T;
+        major?: T;
+        yearStanding?: T;
+        resume?: T;
+      };
+  organization?: T;
+  visibilitySettings?:
+    | T
+    | {
+        visibleToOrganizers?: T;
+        visibleToVolunteers?: T;
+        visibleToMentors?: T;
+        visibleToJudges?: T;
+        visibleToSponsorReps?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -377,17 +436,6 @@ export interface SponsorsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "participants_select".
- */
-export interface ParticipantsSelect<T extends boolean = true> {
-  name?: T;
-  role?: T;
-  company?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "events_select".
  */
 export interface EventsSelect<T extends boolean = true> {
@@ -421,6 +469,18 @@ export interface ScheduleSelect<T extends boolean = true> {
   event?: T;
   time?: T;
   day?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "organizations_select".
+ */
+export interface OrganizationsSelect<T extends boolean = true> {
+  name?: T;
+  type?: T;
+  members?: T;
+  university?: T;
   updatedAt?: T;
   createdAt?: T;
 }
