@@ -74,18 +74,18 @@ export const Users: CollectionConfig = {
     },
 
     // Emergency Contact
-    {
-      name: 'emergencyContact',
-      type: 'group',
-      fields: [
-        { name: 'firstName', type: 'text', required: true },
-        { name: 'middleName', type: 'text' },
-        { name: 'lastName', type: 'text', required: true },
-        { name: 'email', type: 'email', required: true },
-        { name: 'phoneNumber', type: 'text', required: true },
-        { name: 'relationship', type: 'text', required: true },
-      ],
-    },
+    // {
+    //   name: 'emergencyContact',
+    //   type: 'group',
+    //   fields: [
+    //     { name: 'firstName', type: 'text', required: true },
+    //     { name: 'middleName', type: 'text' },
+    //     { name: 'lastName', type: 'text', required: true },
+    //     { name: 'email', type: 'email', required: true },
+    //     { name: 'phoneNumber', type: 'text', required: true },
+    //     { name: 'relationship', type: 'text', required: true },
+    //   ],
+    // },
 
     // Academic Info (For Students)
     {
