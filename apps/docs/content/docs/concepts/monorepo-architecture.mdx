@@ -4,6 +4,7 @@ icon: Eclipse
 ---
 
 import { File, Folder, Files } from 'fumadocs-ui/components/files';
+import { TbBrandTypescript } from "react-icons/tb";
 import {Atom as TSX} from 'lucide-react'
 import { DiJavascript1 } from "react-icons/di";
 import { BsFiletypeJson } from "react-icons/bs";
@@ -31,73 +32,84 @@ allowFullScreen>
   </Folder>
   <Folder name=".husky">
   </Folder>
-  <Folder name=".storybook" className="text-pink-500 bg-pink-500/5">
-    <File name="custom-viewports.ts"/>
-    <File name="main.ts"/>
-    <File name="preview-head.html"/>
-    <File name="preview.tsx"/>
-    <File name="themes-storybook-ui.ts"/>
-    <File name="tsconfig.storybook.json"/>
-  </Folder>
   <Folder name="apps" defaultOpen>
-  <Folder name="docs" className="text-blue-500 bg-blue-500/5">
-    <File name="layout.tsx" icon={<TSX/>}/>
-    <File name="page.tsx" />
-    <File name="global.css" icon={<DiCss3 />}/>
-  </Folder>
-  <Folder name="docs-e2e">
-  </Folder>
-  <Folder name="portal" className="text-green-500 bg-green-500/5">
-  </Folder>
-  <Folder name="portal-e2e">
-  </Folder>
-  <Folder name="website" className="text-lime-500 bg-lime-500/5">
-  </Folder>
-  <Folder name="website-e2e">
-  </Folder>
-  </Folder>
-  <Folder name="libs" defaultOpen>
-  <Folder name="docs">
-  </Folder>
-  <Folder name="external">
-  </Folder>
-  <Folder name="shared" className="text-yellow-500 bg-yellow-500/5" defaultOpen>
-  <Folder name="assets">
-  </Folder>
-  <Folder name="config">
-  </Folder>
-  <Folder name="features">
-  </Folder>
-  <Folder name="providers">
-  </Folder>
-  <Folder name="routes">
-  </Folder>
-  <Folder name="ui">
-    <File name="button.tsx" />
-    <File name="tabs.tsx" />
-    <File name="dialog.tsx" />
-  </Folder>
-  <Folder name="utils">
-  </Folder>
-  <File name="project.json" icon={<BsFiletypeJson />} />
-  <File name="tsconfig.json" icon={<BsFiletypeJson />} />
-  <File name="tsconfig.lib.json" icon={<BsFiletypeJson />} />
-  </Folder>
-  <Folder name="website" className="text-cyan-500 bg-cyan-500/5" defaultOpen>
-  <Folder name="assets">
-  </Folder>
-  <Folder name="feature">
-  </Folder>
-  <Folder name="layouts">
-  </Folder>
-  <Folder name="pages">
-  </Folder>
-  <Folder name="shared">
-  </Folder>
-  </Folder>
-  </Folder>
-  <Folder name="tools" className="text-orange-500 bg-orange-500/5">
-  </Folder>
+        <Folder name="docs" class="text-blue-500 bg-blue-500/5" defaultOpen>
+    -    <File name="layout.tsx" icon={<TSX/>}/>
+    -    <File name="page.tsx" />
+    -    <File name="global.css" icon={<DiCss3 />}/>
+        </Folder>
+        <Folder name="docs-e2e" class="text-red-500 bg-red-500/5">
+        </Folder>
+        <Folder name="portal" class="text-green-500 bg-green-500/5">
+        </Folder>
+        <Folder name="portal-e2e"class="text-red-500 bg-red-500/5">
+        </Folder>
+        <Folder name="website" class="text-lime-500 bg-lime-500/5" defaultOpen>
+            <File name="global.css" icon={<DiCss3 />}/>
+            <File name="home.tsx" icon={<TSX/>}/>
+            <File name="layout.tsx" />
+        </Folder>
+        <Folder name="website-e2e" class="text-red-500 bg-red-500/5">
+        </Folder>
+    </Folder>
+    <Folder name="libs" defaultOpen>
+        <Folder name="docs" class="text-blue-500 bg-blue-500/5">
+        </Folder>
+        <Folder name="docs-e2e" class="text-red-500 bg-red-500/5">
+        </Folder>
+        <Folder name="portal" class="text-green-500 bg-green-500/5">
+        </Folder>
+        <Folder name="portal-e2e" class="text-red-500 bg-red-500/5">
+        </Folder>
+        <Folder name="shared" class="text-slate-500 bg-slate-500/5" defaultOpen>
+            <Folder name="entities">
+            </Folder>
+            <Folder name="features">
+                <Folder name="events">
+                </Folder>
+            </Folder>
+            <Folder name="pages">
+            </Folder>
+            <Folder name="utils">
+            </Folder>
+        </Folder>
+        <Folder name="website"  defaultOpen class="text-lime-500 bg-lime-500/5">
+            <Folder name="app" class="text-orange-500 bg-orange-500/5">
+            </Folder>
+            <Folder name="entities" class="text-orange-500 bg-orange-500/5">
+            </Folder>
+            <Folder name="features" class="text-orange-500 bg-orange-500/5" defaultOpen>
+                <Folder name="awesome-feature" class="text-sky-500 bg-sky-500/5" defaultOpen>
+                    <Folder name="api">
+                    </Folder>
+                    <Folder name="assets">
+                    </Folder>
+                    <Folder name="entities">
+                    </Folder>
+                    <Folder name="hooks">
+                    </Folder>
+                    <Folder name="routes">
+                    </Folder>
+                    <Folder name="stores">
+                    </Folder>
+                    <Folder name="ui">
+                    </Folder>
+                    <Folder name="utils">
+                    </Folder>
+                    <File name="index.ts" icon={<TbBrandTypescript/>}/>
+                </Folder>
+            </Folder>
+            <Folder name="pages" class="text-orange-500 bg-orange-500/5">
+            </Folder>
+            <Folder name="shared" class="text-orange-500 bg-orange-500/5">
+            </Folder>
+            <Folder name="utils" class="text-orange-500 bg-orange-500/5">
+            </Folder>
+        </Folder>
+        <Folder name="website-e2e" class="text-red-500 bg-red-500/5">
+        </Folder>
+    </Folder>
+    <div class="text-violet-500 bg-violet-500/5">
   <File name="cz.json" icon={<BsFiletypeJson />} />
   <File name="package.json" icon={<BsFiletypeJson />} />
   <File name="pnpm-lock.yaml"/>
@@ -107,6 +119,7 @@ allowFullScreen>
   <File name="tailwind.config.ts"/>
   <File name="tsconfig.base.json"/>
   <File name="vitest.workspace.ts"/>
+  </div>
 </Files>
 
 
@@ -124,3 +137,32 @@ allowFullScreen>
   }
 />
 </Cards>
+
+## [Feature-Sliced Design](https://feature-sliced.design/docs)
+
+<iframe
+title="Feature-Sliced Design"
+className="mt-4 w-full h-[400px] rounded-lg"
+src="https://feature-sliced.design/docs"
+allowFullScreen>
+</iframe>
+
+Feature-Sliced Design is a methodology for building scalable and maintainable front-end applications, but we extend it for our entire codebase.
+It is based on the idea of splitting the application into features, each of which is a separate entity with its own logic, UI, and data.
+All content shared within an app is placed into the shared folder.
+This approach allows for better organization of the codebase, easier collaboration between team members, and faster development cycles.
+
+It is highly recommended that you follow the [Feature-Sliced Design Tutorial](https://feature-sliced.design/docs/get-started/tutorial) to practice using the methodology.
+
+## [Bullet-Proof React](https://reacthandbook.dev/project-standards)
+<iframe
+title="Bullet-Proof React"
+className="mt-4 w-full h-[400px] rounded-lg"
+src="https://reacthandbook.dev/project-standards"
+allowFullScreen>
+</iframe>
+
+Bullet-Proof React is a methodology for building scalable and maintainable front-end application, however, we extend it for our entire codebase.
+We use Bullet-Proof React and [Feature-Sliced Design](/concepts/feature-sliced-design) to create a scalable and maintainable codebase.
+
+In our use case, the Bullet-Proof React is how we organize our [Feature Slices](https://feature-sliced.design/docs/reference/slices-segments)
