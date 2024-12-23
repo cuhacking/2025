@@ -1,0 +1,46 @@
+---
+title: Bullet-Proof React
+description: WIP
+icon: ShieldCheck
+---
+
+import { File, Folder, Files } from 'fumadocs-ui/components/files';
+import { TbBrandTypescript } from "react-icons/tb";
+
+## [Bullet-Proof React](https://reacthandbook.dev/project-standards)
+<iframe
+title="Bullet-Proof React"
+className="mt-4 w-full h-[400px] rounded-lg"
+src="https://reacthandbook.dev/project-standards"
+allowFullScreen>
+</iframe>
+
+Bullet-Proof React is a methodology for building scalable and maintainable front-end application, however, we extend it for our entire codebase.
+We use Bullet-Proof React and [Feature-Sliced Design](/concepts/feature-sliced-design) to create a scalable and maintainable codebase.
+
+In our use case, the Bullet-Proof React is how we organize our [Feature Slices](https://feature-sliced.design/docs/reference/slices-segments)
+
+### Example structure
+<Files>
+    <Folder name="features" defaultOpen>
+        <Folder name="awesome-feature" defaultOpen>
+        <Folder name="api">
+        </Folder>
+        <Folder name="assets">
+        </Folder>
+        <Folder name="entities">
+        </Folder>
+        <Folder name="hooks">
+        </Folder>
+        <Folder name="routes">
+        </Folder>
+        <Folder name="stores">
+        </Folder>
+        <Folder name="ui">
+        </Folder>
+        <Folder name="utils">
+        </Folder>
+        <File name="index.ts" icon={<TbBrandTypescript/>}/>
+        </Folder>
+    </Folder>
+</Files>
