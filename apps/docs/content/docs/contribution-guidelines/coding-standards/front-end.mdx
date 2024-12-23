@@ -4,7 +4,32 @@ description: WIP
 icon: Atom
 ---
 
+## [Presenter, Container Pattern](https://www.patterns.dev/react/presentational-container-pattern/)
+<iframe
+title="Presenter, Container Pattern"
+className="mt-4 w-full h-[400px] rounded-lg"
+src="https://www.patterns.dev/react/presentational-container-pattern/"
+allowFullScreen>
+</iframe>
+TLDR: Presenter components answer **how** UI is rendered. Container components answer **what** UI is rendered.
+
+## tsconfig
 [tsconfig.json with comments and explanations](https://gist.github.com/er-ant/e8c2f8c47ad871a4685c2a17800c86ae)
+
+## Folder structure
+Please refer to [Monorepo Architecture](/concepts/monorepo-architecture) tab for more info.
+
+### File Naming Convention
+We follow the [Angular style guide](https://angular.dev/style-guide) for naming files. The file name should be in kebab-case, not capitalized, and should describe the content of the file. For example, a component file should be named `event-card.component.ts`.
+
+**Note:** Presenter and component files must be prefixed with a `.presenter` or a `.container` and do not need a `.component` suffix
+
+Examples:
+- `event-card.component.tsx`
+- `event-card.container.tsx`
+- `event-card.presenter.tsx`
+- `event.service.tsx`
+- `event.helper.tsx`
 
 ## Scaffolding Shadcn Ecosystem Library
 
