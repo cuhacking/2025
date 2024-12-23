@@ -1,0 +1,107 @@
+---
+title: Feature-Sliced Design 
+description: WIP
+icon: Eclipse
+---
+
+import { File, Folder, Files } from 'fumadocs-ui/components/files';
+import {Atom as TSX} from 'lucide-react'
+import { DiJavascript1 } from "react-icons/di";
+import { TbBrandTypescript } from "react-icons/tb";
+import { BsFiletypeJson } from "react-icons/bs";
+import { DiCss3 } from "react-icons/di";
+
+We follow [Feature-Sliced Design](https://feature-sliced.design/docs) for our project structure.
+
+<iframe
+title="Feature-Sliced Design"
+className="mt-4 w-full h-[400px] rounded-lg"
+src="https://feature-sliced.design/docs"
+allowFullScreen>
+</iframe>
+
+Feature-Sliced Design is a methodology for building scalable and maintainable front-end applications, but we extend it for our entire codebase. 
+It is based on the idea of splitting the application into features, each of which is a separate entity with its own logic, UI, and data. 
+All content shared within an app is placed into the shared folder. 
+This approach allows for better organization of the codebase, easier collaboration between team members, and faster development cycles.
+
+It is highly recommended that you follow the [Feature-Sliced Design Tutorial](https://feature-sliced.design/docs/get-started/tutorial) to practice using the methodology. 
+
+### Example structure
+<Files>
+    <Folder name="apps" defaultOpen>
+        <Folder name="docs" defaultOpen>
+        </Folder>
+        <Folder name="docs-e2e">
+        </Folder>
+        <Folder name="portal">
+        </Folder>
+        <Folder name="portal-e2e">
+        </Folder>
+        <Folder name="website">
+            <File name="global.css" icon={<DiCss3 />}/>
+            <File name="home.tsx" icon={<TSX/>}/>
+            <File name="layout.tsx" />
+        </Folder>
+        <Folder name="website-e2e">
+        </Folder>
+    </Folder>
+    <Folder name="libs" defaultOpen>
+        <Folder name="docs">
+        </Folder>
+        <Folder name="docs-e2e">
+        </Folder>
+        <Folder name="portal">
+        </Folder>
+        <Folder name="portal-e2e">
+        </Folder>
+        <Folder name="shared" defaultOpen>
+            <Folder name="entities">
+            </Folder>
+            <Folder name="features">
+                <Folder name="events">
+                </Folder>
+            </Folder>
+            <Folder name="pages">
+            </Folder>
+            <Folder name="utils">
+            </Folder>
+        </Folder>
+        <Folder name="website" defaultOpen>
+            <Folder name="app">
+            </Folder>
+            <Folder name="entities">
+            </Folder>
+            <Folder name="features" defaultOpen>
+                <Folder name="awesome-feature" defaultOpen>
+                    <Folder name="api">
+                    </Folder>
+                    <Folder name="assets">
+                    </Folder>
+                    <Folder name="entities">
+                    </Folder>
+                    <Folder name="hooks">
+                    </Folder>
+                    <Folder name="routes">
+                    </Folder>
+                    <Folder name="stores">
+                    </Folder>
+                    <Folder name="ui">
+                    </Folder>
+                    <Folder name="utils">
+                    </Folder>
+                    <File name="index.ts" icon={<TbBrandTypescript/>}/>
+                </Folder>
+            </Folder>
+            <Folder name="pages">
+            </Folder>
+            <Folder name="shared">
+            </Folder>
+            <Folder name="utils">
+            </Folder>
+        </Folder>
+        <Folder name="website-e2e">
+        </Folder>
+    </Folder>
+</Files>
+    
