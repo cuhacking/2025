@@ -1,0 +1,159 @@
+* Problem Statement
+
+** Documents Needed
+   - Sponsorship
+     - Sponsorship Package
+       - Figma
+       - Converted to PDF and shared via Google Drive Link
+     - Pitch Deck
+       - For sponsors
+         - Large companies
+         - Small companies
+         - Benefit companies
+         - Startups
+         - Not-for-profits
+         - University departments
+     - Sponsorship Emails
+       - Key details
+       - Key attachments
+       - Business cards
+
+** General
+   - General Meeting Slides
+
+** Community Engagement & Hacker Experience
+   - Marketing posts on Instagram and LinkedIn
+     - Initial
+     - Sign-ups open
+     - Reminder
+     - Post-event
+   - Marketing Emails
+     - Newsletter
+   - Calendar of yearly events
+     - Calendar of hackathon events
+   - Workshop Slides
+   - Workshop Handouts
+   - Hacker Booklet
+   - Opening Ceremonies Slides
+   - Closing Ceremonies Slides
+
+** Events
+   - Have title, subtitle, description, date, time, location, people hosting, people sponsoring, and people attending
+
+** Challenges
+   - Need content
+     - Content changes
+   - Needs to look good
+   - Needs to have the same theme
+   - Needs to pull from design system
+   - Needs to auto-update when changes occur
+   - Needs to be converted to a format for easy sharing
+   - Needs to have access control for editing
+   - Needs to be easily editable
+   - Takes time to make
+   - Room for human error
+
+** Proposed Solutions
+   - Create single source of truths
+     - Content
+     - Design
+   - All docs and slides as code
+   - Code pulls from single sources of truths
+   - Instantly auto-updates docs
+   - Hydrates the docs with design system
+
+** Data Model planning
+*** Entity
+- Name
+- Avatar
+- Brand
+  - Logo
+  - Social Media
+    - Website
+    - GitHub
+    - LinkedIn
+    - Devpost
+    - YouTube
+    - Microsoft Outlook
+    - Notion
+    - Instagram
+    - Facebook
+- Address (Use Google Maps API)
+  - Country
+  - State/Province
+  - City
+  - Postal Code
+  - Street
+  - House no.
+  - Apartment No.
+- Contact
+  - Email Address
+    - Work
+    - School
+    - Personal
+  - Phone Number
+- Parent
+- Child
+
+Hackathon is cuHacking, which is a child of CUSA, which is a child of Carleton University.
+
+cuHacking does events.
+
+Events have attendees.
+
+Attendees could be:
+- organizers
+- volunteers
+- sponsor representatives
+  - Recruiter
+  - Manager
+  - Other
+- hackers
+
+Different roles have different types of access. https://en.wikipedia.org/wiki/Role-based_access_control
+
+Organizers with super admin..
+
+Organizers should be able to see all info except sensitive stuff, and be able to edit/delete some content.
+
+Hardware...
+
+TODO:
+- Combine cms and api app on same url
+- Login to back-end with GitHub auth
+- Deploy api and database
+- Set up Google microservice
+- Set up Notion microservice
+- Set up Discord microservice
+
+#+begin_src plantuml :results output :exports results
+!define C4_CONTEXT
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+' Define the main entities
+Person(hacker, "Hackers", "Build projects during the hackathon")
+Person(organizer, "Organizers", "Plan and manage the hackathon")
+Person(volunteer, "Volunteers", "Assist Organizers with logistics")
+Person(sponsor_rep, "Sponsor Representatives", "Represent sponsors and provide funding")
+Person(judge, "Judges", "Evaluate the projects")
+Person(mentor, "Mentors", "Guide hackers during the event")
+
+' Define relationships
+Rel(hacker, organizer, "Registers and communicates with")
+Rel(hacker, mentor, "Receives guidance from")
+Rel(hacker, volunteer, "Assisted by during the event")
+Rel(organizer, sponsor_rep, "Collaborates with for sponsorships")
+Rel(sponsor_rep, judge, "Sometimes acts as a judge")
+Rel(judge, organizer, "Shares feedback with about the event")
+Rel(hacker, judge, "Submits projects for evaluation")
+
+@enduml
+#+end_src
+
+#+RESULTS:
+[[file:/tmp/babel-OMLdFo/plantuml-vMazsA.png]]
+
+
+* Pain Points
+- When I applied to Hack the North 2023, I really loved the theme of ducks, the UI/UX, the user flow, etc. I could tell it was made with love and care.
+  I also couldn't help but notice that the app took an extremely long time to load.
