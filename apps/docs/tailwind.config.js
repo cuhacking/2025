@@ -11,6 +11,7 @@ export default {
     './mdx-components.{ts,tsx}',
     '{src,components,app,content}/**/*!(*.stories|*.spec).{ts,tsx,md,mdx,html}',
     '../../node_modules/fumadocs-ui/dist/**/*.js',
+    './content/docs/**/*.{md,mdx}',
   ],
   theme: {
     extend: {
@@ -63,10 +64,60 @@ export default {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+        'background-position-spin': {
+          '0%': { backgroundPosition: 'top center' },
+          '100%': { backgroundPosition: 'bottom center' },
+        },
+        'text-gradient': {
+          '0%': {
+            backgroundPosition: '0% 50%',
+          },
+          '50%': {
+            backgroundPosition: '100% 50%',
+          },
+          '100%': {
+            backgroundPosition: '0% 50%',
+          },
+        },
+        'color-cycle-orange': {
+          '0%': { color: 'theme(colors.orange.500)' },
+          '25%': { color: 'theme(colors.yellow.400)' },
+          '50%': { color: 'theme(colors.blue.400)' },
+          '75%': { color: 'theme(colors.primary.DEFAULT)' },
+          '100%': { color: 'theme(colors.orange.500)' },
+        },
+        'color-cycle-yellow': {
+          '0%': { color: 'theme(colors.yellow.400)' },
+          '25%': { color: 'theme(colors.blue.400)' },
+          '50%': { color: 'theme(colors.primary.DEFAULT)' },
+          '75%': { color: 'theme(colors.orange.500)' },
+          '100%': { color: 'theme(colors.yellow.400)' },
+        },
+        'color-cycle-blue': {
+          '0%': { color: 'theme(colors.blue.400)' },
+          '25%': { color: 'theme(colors.primary.DEFAULT)' },
+          '50%': { color: 'theme(colors.orange.500)' },
+          '75%': { color: 'theme(colors.yellow.400)' },
+          '100%': { color: 'theme(colors.blue.400)' },
+        },
+        'color-cycle-primary': {
+          '0%': { color: 'theme(colors.primary.DEFAULT)' },
+          '25%': { color: 'theme(colors.orange.500)' },
+          '50%': { color: 'theme(colors.yellow.400)' },
+          '75%': { color: 'theme(colors.blue.400)' },
+          '100%': { color: 'theme(colors.primary.DEFAULT)' },
+        },
       },
-      animation: {
+      animation:
+      {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'background-position-spin':
+          'background-position-spin 3000ms infinite alternate',
+        'color-cycle-orange': 'color-cycle-orange 8s infinite',
+        'color-cycle-yellow': 'color-cycle-yellow 8s infinite',
+        'color-cycle-blue': 'color-cycle-blue 8s infinite',
+        'color-cycle-primary': 'color-cycle-primary 8s infinite',
       },
     },
   },
