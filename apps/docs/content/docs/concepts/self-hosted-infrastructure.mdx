@@ -192,7 +192,7 @@ sudo systemctl start ssh && \
 sudo systemctl status sshd # Verify service running
 ```
 
-## Configure SSH for External Access
+## Configure SSH for External Access (WIP)
 
 ### Same Network
 
@@ -203,10 +203,6 @@ ip addr
 ```sh title="Shell (Client)"
 ssh username@<machine_ip_addr>
 # ssh user@10.0.1.2
-```
-
-```sh title="Shell (Client SSH)"
-zellij attach
 ```
 
 ### Different Networks
@@ -228,7 +224,6 @@ PermitRootLogin no
 Port 2222
 sudo systemctl restart sshd
 ```
-
 
 ## Install [Nix](https://nixos.org/)
 
@@ -255,10 +250,68 @@ zellij
 zellij attach
 ```
 
+## Optional
+
+```sh title="Shell (Server)"
+nix-env -iA nixpkgs.{git,gh,stow,zsh,ripgrep,fd,yazi,eza,bat,cowsay,cmatrix,lolcat,nyancat,fastfetch}
+}
+```
+
+Install [Oh My Zsh](https://ohmyz.sh/), a framework to easily customize the look and feel of zsh.
+```sh title="Shell (Server)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+Install [PowerLevel10K](https://github.com/romkatv/powerlevel10k), a theming system for the Oh My Zsh framework.
+```sh title="Shell (Server)"
+git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k;
+```
+
+Change value of `ZSH_THEME` in `~/.zshrc`:
+```bash
+sed -i 's/^ZSH_THEME=".*"/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc; source ~/.zshrc
+```
+
+If the Powerlevel10k configuration menu doesn't start, do:
+```sh title="Shell (Server)"
+p10k configure
+```
+
+Install and configure useful zsh plugins.
+```sh title="Shell (Server)"
+# Autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+# Syntax Highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
+
+```sh title="Shell"
+sed -i 's/^plugins=(.*)$/plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search)/' ~/.zshrc
+```
+
+```sh title="Shell (Server)"
+cat << 'EOF' >> ~/.zshrc
+
+# Aliases
+alias l='eza -lh --icons=auto'
+alias ls='eza --icons=auto --sort=name --group-directories-first'
+alias ll='eza -lha --icons=auto --sort --group-directories-first'
+alias ld='eza -lhD --icons=auto'
+alias lt='eza --icons=auto --tree'
+alias y='yazi'
+alias mkdir='mkdir -p'
+
+EOF
+```
+
+```sh title="Shell (Server)"
+source ~/.zshrc
+```
+
 ## Install [Pnpm](https://pnpm.io/)
 
 ```sh title="Shell (Server)"
-curl -fsSL https://get.pnpm.io/install.sh | sh - && source ~/.bashrc
+curl -fsSL https://get.pnpm.io/install.sh | sh - && \
+  if [ -n "$ZSH_VERSION" ]; then source ~/.zshrc; elif [ -n "$BASH_VERSION" ]; then source ~/.bashrc; fi
 ```
 
 ```sh title="Shell (Server)"
@@ -273,53 +326,4 @@ pnpx playwright install --with-deps
 
 ## Set up GitHub Actions Runner
 
-Visit https://github.com/organizations/cuhacking/settings/actions/runners/new for steps.
-
-
-## Optional
-
-```sh title="Shell (Server)"
-nix-env -iA nixpkgs.git nixpkgs.gh nixpkgs.stow nixpkgs.zsh nixpkgs.ripgrep nixpkgs.fd nixpkgs.yazi nixpkgs.eza nixpkgs.bat nixpkgs.cowsay nixpkgs.cmatrix nixpkgs.lolcat nixpkgs.nyancat nixpkgs.fastfetch
-
-```
-
-```sh title="Shell (Server)"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
-
-```sh title="Shell (Server)"
-git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k;
-```
-
-Open ~/.zshrc and change the the value of ZSH_THEME:
-
-```sh title="Shell (Server)"
-vim ~/.zshrc
-ZSH_THEME="powerlevel10k/powerlevel10k"
-```
-
-```sh title="Shell (Server)"
-p10k configure
-```
-
-```sh title="Shell (Server)"
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-```
-
-```sh title="~/.config/.zshrc"
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search)
-
-# Aliases
-alias l='eza -lh --icons=auto'
-alias ls='eza --icons=auto --sort=name --group-directories-first'
-alias ll='eza -lha --icons=auto --sort --group-directories-first'
-alias ld='eza -lhD --icons=auto'
-alias lt='eza --icons=auto --tree'
-alias y='yazi'
-alias mkdir='mkdir -p'
-```
-
-```sh title="Shell (Server)"
-source ~/.zshrc
-```
+Follow [steps](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/adding-self-hosted-runners?learn=hosting_your_own_runners&learnProduct=actions).
