@@ -29,6 +29,16 @@ Before WSL, people had to:
 
 [Learn more](https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux).
 </Accordion>
+<Accordion title="Why use WSL instead of switching to Linux?">
+WSL allows you to:
+- have the best of both worlds by running Linux and Windows simultaneously.
+- Use Linux tools and commands directly from Windows without switching operating systems.
+- Run various development environments smoothly without leaving your Windows OS.
+
+You can still access the Windows filesystem from Linux and vice versa and avoid the hassle of dual booting.
+
+[Why Dual booting on the same drive is not worth it](https://www.makeuseof.com/tag/risks-dual-booting-windows-linux-operating-systems/).
+</Accordion>
   <Accordion title="Do I need to switch to the dark side and code in shell?">
     No you don't. WSL can run in the VS Code terminal, or any other
     IDE terminal. Rather than cloning the repo on your Windows filesystem, you'd be
@@ -41,95 +51,25 @@ Before WSL, people had to:
 
       <div className="steps">
         <div className="step">
-          <kbd> Win+X, A</kbd> to open PowerShell as Administrator
+        Enable [essential Windows features](https://winaero.com/bash-ubuntu-windows-10-fall-creators-update/) to enable WSL.
+          
+          <kbd> Win+R</kbd> to open Run dialog, then:
 
-          ```sh title="Powershell"
-          wsl --status
+          ```sh title="Run"
+          optionalfeatures # opens 'Windows Features' Dialog
           ```
 
-If you see this, you already have both WSL and Ubuntu installed.
-```
-Default Distribution: Ubuntu
-Default Version: 2
-WSL1 is not supported with your current machine configuration.
-Please enable the "Windows Subsystem for Linux" optional component to use WSL1.
-```
+Turn on the following features if not already enabled.
 
-If you'd like to do a fresh install, delete the distribution first.
-```sh
-wsl --unregister ubuntu
-```
+![Image](https://github.com/user-attachments/assets/763299a8-420d-4e0c-9b34-af9878bedc9c)
 
-If you see this, you have both WSL installed, but without a distribution.
-```
-Windows Subsystem for Linux has no installed distributions.
+Restart your machine for these changes to take effect.
 
-Use 'wsl.exe --list --online' to list available distributions
-and 'wsl.exe --install <Distro>' to install.
+After restart, launch 'Microsoft Store', and search 'Linux'.
 
+![Image](https://github.com/user-attachments/assets/d24cfe59-b879-4162-a47a-5136e163ba03)
 
-Distributions can also be installed by visiting the Microsoft Store:
-https://aka.ms/wslstore
-Error code: Wsl/Service/CreateInstance/GetDefaultDistro/WSL_E_DEFAULT_DISTRO_NOT_FOUND
-```
-
-
-If there's no output, install a WSL distribution.
-
-          ```sh title="Powershell"
-          wsl --install -d ubuntu # Will install WSL2 by default
-          ```
-          You should see:
-
-          ```
-          Installing: Windows Subsystem for Linux
-          Windows Subsystem for Linux has been installed.
-          Installing: Ubuntu
-          [                           0.0%
-          ```
-
-          Restart your machine once you see:
-          ```
-          Ubuntu has been installed.
-          The requested operation is successful. Changes will not be effective until the system is rebooted.
-          ```
-          ```sh title="Powershell"
-          Restart-Computer
-          ```
-          Open PowerShell as Administrator again with
-          <kbd> Win+X, A</kbd>
-
-You should immediately see WSL begin installing. Else if you're in a regular powershell session instead, do:
-
-          ```sh
-          wsl -v
-          ```
-
-          You should see something like:
-          ```
-          WSL version: 2.3.26.0
-          Kernel version: 5.15.167.4-1
-          WSLg version: 1.0.65
-          MSRDC version: 1.2.5620
-          Direct3D version: 1.611.1-81528511
-          DXCore version: 10.0.26100.1-240331-1435.ge-release
-          Windows version: 10.0.22631.4602
-          ```
-
-          Do:
-          ```sh title="Terminal"
-          wsl --install -d ubuntu
-          ```
-
-          You should see something like:
-          ```
-          Ubuntu is already installed.
-          Launching Ubuntu...
-          Installing, this may take a few minutes...
-          Please create a default UNIX user account. The username does not need to match your Windows username.
-          For more information visit: https://aka.ms/wslusers
-          Enter new UNIX username:
-          ```
+Choose a [distro](https://github.com/sirredbeard/awesome-wsl) to install. We recommend [Ubuntu](https://ubuntu.com/desktop/wsl) (non-LTS).
 
         </div>
 
@@ -172,20 +112,19 @@ You should immediately see WSL begin installing. Else if you're in a regular pow
 
         </div>
 
- <kbd> Ctrl+, </kbd> to open settings, and set the default profile to Ubuntu.
-![Image](https://github.com/user-attachments/assets/888a1253-da04-479f-b56a-0433f6ecea19)
+ <kbd> Ctrl+ ,</kbd> to open settings, and set the default profile to Ubuntu.
+![Image](https://github.com/user-attachments/assets/2ddce07d-f405-456a-aecf-7da0b5dfd33e)
 
 Close the terminal and re-open it with:
-          <kbd> Win+I</kbd>
+          <kbd> Win+X, I</kbd>
 
 You should see:
-![Image](https://github.com/user-attachments/assets/87e93aa1-0769-4dcf-a027-9cd85c5b5821)
+![Image](https://github.com/user-attachments/assets/88b3a94b-a2e8-494a-a63d-ecf8b379926c)
 
 Update the system:
           ```sh title="Terminal"
         sudo apt update && sudo apt upgrade -y
           ```
-
       </div>
 </Tab>
 </Tabs>
@@ -224,11 +163,10 @@ Create a GitHub account if you don't already have one.
 
 ```sh title="Terminal"
  # Login with your GitHub account.
- nix-env -iA nixpkgs.gh
- gh auth login -p=https -w
+ nix-env -iA nixpkgs.gh; gh auth login -p=https -w
 ```
 
-![Image](https://github.com/user-attachments/assets/4a4171c4-0a6c-4e1f-9da9-981e4c3493d2)
+![Image](https://github.com/user-attachments/assets/0821355c-3622-427d-9c23-eca20f3ae310)
 
 Provide the following answers if prompted.
 ```
@@ -240,13 +178,9 @@ Provide the following answers if prompted.
 Press Enter to open github.com in your browser...
 ```
 Navigate to the github link shown if you see this and paste in the code as usual.
- ```
-  Failed opening a web browser at https://github.com/login/device
-  exec: "xdg-open,x-www-browser,www-browser,wslview": executable file not found in $PATH
-  Please try entering the URL in your browser manually
- ```
 
 Return to the terminal when you see the `Congratulations, you're all set!` screen.
+![Image](https://github.com/user-attachments/assets/aad9a7b5-07d7-4968-a306-c44b18cb3f14)
 
 You should see the following:
 ```
