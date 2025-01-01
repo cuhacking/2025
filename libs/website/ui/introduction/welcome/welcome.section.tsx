@@ -1,3 +1,4 @@
+import BgKeyboard from '@website/assets/ui/introduction/bg-keyboard-1.webp'
 import { SplineComponent } from '@website/shared/ui/spline/spline-component'
 /* import type { ThreeElements } from '@react-three/fiber' */
 /* import { useFrame } from '@react-three/fiber' */
@@ -37,7 +38,8 @@ export function WelcomeSection() {
       </Canvas>
  */}
       <SplineComponent
-        className="absolute -bottom-16 lg:left-0 lg:top-0 lg:scale-[1.2]"
+        imgSrc={BgKeyboard}
+        className="absolute -bottom-24 md:bottom-8 scale:-[0.7] lg:left-0 lg:top-0 lg:scale-[1.2]"
         link="https://prod.spline.design/nnjZJFW1wThAacUS/scene.splinecode"
       />
       <div className="w-full h-screen max-w-screen-xl px-5 py-5 lg:px-20 lg:py-14">
