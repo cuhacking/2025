@@ -23,6 +23,7 @@ const defaultImageHostnames = [
   'caksoylar.github.io',
   'precondition.github.io',
   'keymapdb.com',
+  '12factor.net',
 ]
 
 /**
