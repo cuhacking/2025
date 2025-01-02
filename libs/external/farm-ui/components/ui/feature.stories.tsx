@@ -16,12 +16,4 @@ const meta: Meta<typeof FUIFeatureSectionWithCards> = {
 export default meta
 
 type Story = StoryObj<typeof FUIFeatureSectionWithCards>
-export const UserExperience: Story = {
-  args: {
-  },
-  render: args => (
-    <div>
-      <FUIFeatureSectionWithCards {...args} />
-    </div>
-  ),
-}
+export const Default: Story = {}
