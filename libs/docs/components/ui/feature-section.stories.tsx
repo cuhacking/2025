@@ -9,7 +9,6 @@ const meta: Meta<typeof Feature> = {
   },
   component: Feature,
   tags: ['autodocs'],
-  args: {},
   argTypes: {
     title: {
       control: { type: 'text' },
@@ -36,9 +35,4 @@ export const UserExperience: Story = {
     icon: <User />,
     index: 1,
   },
-  render: args => (
-    <div>
-      <Feature {...args} />
-    </div>
-  ),
 }
