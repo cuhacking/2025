@@ -1,6 +1,6 @@
 import { cn } from '@cuhacking/shared/utils/cn'
 /* import { ErrorBoundary } from '@cuhacking/shared/utils/ErrorBoundary' */
-import { lazy } from 'react'
+import { lazy, memo, Suspense } from 'react'
 
 const Spline = lazy(() => import('@splinetool/react-spline'))
 
@@ -29,12 +29,10 @@ interface SplineComponentProps {
 *   return isMobile
 * } */
 
-// eslint-disable-next-line unused-imports/no-unused-vars
-export function SplineComponent({ link, className, imgSrc }: SplineComponentProps) {
+export const SplineComponent = memo(({ link, className, imgSrc }: SplineComponentProps) => {
   /* const isMobile = useIsMobile() */
 
   return (
-
     <div className="overflow-x-hidden">
       {/* <ErrorBoundary> */}
       {/* {isMobile
@@ -46,11 +44,11 @@ export function SplineComponent({ link, className, imgSrc }: SplineComponentProp
               <Spline className={cn(className)} scene={link} />
             </Suspense>
           )} */}
-      <Spline
-        className={cn(className)}
-        scene={link}
-      />
+
+      <Suspense fallback={<img className={cn(className)} src={imgSrc} />}>
+        <Spline className={cn(className)} scene={link} />
+      </Suspense>
       {/* </ErrorBoundary> */}
     </div>
   )
-}
+})
