@@ -40,7 +40,7 @@ export function WelcomeSection() {
       <SplineComponent
         imgSrc={BgKeyboard}
         className="absolute -bottom-24 md:bottom-8 scale:-[0.85] lg:left-0 lg:top-0 lg:scale-[1.2]"
-        link="https://prod.spline.design/BczeMoo6nkW5DViw/scene.splinecode"
+        link="https://prod.spline.design/a1qdk8yVQfNTh2jB/scene.splinecode"
       />
       <div className="w-full h-screen max-w-screen-xl px-5 py-5 lg:px-20 lg:py-14">
         <section className="w-full lg:w-3/5">
