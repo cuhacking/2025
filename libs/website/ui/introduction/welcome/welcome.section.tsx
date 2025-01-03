@@ -7,24 +7,24 @@ import { WELCOME_CONSTANTS } from '../constants/welcome.constants'
 import { Welcome } from './welcome'
 
 /* function Box(props: ThreeElements['mesh']) {
-*   const meshRef = useRef<THREE.Mesh>(null!)
-*   const [hovered, setHover] = useState(false)
-*   const [active, setActive] = useState(false)
-*   useFrame((state, delta) => (meshRef.current.rotation.x += delta))
-*   return (
-*     <mesh
-*       {...props}
-*       ref={meshRef}
-*       scale={active ? 1.5 : 1}
-*       onClick={event => setActive(!active)}
-*       onPointerOver={event => setHover(true)}
-*       onPointerOut={event => setHover(false)}
-*     >
-*       <boxGeometry args={[1, 1, 1]} />
-*       <meshStandardMaterial color={hovered ? 'hotpink' : '#2f74c0'} />
-*     </mesh>
-*   )
-* } */
+ *   const meshRef = useRef<THREE.Mesh>(null!)
+ *   const [hovered, setHover] = useState(false)
+ *   const [active, setActive] = useState(false)
+ *   useFrame((state, delta) => (meshRef.current.rotation.x += delta)
+ *   return (
+ *     <mesh
+ *       {...props}
+ *       ref={meshRef}
+ *       scale={active ? 1.5 : 1}
+ *       onClick={event => setActive(!active)}
+ *       onPointerOver={event => setHover(true)}
+ *       onPointerOut={event => setHover(false)}
+ *     >
+ *       <boxGeometry args={[1, 1, 1]} />
+ *       <meshStandardMaterial color={hovered ? 'hotpink' : '#2f74c0'} />
+ *     </mesh>
+ *   )
+ * } */
 
 export function WelcomeSection() {
   return (
@@ -39,7 +39,7 @@ export function WelcomeSection() {
  */}
       <SplineComponent
         imgSrc={BgKeyboard}
-        className="absolute -bottom-24 md:bottom-8 scale:-[0.7] lg:left-0 lg:top-0 lg:scale-[1.2]"
+        className="absolute -bottom-24 md:bottom-8 scale:-[0.85] lg:left-0 lg:top-0 lg:scale-[1.2]"
         link="https://prod.spline.design/nnjZJFW1wThAacUS/scene.splinecode"
       />
       <div className="w-full h-screen max-w-screen-xl px-5 py-5 lg:px-20 lg:py-14">
