@@ -1,6 +1,6 @@
 ---
 title: Self-Hosted Infrastructure
-description: Crypto farming.
+description: Crypto farming. WIP.
 icon: Server
 ---
 
@@ -326,4 +326,53 @@ pnpx playwright install --with-deps
 
 ## Set up GitHub Actions Runner
 
-Follow [steps](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/adding-self-hosted-runners?learn=hosting_your_own_runners&learnProduct=actions).
+Visit `github.com/organizations/cuhacking/settings/actions/runners/new` for steps.
+
+
+## Optional
+
+```sh title="Shell (Server)"
+nix-env -iA nixpkgs.git nixpkgs.gh nixpkgs.stow nixpkgs.zsh nixpkgs.ripgrep nixpkgs.fd nixpkgs.yazi nixpkgs.eza nixpkgs.bat nixpkgs.cowsay nixpkgs.cmatrix nixpkgs.lolcat nixpkgs.nyancat nixpkgs.fastfetch
+
+```
+
+```sh title="Shell (Server)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+```sh title="Shell (Server)"
+git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k;
+```
+
+Open ~/.zshrc and change the the value of ZSH_THEME:
+
+```sh title="Shell (Server)"
+vim ~/.zshrc
+ZSH_THEME="powerlevel10k/powerlevel10k"
+```
+
+```sh title="Shell (Server)"
+p10k configure
+```
+
+```sh title="Shell (Server)"
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
+
+```sh title="~/.config/.zshrc"
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search)
+
+# Aliases
+alias l='eza -lh --icons=auto'
+alias ls='eza --icons=auto --sort=name --group-directories-first'
+alias ll='eza -lha --icons=auto --sort --group-directories-first'
+alias ld='eza -lhD --icons=auto'
+alias lt='eza --icons=auto --tree'
+alias y='yazi'
+alias mkdir='mkdir -p'
+```
+
+```sh title="Shell (Server)"
+source ~/.zshrc
+```
