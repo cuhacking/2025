@@ -1,8 +1,8 @@
 import { cn } from '@cuhacking/shared/utils/cn'
 /* import { ErrorBoundary } from '@cuhacking/shared/utils/ErrorBoundary' */
-/* import { lazy } from 'react' */
-import Spline from '@splinetool/react-spline'
-/* const Spline = lazy(() => import('@splinetool/react-spline')) */
+import { lazy } from 'react'
+
+const Spline = lazy(() => import('@splinetool/react-spline'))
 
 interface SplineComponentProps {
   link: string
@@ -47,7 +47,6 @@ export function SplineComponent({ link, className, imgSrc }: SplineComponentProp
             </Suspense>
           )} */}
       <Spline
-
         className={cn(className)}
         scene={link}
       />
