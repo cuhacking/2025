@@ -52,4 +52,5 @@ const socials: { link: string, name: string, media: Media }[] = [
 ]
 export const WELCOME_CONSTANTS = {
   SOCIALS: socials,
+  SPLINE_LINK: 'https://prod.spline.design/a1qdk8yVQfNTh2jB/scene.splinecode',
 }

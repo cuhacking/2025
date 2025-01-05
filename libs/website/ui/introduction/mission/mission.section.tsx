@@ -8,7 +8,7 @@ export function MissionSection() {
     <section id="#about" className="relative flex justify-center w-full">
       <SplineComponent
         className="absolute bottom-[14vh] lg:-bottom-[5vh] left-0 scale-1 md:scale-[1.2]"
-        link="https://prod.spline.design/9iGB68CM6hGlQYOQ/scene.splinecode"
+        link={MISSION_CONSTANTS.SPLINE_LINK}
         imgSrc={BgKeyCaps}
       />
       <main className="max-w-screen-xl px-5 py-5 lg:px-20 lg:py-14">
