@@ -35,8 +35,6 @@
     "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-visually-hidden": "^1.1.0",
-    "@react-three/drei": "^9.120.4",
-    "@react-three/fiber": "^8.17.10",
     "@remix-run/node": "2.14.0",
     "@remix-run/react": "2.14.0",
     "@remix-run/serve": "2.14.0",
