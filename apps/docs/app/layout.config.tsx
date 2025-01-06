@@ -62,13 +62,13 @@ export const baseOptions: BaseLayoutProps = {
     {
       text: 'Design',
       // url: https://design.cuhacking.ca,
-      url: 'https://design-cuhacking.netlify.app',
+      url: 'https://design.cuhacking.ca/',
       icon: <StorybookIcon />,
     },
     {
       text: 'Architecture',
       // url: 'https://arch.cuhacking.ca/#/projects/all?groupByFolder=true',
-      url: 'https://arch-cuhacking.netlify.app/#/projects/all?groupByFolder=true',
+      url: 'https://arch.cuhacking.ca/#/projects?groupByFolder=true',
       icon: <ArchitectureIcon />,
     },
     {
@@ -79,7 +79,7 @@ export const baseOptions: BaseLayoutProps = {
     {
       text: 'ESLint',
       // url: 'https://eslint.cuhacking.ca/rules',
-      url: 'https://eslint-cuhacking.netlify.app/rules',
+      url: 'https://eslint.cuhacking.ca/rules',
       icon: <ESLintIcon />,
     },
     {
