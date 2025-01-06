@@ -68,7 +68,7 @@ export const baseOptions: BaseLayoutProps = {
     {
       text: 'Architecture',
       // url: 'https://arch.cuhacking.ca/#/projects/all?groupByFolder=true',
-      url: 'https://arch.cuhacking.ca/#/projects?groupByFolder=true',
+      url: 'https://arch.cuhacking.ca/#/projects/all?groupByFolder=true',
       icon: <ArchitectureIcon />,
     },
     {
