@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import cross from '@cuhacking/shared/assets/icons/general/cross-1.svg'
 import hamburger from '@cuhacking/shared/assets/icons/general/hamburger-1.svg'
 import discord_white from '@cuhacking/shared/assets/icons/socials/discord-white-1.svg'
 import docs_white from '@cuhacking/shared/assets/icons/socials/docs-white-1.svg'
@@ -9,15 +10,28 @@ import instagram_white from '@cuhacking/shared/assets/icons/socials/instagram-wh
 import linkedin_white from '@cuhacking/shared/assets/icons/socials/linkedin-white-1.svg'
 import linktree_white from '@cuhacking/shared/assets/icons/socials/linktree-white-1.svg'
 import logo from '@cuhacking/shared/assets/logos/cuHacking/cuhacking-logo-1.svg'
+import { createRemixStub } from '@remix-run/testing'
 import { NavbarPresenter } from './navbar.presenter'
 
 const meta = {
-  title: 'cuHacking Design System/Navigation/Navbar',
+  title: 'Website/Navigation/Navbar',
   component: NavbarPresenter,
   tags: ['autodocs'],
-  args: {
+  args: {},
+  decorators: [
+    (story) => {
+      const remixStub = createRemixStub([
+        {
+          path: '/*',
+          action: () => ({ redirect: '/' }),
+          loader: () => ({ redirect: '/' }),
+          Component: () => story(),
+        },
+      ])
 
-  },
+      return remixStub({ initialEntries: ['/'] })
+    },
+  ],
   argTypes: {
     links: {
       control: { type: 'object' },
@@ -89,9 +103,9 @@ const socials = [
 
 export default meta
 
-type Story = StoryObj<typeof Navbar>
-
-export const CustomNavbar: Story = {
+type Story = StoryObj<typeof NavbarPresenter>
+// TODO: Fix cross animation on Storybook
+export const Default: Story = {
   args: {
     links: [
       { name: 'ABOUT', link: '/#about' },
@@ -104,6 +118,10 @@ export const CustomNavbar: Story = {
     hamburger: {
       src: hamburger.src,
       alt: 'Hamburger',
+    },
+    cross: {
+      src: cross.src,
+      alt: 'Cross',
     },
   },
 }

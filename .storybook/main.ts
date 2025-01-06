@@ -14,6 +14,7 @@ export default {
     '../libs/shared/ui/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
     '../libs/website/feature/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
     '../libs/website/shared/ui/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
+    '../libs/website/ui/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
   ],
   staticDirs: [
     // './public',
