@@ -11,7 +11,13 @@ interface NavbarProps {
     link: string
   }[]
   logo: string
+  banner: {
+    name: string
+    link: string
+    media: Media
+  }[]
   socials: {
+    name: string
     link: string
     media: Media
   }[]
@@ -21,6 +27,7 @@ interface NavbarProps {
 export function NavbarContainer({
   links,
   logo,
+  banner,
   socials,
   hamburger,
   cross,
@@ -30,6 +37,7 @@ export function NavbarContainer({
       <NavbarPresenter
         links={links}
         logo={logo}
+        banner={banner}
         socials={socials}
         hamburger={hamburger}
         cross={cross}

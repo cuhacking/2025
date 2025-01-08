@@ -10,6 +10,7 @@ export function Layout({ children }: { children: ReactNode }) {
   return (
     <>
       <NavbarContainer
+        banner={NAVBAR_CONSTANTS.MLH_BANNER}
         links={NAVBAR_CONSTANTS.LINKS}
         logo={NAVBAR_CONSTANTS.LOGO}
         socials={NAVBAR_CONSTANTS.SOCIALS}

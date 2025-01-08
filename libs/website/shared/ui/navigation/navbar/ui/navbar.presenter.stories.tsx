@@ -10,6 +10,7 @@ import instagram_white from '@cuhacking/shared/assets/icons/socials/instagram-wh
 import linkedin_white from '@cuhacking/shared/assets/icons/socials/linkedin-white-1.svg'
 import linktree_white from '@cuhacking/shared/assets/icons/socials/linktree-white-1.svg'
 import logo from '@cuhacking/shared/assets/logos/cuHacking/cuhacking-logo-1.svg'
+import mlhBanner from '@cuhacking/shared/assets/logos/sponsors/mlh-banner.svg'
 import { createRemixStub } from '@remix-run/testing'
 import { NavbarPresenter } from './navbar.presenter'
 
@@ -42,8 +43,20 @@ const meta = {
   },
 } satisfies Meta<typeof NavbarPresenter>
 
+const banner = [
+  {
+    name: 'MLH Banner',
+    link: 'https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2025-season&utm_content=black',
+    media: {
+      src: mlhBanner.src,
+      alt: 'Major League Hacking 2025 Hackathon Season',
+    },
+  },
+]
+
 const socials = [
   {
+    name: 'GitHub',
     link: 'https://github.com',
     media: {
       src: github_white.src,
@@ -51,6 +64,7 @@ const socials = [
     },
   },
   {
+    name: 'Instagram',
     link: 'https://instagram.com',
     media: {
       src: instagram_white.src,
@@ -58,6 +72,7 @@ const socials = [
     },
   },
   {
+    name: 'LinkedIn',
     link: 'https://linkedin.com',
     media: {
       src: linkedin_white.src,
@@ -65,6 +80,7 @@ const socials = [
     },
   },
   {
+    name: 'Linktree',
     link: 'https://linktr.ee',
     media: {
       src: linktree_white.src,
@@ -72,6 +88,7 @@ const socials = [
     },
   },
   {
+    name: 'Email',
     link: 'mailto:example@email.com',
     media: {
       src: email_white.src,
@@ -79,6 +96,7 @@ const socials = [
     },
   },
   {
+    name: 'Discord',
     link: 'https://discord.com',
     media: {
       src: discord_white.src,
@@ -86,6 +104,7 @@ const socials = [
     },
   },
   {
+    name: 'Documentation',
     link: 'https://docs.com',
     media: {
       src: docs_white.src,
@@ -93,6 +112,7 @@ const socials = [
     },
   },
   {
+    name: 'Figma',
     link: 'https://figma.com',
     media: {
       src: figma_white.src,
@@ -114,6 +134,7 @@ export const Default: Story = {
       { name: 'FAQ', link: '/#faq' },
     ],
     logo: logo.src,
+    banner,
     socials,
     hamburger: {
       src: hamburger.src,
