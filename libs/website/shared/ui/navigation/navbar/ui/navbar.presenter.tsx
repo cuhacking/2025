@@ -12,8 +12,9 @@ import {
 } from '@cuhacking/shared/ui/navigation-menu'
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import { Link } from '@remix-run/react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { ClientOnly } from 'remix-utils/client-only'
+import { Banner } from '../../../banner'
 import { Socials } from '../../../socials'
 import { NavItem } from './nav-item'
 import { MobileNavItem } from './nav-item-mobile'
@@ -29,6 +30,11 @@ interface NavbarProps {
     link: string
   }[]
   logo: string
+  banner: {
+    name: string
+    link: string
+    media: Media
+  }[]
   socials: {
     name: string
     link: string
@@ -41,6 +47,7 @@ interface NavbarProps {
 export function NavbarPresenter({
   links,
   logo,
+  banner,
   socials,
   hamburger,
   cross,
@@ -59,6 +66,9 @@ export function NavbarPresenter({
           className="transition-transform duration-300 hover:scale-[1.2] relative z-[60]"
         />
       </Link>
+
+      <Banner banner={banner} className="hidden md:flex" />
+
       <NavigationMenu className="hidden md:block">
         <NavigationMenuList className="gap-x-10">
           {links.map(({ name, link }, index) => (
