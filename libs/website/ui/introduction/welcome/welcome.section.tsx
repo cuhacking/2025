@@ -1,6 +1,5 @@
 import BgKeyboard from '@website/assets/ui/introduction/bg-keyboard-1.webp'
 import { SplineComponent } from '@website/shared/ui/spline/spline-component'
-import React from 'react'
 import { WELCOME_CONSTANTS } from '../constants/welcome.constants'
 import { Welcome } from './welcome'
 

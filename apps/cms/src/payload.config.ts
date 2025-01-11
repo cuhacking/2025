@@ -16,6 +16,7 @@ import { Events } from '@cuhacking/db/collections/Events'
 import { Challenges } from '@cuhacking/db/collections/Challenges'
 import { Schedule } from '@cuhacking/db/collections/Schedule'
 import { Organizations } from '@cuhacking/db/collections/Organizations'
+import { Welcome } from '@cuhacking/db/collections/Welcome'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -27,6 +28,8 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
+  cors:  "*",
+  csrf: ["*"],
   collections: [
     Hackathons,
     Users,
@@ -36,7 +39,8 @@ export default buildConfig({
     Events,
     Challenges,
     Schedule,
-    Organizations
+    Organizations,
+    Welcome
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',

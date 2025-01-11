@@ -100,14 +100,6 @@ export interface User {
     website?: string | null;
     instagram?: string | null;
   };
-  emergencyContact: {
-    firstName: string;
-    middleName?: string | null;
-    lastName: string;
-    email: string;
-    phoneNumber: string;
-    relationship: string;
-  };
   academicInfo?: {
     school?: ('Carleton' | 'uOttawa' | 'Other') | null;
     levelOfStudy?: ('Undergraduate' | 'Graduate' | 'PhD') | null;
@@ -186,6 +178,14 @@ export interface SocialLink {
     | 'github-project'
     | 'github-repo';
   url: string;
+  /**
+   * Green coloured icon
+   */
+  primaryIcon?: (number | null) | Media;
+  /**
+   * White coloured icon
+   */
+  secondaryIcon?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
 }
@@ -356,16 +356,6 @@ export interface UsersSelect<T extends boolean = true> {
         website?: T;
         instagram?: T;
       };
-  emergencyContact?:
-    | T
-    | {
-        firstName?: T;
-        middleName?: T;
-        lastName?: T;
-        email?: T;
-        phoneNumber?: T;
-        relationship?: T;
-      };
   academicInfo?:
     | T
     | {
@@ -420,6 +410,8 @@ export interface MediaSelect<T extends boolean = true> {
 export interface SocialLinksSelect<T extends boolean = true> {
   platform?: T;
   url?: T;
+  primaryIcon?: T;
+  secondaryIcon?: T;
   updatedAt?: T;
   createdAt?: T;
 }
