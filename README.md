@@ -48,6 +48,6 @@ Installation instructions, contribution guidelines, and technology stacks are av
 | ![Documentation](https://github.com/user-attachments/assets/b8c69a92-5580-4a44-b870-67ac078cac81) | ![Project Board](https://github.com/user-attachments/assets/b10ddf82-4a8e-4892-bc45-ffdb596cd678) |                              ![Brand Identity & UI/UX Research](https://github.com/user-attachments/assets/d55ffa90-c8ed-4421-8f42-89d995c07409)                              | ![Design System](https://github.com/user-attachments/assets/6aa19317-1247-48b1-b0b2-63e8d96d6549) |
 
 | [🛠️ Architecture](https://arch.cuhacking.ca/#/projects/all?groupByFolder=true) |
-| :----------------------------------------------------------------------------: |
+|--------------------------------------------------------------------------------|
+| ![Architecture](https://github.com/user-attachments/assets/14de2624-e2a4-4a45-a2b4-8a81b3260a93) |
 
-| ![Architecture](https://github.com/user-attachments/assets/14de2624-e2a4-4a45-a2b4-8a81b3260a93)
