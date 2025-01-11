@@ -214,7 +214,7 @@ pnpm exec playwright install --with-deps # Install Playwright Browsers for E2E T
   </div>
 
   <div className="step">
-  ## Run projects.
+  ## Run projects
 
   <img src="https://nx.dev/documentation/shared/images/run-target-syntax.svg" />
 
@@ -231,7 +231,7 @@ pnpm nx run-many -t dev -p website --verbose
 
 `--verbose` provides detailed error logs.
 
-<Tabs groupId="projects" items={['Graph', 'Storybook', 'Docs', 'Portal', 'Website', 'ESLint Config Inspector']} persist>
+<Tabs groupId="projects" items={['Graph', 'Storybook', 'Docs', 'Portal', 'Website', 'CMS (Content Management System)', 'ESLint Config Inspector']} persist>
 
   <Tab value="Graph">
 
@@ -316,6 +316,30 @@ pnpm nx graph --groupByFolder --verbose
         pnpm nx storybook --verbose
         ```
   </Tab>
+
+
+  <Tab value="CMS (Content Management System)">
+    <Tabs groupId="cms-project-nx-commands" items={['dev', 'build', 'start']} persist>
+      <Tab value="dev">
+        ```sh title="Nix Shell"
+        pnpm nx dev cms --verbose
+        ```
+      </Tab>
+      <Tab value="build">
+        ```sh title="Nix Shell"
+        pnpm nx build cms --verbose
+        ```
+      </Tab>
+      <Tab value="start">
+        ```sh title="Nix Shell"
+        pnpm nx start cms --verbose
+        ```
+      </Tab>
+      </Tabs>
+      The home route will have a 404 error.
+      Navigate to `/admin` route.
+      </Tab>
+
   <Tab value="ESLint Config Inspector">
         ```sh title="Nix Shell"
         pnpm lint:inspect

@@ -7,6 +7,7 @@ in pkgs.mkShell {
   name = "cuhacking-2025-dev-env";
 
   buildInputs = [
+    pkgs.docker
     pkgs.figlet
     pkgs.jp2a
     pkgs.git

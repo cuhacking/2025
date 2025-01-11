@@ -5,9 +5,13 @@ export default antfu({
   // unocss: true,
   react: true,
   slidev: true,
-},
-// {}
-)
+}, {
+  ignores: [
+    'apps/scaffold-examples/',
+    // TODO: remove after monorepo integration is complete
+    'apps/cms/',
+  ],
+})
 
 // export default [
 //   ...nx.configs['flat/base'],
