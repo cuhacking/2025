@@ -13,7 +13,7 @@
 - [ ] I've rebased my branch onto main before creating this PR.
 - [ ] I've added tests to cover my changes (if applicable).
 - [ ] I've verified that all new and existing tests have passed locally for mobile, tablet, and desktop screen sizes.
-- [ ] My commit messages follow [guidelines](https://docs.cuhacking.ca/contribution-guidelines/conventional-commits)
+- [ ] My commit messages follow [guidelines](https://docs.cuhacking.ca/concepts/conventional-commits)
 - [ ] My change requires documentation updates.
 - [ ] I've updated the documentation accordingly.
 - [ ] My code follows existing patterns of this project and/or improves upon them.
