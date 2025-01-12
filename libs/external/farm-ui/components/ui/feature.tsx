@@ -1,3 +1,4 @@
+import { cn } from '@shadcn/lib/utils'
 import React from 'react'
 
 export function FUIFeatureSectionWithCards() {

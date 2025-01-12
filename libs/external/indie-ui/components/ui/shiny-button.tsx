@@ -1,3 +1,4 @@
+import { cn } from '@shadcn/lib/utils'
 import { type AnimationProps, motion } from 'framer-motion'
 
 const animationProps = {
