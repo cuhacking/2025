@@ -1,6 +1,6 @@
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 import { TerminalText } from '@cuhacking/shared/ui/terminal-text'
-import Socials from '@website/shared/ui/socials'
+import { Socials } from '@website/shared/ui/socials'
 import { useEffect, useState } from 'react'
 
 interface WelcomeData {
