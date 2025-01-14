@@ -1,4 +1,4 @@
-import { cn } from '@shadcn/lib/utils'
+import { cn } from '@cuhacking/shared/utils/cn'
 
 export function Feature({
   title,
