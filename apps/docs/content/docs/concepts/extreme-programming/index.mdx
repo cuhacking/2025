@@ -6,18 +6,18 @@ description: When making an issue takes far more time than just doing the work i
 TODO: Add lucide icons to mindmap
 
 import {
-  Figma as BrandIcon,
-  Code as ESLintIcon,
-   Smartphone as HackerPortalIcon,
-   Instagram as InstagramIcon,
-   AppWindowMac as LandingPageIcon,
-   Linkedin as LinkedinIcon,
-   Trees as LinktreeIcon,
-   SquareKanban as ProjectBoardIcon,
- } from 'lucide-react'
+User,
+Users,
+TestTubeDiagonal,
+GitPullRequestCreateArrow,
+Code,
+Feather,
+PersonStanding
+} from 'lucide-react'
 
 import { Feature } from "@cuhacking/docs/components/ui/feature-section"
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion"
+import { FUIFeatureSectionWithCards } from "@cuhacking/docs/components/ui/feature"
 
 ## Introduction
 
@@ -33,16 +33,58 @@ TODO: Add color schema to mindmap
 mindmap
   root((Core Principles))
     Communication
-        Constant and open communication between all  developers, designers, PMs and customers
+        Constant and open communication between all  developers, designers, PMs and users
     Simplicity
         Emphasize the simplest solution that works for the current problem
     Feedback
-        Continuous feedback from testing, customers, and team members helps adjust the product
+        Continuous feedback from testing, users, and team members helps adjust the product
     Courage
         The team should be willing to embrace changes and make necessary, bold decisions
     Respect
         Team members should respect each other's contributions and abilities
 ```
+
+export const features = [
+  {
+    title: 'Pair Programming',
+    desc: 'Two developers work together at one workstation at the same time, boosting velocity.',
+    icon: <User />,
+  },
+    {
+    title: 'Test-Driven Development (TDD)',
+    desc: 'Write tests before implementing features, ensuring code meets requirements and maintains high test coverage.',
+    icon: <TestTubeDiagonal />,
+  },
+    {
+    title: 'Small Releases',
+    desc: 'Release working software frequently, often in small increments, to get feedback and improve based on user needs.',
+    icon: <GitPullRequestCreateArrow />,
+  },
+  {
+    title: 'Refactoring',
+    desc: 'Regularly improve and optimize code without changing its functionality.',
+    icon: <Code />,
+  },
+    {
+    title: 'Sustainable Pace',
+    desc: 'Avoid overworking the team to maintain a consistent and sustainable workflow.',
+    icon: <Feather />,
+  },
+   {
+    title: 'Collective Code Ownership',
+    desc: 'Everyone on the team is responsible for all the code. Encourage collaboration and reduces silos.',
+    icon: <Users />,
+  },
+   {
+    title: 'On-Site User',
+    desc: 'Have users readily available to clarify requirements and provide immediate feedback',
+    icon: <PersonStanding />,
+  },
+]
+
+<div>
+      <FUIFeatureSectionWithCards title={"Key Practices"} description={"Essential principles followed in extreme programming."} features={features} />
+</div>
 
 ### Feedback loop
 
@@ -68,23 +110,9 @@ mindmap
     style H stroke:#000000,fill:#116400,color:#000000,font-weight:bold
     ```
 
-### Key Practices
-
-| Concept   | Description |
-|---------|-------------|
-| `Pair Programming`  | Two developers work together at one workstation, enhancing code quality and team collaboration |
-| `Test-Driven Development (TDD)`  | Write tests before writing code, ensuring every piece of code works as intended |
-| `Continuous Integration`  | Frequently integrate code into the main branch to detect issues early |
-| `Small Releases`  | Release working software frequently, often in small increments, to get feedback and improve based on customer needs |
-| `Refactoring` | Regularly improve and optimize code without changing its functionality |
-| `Sustainable Pace` |Avoid overworking the team to maintain a consistent and sustainable workflow |
-| `Collective Code Ownership` |  Everyone on the team is responsible for all the code. This encourages collaboration and reduces silos |
-| `On-Site Customer` | Have someone from the customer side available to clarify requirements and provide immediate feedback |
-
-
 <Accordions>
     <Accordion title="What's Agile?">
-    - Project management methodology that emphasizes flexibility, rapid iteration, and customer satisfaction.
+    - Project management methodology that emphasizes flexibility, rapid iteration, and user satisfaction.
     - Defined by the 4 values and 12 principles of the [Agile Manifesto](https://agilemanifesto.org/principles.html).
     </Accordion>
     
