@@ -4,9 +4,7 @@
 ![image](https://github.com/user-attachments/assets/79f41e64-4bef-4df6-b3e8-a16e67e75f4c)
 
   </a>
-
-🏗️ Major monorepo migration in progress. 🚧
-
+  🎉 Monorepo Migration is Complete  🎉
 <hr/>
 
 ![Static Badge](https://img.shields.io/badge/pnpm-F69220?logo=pnpm&logoColor=fff)
