@@ -1,6 +1,6 @@
 export const Config = {
   LINK: {
-    BASE: 'https://stuapps.carleton.ca/sarms/event-risk',
+    BASE: 'https://sarms.carleton.ca/event-risk',
     IN_PERSON: 'in-person',
     HYBRID: 'hybrid',
     ONLINE: 'online',
