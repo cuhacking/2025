@@ -63,6 +63,7 @@
     "reflect-metadata": "^0.1.14",
     "remix-utils": "^7.7.0",
     "rxjs": "^7.8.1",
+    "sharp": "^0.33.5",
     "three": "^0.171.0",
     "vaul": "^1.1.1"
   },
