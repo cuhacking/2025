@@ -1,14 +1,12 @@
-import type { CollectionConfig } from 'payload'
+import type { GlobalConfig } from 'payload'
+import { validateURL } from '@cuhacking/db/shared/utils/validate-url'
 
-export const SocialLinks: CollectionConfig = {
-  slug: 'social-links',
-  labels: {
-    singular: 'Social Link',
-    plural: 'Social Links',
+export const SocialLink: GlobalConfig = {
+  access: {
+    read: () => true,
   },
-  admin: {
-    useAsTitle: 'platform',
-  },
+  slug: 'social-link',
+  label: 'cuHacking Social Media Links',
   fields: [
     {
       name: 'platform',
@@ -75,15 +73,7 @@ export const SocialLinks: CollectionConfig = {
       type: 'text',
       required: true,
       label: 'URL',
-      validate: (value) => {
-        try {
-          URL(value)
-          return true
-        }
-        catch {
-          return 'Invalid URL format'
-        }
-      },
+      validate: validateURL,
     },
     // {
     //   name: 'icon',
