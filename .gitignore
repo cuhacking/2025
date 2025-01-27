@@ -80,6 +80,7 @@ yarn-error.log*
 
 # others
 .env*.local
+.env
 .vercel
 next-env.d.ts
 
