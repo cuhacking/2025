@@ -4,7 +4,6 @@
   "sourceRoot": "apps/cms",
   "projectType": "application",
   "tags": [],
-  "// targets": "to see all targets run: nx show project cms --web",
   "targets": {
     "build": {
       "command": "cross-env NODE_OPTIONS=--no-deprecation next build",
@@ -50,6 +49,48 @@
     },
     "start": {
       "command": "cross-env NODE_OPTIONS=--no-deprecation next start",
+      "options": {
+        "cwd": "apps/cms"
+      }
+    },
+    "migrate:run": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation payload migrate",
+      "options": {
+        "cwd": "apps/cms"
+      }
+    },
+    "migrate:create": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation payload migrate:create",
+      "options": {
+        "cwd": "apps/cms"
+      }
+    },
+    "migrate:status": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation payload migrate:status",
+      "options": {
+        "cwd": "apps/cms"
+      }
+    },
+    "migrate:down": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation payload migrate:down",
+      "options": {
+        "cwd": "apps/cms"
+      }
+    },
+    "migrate:refresh": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation payload migrate:refresh",
+      "options": {
+        "cwd": "apps/cms"
+      }
+    },
+    "migrate:reset": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation payload migrate:reset",
+      "options": {
+        "cwd": "apps/cms"
+      }
+    },
+    "migrate:fresh": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation payload migrate:fresh",
       "options": {
         "cwd": "apps/cms"
       }
