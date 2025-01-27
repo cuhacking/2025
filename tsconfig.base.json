@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
     "target": "es2015",
-    "lib": ["es2020", "dom"],
+    "lib": [
+      "es2020",
+      "dom"
+    ],
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "baseUrl": ".",
@@ -9,21 +12,57 @@
     "module": "esnext",
     "moduleResolution": "node",
     "paths": {
-      "@aceternity": ["libs/external/aceternity/index.ts"],
-      "@aceternity/*": ["libs/external/aceternity/*"],
-      "@cuhacking/db": ["libs/db/index.ts"],
-      "@cuhacking/db/*": ["libs/db/*"],
-      "@cuhacking/docs": ["libs/docs/index.ts"],
-      "@cuhacking/docs/*": ["libs/docs/*"],
-      "@cuhacking/shared": ["libs/shared/index.ts"],
-      "@cuhacking/shared/*": ["libs/shared/*"],
-      "@magic-ui": ["libs/external/magic-ui/index.ts"],
-      "@magic-ui/*": ["libs/external/magic-ui/*"],
-      "@payload-config": ["apps/cms/src/payload.config.ts"],
-      "@shadcn": ["libs/external/shadcn/index.ts"],
-      "@shadcn/*": ["libs/external/shadcn/*"],
-      "@website/*": ["libs/website/*"],
-      "@website-e2e/*": ["libs/website-e2e/*"]
+      "@aceternity": [
+        "libs/external/aceternity/index.ts"
+      ],
+      "@aceternity/*": [
+        "libs/external/aceternity/*"
+      ],
+      "@cuhacking/db": [
+        "libs/db/index.ts"
+      ],
+      "@cuhacking/db/*": [
+        "libs/db/*"
+      ],
+      "@cuhacking/docs": [
+        "libs/docs/index.ts"
+      ],
+      "@cuhacking/docs/*": [
+        "libs/docs/*"
+      ],
+      "@cuhacking/shared": [
+        "libs/shared/index.ts"
+      ],
+      "@cuhacking/shared/*": [
+        "libs/shared/*"
+      ],
+      "@cuhacking/portal-e2e/*": [
+        "libs/portal-e2e/*"
+      ],
+      "@cuhacking/portal-e2e": [
+        "libs/portal-e2e/index"
+      ],
+      "@magic-ui": [
+        "libs/external/magic-ui/index.ts"
+      ],
+      "@magic-ui/*": [
+        "libs/external/magic-ui/*"
+      ],
+      "@payload-config": [
+        "apps/cms/src/payload.config.ts"
+      ],
+      "@shadcn": [
+        "libs/external/shadcn/index.ts"
+      ],
+      "@shadcn/*": [
+        "libs/external/shadcn/*"
+      ],
+      "@website/*": [
+        "libs/website/*"
+      ],
+      "@website-e2e/*": [
+        "libs/website-e2e/*"
+      ]
     },
     "declaration": false,
     "importHelpers": true,
@@ -31,6 +70,10 @@
     "skipDefaultLibCheck": true,
     "skipLibCheck": true
   },
-  "exclude": ["node_modules", "tmp", "dist"],
+  "exclude": [
+    "node_modules",
+    "tmp",
+    "dist"
+  ],
   "compileOnSave": false
 }
