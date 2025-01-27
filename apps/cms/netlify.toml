@@ -1,0 +1,6 @@
+[build]
+command = "pnpm nx migrate:run cms; pnpm nx affected -t=build --exclude='*,!cms' --verbose"
+publish = "apps/cms/.next"
+
+[[plugins]]
+package = "@netlify/plugin-nextjs"
