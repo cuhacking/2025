@@ -1,11 +1,12 @@
-import { fileURLToPath } from 'node:url'
+import type { SerenityOptions } from '@serenity-js/playwright-test'
 /* eslint-disable node/prefer-global/process */
+// import { fileURLToPath } from 'node:url'
 import { workspaceRoot } from '@nx/devkit'
-import { nxE2EPreset } from '@nx/playwright/preset'
+// import { nxE2EPreset } from '@nx/playwright/preset'
 
 import { defineConfig, devices } from '@playwright/test'
 
-const __filename = fileURLToPath(import.meta.url)
+// const __filename = fileURLToPath(import.meta.url)
 
 // For CI, you may want to set BASE_URL to the deployed application.
 const baseURL = process.env.BASE_URL || 'http://localhost:3000'
@@ -19,8 +20,8 @@ const baseURL = process.env.BASE_URL || 'http://localhost:3000'
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-export default defineConfig({
-  ...nxE2EPreset(__filename, { testDir: './src' }),
+export default defineConfig<SerenityOptions>({
+  testDir: './src',
   fullyParallel: !process.env.CI,
   // Opt out of parallel tests on CI.
   workers: process.env.CI ? 2 : undefined,
@@ -29,7 +30,29 @@ export default defineConfig({
     baseURL,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    // // Serenity/JS configuration options
+    // crew: [
+    //   // Automatically take screenshots upon an assertion failure
+    //   ['@serenity-js/web:Photographer', { strategy: 'TakePhotosOfFailures' }],
+    // ],
+    // defaultActorName: 'Hacker',
+    crew: [
+      // [ '@serenity-js/web:Photographer', { strategy: 'TakePhotosOfFailures' } ]
+      ['@serenity-js/web:Photographer', { strategy: 'TakePhotosOfInteractions' }],
+    ],
   },
+  reporter: [
+    ['line'],
+    ['html', { open: 'never' }],
+    ['@serenity-js/playwright-test', {
+      crew: [
+        ['@serenity-js/serenity-bdd', { reporter: { includeAbilityDetails: true } }],
+        '@serenity-js/console-reporter',
+        ['@serenity-js/core:ArtifactArchiver', { outputDirectory: 'target/site/serenity' }],
+        // [ '@serenity-js/core:StreamReporter', { outputFile: 'target/events.ndjson' }]
+      ],
+    }],
+  ],
   /* Run your local dev server before starting the tests */
   webServer: {
     command: 'pnpm nx start portal --verbose',
@@ -37,7 +60,23 @@ export default defineConfig({
     reuseExistingServer: !process.env.CI,
     cwd: workspaceRoot,
   },
-  // reporter: [['html']],
+  // reporter: [
+  //   // Serenity/JS reporting services
+  //   ['@serenity-js/playwright-test', {
+  //     crew: [
+  //       '@serenity-js/console-reporter',
+  //       '@serenity-js/serenity-bdd',
+  //       [
+  //         '@serenity-js/core:ArtifactArchiver',
+  //         { outputDirectory: 'target/site/serenity' },
+  //       ],
+  //     ],
+  //   }],
+
+  //   // Any other native Playwright Test reporters
+  //   ['html', { open: 'never' }],
+  // ],
+
   projects: [
     {
       name: 'chromium',
