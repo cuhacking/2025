@@ -1,0 +1,28 @@
+{
+  "name": "slides",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/slides",
+  "projectType": "application",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project slides --web",
+  "targets": {
+    "build": {
+      "command": "slidev build",
+      "options": {
+        "cwd": "apps/slides"
+      }
+    },
+    "dev": {
+      "command": "slidev --open",
+      "options": {
+        "cwd": "apps/slides"
+      }
+    },
+    "export": {
+      "command": "slidev export",
+      "options": {
+        "cwd": "apps/slides"
+      }
+    }
+  }
+}
