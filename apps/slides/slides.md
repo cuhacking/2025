@@ -22,6 +22,7 @@ drawings:
 transition: slide-left
 # enable MDC Syntax: https://sli.dev/features/mdc
 mdc: true
+exportfilename: "cuHacking 2025 Presentation Deck"
 ---
 
 # Welcome to Slidev
