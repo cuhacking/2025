@@ -24,6 +24,7 @@ transition: slide-left
 mdc: true
 exportfilename: "cuHacking 2025 Presentation Deck"
 colorSchema: dark
+favicon: "https://cuhacking.ca/assets/cuhacking-logo-1-DgcuCcxm.svg"
 fonts:
   sans: JetBrains Mono
   serif: JetBrains Mono
