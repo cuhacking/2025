@@ -9,7 +9,7 @@ on:
 jobs:
   test:
     timeout-minutes: 10
-    runs-on: gs65-mfarabi
+    runs-on: self-hosted
 
     steps:
       - name: 🛎️ Checkout Code
@@ -22,6 +22,8 @@ jobs:
 
       - name: 📦 Install Dependencies
         run: pnpm i
+        # Do this one if pipeline shows `pnpm exec playwright install error`
+        # run: pnpm i && pnpm exec playwright install
 
       # - name: ⚗️ Run E2E Tests for Affected Projects
       #   run: pnpm nx affected -t e2e --parallel=2 --reporter=html --base=origin/main --head=HEAD --verbose
