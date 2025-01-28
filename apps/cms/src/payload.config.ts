@@ -14,7 +14,10 @@ import { UserToEvent } from '@cuhacking/db/collections/models/User-To-Event';
 import {
   Hackathon,
   HackathonEvents,
-} from '@cuhacking/db/collections/models/Hackathons';
+} from '@cuhacking/db/collections/models/Hackathon';
+import {
+  OrganizationSponsor
+} from '@cuhacking/db/collections/models/Organization-Sponsor'
 import {
   BaseEvent,
   GeneralEvent,
@@ -76,8 +79,8 @@ export default buildConfig({
     UserToOrganization,
     Sponsor,
     SponsorToEvent,
+    OrganizationSponsor,
     HostToEvent,
-    // Welcome,
     Criteria,
   ],
   editor: lexicalEditor({}),

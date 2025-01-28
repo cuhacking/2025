@@ -33,7 +33,7 @@ export const HostToEvent: CollectionConfig = {
     {
       name: 'event',
       type: 'relationship',
-      relationTo: 'base-event',
+      relationTo: 'general-event',
       required: true,
     },
     {

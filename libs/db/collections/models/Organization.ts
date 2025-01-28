@@ -64,11 +64,11 @@ export const Sponsor: CollectionConfig = {
           async ({ data, req }) => {
             const { baseOrganization } = data as any
 
-            const orgName = baseOrganization
-              ? await req.payload.findByID({ collection: 'organization', id: baseOrganization })?.name || 'Unammed'
+            const orgObject = baseOrganization
+              ? await req.payload.findByID({ collection: 'organization', id: baseOrganization }) || 'Unammed'
               : 'Unammed'
 
-            return orgName
+            return orgObject?.name || orgObject
           },
         ],
       },
@@ -170,3 +170,9 @@ export const UserToOrganization: CollectionConfig = {
     },
   ],
 }
+
+/**
+ * - Creating Events, confusing to have base events
+ * - don't need a judge
+ * - make the schedule, base
+ */

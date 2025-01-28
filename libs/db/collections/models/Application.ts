@@ -77,7 +77,6 @@ export const ApplicationQuestion: CollectionConfig = {
         { label: 'File Upload', value: 'fileUpload' },
       ],
     },
-
     {
       name: 'options',
       type: 'array',
@@ -164,7 +163,12 @@ export const ApplicationResponse: CollectionConfig = {
       relationTo: 'application-form',
       required: true,
     },
-
+    {
+      name: 'responses',
+      type: 'join',
+      on: 'relatedResponse',
+      collection: 'application-question-response',
+    },
   ],
 }
 

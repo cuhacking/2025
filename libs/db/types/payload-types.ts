@@ -31,6 +31,7 @@ export interface Config {
     'user-to-organization': UserToOrganization;
     sponsor: Sponsor;
     'sponsor-to-event': SponsorToEvent;
+    'organization-sponsor': OrganizationSponsor;
     'host-to-event': HostToEvent;
     criteria: Criterion;
     'payload-locked-documents': PayloadLockedDocument;
@@ -40,6 +41,7 @@ export interface Config {
   collectionsJoins: {
     hackathon: {
       hackathonEvents: 'hackathon-event';
+      challenges: 'challenge';
     };
     user: {
       organizations: 'user-to-organization';
@@ -56,6 +58,9 @@ export interface Config {
     };
     'application-form': {
       applicationQuestions: 'application-question';
+    };
+    'application-response': {
+      responses: 'application-question-response';
     };
     organization: {
       members: 'user-to-organization';
@@ -81,6 +86,7 @@ export interface Config {
     'user-to-organization': UserToOrganizationSelect<false> | UserToOrganizationSelect<true>;
     sponsor: SponsorSelect<false> | SponsorSelect<true>;
     'sponsor-to-event': SponsorToEventSelect<false> | SponsorToEventSelect<true>;
+    'organization-sponsor': OrganizationSponsorSelect<false> | OrganizationSponsorSelect<true>;
     'host-to-event': HostToEventSelect<false> | HostToEventSelect<true>;
     criteria: CriteriaSelect<false> | CriteriaSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -135,6 +141,10 @@ export interface Hackathon {
     docs?: (number | HackathonEvent)[] | null;
     hasNextPage?: boolean | null;
   } | null;
+  challenges?: {
+    docs?: (number | Challenge)[] | null;
+    hasNextPage?: boolean | null;
+  } | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -148,6 +158,8 @@ export interface BaseEvent {
   description?: string | null;
   building?: ('rb' | 'pa' | 'nn') | null;
   room?: string | null;
+  start: string;
+  end: string;
   dateTime: string;
   updatedAt: string;
   createdAt: string;
@@ -173,7 +185,7 @@ export interface GeneralEvent {
   /**
    * Create a base event to store general information of the event
    */
-  generalInformation?: (number | null) | BaseEvent;
+  event?: (number | null) | BaseEvent;
   type?: ('workshop' | 'networking' | 'social' | 'food' | 'other') | null;
   /**
    * Do not modify or create unless necessary.
@@ -183,6 +195,10 @@ export interface GeneralEvent {
    * Leave blank if no attendee limit
    */
   attendeeLimit?: number | null;
+  hasJudging?: boolean | null;
+  /**
+   * Only edit for walk-ins and members not registered.
+   */
   eventMembers?: {
     participants?: {
       docs?: (number | UserToEvent)[] | null;
@@ -335,7 +351,7 @@ export interface GeneralEvent {
 export interface UserToEvent {
   id: number;
   user: number | User;
-  event: number | BaseEvent;
+  event: number | GeneralEvent;
   role: number | EventRole;
   updatedAt: string;
   createdAt: string;
@@ -439,8 +455,8 @@ export interface EventRole {
 export interface SponsorToEvent {
   id: number;
   formattedTitle?: string | null;
-  event: number | BaseEvent;
-  sponsor: number | Sponsor;
+  event?: (number | null) | BaseEvent;
+  sponsor?: (number | null) | Sponsor;
   updatedAt: string;
   createdAt: string;
 }
@@ -485,7 +501,7 @@ export interface Media {
 export interface HostToEvent {
   id: number;
   formattedTitle?: string | null;
-  event: number | BaseEvent;
+  event: number | GeneralEvent;
   host: number | Organization;
   updatedAt: string;
   createdAt: string;
@@ -687,6 +703,10 @@ export interface ApplicationResponse {
   applicant: number | User;
   status?: ('pending' | 'invitationSent' | 'rejected' | 'rsvpConfirmed' | 'rsvpRejected' | 'rsvpUnanswered') | null;
   relatedApplication: number | ApplicationForm;
+  responses?: {
+    docs?: (number | ApplicationQuestionResponse)[] | null;
+    hasNextPage?: boolean | null;
+  } | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -699,6 +719,40 @@ export interface ApplicationQuestionResponse {
   relatedQuestion?: (number | null) | ApplicationQuestion;
   relatedResponse?: (number | null) | ApplicationResponse;
   response?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "organization-sponsor".
+ */
+export interface OrganizationSponsor {
+  id: number;
+  /**
+   * The organization recieving the sponsorship
+   */
+  organization: number | Organization;
+  /**
+   * The organization giving the sponsorship
+   */
+  sponsor: number | Sponsor;
+  sponsorshipType?: ('inKind' | 'monetary') | null;
+  /**
+   * Brief Description of what the organization will recieve from the in-kind sponsor
+   */
+  inKindOffer?: string | null;
+  /**
+   * How much money do we recieve
+   */
+  moneyRecieved?: number | null;
+  /**
+   * When did this sponsorship commence.
+   */
+  start?: string | null;
+  /**
+   * Anticipated end date of sponsorship.
+   */
+  end?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -786,6 +840,10 @@ export interface PayloadLockedDocument {
         value: number | SponsorToEvent;
       } | null)
     | ({
+        relationTo: 'organization-sponsor';
+        value: number | OrganizationSponsor;
+      } | null)
+    | ({
         relationTo: 'host-to-event';
         value: number | HostToEvent;
       } | null)
@@ -843,6 +901,7 @@ export interface HackathonSelect<T extends boolean = true> {
   year?: T;
   baseEvent?: T;
   hackathonEvents?: T;
+  challenges?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -949,6 +1008,8 @@ export interface BaseEventSelect<T extends boolean = true> {
   description?: T;
   building?: T;
   room?: T;
+  start?: T;
+  end?: T;
   dateTime?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -959,10 +1020,11 @@ export interface BaseEventSelect<T extends boolean = true> {
  */
 export interface GeneralEventSelect<T extends boolean = true> {
   formattedTitle?: T;
-  generalInformation?: T;
+  event?: T;
   type?: T;
   registrationLink?: T;
   attendeeLimit?: T;
+  hasJudging?: T;
   eventMembers?:
     | T
     | {
@@ -1085,6 +1147,7 @@ export interface ApplicationResponseSelect<T extends boolean = true> {
   applicant?: T;
   status?: T;
   relatedApplication?: T;
+  responses?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1163,6 +1226,21 @@ export interface SponsorToEventSelect<T extends boolean = true> {
   formattedTitle?: T;
   event?: T;
   sponsor?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "organization-sponsor_select".
+ */
+export interface OrganizationSponsorSelect<T extends boolean = true> {
+  organization?: T;
+  sponsor?: T;
+  sponsorshipType?: T;
+  inKindOffer?: T;
+  moneyRecieved?: T;
+  start?: T;
+  end?: T;
   updatedAt?: T;
   createdAt?: T;
 }

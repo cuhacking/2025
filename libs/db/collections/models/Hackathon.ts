@@ -24,6 +24,13 @@ export const Hackathon: CollectionConfig = {
       on: 'hackathon',
       collection: 'hackathon-event',
     },
+    {
+      name: 'challenges',
+      type: 'join',
+      on: 'event',
+      collection: 'challenge',
+    },
+
   ],
 }
 

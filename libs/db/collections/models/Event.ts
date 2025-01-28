@@ -31,7 +31,7 @@ export const BaseEvent: CollectionConfig = {
       type: 'text',
     },
     {
-      name: 'dateTime',
+      name: 'start',
       type: 'date',
       required: true,
       admin: {
@@ -40,6 +40,21 @@ export const BaseEvent: CollectionConfig = {
         },
       },
     },
+    {
+      name: 'end',
+      type: 'date',
+      required: true,
+      admin: {
+        date: {
+          pickerAppearance: 'dayAndTime',
+        },
+      },
+    },
+    {
+      name: 'dateTime',
+      type: 'date',
+      required: true,
+    },
   ],
 }
 
@@ -47,6 +62,44 @@ export const GeneralEvent: CollectionConfig = {
   slug: 'general-event',
   admin: {
     useAsTitle: 'formattedTitle',
+  },
+  access: {
+    update: async ({ req, id }) => {
+      const { user } = req
+
+      if (!user || !id) {
+        return false
+      }
+
+      // check for super admin and organizer roles
+      if (user?.roles?.find(role => role.includes('superAdmin'))) {
+        return true
+      }
+
+      if (user?.roles?.find(role => role.includes('organizer'))) {
+        return true
+      }
+
+      const event = await req.payload.findByID({
+        collection: 'general-event',
+        id,
+        depth: 0,
+      })
+
+      // Extract the host organization IDs from the event
+      const hostOrganizationIds = event?.organizations?.host
+      const userOrganizationIds = user.organizations
+
+      return !!userOrganizationIds?.docs?.some((org) => {
+        if (typeof org === 'number') {
+          return false
+        }
+        if (typeof org.organization !== 'number') {
+          return false
+        }
+        return hostOrganizationIds?.docs?.includes(org.organization)
+      })
+    },
   },
   fields: [
     {
@@ -61,11 +114,11 @@ export const GeneralEvent: CollectionConfig = {
             if (!data)
               return 'Error occured, try again'
 
-            const { generalInformation } = data
+            const { event } = data
 
             const eventObj = await req.payload.findByID({
               collection: 'base-event',
-              id: generalInformation,
+              id: event,
             })
 
             return eventObj?.title || 'Unknown User'
@@ -74,7 +127,7 @@ export const GeneralEvent: CollectionConfig = {
       },
     },
     {
-      name: 'generalInformation',
+      name: 'event',
       type: 'relationship',
       relationTo: 'base-event',
       admin: {
@@ -123,8 +176,15 @@ export const GeneralEvent: CollectionConfig = {
       },
     },
     {
+      name: 'hasJudging',
+      type: 'checkbox',
+    },
+    {
       name: 'eventMembers',
       type: 'group',
+      admin: {
+        description: 'Only edit for walk-ins and members not registered.',
+      },
       fields: [
         {
           name: 'participants',
@@ -169,6 +229,9 @@ export const GeneralEvent: CollectionConfig = {
               equals: 4, // judges role ID
             },
           },
+          admin: {
+            condition: (_, siblingData) => siblingData.hasJudging,
+          },
         },
         {
           name: 'volunteer',
@@ -191,16 +254,15 @@ export const GeneralEvent: CollectionConfig = {
         {
           name: 'sponsor',
           type: 'join',
-          on: 'sponsor',
+          on: 'event',
           collection: 'sponsor-to-event',
         },
         {
           name: 'host',
           type: 'join',
-          on: 'host',
+          on: 'event',
           collection: 'host-to-event',
         },
-
       ],
     },
     {
@@ -226,6 +288,9 @@ export const GeneralEvent: CollectionConfig = {
         {
           name: 'judge',
           type: 'text',
+          admin: {
+            condition: (_, siblingData) => siblingData.hasJudging,
+          },
         },
         {
           name: 'volunteer',
@@ -266,6 +331,7 @@ export const GeneralEvent: CollectionConfig = {
           type: 'richText',
           admin: {
             description: 'What should a judge bring to the event',
+            condition: (_, siblingData) => siblingData.hasJudge,
           },
         },
         {

@@ -35,13 +35,11 @@ export const SponsorToEvent: CollectionConfig = {
       name: 'event',
       type: 'relationship',
       relationTo: 'base-event',
-      required: true,
     },
     {
       name: 'sponsor',
       type: 'relationship',
       relationTo: 'sponsor',
-      required: true,
     },
   ],
 }
