@@ -24,6 +24,10 @@ transition: slide-left
 mdc: true
 exportfilename: "cuHacking 2025 Presentation Deck"
 colorSchema: dark
+fonts:
+  sans: JetBrains Mono
+  serif: JetBrains Mono
+  mono: JetBrains Mono
 ---
 
 # Welcome to Slidev
