@@ -7,6 +7,7 @@ theme: default
 background: https://cover.sli.dev
 # some information about your slides (markdown enabled)
 title: "cuHacking"
+author: "Mumtahin Farabi"
 info: |
   ## Slidev Starter Template
   Presentation slides for developers.
