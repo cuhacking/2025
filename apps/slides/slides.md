@@ -58,19 +58,27 @@ The last comment block of each slide will be treated as slide notes. It will be 
 
 ---
 transition: fade-out
+background: https://github.com/user-attachments/assets/381f7ce4-3646-474a-8a62-fc5b2123bde2
 ---
 
-# What is Slidev?
+<h1>Who are we?</h1>
+<div>
+  <p>
+    cuHacking is a 36-hour hackathon that
+    <span className="text-primary"> ✨sparks creativity</span>
+    and problem-solving among 🍁Ottawa's brightest minds.
+  </p>
+  <p>
+    A catalyst for
+    <span className="text-orange-400"> innovation</span>
+    ,
+    <span className="text-blue-400"> collaboration</span>
+    , and
+    <span className="text-lime-400"> learning</span>
+    , providing an inclusive space for passionate minds to create and grow together.
 
-Slidev is a slides maker and presenter designed for developers, consist of the following features
-
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - themes can be shared and re-used as npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embed Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export to PDF, PPTX, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - virtually anything that's possible on a webpage is possible in Slidev
+  </p>
+</div>
 <br>
 <br>
 
@@ -83,8 +91,7 @@ Learn more: https://sli.dev/features/slide-scope-style
 
 <style>
 h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-image: linear-gradient(45deg, #36DF2A 10%, #7fff76 20%);
   background-size: 100%;
   -webkit-background-clip: text;
   -moz-background-clip: text;
