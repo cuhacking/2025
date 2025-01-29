@@ -1,5 +1,5 @@
 {
-  "id": "7ad41147-81fd-4e23-b211-8d3a6d49d4ef",
+  "id": "5d7c80b3-3101-4d5c-a416-bfa04c76674c",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -923,11 +923,17 @@
           "primaryKey": false,
           "notNull": false
         },
-        "date_time": {
-          "name": "date_time",
+        "start": {
+          "name": "start",
           "type": "timestamp(3) with time zone",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
+        },
+        "end": {
+          "name": "end",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": false
         },
         "updated_at": {
           "name": "updated_at",
@@ -999,8 +1005,8 @@
           "primaryKey": false,
           "notNull": false
         },
-        "general_information_id": {
-          "name": "general_information_id",
+        "event_id": {
+          "name": "event_id",
           "type": "integer",
           "primaryKey": false,
           "notNull": false
@@ -1021,6 +1027,12 @@
         "attendee_limit": {
           "name": "attendee_limit",
           "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "has_judging": {
+          "name": "has_judging",
+          "type": "boolean",
           "primaryKey": false,
           "notNull": false
         },
@@ -1100,11 +1112,11 @@
         }
       },
       "indexes": {
-        "general_event_general_information_idx": {
-          "name": "general_event_general_information_idx",
+        "general_event_event_idx": {
+          "name": "general_event_event_idx",
           "columns": [
             {
-              "expression": "general_information_id",
+              "expression": "event_id",
               "isExpression": false,
               "asc": true,
               "nulls": "last"
@@ -1147,12 +1159,12 @@
         }
       },
       "foreignKeys": {
-        "general_event_general_information_id_base_event_id_fk": {
-          "name": "general_event_general_information_id_base_event_id_fk",
+        "general_event_event_id_base_event_id_fk": {
+          "name": "general_event_event_id_base_event_id_fk",
           "tableFrom": "general_event",
           "tableTo": "base_event",
           "columnsFrom": [
-            "general_information_id"
+            "event_id"
           ],
           "columnsTo": [
             "id"
@@ -1508,10 +1520,10 @@
           "onDelete": "set null",
           "onUpdate": "no action"
         },
-        "user_to_event_event_id_base_event_id_fk": {
-          "name": "user_to_event_event_id_base_event_id_fk",
+        "user_to_event_event_id_general_event_id_fk": {
+          "name": "user_to_event_event_id_general_event_id_fk",
           "tableFrom": "user_to_event",
-          "tableTo": "base_event",
+          "tableTo": "general_event",
           "columnsFrom": [
             "event_id"
           ],
@@ -3185,13 +3197,13 @@
           "name": "event_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "sponsor_id": {
           "name": "sponsor_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "updated_at": {
           "name": "updated_at",
@@ -3287,6 +3299,170 @@
         "sponsor_to_event_sponsor_id_sponsor_id_fk": {
           "name": "sponsor_to_event_sponsor_id_sponsor_id_fk",
           "tableFrom": "sponsor_to_event",
+          "tableTo": "sponsor",
+          "columnsFrom": [
+            "sponsor_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.organization_sponsor": {
+      "name": "organization_sponsor",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "organization_id": {
+          "name": "organization_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sponsor_id": {
+          "name": "sponsor_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sponsorship_type": {
+          "name": "sponsorship_type",
+          "type": "enum_organization_sponsor_sponsorship_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "in_kind_offer": {
+          "name": "in_kind_offer",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "money_recieved": {
+          "name": "money_recieved",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "start": {
+          "name": "start",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "end": {
+          "name": "end",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "organization_sponsor_organization_idx": {
+          "name": "organization_sponsor_organization_idx",
+          "columns": [
+            {
+              "expression": "organization_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "organization_sponsor_sponsor_idx": {
+          "name": "organization_sponsor_sponsor_idx",
+          "columns": [
+            {
+              "expression": "sponsor_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "organization_sponsor_updated_at_idx": {
+          "name": "organization_sponsor_updated_at_idx",
+          "columns": [
+            {
+              "expression": "updated_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "organization_sponsor_created_at_idx": {
+          "name": "organization_sponsor_created_at_idx",
+          "columns": [
+            {
+              "expression": "created_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "organization_sponsor_organization_id_organization_id_fk": {
+          "name": "organization_sponsor_organization_id_organization_id_fk",
+          "tableFrom": "organization_sponsor",
+          "tableTo": "organization",
+          "columnsFrom": [
+            "organization_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        },
+        "organization_sponsor_sponsor_id_sponsor_id_fk": {
+          "name": "organization_sponsor_sponsor_id_sponsor_id_fk",
+          "tableFrom": "organization_sponsor",
           "tableTo": "sponsor",
           "columnsFrom": [
             "sponsor_id"
@@ -3410,10 +3586,10 @@
         }
       },
       "foreignKeys": {
-        "host_to_event_event_id_base_event_id_fk": {
-          "name": "host_to_event_event_id_base_event_id_fk",
+        "host_to_event_event_id_general_event_id_fk": {
+          "name": "host_to_event_event_id_general_event_id_fk",
           "tableFrom": "host_to_event",
-          "tableTo": "base_event",
+          "tableTo": "general_event",
           "columnsFrom": [
             "event_id"
           ],
@@ -3922,6 +4098,12 @@
           "primaryKey": false,
           "notNull": false
         },
+        "organization_sponsor_id": {
+          "name": "organization_sponsor_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
         "host_to_event_id": {
           "name": "host_to_event_id",
           "type": "integer",
@@ -4266,6 +4448,21 @@
           "method": "btree",
           "with": {}
         },
+        "payload_locked_documents_rels_organization_sponsor_id_idx": {
+          "name": "payload_locked_documents_rels_organization_sponsor_id_idx",
+          "columns": [
+            {
+              "expression": "organization_sponsor_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
         "payload_locked_documents_rels_host_to_event_id_idx": {
           "name": "payload_locked_documents_rels_host_to_event_id_idx",
           "columns": [
@@ -4551,6 +4748,19 @@
           "tableTo": "sponsor_to_event",
           "columnsFrom": [
             "sponsor_to_event_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "payload_locked_documents_rels_organization_sponsor_fk": {
+          "name": "payload_locked_documents_rels_organization_sponsor_fk",
+          "tableFrom": "payload_locked_documents_rels",
+          "tableTo": "organization_sponsor",
+          "columnsFrom": [
+            "organization_sponsor_id"
           ],
           "columnsTo": [
             "id"
@@ -5045,6 +5255,14 @@
         "sponsor",
         "cusaClub",
         "university"
+      ]
+    },
+    "public.enum_organization_sponsor_sponsorship_type": {
+      "name": "enum_organization_sponsor_sponsorship_type",
+      "schema": "public",
+      "values": [
+        "inKind",
+        "monetary"
       ]
     },
     "public.enum_social_link_platform": {

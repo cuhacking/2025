@@ -158,9 +158,8 @@ export interface BaseEvent {
   description?: string | null;
   building?: ('rb' | 'pa' | 'nn') | null;
   room?: string | null;
-  start: string;
-  end: string;
-  dateTime: string;
+  start?: string | null;
+  end?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1010,7 +1009,6 @@ export interface BaseEventSelect<T extends boolean = true> {
   room?: T;
   start?: T;
   end?: T;
-  dateTime?: T;
   updatedAt?: T;
   createdAt?: T;
 }

@@ -50,11 +50,6 @@ export const BaseEvent: CollectionConfig = {
         },
       },
     },
-    {
-      name: 'dateTime',
-      type: 'date',
-      required: false,
-    },
   ],
 }
 
