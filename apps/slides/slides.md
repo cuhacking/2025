@@ -31,12 +31,16 @@ fonts:
   mono: JetBrains Mono
 ---
 
-# Welcome to Slidev
+<div class="relative border-none backdrop-blur-md rounded-xl shadow-dropShadow border-border py-10">
 
-Presentation slides for developers
+<h1 class="font-bold"><span class="text-[#36DF2A]">cuHacking</span> <span class="text-yellow-500">6</span> </h1>
+~
+<span class="text-blue"> March 14-16th</span> <span class="text-orange">2025</span> @ <span class="text-[#e91c24]">Carleton University</span> 💚
 
-<div @click="$slidev.nav.next" class="mt-12 py-1" hover:bg="white op-10">
-  Press Space for next page <carbon:arrow-right />
+<!-- <div @click="$slidev.nav.next" class="mt-12 py-1" hover:bg="white op-10"> -->
+<!--   Press Space for next page <carbon:arrow-right /> -->
+<!-- </div> -->
+
 </div>
 
 <div class="abs-br m-6 text-xl">
