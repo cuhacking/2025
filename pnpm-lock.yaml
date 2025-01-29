@@ -378,6 +378,9 @@ importers:
       fumadocs-ui:
         specifier: ^14.6.4
         version: 14.7.3(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(fumadocs-core@14.7.3(@types/react@18.3.18)(next@15.1.0(@babel/core@7.26.0)(@opentelemetry/api@1.8.0)(@playwright/test@1.49.1)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.83.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@15.1.0(@babel/core@7.26.0)(@opentelemetry/api@1.8.0)(@playwright/test@1.49.1)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.83.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(tailwindcss@3.4.17(ts-node@10.9.1(@swc/core@1.5.29(@swc/helpers@0.5.15))(@types/node@22.8.6)(typescript@5.7.3)))
+      get-port:
+        specifier: ^7.1.0
+        version: 7.1.0
       husky:
         specifier: ^9.1.7
         version: 9.1.7
@@ -9810,6 +9813,10 @@ packages:
   get-port@6.1.2:
     resolution: {integrity: sha512-BrGGraKm2uPqurfGVj/z97/zv8dPleC6x9JBNRTrDNtCkkRF4rPwrQXFgL7+I+q8QSdU4ntLQX2D7KIxSy8nGw==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+
+  get-port@7.1.0:
+    resolution: {integrity: sha512-QB9NKEeDg3xxVwCCwJQ9+xycaz6pBB6iQ76wiWMl1927n0Kir6alPiP+yuiICLLU4jpMe08dXfpebuQppFA2zw==}
+    engines: {node: '>=16'}
 
   get-proto@1.0.1:
     resolution: {integrity: sha512-sTSfBjoXBp89JvIKIefqw7U2CCebsc74kiY6awiGogKtoSGbgjYE/G/+l9sF3MWFPNc9IcoOC4ODfKHfxFmp0g==}
@@ -23521,7 +23528,7 @@ snapshots:
       '@babel/plugin-syntax-typescript': 7.25.9(@babel/core@7.26.0)
       '@vanilla-extract/babel-plugin-debug-ids': 1.2.0
       '@vanilla-extract/css': 1.17.0(babel-plugin-macros@3.1.0)
-      esbuild: 0.17.6
+      esbuild: 0.19.12
       eval: 0.1.8
       find-up: 5.0.0
       javascript-stringify: 2.1.0
@@ -28241,6 +28248,8 @@ snapshots:
   get-port@5.1.1: {}
 
   get-port@6.1.2: {}
+
+  get-port@7.1.0: {}
 
   get-proto@1.0.1:
     dependencies:
