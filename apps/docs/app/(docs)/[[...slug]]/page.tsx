@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import netlify_logo from '@cuhacking/shared/assets/logos/sponsors/netlify-white.svg'
 import Link from 'fumadocs-core/link'
 import { Callout } from 'fumadocs-ui/components/callout'
 import { Step, Steps } from 'fumadocs-ui/components/steps'
@@ -33,6 +34,11 @@ export default async function Page(props: {
       >
         Made with 💚 for Hackers by Hackers
       </a>
+      <a href="https://netlify.com" target="_blank" rel="noopener noreferrer" className="flex hover:scale-110 duration-300 transition text-cyan-300 hover:text-green-500 items-center gap-x-3">
+        Powered by
+        <img className="w-24" src={netlify_logo.src} />
+      </a>
+
     </>
   )
 
