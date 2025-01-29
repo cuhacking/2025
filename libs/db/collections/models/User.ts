@@ -105,12 +105,12 @@ export const User: CollectionConfig = {
         { name: 'relationship', type: 'text', required: true },
       ],
     },
-    // {
-    //   name: 'organizations',
-    //   type: 'join',
-    //   on: 'user',
-    //   collection: 'user-to-organization',
-    // },
+    {
+      name: 'organizations',
+      type: 'join',
+      on: 'user',
+      collection: 'user-to-organization',
+    },
     // Visibility Settings
     {
       name: 'visibilitySettings',
