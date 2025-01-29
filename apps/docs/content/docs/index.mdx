@@ -4,8 +4,8 @@ description: Leave none behind regardless of our development cost.
 icon: House
 ---
 
-import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
-import { pages } from "../../source";
+import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
+import { pages } from '../../source';
 import {
   Cloud,
   DraftingCompass,
@@ -20,17 +20,15 @@ import {
   icons,
   BookOpenText as KnowledgeBaseIcon,
   Layers as ToolsIcon,
-} from "lucide-react"
+} from 'lucide-react';
 
-import { Feature } from "@cuhacking/docs/components/ui/feature-section"
+import { Feature } from '@cuhacking/docs/components/ui/feature-section';
 
-import { NeonGradientCard } from "@cuhacking/docs/components/ui/neon-gradient-card";
+import { NeonGradientCard } from '@cuhacking/docs/components/ui/neon-gradient-card';
 
 Welcome to the documentation site for the [cuHacking 2025](https://www.cuhacking.ca) hackathon platform.
 
-<NeonGradientCard
-  className="animate-background-position-spin flex items-center justify-center h-auto z-5"
->
+<NeonGradientCard className="animate-background-position-spin flex items-center justify-center h-auto z-5">
   <div className="w-full h-auto overflow-hidden rounded-[calc(19px-3px)] bg-transparent">
     <img
       className="block w-full h-full object-cover m-0 p-0"
@@ -40,14 +38,15 @@ Welcome to the documentation site for the [cuHacking 2025](https://www.cuhacking
   </div>
 </NeonGradientCard>
 
-
-<span className="font-bold animate-color-cycle-orange">Contribution Guidelines</span>,
-<span className="font-bold animate-color-cycle-yellow">Concepts</span>, and
-<span className="font-bold animate-color-cycle-blue">References</span> for our custom, batteries-supercharged
-<span className="font-bold animate-color-cycle-primary">meta-framework</span> powering all projects reside here.
+<span className="font-bold animate-color-cycle-orange">
+  Contribution Guidelines
+</span>
+,<span className="font-bold animate-color-cycle-yellow">Concepts</span>, and
+<span className="font-bold animate-color-cycle-blue">References</span> for our
+custom, batteries-supercharged******
+******<span className="font-bold animate-color-cycle-primary">meta-framework</span> powering all projects reside here.
 
 Written with 💚 in a beginner-friendly language in order to provide a smooth onboarding experience for external contributors, and act as a general open-source reference for other projects.
-
 
 ## Our Priorities
 
@@ -99,35 +98,36 @@ Written with 💚 in a beginner-friendly language in order to provide a smooth o
         'Ship fast by aggressively automating repetitive tasks.',
       icon: <Gauge />,
     },
-  ].map((feature, index) => (
-        <Feature key={feature.title} {...feature} index={index} />
-      ))}
-    </div>
 
+].map((feature, index) => (
+<Feature key={feature.title} {...feature} index={index} />
+))}
+</div>
 
 ## Categories
 
 <Cards>
   {[
-  {
-    title: 'Tech Stack',
-    description: 'For those wondering about our specs.',
-    url: 'tech-stack',
-    icon: ToolsIcon,
-  },
-  {
-    title: 'Contribution Guidelines',
-    description: 'Understand our collaboration process.',
-    url: 'contribution-guidelines',
-    icon: ContributionGuidelinesIcon,
-  },
-  {
-    title: 'Knowledge Base',
-    description: 'Curated resources to accelerate your learning.',
-    url: 'knowledge-base',
-    icon: KnowledgeBaseIcon,
-  },
-].filter((page) => page.title !== "Home") // Filter out the Home page
+    {
+      title: 'Tech Stack',
+      description: 'For those wondering about our specs.',
+      url: 'tech-stack',
+      icon: ToolsIcon,
+    },
+    {
+      title: 'Contribution Guidelines',
+      description: 'Understand our collaboration process.',
+      url: 'contribution-guidelines',
+      icon: ContributionGuidelinesIcon,
+    },
+    {
+      title: 'Knowledge Base',
+      description: 'Curated resources to accelerate your learning.',
+      url: 'knowledge-base',
+      icon: KnowledgeBaseIcon,
+    },
+  ]
+    .filter((page) => page.title !== 'Home') // Filter out the Home page
     .map((page) => (
       <Card
         key={page.title}
@@ -170,12 +170,13 @@ TODOS:
     }
     href={`https://questions.carletoncomputerscience.ca/comp2804`}
     icon={
-    <img
-    src="https://ccss.carleton.ca/favicon.ico"
-    alt="Carleton Computer Science Society Logo"
-    width={24}
-    height={24}
-    />}
+      <img
+        src="https://ccss.carleton.ca/favicon.ico"
+        alt="Carleton Computer Science Society Logo"
+        width={24}
+        height={24}
+      />
+    }
   />
   <Card
     title="SCESoc Knowledge Base"
@@ -186,12 +187,23 @@ TODOS:
     }
     href={`https://wiki.scesoc.ca/knowledge-base`}
     icon={
-    <img
-    src="https://www.scesoc.ca/wp-content/uploads/2020/05/cropped-SCESoc_Logo_Design_Yellow_1-1-32x32.png"
-    alt="Carleton Computer Science Society Logo"
-    width={24}
-    height={24}
-    />}
+      <img
+        src="https://www.scesoc.ca/wp-content/uploads/2020/05/cropped-SCESoc_Logo_Design_Yellow_1-1-32x32.png"
+        alt="Carleton Computer Science Society Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  {/* Robert Babaev: Need to generate icons for the site */}
+  <Card
+    title="CourseFull"
+    description={
+      <>
+        <li>Robert Babaev</li>
+      </>
+    }
+    href={`https://coursefull.app`}
   />
 </Cards>
 
@@ -207,11 +219,12 @@ TODOS:
     }
     href={`https://github.com/Eigen-DB`}
     icon={
-    <img
-    src="https://avatars.githubusercontent.com/u/180210107?s=200&v=4"
-    alt="EigenDB Logo"
-    width={24}
-    height={24}
-    />}
+      <img
+        src="https://avatars.githubusercontent.com/u/180210107?s=200&v=4"
+        alt="EigenDB Logo"
+        width={24}
+        height={24}
+      />
+    }
   />
 </Cards>
