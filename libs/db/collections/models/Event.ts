@@ -33,7 +33,7 @@ export const BaseEvent: CollectionConfig = {
     {
       name: 'start',
       type: 'date',
-      required: true,
+      required: false,
       admin: {
         date: {
           pickerAppearance: 'dayAndTime',
@@ -43,7 +43,7 @@ export const BaseEvent: CollectionConfig = {
     {
       name: 'end',
       type: 'date',
-      required: true,
+      required: false,
       admin: {
         date: {
           pickerAppearance: 'dayAndTime',
@@ -53,7 +53,7 @@ export const BaseEvent: CollectionConfig = {
     {
       name: 'dateTime',
       type: 'date',
-      required: true,
+      required: false,
     },
   ],
 }
