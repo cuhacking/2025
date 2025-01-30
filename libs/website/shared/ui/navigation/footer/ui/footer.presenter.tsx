@@ -29,10 +29,10 @@ export function FooterPresenter({ logo, socials }: FooterProps) {
         <Socials socials={socials} className="justify-center" />
       </div>
       <div className="flex items-center flex-col lg:flex-row justify-between gap-x-3">
-        <a href="https://github.com/cuhacking/2025/graphs/contributors" rel="noopener noreferrer" className="hover:scale-110 duration-300 transition text-yellow-500 hover:text-accent">
+        <a href="https://github.com/cuhacking/2025/graphs/contributors" target="_blank" rel="noopener noreferrer" className="hover:scale-105 duration-300 transition hover:text-accent">
           Made with ❤️ for Hackers by Hackers.
         </a>
-        <a href="https://netlify.com" target="_blank" rel="noopener noreferrer" className="flex hover:scale-110 duration-300 transition text-cyan-300 hover:text-accent items-center gap-x-3">
+        <a href="https://netlify.com" target="_blank" rel="noopener noreferrer" className="flex hover:scale-110 duration-300 transition hover:text-cyan-300  items-center gap-x-3">
           Powered by
           <img className="w-24" src={netlify_logo} />
         </a>
