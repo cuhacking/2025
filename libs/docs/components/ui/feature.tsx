@@ -18,7 +18,7 @@ export function FUIFeatureSectionWithCards({
   return (
     <section className="py-14 relative">
       <img
-        src="https://tailwindcss.com/_next/static/media/docs@30.8b9a76a2.avif"
+        src="https://cuhacking.ca/assets/cuhacking-logo-1-DgcuCcxm.svg"
         className="absolute z-2 -top-0 left-10"
       />
       <div className="max-w-screen-xl mx-auto px-4 text-gray-400 md:px-8">
