@@ -32,6 +32,7 @@
     "lighthouse": "pnpm exec serve lighthouse-report --no-clipboard & sleep 1 && xdg-open 'http://localhost:3000/latest-report'"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.10.0",
     "@lexical/headless": "0.21.0",
     "@lexical/html": "0.21.0",
     "@lexical/link": "0.21.0",
@@ -52,7 +53,10 @@
     "@payloadcms/storage-s3": "^3.18.0",
     "@payloadcms/ui": "^3.18.0",
     "@radix-ui/react-accordion": "^1.2.2",
+    "@radix-ui/react-label": "^2.1.1",
     "@radix-ui/react-navigation-menu": "^1.2.3",
+    "@radix-ui/react-popover": "^1.1.5",
+    "@radix-ui/react-select": "^2.1.5",
     "@radix-ui/react-separator": "^1.1.1",
     "@radix-ui/react-slot": "^1.1.1",
     "@radix-ui/react-visually-hidden": "^1.1.1",
@@ -65,6 +69,7 @@
     "date-fns": "^4.1.0",
     "framer-motion": "^11.17.0",
     "get-port": "^7.1.0",
+    "graph": "^0.2.0",
     "graphql": "^16.10.0",
     "isbot": "^4.4.0",
     "lexical": "0.21.0",
@@ -73,12 +78,16 @@
     "react": "^18.3.1",
     "react-day-picker": "8.10.1",
     "react-dom": "^18.3.1",
+    "react-hook-form": "^7.54.2",
     "reflect-metadata": "^0.1.14",
     "remix-utils": "^7.7.0",
     "rxjs": "^7.8.1",
+    "shadcn": "^2.3.0",
     "sharp": "^0.33.5",
+    "sonner": "^1.7.3",
     "three": "^0.171.0",
-    "vaul": "^1.1.2"
+    "vaul": "^1.1.2",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.13.0",
