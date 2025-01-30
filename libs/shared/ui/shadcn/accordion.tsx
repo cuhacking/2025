@@ -1,6 +1,5 @@
 import { cn } from '@cuhacking/shared/utils/cn'
 import * as AccordionPrimitive from '@radix-ui/react-accordion'
-import { ChevronDown } from 'lucide-react'
 
 import * as React from 'react'
 
@@ -21,13 +20,9 @@ const AccordionTrigger = React.forwardRef<
   <AccordionPrimitive.Header className="flex">
     <AccordionPrimitive.Trigger
       ref={ref}
-      className={cn(
-        'flex flex-1 items-center w-full justify-start py-0.5 font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180 gap-3 text-left',
-        className,
-      )}
+      className={cn('w-full transition-all hover:no-underline', className)}
       {...props}
     >
-      <ChevronDown className="w-4 h-4 transition-transform duration-200 shrink-0" />
       {children}
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>

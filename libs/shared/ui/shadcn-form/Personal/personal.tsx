@@ -2,7 +2,7 @@
 import { cn } from '@cuhacking/shared/utils/cn'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { format } from 'date-fns'
-import { Calendar as CalendarIcon } from 'lucide-react'
+import { Calendar as CalendarIcon, ChevronDown } from 'lucide-react'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
@@ -38,12 +38,12 @@ import {
 } from '../../shadcn/select'
 
 const formSchema = z.object({
-  firstname: z.string().max(100),
+  firstname: z.string().min(1, 'First name is required').max(100),
   middlename: z.string().optional(),
-  lastname: z.string(),
+  lastname: z.string().min(1, 'Last name is required'),
   dateofgraduation: z.coerce.date(),
-  tshirtSize: z.string(),
-  gender: z.string(),
+  tshirtSize: z.string().min(1, 'T-shirt size is required'),
+  gender: z.string().min(1, 'Gender is required'),
 })
 
 interface PersonalFormProps {
@@ -91,8 +91,14 @@ export function PersonalForm({
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="personal">
             <AccordionTrigger className="px-6 hover:no-underline">
-              <div className="flex justify-between items-center w-full">
-                <span className="text-lg font-extrabold">Personal</span>
+              <div className="h-12 pt-3.5 pb-1.5 border-b border-white w-full flex justify-between items-center">
+                <span className="text-white text-lg font-extrabold font-['JetBrains Mono'] leading-7">Personal</span>
+                <ChevronDown
+                  className={cn(
+                    'w-6 h-6 transition-transform duration-200',
+                    'data-[state=open]:rotate-180',
+                  )}
+                />
               </div>
             </AccordionTrigger>
             <AccordionContent className="px-6 pt-6 space-y-8">
@@ -103,11 +109,15 @@ export function PersonalForm({
                     name="firstname"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>First Name</FormLabel>
+                        <FormLabel className="flex items-center gap-1">
+                          First Name
+                          <span className="text-red-600 text-sm font-normal font-['JetBrains Mono']">*</span>
+                        </FormLabel>
                         <FormControl>
                           <Input
                             placeholder="Type here"
-                            className="bg-black border border-white"
+                            prefix={<div className="w-6 text-center text-white text-base font-normal font-['JetBrains Mono'] leading-normal"><span>~&gt;</span></div>}
+                            className="h-[48px] bg-[#1e1e1e]/40 rounded-xl shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] border border-white/20 backdrop-blur-2xl"
                             type="text"
                             disabled={isLoading}
                             {...field}
@@ -129,7 +139,8 @@ export function PersonalForm({
                         <FormControl>
                           <Input
                             placeholder="Type here"
-                            className="bg-black border border-white"
+                            prefix={<div className="w-6 text-center text-white text-base font-normal font-['JetBrains Mono'] leading-normal"><span>~&gt;</span></div>}
+                            className="h-[48px] bg-[#1e1e1e]/40 rounded-xl shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] border border-white/20 backdrop-blur-2xl"
                             disabled={isLoading}
                             {...field}
                           />
@@ -146,11 +157,15 @@ export function PersonalForm({
                     name="lastname"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Last Name</FormLabel>
+                        <FormLabel className="flex items-center gap-1">
+                          Last Name
+                          <span className="text-red-600 text-sm font-normal font-['JetBrains Mono']">*</span>
+                        </FormLabel>
                         <FormControl>
                           <Input
                             placeholder="Type here"
-                            className="bg-black border border-white"
+                            prefix={<div className="w-6 text-center text-white text-base font-normal font-['JetBrains Mono'] leading-normal"><span>~&gt;</span></div>}
+                            className="h-[48px] bg-[#1e1e1e]/40 rounded-xl shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] border border-white/20 backdrop-blur-2xl"
                             disabled={isLoading}
                             {...field}
                           />
@@ -167,15 +182,19 @@ export function PersonalForm({
                 name="dateofgraduation"
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
-                    <FormLabel>Date of Graduation</FormLabel>
+                    <FormLabel className="flex items-center gap-1">
+                      Date of Graduation
+                      <span className="text-red-600 text-sm font-normal font-['JetBrains Mono']">*</span>
+                    </FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
                         <FormControl>
                           <Button
                             variant="outline"
                             className={cn(
-                              'w-[240px] pl-3 text-left font-normal',
-                              !field.value && 'text-muted-foreground',
+                              'h-[48px] w-[240px] bg-[#1e1e1e]/40 rounded-xl shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] border border-white/20 backdrop-blur-2xl',
+                              'text-left font-normal pl-3',
+                              !field.value && 'text-white/50',
                             )}
                             disabled={isLoading}
                           >
@@ -220,16 +239,16 @@ export function PersonalForm({
                         <Select
                           onValueChange={field.onChange}
                           defaultValue={field.value}
-                          className="bg-black border border-white"
                           disabled={isLoading}
                         >
                           <FormControl>
-                            <SelectTrigger>
+                            <SelectTrigger className="h-[48px] w-[320px] bg-[#1e1e1e]/40 rounded-xl shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] border border-white/20 backdrop-blur-2xl">
                               <SelectValue placeholder="Select your T shirt size" />
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent
                             style={{ backgroundColor: 'black' }}
+                            className="bg-[#1e1e1e]/40 border border-white/20"
                           >
                             <SelectItem value="XS">XS</SelectItem>
                             <SelectItem value="S">S</SelectItem>
@@ -256,16 +275,16 @@ export function PersonalForm({
                         <Select
                           onValueChange={field.onChange}
                           defaultValue={field.value}
-                          className="bg-black border border-white"
                           disabled={isLoading}
                         >
                           <FormControl>
-                            <SelectTrigger>
+                            <SelectTrigger className="h-[48px] w-[320px] bg-[#1e1e1e]/40 rounded-xl shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] border border-white/20 backdrop-blur-2xl">
                               <SelectValue placeholder="Select your gender" />
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent
                             style={{ backgroundColor: 'black' }}
+                            className="bg-[#1e1e1e]/40 border border-white/20"
                           >
                             <SelectItem value="male">Male</SelectItem>
                             <SelectItem value="female">Female</SelectItem>

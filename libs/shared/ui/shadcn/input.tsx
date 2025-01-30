@@ -1,19 +1,32 @@
 import { cn } from '@cuhacking/shared/utils/cn'
-
 import * as React from 'react'
 
-const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<'input'>>(
-  ({ className, type, ...props }, ref) => {
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  prefix?: React.ReactNode
+}
+
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, type, prefix, ...props }, ref) => {
     return (
-      <input
-        type={type}
-        className={cn(
-          'flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm',
-          className,
+      <div className="relative flex items-center">
+        {prefix && (
+          <div className="absolute left-3 top-1/2 -translate-y-1/2">
+            {prefix}
+          </div>
         )}
-        ref={ref}
-        {...props}
-      />
+        <input
+          type={type}
+          className={cn(
+            'flex w-full bg-transparent py-0.5 text-base transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium font-["JetBrains Mono"]',
+            'placeholder:text-white/50 placeholder:font-normal placeholder:text-base',
+            'focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
+            prefix ? 'pl-12 pr-3' : 'px-3',
+            className,
+          )}
+          ref={ref}
+          {...props}
+        />
+      </div>
     )
   },
 )

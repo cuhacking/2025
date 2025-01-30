@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { PersonalForm } from './personal'
+import { DietaryForm } from './dietary'
 
 const meta = {
-  title: 'Forms/Portal/Personal',
-  component: PersonalForm,
+  title: 'Forms/Portal/Dietary',
+  component: DietaryForm,
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
-    id: 'forms-portal-personal',
+    id: 'forms-portal-dietary',
   },
   args: {
     className: 'w-full max-w-3xl',
@@ -26,7 +26,7 @@ const meta = {
       action: 'form submitted',
     },
   },
-} satisfies Meta<typeof PersonalForm>
+} satisfies Meta<typeof DietaryForm>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -36,11 +36,8 @@ export const Default: Story = {}
 export const PreFilled: Story = {
   args: {
     defaultValues: {
-      firstname: 'John',
-      lastname: 'Doe',
-      dateofgraduation: new Date(),
-      tshirtSize: 'M',
-      gender: 'male',
+      mealRestriction: 'vegetarian',
+      allergy: 'peanuts',
     },
   },
 }
