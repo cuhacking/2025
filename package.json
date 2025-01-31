@@ -99,6 +99,7 @@
     "@nx/remix": "20.3.0",
     "@nx/storybook": "20.3.0",
     "@nx/vite": "20.3.0",
+    "@nx/vue": "20.3.0",
     "@nx/web": "20.3.0",
     "@nx/webpack": "20.3.0",
     "@nx/workspace": "20.3.0",

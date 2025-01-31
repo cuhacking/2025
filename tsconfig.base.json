@@ -24,8 +24,8 @@
       "@payload-config": ["apps/cms/src/payload.config.ts"],
       "@shadcn": ["libs/external/shadcn/index.ts"],
       "@shadcn/*": ["libs/external/shadcn/*"],
-      "@website/*": ["libs/website/*"],
-      "@website-e2e/*": ["libs/website-e2e/*"]
+      "@website-e2e/*": ["libs/website-e2e/*"],
+      "@website/*": ["libs/website/*"]
     },
     "declaration": false,
     "importHelpers": true,
