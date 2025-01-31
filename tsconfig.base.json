@@ -17,6 +17,8 @@
       "@cuhacking/docs/*": ["libs/docs/*"],
       "@cuhacking/shared": ["libs/shared/index.ts"],
       "@cuhacking/shared/*": ["libs/shared/*"],
+      "@cuhacking/portal/": ["libs/portal/index.ts"],
+      "@cuhacking/portal/*": ["libs/portal/*"],
       "@magic-ui": ["libs/external/magic-ui/index.ts"],
       "@magic-ui/*": ["libs/external/magic-ui/*"],
       "@payload-config": ["apps/cms/src/payload.config.ts"],

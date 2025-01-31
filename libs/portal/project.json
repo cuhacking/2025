@@ -1,0 +1,8 @@
+{
+  "name": "libs/portal",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/portal",
+  "projectType": "library",
+  "tags": [],
+  "targets": {}
+}
