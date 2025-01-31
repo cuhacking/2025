@@ -12,7 +12,8 @@ author: "Mumtahin Farabi"
 info: |
   ## cuHacking Presentation Deck
 
-  Made using [Sli.dev](https://sli.dev)
+  Authored by [Hasith De Alwis](https://github.com/HasithDeAlwis), and [Aashna Verma](https://github.com/Aashna-Verma).
+
 # apply unocss classes to the current slide
 class: text-center
 # https://sli.dev/features/drawing
@@ -23,7 +24,6 @@ transition: slide-left
 # enable MDC Syntax: https://sli.dev/features/mdc
 mdc: true
 exportfilename: "cuHacking 2025 Presentation Deck"
-colorSchema: dark
 favicon: "https://cuhacking.ca/assets/cuhacking-logo-1-DgcuCcxm.svg"
 fonts:
   sans: JetBrains Mono
@@ -36,6 +36,14 @@ fonts:
 <h1 class="font-bold"><span class="text-[#36DF2A]">cuHacking</span> <span class="text-yellow-500">6</span> </h1>
 ~
 <span class="text-blue"> March 14-16th</span> <span class="text-orange">2025</span> @ <span class="text-[#e91c24]">Carleton University</span> 💚
+
+This slide deck is a work in progress.
+
+<!-- TODO: Convert to use logos -->
+<!-- [Website](https://cuhacking.ca) -->
+<!-- [Instagram](https://instagram.com/cuhacking) -->
+<!-- [Email](https://sponsorship@cuhacking.ca) -->
+<!-- [LinkedIn](https://linkedin.com/company/cuhacking) -->
 
 <!-- <div @click="$slidev.nav.next" class="mt-12 py-1" hover:bg="white op-10"> -->
 <!--   Press Space for next page <carbon:arrow-right /> -->
@@ -82,8 +90,6 @@ background: https://github.com/user-attachments/assets/381f7ce4-3646-474a-8a62-f
 <br>
 <br>
 
-Read more about [Why Slidev?](https://sli.dev/guide/why)
-
 <!--
 You can have `style` tag in markdown to override the style for the current page.
 Learn more: https://sli.dev/features/slide-scope-style
@@ -107,6 +113,7 @@ Here is another comment.
 ---
 transition: slide-up
 level: 2
+hide: true
 ---
 
 # Navigation
@@ -563,7 +570,7 @@ Learn more: [Mermaid Diagrams](https://sli.dev/features/mermaid) and [PlantUML D
 ---
 foo: bar
 dragPos:
-  square: 691,32,167,_,-16
+  square: 0,-105,0,0
 ---
 
 # Draggable Elements
@@ -575,7 +582,7 @@ Double-click on the draggable elements to edit their positions.
 ###### Directive Usage
 
 ```md
-<img v-drag="'square'" src="https://sli.dev/logo.png">
+<img v-drag="'square'" src="https://sli.dev/logo.png" alt="Slidev logo">
 ```
 
 <br>
@@ -589,7 +596,7 @@ Double-click on the draggable elements to edit their positions.
 </v-drag>
 ```
 
-<v-drag pos="663,206,261,_,-15">
+<v-drag pos="674,41,261,_,-15">
   <div text-center text-3xl border border-main rounded>
     Double-click me!
   </div>
@@ -603,7 +610,7 @@ Double-click on the draggable elements to edit their positions.
 <v-drag-arrow two-way />
 ```
 
-<v-drag-arrow pos="67,452,253,46" two-way op70 />
+<v-drag-arrow pos="734,317,-414,181" two-way op70 />
 
 ---
 src: ./pages/imported-slides.md
