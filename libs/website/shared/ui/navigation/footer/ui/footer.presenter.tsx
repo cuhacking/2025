@@ -36,6 +36,7 @@ export function FooterPresenter({ logo, socials }: FooterProps) {
           Powered by
           <img className="w-24" src={netlify_logo} />
         </a>
+
       </div>
     </footer>
   )
