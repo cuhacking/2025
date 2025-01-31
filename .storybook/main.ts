@@ -15,6 +15,7 @@ export default {
     '../libs/website/feature/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
     '../libs/website/shared/ui/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
     '../libs/website/ui/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
+    '../libs/portal/features/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
   ],
   staticDirs: [
     // './public',
@@ -111,6 +112,7 @@ export default {
         }),
       ]
     }
+
     return config
   },
 } satisfies StorybookConfig
