@@ -2,7 +2,7 @@
 
 import * as ToastPrimitives from '@radix-ui/react-toast'
 import * as React from 'react'
-import { cn } from '../../utils/cn'
+import { cn } from '../../../../shared/utils/cn'
 
 const Toast = React.forwardRef<
   React.ElementRef<typeof ToastPrimitives.Root>,

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { PersonalForm } from './personal'
 
 const meta = {
-  title: 'Forms/Portal/Personal',
+  title: 'Portal/Forms/Personal',
   component: PersonalForm,
   tags: ['autodocs'],
   parameters: {

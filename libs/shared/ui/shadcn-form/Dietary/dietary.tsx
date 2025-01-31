@@ -7,26 +7,26 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import * as z from 'zod'
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '../../shadcn/accordion'
-import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from '../../shadcn/form'
+} from '../../../../external/shadcn/components/ui/form'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '../../shadcn/select'
+} from '../../../../external/shadcn/components/ui/select'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '../../accordion/accordion'
 
 const formSchema = z.object({
   mealRestriction: z.string(),

@@ -9,20 +9,20 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '../../shadcn/accordion'
-import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from '../../shadcn/form'
-import { Input } from '../../shadcn/input'
+} from '../../../../external/shadcn/components/ui/form'
+import { Input } from '../../../../external/shadcn/components/ui/input'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '../../accordion/accordion'
 
 const formSchema = z.object({
   fullName: z.string().min(1, 'Full Name is required'),

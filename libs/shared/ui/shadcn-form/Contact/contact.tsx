@@ -8,20 +8,20 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import * as z from 'zod'
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '../../shadcn/accordion'
-import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from '../../shadcn/form'
-import { Input } from '../../shadcn/input'
+} from '../../../../external/shadcn/components/ui/form'
+import { Input } from '../../../../external/shadcn/components/ui/input'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '../../accordion/accordion'
 
 const formSchema = z.object({
   email: z.string().min(1, 'First name is required').max(100),
