@@ -7,10 +7,12 @@ import github from '@cuhacking/shared/assets/logos/sponsors/github.white.svg'
 import marchNetworks from '@cuhacking/shared/assets/logos/sponsors/march-networks.white.svg'
 import mlh from '@cuhacking/shared/assets/logos/sponsors/mlh.white.svg'
 import rbc from '@cuhacking/shared/assets/logos/sponsors/rbc.white.svg'
+import standoutStickers from '@cuhacking/shared/assets/logos/sponsors/standout-stickers.white.svg'
 import techDomains from '@cuhacking/shared/assets/logos/sponsors/techdomains.white.svg'
 import wolfram from '@cuhacking/shared/assets/logos/sponsors/wolfram.white.svg'
 
 const presentSponsors = [
+  { name: 'StandOut Stickers', logo: standoutStickers, link: 'http://hackp.ac/mlh-StandOutStickers-hackathons' },
 ]
 
 const pastSponsors = [
