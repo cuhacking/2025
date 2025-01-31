@@ -1,0 +1,12 @@
+{
+  "name": "payload-cms-website",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/scaffold-exmamples/payload-cms-website",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project payload-cms-website --web",
+  "targets": {},
+  "implicitDependencies": [
+    "!cms"
+  ]
+}
