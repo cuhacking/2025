@@ -24,5 +24,6 @@
         "cwd": "apps/slides"
       }
     }
-  }
+  },
+  "implicitDependencies": ["libs/slides"]
 }
