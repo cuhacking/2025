@@ -17,6 +17,7 @@ export default antfu({
     'libs/db/payload-types.ts',
     'libs/cms/',
     'apps/slides/slides.md',
+    'tools/email-templates',
   ],
 })
 
