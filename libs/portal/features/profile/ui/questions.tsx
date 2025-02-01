@@ -45,8 +45,19 @@ interface ProfileFormProps {
   status: UserProfileStatus;
 }
 
+const initialSocialMediaHandles = {
+  discord: '',
+  instagram: '',
+  gitHub: '',
+  behance: '',
+};
+
 export function Questions({ user, status }: ProfileFormProps) {
   const [isStudent, setIsStudent] = useState<boolean>(false);
+  // eslint-disable-next-line no-unused-vars
+  const [socialMediaHandles, setSocialMediaHandles] = useState<
+    typeof initialSocialMediaHandles
+  >(initialSocialMediaHandles);
 
   const {
     profile,
@@ -68,19 +79,20 @@ export function Questions({ user, status }: ProfileFormProps) {
   } = useNumberField(profile, 'age');
 
   function onSubmit(values: z.infer<typeof _profileSchemaType>) {
+    const action = status === UserProfileStatus.complete ? 'update' : 'create';
     try {
       if (status === UserProfileStatus.notComplete) {
         postUser(values);
       } else {
         patchUser(values);
       }
+
+      toast(`Successfully ${action} account!`);
     } catch (error) {
       console.error(
         'Profile submission error - libs/portal/features/profile/ui/questions.tsx',
         error,
       );
-      const action =
-        status === UserProfileStatus.complete ? 'update' : 'create';
       toast.error(`Failed to ${action} profile. Please try again.`);
     }
   }
@@ -297,6 +309,7 @@ export function Questions({ user, status }: ProfileFormProps) {
                   <AuthenticationField
                     provider={Provider.discord}
                     link={AUTH_LINK.DISCORD}
+                    userTag={socialMediaHandles.discord}
                   />
                   <PhoneNumberField
                     form={profile}
@@ -317,10 +330,12 @@ export function Questions({ user, status }: ProfileFormProps) {
               <AccordionContent className="pt-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full auto-rows-auto">
                   <AuthenticationField
+                    userTag={socialMediaHandles.instagram}
                     provider={Provider.instagram}
                     link={AUTH_LINK.INSTAGRAM}
                   />
                   <AuthenticationField
+                    userTag={socialMediaHandles.behance}
                     provider={Provider.behance}
                     link={AUTH_LINK.BEHANCE}
                   />
@@ -399,7 +414,7 @@ export function Questions({ user, status }: ProfileFormProps) {
         </div>
         <div className="px-4 flex justify-center pb-6">
           <Button
-            disabled={!isDirty || !isValid}
+            disabled={!isValid || !isDirty}
             variant="secondary"
             type="submit"
           >
