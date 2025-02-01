@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react'
-import codeofconduct from '@cuhacking/shared/assets/logos/codeofconduct/code-of-conduct.svg'
 import netlify_logo from '@cuhacking/shared/assets/logos/sponsors/netlify-white.svg'
 import Link from 'fumadocs-core/link'
 import { Callout } from 'fumadocs-ui/components/callout'
@@ -40,8 +39,7 @@ export default async function Page(props: {
         <img className="w-24" src={netlify_logo.src} />
       </a>
       <a href="https://github.com/cuhacking/2025/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener noreferrer" className="flex hover:scale-110 duration-300 transition text-white-300 hover:text-green-500 items-center gap-x-1 text-sm underline">
-        View our Code of Conduct
-        <img className="w-8" src={codeofconduct.src} />
+        Code of Conduct
       </a>
     </>
   )
