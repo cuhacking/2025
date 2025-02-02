@@ -1,5 +1,6 @@
-import { fileURLToPath } from 'node:url'
+import type { SerenityOptions } from '@serenity-js/playwright-test'
 /* eslint-disable node/prefer-global/process */
+import { fileURLToPath } from 'node:url'
 import { workspaceRoot } from '@nx/devkit'
 import { nxE2EPreset } from '@nx/playwright/preset'
 
@@ -19,13 +20,19 @@ const baseURL = process.env.BASE_URL || 'http://localhost:3000'
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-export default defineConfig({
+export default defineConfig<SerenityOptions>({
   ...nxE2EPreset(__filename, { testDir: './src' }),
   fullyParallel: !process.env.CI,
   // Opt out of parallel tests on CI.
   workers: process.env.CI ? 2 : undefined,
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    // Serenity/JS configuration options
+    crew: [
+      // Automatically take screenshots upon an assertion failure
+      ['@serenity-js/web:Photographer', { strategy: 'TakePhotosOfFailures' }],
+    ],
+    defaultActorName: 'User',
     baseURL,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -37,7 +44,20 @@ export default defineConfig({
     reuseExistingServer: !process.env.CI,
     cwd: workspaceRoot,
   },
-  // reporter: [['html']],
+  reporter: [
+    // Serenity/JS reporting services
+    ['@serenity-js/playwright-test', {
+      crew: [
+        '@serenity-js/console-reporter',
+        '@serenity-js/serenity-bdd',
+        [
+          '@serenity-js/core:ArtifactArchiver',
+          { outputDirectory: 'target/site/serenity' },
+        ],
+      ],
+    }],
+    ['html'],
+  ],
   projects: [
     {
       name: 'chromium',
