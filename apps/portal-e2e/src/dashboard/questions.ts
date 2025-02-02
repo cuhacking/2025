@@ -1,4 +1,4 @@
-import { button } from '../questions'
+import { button } from '@cuhacking/shared/test/questions'
 
 export const buttons = {
   REGISTER: button.withText('Register for cuHacking 6'),
