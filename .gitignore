@@ -68,6 +68,7 @@ out
 *.tsbuildinfo
 playwright-report
 lighthouse-report
+target
 
 # misc
 *.pem
