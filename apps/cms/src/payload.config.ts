@@ -1,53 +1,41 @@
-// storage-adapter-import-placeholder
 import { postgresAdapter } from '@payloadcms/db-postgres';
 import { s3Storage } from '@payloadcms/storage-s3';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
+// import {googleOAuth} from './endpoints/auth/google'
+// import {linkedinOAuth} from './endpoints/auth/linkedin'
 import path from 'path';
 import { buildConfig } from 'payload';
 import { fileURLToPath } from 'url';
 import sharp from 'sharp';
-import { User, Student } from '@cuhacking/db/collections/models/User';
-import { Media } from '@cuhacking/db/collections/models/Media';
-import { SocialLink } from '@cuhacking/db/collections/globals/SocialLink';
-import { EventRole } from '@cuhacking/db/collections/models/Event-Role';
-import { UserToEvent } from '@cuhacking/db/collections/models/User-To-Event';
-import {
-  Hackathon,
-  HackathonEvents,
-} from '@cuhacking/db/collections/models/Hackathons';
-import {
-  BaseEvent,
-  GeneralEvent,
-} from '@cuhacking/db/collections/models/Event';
-import {
-  ChallengePrize,
-  Challenge,
-} from '@cuhacking/db/collections/models/Challenge';
-import {
-  UserToOrganization,
-  Organization,
-  Sponsor,
-} from '@cuhacking/db/collections/models/Organization';
-import { Criteria } from '@cuhacking/db/collections/models/Criteria';
-import {
-  ApplicationForm,
-  ApplicationResponse,
-  QuestionResponse,
-  ApplicationQuestion,
-} from '@cuhacking/db/collections/models/Application';
-import { HostToEvent } from '@cuhacking/db/collections/models/Host-To-Event';
-import { SponsorToEvent } from '@cuhacking/db/collections/models/Sponsor-To-Event';
+import { Users } from '@cuhacking/db/collections/models/User';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
 export default buildConfig({
   admin: {
-    user: User.slug,
+    user: Users.slug,
+  routes:{
+   // login: '/auth/login',
+  },
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    components:{
+      // https://dev.to/aaronksaunders/payload-cms-add-a-custom-create-account-screen-in-admin-ui-2pdg
+      // https://www.youtube.com/watch?v=X-6af837WbY
+views: {
+        // 'create-account': {
+        //   Component: 'apps/cms/src/components/CreateAccountViewComponent',
+        //   path: '/create-account',
+        // },
+        // 'login': {
+        //   Component: 'apps/cms/src/components/Users/CreateAccountViewComponent',
+        //   path: '/login',
+        // },
+    }
   },
+    },
   serverURL: process.env.PAYLOAD_PUBLIC_EXTERNAL_SERVER_URL,
   cors: process.env.CORS_WHITELIST_ORIGINS
     ? process.env.CORS_WHITELIST_ORIGINS.split(',')
@@ -55,30 +43,9 @@ export default buildConfig({
   csrf: process.env.CSRF_WHITELIST_ORIGINS
     ? process.env.CSRF_WHITELIST_ORIGINS.split(',')
     : [],
-  globals: [SocialLink],
+  // globals: [SocialLink],
   collections: [
-    Hackathon,
-    HackathonEvents,
-    User,
-    Student,
-    Media,
-    BaseEvent,
-    GeneralEvent,
-    EventRole,
-    UserToEvent,
-    Challenge,
-    ChallengePrize,
-    ApplicationForm,
-    ApplicationResponse,
-    QuestionResponse,
-    ApplicationQuestion,
-    Organization,
-    UserToOrganization,
-    Sponsor,
-    SponsorToEvent,
-    HostToEvent,
-    // Welcome,
-    Criteria,
+    Users,
   ],
   editor: lexicalEditor({}),
   secret: process.env.PAYLOAD_SECRET || '',
@@ -113,7 +80,8 @@ export default buildConfig({
         endpoint: process.env.S3_ENDPOINT || '',
       },
     }),
+// googleOAuth,
+// linkedinOAuth
     // payloadCloudPlugin(),
-    // storage-adapter-placeholder
   ],
 });
