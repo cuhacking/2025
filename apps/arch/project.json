@@ -1,0 +1,28 @@
+{
+  "name": "arch",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/arch",
+  "projectType": "application",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project arch --web",
+  "targets": {
+    "start": {
+      "command": "likec4 serve",
+      "options": {
+        "cwd": "apps/arch"
+      }
+    },
+    "dev": {
+      "command": "likec4 dev",
+      "options": {
+        "cwd": "apps/arch"
+      }
+    },
+    "build": {
+      "command": "likec4 build",
+      "options": {
+        "cwd": "apps/arch"
+      }
+    }
+  }
+}

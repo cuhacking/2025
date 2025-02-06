@@ -1,0 +1,45 @@
+specification {
+
+  element actor {
+    style {
+      shape person
+      color secondary
+    }
+  }
+
+  element system {
+    style {
+      opacity 20%
+    }
+  }
+  element component {
+    style {
+      opacity 20%
+    }
+  }
+  element service
+  element webapp {
+    style {
+      shape browser
+    }
+  }
+  element mobile {
+    style {
+      shape mobile
+    }
+  }
+  element database {
+    style {
+      shape storage
+    }
+  }
+  element db_table {
+    style {
+      shape storage
+    }
+  }  
+
+  relationship solid {
+    line solid
+  }
+}

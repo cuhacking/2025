@@ -1,0 +1,96 @@
+// Extend cloud.backend model
+model {
+
+  extend aws {
+    pg = database 'PostgreSQL' {      
+      technology 'AWS Aurora PostgreSQL'
+      description 'Database for storing relational data'
+      link https://aws.amazon.com/rds/postgresql/
+      icon tech:postgresql  
+
+      tbl_customers = db_table '[ customers ]' {
+        technology '<< private schema >>'
+      }
+
+      tbl_sessions = db_table '[ sessions ]' {
+        technology '<< private schema >>'
+        description '
+          Active sessions of
+          authenticated customers
+        '
+      }
+      tbl_sessions -> tbl_customers 'references to' {
+        style {
+          line solid
+        }
+      }
+    }
+  }
+
+  extend cloud.backend {
+
+    graphql = service 'GraphQL API' {
+      description 'The GraphQL API of the cloud system'
+
+      -> aws.pg.tbl_sessions 'reads/writes'
+      -> aws.pg.tbl_customers 'reads/writes'
+      -> aws.cognito 'authorizes'
+    }
+
+  }
+
+}
+
+views {
+
+  view cloud_backend of cloud.backend {
+
+    include
+      *,
+      aws._,
+      aws.pg._,
+      backend with {
+        navigateTo cloud
+      }
+
+    style * {
+      color amber
+      opacity 10%
+    }
+
+    style cloud.backend, cloud.backend.* {
+      color green
+    }
+    style aws.pg {
+      border solid
+    }
+    style cloud.ui {
+      color secondary
+    }
+  }
+
+  view aws_pg of aws.pg {
+    title 'Databases'
+    include
+      *,
+      pg with {
+        title 'AWS - PostgreSQL'
+        navigateTo aws
+      },
+      cloud,
+      cloud.* -> pg.*
+
+    style * {
+      color secondary
+      opacity 10%
+    }
+
+    style cloud, pg  {
+      color muted
+    }
+
+    style pg.* {
+      color green
+    }
+  }
+}
