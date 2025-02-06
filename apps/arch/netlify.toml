@@ -1,0 +1,6 @@
+[build]
+publish = "/apps/arch/dist"
+command = "pnpm nx affected -t=build --exclude='*,!arch' --verbose"
+
+[build.environment]
+NODE_VERSION = "22.11.0"
