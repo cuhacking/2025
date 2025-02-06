@@ -176,6 +176,7 @@
     "inquirer": "^9.3.7",
     "jsdom": "~22.1.0",
     "katex": "^0.16.18",
+    "likec4": "^1.20.3",
     "lint-staged": "^15.2.11",
     "lucide-react": "^0.456.0",
     "netlify-cli": "^17.38.1",
