@@ -1,11 +1,11 @@
 import dashboard_background from '@cuhacking/portal/assets/backgrounds/dashboard-bg-1.webp'
-import { SignInCallToAction } from '@cuhacking/portal/features/sign-in'
+import { LoginCallToAction } from '@cuhacking/portal/features/login'
 
-export function Signin() {
+export function Login() {
   return (
     <section className="max-w-screen-xl mx-auto relative min-h-screen flex items-center justify-center">
       <main className="relative z-10">
-        <SignInCallToAction />
+        <LoginCallToAction />
       </main>
       <img
         src={dashboard_background}
