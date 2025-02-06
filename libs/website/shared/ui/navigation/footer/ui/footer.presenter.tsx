@@ -33,7 +33,7 @@ export function FooterPresenter({ logo, socials }: FooterProps) {
           Made with ❤️ for Hackers by Hackers.
         </a>
         <a href="https://netlify.com" target="_blank" rel="noopener noreferrer" className="flex hover:scale-110 duration-300 transition hover:text-cyan-300  items-center gap-x-3">
-          Powered by
+          Sponsored by
           <img className="w-24" src={netlify_logo} />
         </a>
       </div>
