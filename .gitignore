@@ -4,12 +4,14 @@
 dist
 tmp
 /out-tsc
+/media
 
 # dependencies
 node_modules
 
 # IDEs and editors
-/.idea
+/.idea/*
+!/.idea/runConfigurations
 .project
 .classpath
 .c9/
@@ -55,6 +57,7 @@ deno.lock
 # Next.js
 .next
 out
+
 # generated content
 .contentlayer
 .content-collections
@@ -63,8 +66,11 @@ out
 # test & build
 /coverage
 /.next/
+next-env.d.ts
 /out/
 /build
+storybook-static
+build-storybook.log
 *.tsbuildinfo
 playwright-report
 lighthouse-report
@@ -77,12 +83,9 @@ target
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.yarn/install-state.gz
 
 # others
 .env*.local
 .env
 .vercel
-next-env.d.ts
-
-storybook-static
-build-storybook.log

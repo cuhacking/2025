@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "node16",
+    "moduleResolution": "node16",
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "outDir": "dist/",
+    "types": [
+      "node"
+    ]
+  },
+  "include": [
+    "src/main.ts",
+    "src/app.service.ts",
+    "src/app.module.ts",
+    "src/app.controller.ts"
+  ]
+}

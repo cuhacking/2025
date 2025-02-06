@@ -14,7 +14,7 @@
     "url": "https://github.com/cuhacking/2025/issues"
   },
   "engines": {
-    "node": ">=20.0.0 <=22.11.0"
+    "node": "22.13.1"
   },
   "engineStrict": true,
   "scripts": {

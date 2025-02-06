@@ -1,6 +1,6 @@
-import type { AccessArgs, CollectionConfig } from 'payload'
+import type { User } from '@cuhacking/shared/types/cms'
 
-import type { User } from '../../types/payload-types'
+import type { AccessArgs, CollectionConfig } from 'payload'
 
 type isAuthenticated = (args: AccessArgs<User>) => boolean
 

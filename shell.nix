@@ -28,7 +28,7 @@ in pkgs.mkShell {
       exit
     fi
 
-    pnpm env use 22.11.0 --global
+    pnpm env use 22.13.1 --global
 
     # Aliases
     alias l='eza -lh --icons=auto'
