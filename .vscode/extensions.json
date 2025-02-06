@@ -8,6 +8,7 @@
     "bbenoist.nix",
     "bradlc.vscode-tailwindcss",
     "vitest.explorer",
-    "ms-azuretools.vscode-docker"
+    "ms-azuretools.vscode-docker",
+    "likec4.likec4-vscode"
   ]
 }
