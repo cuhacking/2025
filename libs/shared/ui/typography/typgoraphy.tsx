@@ -14,7 +14,7 @@ interface TypographyProps {
     | 'paragraph-base'
     | 'paragraph-xs'
   children: React.ReactNode
-  className: string
+  className?: string
 }
 
 const typographyVariants = cva('', {
