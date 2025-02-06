@@ -13,7 +13,7 @@ export const links = [
   },
   {
     text: 'Architecture',
-    url: 'https://arch-cuhacking.netlify.app/#/projects/all?groupByFolder=true',
+    url: 'https://graph.cuhacking.ca/#/projects/all?groupByFolder=true',
   },
   {
     text: 'Tooling',
