@@ -1,9 +1,9 @@
 [build]
-publish = "dist"
-command = "npm run build"
+command = "pnpm nx affected -t=build --exclude='*,!slides' --verbose"
+publish = "apps/slides/dist"
 
 [build.environment]
-NODE_VERSION = "20"
+NODE_VERSION = "22"
 
 [[redirects]]
 from = "/.well-known/*"
