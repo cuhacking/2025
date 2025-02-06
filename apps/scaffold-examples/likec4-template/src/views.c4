@@ -1,0 +1,51 @@
+views {
+
+  view index of customer {
+    title 'System Landscape'
+    include
+      *,
+      element.kind = system
+  }
+
+  view cloud of cloud {
+    title 'Context: Cloud System'
+    include *
+    style cloud, cloud.* {
+      color green
+    }
+  }
+
+  view aws of aws {
+    title 'Context: Amazon Web Services'
+    include
+      *,
+      cloud,
+      cloud.* -> aws
+
+    style * {
+      color muted
+      border dotted
+      opacity 5%
+    }
+    style aws.* {
+      color green
+    }
+    style cloud.* {
+      color secondary
+    }
+  }
+
+  view aws_cognito of aws.cognito {
+    include
+      *,
+      cloud.* ->
+
+    style cloud.* {
+      color secondary
+    }
+    style aws.cognito {
+      color amber
+    }
+  }  
+
+}
