@@ -1,0 +1,131 @@
+model {
+
+  extend amazon.rds {
+    aurora = component 'Aurora' {
+      #db
+      style {
+        shape storage
+        color secondary
+      }
+
+      tblUsers = table 'Users Table' {
+        #next
+        description '
+          Table with registered users.
+          Contains references to Identity provider.
+        '
+        style {
+          shape storage
+          color secondary
+        }
+      }
+    }
+  } 
+
+  extend cloud.next {
+
+    backend = app 'Backend V2' {
+      #api
+      description 'The next version of backend'
+    }
+
+    graphql = component 'GraphQL' {
+      #next, #api
+      description '
+        GraphQL API for the backend
+        Uses Apollo Server
+      '
+
+      gqlQuery myAccount {
+        description '
+          Returns the account of the authenticated user
+        '
+
+        -> backend 'reads'
+      }
+      gqlMutation updateAccount {
+        description '          
+          If requested by customer, updates only its own account
+          Support user updates any account
+        '
+
+        -> backend 'writes'
+      }
+    }
+
+    backend -> aurora.tblUsers 'reads/writes'
+    backend -> cloud.legacy.backend.services 'calls legacy'
+
+    events = component 'Events Manager' {
+      -> amazon.queue1 'writes'
+    }
+
+    backend -> events "emits"
+  }
+
+}
+
+views {
+
+
+  view cloud_next of cloud.next {
+    include
+      *,
+      cloud,
+      amazon,
+      cloud.next.* -> amazon.*,      
+
+    style * {
+      color secondary
+    }
+    style cloud, amazon {
+      color muted
+    }
+    style cloud.next, cloud.next.* {
+      color green
+    }
+  }  
+
+  view backend of backend {
+    include
+      *,
+      cloud,
+      cloud.*
+    exclude
+      cloud.ui,
+      cloud.supportUser
+
+    style * {
+      color secondary
+    }
+    style cloud {
+      color muted
+    }
+    style cloud.next, cloud.next.* {
+      color green
+    }      
+  } 
+  
+  view graphql of graphql {
+    include
+      *,
+      amazon,
+      -> amazon.*,
+      cloud.next,
+      cloud.ui.* -> graphql,
+      customer -> cloud.ui.*,
+      cloud.supportUser -> cloud.ui.*,
+      
+    
+    style * {
+      color secondary
+    }
+    style cloud.next, amazon, cloud.ui {
+      color muted
+    }
+    style graphql, graphql.* {
+      color green
+    }    
+  }
+
+}

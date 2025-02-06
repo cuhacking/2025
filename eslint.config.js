@@ -7,7 +7,7 @@ export default antfu({
   slidev: true,
 }, {
   ignores: [
-    'apps/scaffold-examples/',
+    'scaffold-examples/',
     // TODO: remove after monorepo integration is complete
     'apps/cms/',
     'apps/slides/slides.md',

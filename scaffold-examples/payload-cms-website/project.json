@@ -1,6 +1,6 @@
 {
   "name": "payload-cms-website",
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/scaffold-exmamples/payload-cms-website",
   "projectType": "library",
   "tags": [],

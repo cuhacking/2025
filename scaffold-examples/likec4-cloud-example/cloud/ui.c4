@@ -1,0 +1,115 @@
+model {
+
+  extend cloud.ui {
+
+    dashboard = app {
+      title 'Customer Dashboard'
+      description 'Nextjs application, hosted on Vercel'
+      style {
+        shape browser
+      }
+    }
+
+    dashboard -> cloud.graphql.myAccount "fetches via GraphQL"
+    dashboard -> cloud.graphql.updateAccount "mutates via GraphQL"
+
+    dashboard -> cloud.legacy.services "fetches via REST"
+
+    mobile = mobileApp {
+      title 'Customer Mobile App'
+      description '
+        Native iOS Application
+        written in Swift
+      '
+
+      -> cloud.graphql.myAccount "fetches via GraphQL"
+      -> cloud.graphql.updateAccount "mutates via GraphQL"
+      -> cloud.legacy.services "fetches via REST"
+    }
+
+    supportPanel = app {
+      title 'Support Panel'
+      description 'Retoool Application'
+      style {
+        shape browser
+      }
+      -> cloud.next.graphql.updateAccount "updates data in case of a support request"
+      -> amazon.aurora.tblUsers "reads users from the database"
+    }    
+
+  }
+
+  customer -> dashboard "opens in the browser vit HTTPS"
+  customer -> mobile "opens on a mobile device"
+  cloud.supportUser -> supportPanel "accesses via browser with encrypted VPN connection"
+
+}
+
+views {
+
+  view cloud_ui of cloud.ui {
+    include *
+    include cloud
+
+    style * {
+      color secondary
+    }
+    style cloud {
+      color muted
+    }    
+    style cloud.ui, cloud.ui.* {
+      color green
+    }      
+  }
+
+  view mobile of mobile {
+    include *, cloud
+
+    style * {
+      color secondary
+    }
+    style cloud, cloud.ui {
+      color muted
+    }
+    style mobile {
+      color green
+    }
+  }  
+
+  view cloud_ui_dashboard of dashboard {
+    include *
+    exclude * -> dashboard
+    include cloud.ui, cloud
+
+    style * {
+      color secondary
+    }
+    style cloud, cloud.ui {
+      color muted
+    }
+    style cloud.ui.* {
+      color green
+    }  
+  }
+  
+  view cloud_ui_supportPanel of supportPanel {
+    include
+      *,
+      cloud.ui,
+      cloud,
+      amazon,
+      supportPanel -> amazon.*
+
+    style * {
+      color secondary
+    }
+    style cloud, amazon {
+      color muted
+    }
+    
+    style cloud.ui, cloud.ui.* {
+      color green
+    }  
+  }
+
+}
