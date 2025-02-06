@@ -5,13 +5,51 @@
   "projectType": "application",
   "targets": {
     "dev": {
-      "executor": "nx:run-commands",
+      "command": "cross-env NODE_OPTIONS=--no-deprecation next dev",
       "options": {
-        "commands": [
-          "nx serve api",
-          "nx dev cms"
-        ],
-        "parallel": true
+        "cwd": "apps/api"
+      }
+    },
+    "devsafe": {
+      "command": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
+      "options": {
+        "cwd": "apps/api"
+      }
+    },
+    "build:cms": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation next build",
+      "options": {
+        "cwd": "apps/api"
+      }
+    },
+    "start": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation next start",
+      "options": {
+        "cwd": "apps/api"
+      }
+    },
+    "lint": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation next lint",
+      "options": {
+        "cwd": "apps/api"
+      }
+    },
+    "payload": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation payload",
+      "options": {
+        "cwd": "apps/api"
+      }
+    },
+    "importmap": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
+      "options": {
+        "cwd": "apps/api"
+      }
+    },
+    "types": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
+      "options": {
+        "cwd": "apps/api"
       }
     },
     "build": {
@@ -37,16 +75,58 @@
         "build"
       ],
       "options": {
-        "buildTarget": "api:build",
+        "buildTarget": "nestjs:build",
         "runBuildTargetDependencies": false
       },
       "configurations": {
         "development": {
-          "buildTarget": "api:build:development"
+          "buildTarget": "nestjs:build:development"
         },
         "production": {
-          "buildTarget": "api:build:production"
+          "buildTarget": "nestjs:build:production"
         }
+      }
+    },
+    "migrate:run": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation payload migrate",
+      "options": {
+        "cwd": "apps/api"
+      }
+    },
+    "migrate:create": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation payload migrate:create",
+      "options": {
+        "cwd": "apps/api"
+      }
+    },
+    "migrate:status": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation payload migrate:status",
+      "options": {
+        "cwd": "apps/api"
+      }
+    },
+    "migrate:down": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation payload migrate:down",
+      "options": {
+        "cwd": "apps/api"
+      }
+    },
+    "migrate:refresh": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation payload migrate:refresh",
+      "options": {
+        "cwd": "apps/api"
+      }
+    },
+    "migrate:reset": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation payload migrate:reset",
+      "options": {
+        "cwd": "apps/api"
+      }
+    },
+    "migrate:fresh": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation payload migrate:fresh",
+      "options": {
+        "cwd": "apps/api"
       }
     }
   },

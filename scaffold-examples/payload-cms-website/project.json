@@ -7,6 +7,6 @@
   "// targets": "to see all targets run: nx show project payload-cms-website --web",
   "targets": {},
   "implicitDependencies": [
-    "!cms"
+    "!api"
   ]
 }

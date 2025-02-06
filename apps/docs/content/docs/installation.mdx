@@ -231,7 +231,7 @@ pnpm nx run-many -t dev -p website --verbose
 
 `--verbose` provides detailed error logs.
 
-<Tabs groupId="projects" items={['Graph', 'Arch', 'Storybook', 'Docs', 'Portal', 'Website','Slides', 'CMS', 'ESLint Config Inspector']} persist>
+<Tabs groupId="projects" items={['Graph', 'Arch', 'Storybook', 'Docs', 'Portal', 'Website','Slides', 'API', 'ESLint Config Inspector']} persist>
 
   <Tab value="Graph">
 
@@ -358,21 +358,21 @@ pnpm nx graph --groupByFolder --verbose
       </Tabs>
       </Tab>
 
-  <Tab value="CMS">
-    <Tabs groupId="cms-project-nx-commands" items={['dev', 'build', 'start']} persist>
+  <Tab value="API">
+    <Tabs groupId="api-project-nx-commands" items={['dev', 'build', 'start']} persist>
       <Tab value="dev">
         ```sh title="Nix Shell"
-        pnpm nx dev cms --verbose
+        pnpm nx dev api --verbose
         ```
       </Tab>
       <Tab value="build">
         ```sh title="Nix Shell"
-        pnpm nx build cms --verbose
+        pnpm nx build api --verbose
         ```
       </Tab>
       <Tab value="start">
         ```sh title="Nix Shell"
-        pnpm nx start cms --verbose
+        pnpm nx start api --verbose
         ```
       </Tab>
       </Tabs>
