@@ -1,8 +1,9 @@
 import linkedinBlack from '@cuhacking/shared/assets/icons/socials/linkedin-black-1.svg'
 import { Button } from '@cuhacking/shared/ui/button'
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
+import { Typography } from '@cuhacking/shared/ui/typography'
 
-export function SignInCallToAction() {
+export function LoginCallToAction() {
   return (
     <GlassmorphicCard
       className="w-full flex flex-col items-center gap-5 p-3 md:gap-6 md:px-14 md:py-8 lg:gap-8 lg:px-20 lg:py-10"
@@ -24,7 +25,7 @@ export function SignInCallToAction() {
         aria-label="Login with Linkedin"
       >
         <img src={linkedinBlack} alt="Linkedin logo" className="h-5 w-5" />
-        <span>Login</span>
+        <Typography variant="h6"><p>Log In</p></Typography>
       </Button>
     </GlassmorphicCard>
   )
