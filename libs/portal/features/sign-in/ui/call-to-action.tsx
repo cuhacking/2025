@@ -1,17 +1,17 @@
-import github_black from '@cuhacking/shared/assets/icons/socials/github-black-1.svg'
+import linkedinBlack from '@cuhacking/shared/assets/icons/socials/linkedin-black-1.svg'
 import { Button } from '@cuhacking/shared/ui/button'
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 
 export function SignInCallToAction() {
   return (
     <GlassmorphicCard
-      className="w-full flex flex-col items-center gap-5 p-3"
+      className="w-full flex flex-col items-center gap-5 p-3 md:gap-6 md:px-14 md:py-8 lg:gap-8 lg:px-20 lg:py-10"
       aria-labelledby="cta-title"
     >
       <header className="flex flex-col gap-y-1 items-center">
-        <h1 id="cta-title" className="text-4xl font-bold">WE HOPE TO</h1>
+        <h1 id="cta-title" className="text-4xl font-bold md:text-5xl lg:text-6xl">WE HOPE TO</h1>
         <h2
-          className="text-transparent bg-greendiant bg-clip-text font-extrabold text-5xl"
+          className="text-transparent bg-greendiant bg-clip-text font-extrabold text-5xl md:text-7xl lg:text-9xl"
           aria-label="cuHacking brand name"
         >
           cuHacking
@@ -20,10 +20,10 @@ export function SignInCallToAction() {
 
       <Button
         variant="primary"
-        className="flex items-center gap-x-3 px-4"
-        aria-label="Login with GitHub"
+        className="flex items-center gap-x-3 px-4 md:px-6 lg:px-8 py-4"
+        aria-label="Login with Linkedin"
       >
-        <img src={github_black} alt="GitHub logo" className="h-5 w-5" />
+        <img src={linkedinBlack} alt="Linkedin logo" className="h-5 w-5" />
         <span>Login</span>
       </Button>
     </GlassmorphicCard>
