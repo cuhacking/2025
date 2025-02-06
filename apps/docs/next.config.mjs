@@ -24,6 +24,7 @@ const defaultImageHostnames = [
   'precondition.github.io',
   'keymapdb.com',
   '12factor.net',
+  'uo.zone',
 ]
 
 /**
