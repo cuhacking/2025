@@ -1,6 +1,6 @@
 {
   "name": "likec4-template",
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/scaffold-examples/likec4-template",
   "projectType": "application",
   "tags": [],

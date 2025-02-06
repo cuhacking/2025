@@ -1,0 +1,14 @@
+{
+  "name": "likec4-cloud-exameple",
+  "version": "0.0.1",
+  "description": "LikeC4 Cloud System Architecture Example",
+  "scripts": {
+    "start": "likec4 serve",
+    "dev": "likec4 serve",
+    "build": "likec4 build",
+    "export:png": "likec4 export png -o ./png"
+  },
+  "devDependencies": {
+    "likec4": "latest"
+  }
+}
