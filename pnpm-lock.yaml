@@ -128,6 +128,9 @@ importers:
       payload:
         specifier: ^3.18.0
         version: 3.18.0(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3)
+      payload-oauth2:
+        specifier: ^1.0.9
+        version: 1.0.9(payload@3.18.0(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3))
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -14576,6 +14579,11 @@ packages:
   pathval@2.0.0:
     resolution: {integrity: sha512-vE7JKRyES09KiunauX7nd2Q9/L7lhok4smP9RZTDeD4MVs72Dp2qNFVz39Nz5a0FVEW0BJR6C0DYrq6unoziZA==}
     engines: {node: '>= 14.16'}
+
+  payload-oauth2@1.0.9:
+    resolution: {integrity: sha512-4suBlRLNvfixQa1nTDyX2LzwoxhEXZImU8XEW/UPCbYsUQpD3Vk7MqiWEYPiEIuEHTBFz+8x8HOUJdTIOxfXyw==}
+    peerDependencies:
+      payload: ^3
 
   payload@3.18.0:
     resolution: {integrity: sha512-Wwa/DQ6IoQ7DGgQb6/IRkm85kGXX/DYKABaPLlDYRkY44UaHndt2pzUfiSBR9J9QSWsLOk5jBGdDSP4nPT3E5w==}
@@ -36938,6 +36946,10 @@ snapshots:
   pathe@2.0.2: {}
 
   pathval@2.0.0: {}
+
+  payload-oauth2@1.0.9(payload@3.18.0(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3)):
+    dependencies:
+      payload: 3.18.0(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3)
 
   payload@3.18.0(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3):
     dependencies:
