@@ -1,23 +1,24 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
 import { Logger } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { AppModule } from './app/app.module'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
-  // const globalPrefix = 'api'
-  const globalPrefix = ''
-  app.setGlobalPrefix(globalPrefix)
+
+  const expressApp = app.getHttpAdapter().getInstance()
+
+  expressApp.get('/', (_req, res) => {
+    res.redirect('http://localhost:3000/admin')
+  })
+
+  app.enableCors()
+
   // eslint-disable-next-line node/prefer-global/process
-  const port = process.env.PORT || 3000
+  const port = process.env.PORT || 4000
   await app.listen(port)
-  Logger.log(
-    `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`,
-  )
+
+  Logger.log(`🚀 Server running at: http://localhost:${port}`)
+  Logger.log(`📑 Payload Admin: http://localhost:${port}/admin`)
 }
 
 bootstrap()
