@@ -1,4 +1,4 @@
-import { button, input, label } from '../questions'
+import { button, input, label } from '@cuhacking/shared/test/questions'
 
 export const buttons = {
   SUBMIT: button.withText('SUBMIT'),
