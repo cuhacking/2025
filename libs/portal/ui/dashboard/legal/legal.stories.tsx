@@ -2,12 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Legal } from './legal'
 
 const meta = {
-  title: '🌀 Portal/Legals',
+  title: '🌀 Portal/Legal',
   component: Legal,
   tags: ['autodocs'],
-  parameters: {
-    layout: 'centered',
-  },
   args: {
   },
   argTypes: {
