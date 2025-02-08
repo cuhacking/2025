@@ -1,0 +1,1 @@
+export { Legal } from './legal'
