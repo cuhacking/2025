@@ -81,6 +81,7 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URI || '',
     },
+generateSchemaOutputFile: path.resolve('../../libs/db/schema.ts'),
   }),
   plugins: [
     s3Storage({
