@@ -215,35 +215,55 @@ pnpm exec playwright install --with-deps # Install Playwright Browsers for E2E T
 
   <div className="step">
   ## Run projects
+<Tabs groupId="projects" items={['Devtools', 'Documentation', 'Back-End', 'Portal', 'Website', 'Slides']} persist>
 
-  <img src="https://nx.dev/documentation/shared/images/run-target-syntax.svg" />
-
-Run all development servers.
+<Tab value="Devtools">
+<Tabs groupId="devtools-nx-commands" items={['Project Graph', 'Database Studio', 'Linter Config Inspector']} persist>
+  <Tab value="Project Graph">
 ```sh title="Nix Shell"
-pnpm nx run-many -t dev --verbose
+pnpm graph
 ```
-
-..or add `-p` to filter specific projects
-
+  </Tab>
+  <Tab value="Database Studio">
 ```sh title="Nix Shell"
-pnpm nx run-many -t dev -p website --verbose
+pnpm db
 ```
-
-`--verbose` provides detailed error logs.
-
-<Tabs groupId="projects" items={['Graph', 'Arch', 'Storybook', 'Docs', 'Portal', 'Website','Slides', 'API', 'ESLint Config Inspector']} persist>
-
-  <Tab value="Graph">
-
+  </Tab>
+  <Tab value="Linter Config Inspector">
 ```sh title="Nix Shell"
-pnpm nx graph --groupByFolder --verbose
+pnpm inspect
 ```
-
+  </Tab>
+  </Tabs>
   </Tab>
 
-  <Tab value="Arch">
+  <Tab value="Documentation">
+<Tabs groupId="devtools-nx-commands" items={['Docs', 'Architecture', 'Storybook']} persist>
+  <Tab value="Docs">
     <Tabs groupId="docs-project-nx-commands" items={['dev', 'build', 'start']} persist>
       <Tab value="dev">
+        ```sh title="Nix Shell"
+        pnpm nx dev docs --verbose
+        ```
+      </Tab>
+      <Tab value="build">
+        ```sh title="Nix Shell"
+        pnpm nx build docs --verbose
+        ```
+      </Tab>
+      <Tab value="start">
+        ```sh title="Nix Shell"
+        pnpm nx start docs --verbose
+        ```
+      </Tab>
+    </Tabs>
+  </Tab>
+  <Tab value="Architecture">
+    <Tabs groupId="architecture-project-nx-commands" items={['dev', 'build', 'start']} persist>
+      <Tab value="dev">
+        ```sh title="Nix Shell (Shortcut)"
+        pnpm arch
+        ```
         ```sh title="Nix Shell"
         pnpm nx dev arch --verbose
         ```
@@ -261,14 +281,20 @@ pnpm nx graph --groupByFolder --verbose
     </Tabs>
   </Tab>
 
+  <Tab value="Storybook">
+        ```sh title="Nix Shell"
+        pnpm nx storybook --verbose
+        ```
+  </Tab>
+</Tabs>
+</Tab>
+
   <Tab value="Website">
     <Tabs groupId="website-project-nx-commands" items={['dev', 'build', 'start']} persist>
       <Tab value="dev">
-
         ```sh title="Nix Shell"
         pnpm nx dev website --verbose
         ```
-
       </Tab>
       <Tab value="build">
         ```sh title="Nix Shell"
@@ -311,34 +337,7 @@ pnpm nx graph --groupByFolder --verbose
     </Tabs>
   </Tab>
 
-  <Tab value="Docs">
-    <Tabs groupId="docs-project-nx-commands" items={['dev', 'build', 'start']} persist>
-      <Tab value="dev">
-        ```sh title="Nix Shell"
-        pnpm nx dev docs --verbose
-        ```
-      </Tab>
-      <Tab value="build">
-        ```sh title="Nix Shell"
-        pnpm nx build docs --verbose
-        ```
-      </Tab>
-      <Tab value="start">
-        ```sh title="Nix Shell"
-        pnpm nx start docs --verbose
-        ```
-      </Tab>
-    </Tabs>
-  </Tab>
-
-  <Tab value="Storybook">
-        ```sh title="Nix Shell"
-        pnpm nx storybook --verbose
-        ```
-  </Tab>
-
-
-  <Tab value="slides">
+  <Tab value="Slides">
     <Tabs groupId="slides-project-nx-commands" items={['dev', 'build', 'export']} persist>
       <Tab value="dev">
         ```sh title="Nix Shell"
@@ -358,41 +357,55 @@ pnpm nx graph --groupByFolder --verbose
       </Tabs>
       </Tab>
 
-  <Tab value="API">
-    <Tabs groupId="api-project-nx-commands" items={['dev', 'build', 'start']} persist>
+  <Tab value="Back-End">
+    <Tabs groupId="axiom-project-nx-commands" items={['dev', 'build', 'start']} persist>
       <Tab value="dev">
         ```sh title="Nix Shell"
-        pnpm nx dev api --verbose
+        pnpm nx dev axiom --verbose
         ```
       </Tab>
       <Tab value="build">
         ```sh title="Nix Shell"
-        pnpm nx build api --verbose
+        pnpm nx build axiom --verbose
         ```
       </Tab>
       <Tab value="start">
         ```sh title="Nix Shell"
-        pnpm nx start api --verbose
+        pnpm nx start axiom --verbose
         ```
       </Tab>
       </Tabs>
       The home route will have a 404 error.
       Navigate to `/admin` route.
       </Tab>
-
-  <Tab value="ESLint Config Inspector">
-        ```sh title="Nix Shell"
-        pnpm lint:inspect
-        ```
-      </Tab>
-
 </Tabs>
 
+  <img src="https://nx.dev/documentation/shared/images/run-target-syntax.svg" />
 
 <Accordions>
-  <Accordion title="Where are these commands defined?">
+  <Accordion title="How do I run multiple projects at once?">
+Run all development servers.
+```sh title="Nix Shell"
+pnpm nx run-many -t dev --verbose
+```
 
+..or add `-p` to filter specific projects
+
+```sh title="Nix Shell"
+pnpm nx run-many -t dev -p website --verbose
+```
+
+`--verbose` provides detailed error logs.
+  </Accordion>
+  <Accordion title="Where are these commands defined?">
 Targets can be defined in the `package.json` or `projects.json`.
+
+```json doc-gen:file
+{
+  "file": "../../package.json",
+  "codeblock": true
+}
+```
 
 Use [Nx Console](https://nx.dev/nx-console) to integrate with editors.
 
