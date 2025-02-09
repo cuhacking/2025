@@ -16,7 +16,7 @@
         "cwd": "apps/axiom"
       }
     },
-    "build:cms": {
+    "build": {
       "command": "cross-env NODE_OPTIONS=--no-deprecation next build",
       "options": {
         "cwd": "apps/axiom"
@@ -58,7 +58,7 @@
         "cwd": "apps/axiom"
       }
     },
-    "build": {
+    "build:api": {
       "executor": "nx:run-commands",
       "options": {
         "command": "webpack-cli build",
@@ -78,18 +78,18 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "dependsOn": [
-        "build"
+        "build:api"
       ],
       "options": {
-        "buildTarget": "nestjs:build",
+        "buildTarget": "axiom:build:api",
         "runBuildTargetDependencies": false
       },
       "configurations": {
         "development": {
-          "buildTarget": "nestjs:build:development"
+          "buildTarget": "axiom:build:api:development"
         },
         "production": {
-          "buildTarget": "nestjs:build:production"
+          "buildTarget": "axiom:build:api:production"
         }
       }
     },
