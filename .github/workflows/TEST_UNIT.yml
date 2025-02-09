@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [20]
+        node-version: [22.13.1]
 
     steps:
       - name: 🛎️ Checkout Code
@@ -28,7 +28,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22.13.1
           cache: pnpm
 
       - name: 💀 Run Unit Tests
