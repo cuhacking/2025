@@ -2,7 +2,6 @@ import path from 'node:path'
 // import {linkedinOAuth} from './endpoints/auth/linkedin'
 /* eslint-disable node/prefer-global/process */
 import { fileURLToPath } from 'node:url'
-// import { OAuth } from '@cuhacking/cms/components/oauth'
 import { googleOAuth } from '@cuhacking/cms/endpoints/auth/google'
 import { Users } from '@cuhacking/db/collections/models/User'
 import { postgresAdapter } from '@payloadcms/db-postgres'
@@ -39,13 +38,12 @@ export default buildConfig({
             // https://dev.to/aaronksaunders/payload-cms-add-a-custom-create-account-screen-in-admin-ui-2pdg
       // https://www.youtube.com/watch?v=X-6af837WbY
       views: {
-        // 'login': {
-        //   Component: 'apps/cms/src/components/Users/CreateAccountViewComponent',
-        //   path: '/login',
-        // },
+        'login': {
+          Component: '/components/oauth#OAuth',
+          path: '/login',
+        },
         'create-account': {
           Component: '/components/oauth#OAuth',
-          // Component: OAuth,
           path: '/create-account',
         },
       },

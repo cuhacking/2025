@@ -5,6 +5,11 @@ import '@payloadcms/next/css'
 import type { ServerFunctionClient } from 'payload'
 import { handleServerFunctions, RootLayout } from '@payloadcms/next/layouts'
 import React from 'react'
+import { JetBrains_Mono } from 'next/font/google'
+
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+})
 
 import { importMap } from './admin/importMap.js'
 import './custom.scss'
@@ -23,7 +28,7 @@ const serverFunction: ServerFunctionClient = async function (args) {
 }
 
 const Layout = ({ children }: Args) => (
-  <RootLayout config={config} importMap={importMap} serverFunction={serverFunction}>
+  <RootLayout className={jetBrainsMono.className} config={config} importMap={importMap} serverFunction={serverFunction}>
     {children}
   </RootLayout>
 )
