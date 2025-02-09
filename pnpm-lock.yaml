@@ -149,6 +149,9 @@ importers:
       vue:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.7.3)
+      zod:
+        specifier: ^3.24.1
+        version: 3.24.1
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^3.12.1
@@ -21493,7 +21496,7 @@ snapshots:
       unixify: 1.0.0
       urlpattern-polyfill: 8.0.2
       yargs: 17.7.2
-      zod: 3.23.8
+      zod: 3.24.1
     transitivePeerDependencies:
       - encoding
       - rollup
@@ -21534,7 +21537,7 @@ snapshots:
       unixify: 1.0.0
       urlpattern-polyfill: 8.0.2
       yargs: 17.7.2
-      zod: 3.23.8
+      zod: 3.24.1
     transitivePeerDependencies:
       - encoding
       - rollup
