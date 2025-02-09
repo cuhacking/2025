@@ -10,6 +10,7 @@ export default antfu({
     'scaffold-examples/',
     // TODO: remove after monorepo integration is complete
     'apps/api/',
+    'libs/db/schema.ts',
     'libs/cms/',
     'apps/slides/slides.md',
   ],
