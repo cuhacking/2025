@@ -3,7 +3,7 @@ const { NxAppWebpackPlugin } = require('@nx/webpack/app-plugin')
 
 module.exports = {
   output: {
-    path: join(__dirname, './dist/apps/api'),
+    path: join(__dirname, './dist/apps/axiom'),
   },
   plugins: [
     new NxAppWebpackPlugin({
