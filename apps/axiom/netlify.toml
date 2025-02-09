@@ -1,6 +1,8 @@
 [build]
-command = "pnpm nx migrate:run cms; pnpm nx affected -t=build --exclude='*,!cms' --verbose"
-publish = "apps/cms/.next"
+# command = "pnpm nx migrate:run axiom; pnpm nx build:cms --verbose"
+command = "pnpm nx build axiom --verbose"
+# publish = "apps/axiom/dist/apps/axiom"
+publish = "apps/axiom/.next"
 
 [[plugins]]
 package = "@netlify/plugin-nextjs"

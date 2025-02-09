@@ -13,7 +13,7 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true
   },
-  distDir: 'dist/apps/axiom'
+  // distDir: 'dist/apps/axiom'
 }
 
 export default withPayload(nextConfig)

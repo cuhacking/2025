@@ -21790,7 +21790,7 @@ snapshots:
       '@module-federation/third-party-dts-extractor': 0.7.6
       adm-zip: 0.5.16
       ansi-colors: 4.1.3
-      axios: 1.7.9
+      axios: 1.7.9(debug@4.4.0)
       chalk: 3.0.0
       fs-extra: 9.1.0
       isomorphic-ws: 5.0.0(ws@8.18.0)
@@ -24902,7 +24902,7 @@ snapshots:
     dependencies:
       '@serenity-js/core': 3.31.7
       agent-base: 7.1.3
-      axios: 1.7.9
+      axios: 1.7.9(debug@4.4.0)
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.6
       lru-cache: 11.0.2
@@ -24918,7 +24918,7 @@ snapshots:
       '@serenity-js/core': 3.31.7
       '@serenity-js/rest': 3.31.7
       ansi-regex: 5.0.1
-      axios: 1.7.9
+      axios: 1.7.9(debug@4.4.0)
       chalk: 4.1.2
       find-java-home: 2.0.0
       progress: 2.0.3
@@ -28186,14 +28186,6 @@ snapshots:
       fastq: 1.18.0
 
   axe-core@4.10.2: {}
-
-  axios@1.7.9:
-    dependencies:
-      follow-redirects: 1.15.9(debug@4.3.7)
-      form-data: 4.0.1
-      proxy-from-env: 1.1.0
-    transitivePeerDependencies:
-      - debug
 
   axios@1.7.9(debug@4.4.0):
     dependencies:
@@ -32985,6 +32977,18 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  http-proxy-middleware@2.0.7(@types/express@4.17.21):
+    dependencies:
+      '@types/http-proxy': 1.17.15
+      http-proxy: 1.18.1(debug@4.4.0)
+      is-glob: 4.0.3
+      is-plain-obj: 3.0.0
+      micromatch: 4.0.8
+    optionalDependencies:
+      '@types/express': 4.17.21
+    transitivePeerDependencies:
+      - debug
+
   http-proxy-middleware@2.0.7(@types/express@4.17.21)(debug@4.3.7):
     dependencies:
       '@types/http-proxy': 1.17.15
@@ -33031,7 +33035,7 @@ snapshots:
       corser: 2.0.1
       he: 1.2.0
       html-encoding-sniffer: 3.0.0
-      http-proxy: 1.18.1(debug@4.3.7)
+      http-proxy: 1.18.1(debug@4.4.0)
       mime: 1.6.0
       minimist: 1.2.8
       opener: 1.5.2
@@ -36404,7 +36408,7 @@ snapshots:
       '@yarnpkg/lockfile': 1.1.0
       '@yarnpkg/parsers': 3.0.0-rc.46
       '@zkochan/js-yaml': 0.0.7
-      axios: 1.7.9
+      axios: 1.7.9(debug@4.4.0)
       chalk: 4.1.2
       cli-cursor: 3.1.0
       cli-spinners: 2.6.1
@@ -36454,7 +36458,7 @@ snapshots:
       '@yarnpkg/lockfile': 1.1.0
       '@yarnpkg/parsers': 3.0.2
       '@zkochan/js-yaml': 0.0.7
-      axios: 1.7.9
+      axios: 1.7.9(debug@4.4.0)
       chalk: 4.1.2
       cli-cursor: 3.1.0
       cli-spinners: 2.6.1
@@ -41040,7 +41044,7 @@ snapshots:
       connect-history-api-fallback: 2.0.0
       express: 4.21.2
       graceful-fs: 4.2.11
-      http-proxy-middleware: 2.0.7(@types/express@4.17.21)(debug@4.3.7)
+      http-proxy-middleware: 2.0.7(@types/express@4.17.21)
       ipaddr.js: 2.2.0
       launch-editor: 2.9.1
       open: 10.1.0

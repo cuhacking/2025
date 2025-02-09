@@ -31,7 +31,7 @@ export default buildConfig({
       baseDir: path.resolve('../../../../src'),
     },
     components: {
-// https://payload-visual-guide.vercel.app/
+      // https://payload-visual-guide.vercel.app/
       beforeDashboard: ['/components/before-dashboard#BeforeDashboard'],
       afterDashboard: ['/components/after-dashboard#AfterDashboard'],
       beforeLogin: ['/components/before-login#BeforeLogin'],
@@ -40,7 +40,7 @@ export default buildConfig({
         Icon: '/components/icon#Icon',
         Logo: '/components/logo#Logo',
       },
-            // https://dev.to/aaronksaunders/payload-cms-add-a-custom-create-account-screen-in-admin-ui-2pdg
+      // https://dev.to/aaronksaunders/payload-cms-add-a-custom-create-account-screen-in-admin-ui-2pdg
       // https://www.youtube.com/watch?v=X-6af837WbY
       views: {
         'login': {
