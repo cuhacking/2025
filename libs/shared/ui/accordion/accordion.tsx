@@ -1,7 +1,6 @@
+import chevronDown from '@cuhacking/shared/assets/icons/general/chevron-down-1.svg'
 import { cn } from '@cuhacking/shared/utils/cn'
 import * as AccordionPrimitive from '@radix-ui/react-accordion'
-import { ChevronDown } from 'lucide-react'
-
 import * as React from 'react'
 
 const Accordion = AccordionPrimitive.Root
@@ -16,19 +15,20 @@ AccordionItem.displayName = 'AccordionItem'
 
 const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger> & { isLeft?: boolean }
+>(({ className, children, isLeft, ...props }, ref) => (
   <AccordionPrimitive.Header className="flex">
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        'flex flex-1 items-center w-full justify-start py-0.5 font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180 gap-3 text-left',
+        'flex flex-1 items-center w-full justify-start py-0.5 font-medium transition-all hover:underline [&[data-state=open]>img]:rotate-180 gap-3 text-left',
         className,
       )}
       {...props}
     >
-      <ChevronDown className="w-4 h-4 transition-transform duration-200 shrink-0" />
+      {isLeft ? <img src={chevronDown} className="w-6 h-6  transition-transform duration-200 shrink-0" /> : null}
       {children}
+      {!isLeft ? <img src={chevronDown} className="w-6 h-6 transition-transform duration-200 shrink-0" /> : null}
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ))
@@ -40,7 +40,7 @@ const AccordionContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Content
     ref={ref}
-    className="text-left overflow-hidden pl-7 text-sm transition-all w-full data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+    className="text-left overflow-hidden text-sm transition-all w-full data-[state=closed]:animate-accordion-up data-[state=open]:overflow-visible data-[state=open]:animate-accordion-down data-[sate=closed]:overflow-hidden"
     {...props}
   >
     <div className={cn('pb-2 pt-0', className)}>{children}</div>
