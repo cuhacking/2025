@@ -52,6 +52,12 @@
         "cwd": "apps/api"
       }
     },
+    "schema": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation payload generate:db-schema",
+      "options": {
+        "cwd": "apps/api"
+      }
+    },
     "build": {
       "executor": "nx:run-commands",
       "options": {
