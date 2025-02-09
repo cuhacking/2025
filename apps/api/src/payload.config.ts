@@ -31,6 +31,9 @@ export default buildConfig({
       baseDir: path.resolve('../../../../src'),
     },
     components: {
+// https://payload-visual-guide.vercel.app/
+      beforeLogin: ['/components/before-login#BeforeLogin'],
+      afterLogin: ['/components/after-login#AfterLogin'],
   graphics: {
         Icon: '/components/icon#Icon',
         Logo: '/components/logo#Logo',
