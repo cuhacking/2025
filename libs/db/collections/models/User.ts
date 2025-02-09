@@ -10,6 +10,7 @@ export const authenticated: isAuthenticated = ({ req: { user } }) => {
 
 export const Users: CollectionConfig = {
   slug: 'users',
+  auth: true,
   access: {
     admin: authenticated,
     create: authenticated,
@@ -20,8 +21,29 @@ export const Users: CollectionConfig = {
   admin: {
     defaultColumns: ['name', 'email'],
     useAsTitle: 'name',
+    components: {
+      beforeList: [
+        {
+          path: '/components/before-list#BeforeList',
+        },
+      ],
+      afterList: [
+        {
+          path: '/components/after-list#AfterList',
+        },
+      ],
+      beforeListTable: [
+        {
+          path: '/components/before-list-table#BeforeListTable',
+        },
+      ],
+      afterListTable: [
+        {
+          path: '/components/after-list-table#AfterListTable',
+        },
+      ],
+    },
   },
-  auth: true,
   fields: [
     {
       name: 'name',

@@ -32,6 +32,8 @@ export default buildConfig({
     },
     components: {
 // https://payload-visual-guide.vercel.app/
+      beforeDashboard: ['/components/before-dashboard#BeforeDashboard'],
+      afterDashboard: ['/components/after-dashboard#AfterDashboard'],
       beforeLogin: ['/components/before-login#BeforeLogin'],
       afterLogin: ['/components/after-login#AfterLogin'],
   graphics: {
