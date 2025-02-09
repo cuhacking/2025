@@ -22,6 +22,7 @@
     "commit": "cz",
     "clean": "git clean -fdX -e '!**/.env*'",
     "ri": "pnpm clean; pnpm i",
+    "db": "nx studio libs/db",
     "graph": "nx graph --groupByFolder --verbose",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
