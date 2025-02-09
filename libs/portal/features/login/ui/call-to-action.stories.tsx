@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { SignInCallToAction } from './call-to-action'
+import { LoginCallToAction } from './call-to-action'
 
 const meta = {
   title: '🌀 Portal/Signin/Call To Action',
-  component: SignInCallToAction,
+  component: LoginCallToAction,
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
   },
-} satisfies Meta<typeof SignInCallToAction>
+} satisfies Meta<typeof LoginCallToAction>
 
 export default meta
 type Story = StoryObj<typeof meta>
