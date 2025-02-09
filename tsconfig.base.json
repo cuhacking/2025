@@ -13,7 +13,7 @@
     "moduleResolution": "node",
     "paths": {
       "@payload-config": [
-        "apps/api/src/payload.config.ts"
+        "apps/axiom/src/payload.config.ts"
       ],
       "@aceternity": [
         "libs/external/aceternity/index.ts"

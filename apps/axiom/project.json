@@ -1,61 +1,61 @@
 {
-  "name": "api",
+  "name": "axiom",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/api/src",
+  "sourceRoot": "apps/axiom/src",
   "projectType": "application",
   "targets": {
     "dev": {
       "command": "cross-env NODE_OPTIONS=--no-deprecation next dev",
       "options": {
-        "cwd": "apps/api"
+        "cwd": "apps/axiom"
       }
     },
     "devsafe": {
       "command": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
       "options": {
-        "cwd": "apps/api"
+        "cwd": "apps/axiom"
       }
     },
     "build:cms": {
       "command": "cross-env NODE_OPTIONS=--no-deprecation next build",
       "options": {
-        "cwd": "apps/api"
+        "cwd": "apps/axiom"
       }
     },
     "start": {
       "command": "cross-env NODE_OPTIONS=--no-deprecation next start",
       "options": {
-        "cwd": "apps/api"
+        "cwd": "apps/axiom"
       }
     },
     "lint": {
       "command": "cross-env NODE_OPTIONS=--no-deprecation next lint",
       "options": {
-        "cwd": "apps/api"
+        "cwd": "apps/axiom"
       }
     },
     "payload": {
       "command": "cross-env NODE_OPTIONS=--no-deprecation payload",
       "options": {
-        "cwd": "apps/api"
+        "cwd": "apps/axiom"
       }
     },
     "importmap": {
       "command": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
       "options": {
-        "cwd": "apps/api"
+        "cwd": "apps/axiom"
       }
     },
     "types": {
       "command": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
       "options": {
-        "cwd": "apps/api"
+        "cwd": "apps/axiom"
       }
     },
     "schema": {
       "command": "cross-env NODE_OPTIONS=--no-deprecation payload generate:db-schema",
       "options": {
-        "cwd": "apps/api"
+        "cwd": "apps/axiom"
       }
     },
     "build": {
@@ -96,43 +96,43 @@
     "migrate:run": {
       "command": "cross-env NODE_OPTIONS=--no-deprecation payload migrate",
       "options": {
-        "cwd": "apps/api"
+        "cwd": "apps/axiom"
       }
     },
     "migrate:create": {
       "command": "cross-env NODE_OPTIONS=--no-deprecation payload migrate:create",
       "options": {
-        "cwd": "apps/api"
+        "cwd": "apps/axiom"
       }
     },
     "migrate:status": {
       "command": "cross-env NODE_OPTIONS=--no-deprecation payload migrate:status",
       "options": {
-        "cwd": "apps/api"
+        "cwd": "apps/axiom"
       }
     },
     "migrate:down": {
       "command": "cross-env NODE_OPTIONS=--no-deprecation payload migrate:down",
       "options": {
-        "cwd": "apps/api"
+        "cwd": "apps/axiom"
       }
     },
     "migrate:refresh": {
       "command": "cross-env NODE_OPTIONS=--no-deprecation payload migrate:refresh",
       "options": {
-        "cwd": "apps/api"
+        "cwd": "apps/axiom"
       }
     },
     "migrate:reset": {
       "command": "cross-env NODE_OPTIONS=--no-deprecation payload migrate:reset",
       "options": {
-        "cwd": "apps/api"
+        "cwd": "apps/axiom"
       }
     },
     "migrate:fresh": {
       "command": "cross-env NODE_OPTIONS=--no-deprecation payload migrate:fresh",
       "options": {
-        "cwd": "apps/api"
+        "cwd": "apps/axiom"
       }
     }
   },

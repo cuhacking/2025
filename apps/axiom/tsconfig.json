@@ -24,7 +24,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "dist/apps/api/types/**/*.ts",
-    "next-env.d.ts",
+    "dist/apps/axiom/types/**/*.ts",
+    "next-env.d.ts"
   ]
 }

@@ -21,8 +21,8 @@ const { withPayload } = await import('@payloadcms/next/withPayload');
 
   const nextApp = next({
     dev,
-    conf: withPayload({distDir: 'dist/apps/api'}),
-    dir: 'apps/api/',
+    conf: withPayload({distDir: 'dist/apps/axiom'}),
+    dir: 'apps/axiom/',
   });
 
   const handle = nextApp.getRequestHandler();
