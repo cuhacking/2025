@@ -4,5 +4,12 @@
   "sourceRoot": "libs/db",
   "projectType": "library",
   "tags": [],
-  "targets": {}
+  "targets": {
+    "studio": {
+      "command": "drizzle-kit studio --config=drizzle.config.ts --verbose",
+      "options": {
+        "cwd": "libs/db"
+      }
+    }
+  }
 }
