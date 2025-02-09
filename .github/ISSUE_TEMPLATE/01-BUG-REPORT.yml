@@ -10,7 +10,7 @@ body:
       label: Search checkbox
       description: Insufficiently described issues will be closed, so please provide as much information as possible.
       options:
-        - label: Have you searched for similar [issues](https://github.com/cuhacking/2025/issues)?
+        - label: I've already searched for similar [issues](https://github.com/cuhacking/2025/issues).
   - type: textarea
     id: description
     attributes:
@@ -61,14 +61,14 @@ body:
     id: reproducibility
     attributes:
       label: Reproducibility
-      description: Does this issue occur...
+      description: This issue occurs for...
       options:
-        - label: in Safari?
-        - label: in Firefox?
-        - label: in Chrome?
-        - label: for mobile devices?
-        - label: for tablet devices?
-        - label: for desktop devices?
+        - label: Safari (Mobile)
+        - label: Firefox (Mobile)
+        - label: Chrome (Mobile)
+        - label: Safari (Desktop)
+        - label: Firefox (Desktop)
+        - label: Chrome (Desktop)
   - type: textarea
     id: misc
     attributes:
