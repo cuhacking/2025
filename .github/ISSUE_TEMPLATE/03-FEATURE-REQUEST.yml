@@ -10,21 +10,7 @@ body:
       label: Search checkbox
       description: Insufficiently described issues will be closed, so please provide as much information as possible.
       options:
-        - label: Have you searched for similar [issues](https://github.com/cuhacking/2025/issues)?
-  - type: dropdown
-    id: platforms
-    attributes:
-      label: Platforms
-      multiple: true
-      options:
-        - all
-        - Portal
-        - Docs
-        - Tools
-        - Website
-      default: 0
-    validations:
-      required: true
+        - label: I've already searched for similar [issues](https://github.com/cuhacking/2025/issues).
   - type: textarea
     id: problem
     attributes:
