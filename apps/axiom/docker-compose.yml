@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 
 services:
   payload:
@@ -9,35 +9,28 @@ services:
       - .:/home/node/app
       - node_modules:/home/node/app/node_modules
     working_dir: /home/node/app/
-    command: sh -c "corepack enable && corepack prepare pnpm@latest --activate && pnpm install && pnpm dev"
+    command: sh -c "corepack enable && corepack prepare pnpm@latest --activate && pnpm i && pnpm axiom"
     depends_on:
-      - mongo
-      # - postgres
+      - postgres
     env_file:
       - .env
 
-  # Ensure your DATABASE_URI uses 'mongo' as the hostname ie. mongodb://mongo/my-db-name
-  mongo:
-    image: mongo:latest
+  postgres:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: payload
+      POSTGRES_PASSWORD: payloadpass
+      POSTGRES_DB: payloadcms
     ports:
-      - '27017:27017'
-    command:
-      - --storageEngine=wiredTiger
+      - "5432:5432"
     volumes:
-      - data:/data/db
+      - pgdata:/var/lib/postgresql/data
     logging:
-      driver: none
-
-  # Uncomment the following to use postgres
-  # postgres:
-  #   restart: always
-  #   image: postgres:latest
-  #   volumes:
-  #     - pgdata:/var/lib/postgresql/data
-  #   ports:
-  #     - "5432:5432"
+      options:
+        max-size: "10m"   # Limits log file size to 10MB per container
+        max-file: "3"     # Keeps up to 3 log files
 
 volumes:
-  data:
-  # pgdata:
+  pgdata:
   node_modules:
