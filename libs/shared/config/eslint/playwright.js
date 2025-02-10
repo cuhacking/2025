@@ -1,5 +1,5 @@
 import playwright from 'eslint-plugin-playwright'
-import baseConfigPromise from '../../eslint.config.js'
+import baseConfigPromise from './antfu.js'
 
 export default (async () => {
   const baseConfig = await baseConfigPromise
