@@ -1,4 +1,4 @@
-import type { User } from '@cuhacking/shared/types/cms'
+import type { User } from '@cuhacking/db/payload-types.ts'
 
 import type { AccessArgs, CollectionConfig } from 'payload'
 

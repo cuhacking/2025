@@ -27,10 +27,10 @@
       "@cuhacking/cms/*": [
         "libs/cms/*"
       ],
-      "@cuhacking/db": [
+      "@/db": [
         "libs/db/index.ts"
       ],
-      "@cuhacking/db/*": [
+      "@/db/*": [
         "libs/db/*"
       ],
       "@cuhacking/docs": [

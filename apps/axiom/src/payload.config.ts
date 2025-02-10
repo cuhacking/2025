@@ -2,8 +2,8 @@ import path from 'node:path'
 // import {linkedinOAuth} from './endpoints/auth/linkedin'
 /* eslint-disable node/prefer-global/process */
 import { fileURLToPath } from 'node:url'
-import { googleOAuth } from '@cuhacking/cms/endpoints/auth/google'
-import { Users } from '@cuhacking/db/collections/models/User'
+// import { googleOAuth } from '@cuhacking/cms/endpoints/auth/google'
+import { Users } from '@/db/collections/models/Users'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { s3Storage } from '@payloadcms/storage-s3'
@@ -42,16 +42,16 @@ export default buildConfig({
       },
       // https://dev.to/aaronksaunders/payload-cms-add-a-custom-create-account-screen-in-admin-ui-2pdg
       // https://www.youtube.com/watch?v=X-6af837WbY
-      views: {
-        'login': {
-          Component: '/components/oauth#OAuth',
-          path: '/login',
-        },
-        'create-account': {
-          Component: '/components/oauth#OAuth',
-          path: '/create-account',
-        },
-      },
+      // views: {
+      //   'login': {
+      //     Component: '/components/oauth#OAuth',
+      //     path: '/login',
+      //   },
+      //   'create-account': {
+      //     Component: '/components/oauth#OAuth',
+      //     path: '/create-account',
+      //   },
+      // },
     },
  meta: {
       description: 'cuHacking 2025 CMS',
@@ -65,7 +65,7 @@ export default buildConfig({
       titleSuffix: '- cuHacking 2025',
     },
   },
-  serverURL: process.env.PAYLOAD_PUBLIC_EXTERNAL_SERVER_URL,
+  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   cors: process.env.CORS_WHITELIST_ORIGINS
     ? process.env.CORS_WHITELIST_ORIGINS.split(',')
     : [],
@@ -80,7 +80,7 @@ export default buildConfig({
   secret: process.env.PAYLOAD_SECRET || '',
   sharp,
   typescript: {
-    outputFile: path.resolve(dirname, 'payload-types.ts'),
+    outputFile: path.resolve('../../libs/db/payload-types.ts'),
   },
   db: postgresAdapter({
     pool: {
@@ -107,7 +107,7 @@ generateSchemaOutputFile: path.resolve('../../libs/db/schema.ts'),
         endpoint: process.env.S3_ENDPOINT || '',
       },
     }),
-    googleOAuth,
+    // googleOAuth,
     // linkedinOAuth
     // payloadCloudPlugin(),
   ],

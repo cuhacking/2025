@@ -14,6 +14,7 @@ export default antfu({
     // TODO: remove after monorepo integration is complete
     'apps/axiom/',
     'libs/db/schema.ts',
+    'libs/db/payload-types.ts',
     'libs/cms/',
     'apps/slides/slides.md',
   ],
