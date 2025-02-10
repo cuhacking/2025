@@ -65,6 +65,7 @@ deno.lock
 .next
 out
 next-env.d.ts
+.react-email
 
 # generated content
 .contentlayer
