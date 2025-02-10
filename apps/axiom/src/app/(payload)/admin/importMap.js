@@ -8,7 +8,6 @@ import { AfterDashboard as AfterDashboard_443f862e687236b6f29a8be2f016d811 } fro
 import { AfterLogin as AfterLogin_bb88eaa5522dec17b63fae214366fe48 } from '../../../../src/components/after-login'
 import { BeforeDashboard as BeforeDashboard_a9efa1adbffb4aad7d2fbbf0b4651b94 } from '../../../../src/components/before-dashboard'
 import { BeforeLogin as BeforeLogin_f54cf4cfed7358d2461ebe4560290a2f } from '../../../../src/components/before-login'
-import { OAuth as OAuth_c34a0b2eff4436b5c63d31ebb7b6a3ea } from '../../../../src/components/oauth'
 
 export const importMap = {
   "/components/after-list#AfterList": AfterList_6126dac7db3cf0c263c19b19092a7feb,
@@ -20,6 +19,5 @@ export const importMap = {
   "/components/after-dashboard#AfterDashboard": AfterDashboard_443f862e687236b6f29a8be2f016d811,
   "/components/after-login#AfterLogin": AfterLogin_bb88eaa5522dec17b63fae214366fe48,
   "/components/before-dashboard#BeforeDashboard": BeforeDashboard_a9efa1adbffb4aad7d2fbbf0b4651b94,
-  "/components/before-login#BeforeLogin": BeforeLogin_f54cf4cfed7358d2461ebe4560290a2f,
-  "/components/oauth#OAuth": OAuth_c34a0b2eff4436b5c63d31ebb7b6a3ea
+  "/components/before-login#BeforeLogin": BeforeLogin_f54cf4cfed7358d2461ebe4560290a2f
 }

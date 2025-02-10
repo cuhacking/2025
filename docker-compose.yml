@@ -17,17 +17,16 @@ services:
     image: postgres:16
     restart: unless-stopped
     environment:
-      POSTGRES_USER: dev
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: cuhacking
+      POSTGRES_DB: postgres
     ports:
       - '5432:5432'
     volumes:
       - pgdata:/var/lib/postgresql/data
     logging:
       options:
-        max-size: 100m # Limits log file size to 100MB per container
-        max-file: '10' # Keeps up to 3 log files
+        max-size: 100m
+        max-file: '10'
 
 volumes:
   pgdata:
