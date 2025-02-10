@@ -5,9 +5,13 @@ dist
 tmp
 /out-tsc
 /media
+public/media/
+scaffold-examples/payload-cms-website/public/robots.txt
+scaffold-examples/payload-cms-website/public/sitemap*.xml
 
 # dependencies
 node_modules
+/node_modules
 
 # IDEs and editors
 /.idea/*
@@ -35,6 +39,7 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+components.d.ts
 
 # System Files
 .DS_Store
@@ -44,6 +49,8 @@ Thumbs.db
 .nx/workspace-data
 
 vite.config.*.timestamp*
+.vite-inspect
+.remote-assets
 
 # Remix
 .cache
@@ -57,6 +64,7 @@ deno.lock
 # Next.js
 .next
 out
+next-env.d.ts
 
 # generated content
 .contentlayer
@@ -66,7 +74,6 @@ out
 # test & build
 /coverage
 /.next/
-next-env.d.ts
 /out/
 /build
 storybook-static
