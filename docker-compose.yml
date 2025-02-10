@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  # payload:
+  #   image: node:18-alpine
+  #   ports:
+  #     - '3000:3000'
+  #   volumes:
+  #     - .:/home/node/app
+  #     - node_modules:/home/node/app/node_modules
+  #   working_dir: /home/node/app/
+  #   command: sh -c "corepack enable && corepack prepare pnpm@latest --activate && pnpm i && pnpm axiom"
+  #   depends_on:
+  #     - postgres
+  #   env_file:
+  #     - .env
+
+  postgres:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: cuhacking
+    ports:
+      - '5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    logging:
+      options:
+        max-size: 10m # Limits log file size to 10MB per container
+        max-file: '3' # Keeps up to 3 log files
+
+volumes:
+  pgdata:
+  # node_modules:

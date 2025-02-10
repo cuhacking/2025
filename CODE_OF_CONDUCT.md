@@ -1,6 +1,7 @@
 # Code of Conduct
 
 ## Introduction
+
 Welcome to cuHacking! We are committed to fostering an inclusive, respectful, and collaborative environment for everyone involved in our open-source project. Our mission is guided by the following values:
 
 - **Commitment to Mentorship**: We strive to help contributors grow, learn, and succeed, whether they are experienced developers or just starting their journey.
@@ -12,6 +13,7 @@ This Code of Conduct applies to all members of our organization, including cuHac
 ---
 
 ## Expected Behavior
+
 To ensure a positive experience for everyone, we expect community members to:
 
 - Be welcoming and inclusive to all contributors, regardless of experience, background, or identity.
@@ -23,6 +25,7 @@ To ensure a positive experience for everyone, we expect community members to:
 ---
 
 ## Unacceptable Behavior
+
 The following behaviors are unacceptable:
 
 - Harassment, discrimination, or exclusion based on race, gender, sexual orientation, disability, religion, or other personal attributes.
@@ -34,6 +37,7 @@ The following behaviors are unacceptable:
 ---
 
 ## Reporting and Enforcement
+
 We are committed to providing a safe space for everyone. If you witness or experience behaviour that violates this Code of Conduct, please report it through our email.
 
 - **Email**: info@cuhacking.ca.
@@ -50,6 +54,7 @@ If you feel unsafe or uncertain about reporting an issue, we encourage you to re
 ---
 
 ## Anti-Harassment Policy
+
 We are dedicated to creating an environment where everyone is treated with dignity and respect. Our anti-harassment policy prohibits:
 
 - Offensive comments related to personal attributes or identity.
@@ -62,6 +67,7 @@ Participants asked to stop harassing behaviour must comply immediately.
 ---
 
 ## Inclusivity Beyond the Workspace
+
 Our commitment to inclusivity extends to project-related social events and public spaces, including conferences, meetups, and virtual gatherings. We encourage event organizers to:
 
 - Choose inclusive and accessible venues.
@@ -72,6 +78,7 @@ Our commitment to inclusivity extends to project-related social events and publi
 ---
 
 ## Continuous Improvement
+
 This Code of Conduct is a living document. We will:
 
 - Regularly review and update it to reflect the needs of our community.
@@ -82,4 +89,3 @@ We invite feedback and suggestions to ensure this document continues to serve ou
 ---
 
 By participating in our project, you agree to abide by this Code of Conduct and help us create a welcoming and inclusive environment. Thank you for being a part of our community!
-
