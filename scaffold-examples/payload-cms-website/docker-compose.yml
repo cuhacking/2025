@@ -1,31 +1,34 @@
-version: '3'
-
 services:
-  payload:
-    image: node:18-alpine
-    ports:
-      - '3000:3000'
-    volumes:
-      - .:/home/node/app
-      - node_modules:/home/node/app/node_modules
-    working_dir: /home/node/app/
-    command: sh -c "yarn install && yarn dev"
-    depends_on:
-      - mongo
-    env_file:
-      - .env
+  # payload:
+  #   image: node:18-alpine
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - .:/home/node/app
+  #     - node_modules:/home/node/app/node_modules
+  #   working_dir: /home/node/app/
+  #   command: sh -c "yarn install && yarn dev"
+  #   depends_on:
+  #     - postgres
+  #   env_file:
+  #     - .env
 
-  mongo:
-    image: mongo:latest
+  postgres:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      #   POSTGRES_USER: payload
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
     ports:
-      - '27017:27017'
-    command:
-      - --storageEngine=wiredTiger
+      - "5432:5432"
     volumes:
-      - data:/data/db
+      - pgdata:/var/lib/postgresql/data
     logging:
-      driver: none
+      options:
+        max-size: "10m" # Limits log file size to 10MB per container
+        max-file: "3" # Keeps up to 3 log files
 
 volumes:
-  data:
+  pgdata:
   node_modules:
