@@ -1,0 +1,6 @@
+[build]
+command = "pnpm nx build email-templates --verbose"
+publish = "tools/email-templates/.react-email/.next"
+
+[[plugins]]
+package = "@netlify/plugin-nextjs"
