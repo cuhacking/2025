@@ -3,8 +3,10 @@ import antfu from '@antfu/eslint-config'
 export default antfu({
   formatters: true,
   // unocss: true,
+  vue: true,
   react: true,
-  slidev: true,
+  jsonc: true,
+  yaml: true,
 }, {
   ignores: [
     'scaffold-examples/',
