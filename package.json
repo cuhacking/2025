@@ -91,6 +91,7 @@
     "graphql": "^16.10.0",
     "isbot": "^4.4.0",
     "lexical": "0.21.0",
+    "motion": "^12.4.2",
     "next": "15.1.0",
     "payload": "^3.22.0",
     "payload-oauth2": "^1.0.9",
