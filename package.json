@@ -1,6 +1,7 @@
 {
   "name": "@cuhacking/source",
   "type": "module",
+  "private": true,
   "packageManager": "pnpm@9.15.4",
   "license": "MIT",
   "homepage": "https://cuhacking.ca",
