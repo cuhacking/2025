@@ -7,19 +7,19 @@
   "// targets": "to see all targets run: nx show project email-templates --web",
   "targets": {
     "dev": {
-      "command": "email dev",
+      "command": "email dev --dir previews",
       "options": {
         "cwd": "tools/email-templates"
       }
     },
     "build": {
-      "command": "email build",
+      "command": "email build --dir previews",
       "options": {
         "cwd": "tools/email-templates"
       }
     },
     "export": {
-      "command": "email export",
+      "command": "email export --dir previews",
       "options": {
         "cwd": "tools/email-templates"
       }
