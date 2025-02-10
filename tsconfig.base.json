@@ -21,11 +21,11 @@
       "@aceternity/*": [
         "libs/external/aceternity/*"
       ],
+      "@cuhacking/*": [
+        "./*"
+      ],
       "@cuhacking/cms/*": [
         "libs/cms/*"
-      ],
-      "@cuhacking/config/*": [
-        "libs/shared/config/*"
       ],
       "@cuhacking/db": [
         "libs/db/index.ts"
@@ -79,6 +79,9 @@
     "skipDefaultLibCheck": true,
     "skipLibCheck": true
   },
+  "include": [
+    "eslint.config.js"
+  ],
   "exclude": [
     "node_modules",
     "tmp"
