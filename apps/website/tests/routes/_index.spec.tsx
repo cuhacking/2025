@@ -1,6 +1,6 @@
 import { createRemixStub } from '@remix-run/testing'
 import { render, screen, waitFor } from '@testing-library/react'
-import Index from '../../app/routes/_test'
+import Index from '../../app/routes/_index'
 
 it('renders loader data', async () => {
   const RemixStub = createRemixStub([
@@ -12,5 +12,5 @@ it('renders loader data', async () => {
 
   render(<RemixStub />)
 
-  await waitFor(() => screen.findByText('Hello there,'))
+  await waitFor(() => screen.findByText('Hello, World'))
 })
