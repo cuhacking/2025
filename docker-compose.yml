@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # payload:
   #   image: node:18-alpine
@@ -28,8 +26,8 @@ services:
       - pgdata:/var/lib/postgresql/data
     logging:
       options:
-        max-size: 10m # Limits log file size to 10MB per container
-        max-file: '3' # Keeps up to 3 log files
+        max-size: 100m # Limits log file size to 100MB per container
+        max-file: '10' # Keeps up to 3 log files
 
 volumes:
   pgdata:
