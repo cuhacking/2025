@@ -1,18 +1,4 @@
 services:
-  # payload:
-  #   image: node:18-alpine
-  #   ports:
-  #     - '3000:3000'
-  #   volumes:
-  #     - .:/home/node/app
-  #     - node_modules:/home/node/app/node_modules
-  #   working_dir: /home/node/app/
-  #   command: sh -c "corepack enable && corepack prepare pnpm@latest --activate && pnpm i && pnpm axiom"
-  #   depends_on:
-  #     - postgres
-  #   env_file:
-  #     - .env
-
   postgres:
     image: postgres:16
     restart: unless-stopped
@@ -30,4 +16,3 @@ services:
 
 volumes:
   pgdata:
-  # node_modules:
