@@ -1,0 +1,26 @@
+{
+  "name": "infra",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "infra",
+  "projectType": "application",
+  "targets": {
+    "up": {
+      "command": "nix-shell --argstr DB 'up'",
+      "options": {
+        "cwd": "infra"
+      }
+    },
+    "down": {
+      "command": "nix-shell --argstr DB 'down'",
+      "options": {
+        "cwd": "infra"
+      }
+    },
+    "destroy": {
+      "command": "nix-shell --argstr DB 'destroy'",
+      "options": {
+        "cwd": "infra"
+      }
+    }
+  }
+}
