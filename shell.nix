@@ -7,9 +7,12 @@ in pkgs.mkShell {
   name = "cuhacking-2025-dev-env";
 
   buildInputs = [
-    pkgs.docker
+    # ============
     pkgs.figlet
-    pkgs.jp2a
+    pkgs.cowsay
+    pkgs.hollywood
+    pkgs.cmatrix
+    # ============
     pkgs.git
     pkgs.gh
     pkgs.lazygit
@@ -17,6 +20,12 @@ in pkgs.mkShell {
     pkgs.eza
     pkgs.yazi
     pkgs.zsh
+    pkgs.zsh-autosuggestions
+    pkgs.zsh-syntax-highlighting
+    # ============
+    pkgs.jp2a
+    # ============
+    pkgs.docker
   ];
 
   shellHook = ''
@@ -27,6 +36,12 @@ in pkgs.mkShell {
       echo "Please re-run the Nix Shell"
       exit
     fi
+
+    # # Source Powerlevel10k if available
+    # if [ -f "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme" ]; then
+    #   echo "Sourcing Powerlevel10k..."
+    #   echo 'source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
+    # fi
 
     pnpm env use 22.13.1 --global
 
@@ -39,6 +54,8 @@ in pkgs.mkShell {
     alias y='yazi'
     alias mkdir='mkdir -p'
     alias pn='pnpm'
+
+    # echo 'plugins=(zsh-autosuggestions zsh-syntax-highlighting)' >> ~/.zshrc
 
     # Display jp2a image
     jp2a --color --color-depth=24 -f ./libs/shared/assets/logos/cuHacking/logo-icon-wordmark-gradient-green.png
