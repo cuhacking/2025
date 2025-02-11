@@ -38,8 +38,12 @@ in pkgs.mkShell {
     alias lt='eza --icons=auto --tree'
     alias y='yazi'
     alias mkdir='mkdir -p'
+    alias pn='pnpm'
 
     # Display jp2a image
-    jp2a --color ./libs/shared/assets/logos/cuHacking/logo-icon-wordmark-gradient-green.png
+    jp2a --color --color-depth=24 -f ./libs/shared/assets/logos/cuHacking/logo-icon-wordmark-gradient-green.png
+    echo 💚⌨🐧🚀🔥
+
+    trap 'jp2a --color --color-depth=24 -f ./libs/shared/assets/logos/cuHacking/team-logos.png; echo 💤🛌' EXIT
   '';
 }
