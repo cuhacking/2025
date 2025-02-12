@@ -10,15 +10,12 @@ import {
   Section,
   Text,
 } from '@react-email/components';
-import * as React from 'react';
 
 interface GithubAccessTokenEmailProps {
   username?: string;
 }
 
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : '';
+const baseUrl = process.env.ASSET_URL || 'http://localhost:3000'
 
 export const GithubAccessTokenEmail = ({
   username,
@@ -31,7 +28,7 @@ export const GithubAccessTokenEmail = ({
     <Body style={main}>
       <Container style={container}>
         <Img
-          src={`${baseUrl}/static/github.png`}
+          src={`${baseUrl}/templates/static/github-logo.png`}
           width="32"
           height="32"
           alt="Github"

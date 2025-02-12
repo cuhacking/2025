@@ -15,7 +15,6 @@ import {
   Tailwind,
   Text,
 } from '@react-email/components';
-import * as React from 'react';
 
 interface VercelInviteUserEmailProps {
   username?: string;
@@ -29,9 +28,7 @@ interface VercelInviteUserEmailProps {
   inviteFromLocation?: string;
 }
 
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : '';
+const baseUrl = process.env.ASSET_URL || 'http://localhost:3000'
 
 export const VercelInviteUserEmail = ({
   username,
@@ -55,7 +52,7 @@ export const VercelInviteUserEmail = ({
           <Container className="border border-solid border-[#eaeaea] rounded my-[40px] mx-auto p-[20px] max-w-[465px]">
             <Section className="mt-[32px]">
               <Img
-                src={`${baseUrl}/static/vercel-logo.png`}
+                src={`${baseUrl}/templates/static/vercel-logo.png`}
                 width="40"
                 height="37"
                 alt="Vercel"
@@ -91,7 +88,7 @@ export const VercelInviteUserEmail = ({
                 </Column>
                 <Column align="center">
                   <Img
-                    src={`${baseUrl}/static/vercel-arrow.png`}
+                    src={`${baseUrl}/templates/static//vercel-arrow.png`}
                     width="12"
                     height="9"
                     alt="invited you to"
@@ -141,11 +138,11 @@ export const VercelInviteUserEmail = ({
 
 VercelInviteUserEmail.PreviewProps = {
   username: 'alanturing',
-  userImage: `${baseUrl}/static/vercel-user.png`,
+  userImage: `${baseUrl}/templates/static/vercel-user.png`,
   invitedByUsername: 'Alan',
   invitedByEmail: 'alan.turing@example.com',
   teamName: 'Enigma',
-  teamImage: `${baseUrl}/static/vercel-team.png`,
+  teamImage: `${baseUrl}/templates/static/vercel-team.png`,
   inviteLink: 'https://vercel.com/teams/invite/foo',
   inviteFromIp: '204.13.186.218',
   inviteFromLocation: 'São Paulo, Brazil',

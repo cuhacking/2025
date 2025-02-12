@@ -9,15 +9,12 @@ import {
   Section,
   Text,
 } from '@react-email/components';
-import * as React from 'react';
 
 interface PlaidVerifyIdentityEmailProps {
   validationCode?: string;
 }
 
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : '';
+const baseUrl = process.env.ASSET_URL || 'http://localhost:3000'
 
 export const PlaidVerifyIdentityEmail = ({
   validationCode,
@@ -27,7 +24,7 @@ export const PlaidVerifyIdentityEmail = ({
     <Body style={main}>
       <Container style={container}>
         <Img
-          src={`${baseUrl}/static/plaid-logo.png`}
+          src={`${baseUrl}/templates/static/plaid-logo.png`}
           width="212"
           height="88"
           alt="Plaid"

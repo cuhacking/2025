@@ -1,5 +1,5 @@
-import type { GenericEmailContent } from '../types/content'
-import Generic from '../emails/generic'
+import Generic from '../../emails/generic'
+import type { GenericEmailContent } from '../../types/content'
 
 const genericEmailConstants: GenericEmailContent = {
   title: 'Thank you for applying for cuHacking, Hasith',
