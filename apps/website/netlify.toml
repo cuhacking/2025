@@ -2,6 +2,9 @@
 command = "pnpm nx build website"
 publish = "/apps/website/build/client"
 
+[build.environment]
+PNPM_FLAGS = "--prod --ingore-scripts"
+
 [dev]
 command = "pnpm nx dev website --verbose"
 framework = "vite"
