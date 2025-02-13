@@ -32,7 +32,7 @@
     "slides": "nx dev slides --verbose # 💐 Slide deck",
     "clean": "git clean -fdX -e '!**/.env*' -e '!**/pgdata' # 🧽 Remove any and all files listed in .gitignore except .env and pgdata",
     "nuke": "sudo git clean -fdX -e '!**/.env*' -e '!**/pgdata' # 🚨 WARNING: REMOVE ANY AND ALL FILES LISTED IN .gitignore INCLUDING .env AND pgdata",
-    "ri": "infra:down; pnpm clean; pnpm i # 🧼 Perform a clean install",
+    "ri": "stop; pnpm clean; pnpm i # 🧼 Perform a clean install",
     "lint": "eslint .",
     "fix": "eslint . --fix # 🫧 Auto-fix annoying ESLint squigglies",
     "lint:inspect-build": "pnpx @eslint/config-inspector build --outDir dist/config-inspector",
