@@ -42,3 +42,8 @@ export enum UserProfileStatus {
   complete = 'complete',
   notComplete = 'not_complete',
 }
+export enum UserHackathonApplicationStatus {
+  complete = 'complete',
+  notComplete = 'not_complete',
+  pending = 'pending',
+}
