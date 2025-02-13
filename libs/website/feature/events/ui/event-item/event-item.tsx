@@ -49,17 +49,17 @@ export function EventItem({ event, className }: EventProps) {
         className="block w-full lg:hidden"
         decorative
       />
-      <article className="flex flex-col">
+      <article className="flex flex-col gap-y-1.5">
         <header className="px-2">
-          <h4 className="text-2xl">{event.title}</h4>
+          <h1 className="text-2xl">{event.title}</h1>
         </header>
         <main>
           <TerminalText className="text-sm">{event.description}</TerminalText>
         </main>
         {event.status !== 'in-progress'
           ? (
-              <div className="flex justify-end w-full pt-1 text-xl">
-                <Button aria-label={ariaLabel} variant="default" size="sm">
+              <div className="flex justify-end w-full pt-2">
+                <Button className="text-md px-4" aria-label={ariaLabel} variant="default" size="default">
                   <Link to={event.link} target="_blank">
                     {buttonMessage}
                   </Link>
