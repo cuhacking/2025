@@ -34,7 +34,7 @@ export function FooterPresenter({ logo, socials }: FooterProps) {
         </a>
         <a href="https://netlify.com" target="_blank" rel="noopener noreferrer" className="flex hover:scale-110 duration-300 transition hover:text-cyan-300  items-center gap-x-3">
           Sponsored by
-          <img className="w-24" src={netlify_logo} />
+          <img className="w-24" alt="Netlify logo" src={netlify_logo} />
         </a>
       </div>
     </footer>
