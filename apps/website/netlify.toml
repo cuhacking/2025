@@ -3,7 +3,7 @@ command = "pnpm nx build website"
 publish = "/apps/website/build/client"
 
 [build.environment]
-PNPM_FLAGS = "--prod --ignore-scripts"
+PNPM_FLAGS = "--ignore-scripts"
 
 [dev]
 command = "pnpm nx dev website --verbose"
