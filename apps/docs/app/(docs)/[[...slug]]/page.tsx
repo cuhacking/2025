@@ -35,8 +35,10 @@ export default async function Page(props: {
       >
         Made with 💚 for Hackers by Hackers
       </a>
-      <a href="https://netlify.com" target="_blank" rel="noopener noreferrer" className="flex hover:scale-110 duration-300 transition text-cyan-300 hover:text-green-500 items-center gap-x-3">
-        Sponsored by
+      <a href="https://netlify.com" target="_blank" rel="noopener noreferrer" className="flex hover:scale-110 duration-300 transition text-cyan-300 hover:text-green-500 justify-center items-center gap-x-3">
+        <span className="text-[12px]">
+          Sponsored by
+        </span>
         <img className="w-24" src={netlify_logo.src} />
       </a>
 
