@@ -1,6 +1,8 @@
 { pkgs ? import <nixpkgs> {}, DB ? "" }:
 
 let
+  logoPath = "../libs/shared/assets/logos/cuHacking/logo-icon-wordmark-gradient-green.png";
+  teamLogoPath = "../libs/shared/assets/logos/cuHacking/team-logos.png";
   pgPort = "5432";
   pgUser = "postgres";
   pgDatabase = "postgres";
@@ -12,6 +14,7 @@ in pkgs.mkShell {
   name = "cuhacking-2025-dev-db";
 
   buildInputs = [
+    pkgs.ascii-image-converter
     pkgs.postgresql
   ];
 
@@ -56,15 +59,19 @@ in pkgs.mkShell {
       echo "DATABASE_URI=postgres://${pgUser}:${pgPassword}@${pgHost}:${pgPort}/${pgDatabase}"
       echo "***************************************************"
       echo ""
+      ascii-image-converter ${logoPath} --color -f -b
+      echo "Leave None Behind Regardless of Our Development Cost 💚⌨🐧🚀🔥"
     }
 
    stop_db() {
       echo "Stopping PostgreSQL..."
       if pg_ctl status -D "$PGDATA" > /dev/null 2>&1; then
         pg_ctl stop -D "$PGDATA"
-        echo "PostgreSQL stopped."
+        ascii-image-converter ${teamLogoPath} --color -f -b
+        echo "PostgreSQL stopped. 💤🛌"
       else
-        echo "PostgreSQL is not running."
+        ascii-image-converter ${teamLogoPath} --color -f -b
+        echo "PostgreSQL is not running. 💤🛌"
       fi
     }
 
