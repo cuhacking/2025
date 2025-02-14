@@ -10,6 +10,7 @@ import {
 } from '@cuhacking/shared/ui/form'
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 import MultipleSelector from '@cuhacking/shared/ui/multi-select'
+import { Typography } from '@cuhacking/shared/ui/typography/typgoraphy'
 import { cn } from '@cuhacking/shared/utils/cn'
 
 export interface MultiSelectFieldProps {
@@ -48,8 +49,15 @@ export function MultiSelectField({
             <div className="flex-col w-full justify-start items-start gap-0.5 inline-flex">
               <div className="h-5 justify-start items-center inline-flex">
                 <div className="justify-start items-center gap-1 inline-flex">
-                  <FormLabel className="text-white text-sm font-normal font-mono leading-tight">
-                    {label}
+                  <FormLabel className="text-white font-normal font-mono leading-tight">
+                    <Typography variant="paragraph-base">
+                      <p>
+                        {label}
+                        <span className="text-red-600 text-sm font-normal font-mono leading-tight ml-1">
+                          {isRequired ? '*' : null}
+                        </span>
+                      </p>
+                    </Typography>
                   </FormLabel>
                   <span className="text-red-600 text-sm font-normal font-mono leading-tight">
                     {isRequired ? '*' : null}
@@ -57,18 +65,21 @@ export function MultiSelectField({
                 </div>
               </div>
 
-              <div className="max-w-full w-full py-0.5 rounded-md justify-between items-center gap-3 flex">
+              <div className="max-w-sfull w-full py-0.5 rounded-md justify-between items-center gap-3 flex">
                 <FormControl>
-                  <MultipleSelector
-                    name={name}
-                    form={form}
-                    value={form.getValues(name)}
-                    options={options}
-                    placeholder="Select options..."
-                    className="w-full"
-                    badgeClassName="border-background border-2"
-                    creatable
-                  />
+                  <Typography variant="paragraph-base">
+                    <MultipleSelector
+                      name={name}
+                      form={form}
+                      value={form.getValues(name)}
+                      options={options}
+                      placeholder="Select options..."
+                      className="w-full"
+                      badgeClassName="border-background border-2"
+                      creatable
+                    />
+                  </Typography>
+
                 </FormControl>
               </div>
             </div>

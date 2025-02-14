@@ -14,6 +14,7 @@ import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 import {
   Input,
 } from '@cuhacking/shared/ui/input'
+import { Typography } from '@cuhacking/shared/ui/typography/typgoraphy'
 import { cn } from '@cuhacking/shared/utils/cn'
 
 interface TextFieldProps {
@@ -49,26 +50,30 @@ export function TextField({ variant, name, form, placeholder, label, isRequired,
         name={name}
         render={({ field }) => (
           <FormItem className="w-full">
-            <div className="h-5 flex items-center gap-1 w-full">
-              <FormLabel className="text-white text-sm font-normal font-mono leading-tight">
-                {label}
-                <span className="text-red-600 text-sm font-normal font-mono leading-tight ml-1">
-                  {isRequired ? '*' : null}
-                </span>
-              </FormLabel>
-            </div>
+            <FormLabel>
+              <Typography variant="paragraph-base">
+                <p>
+                  {label}
+                  <span className="text-red-600 text-sm font-normal font-mono leading-tight ml-1">
+                    {isRequired ? '*' : null}
+                  </span>
+                </p>
+              </Typography>
+            </FormLabel>
             <FormControl>
               <div className="w-full self-stretch py-0.5 rounded-md flex items-center gap-3">
                 <div className="items-center grow shrink basis-0 pb-0.5 flex items-start gap-3 w-full">
                   <img src={imgSrc} className="w-6 h-6" />
-                  <Input
-                    {...field}
-                    disabled={isDisabled}
-                    placeholder={placeholder}
-                    type="text"
-                    value={field.value || ''}
-                    className="w-full text-white"
-                  />
+                  <Typography variant="paragraph-base">
+                    <Input
+                      {...field}
+                      disabled={isDisabled}
+                      placeholder={placeholder}
+                      type="text"
+                      value={field.value || ''}
+                      className="w-full text-white"
+                    />
+                  </Typography>
                 </div>
               </div>
             </FormControl>

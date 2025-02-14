@@ -9,6 +9,7 @@ import {
 } from '@cuhacking/shared/ui/form'
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 import { PhoneInput } from '@cuhacking/shared/ui/phone-number'
+import { Typography } from '@cuhacking/shared/ui/typography/typgoraphy'
 
 interface PhoneNumberFieldProps {
   form: UseFormReturn<any>
@@ -35,19 +36,26 @@ export function PhoneNumberField({
             <div className="flex-col w-full justify-start items-start gap-2.5 flex">
               <div className="w-full flex-col justify-start items-start gap-1.5 flex">
                 <div className="flex gap-1">
-                  <FormLabel className="text-white text-sm font-normal font-mono leading-tight">
-                    {label}
+                  <FormLabel className="text-white font-normal font-mono leading-tight">
+                    <Typography variant="paragraph-base">
+                      <p>
+                        {label}
+                        <span className="text-red-600 text-sm font-normal font-mono leading-tight ml-1">
+                          {isRequired ? '*' : null}
+                        </span>
+                      </p>
+                    </Typography>
                   </FormLabel>
-                  {isRequired && (
-                    <span className="text-red-600 text-sm font-normal font-mono leading-tight">*</span>
-                  )}
                 </div>
                 <FormControl>
-                  <PhoneInput
-                    placeholder="+X XXX XXX XXXX"
-                    className="p-1.5 gap-x-3 w-full h-9 bg-[#383838]/40 rounded-md border border-white/20 text-white font-mono"
-                    {...field}
-                  />
+                  <Typography variant="paragraph-base">
+                    <PhoneInput
+                      placeholder="+X XXX XXX XXXX"
+                      className="p-1.5 gap-x-3 w-full h-9 bg-[#383838]/40 rounded-md border border-white/20 text-white font-mono"
+                      {...field}
+                    />
+                  </Typography>
+
                 </FormControl>
               </div>
             </div>

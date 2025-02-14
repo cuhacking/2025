@@ -15,6 +15,7 @@ import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 import {
   Input,
 } from '@cuhacking/shared/ui/input'
+import { Typography } from '@cuhacking/shared/ui/typography/typgoraphy'
 import { cn } from '@cuhacking/shared/utils/cn'
 
 interface NumberFieldProps {
@@ -53,11 +54,15 @@ export function NumberField({
               <div className="h-5 justify-start items-center inline-flex">
                 <div className="justify-start items-center gap-1 inline-flex">
                   <FormLabel className="text-white text-sm font-normal font-mono leading-tight">
-                    {label}
+                    <Typography variant="paragraph-base">
+                      <p>
+                        {label}
+                        <span className="text-red-600 text-sm font-normal font-mono leading-tight ml-1">
+                          {isRequired ? '*' : null}
+                        </span>
+                      </p>
+                    </Typography>
                   </FormLabel>
-                  <span className="text-red-600 text-sm font-normal font-mono leading-tight">
-                    {isRequired ? '*' : null}
-                  </span>
                 </div>
               </div>
 
@@ -67,13 +72,16 @@ export function NumberField({
                     <img src={grid} alt="" className="w-full h-full" />
                   </div>
                   <FormControl>
-                    <Input
-                      placeholder="X"
-                      type="number"
-                      value={value}
-                      onChange={onChange}
-                      className="w-full opacity-50 text-white text-base font-thin font-mono leading-normal bg-transparent border-none focus:border-none focus:ring-0 p-0"
-                    />
+
+                    <Typography variant="paragraph-base">
+                      <Input
+                        placeholder="X"
+                        type="number"
+                        value={value}
+                        onChange={onChange}
+                        className="w-full opacity-50 text-white text-base font-thin font-mono leading-normal bg-transparent border-none focus:border-none focus:ring-0 p-0"
+                      />
+                    </Typography>
                   </FormControl>
                 </div>
                 <div className="flex shrink-0 justify-start items-center gap-1.5">

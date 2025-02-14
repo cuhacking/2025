@@ -22,6 +22,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@cuhacking/shared/ui/popover'
+import { Typography } from '@cuhacking/shared/ui/typography/typgoraphy'
 import { cn } from '@cuhacking/shared/utils/cn'
 import { Check } from 'lucide-react'
 
@@ -74,11 +75,15 @@ export function ComboboxField({
               <div className="h-5 justify-start items-center inline-flex">
                 <div className="justify-start items-center gap-1 flex flex-wrap">
                   <FormLabel className="text-white text-sm font-normal font-mono leading-tight">
-                    {label}
+                    <Typography variant="paragraph-base">
+                      <p>
+                        {label}
+                        <span className="text-red-600 text-sm font-normal font-mono leading-tight ml-1">
+                          {isRequired ? '*' : null}
+                        </span>
+                      </p>
+                    </Typography>
                   </FormLabel>
-                  <span className="text-red-600 text-sm font-normal font-mono leading-tight">
-                    {isRequired ? '*' : null}
-                  </span>
                 </div>
               </div>
               <Popover open={open} onOpenChange={setOpen}>
