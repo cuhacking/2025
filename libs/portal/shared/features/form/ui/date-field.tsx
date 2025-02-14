@@ -19,7 +19,7 @@ import {
 } from '@cuhacking/shared/ui/popover'
 import { cn } from '@cuhacking/shared/utils/cn'
 import { format, isValid, parse } from 'date-fns'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 interface DateFieldProps {
   name: string
@@ -59,11 +59,13 @@ export function DateField({
               <div className="h-5 justify-start items-center inline-flex">
                 <div className="justify-start items-center gap-1 inline-flex">
                   <FormLabel className="text-white text-sm font-normal font-mono leading-tight">
-                    {label}
+                    <p>
+                      {label}
+                      <span className="text-red-600 text-sm font-normal font-mono leading-tight ml-1">
+                        {isRequired ? '*' : null}
+                      </span>
+                    </p>
                   </FormLabel>
-                  {isRequired && (
-                    <span className="text-red-600 text-sm font-normal font-mono leading-tight">*</span>
-                  )}
                 </div>
               </div>
 

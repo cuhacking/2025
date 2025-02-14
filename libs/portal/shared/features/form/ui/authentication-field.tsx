@@ -6,6 +6,7 @@ import google from '@cuhacking/shared/assets/icons/socials/google-white-1.svg'
 import instagram from '@cuhacking/shared/assets/icons/socials/instagram-white-1.svg'
 import linkedin from '@cuhacking/shared/assets/icons/socials/linkedin-white-1.svg'
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
+import { Typography } from '@cuhacking/shared/ui/typography/typgoraphy'
 import { cn } from '@cuhacking/shared/utils/cn'
 import { Link } from '@remix-run/react'
 
@@ -49,9 +50,11 @@ export function AuthenticationField({ provider, userTag, link }: AuthenticationF
           )}
         >
           <img src={providerLogos[provider]} alt={`${provider} logo`} className="w-6 h-6" />
-          <p className={cn('text-white text-base', userTag && providerStyles[provider])}>
-            {userTag || provider.charAt(0).toUpperCase() + provider.slice(1)}
-          </p>
+          <Typography variant="paragraph-base">
+            <p className={cn('text-white text-base', userTag && providerStyles[provider])}>
+              {userTag || provider.charAt(0).toUpperCase() + provider.slice(1)}
+            </p>
+          </Typography>
         </div>
       </Link>
     </GlassmorphicCard>
