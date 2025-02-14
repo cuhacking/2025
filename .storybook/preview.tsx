@@ -33,6 +33,7 @@ const preview: Preview = {
         order: [
           '👋 Welcome',
           '🏛 Architecture',
+          '🎯 Branding',
           'Figma',
           '📚 Docs Site',
           '🌀 Portal',
