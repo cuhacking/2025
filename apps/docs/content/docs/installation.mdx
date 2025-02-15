@@ -132,29 +132,34 @@ Update the system:
       <div className="steps">
       <div className="step">
 
-## Install [Nix](https://nixos.org/)
+## Install Package Managers
+
+```sh title="Terminal"
+sudo rm -rf "$(which yarn)" "$(which npm) $(which node)"
+```
+
+### [Nix](https://nixos.org/)
 
 ```sh title="Terminal"
 # Answer 'y' for all questions
 sh <(curl -L https://nixos.org/nix/install) --daemon --yes
 ```
 
+### [Pnpm](https://pnpm.io)
+
 ```sh title="Terminal"
-exit
+curl -fsSL https://get.pnpm.io/install.sh | sh -
 ```
 
-```
-logout
+Re-open the terminal once installation is complete.
 
-[process exited with code 127 (0x0000007f)]
-You can now close this terminal with Ctrl+D, or press Enter to restart.
+```sh title="Terminal"
+pnpm env use --global 22.13.1
 ```
-
-Hit <kbd>Enter</kbd>, and re-open the terminal.
 
 </div>
 
-      <div className="step">
+ <div className="step">
 
 ## Configure [GitHub CLI](https://github.com/cli/cli#installation)
 
@@ -195,7 +200,7 @@ You should see the following:
 Fork and Clone [Repository](https://github.com/cuhacking/hackathon).
 
 Open VSCode (Or your preferred editor):
-          ```sh title="Nix Shell"
+          ```sh title="Shell"
           # Allow all hosts and trust the authors when you see a popup
           # And install all recommended extensions
           code .
@@ -206,7 +211,6 @@ Open VSCode (Or your preferred editor):
 ```sh title="Terminal"
 gh repo fork cuhacking/2025 --clone # Fork and clone repo
 cd 2025; # Navigate into directory
-nix-shell; # Enter Nix Shell
 pnpm i; # Install packages
 pnpm exec playwright install --with-deps # Install Playwright Browsers for E2E Testing
 ```
@@ -220,17 +224,17 @@ pnpm exec playwright install --with-deps # Install Playwright Browsers for E2E T
 <Tab value="Devtools">
 <Tabs groupId="devtools-nx-commands" items={['Project Graph', 'Database Studio', 'Linter Config Inspector']} persist>
   <Tab value="Project Graph">
-```sh title="Nix Shell"
+```sh title="Shell"
 pnpm graph
 ```
   </Tab>
   <Tab value="Database Studio">
-```sh title="Nix Shell"
+```sh title="Shell"
 pnpm db
 ```
   </Tab>
   <Tab value="Linter Config Inspector">
-```sh title="Nix Shell"
+```sh title="Shell"
 pnpm inspect
 ```
   </Tab>
@@ -238,21 +242,21 @@ pnpm inspect
   </Tab>
 
   <Tab value="Documentation">
-<Tabs groupId="devtools-nx-commands" items={['Docs', 'Architecture', 'Storybook']} persist>
-  <Tab value="Docs">
-    <Tabs groupId="docs-project-nx-commands" items={['dev', 'build', 'start']} persist>
+<Tabs groupId="devtools-nx-commands" items={['Docs Site', 'Architecture', 'Storybook']} persist>
+  <Tab value="Docs Site">
+    <Tabs groupId="docs-site-project-nx-commands" items={['dev', 'build', 'start']} persist>
       <Tab value="dev">
-        ```sh title="Nix Shell"
+        ```sh title="Shell"
         pnpm nx dev docs --verbose
         ```
       </Tab>
       <Tab value="build">
-        ```sh title="Nix Shell"
+        ```sh title="Shell"
         pnpm nx build docs --verbose
         ```
       </Tab>
       <Tab value="start">
-        ```sh title="Nix Shell"
+        ```sh title="Shell"
         pnpm nx start docs --verbose
         ```
       </Tab>
@@ -261,20 +265,20 @@ pnpm inspect
   <Tab value="Architecture">
     <Tabs groupId="architecture-project-nx-commands" items={['dev', 'build', 'start']} persist>
       <Tab value="dev">
-        ```sh title="Nix Shell (Shortcut)"
+        ```sh title="Shell (Shortcut)"
         pnpm arch
         ```
-        ```sh title="Nix Shell"
+        ```sh title="Shell"
         pnpm nx dev arch --verbose
         ```
       </Tab>
       <Tab value="build">
-        ```sh title="Nix Shell"
+        ```sh title="Shell"
         pnpm nx build arch --verbose
         ```
       </Tab>
       <Tab value="start">
-        ```sh title="Nix Shell"
+        ```sh title="Shell"
         pnpm nx start arch --verbose
         ```
       </Tab>
@@ -282,7 +286,7 @@ pnpm inspect
   </Tab>
 
   <Tab value="Storybook">
-        ```sh title="Nix Shell"
+        ```sh title="Shell"
         pnpm nx storybook --verbose
         ```
   </Tab>
@@ -292,17 +296,17 @@ pnpm inspect
   <Tab value="Website">
     <Tabs groupId="website-project-nx-commands" items={['dev', 'build', 'start']} persist>
       <Tab value="dev">
-        ```sh title="Nix Shell"
+        ```sh title="Shell"
         pnpm nx dev website --verbose
         ```
       </Tab>
       <Tab value="build">
-        ```sh title="Nix Shell"
+        ```sh title="Shell"
         pnpm nx build website --verbose
         ```
       </Tab>
       <Tab value="start">
-        ```sh title="Nix Shell"
+        ```sh title="Shell"
         pnpm nx start website --verbose
         ```
       </Tab>
@@ -317,19 +321,19 @@ pnpm inspect
     >
       <Tab value="dev">
 
-        ```sh title="Nix Shell"
+        ```sh title="Shell"
         pnpm nx dev portal --verbose
         ```
       </Tab>
 
       <Tab value="build">
-        ```sh title="Nix Shell"
+        ```sh title="Shell"
         pnpm nx build portal --verbose
         ```
       </Tab>
 
       <Tab value="start">
-        ```sh title="Nix Shell"
+        ```sh title="Shell"
         pnpm nx start portal --verbose
         ```
       </Tab>
@@ -340,17 +344,17 @@ pnpm inspect
   <Tab value="Slides">
     <Tabs groupId="slides-project-nx-commands" items={['dev', 'build', 'export']} persist>
       <Tab value="dev">
-        ```sh title="Nix Shell"
+        ```sh title="Shell"
         pnpm nx dev slides --verbose
         ```
       </Tab>
       <Tab value="build">
-        ```sh title="Nix Shell"
+        ```sh title="Shell"
         pnpm nx build slides --verbose
         ```
       </Tab>
       <Tab value="export">
-        ```sh title="Nix Shell"
+        ```sh title="Shell"
         pnpm nx export slides --verbose
         ```
       </Tab>
@@ -360,17 +364,20 @@ pnpm inspect
   <Tab value="Axiom (Back-End)">
     <Tabs groupId="axiom-project-nx-commands" items={['dev', 'build', 'start']} persist>
       <Tab value="dev">
-        ```sh title="Nix Shell"
+        ```sh title="Shell (Shortcut)"
+        pnpm axiom
+        ```
+        ```sh title="Shell"
         pnpm nx dev axiom --verbose
         ```
       </Tab>
       <Tab value="build">
-        ```sh title="Nix Shell"
+        ```sh title="Shell"
         pnpm nx build axiom --verbose
         ```
       </Tab>
       <Tab value="start">
-        ```sh title="Nix Shell"
+        ```sh title="Shell"
         pnpm nx start axiom --verbose
         ```
       </Tab>
@@ -385,13 +392,13 @@ pnpm inspect
 <Accordions>
   <Accordion title="How do I run multiple projects at once?">
 Run all development servers.
-```sh title="Nix Shell"
+```sh title="Shell"
 pnpm nx run-many -t dev --verbose
 ```
 
 ..or add `-p` to filter specific projects
 
-```sh title="Nix Shell"
+```sh title="Shell"
 pnpm nx run-many -t dev -p website --verbose
 ```
 
@@ -420,7 +427,7 @@ You'll see the url(s) in your terminal for the project(s) you're running, simply
 
     For example you may see:
 
-```sh title="Nix Shell"
+```sh title="Shell"
 ╰─ pnpm nx dev docs --verbose                                                                                                                   ─╯
 
 > nx run docs:dev
