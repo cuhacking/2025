@@ -2,7 +2,7 @@
   "name": "@cuhacking/source",
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@9.15.4",
+  "packageManager": "pnpm@10.4.0",
   "license": "MIT",
   "homepage": "https://docs.cuhacking.ca",
   "repository": {
