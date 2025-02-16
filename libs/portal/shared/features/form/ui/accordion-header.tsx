@@ -6,6 +6,7 @@ import lockIcon from '@cuhacking/shared/assets/icons/general/lock-green-1.svg'
 import profileIcon from '@cuhacking/shared/assets/icons/general/profile-green-1.svg'
 import shieldIcon from '@cuhacking/shared/assets/icons/general/shield-green-1.svg'
 import warningIcon from '@cuhacking/shared/assets/icons/general/warning-green-1.svg'
+import { Typography } from '@cuhacking/shared/ui/typography'
 
 interface HeaderProps {
   name: string
@@ -47,7 +48,11 @@ export function AccordionHeader({ name, iconVariant }: HeaderProps) {
           <img src={icon} alt={`${name} icon`} />
         </div>
       </div>
-      <div className="text-[#34df29] text-xl font-extrabold">{name}</div>
+      <div className="text-[#34df29] text-xl font-extrabold">
+        <Typography variant="h4">
+          <h4>{name}</h4>
+        </Typography>
+      </div>
     </div>
   )
 }
