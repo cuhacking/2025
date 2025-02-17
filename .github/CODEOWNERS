@@ -8,8 +8,8 @@
 /apps/arch/         @MFarabi619 @HasithDeAlwis
 /apps/docs/         @HasithDeAlwis
 /apps/docs-e2e/     @HasithDeAlwis
-/apps/portal/       @MFarabi619
-/apps/portal-e2e/   @MFarabi619
+/apps/portal/       @MFarabi619 @HasithDeAlwis
+/apps/portal-e2e/   @MFarabi619 @HasithDeAlwis
 /apps/website/      @HasithDeAlwis
 /apps/website-e2e/  @HasithDeAlwis
 
