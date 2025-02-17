@@ -1,7 +1,7 @@
 import dashboard_background from '@cuhacking/portal/assets/backgrounds/dashboard-bg-1.webp'
 import { Home } from '@cuhacking/portal/pages/index/index'
 
-export default function Signin() {
+export default function Dashboard() {
   return (
     <div className="w-full">
       <Home />
