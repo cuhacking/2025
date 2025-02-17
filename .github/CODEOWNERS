@@ -1,5 +1,6 @@
-#Commit spec - chore(config/codeowners):
-#========== DEPENDENCIES ==========
+#===== ci(codeowners) ======
+#====== DEPENDENCIES =======
+#===========================
 *package*        @MFarabi619
 
 #=========== APPS ==========
