@@ -25,11 +25,14 @@
 /.editorconfig      @MFarabi619
 
 #========== LIBRARIES ==========
-/libs/external/     @MFarabi619
-/libs/shared/       @MFarabi619
 /libs/cms/          @MFarabi619
 /libs/db/           @MFarabi619
 /libs/docs/         @MFarabi619
-/libs/website/      @MFarabi619 @HasithDeAlwis
+/libs/external/     @HasithDeAlwis
 /libs/infra/        @MFarabi619
+/libs/portal/       @HasithDeAlwis @MFarabi619
+/libs/portal-e2e/   @HasithDeAlwis @MFarabi619
+/libs/shared/       @MFarabi619
 /libs/slides/       @HasithDeAlwis @MFarabi619
+/libs/website/      @HasithDeAlwis
+/libs/website-e2e/  @HasithDeAlwis
