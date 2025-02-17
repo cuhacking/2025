@@ -1,3 +1,4 @@
+# ===== ci(templates/adr) ======
 name: 🔬 Architecture Decision Record
 description: Justify a major technical decision.
 title: '[ADR]: description'
