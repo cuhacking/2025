@@ -24,7 +24,9 @@
 /nx.json            @MFarabi619
 /.editorconfig      @MFarabi619
 
-#========== LIBRARIES ==========
+#===========================
+#======= LIBRARIES =========
+#===========================
 /libs/cms/          @MFarabi619
 /libs/db/           @MFarabi619
 /libs/docs/         @MFarabi619
