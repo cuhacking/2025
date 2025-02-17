@@ -1,0 +1,22 @@
+name: "2025"
+description: cuHacking 2025 Platform's Infrastructure-as-Code
+runtime:
+  name: nodejs
+  options:
+    packagemanager: pnpm
+# =================================================
+# ======= PASTE AND FILL IN `Pulumi.dev.yaml` =====
+# =================================================
+# config:
+#   # netlify:defaultTeamId:
+#   netlify:defaultTeamSlug:
+#   # netlify:endpoint:
+#   netlify:token:
+#     secure:
+# =================================================
+# ================== REFERENCES ===================
+# =================================================
+# https://techwatching.dev/posts/any-terraform-provider-with-pulumi
+# https://registry.terraform.io/providers/netlify/netlify/latest/docs
+# https://docs.netlify.com/terraform-provider/
+# =================================================

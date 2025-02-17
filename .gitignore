@@ -1,6 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
+bin
 dist
 tmp
 /out-tsc
@@ -99,3 +100,4 @@ yarn-error.log*
 .env*.local
 .env
 .vercel
+Pulumi.dev.yaml
