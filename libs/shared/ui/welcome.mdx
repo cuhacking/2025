@@ -19,159 +19,90 @@ import tailwindcss_website from "../assets/screenshots/tailwindcss_website.png";
   <h1 className="text-3xl font-bold text-center">Welcome to cuHacking's 2025 Platform Storybook 👋</h1>
   <hr/>
 
-<Image
-  src={cuhacking_2025_design_system_cover}
-  alt="cuHacking 2025 Design System Cover"
-  className="w-full h-auto mb-4"
-/>
+  <Image
+    src={cuhacking_2025_design_system_cover}
+    alt="cuHacking 2025 Design System Cover"
+    className="w-full h-auto mb-4"
+  />
 
-<p> Here you can find the <span className="text-orange-500 font-bold">Brand Guidelines</span>, <span className="text-yellow-500 font-bold">Component Documentation</span>, and <span className="text-blue-400 font-bold">Resources</span> used for building the <span className="font-bold">[cuHacking 2025 Platform](https://cuhacking.ca)</span>, using our very own design system. </p>
+  <p> Here you can find the <span className="text-orange-500 font-bold">Brand Guidelines</span>, <span className="text-yellow-500 font-bold">Component Documentation</span>, and <span className="text-blue-400 font-bold">Resources</span> used for building the <span className="font-bold">[cuHacking 2025 Platform](https://cuhacking.ca)</span>, using our very own design system. </p>
 
-<h2 className="text-2xl font-bold">Foundations</h2>
+  {/* Foundations Section */}
+  <section className="space-y-8 mb-12">
+    <h2 className="text-2xl font-bold">Foundations</h2>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-2 py-2">
+      {/* UI Libraries Grid */}
+      <div className="flex flex-col items-center space-y-4 p-4 rounded-md border border-gray-700">
+        <a href="https://ui.aceternity.com" target="_blank" rel="noopener noreferrer" className="w-full">
+          <Image src={aceternity_ui_website} alt="Aceternity UI" className="w-full h-auto" />
+        </a>
+        <h3 className="font-semibold">Aceternity UI</h3>
+      </div>
+      
+      <div className="flex flex-col items-center space-y-4 p-4 rounded-md border border-gray-700">
+        <a href="https://magicui.design/" target="_blank" rel="noopener noreferrer" className="w-full">
+          <Image src={magic_ui_website} alt="Magic UI" className="w-full h-auto" />
+        </a>
+        <h3 className="font-semibold">Magic UI</h3>
+      </div>
 
-<table className="table-auto mx-auto">
-  <tr>
-    <th className="text-center font-semibold">Aceternity UI</th>
-    <th className="text-center font-semibold">Magic UI</th>
-  </tr>
-  <tr>
-    <td className="text-center p-4">
-      <a
-        href="https://ui.aceternity.com"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Image
-          src={aceternity_ui_website}
-          alt="Aceternity UI"
-          className="w-full h-auto"
-        />
-      </a>
-    </td>
-    <td className="text-center p-4">
-      <a
-        href="https://magicui.design/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Image
-          src={magic_ui_website}
-          alt="Magic UI"
-          className="w-full h-auto"
-        />
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <th className="text-center font-semibold">Shadcn UI</th>
-    <th className="text-center font-semibold">Tailwind CSS</th>
-  </tr>
-  <tr>
-    <td className="text-center p-4">
-      <a href="https://ui.shadcn.com" target="_blank" rel="noopener noreferrer">
-        <Image
-          src={shadcn_ui_website}
-          alt="Shadcn UI"
-          className="w-full h-auto"
-        />
-      </a>
-    </td>
-    <td className="text-center p-4">
-      <a
-        href="https://tailwindcss.com"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Image
-          src={tailwindcss_website}
-          alt="Tailwind CSS"
-          className="w-full h-auto"
-        />
-      </a>
-    </td>
-  </tr>
-</table>
+      <div className="flex flex-col items-center space-y-4 p-4 rounded-md border border-gray-700">
+        <a href="https://ui.shadcn.com" target="_blank" rel="noopener noreferrer" className="w-full">
+          <Image src={shadcn_ui_website} alt="Shadcn UI" className="w-full h-auto" />
+        </a>
+        <h3 className="font-semibold">Shadcn UI</h3>
+      </div>
 
-{" "}
+      <div className="flex flex-col items-center space-y-4 p-4 rounded-md border border-gray-700">
+        <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" className="w-full">
+          <Image src={tailwindcss_website} alt="Tailwind CSS" className="w-full h-auto" />
+        </a>
+        <h3 className="font-semibold">Tailwind CSS</h3>
+      </div>
+    </div>
+  </section>
 
-<h2 className="text-2xl font-bold">Quick Links</h2>
+  {/* Quick Links Section */}
+  <section className="space-y-8 mt-5">
+    <h2 className="text-2xl font-bold">Quick Links</h2>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-2 py-2">
+      <div className="flex flex-col items-center space-y-4 p-4 rounded-md border border-gray-700">
+        <a href="https://figma.com/design/wc1JOWR48tBNkjcjwY3AzB/..." target="_blank" rel="noopener noreferrer" className="w-full">
+          <Image src={cuhacking_2025_figma_design_system_and_assets} alt="Figma" className="w-full h-auto" />
+        </a>
+        <h3 className="font-semibold">Figma</h3>
+      </div>
 
-{" "}
+      <div className="flex flex-col items-center space-y-4 p-4 rounded-md border border-gray-700">
+        <a href="https://docs.cuhacking.ca" target="_blank" rel="noopener noreferrer" className="w-full">
+          <Image src={cuhacking_2025_docs_site} alt="cuHacking 2025 Docs Site" className="w-full h-auto" />
+        </a>
+        <h3 className="font-semibold">Docs Site</h3>
+      </div>
 
-<table className="table-auto mx-auto">
-  <tr>
-    <th className="text-center font-semibold">Figma</th>
-    <th className="text-center font-semibold">Docs Site</th>
-  </tr>
-  <tr>
-    <td className="text-center p-4">
-      <a
-        href="https://figma.com/design/wc1JOWR48tBNkjcjwY3AzB/%E2%8C%A8%EF%B8%8F-cuHacking-Design-System?node-id=0-1&t=YTR1ET4Qw1wG1cjz-1"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Image
-          src={cuhacking_2025_figma_design_system_and_assets}
-          alt="Figma"
-          className="w-full h-auto"
-        />
-      </a>
-    </td>
-    <td className="text-center p-4">
-      <a
-        href="https://docs.cuhacking.ca"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Image
-          src={cuhacking_2025_docs_site}
-          alt="cuHacking 2025 Docs Site"
-          className="w-full h-auto"
-        />
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <th className="text-center font-semibold">GitHub Repository</th>
-    <th className="text-center font-semibold">Project Board</th>
-  </tr>
-  <tr>
-    <td className="text-center p-4">
-      <a
-        href="https://github.com/cuhacking/2025"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Image
-          src={cuhacking_2025_github_repo_readme}
-          alt="cuHacking 2025 GitHub Repository"
-          className="w-full h-auto"
-        />
-      </a>
-    </td>
-    <td className="text-center p-4">
-      <a
-        href="https://github.com/orgs/cuhacking/projects/4"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Image
-          src={cuhacking_2025_project_board}
-          alt="Project Board"
-          className="w-full h-auto"
-        />
-      </a>
-    </td>
-  </tr>
-</table>
-<div className="flex items-center flex-col lg:flex-row justify-between gap-x-3">
-  <a href="https://github.com/cuhacking/2025/graphs/contributors" rel="noopener noreferrer" className="hover:scale-110 duration-300 transition">
-    Made with ❤️ for Hackers by Hackers.
-  </a>
-  <a href="https://netlify.com" target="_blank" rel="noopener noreferrer" className="flex hover:scale-110 duration-300 transition items-center gap-x-3">
-    Sponsored by
-    <img className="w-24" src={netlify_logo.src} />
-  </a>
-</div>
+      <div className="flex flex-col items-center space-y-4 p-4 rounded-md border border-gray-700">
+        <a href="https://github.com/cuhacking/2025" target="_blank" rel="noopener noreferrer" className="w-full">
+          <Image src={cuhacking_2025_github_repo_readme} alt="cuHacking 2025 GitHub Repository" className="w-full h-auto" />
+        </a>
+        <h3 className="font-semibold">GitHub Repository</h3>
+      </div>
 
+      <div className="flex flex-col items-center space-y-4 p-4 rounded-md border border-gray-700">
+        <a href="https://github.com/orgs/cuhacking/projects/4" target="_blank" rel="noopener noreferrer" className="w-full">
+          <Image src={cuhacking_2025_project_board} alt="Project Board" className="w-full h-auto" />
+        </a>
+        <h3 className="font-semibold">Project Board</h3>
+      </div>
+    </div>
+  </section>
+
+  <div className="flex items-center flex-col lg:flex-row justify-between gap-x-3">
+    <a href="https://github.com/cuhacking/2025/graphs/contributors" rel="noopener noreferrer" className="hover:scale-110 duration-300 transition">
+      Made with ❤️ for Hackers by Hackers.
+    </a>
+    <a href="https://netlify.com" target="_blank" rel="noopener noreferrer" className="flex hover:scale-110 duration-300 transition items-center gap-x-3">
+      Sponsored by
+      <img className="w-24" src={netlify_logo.src} />
+    </a>
+  </div>
 </div>
