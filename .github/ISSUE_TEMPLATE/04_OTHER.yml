@@ -1,3 +1,4 @@
+# ===== ci(templates/other) ======
 name: Other
 description: Create an issue that doesn't fit into any other category
 title: 'type(scope): description'
