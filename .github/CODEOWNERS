@@ -15,7 +15,9 @@ infra/              @MFarabi619
 *.nix               @MFarabi619
 .env.example        @MFarabi619
 
-#=========== APPS ==========
+#===========================
+#========== APPS ===========
+#===========================
 /apps/arch/         @MFarabi619 @HasithDeAlwis
 /apps/axiom/        @MFarabi619 @HasithDeAlwis
 /apps/docs/         @HasithDeAlwis
