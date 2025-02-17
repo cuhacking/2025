@@ -1,3 +1,4 @@
+# ===== ci(test/e2e) ======
 name: End-to-End Tests
 
 on:
