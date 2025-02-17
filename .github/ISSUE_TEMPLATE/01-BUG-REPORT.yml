@@ -1,5 +1,6 @@
+# ===== ci(templates/bug-report) ======
 name: 🚨 Bug Report
-description: Raise awareness for unintended behaviour affecting the cuHacking 2025 Platform (portal, docs, tools, and website).
+description: Raise awareness for unintended behaviour affecting the cuHacking 2025 Platform.
 title: 'fix(scope): description'
 labels:
   - bug
