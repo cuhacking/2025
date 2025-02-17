@@ -18,6 +18,7 @@ export default antfu({
     'libs/cms/',
     'apps/slides/slides.md',
     'tools/email-templates',
+    'infra',
   ],
 })
 

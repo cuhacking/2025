@@ -21,6 +21,18 @@
       "options": {
         "cwd": "infra"
       }
+    },
+    "deploy": {
+      "command": "pulumi up -e -y",
+      "options": {
+        "cwd": "infra"
+      }
+    },
+    "preview": {
+      "command": "pulumi preview -e -s 'dev'",
+      "options": {
+        "cwd": "infra"
+      }
     }
   }
 }
