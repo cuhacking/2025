@@ -1,7 +1,19 @@
 #===== ci(codeowners) ======
-#====== DEPENDENCIES =======
 #===========================
-*package*        @MFarabi619
+#===== INFRASTRUCTURE ======
+#===========================
+infra/              @MFarabi619
+*package*           @MFarabi619
+*config*            @MFarabi619
+*build*             @MFarabi619
+/.github/           @MFarabi619
+/.husky/            @MFarabi619
+/.vscode/           @MFarabi619
+/.cz.json           @MFarabi619
+/nx.json            @MFarabi619
+/.editorconfig      @MFarabi619
+*.nix               @MFarabi619
+.env.example        @MFarabi619
 
 #=========== APPS ==========
 /apps/arch/         @MFarabi619 @HasithDeAlwis
@@ -13,16 +25,6 @@
 /apps/slides/       @MFarabi619 @HasithDeAlwis
 /apps/website/      @HasithDeAlwis
 /apps/website-e2e/  @HasithDeAlwis
-
-#========== CONFIGURATIONS ==========
-*config*            @MFarabi619
-*build*             @MFarabi619
-/.github/           @MFarabi619
-/.husky/            @MFarabi619
-/.vscode/           @MFarabi619
-/.cz.json           @MFarabi619
-/nx.json            @MFarabi619
-/.editorconfig      @MFarabi619
 
 #===========================
 #======= LIBRARIES =========
