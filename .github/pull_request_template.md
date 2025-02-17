@@ -1,4 +1,7 @@
-<!--- Ensure PR title matches issue title -->
+<!-- ========================= -->
+<!-- ci(template/pull-request) -->
+<!-- ========================= -->
+<!-- Ensure PR title matches issue title -->
 <!-- For example: -->
 <!-- Issue -> fix(portal/header): clicking resources button goes to sponsors page instead of resources page -->
 <!-- Branch -> mfarabi/fix/157-clicking-resources-button-goes-to-sponsors-page-instead-of-resources-page -->
