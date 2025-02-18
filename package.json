@@ -4,6 +4,7 @@
   "private": true,
   "packageManager": "pnpm@10.4.0",
   "license": "GPL-3.0",
+  "funding": "https://sponsor.cuhacking.ca",
   "homepage": "https://docs.cuhacking.ca",
   "repository": {
     "type": "git",
