@@ -1,7 +1,7 @@
 {
   "name": "nestjs",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/scaffold-examples/nestjs",
+  "sourceRoot": "scaffold-examples/nestjs",
   "projectType": "application",
   "tags": [],
   "// targets": "to see all targets run: nx show project nestjs --web"

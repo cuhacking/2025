@@ -15,7 +15,7 @@ jobs:
         node-version: [22.13.1]
 
     steps:
-      - name: 🛎️ Checkout Code
+      - name: 🛎 Checkout Code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Fetch all history for all branches and tags to ensure the 'main' branch is available
@@ -37,8 +37,8 @@ jobs:
         # run: pnpm i; pnpm nx affected -t lint --base=origin/main --head=HEAD --verbose
         # Use 'origin/main' to reference the exact remote branch
 
-      - name: 🏗️ Build Affected Projects
-        run: pnpm nx affected -t build --base=origin/main --head=HEAD --verbose
+      - name: 🏗 Build Affected Projects
+        run: pnpm nx affected -t build --exclude likec4-cloud-example likec4-template payload-cms-website react-email-starter nestjs --base origin/main --head HEAD --verbose
         # Ensure the base is set to 'origin/main' to avoid any ambiguity about the branch
 
       - name: 💰 Profit
