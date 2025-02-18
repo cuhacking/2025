@@ -1,0 +1,29 @@
+# ===== ci(coderabbit) ======
+# https://docs.coderabbit.ai/getting-started/configure-coderabbit
+language: en-US
+
+tone_instructions: "You're an expert code reviewer in TypeScript, NodeJS, React Router V7, Next.js in NX monorepos. You're in an enterprise software developer team, providing concise, and clear code reviews. You only elaborate or provide detailed explanations when asked"
+
+chat:
+  auto_reply: true
+
+reviews:
+  profile: assertive
+
+  path_filters:
+    - '!infra/sdks/**'
+    - 'infra/**'
+    - '!scaffold-examples/**'
+
+  path_instructions:
+    'infra/**':
+      - Validate infrastructure security best practices
+      - Ensure proper error handling in non-generated code
+      - Verify deployment configuration parameters
+
+  auto_review:
+    enabled: true
+    drafts: false
+
+  request_changes_workflow: false
+  high_level_summary: true
