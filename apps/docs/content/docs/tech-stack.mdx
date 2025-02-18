@@ -886,7 +886,7 @@ import Image from "next/image";
   />
 </Cards>
 
-### ⚗️ Test Automation
+### ⚗ Test Automation
 
 <Cards>
   <Card
@@ -1111,7 +1111,7 @@ import Image from "next/image";
 </Cards>
 
 
-### ♻️ Continous Integration
+### ♻ Continous Integration
 
 <Cards>
   <Card
@@ -1204,6 +1204,29 @@ import Image from "next/image";
 ### 🚢 Continous Deployment
   <Cards>
   <Card
+  title={"Pulumi"}
+    description={
+      <>
+        <li>
+          For automating Netlify and having almost AWS-level of control over it, without the maintenance cost.
+        </li>
+        <li>
+        Uses the Terraform Netlify provider through an SDK bridge.
+        </li>
+      </>
+    }
+    href={"https://www.pulumi.com"}
+    icon={
+      <img
+        src="https://avatars.githubusercontent.com/u/21992475?s=48&v=4.svg"
+        alt="Pulumi Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+
+  <Card
     title={"Netlify"}
     description={
       <>
@@ -1215,7 +1238,7 @@ import Image from "next/image";
           Uses <a href="https://aws.amazon.com/">AWS</a> under the hood.
         </li>
         <li>
-          Integrates well with Next.js and also allows for demo deployments for
+          Allows for preview deployments for
           our own purposes which are not indexed on google.
         </li>
         <li>
