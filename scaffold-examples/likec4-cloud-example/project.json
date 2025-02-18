@@ -1,7 +1,7 @@
 {
   "name": "likec4-cloud-example",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/scaffold-examples/likec4-cloud-example",
+  "sourceRoot": "scaffold-examples/likec4-cloud-example",
   "projectType": "application",
   "tags": [],
   "// targets": "to see all targets run: nx show project likec4-cloud-example --web",
