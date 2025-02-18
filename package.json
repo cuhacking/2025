@@ -10,7 +10,8 @@
     "url": "git+https://github.com/cuhacking/2025.git"
   },
   "bugs": {
-    "url": "https://github.com/cuhacking/2025/issues"
+    "url": "https://github.com/cuhacking/2025/issues",
+    "email": "info@cuhacking.ca"
   },
   "engines": {
     "node": "22.13.1"
