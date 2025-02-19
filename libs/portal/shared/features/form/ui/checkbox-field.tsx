@@ -33,12 +33,12 @@ export function CheckboxField({ name, form, label, isRequired }: CheckboxFieldPr
             </Typography>
 
           </FormControl>
-          <FormLabel onClick={() => { field.setValue(name, !field.value) }} className="text-white font-normal font-mono ">
+          <FormLabel onClick={() => { field.setValue(name, !field.value) }}>
             <Typography variant="paragraph-base">
               {label}
             </Typography>
           </FormLabel>
-          {isRequired && <span className="text-red-600 text-sm font-mono">*</span>}
+          {isRequired && <span className="text-red-600 ml-1">*</span>}
           <FormMessage />
 
         </FormItem>
