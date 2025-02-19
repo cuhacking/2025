@@ -44,7 +44,7 @@ export function TextField({ variant, name, form, placeholder, label, isRequired,
       imgSrc = arrowIcon
   }
   return (
-    <GlassmorphicCard className={cn('w-full max-h-min p-2 flex flex-col justify-start items-start gap-0.5', isDisabled && 'opacity-50 cursor-not-allowed bg-gray-800')} variant={info ? 'info' : 'default'} info={info}>
+    <GlassmorphicCard className={cn('w-full max-h-min p-2 flex flex-col justify-start items-start gap-0.5', isDisabled && 'border-white border-opacity-5 cursor-not-allowed text-white text-muted')} variant={info ? 'info' : 'default'} info={info}>
       <FormField
         control={form.control}
         name={name}
@@ -54,24 +54,24 @@ export function TextField({ variant, name, form, placeholder, label, isRequired,
               <Typography variant="paragraph-base">
                 <p>
                   {label}
-                  <span className="text-red-600 text-sm font-normal font-mono leading-tight ml-1">
+                  <span className="text-red-600 ml-1">
                     {isRequired ? '*' : null}
                   </span>
                 </p>
               </Typography>
             </FormLabel>
             <FormControl>
-              <div className="w-full self-stretch py-0.5 rounded-md flex items-center gap-3">
-                <div className="items-center grow shrink basis-0 pb-0.5 flex items-start gap-3 w-full">
-                  <img src={imgSrc} className="w-6 h-6" />
-                  <Typography variant="paragraph-base">
+              <div className="w-full self-stretch rounded-md flex items-center gap-3">
+                <div className="py-1.5 grow basis-0 flex items-start gap-3 w-full">
+                  <img src={imgSrc} className={cn('w-6 h-6', isDisabled && 'opacity-25')} />
+                  <Typography variant="paragraph-base" className="w-full">
                     <Input
                       {...field}
                       disabled={isDisabled}
                       placeholder={placeholder}
                       type="text"
                       value={field.value || ''}
-                      className="w-full text-white"
+                      className="w-full py-[1px]"
                     />
                   </Typography>
                 </div>
