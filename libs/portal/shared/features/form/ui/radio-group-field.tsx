@@ -35,51 +35,39 @@ export function RadioGroupField({ form, name, label, options, isRequired = false
         control={form.control}
         name={name}
         render={({ field }) => (
-          <FormItem className="w-full h-auto flex-col justify-start items-start inline-flex">
-            <div className="w-full flex-col justify-start items-start gap-2.5 flex">
-              <div className="self-stretch flex-col justify-start items-start gap-1 flex">
-                <div className="h-5 justify-start items-center w-full inline-flex">
-                  <div className="justify-start items-center gap-1 inline-flex">
-                    <FormLabel className="text-white font-normal font-mono leading-tight">
-                      <Typography variant="paragraph-base">
-                        <p>
-                          {label}
-                          <span className="text-red-600 text-sm font-normal font-mono leading-tight ml-1">
-                            {isRequired ? '*' : null}
-                          </span>
-                        </p>
-                      </Typography>
-                    </FormLabel>
+          <FormItem className="flex flex-col gap-0.5 w-full h-auto justify-start items-start">
+            <FormLabel>
+              <Typography variant="paragraph-base">
+                <p>
+                  {label}
+                  <span className="text-red-600 ml-1">
+                    {isRequired ? '*' : null}
+                  </span>
+                </p>
+              </Typography>
+            </FormLabel>
+            <FormControl>
+              <RadioGroup
+                onValueChange={field.onChange}
+                defaultValue={field.value}
+                className="flex flex-wrap justify-start gap-1 sm:gap-2 w-full"
+              >
+                {options.map(option => (
+                  <div key={option.value}>
+                    <RadioGroupItem value={option.value} id={option.value} className="peer sr-only w-full" />
+                    <Label
+                      htmlFor={option.value}
+                      className="px-3 py-2 rounded-md flex flex-wrap items-center justify-center
+                          text-sm font-extralight uppercase
+                          cursor-pointer peer-data-[state=checked]:bg-white/25 hover:bg-white/10 transition-colors"
+                    >
+                      {option.label}
+                    </Label>
                   </div>
-                </div>
-
-                <FormControl>
-                  <RadioGroup
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                    className="flex flex-wrap justify-start gap-1 w-full"
-                  >
-                    {options.map(option => (
-                      <div key={option.value} className="relative">
-                        <RadioGroupItem value={option.value} id={option.value} className="peer sr-only w-full" />
-
-                        <Typography variant="paragraph-base">
-                          <Label
-                            htmlFor={option.value}
-                            className="px-3 h-10 rounded-md flex items-center justify-center gap-2 text-white font-medium font-mono uppercase leading-tight cursor-pointer
-                          peer-data-[state=checked]:bg-white/25 hover:bg-white/10 transition-colors"
-                          >
-                            {option.label}
-                          </Label>
-                        </Typography>
-
-                      </div>
-                    ))}
-                  </RadioGroup>
-                </FormControl>
-                <FormMessage />
-              </div>
-            </div>
+                ))}
+              </RadioGroup>
+            </FormControl>
+            <FormMessage />
           </FormItem>
         )}
       />

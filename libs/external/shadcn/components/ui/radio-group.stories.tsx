@@ -25,7 +25,7 @@ export const Default: Story = {
 
             <Label
               htmlFor="1"
-              className="px-3 h-10 rounded-md flex items-center justify-center gap-2 text-white text-sm font-medium font-mono uppercase leading-tight cursor-pointer
+              className="px-3 py-2 rounded-md flex items-center justify-center gap-2 text-white text-sm font-medium font-mono uppercase leading-tight cursor-pointer
                           peer-data-[state=checked]:bg-white/25 hover:bg-white/10 transition-colors"
             >
               Option 1
@@ -35,7 +35,7 @@ export const Default: Story = {
             <RadioGroupItem id="2" value="option2" />
             <Label
               htmlFor="2"
-              className="px-3 h-10 rounded-md flex items-center justify-center gap-2 text-white text-sm font-medium font-mono uppercase leading-tight cursor-pointer
+              className="px-3 py-2 rounded-md flex items-center justify-center gap-2 text-white text-sm font-medium font-mono uppercase leading-tight cursor-pointer
                           peer-data-[state=checked]:bg-white/25 hover:bg-white/10 transition-colors"
             >
               Option 1
@@ -45,7 +45,7 @@ export const Default: Story = {
             <RadioGroupItem id="3" value="option3" />
             <Label
               htmlFor="3"
-              className="px-3 h-10 rounded-md flex items-center justify-center gap-2 text-white text-sm font-medium font-mono uppercase leading-tight cursor-pointer
+              className="px-3 py-2 rounded-md flex items-center justify-center gap-2 text-white text-sm font-medium font-mono uppercase leading-tight cursor-pointer
                           peer-data-[state=checked]:bg-white/25 hover:bg-white/10 transition-colors"
             >
               Option 1
