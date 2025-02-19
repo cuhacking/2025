@@ -445,7 +445,7 @@ const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSelectorP
           handleKeyDown(e)
           commandProps?.onKeyDown?.(e)
         }}
-        className={cn('bg-[#383838]/40 h-auto overflow-visible', commandProps?.className)}
+        className={cn('h-auto overflow-visible', commandProps?.className)}
         shouldFilter={
           commandProps?.shouldFilter !== undefined ? commandProps.shouldFilter : !onSearch
         } // When onSearch is provided, we don't want to filter the options. You can still override it.
@@ -453,7 +453,7 @@ const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSelectorP
       >
         <div
           className={cn(
-            'min-h-10 rounded-md border border-muted text-base md:text-sm ring-offset-background ',
+            'h-auto rounded-md border border-border text-base backdrop-blur-md bg-card hover:bg-white/10 p-1.5',
             {
               'py-2': selected.length !== 0,
               'cursor-text': !disabled && selected.length !== 0,
@@ -466,7 +466,7 @@ const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSelectorP
             inputRef?.current?.focus()
           }}
         >
-          <div className="gap-y-1 px-1.5 flex flex-col">
+          <div className="flex flex-col ">
             <div className="relative flex flex-wrap gap-1 items-center ">
               {selected.map((option) => {
                 return (
@@ -527,10 +527,10 @@ const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSelectorP
                 }}
                 placeholder={hidePlaceholderWhenSelected && selected.length !== 0 ? '' : placeholder}
                 className={cn(
-                  'flex-1  bg-transparent outline-none placeholder:text-muted',
+                  'flex-1  bg-transparent outline-none placeholder:text-muted placeholder:text-base placeholder:italic',
                   {
                     'w-full': hidePlaceholderWhenSelected,
-                    'px-3 py-2': selected.length === 0,
+                    '': selected.length === 0,
                     'ml-1': selected.length !== 0,
                   },
                   inputProps?.className,
