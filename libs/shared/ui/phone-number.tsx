@@ -1,5 +1,6 @@
+import chevronUpDown from '@cuhacking/shared/assets/icons/general/chevron-up-down-white-1.svg'
 import { cn } from '@cuhacking/shared/utils/cn'
-import { CheckIcon, ChevronsUpDown } from 'lucide-react'
+import { CheckIcon } from 'lucide-react'
 import * as React from 'react'
 import * as RPNInput from 'react-phone-number-input'
 
@@ -91,15 +92,11 @@ function CountrySelect({
         <Button
           type="button"
           variant="outline"
-          className="flex !bg-[#383838]/40 bg-gap-1 gap-x-3 border-[#383838]/40 rounded-e-none rounded-lg pl-1 pr-2 focus:z-10"
+          className="flex backdrop-blur-md bg-card hover:bg-white/10 gap-0.5 border-border rounded-lg pl-0.5 pr-1.5 py-1.5 focus:z-10 h-auto"
           disabled={disabled}
         >
-          <ChevronsUpDown
-            className={cn(
-              '-mr-2 size-4 opacity-50',
-              disabled ? 'hidden' : 'opacity-100',
-            )}
-          />
+
+          <img src={chevronUpDown} className="h-6 w-6" />
 
           <FlagComponent
             country={selectedCountry}
