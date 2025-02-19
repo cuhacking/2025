@@ -4,6 +4,7 @@ import grid from '@cuhacking/shared/assets/icons/general/grid.svg'
 import minus from '@cuhacking/shared/assets/icons/general/minus-1.svg'
 import plus from '@cuhacking/shared/assets/icons/general/plus-1.svg'
 
+import { Button } from '@cuhacking/shared/ui/button'
 import {
   FormControl,
   FormField,
@@ -50,14 +51,14 @@ export function NumberField({
         name={name}
         render={() => (
           <FormItem className="w-full">
-            <div className="flex-col w-full justify-start items-start gap-0.5 inline-flex">
-              <div className="h-5 justify-start items-center inline-flex">
+            <div className="flex-col w-full justify-start items-start inline-flex">
+              <div className="justify-start items-center inline-flex">
                 <div className="justify-start items-center gap-1 inline-flex">
-                  <FormLabel className="text-white text-sm font-normal font-mono leading-tight">
+                  <FormLabel>
                     <Typography variant="paragraph-base">
                       <p>
                         {label}
-                        <span className="text-red-600 text-sm font-normal font-mono leading-tight ml-1">
+                        <span className="text-red-600 ml-1">
                           {isRequired ? '*' : null}
                         </span>
                       </p>
@@ -66,35 +67,42 @@ export function NumberField({
                 </div>
               </div>
 
-              <div className="max-w-full w-full py-0.5 rounded-md justify-between items-center gap-3 flex">
-                <div className="grow flex justify-start items-center gap-3">
-                  <div className="w-6 h-6 overflow-hidden">
-                    <img src={grid} alt="" className="w-full h-full" />
-                  </div>
+              <div className="flex w-full justify-between items-center ">
+                <div className="flex grow justify-start items-center py-1.5 gap-3">
+                  <img src={grid} alt="" className="w-6 h-6" />
                   <FormControl>
-
-                    <Typography variant="paragraph-base">
+                    <Typography variant="paragraph-base" className="w-full">
                       <Input
                         placeholder="X"
                         type="number"
                         value={value}
                         onChange={onChange}
-                        className="w-full opacity-50 text-white text-base font-thin font-mono leading-normal bg-transparent border-none focus:border-none focus:ring-0 p-0"
+                        className="w-full py-[1px]"
                       />
                     </Typography>
                   </FormControl>
                 </div>
-                <div className="flex shrink-0 justify-start items-center gap-1.5">
-                  <div className="w-6 h-6 justify-center items-center flex overflow-hidden cursor-pointer" onClick={handleDecrement}>
-                    <div className="w-6 h-6 relative flex-col justify-start items-start flex overflow-hidden">
-                      <img src={minus} alt="-" className="w-full h-full" />
-                    </div>
-                  </div>
-                  <div className="w-6 h-6 justify-center items-center flex overflow-hidden cursor-pointer" onClick={handleIncrement}>
-                    <div className="w-6 h-6 relative flex-col justify-start items-start flex overflow-hidden">
-                      <img src={plus} alt="+" className="w-full h-full" />
-                    </div>
-                  </div>
+                <div className="flex-shrink-0 flex grow gap-1">
+                  <Button
+                    className="flex-shrink-0 p-1 h-auto w-auto"
+                    variant="icon"
+                    onClick={handleDecrement}
+                    onKeyDown={e => e.key === 'Enter' && handleDecrement()}
+                    tabIndex={0}
+                    aria-label="Decrease value"
+                  >
+                    <img src={minus} alt="-" className="w-6 h-6" />
+                  </Button>
+                  <Button
+                    className="flex-shrink-0 p-1 h-auto w-auto"
+                    variant="icon"
+                    onClick={handleIncrement}
+                    onKeyDown={e => e.key === 'Enter' && handleIncrement()}
+                    tabIndex={0}
+                    aria-label="Increase value"
+                  >
+                    <img src={plus} alt="+" className="w-6 h-6" />
+                  </Button>
                 </div>
               </div>
             </div>
