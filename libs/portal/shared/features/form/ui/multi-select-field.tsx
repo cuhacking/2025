@@ -46,28 +46,25 @@ export function MultiSelectField({
         name={name}
         render={() => (
           <FormItem className="w-full">
-            <div className="flex-col w-full justify-start items-start gap-0.5 inline-flex">
-              <div className="h-5 justify-start items-center inline-flex">
+            <div className="flex-col w-full justify-start items-start inline-flex">
+              <div className="justify-start items-center inline-flex">
                 <div className="justify-start items-center gap-1 inline-flex">
-                  <FormLabel className="text-white font-normal font-mono leading-tight">
+                  <FormLabel>
                     <Typography variant="paragraph-base">
                       <p>
                         {label}
-                        <span className="text-red-600 text-sm font-normal font-mono leading-tight ml-1">
+                        <span className="text-red-600 ml-1">
                           {isRequired ? '*' : null}
                         </span>
                       </p>
                     </Typography>
                   </FormLabel>
-                  <span className="text-red-600 text-sm font-normal font-mono leading-tight">
-                    {isRequired ? '*' : null}
-                  </span>
                 </div>
               </div>
 
-              <div className="max-w-sfull w-full py-0.5 rounded-md justify-between items-center gap-3 flex">
+              <div className="max-w-full w-full rounded-md justify-between items-center gap-3 flex">
                 <FormControl>
-                  <Typography variant="paragraph-base">
+                  <Typography variant="paragraph-base" className="w-full">
                     <MultipleSelector
                       name={name}
                       form={form}
