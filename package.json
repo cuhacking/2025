@@ -20,7 +20,7 @@
   "engineStrict": true,
   "scripts": {
     "graph": "nx graph --groupByFolder --verbose # 🗺 Project graph",
-    "db": "infra; nx schema axiom --verbose; pnpm nx studio libs/db --verbose # 🎙 Drizzle Studio",
+    "db": "pnpm infra; nx schema axiom --verbose; pnpm nx view db --verbose",
     "inspect": "pnpx @eslint/config-inspector # 🧹 Linter Config Inspector",
     "docs:dev": "nx dev docs --verbose # 📚 Developer Documentation Site",
     "arch": "nx dev arch --verbose # 🗄 Interactive System Design",
