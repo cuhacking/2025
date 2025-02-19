@@ -240,9 +240,10 @@ export function Questions({ user, status }: ProfileFormProps) {
                   />
                   <FormLabel
                     onClick={() => setIsStudent(prev => !prev)}
-                    className="text-white text-sm font-normal font-mono leading-tight"
                   >
-                    I am a student
+                    <Typography variant="paragraph-base">
+                      I am a student
+                    </Typography>
                   </FormLabel>
                 </div>
 
