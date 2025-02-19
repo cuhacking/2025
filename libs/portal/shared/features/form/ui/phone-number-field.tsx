@@ -32,15 +32,15 @@ export function PhoneNumberField({
         control={form.control}
         name={name}
         render={({ field }) => (
-          <FormItem className="w-full flex-col justify-start  items-start inline-flex">
-            <div className="flex-col w-full justify-start items-start gap-2.5 flex">
-              <div className="w-full flex-col justify-start items-start gap-1.5 flex">
-                <div className="flex gap-1">
-                  <FormLabel className="text-white font-normal font-mono leading-tight">
+          <FormItem className="w-full flex-col justify-start items-start inline-flex">
+            <div className="flex-col w-full justify-start items-start flex">
+              <div className="w-full flex-col justify-start items-start flex">
+                <div className="flex">
+                  <FormLabel>
                     <Typography variant="paragraph-base">
                       <p>
                         {label}
-                        <span className="text-red-600 text-sm font-normal font-mono leading-tight ml-1">
+                        <span className="text-red-600 ml-1">
                           {isRequired ? '*' : null}
                         </span>
                       </p>
@@ -48,10 +48,9 @@ export function PhoneNumberField({
                   </FormLabel>
                 </div>
                 <FormControl>
-                  <Typography variant="paragraph-base">
+                  <Typography variant="paragraph-base" className="w-full">
                     <PhoneInput
                       placeholder="+X XXX XXX XXXX"
-                      className="p-1.5 gap-x-3 w-full h-9 bg-[#383838]/40 rounded-md border border-white/20 text-white font-mono"
                       {...field}
                     />
                   </Typography>
