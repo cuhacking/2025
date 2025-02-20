@@ -12,6 +12,7 @@ interface NavbarProps {
   }[]
   logo: string
   socials: {
+    name: string
     link: string
     media: Media
   }[]
