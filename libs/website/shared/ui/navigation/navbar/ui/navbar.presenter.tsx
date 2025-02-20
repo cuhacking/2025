@@ -22,7 +22,6 @@ interface Media {
   src: string
   alt: string
 }
-
 interface NavbarProps {
   links: {
     name: string
@@ -59,6 +58,7 @@ export function NavbarPresenter({
           className="transition-transform duration-300 hover:scale-[1.2] relative z-[60]"
         />
       </Link>
+
       <NavigationMenu className="hidden md:block">
         <NavigationMenuList className="gap-x-10">
           {links.map(({ name, link }, index) => (
@@ -68,6 +68,7 @@ export function NavbarPresenter({
           ))}
         </NavigationMenuList>
       </NavigationMenu>
+
       <ClientOnly fallback={null}>
         {() => (
           <Drawer direction="right" open={isOpen}>

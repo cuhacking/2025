@@ -44,6 +44,7 @@ const meta = {
 
 const socials = [
   {
+    name: 'GitHub',
     link: 'https://github.com',
     media: {
       src: github_white.src,
@@ -51,6 +52,7 @@ const socials = [
     },
   },
   {
+    name: 'Instagram',
     link: 'https://instagram.com',
     media: {
       src: instagram_white.src,
@@ -58,6 +60,7 @@ const socials = [
     },
   },
   {
+    name: 'LinkedIn',
     link: 'https://linkedin.com',
     media: {
       src: linkedin_white.src,
@@ -65,6 +68,7 @@ const socials = [
     },
   },
   {
+    name: 'Linktree',
     link: 'https://linktr.ee',
     media: {
       src: linktree_white.src,
@@ -72,6 +76,7 @@ const socials = [
     },
   },
   {
+    name: 'Email',
     link: 'mailto:example@email.com',
     media: {
       src: email_white.src,
@@ -79,6 +84,7 @@ const socials = [
     },
   },
   {
+    name: 'Discord',
     link: 'https://discord.com',
     media: {
       src: discord_white.src,
@@ -86,6 +92,7 @@ const socials = [
     },
   },
   {
+    name: 'Documentation',
     link: 'https://docs.com',
     media: {
       src: docs_white.src,
@@ -93,6 +100,7 @@ const socials = [
     },
   },
   {
+    name: 'Figma',
     link: 'https://figma.com',
     media: {
       src: figma_white.src,
