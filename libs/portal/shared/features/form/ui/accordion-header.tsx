@@ -42,17 +42,11 @@ export function AccordionHeader({ name, iconVariant }: HeaderProps) {
       icon = null
   }
   return (
-    <div className="h-7 justify-start items-center gap-1 inline-flex">
-      <div className="w-6 h-6 justify-center items-center flex overflow-hidden">
-        <div className="w-6 h-6 relative flex-col justify-start items-start flex overflow-hidden">
-          <img src={icon} alt={`${name} icon`} />
-        </div>
-      </div>
-      <div className="text-[#34df29] text-xl font-extrabold">
-        <Typography variant="h4">
-          <h4>{name}</h4>
-        </Typography>
-      </div>
+    <div className="inline-flex justify-start items-center gap-2 cursor-pointer transition-transform duration-200 ease-out hover:scale-105 active:scale-95 hover:shadow-lg">
+      <img src={icon} alt={`${name} icon`} className="w-6 h-6" />
+      <Typography variant="h4" className="text-primary">
+        <h4>{name}</h4>
+      </Typography>
     </div>
   )
 }
