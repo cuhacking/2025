@@ -1,4 +1,4 @@
-// Extend cloud.backend model
+// Extend platform.backend model
 model {
 
   extend aws {
@@ -8,7 +8,7 @@ model {
       link https://aws.amazon.com/rds/postgresql/
       icon tech:postgresql  
 
-      tbl_customers = db_table '[ customers ]' {
+      tbl_users = db_table '[ users ]' {
         technology '<< private schema >>'
       }
 
@@ -16,10 +16,10 @@ model {
         technology '<< private schema >>'
         description '
           Active sessions of
-          authenticated customers
+          authenticated users
         '
       }
-      tbl_sessions -> tbl_customers 'references to' {
+      tbl_sessions -> tbl_users 'references to' {
         style {
           line solid
         }
@@ -27,13 +27,13 @@ model {
     }
   }
 
-  extend cloud.backend {
+  extend platform.backend {
 
     graphql = service 'GraphQL API' {
-      description 'The GraphQL API of the cloud system'
+      description 'The GraphQL API of the platform system'
 
       -> aws.pg.tbl_sessions 'reads/writes'
-      -> aws.pg.tbl_customers 'reads/writes'
+      -> aws.pg.tbl_users 'reads/writes'
       -> aws.cognito 'authorizes'
     }
 
@@ -43,14 +43,14 @@ model {
 
 views {
 
-  view cloud_backend of cloud.backend {
+  view platform_backend of platform.backend {
 
     include
       *,
       aws._,
       aws.pg._,
       backend with {
-        navigateTo cloud
+        navigateTo platform
       }
 
     style * {
@@ -58,13 +58,13 @@ views {
       opacity 10%
     }
 
-    style cloud.backend, cloud.backend.* {
-      color green
+    style platform.backend, platform.backend.* {
+      color red
     }
     style aws.pg {
       border solid
     }
-    style cloud.ui {
+    style platform.ui {
       color secondary
     }
   }
@@ -77,15 +77,15 @@ views {
         title 'AWS - PostgreSQL'
         navigateTo aws
       },
-      cloud,
-      cloud.* -> pg.*
+      platform,
+      platform.* -> pg.*
 
     style * {
       color secondary
       opacity 10%
     }
 
-    style cloud, pg  {
+    style platform, pg  {
       color muted
     }
 

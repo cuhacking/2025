@@ -1,0 +1,95 @@
+// Extend platform.ui model
+model {
+
+  extend platform.ui {
+
+    website = webapp 'Website' {
+      technology 'React Router 7'
+      description 'Web application, that allows users to interact with the platform'
+      style{
+      icon https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/reactrouter/reactrouter-original-wordmark.svg
+}
+      -> platform.backend.graphql 'fetches data'
+      -> aws.cognito 'authenticates'
+    }
+
+    portal= portal 'Hacker Portal' {
+      technology 'React Router 7'
+      description 'Dynamic application for hackathon registration & management.'
+      link https://portal.cuhacking.ca
+      icon https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/reactrouter/reactrouter-original-wordmark.svg
+
+      -> platform.backend.graphql 'fetches data'
+      -> aws.cognito 'authenticates'
+    }
+
+    docs = webapp 'Docs Site' {
+      technology 'React Router 7'
+      description 'Web application, that allows users to interact with the platform'
+      style{
+      icon tech:nextjs
+}
+    }
+
+    graph = webapp 'Project Graph' {
+      description 'Interactive map of the codebase showing dependencies and task pipelines.'
+      style{
+      icon https://camo.githubusercontent.com/30fd89042b9d367be3b5f04ba1c73083048eb94d3ae5d84f0b50287092c424a6/68747470733a2f2f6170692e69636f6e6966792e64657369676e2f6c6f676f733a6e782e737667
+}
+    }
+
+    architecturesite = webapp 'Architecture Site' {
+      technology 'LikeC4, C4 Model, React'
+      description 'Web application, that allows users to interact with the platform'
+      style{
+      icon https://avatars.githubusercontent.com/u/128791862?s=200&v=4
+}
+    }
+
+    users -> website 'wants to learn about organization'
+    users -> portal 'wants to participate in events'
+
+    users -> docs 'wants to contribute to technical development'
+    users -> architecturesite "wants to see the platform's architecture"
+    users -> graph "wants to see map of codebase"
+  }
+
+}
+
+views {
+
+  view platform_ui of platform.ui {
+    include
+      *,
+      ui with {
+        navigateTo platform
+      },
+      aws._,
+
+    exclude
+      platform.backend -> aws.cognito
+
+    style platform.backend {
+      color red
+    }
+
+    style users {
+      color gray
+    }
+
+    style platform, aws  {
+      color muted
+    }
+
+    style ui, ui.* {
+      color green
+    }
+    style aws, aws.* {
+      color amber
+    }    
+  }
+}
+
+
+// https://www.svgrepo.com/show/343567/linkedin-network-communication-connection-internet-online.svg
+// https://www.svgrepo.com/show/452229/instagram-1.svg

@@ -1,49 +1,49 @@
 views {
 
-  view index of customer {
+  view index of users {
     title 'System Landscape'
-    include
-      *,
-      element.kind = system
+    // include
+    //   *,
+    //   element.kind = system
   }
 
-  view cloud of cloud {
-    title 'Context: Cloud System'
+  view platform of platform {
+    title 'Context: Platform Architecture'
     include *
-    style cloud, cloud.* {
+    style platform, platform.* {
       color green
     }
   }
 
-  view aws of aws {
-    title 'Context: Amazon Web Services'
+  view aws of external {
+    title 'Context: External Providers'
     include
       *,
-      cloud,
-      cloud.* -> aws
+      platform,
+      platform.* -> external
 
     style * {
       color muted
       border dotted
       opacity 5%
     }
-    style aws.* {
+    style external.* {
       color green
     }
-    style cloud.* {
+    style platform.* {
       color secondary
     }
   }
 
-  view aws_cognito of aws.cognito {
+  view external_cognito of external.cognito {
     include
       *,
-      cloud.* ->
+      platform.* ->
 
-    style cloud.* {
+    style platform.* {
       color secondary
     }
-    style aws.cognito {
+    style external.cognito {
       color amber
     }
   }  

@@ -1,43 +1,69 @@
 model {
 
-  customer = actor 'Customer' {
-    description 'Customer of the cloud system'
+  users = actor 'Users' {
+    description 'Hackers, Mentors, Sponsor Representatives, Judges, Organizers, and Volunteers'
+style{
+multiple true
+color indigo
+icon https://www.svgrepo.com/show/527949/user-heart-rounded.svg
+}
+
+
+    // hacker = component 'Hacker' {
+    //   description 'Generally post-secondary university students between the age of 16-24.'
+    //   style {
+    //     shape mobile
+    //     icon https://www.svgrepo.com/show/374166/view.svg
+    //   }
+    // }
   }
 
-  cloud = system 'Cloud System' {    
-    link https://likec4.dev
+  platform = system '2025 Platform' {
+    link https://github.com/cuhacking/2025
     description '
-      Our SaaS platfrom that allows
-      customers to interact with
-      the latest technologies
+      Our deployed software
+      allowing users to interact with us
     '
+    style {
+    shape browser
+    color green
+    textSize md
+    icon https://cuhacking.ca/assets/cuhacking-logo-1-DgcuCcxm.svg
+multiple true
+}
 
     ui = component 'Frontend' {
-      description 'All the frontend applications of the cloud system'
+      description 'Client-side software such as websites and app UIs.'
       style {
-        shape browser
+        shape mobile
+        icon https://www.svgrepo.com/show/374166/view.svg
       }
     }
 
-    backend = component 'Backend' {      
+    backend = component 'Backend' {
       link https://github.com/likec4/likec4
-      description 'The backend services of the cloud system'
+      description 'Server-side software with Database, API Layer, State Engine, and Admin Panel. ⚙'
+      style {
+        shape queue
+        icon https://www.svgrepo.com/show/484343/server-like.svg
+      }
     }
-
   }
 
-  customer -> cloud 'uses and pays'
-  customer -> ui 'uses web and mobile'
+  users -> platform 'interact with cuHacking via'
+  users -> ui 'uses sites and apps'
 
-  aws = system 'Amazon Web Services' {
-    link https://aws.amazon.com/
+  aws = system 'External Providers' {
+//  link https://aws.amazon.com/
     description '
       Cloud Infrastructure and
-      Managed Services
+      3rd Party Managed Services
     '
     style {
       color amber
-      icon https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg
+      shape storage
+      icon https://camo.githubusercontent.com/9dcd71301244437983fa758b5d725e14fb057e4ba8949df06f0b01b7952c9c93/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e406c61746573742f69636f6e732f6e65746c6966792f6e65746c6966792d6f726967696e616c2e737667
+multiple true
     }
 
     cognito = component 'Cognito' {
@@ -47,5 +73,5 @@ model {
     }
   }
 
-  cloud -> aws 'uses services'
+  platform -> aws 'retrieves data from, and runs using'
 }

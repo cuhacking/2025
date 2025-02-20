@@ -23,7 +23,7 @@ specification {
       shape browser
     }
   }
-  element mobile {
+  element portal {
     style {
       shape mobile
     }
