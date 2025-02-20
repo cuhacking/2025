@@ -4,7 +4,7 @@ import { Toaster } from '@cuhacking/shared/ui/sonner'
 
 export function ProfilePage({ user }: { user: User }) {
   return (
-    <div className="px-2.5 py-5">
+    <div className="px-2.5 py-5 m-auto max-w-screen-xl">
       <Toaster />
       <Header
         status={user.profileStatus}
