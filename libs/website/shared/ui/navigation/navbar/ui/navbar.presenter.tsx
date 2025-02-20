@@ -14,7 +14,7 @@ import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import { Link } from '@remix-run/react'
 import React, { useState } from 'react'
 import { ClientOnly } from 'remix-utils/client-only'
-import { Banner } from '../../../banner'
+
 import { Socials } from '../../../socials'
 import { NavItem } from './nav-item'
 import { MobileNavItem } from './nav-item-mobile'
@@ -47,7 +47,6 @@ interface NavbarProps {
 export function NavbarPresenter({
   links,
   logo,
-  banner,
   socials,
   hamburger,
   cross,
@@ -67,8 +66,6 @@ export function NavbarPresenter({
         />
       </Link>
 
-      <Banner banner={banner} className="hidden md:flex" />
-
       <NavigationMenu className="hidden md:block">
         <NavigationMenuList className="gap-x-10">
           {links.map(({ name, link }, index) => (
@@ -78,6 +75,7 @@ export function NavbarPresenter({
           ))}
         </NavigationMenuList>
       </NavigationMenu>
+
       <ClientOnly fallback={null}>
         {() => (
           <Drawer direction="right" open={isOpen}>
