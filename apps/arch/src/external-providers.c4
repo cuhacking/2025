@@ -1,0 +1,292 @@
+model {
+    external-providers = context {
+        title: "Third Party Tools & 
+        Services"
+        icon: https://www.svgrepo.com/show/474375/cloud-server2.svg
+        style {
+            color: orange-500
+            opacity: 10%
+            shape: browser
+            multiple: true
+        }
+
+        enterprise-management = component {
+            title: "Enterprise Management"
+            icon: gcp:cloud-interconnect
+            style {
+                color: purple-100
+                shape: browser
+                opacity: 10%
+            }
+            
+            google = brand {
+                title: "Google"
+                description: "Enterprise workspace provider"
+                link: https://workspace.google.com
+                style {
+                    color: orange-100
+                    icon: https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/google/google-original.svg
+                    shape: cylinder
+                    multiple: true
+                    opacity: 10%
+                }
+
+                gmail = brand {
+                    title: "Gmail"
+                    link: https://mail.google.com
+                    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/2560px-Gmail_icon_%282020%29.svg.png
+                    style {
+                        color: yellow-500
+                        shape: browser
+                    }
+                }
+
+                docs = brand {
+                    title: "Docs"
+                    link: https://docs.google.com
+                    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Google_Docs_logo_%282014-2020%29.svg/1481px-Google_Docs_logo_%282014-2020%29.svg.png
+                    style {
+                        color: orange-500
+                        shape: browser
+                    }
+                }
+
+                sheets = brand {
+                    title: "Sheets"
+                    link: https://sheets.google.com
+                    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Google_Sheets_logo_%282014-2020%29.svg/1200px-Google_Sheets_logo_%282014-2020%29.svg.png
+                    style {
+                        color: amber-500
+                        shape: browser
+                    }
+                }
+
+                drive = brand {
+                    title: "Drive"
+                    link: https://drive.google.com
+                    icon: https://cdn.iconscout.com/icon/free/png-256/free-google-drive-logo-icon-download-in-svg-png-gif-file-formats--storage-social-media-pack-logos-icons-1718511.png?f=webp&w=256
+                    style {
+                        color: lime-800
+                        shape: browser
+                    }
+                }
+
+            }
+            
+            notion = brand {
+                title: "Notion"
+                icon: https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/notion/notion-original.svg
+                description: "Enterprise workspace provider"
+                link : https://notion.com
+                style {
+                    color: slate
+                    shape: browser
+                }
+            }
+
+
+            stripe = brand {
+                title: "Stripe"
+                icon: https://www.svgrepo.com/show/331592/stripe-v2.svg
+                description: "Payments Platform"
+                link : https://stripe.com/en-ca
+                style {
+                    color: pink-800
+                    shape: browser
+                }
+            }
+        }
+        
+        marketing-and-communication = container {
+            title: "Marketing & 
+            Communication"
+            icon: gcp:cloud-for-marketing
+            style {
+                color: slate-800
+                shape: mobile
+                opacity: 10%
+            }
+
+            discord = brand {
+                title: "Discord"
+                icon: https://www.svgrepo.com/show/353655/discord-icon.svg
+                description: "Communication Platform"
+                link : https://discord.com
+                style {
+                    color: orange-600
+                    shape: mobile
+                }
+            }
+
+            instagram = brand {
+                title: "Instagram"
+                icon: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png
+                link : https://www.instagram.com/cuhacking/
+                style {
+                    color: violet-800
+                    shape: browser
+                }
+            }
+
+            linkedin = brand {
+                title: "LinkedIn"
+                icon: tech:linkedin
+                link : https://www.linkedin.com/company/11772328/
+                style {
+                    color: blue-900
+                    shape: browser
+                }
+            }
+
+            linktree = brand {
+                title: "Linktree"
+                icon: https://media.lordicon.com/icons/wired/flat/2723-logo-linktree.svg
+                link : https://linktr.ee/cuhacking_
+                style {
+                    color: cyan-900
+                    shape: browser
+                }
+            }
+
+        }
+
+        ui-ux-design = container {
+            title: "UI/UX Design"
+            icon: https://www.svgrepo.com/show/397564/nail-polish.svg
+            style {
+                color: teal-700
+                shape: browser
+                opacity: 10%
+            }
+            figma = brand {
+                title: "Figma"
+                icon: tech:figma
+                description: "2D Assets"
+                link : https://www.figma.com/community/file/1472076259079188838
+
+                style {
+                    color: indigo
+                    shape: browser
+                }
+            }
+
+            spline = brand {
+                title: "Spline"
+                icon: https://avatars.githubusercontent.com/u/71355536?s=200&v=4.svg
+                description: "3D Assets"
+                link : https://spline.design
+                style {
+                    color: sky-700
+                    shape: browser
+                }
+            }
+        }
+
+        software-development = container {
+            title: "Software Development"
+            icon: https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/archlinux/archlinux-original.svg
+            style {
+                color: red
+                shape: browser
+                opacity: 10%
+            }
+
+            github = brand {
+                title: "GitHub"
+                icon: tech:github
+                description: "Source Code Hosting Platform"
+                link : https://github.com/cuhacking
+                style {
+                    color: stone-500
+                    shape: browser
+                }
+            }
+            chromatic = brand {
+                title: "Chromatic"
+                icon: https://static-00.iconduck.com/assets.00/chromatic-icon-2048x2048-og2n2txu.png
+                description: "Visual Test Server Provider"
+                link : https://www.chromatic.com/library?appId=673381eabba0be65aaa35e6a
+                style {
+                    color: amber-900
+                    shape: browser
+                }
+            }
+
+            squarespace = brand {
+                title: "Squarespace"
+                description: "Domain Name Service (DNS)
+             Provider"
+                link : https://www.squarespace.com
+                style {
+                    color: gray-900
+                    icon: https://www.svgrepo.com/show/342245/squarespace.svg
+                    shape: browser
+                }
+            }
+
+            netlify = brand {
+                title: "Netlify"
+                icon: https://camo.githubusercontent.com/9dcd71301244437983fa758b5d725e14fb057e4ba8949df06f0b01b7952c9c93/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e406c61746573742f69636f6e732f6e65746c6966792f6e65746c6966792d6f726967696e616c2e737667
+                description: "Sponsor cloud provider hosting front-ends with continous deployment"
+                link : https://netlify.com
+                style {
+                    color: amber
+                    shape: browser
+                }
+            }
+
+
+            nx = brand {
+                title: "Nx"
+                icon: https://camo.githubusercontent.com/30fd89042b9d367be3b5f04ba1c73083048eb94d3ae5d84f0b50287092c424a6/68747470733a2f2f6170692e69636f6e6966792e64657369676e2f6c6f676f733a6e782e737667
+                description: "Sponsor cloud provider hosting providing continous integration remote caching"
+                link : https://nx.dev
+                style {
+                    shape: browser
+                }
+            }
+
+            supabase = brand {
+                title: "Supabase"
+                icon: https://avatars.githubusercontent.com/u/54469796?s=48&amp;v=4
+                description: "Back-End as a Service Provider"
+                link : https://supabase.com
+                style {
+                    color: green
+                    shape: cylinder
+                }
+            }
+
+
+            coderabbit = brand {
+                title: "CodeRabbit"
+                icon: https://avatars.githubusercontent.com/u/132028505?s=200&v=4
+                description: "AI Code Review Agent"
+                link : https://coderabbit.ai
+                style {
+                    color: sky
+                    shape: browser
+                }
+            }
+
+
+            pulumi = brand {
+                title: "Pulumi Cloud"
+                icon: https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pulumi/pulumi-original.svg
+                description: "Infrastructure-as-Code
+            Provider"
+                link : https://pulumi.com
+                style {
+                    color: stone-500
+                    shape: browser
+                }
+            }
+        }
+    }
+    coderabbit -> github{
+        title: "provides code reviews on"
+    }
+    pulumi -> netlify{
+        title: "automates"
+    }
+}

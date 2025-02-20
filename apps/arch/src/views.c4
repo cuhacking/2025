@@ -1,51 +1,68 @@
+
 views {
-
-  view index of users {
-    title 'System Landscape'
-    // include
-    //   *,
-    //   element.kind = system
-  }
-
-  view platform of platform {
-    title 'Context: Platform Architecture'
-    include *
-    style platform, platform.* {
-      color green
+    view index {
+        title: "System Context"
+        description: "Top-level Overview"
+        include *
+        exclude external-providers -> platform
     }
-  }
 
-  view aws of external {
-    title 'Context: External Providers'
-    include
-      *,
-      platform,
-      platform.* -> external
+    view of users {
+        include *
+    }
 
-    style * {
-      color muted
-      border dotted
-      opacity 5%
+    view of users.organizers {
+        include *
+        include core.*
     }
-    style external.* {
-      color green
-    }
-    style platform.* {
-      color secondary
-    }
-  }
 
-  view external_cognito of external.cognito {
-    include
-      *,
-      platform.* ->
-
-    style platform.* {
-      color secondary
+    view of users.organizers.core.advisors {
+        include *
     }
-    style external.cognito {
-      color amber
+    view of users.organizers.core.co-leads {
+        include *
     }
-  }  
+    view of users.organizers.core.community-engagement {
+        include *
+    }
+    view of users.organizers.core.design {
+        include *
+    }
+    view of users.organizers.core.hacker-experience {
+        include *
+    }
+    view of users.organizers.core.logistics {
+        include *
+    }
+    view of users.organizers.core.sponsorship {
+        include *
+    }
+    view of users.organizers.core.development {
+        include *
+    }
+    view of users.organizers.core.emeritus {
+        include *
+    }
 
+    // view of users.sponsors {
+    //     include *
+    // }
+
+    view of external-providers {
+        include *
+        include enterprise-management.**
+        include marketing-and-communication.**
+        include ui-ux-design.**
+        include software-development.**
+    }
+
+    view of platform {
+        description: "Deployed collection of custom software, powered by Axiom,
+a meta-framework created by the Design, and Development Team."
+        include *
+        include presentation.*
+        include documentation.*
+        include backend.*
+        include external-providers.software-development._
+    }
 }
