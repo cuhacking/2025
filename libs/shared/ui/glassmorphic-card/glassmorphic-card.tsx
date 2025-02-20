@@ -39,11 +39,11 @@ export function GlassmorphicCard({
         ? (
             <Popover>
               <PopoverTrigger asChild>
-                <div className="absolute top-1.5 right-1.5 cursor-pointer">
-                  <img src={InfoIcon} alt="Info" />
+                <div className="absolute top-1.5 right-1.5 cursor-pointer rounded-md hover:bg-card">
+                  <img src={InfoIcon} alt="Info" className="size-6" />
                 </div>
               </PopoverTrigger>
-              <PopoverContent align="center" className="p-2 w-48 bg-background text-sm">
+              <PopoverContent align="end" side="top" className="p-2 w-48 bg-background text-sm">
                 {info}
               </PopoverContent>
             </Popover>
