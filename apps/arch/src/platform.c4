@@ -1,0 +1,289 @@
+model {
+    context platform {
+        title: "2025 Platform"
+        icon: https://cuhacking.ca/assets/cuhacking-logo-1-DgcuCcxm.svg
+        link: https://github.com/cuhacking/2025
+        description: '
+      Deployed collection of custom software, powered by Axiom 
+    '
+        style {
+            color: green
+            shape: browser
+            multiple true
+            opacity: 50%
+        }
+
+        container presentation {
+            title: "Presentation"
+            style {
+                color: indigo
+                opacity: 10%
+            }
+            component portal {
+                title: "Portal"
+                technology: 'React Router 7, TypeScript, Tailwind CSS'
+                description: "Dynamic application for hackathon registration & management"
+                link: https://portal.cuhacking.ca
+                icon: https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/reactrouter/reactrouter-original.svg
+                style {
+                    color: indigo-900
+                    shape: mobile
+                }
+            }
+
+            component website {
+                title: "Website"
+                icon: https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/reactrouter/reactrouter-original.svg
+                technology: "TypeScript, React Router 7, Tailwind CSS"
+                description: 'Web application, that allows users to interact with the platform'
+                link: https://cuhacking.ca
+                style {
+                    color: violet-900
+                    shape: mobile
+                }
+            }
+
+            component sponsor-site {
+                title: "Sponsor Site"
+                icon: https://github.com/user-attachments/assets/3a7fdd7a-ebed-4367-990d-bc350a58668c
+                style {
+                    color: amber-600
+                    shape: browser
+                }
+            }
+
+            slides = component {
+                title: "Slide Deck"
+                technology: "TypeScript, Vue.js, Slidev, MDC, UnoCSS"
+                icon: https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg
+                link: https://slides.cuhacking.ca
+                style {
+                    color: indigo-950
+                    shape: browser
+                }
+            }
+
+            website-2024 = component {
+                title: "2024 Website"
+                technology: "TypeScript, React, Tailwind CSS"
+                icon: https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg
+                description "Interactive map of the codebase showing dependencies and task pipelines"
+                link: https://2024.cuhacking.ca
+                style {
+                    color: slate-700
+                    shape: mobile
+                }
+            }
+        }
+
+
+        documentation = container {
+            title: "Documentation"
+            style {
+                color: gray
+                opacity: 40%
+            }
+            docs-site = component {
+                title: "Docs Site"
+                icon: tech:nextjs
+                technology: "TypeScript, Fumadocs, Next.js, MDX, Tailwind CSS"
+                description: "Technical guidelines & best practices powering Axiom"
+                link: https://docs.cuhacking.ca
+                style {
+                    color: green
+                    shape: browser
+                }
+            }
+
+            brand-site = component {
+                title: "Branding Site"
+                technology: "TypeScript, Storybook, React, Component Story Format (CSF)"
+                description: "Design System documentation and Brand Guidelines"
+                icon: tech:storybook
+                link: https://design.cuhacking.ca
+                style {
+                    color: purple-800
+                    shape: browser
+                }
+            }
+
+            architecture-site = component {
+                title: "Architecture Site"
+                technology: 'LikeC4, C4 Model, React'
+                icon https://avatars.githubusercontent.com/u/128791862?s=200&v=4
+                description 'Web application, that allows users to interact with the platform'
+                link: https://arch.cuhacking.ca
+                style {
+                    color: blue-700
+                    shape: browser
+                }
+            }
+
+
+            graph-site = component {
+                title: "Project Graph Site"
+                icon: https://camo.githubusercontent.com/30fd89042b9d367be3b5f04ba1c73083048eb94d3ae5d84f0b50287092c424a6/68747470733a2f2f6170692e69636f6e6966792e64657369676e2f6c6f676f733a6e782e737667
+                description "Interactive map of the codebase showing dependencies and task pipelines"
+                link: https://graph.cuhacking.ca
+                style {
+                    color: cyan-700
+                    shape: browser
+                }
+            }
+
+            email-site = component {
+                title: "Email Templates Site"
+                technology: "TypeScript, React Email, React"
+                icon: https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg
+                link: https://email.cuhacking.ca
+                style {
+                    color: amber-900
+                    shape: browser
+                }
+            }
+
+            eslint = component {
+                title: "ESLint"
+                icon: https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/eslint/eslint-original.svg
+                link: https://eslint.cuhacking.ca
+                description: "Code linting and formatting rules"
+                style {
+                    color: indigo-700
+                    shape: browser
+                }
+            }
+        }
+
+        // users -> docs-site "Opens in browser"
+        // users -> website 'wants to learn about organization'
+        // users -> portal 'wants to participate in events'
+
+        // users -> docs-site 'wants to contribute to technical development'
+        // users -> architecture-site "wants to see the platform's architecture"
+        // users -> graph-site "wants to see map of codebase"
+
+        external-providers.software-development.netlify -> platform {
+            title: "provides continous deployment hosting for"
+        }
+
+        external-providers.software-development.netlify -> backend {
+            title: "provides serverless edge function hosting for"
+            description: "Next.js and React Router 7 are full-stack frameworks
+            that contain their own server. When an app built using these frameworks is deployed,
+            the server lives on the deployment provider's machine while the front-end bundle is shipped to the client.
+            
+            When the client makes a fetch request to the server, only the specific function responsible for serving the request is run. This is referred to as a serverless model.
+
+            Ideally this server lives in a data center as close to the client as possible, referred to as the 'Edge'.
+            "
+        }
+
+        container backend {
+            title: "Back-End (Axiom)"
+            technology: "Drizzle ORM, PostgreSQL, Nest.js, XState, Next.js"
+            icon: https://www.svgrepo.com/show/484343/server-like.svg
+            description: "Database, API Layer, and State Engine. ⚙"
+            style {
+                color: red
+                shape: queue
+            }
+
+            component api {
+                title: "API Layer"
+                icon: tech:graphql
+                link : https://graphql.org
+                description: "REST, GraphQL, and Payload CMS Local API via React Router 7 loaders and Next.js API routes"
+                style {
+                    color: red
+                    shape: queue
+                }
+            }
+
+            component state-engine {
+                title: "XState"
+                icon: https://avatars.githubusercontent.com/u/61783956?s=200&v=4.png
+                description: "State Engine"
+                link : https://xstate.js.org
+                style {
+                    color: red
+                    shape: queue
+                }
+            }
+
+            component orm {
+                title: "Drizzle ORM"
+                icon: https://avatars.githubusercontent.com/u/108468352?s=160&v=4.svg
+                link : https://orm.drizzle.team/
+                description: "'ORM' stands for 'Object Relational Mapping'"
+                style {
+                    color: red
+                    shape: queue
+                }
+            }
+
+
+            component database {
+                title: "PostgreSQL"
+                icon: tech:postgresql
+                link : https://www.postgresql.org
+                description: "Run locally via Nix, hosted for production on Supabase"
+                style {
+                    color: red
+                    shape: storage
+                }
+            }
+
+        }
+
+        component content-management-system {
+            title: "Content Management
+            System"
+            icon: https://avatars.githubusercontent.com/u/62968818?s=48&v=4
+            technology: "TypeScript, Payload CMS, Next.js"
+            link: https://axiom.cuhacking.ca
+            style {
+                color: zinc-900
+                shape: browser
+            }
+
+            content-management-system -> backend {
+                title: "admin dashboard that provides a look into"
+            }
+        }
+
+        // platform -> nx{
+        //     style{
+        //         line: solid
+        //         color: amber
+        //         head: diamond
+        //         tail: crow
+        //     }
+        // }
+        // platform -> netlify
+        // platform -> chromatic
+        // platform -> pulumi
+        // platform -> squarespace
+        // platform -> google
+        // platform -> notion
+        // docs-site -> backend "fetches via HTTPS"
+
+        external-providers.software-development.supabase -> backend {
+            title: "hosts database + data access serverless function APIs for"
+            description: "Similar to how front-ends are hosted on Netlify, back-ends are hosted on Supabase. The front-ends don't make calls to the database directly, but rather to the server that lives on Netlify.
+            
+            The server uses APIs that live exclusively in the back-end to fetch data from the database. These serverless function APIs are not hosted on Netlify, but on Supabse.
+            "
+        }
+
+    }
+
+    external-providers.software-development.github -> platform {
+        title: "stores all source code for"
+        description: "Where our repository lives."
+        link: https://github.com/cuhacking/2025
+    }
+
+    external-providers.software-development.squarespace -> platform {
+        title: "provides 'cuhacking.ca' domain for"
+    }
+}
