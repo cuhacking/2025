@@ -1,6 +1,6 @@
 [build]
-publish = "/apps/arch/dist"
-command = "pnpm nx affected -t=build --exclude='*,!arch' --verbose"
+command = "pnpm i -g typescript; pnpm nx build arch --verbose"
+publish = "apps/arch/dist"
 
-[build.environment]
-NODE_VERSION = "22.13.1"
+# [context.production]
+# environment = { NODE_VERSION = "22.13.1" }
