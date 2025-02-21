@@ -1,0 +1,7 @@
+{
+  "name": "libs/engine",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/engine",
+  "projectType": "library",
+  "tags": []
+}

@@ -33,7 +33,7 @@
     "web": "pnpm nx dev website --verbose # 📢 Website",
     "slides": "pnpm nx dev slides --verbose # 💐 Slide deck",
     "clean": "git clean -fdX -e '!**/.env*' -e '!**/pgdata' -e '!Pulumi.dev.yaml' # 🧽 Remove any and all files listed in .gitignore except .env and pgdata",
-    "nuke": "sudo git clean -fdX' # 🚨 WARNING: REMOVE ANY AND ALL FILES LISTED IN .gitignore INCLUDING .env AND pgdata",
+    "nuke": "sudo git clean -fdX # 🚨 WARNING: REMOVE ANY AND ALL FILES LISTED IN .gitignore INCLUDING .env AND pgdata",
     "ri": "pnpm stop; pnpm clean; pnpm i # 🧼 Perform a clean install",
     "lint": "eslint .",
     "fix": "eslint . --fix # 🫧 Auto-fix annoying ESLint squigglies",
