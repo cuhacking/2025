@@ -25,7 +25,7 @@ reviews:
 
   auto_review:
     enabled: true
-    drafts: false
+    drafts: true
 
   request_changes_workflow: false
   high_level_summary: true
