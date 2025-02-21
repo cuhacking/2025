@@ -30,6 +30,12 @@
       "@/db/*": [
         "libs/db/*"
       ],
+      "@/engine": [
+        "libs/engine/index.ts"
+      ],
+      "@/engine/*": [
+        "libs/engine/*"
+      ],
       "@cuhacking/docs": [
         "libs/docs/index.ts"
       ],
