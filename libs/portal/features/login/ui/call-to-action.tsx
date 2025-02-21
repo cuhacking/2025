@@ -1,9 +1,27 @@
+import { userFlowActor } from '@/engine/actors/user'
 import linkedinBlack from '@cuhacking/shared/assets/icons/socials/linkedin-black-1.svg'
 import { Button } from '@cuhacking/shared/ui/button'
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 import { Typography } from '@cuhacking/shared/ui/typography'
+import { useNavigate } from '@remix-run/react'
 
 export function LoginCallToAction() {
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+    try {
+      /* setIsLoading(true) */
+      userFlowActor.send({ type: 'LOGIN_SUCCESS' })
+      navigate('/terms')
+    }
+    catch (error) {
+      console.error('Login failed:', error)
+    }
+    finally {
+      /* setIsLoading(false) */
+    }
+  }
+
   return (
     <GlassmorphicCard
       className="w-full flex flex-col items-center gap-5 p-3 md:gap-6 md:px-14 md:py-8 lg:gap-8 lg:px-20 lg:py-10"
@@ -23,9 +41,10 @@ export function LoginCallToAction() {
         variant="primary"
         className="flex items-center gap-x-3 px-4 md:px-6 lg:px-8 py-4"
         aria-label="Login with Linkedin"
+        onClick={handleClick}
       >
         <img src={linkedinBlack} alt="Linkedin logo" className="h-5 w-5" />
-        <Typography variant="h6"><p>Log In</p></Typography>
+        <Typography variant="h6">Log In</Typography>
       </Button>
     </GlassmorphicCard>
   )
