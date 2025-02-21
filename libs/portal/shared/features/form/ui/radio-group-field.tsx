@@ -50,14 +50,14 @@ export function RadioGroupField({ form, name, label, options, isRequired = false
               <RadioGroup
                 onValueChange={field.onChange}
                 defaultValue={field.value}
-                className="flex flex-wrap justify-start gap-1 sm:gap-2 w-full"
+                className="flex flex-wrap justify-center gap-1 w-full"
               >
                 {options.map(option => (
                   <div key={option.value}>
                     <RadioGroupItem value={option.value} id={option.value} className="peer sr-only w-full" />
                     <Label
                       htmlFor={option.value}
-                      className="px-3 py-2 rounded-md flex flex-wrap items-center justify-center
+                      className="px-2.5 py-2 rounded-md flex items-center justify-center
                           text-sm font-extralight uppercase
                           cursor-pointer peer-data-[state=checked]:bg-white/25 hover:bg-white/10 transition-colors"
                     >
