@@ -104,10 +104,10 @@ export function Questions({ user, status }: ProfileFormProps) {
   return (
     <Form {...profile}>
       <form onSubmit={profile.handleSubmit(onSubmit)}>
-        <div className="py-6 px-4 bg-black flex flex-col justify-center items-center gap-2.5 w-full">
+        <div className="py-6 px-4 flex flex-col justify-center items-center gap-2.5 w-full">
           <Accordion type="multiple" className="w-full col-span-full">
             <AccordionItem value="personal">
-              <AccordionTrigger className="h-12 pt-3.5 pb-1.5 border-b border-white flex justify-between items-center w-full">
+              <AccordionTrigger className="pt-5 pb-1.5 border-b border-white shadow-lg flex justify-between items-center w-full hover:no-underline">
                 <AccordionHeader
                   name="Personal"
                   iconVariant={IconVariant.profile}
@@ -122,6 +122,11 @@ export function Questions({ user, status }: ProfileFormProps) {
                     label="First Name"
                     isRequired
                     placeholder="John"
+                    info={(
+                      <p>
+                        Note: This information is coming from LinkedIn
+                      </p>
+                    )}
                     isDisabled
                   />
                   <TextField
@@ -131,15 +136,25 @@ export function Questions({ user, status }: ProfileFormProps) {
                     label="Last Name"
                     isRequired
                     placeholder="Doe"
+                    info={(
+                      <p>
+                        Note: This information is coming from LinkedIn
+                      </p>
+                    )}
                     isDisabled
                   />
                   <TextField
                     variant="text"
                     placeholder="K."
-                    isDisabled
                     name="middleName"
                     form={profile}
                     label="Middle Name"
+                    info={(
+                      <p>
+                        Note: This information is coming from LinkedIn
+                      </p>
+                    )}
+                    isDisabled
                   />
                   <TextField
                     variant="text"
@@ -148,6 +163,11 @@ export function Questions({ user, status }: ProfileFormProps) {
                     label="Preferred Display Name"
                     isRequired
                     placeholder="John"
+                    info={(
+                      <p>
+                        Note: This information is coming from LinkedIn
+                      </p>
+                    )}
                     isDisabled
                   />
                   <TextField
@@ -157,6 +177,11 @@ export function Questions({ user, status }: ProfileFormProps) {
                     placeholder="john.doe@gmail.com"
                     label="Email"
                     isRequired
+                    info={(
+                      <p>
+                        Note: This information is coming from LinkedIn
+                      </p>
+                    )}
                     isDisabled
                   />
 
@@ -218,7 +243,7 @@ export function Questions({ user, status }: ProfileFormProps) {
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="education">
-              <AccordionTrigger className="h-12 pt-3.5 pb-1.5 border-b border-white flex justify-between items-center w-full">
+              <AccordionTrigger className="pt-5 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline">
                 <AccordionHeader
                   name="Education"
                   iconVariant={IconVariant.education}
@@ -240,9 +265,10 @@ export function Questions({ user, status }: ProfileFormProps) {
                   />
                   <FormLabel
                     onClick={() => setIsStudent(prev => !prev)}
-                    className="text-white text-sm font-normal font-mono leading-tight"
                   >
-                    I am a student
+                    <Typography variant="paragraph-base">
+                      I am a student
+                    </Typography>
                   </FormLabel>
                 </div>
 
@@ -296,7 +322,7 @@ export function Questions({ user, status }: ProfileFormProps) {
               className="z-50 relative overflow-y-visible"
               value="restrictions"
             >
-              <AccordionTrigger className="h-12 pt-3.5 pb-1.5 border-b border-white flex justify-between items-center w-full">
+              <AccordionTrigger className="pt-5 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline">
                 <AccordionHeader
                   name="Restrictions"
                   iconVariant={IconVariant.shield}
@@ -322,7 +348,7 @@ export function Questions({ user, status }: ProfileFormProps) {
               </AccordionContent>
             </AccordionItem>
             <AccordionItem className="relative" value="contact">
-              <AccordionTrigger className="h-12 pt-3.5 pb-1.5 border-b border-white flex justify-between items-center w-full">
+              <AccordionTrigger className="pt-5 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline">
                 <AccordionHeader
                   name="Contact"
                   iconVariant={IconVariant.contactBook}
@@ -345,7 +371,7 @@ export function Questions({ user, status }: ProfileFormProps) {
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="socialMedia">
-              <AccordionTrigger className="h-12 pt-3.5 pb-1.5 border-b border-white flex justify-between items-center w-full">
+              <AccordionTrigger className="pt-5 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline">
                 <AccordionHeader
                   name="Social Media"
                   iconVariant={IconVariant.cellPhone}
@@ -374,7 +400,7 @@ export function Questions({ user, status }: ProfileFormProps) {
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="emergencyContact">
-              <AccordionTrigger className="h-12 pt-3.5 pb-1.5 border-b border-white flex justify-between items-center w-full">
+              <AccordionTrigger className="pt-5 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline">
                 <AccordionHeader
                   name="Emergency Contact"
                   iconVariant={IconVariant.warning}
@@ -415,7 +441,7 @@ export function Questions({ user, status }: ProfileFormProps) {
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="privacySettings">
-              <AccordionTrigger className="h-12 pt-3.5 pb-1.5 border-b border-white flex justify-between items-center w-full">
+              <AccordionTrigger className="pt-5 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline">
                 <AccordionHeader
                   name="Privacy"
                   iconVariant={IconVariant.lock}

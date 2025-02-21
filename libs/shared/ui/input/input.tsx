@@ -9,13 +9,15 @@ const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<'input'>>(
         type={type}
         className={cn(
           // Default flex-based styles for layout
-          'flex h-auto w-auto bg-transparent text-base text-white font-thin font-["JetBrains Mono"] leading-normal',
+          'flex h-auto w-auto bg-transparent font-light text-base py-1.5',
 
           // Match the placeholder styling from your mockup
-          'opacity-70 placeholder:text-white/50',
+          'placeholder:text-muted placeholder:italic placeholder:font-thin',
 
           // Remove decorative borders, padding, and focus outlines
           'border-0 shadow-none px-0 py-0 focus-visible:outline-none focus-visible:ring-0',
+
+          'disabled:text-muted',
 
           '[appearance:textfield]',
           '[&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',

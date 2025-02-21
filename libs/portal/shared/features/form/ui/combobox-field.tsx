@@ -60,7 +60,7 @@ export function ComboboxField({
   return (
     <GlassmorphicCard
       className={cn(
-        'max-h-min p-2 flex flex-col justify-start items-start gap-0.5',
+        'max-h-min p-2 flex flex-col justify-start items-start',
         isDisabled && 'opacity-50 cursor-not-allowed bg-gray-800',
       )}
       variant={info ? 'info' : 'default'}
@@ -71,14 +71,14 @@ export function ComboboxField({
         name={name}
         render={({ field }) => (
           <FormItem className="w-full">
-            <div className="w-full max-w-full flex-col justify-start items-start gap-0.5 inline-flex">
-              <div className="h-5 justify-start items-center inline-flex">
-                <div className="justify-start items-center gap-1 flex flex-wrap">
-                  <FormLabel className="text-white text-sm font-normal font-mono leading-tight">
+            <div className="w-full max-w-full flex-col justify-start items-start inline-flex">
+              <div className="justify-start items-center inline-flex">
+                <div className="justify-start items-center flex flex-wrap">
+                  <FormLabel>
                     <Typography variant="paragraph-base">
                       <p>
                         {label}
-                        <span className="text-red-600 text-sm font-normal font-mono leading-tight ml-1">
+                        <span className="text-red-600 ml-1">
                           {isRequired ? '*' : null}
                         </span>
                       </p>
@@ -92,13 +92,13 @@ export function ComboboxField({
                     variant="outline"
                     role="combobox"
                     aria-expanded={open}
-                    className="border border-muted hover:bg-white/25 justify-start bg-[#383838]/40 max-w-inherit p-1.5 "
+                    className="border border-border backdrop-blur-md bg-card hover:bg-white/10 justify-start max-w-inherit p-1.5 gap-3 h-auto"
                   >
                     <img src={chevronUpDown} className="h-6 w-6" />
                     <span
                       className={cn(
                         'truncate',
-                        (!field.value || field.value === 'Search') && 'text-gray-500',
+                        (!field.value || field.value === 'Search') && 'text-muted text-base font-light italic',
                       )}
                     >
                       {field.value
