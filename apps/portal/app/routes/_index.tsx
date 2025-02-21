@@ -1,36 +1,33 @@
-import type { LoaderFunction } from '@remix-run/node'
-import { userFlowActor } from '@/engine/actors/user'
 import dashboard_background from '@cuhacking/portal/assets/backgrounds/dashboard-bg-1.webp'
 import { Home } from '@cuhacking/portal/pages/index/index'
-import { redirect } from '@remix-run/node'
 
-export const loader: LoaderFunction = async () => {
-  const snapshot = userFlowActor.getSnapshot()
-  if (!snapshot) {
-    return redirect('/login')
-  }
-
-  const currentState = snapshot.value
-  const error = snapshot.context.error
-
-  if (error) {
-    return redirect('/error')
-  }
-
-  switch (currentState) {
-    case 'unauthenticated':
-      return redirect('/login')
-    case 'legal':
-      return redirect('/terms')
-    case 'profile_incomplete':
-      return redirect('/profile')
-    case 'dashboard':
-    case 'registered':
-      return null
-    default:
-      return redirect('/login')
-  }
-}
+/* export const loader: LoaderFunction = async () => {
+*   const snapshot = userFlowActor.getSnapshot()
+*   if (!snapshot) {
+*     return redirect('/login')
+*   }
+*
+*   const currentState = snapshot.value
+*   const error = snapshot.context.error
+*
+*   if (error) {
+*     return redirect('/error')
+*   }
+*
+*   switch (currentState) {
+*     case 'unauthenticated':
+*       return redirect('/login')
+*     case 'legal':
+*       return redirect('/terms')
+*     case 'profile_incomplete':
+*       return redirect('/profile')
+*     case 'dashboard':
+*     case 'registered':
+*       return null
+*     default:
+*       return redirect('/login')
+*   }
+* } */
 
 export default function Dashboard() {
   return (
