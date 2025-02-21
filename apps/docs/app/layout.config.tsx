@@ -5,6 +5,7 @@ import {
   Landmark as ArchitectureIcon,
   Figma as BrandIcon,
   Code as ESLintIcon,
+  Map as GraphIcon,
   Smartphone as HackerPortalIcon,
   Instagram as InstagramIcon,
   AppWindowMac as LandingPageIcon,
@@ -66,8 +67,13 @@ export const baseOptions: BaseLayoutProps = {
     },
     {
       text: 'Architecture',
-      url: 'https://graph.cuhacking.ca/#/projects/all?groupByFolder=true',
+      url: 'https://arch.cuhacking.ca/view/index',
       icon: <ArchitectureIcon />,
+    },
+    {
+      text: 'Graph',
+      url: 'https://graph.cuhacking.ca/#/projects/all?groupByFolder=true',
+      icon: <GraphIcon />,
     },
     {
       text: 'Tooling',
