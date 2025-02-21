@@ -21,6 +21,9 @@
       "@aceternity/*": [
         "libs/external/aceternity/*"
       ],
+      "@cuhacking/cms": [
+        "libs/cms/index.ts"
+      ],
       "@cuhacking/cms/*": [
         "libs/cms/*"
       ],

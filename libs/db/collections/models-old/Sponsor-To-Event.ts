@@ -7,7 +7,6 @@ export const SponsorToEvent: CollectionConfig = {
   },
   fields: [
 
-    // Basic Info
     {
       name: 'formattedTitle',
       type: 'text',
