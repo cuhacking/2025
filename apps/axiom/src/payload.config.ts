@@ -12,13 +12,8 @@ import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { s3Storage } from "@payloadcms/storage-s3";
 import { buildConfig } from "payload";
 import sharp from "sharp";
-import { Users } from '@/db/collections/models/Users'
-import { formBuilderPlugin } from'@payloadcms/plugin-form-builder'
-import { postgresAdapter } from '@payloadcms/db-postgres'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import { s3Storage } from '@payloadcms/storage-s3'
-import { buildConfig } from 'payload'
-import sharp from 'sharp'
+import { fields, formBuilderPlugin } from'@payloadcms/plugin-form-builder'
+
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -108,20 +103,73 @@ export default buildConfig({
   plugins: [
     formBuilderPlugin({
       fields: {
-          text: true,
-          textarea: true,
-          select: true,
-          email: true,
-          state: true,
-          country: true,
-          checkbox: true,
-          number: true,
-          message: true,
-          payment: false,
+        text: true,
+        textarea: true,
+        select: true,
+        wherehear: {
+          ...fields.select,
+          hasMany: true,
+          options: [
+            { label: 'Linked In', value: 'Linked In' },
+            { label: 'Instagram', value: 'Instagram' },
+            { label: 'Career Fair', value: 'Career Fair' }
+          ]
         },
+        workshop: {
+          ...fields.select,
+          hasMany: true,
+          options: [
+            { label: 'QNX', value: 'QNX' },
+            { label: 'GROQ', value: 'GROQ' },
+            { label: 'SOLACE', value: 'SOLACE' }
+          ]
+        },
+        email: true,
+        state: true,
+        country: true,
+        checkbox: true,
+        number: true,
+        message: true,
+        payment: false
+      },
+      formOverrides: {
+        slug: 'forms',
+        admin: { group: 'Forms' },
+        access: {
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          read: ({ req }) => true,
+          update: () => false,
+        },
+        fields: ({ defaultFields }) => {
+          return [
+            ...defaultFields,
+            {
+              name: 'hearaboutus',
+              type: 'select',
+              required: true,
+              hasMany: true,
+              options: [
+                { label: 'Linked In', value: 'Linked In' },
+                { label: 'Instagram', value: 'Instagram' },
+                { label: 'Career Fair', value: 'Career Fair' }
+              ]
+            },
+            {
+              name: 'workshop',
+              type: 'select',
+              required: true,
+              hasMany: true,
+              options: [
+                { label: 'QNX', value: 'QNX' },
+                { label: 'GROQ', value: 'GROQ' },
+                { label: 'SOLACE', value: 'SOLACE' }
+              ]
+            }
+          ]
+        }
       }
-    ),
-    s3Storage({
+    }),
+/*     s3Storage({
       collections: {
         media: {
           prefix:
@@ -138,7 +186,7 @@ export default buildConfig({
         region: process.env.S3_REGION || "",
         endpoint: process.env.S3_ENDPOINT || "",
       },
-    }),
+    }), */
     // googleOAuth,
     // linkedinOAuth
     // payloadCloudPlugin(),
