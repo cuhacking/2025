@@ -66,8 +66,8 @@ a meta-framework created by the Design, and Development Team."
         include documentation.*
         include backend.*
         include external-providers.software-development._
-        autoLayout LeftRight
-    }
+    	autoLayout LeftRight
+	}
 
     view screenplay-pattern of screenplay-pattern {
         title: "Screenplay Pattern"
