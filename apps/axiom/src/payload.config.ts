@@ -4,6 +4,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 // import { googleOAuth } from '@cuhacking/cms/endpoints/auth/google'
 import { Users } from '@/db/collections/models/Users'
+import { formBuilderPlugin } from'@payloadcms/plugin-form-builder'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { s3Storage } from '@payloadcms/storage-s3'
@@ -89,6 +90,21 @@ export default buildConfig({
 generateSchemaOutputFile: path.resolve('../../libs/db/schema.ts'),
   }),
   plugins: [
+    formBuilderPlugin({
+      fields: {
+          text: true,
+          textarea: true,
+          select: true,
+          email: true,
+          state: true,
+          country: true,
+          checkbox: true,
+          number: true,
+          message: true,
+          payment: false,
+        },
+      }
+    ),
     s3Storage({
       collections: {
         media: {
