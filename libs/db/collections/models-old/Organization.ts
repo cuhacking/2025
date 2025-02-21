@@ -1,12 +1,23 @@
-import type { CollectionConfig } from 'payload'
-import { isAdmin } from '@cuhacking/db/access/isAdmin'
-import { validateURL } from '@cuhacking/db/shared/utils/validate-url'
+import type { AccessArgs, CollectionConfig } from 'payload'
+// import { isAdmin } from '@/db/access/isAdmin'
+import { validateURL } from '@/db/shared/utils/validate-url'
+
+type isAuthenticated = (args: AccessArgs<User>) => boolean
+
+export const authenticated: isAuthenticated = ({ req: { user } }) => {
+  return Boolean(user)
+}
 
 export const Organization: CollectionConfig = {
   slug: 'organization',
   access: {
-    update: isAdmin,
-    create: isAdmin,
+    // update: isAdmin,
+    // create: isAdmin,
+    admin: authenticated,
+    create: authenticated,
+    delete: authenticated,
+    read: authenticated,
+    update: authenticated,
   },
   admin: {
     useAsTitle: 'name',

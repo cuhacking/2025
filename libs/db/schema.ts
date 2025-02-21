@@ -17,8 +17,18 @@ import {
   numeric,
   integer,
   jsonb,
+  pgEnum,
 } from "@payloadcms/db-postgres/drizzle/pg-core";
 import { sql, relations } from "@payloadcms/db-postgres/drizzle";
+export const enum_links_type = pgEnum("enum_links_type", ["social", "custom"]);
+export const enum_links_platform = pgEnum("enum_links_platform", [
+  "linkedin",
+  "github",
+  "discord",
+  "instagram",
+  "linktree",
+  "behance",
+]);
 
 export const users = pgTable(
   "users",
@@ -220,6 +230,48 @@ export const payload_migrations = pgTable(
   }),
 );
 
+export const links = pgTable("links", {
+  id: serial("id").primaryKey(),
+  type: enum_links_type("type").notNull(),
+  platform: enum_links_platform("platform"),
+  url: varchar("url").notNull(),
+  updatedAt: timestamp("updated_at", {
+    mode: "string",
+    withTimezone: true,
+    precision: 3,
+  }),
+  createdAt: timestamp("created_at", {
+    mode: "string",
+    withTimezone: true,
+    precision: 3,
+  }),
+});
+
+export const custom_domains = pgTable(
+  "custom_domains",
+  {
+    id: serial("id").primaryKey(),
+    name: varchar("name").notNull(),
+    url: varchar("url").notNull(),
+    description: varchar("description"),
+    updatedAt: timestamp("updated_at", {
+      mode: "string",
+      withTimezone: true,
+      precision: 3,
+    }),
+    createdAt: timestamp("created_at", {
+      mode: "string",
+      withTimezone: true,
+      precision: 3,
+    }),
+  },
+  (columns) => ({
+    custom_domains_name_idx: uniqueIndex("custom_domains_name_idx").on(
+      columns.name,
+    ),
+  }),
+);
+
 export const relations_users = relations(users, () => ({}));
 export const relations_payload_locked_documents_rels = relations(
   payload_locked_documents_rels,
@@ -271,20 +323,28 @@ export const relations_payload_migrations = relations(
   payload_migrations,
   () => ({}),
 );
+export const relations_links = relations(links, () => ({}));
+export const relations_custom_domains = relations(custom_domains, () => ({}));
 
 type DatabaseSchema = {
+  enum_links_type: typeof enum_links_type;
+  enum_links_platform: typeof enum_links_platform;
   users: typeof users;
   payload_locked_documents: typeof payload_locked_documents;
   payload_locked_documents_rels: typeof payload_locked_documents_rels;
   payload_preferences: typeof payload_preferences;
   payload_preferences_rels: typeof payload_preferences_rels;
   payload_migrations: typeof payload_migrations;
+  links: typeof links;
+  custom_domains: typeof custom_domains;
   relations_users: typeof relations_users;
   relations_payload_locked_documents_rels: typeof relations_payload_locked_documents_rels;
   relations_payload_locked_documents: typeof relations_payload_locked_documents;
   relations_payload_preferences_rels: typeof relations_payload_preferences_rels;
   relations_payload_preferences: typeof relations_payload_preferences;
   relations_payload_migrations: typeof relations_payload_migrations;
+  relations_links: typeof relations_links;
+  relations_custom_domains: typeof relations_custom_domains;
 };
 
 declare module "@payloadcms/db-postgres/types" {
