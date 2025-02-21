@@ -134,8 +134,9 @@ Update the system:
 
 ## Install Package Managers
 
+Clean existing system environment. You can re-install these later.
 ```sh title="Terminal"
-sudo rm -rf "$(which yarn)" "$(which npm) $(which node)"
+sudo rm -rf "$(which npm node yarn pnpm)" "$(where npm node yarn pnpm)"
 ```
 
 ### [Nix](https://nixos.org/)
@@ -153,8 +154,13 @@ curl -fsSL https://get.pnpm.io/install.sh | sh -
 
 Re-open the terminal once installation is complete.
 
+Set [Node.js](https://nodejs.org/en) version.
 ```sh title="Terminal"
 pnpm env use --global 22.13.1
+```
+Install [TypeScript](https://www.typescriptlang.org).
+```sh title="Terminal"
+pnpm i -g typescript
 ```
 
 </div>
