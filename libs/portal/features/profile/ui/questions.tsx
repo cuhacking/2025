@@ -104,10 +104,10 @@ export function Questions({ user, status }: ProfileFormProps) {
   return (
     <Form {...profile}>
       <form onSubmit={profile.handleSubmit(onSubmit)}>
-        <div className="py-6 px-4 bg-black flex flex-col justify-center items-center gap-2.5 w-full">
+        <div className="py-6 px-4 flex flex-col justify-center items-center gap-2.5 w-full">
           <Accordion type="multiple" className="w-full col-span-full">
             <AccordionItem value="personal">
-              <AccordionTrigger className="pt-5 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline">
+              <AccordionTrigger className="pt-5 pb-1.5 border-b border-white shadow-lg flex justify-between items-center w-full hover:no-underline">
                 <AccordionHeader
                   name="Personal"
                   iconVariant={IconVariant.profile}
