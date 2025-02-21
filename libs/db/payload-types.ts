@@ -301,6 +301,8 @@ export interface Form {
         id?: string | null;
       }[]
     | null;
+  hearaboutus: ('Linked In' | 'Instagram' | 'Career Fair')[];
+  workshop: ('QNX' | 'GROQ' | 'SOLACE')[];
   updatedAt: string;
   createdAt: string;
 }
@@ -527,6 +529,8 @@ export interface FormsSelect<T extends boolean = true> {
         message?: T;
         id?: T;
       };
+  hearaboutus?: T;
+  workshop?: T;
   updatedAt?: T;
   createdAt?: T;
 }

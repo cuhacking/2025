@@ -4,7 +4,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 // import { googleOAuth } from '@cuhacking/cms/endpoints/auth/google'
 import { Users } from '@/db/collections/models/Users'
-import { formBuilderPlugin } from'@payloadcms/plugin-form-builder'
+import { fields, formBuilderPlugin } from'@payloadcms/plugin-form-builder'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { s3Storage } from '@payloadcms/storage-s3'
@@ -92,19 +92,71 @@ generateSchemaOutputFile: path.resolve('../../libs/db/schema.ts'),
   plugins: [
     formBuilderPlugin({
       fields: {
-          text: true,
-          textarea: true,
-          select: true,
-          email: true,
-          state: true,
-          country: true,
-          checkbox: true,
-          number: true,
-          message: true,
-          payment: false,
+        text: true,
+        textarea: true,
+        select: true,
+        wherehear: {
+          ...fields.select,
+          hasMany: true,
+          options: [
+            { label: 'Linked In', value: 'Linked In' },
+            { label: 'Instagram', value: 'Instagram' },
+            { label: 'Career Fair', value: 'Career Fair' }
+          ]
         },
+        workshop: {
+          ...fields.select,
+          hasMany: true,
+          options: [
+            { label: 'QNX', value: 'QNX' },
+            { label: 'GROQ', value: 'GROQ' },
+            { label: 'SOLACE', value: 'SOLACE' }
+          ]
+        },
+        email: true,
+        state: true,
+        country: true,
+        checkbox: true,
+        number: true,
+        message: true,
+        payment: false
+      },
+      formOverrides: {
+        slug: 'forms',
+        access: {
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          read: ({ req }) => true,
+          update: () => false,
+        },
+        fields: ({ defaultFields }) => {
+          return [
+            ...defaultFields,
+            {
+              name: 'hearaboutus',
+              type: 'select',
+              required: true,
+              hasMany: true,
+              options: [
+                { label: 'Linked In', value: 'Linked In' },
+                { label: 'Instagram', value: 'Instagram' },
+                { label: 'Career Fair', value: 'Career Fair' }
+              ]
+            },
+            {
+              name: 'workshop',
+              type: 'select',
+              required: true,
+              hasMany: true,
+              options: [
+                { label: 'QNX', value: 'QNX' },
+                { label: 'GROQ', value: 'GROQ' },
+                { label: 'SOLACE', value: 'SOLACE' }
+              ]
+            }
+          ]
+        }
       }
-    ),
+    }),
     s3Storage({
       collections: {
         media: {
