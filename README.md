@@ -50,7 +50,7 @@
 
 <hr/>
 
-$${\color{orange}2025}$$ edition of $${\color{lightgreen}cuHacking's}$$ $${\color{yellow}flagship}$$ platform, containing all software and hardware projects that power all events throughout the year.
+2025 edition of cuHacking's flagship platform, containing all software and hardware projects that power all events throughout the year.
 
 Aiming to be [WCAG 2 Compliant](https://www.w3.org/WAI/standards-guidelines/wcag/) regardless of development cost. Strong focus on accessibility in order to provide the best experience for hackers, sponsors, and organizers alike.
 
