@@ -8,7 +8,7 @@ views {
         exclude screenplay-pattern
     }
 
-    view of users {
+    view users of users {
         include *
     }
 
@@ -49,7 +49,7 @@ views {
     //     include *
     // }
 
-    view of external-providers {
+    view external-providers of external-providers {
         include *
         include enterprise-management.**
         include marketing-and-communication.**
@@ -57,7 +57,8 @@ views {
         include software-development.**
     }
 
-    view of platform {
+    view platform of platform {
+    title: "2025 Platform Architecture"
         description: "Deployed collection of custom software, powered by Axiom,
 a meta-framework created by the Design, and Development Team."
         include *
