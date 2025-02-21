@@ -13,7 +13,6 @@ reviews:
 
   path_filters:
     - '!infra/sdks/**'
-    - 'infra/**'
     - '!scaffold-examples/**'
 
   path_instructions:
