@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
 # ===== ci(coderabbit) ======
 # https://docs.coderabbit.ai/getting-started/configure-coderabbit
 language: en-US
@@ -16,10 +17,11 @@ reviews:
     - '!scaffold-examples/**'
 
   path_instructions:
-    'infra/**':
-      - Validate infrastructure security best practices
-      - Ensure proper error handling in non-generated code
-      - Verify deployment configuration parameters
+    - path: 'infra/**'
+      instructions: |
+        "- Validate infrastructure security best practices
+        - Ensure proper error handling in non-generated code
+        - Verify deployment configuration parameters"
 
   auto_review:
     enabled: true
