@@ -25,6 +25,7 @@ const defaultImageHostnames = [
   'keymapdb.com',
   '12factor.net',
   'uo.zone',
+  'serenity-js.org',
 ]
 
 /**
