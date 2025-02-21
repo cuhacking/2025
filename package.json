@@ -85,6 +85,7 @@
     "@slidev/theme-default": "latest",
     "@slidev/theme-seriph": "latest",
     "@splinetool/react-spline": "^4.0.0",
+    "@xstate/react": "^5.0.2",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.4",
     "cross-env": "^7.0.3",
@@ -111,6 +112,7 @@
     "three": "^0.171.0",
     "vaul": "^1.1.2",
     "vue": "^3.5.13",
+    "xstate": "^5.19.2",
     "zod": "^3.24.1"
   },
   "devDependencies": {
