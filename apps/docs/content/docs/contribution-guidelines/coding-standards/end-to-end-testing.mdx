@@ -8,55 +8,59 @@ import { File, Folder, Files } from 'fumadocs-ui/components/files';
 
 Robust End-to-End testing of our entire platform serves as the backbone of our productivity.
 
-## Proposed Architecture
+<Cards>
+  <Card
+    title={"Playwright"}
+    description={
+      <>
+        <li>For End-to-End Testing of our entire platform.</li>
+        <li>
+          Instead of clicking around the entire app yourself to see if it still
+          works after every single time you make a change, why not let a robot
+          do it for you?
+        </li>
+      </>
+    }
+    href={`https://playwright.dev/`}
+    icon={
+      <img
+        src="https://playwright.dev/img/playwright-logo.svg"
+        alt="Playwright Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+  <Card
+    title={"Screenplay Pattern"}
+    description={
+      <>
+        <li>Behaviour-Driven Development framework for scalable and performant End-to-End Tests.</li>
+      </>
+    }
+    href={`https://serenity-js.org`}
+    icon={
+      <img
+        src="https://avatars.githubusercontent.com/u/25189746?s=200&v=4"
+        alt="Screenplay Pattern Logo"
+        width={24}
+        height={24}
+      />
+    }
+  />
+ </Cards >
 
-<Files>
-  <Folder name="app-e2e" defaultOpen>
-  <Folder name="src" defaultOpen>
-  <Folder name="data" defaultOpen>
-    <File name="hackers.data.ts"/>
-    <File name="organizers.data.ts"/>
-    <File name="sponsors.data.ts"/>
-  </Folder>
-  <Folder name="object-models" defaultOpen>
-  <Folder name="pages" defaultOpen>
-    <File name="dashboard.page.ts"/>
-    <File name="application-form.page.ts"/>
-    <File name="profile.page.ts"/>
-  <Folder name="components" defaultOpen>
-    <File name="something-dialog.component.ts"/>
-    <File name="some-other-compound-component-that-exists-in-multiple-pages.component.ts"/>
-  </Folder>
-  </Folder>
-  </Folder>
-    <File name="hacker.actions.spec.ts"/>
-    <File name="organizer.actions.spec.ts"/>
-  <Folder name="visual" defaultOpen>
-    <File name="dashboard.visual.spec.ts"/>
-    <File name="application-form.visual.spec.ts"/>
-  </Folder>
-  </Folder>
-  </Folder>
-    <File name="playwright.config.ts"/>
-</Files>
-
-Screen sizes to test:
-	- Desktop
-	- Tablet
-	- Mobile (320px)
-
-## Run Tests
-
-```sh title="Terminal"
-pnpm nx e2e docs-e2e --verbose
-```
+![Serenity.js Screenplay Pattern](https://serenity-js.org/assets/ideal-img/serenity-js-screenplay-pattern.5eead28.1200.png)
+[View in full-screen](https://arch.cuhacking.ca/view/screenplay-pattern)
+<iframe
+title="Screenplay Pattern Architecture Diagram"
+className="mt-4 w-full h-[400px] rounded-lg"
+src="https://arch.cuhacking.ca/view/screenplay-pattern"
+allowFullScreen>
+</iframe>
 
 ## Generate Tests (Codegen)
 
 ```sh title="Terminal"
 pnpm exec playwright codegen
 ```
-
-Select DESKTOP, TABLET, and/or MOBILE in the 'Projects' tab on the top left of the Playwright UI.
-
-## View Tests in CI
