@@ -5,9 +5,10 @@ views {
         description: "Top-level Overview"
         include *
         exclude external-providers -> platform
+        exclude screenplay-pattern
     }
 
-    view of users {
+    view users of users {
         include *
     }
 
@@ -48,7 +49,7 @@ views {
     //     include *
     // }
 
-    view of external-providers {
+    view external-providers of external-providers {
         include *
         include enterprise-management.**
         include marketing-and-communication.**
@@ -56,7 +57,7 @@ views {
         include software-development.**
     }
 
-    view of platform {
+    view platform of platform {
         description: "Deployed collection of custom software, powered by Axiom,
 a meta-framework created by the Design, and Development Team."
         include *
@@ -64,5 +65,13 @@ a meta-framework created by the Design, and Development Team."
         include documentation.*
         include backend.*
         include external-providers.software-development._
-    }
+    	autoLayout LeftRight
+	}
+
+view screenplay-pattern of screenplay-pattern{
+title: "Screenplay Pattern"
+description: "Behaviour-Driven Development framework for scalable and performant End-to-End Tests."
+include *
+	autoLayout LeftRight
+	}
 }
