@@ -1,8 +1,6 @@
 import type { ReactNode } from 'react'
 import type { UseFormReturn } from 'react-hook-form'
 import calendarIcon from '@cuhacking/shared/assets/icons/general/calendar-1.svg'
-import { Button } from '@cuhacking/shared/ui/button'
-import { Calendar } from '@cuhacking/shared/ui/calendar'
 import {
   FormControl,
   FormField,
@@ -12,11 +10,7 @@ import {
 } from '@cuhacking/shared/ui/form'
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 import { Input } from '@cuhacking/shared/ui/input'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@cuhacking/shared/ui/popover'
+
 import { Typography } from '@cuhacking/shared/ui/typography/typgoraphy'
 import { cn } from '@cuhacking/shared/utils/cn'
 import { format, isValid, parse } from 'date-fns'
@@ -73,37 +67,7 @@ export function DateField({
               </div>
 
               <div className="flex gap-x-3 w-full py-1.5">
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <FormControl>
-                      <Button
-                        variant="outline"
-                        className={cn(
-                          'border-none h-full pl-3 p-0 text-left font-light',
-                          !field.value && 'text-muted-foreground',
-                        )}
-                        disabled={isDisabled}
-                      >
-                        <img src={calendarIcon} className="h-6 w-6" />
-                      </Button>
-                    </FormControl>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar
-                      mode="single"
-                      selected={field.value}
-                      captionLayout="dropdown-buttons"
-                      className="min-h-78 h-78 max-h-78"
-                      onSelect={(date) => {
-                        field.onChange(date)
-                        const newDate = format(date || new Date(), 'dd-MM-yyyy')
-                        setInputValue(newDate)
-                        form.setValue(name, newDate)
-                      }}
-                      initialFocus
-                    />
-                  </PopoverContent>
-                </Popover>
+                <img src={calendarIcon} className="h-6 w-6" />
                 <FormControl className="w-full">
                   <Input
                     type="text"

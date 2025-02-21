@@ -82,7 +82,7 @@ export function NumberField({
                     </Typography>
                   </FormControl>
                 </div>
-                <div className="flex-shrink-0 flex grow gap-1">
+                <div className="flex-shrink-0 flex gap-1">
                   <Button
                     className="flex-shrink-0 p-1 h-auto w-auto"
                     variant="icon"
