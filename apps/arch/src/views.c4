@@ -5,6 +5,7 @@ views {
         description: "Top-level Overview"
         include *
         exclude external-providers -> platform
+        exclude screenplay-pattern
     }
 
     view of users {
@@ -64,5 +65,13 @@ a meta-framework created by the Design, and Development Team."
         include documentation.*
         include backend.*
         include external-providers.software-development._
+        autoLayout LeftRight
+    }
+
+    view screenplay-pattern of screenplay-pattern {
+        title: "Screenplay Pattern"
+        description: "Behaviour-Driven Development framework for scalable and performant End-to-End Tests."
+        include *
+        autoLayout LeftRight
     }
 }

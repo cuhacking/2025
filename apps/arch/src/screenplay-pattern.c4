@@ -1,0 +1,177 @@
+ // https://serenity-js.org/handbook/design/screenplay-pattern/
+model {
+context screenplay-pattern{
+title: "Screenplay Pattern"
+icon: https://avatars.githubusercontent.com/u/25189746?s=200&v=4
+link: https://serenity-js.org/handbook/design/screenplay-pattern/
+description: "The Screenplay Pattern uses the system metaphor of a stage performance, helping you model each test scenario like a little screenplay describing how the actors should go about performing their activities while interacting with the system under test.
+
+Following the Screenplay Pattern helps you capture:
+
+Who the actors interacting with your system are
+Why they interact with your system
+What they need to do to accomplish their goals
+How exactly they would go about that"
+
+style{
+color: yellow-100
+opacity: 15%
+}
+
+container actors {
+title: "Actors"
+icon: tech:playwrite
+description: "People and external systems interacting with system under test"
+link: https://serenity-js.org/handbook/design/screenplay-pattern/#actors
+style{
+color: amber
+shape: person
+}
+}
+
+container tasks{
+title: "Tasks"
+icon: https://www.svgrepo.com/show/498465/task.svg
+description: "Used to model sequences of activities as meaningful steps of a business workflow in your domain"
+link: https://serenity-js.org/handbook/design/screenplay-pattern/#tasks
+style{
+color: blue-800
+shape: queue
+}
+}
+
+container abilities{
+title: "Abilities"
+icon: https://www.svgrepo.com/show/189274/running-run.svg
+description: "Thin wrappers around any integration libraries required to interact with the system under test"
+link: https://serenity-js.org/handbook/design/screenplay-pattern/#abilities
+style{
+color: green
+shape: queue
+}
+}
+
+container interactions{
+title: "Interactions"
+icon: https://www.svgrepo.com/show/216713/click.svg
+description: "The low-level activities an actor can perform using a given interface"
+link: https://serenity-js.org/handbook/design/screenplay-pattern/#interactions
+style{
+color: indigo
+shape: queue
+}
+}
+
+container questions{
+title: "Questions"
+icon: https://www.svgrepo.com/show/407321/red-question-mark.svg
+description: "Used to retrieve information from the system under test and the test execution environment"
+link: https://serenity-js.org/handbook/design/screenplay-pattern/#questions
+style{
+color: cyan-800
+shape: storage
+}
+}
+
+container system-under-test{
+title: "System under test"
+description: "Collection of one or more apps"
+icon: https://www.svgrepo.com/show/189269/dumbbell-gym.svg
+style{
+color: yellow-700
+shape: mobile
+}
+}
+
+actors -> tasks {
+title: "perform"
+style{
+color: yellow-100
+}
+}
+
+actors -> interactions{
+title: "perform"
+style{
+color: yellow-100
+}
+}
+
+actors -> abilities{
+title: "have"
+description: "Actors have abilities that enable them to interact with the various interfaces of the system under test and the test execution environment.
+
+From the technical perspective, abilities act as wrappers around any integration libraries required to communicate with the external interfaces of system under test, such as web browser drivers or an HTTP client, or hold state to allow actors to remember retrieved information. Abilities also enable portability of your test code across various lower-level integration libraries as they expose a standardised API."
+style{
+line: solid
+color: orange-800
+head: none
+tail: diamond
+}
+}
+
+actors -> questions{
+title: "answer"
+description: "Apart from enabling interactions, abilities also enable actors to answer questions about the state of the system under test and the test execution environment. More specifically, questions instruct actors how to use their abilities to retrieve information when the activity is performed and provide a way to parameterise activities."
+style{
+line: dotted
+color: pink-800
+}
+}
+
+tasks -> interactions {
+title: "made up of"
+description: "The idea that underpins the Screenplay Pattern is to capture your domain language and use your acceptance tests as an opportunity to demonstrate how actors interacting with your system accomplish their goals.
+
+Conceptually similar to standard JavaScript functions, tasks offer an easy way to associate business meaning with sequences of activities and turn them into reusable building blocks from which your team can assemble test scenarios."
+style{
+line: solid
+color: blue
+head: none
+tail: diamond
+}
+}
+
+abilities -> interactions {
+title: "enable"
+description: "Abilities enable actors to perform interactions with the system under test. Interactions are command objects that instruct an actor how to use their abilities to perform the given activity. Most interactions you will need are already provided by Serenity/JS modules, and you can easily create new ones if you'd like to.
+To instruct an actor to attempt to perform a sequence of interactions, use the Actor.attemptsTo method. Note that this method returns a Promise that resolves when the actor has completed the interactions, or rejects if any of the interactions fail, so you can use it with await in an async function."
+style{
+color: green
+}
+}
+
+interactions -> system-under-test {
+title: "with"
+style{
+line: dotted
+color: indigo
+}
+}
+
+abilities -> system-under-test {
+title: "invoke"
+style{
+line: dotted
+color: violet-800
+}
+}
+
+abilities -> questions {
+title: "enable"
+description: "Abilities enable actors to perform interactions with the system under test. Interactions are command objects that instruct an actor how to use their abilities to perform the given activity. Most interactions you will need are already provided by Serenity/JS modules, and you can easily create new ones if you'd like to.
+To instruct an actor to attempt to perform a sequence of interactions, use the `Actor.attemptsTo` method. Note that this method returns a Promise that resolves when the actor has completed the interactions, or rejects if any of the interactions fail, so you can use it with await in an async function."
+style{
+color: green
+}
+}
+
+questions -> system-under-test{
+title: "about the state of"
+style{
+color: cyan-800
+line: dotted
+}
+}
+}
+}
