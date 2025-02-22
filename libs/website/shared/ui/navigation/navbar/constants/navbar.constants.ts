@@ -10,6 +10,7 @@ import instagram_white from '@cuhacking/shared/assets/icons/socials/instagram-wh
 import linkedin_white from '@cuhacking/shared/assets/icons/socials/linkedin-white-1.svg'
 import linktree_white from '@cuhacking/shared/assets/icons/socials/linktree-white-1.svg'
 import cuHackingLogo from '@cuhacking/shared/assets/logos/cuHacking/cuhacking-logo-1.svg'
+import mlhBanner from '@cuhacking/shared/assets/logos/sponsors/mlh-banner.svg'
 
 const links = [
   { name: 'ABOUT', link: '/#about' },
@@ -86,6 +87,16 @@ const socials: { link: string, name: string, media: Media }[] = [
     },
   },
 ]
+
+const banner: { link: string, name: string, media: Media }
+  = {
+    link: 'https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2025-season&utm_content=black',
+    name: 'MLH Banner',
+    media: {
+      src: mlhBanner,
+      alt: 'Major League Hacking 2025 Hackathon Season',
+    },
+  }
 export const NAVBAR_CONSTANTS = {
   SOCIALS: socials,
   LINKS: links,
@@ -94,6 +105,7 @@ export const NAVBAR_CONSTANTS = {
     src: hamburger,
     alt: 'Hambuger icon',
   },
+  MLH_BANNER: banner,
   CROSS: {
     src: cross,
     alt: 'Cross icon',

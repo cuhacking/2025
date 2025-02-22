@@ -15,6 +15,7 @@ export function Layout({ children }: { children: ReactNode }) {
         socials={NAVBAR_CONSTANTS.SOCIALS}
         hamburger={NAVBAR_CONSTANTS.HAMBURGER}
         cross={NAVBAR_CONSTANTS.CROSS}
+        banner={NAVBAR_CONSTANTS.MLH_BANNER}
       />
 
       <div className="mt-10">{children}</div>

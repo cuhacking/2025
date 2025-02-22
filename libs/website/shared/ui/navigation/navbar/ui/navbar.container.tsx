@@ -18,6 +18,11 @@ interface NavbarProps {
   }[]
   hamburger: Media
   cross: Media
+  banner: {
+    link: string
+    name: string
+    media: Media
+  }
 }
 export function NavbarContainer({
   links,
@@ -25,6 +30,7 @@ export function NavbarContainer({
   socials,
   hamburger,
   cross,
+  banner,
 }: NavbarProps) {
   return (
     <header id="navbar" className="w-full fixed top-0 z-[60] backdrop-blur-sm">
@@ -34,6 +40,7 @@ export function NavbarContainer({
         socials={socials}
         hamburger={hamburger}
         cross={cross}
+        banner={banner}
       />
     </header>
   )

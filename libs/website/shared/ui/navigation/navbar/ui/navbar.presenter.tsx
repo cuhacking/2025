@@ -12,6 +12,7 @@ import {
 } from '@cuhacking/shared/ui/navigation-menu'
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import { Link } from '@remix-run/react'
+import { Banner } from '@website/shared/ui/banner'
 import { useState } from 'react'
 import { ClientOnly } from 'remix-utils/client-only'
 import { Socials } from '../../../socials'
@@ -35,6 +36,11 @@ interface NavbarProps {
   }[]
   hamburger: Media
   cross: Media
+  banner: {
+    link: string
+    name: string
+    media: Media
+  }
 }
 // TODO: Refactor to have the drawer in separate components
 export function NavbarPresenter({
@@ -43,6 +49,7 @@ export function NavbarPresenter({
   socials,
   hamburger,
   cross,
+  banner,
 }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false)
   function toggleOpen() {
@@ -50,7 +57,7 @@ export function NavbarPresenter({
   }
 
   return (
-    <div className="mx-auto max-w-screen-xl px-4 py-2.5 flex justify-between">
+    <div className="relative mx-auto max-w-screen-xl px-4 py-2.5 flex justify-between">
       <Link to="/" aria-label="Return to homepage">
         <img
           src={logo}
@@ -58,6 +65,13 @@ export function NavbarPresenter({
           className="transition-transform duration-300 hover:scale-[1.2] relative z-[60]"
         />
       </Link>
+
+      <div className="absolute top-12 sm:right-4 right-8 z-50">
+        <Banner
+          banner={banner}
+          className="w-12 sm:w-18 lg:w-24 hover:scale-110 transition-transform duration-300"
+        />
+      </div>
 
       <NavigationMenu className="hidden md:block">
         <NavigationMenuList className="gap-x-10">
