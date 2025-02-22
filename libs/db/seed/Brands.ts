@@ -15,7 +15,7 @@ export const brandData = [
       },
       {
         name: 'Tooling',
-        link: '/contribution-guidelines/coding-standards/tooling',
+        link: 'https://docs.cuhacking.ca/contribution-guidelines/coding-standards/tooling',
       },
       { name: 'ESLint', link: 'https://eslint.cuhacking.ca/rules' },
       { name: 'Discord', link: 'https://discord.gg/h2cQqF9aZf' },
@@ -63,7 +63,7 @@ export const brandData = [
     name: 'University of Ottawa',
     description: 'Canada\'s university for bilingual education',
     mediaUrl:
-      'https://seeklogo.com/images/U/university-of-ottawa-logo-88B9787547-seeklogo.com.png',
+      'https://images.seeklogo.com/logo-png/35/1/university-of-ottawa-logo-png_seeklogo-356159.png',
     links: [{ name: 'Website', link: 'https://www.uottawa.ca/en' }],
   },
   {

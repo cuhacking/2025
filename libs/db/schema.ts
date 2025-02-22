@@ -11,30 +11,138 @@ import {
   index,
   uniqueIndex,
   foreignKey,
+  integer,
   serial,
   varchar,
   timestamp,
   numeric,
-  integer,
   jsonb,
   pgEnum,
 } from "@payloadcms/db-postgres/drizzle/pg-core";
 import { sql, relations } from "@payloadcms/db-postgres/drizzle";
-export const enum_links_type = pgEnum("enum_links_type", ["social", "custom"]);
-export const enum_links_platform = pgEnum("enum_links_platform", [
-  "linkedin",
-  "github",
-  "discord",
-  "instagram",
-  "linktree",
-  "behance",
+export const enum_users_dietary_restrictions = pgEnum(
+  "enum_users_dietary_restrictions",
+  [
+    "none",
+    "vegetarian",
+    "vegan",
+    "halal",
+    "kosher",
+    "pescatarian",
+    "dairy-free",
+    "gluten-free",
+    "shellfish-free",
+    "nut-free",
+    "keto",
+    "low-lactose",
+    "low-carb",
+    "paleo",
+    "high-protein",
+    "raw-vegan",
+    "whole30",
+    "fasting",
+    "other",
+  ],
+);
+export const enum_users_allergies = pgEnum("enum_users_allergies", [
+  "none",
+  "peanuts",
+  "tree-nuts",
+  "dairy",
+  "gluten",
+  "shellfish",
+  "fish",
+  "soy",
+  "eggs",
+  "red-meat",
+  "corn",
+  "sulfites",
+  "fruits",
+  "vegetables",
+  "caffeine",
+  "honey",
+  "other",
 ]);
+export const enum_users_pronouns = pgEnum("enum_users_pronouns", [
+  "he/him",
+  "she/her",
+  "they/them",
+  "other",
+]);
+export const enum_users_tshirt_size = pgEnum("enum_users_tshirt_size", [
+  "xs",
+  "s",
+  "m",
+  "l",
+  "xl",
+  "2xl",
+  "3xl",
+]);
+
+export const users_dietary_restrictions = pgTable(
+  "users_dietary_restrictions",
+  {
+    order: integer("order").notNull(),
+    parent: integer("parent_id").notNull(),
+    value: enum_users_dietary_restrictions("value"),
+    id: serial("id").primaryKey(),
+  },
+  (columns) => ({
+    orderIdx: index("users_dietary_restrictions_order_idx").on(columns.order),
+    parentIdx: index("users_dietary_restrictions_parent_idx").on(
+      columns.parent,
+    ),
+    parentFk: foreignKey({
+      columns: [columns["parent"]],
+      foreignColumns: [users.id],
+      name: "users_dietary_restrictions_parent_fk",
+    }).onDelete("cascade"),
+  }),
+);
+
+export const users_allergies = pgTable(
+  "users_allergies",
+  {
+    order: integer("order").notNull(),
+    parent: integer("parent_id").notNull(),
+    value: enum_users_allergies("value"),
+    id: serial("id").primaryKey(),
+  },
+  (columns) => ({
+    orderIdx: index("users_allergies_order_idx").on(columns.order),
+    parentIdx: index("users_allergies_parent_idx").on(columns.parent),
+    parentFk: foreignKey({
+      columns: [columns["parent"]],
+      foreignColumns: [users.id],
+      name: "users_allergies_parent_fk",
+    }).onDelete("cascade"),
+  }),
+);
 
 export const users = pgTable(
   "users",
   {
     id: serial("id").primaryKey(),
-    name: varchar("name"),
+    firstName: varchar("first_name"),
+    middleName: varchar("middle_name"),
+    lastName: varchar("last_name"),
+    displayName: varchar("display_name"),
+    pronouns: enum_users_pronouns("pronouns"),
+    avatar: integer("avatar_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    brandRelation: integer("brand_relation_id").references(() => brands.id, {
+      onDelete: "set null",
+    }),
+    linkedIn: varchar("linked_in"),
+    discord: varchar("discord"),
+    github: varchar("github"),
+    behance: varchar("behance"),
+    website: varchar("website"),
+    tshirtSize: enum_users_tshirt_size("tshirt_size"),
+    emergencyContactFullName: varchar("emergency_contact_full_name"),
+    emergencyContactCellPhone: varchar("emergency_contact_cell_phone"),
+    emergencyContactEmailAddress: varchar("emergency_contact_email_address"),
     updatedAt: timestamp("updated_at", {
       mode: "string",
       withTimezone: true,
@@ -66,9 +174,141 @@ export const users = pgTable(
     }),
   },
   (columns) => ({
+    users_avatar_idx: index("users_avatar_idx").on(columns.avatar),
+    users_brand_relation_idx: index("users_brand_relation_idx").on(
+      columns.brandRelation,
+    ),
     users_updated_at_idx: index("users_updated_at_idx").on(columns.updatedAt),
     users_created_at_idx: index("users_created_at_idx").on(columns.createdAt),
     users_email_idx: uniqueIndex("users_email_idx").on(columns.email),
+  }),
+);
+
+export const brands_links = pgTable(
+  "brands_links",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    id: varchar("id").primaryKey(),
+    name: varchar("name"),
+    link: varchar("link"),
+  },
+  (columns) => ({
+    _orderIdx: index("brands_links_order_idx").on(columns._order),
+    _parentIDIdx: index("brands_links_parent_id_idx").on(columns._parentID),
+    _parentIDFk: foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [brands.id],
+      name: "brands_links_parent_id_fk",
+    }).onDelete("cascade"),
+  }),
+);
+
+export const brands = pgTable(
+  "brands",
+  {
+    id: serial("id").primaryKey(),
+    name: varchar("name").notNull().default("cuHacking"),
+    description: varchar("description")
+      .notNull()
+      .default("Carleton University''s Official Hackathon"),
+    media: integer("media_id").references(() => media.id, {
+      onDelete: "set null",
+    }),
+    updatedAt: timestamp("updated_at", {
+      mode: "string",
+      withTimezone: true,
+      precision: 3,
+    })
+      .defaultNow()
+      .notNull(),
+    createdAt: timestamp("created_at", {
+      mode: "string",
+      withTimezone: true,
+      precision: 3,
+    })
+      .defaultNow()
+      .notNull(),
+  },
+  (columns) => ({
+    brands_media_idx: index("brands_media_idx").on(columns.media),
+    brands_updated_at_idx: index("brands_updated_at_idx").on(columns.updatedAt),
+    brands_created_at_idx: index("brands_created_at_idx").on(columns.createdAt),
+  }),
+);
+
+export const brands_rels = pgTable(
+  "brands_rels",
+  {
+    id: serial("id").primaryKey(),
+    order: integer("order"),
+    parent: integer("parent_id").notNull(),
+    path: varchar("path").notNull(),
+    brandsID: integer("brands_id"),
+  },
+  (columns) => ({
+    order: index("brands_rels_order_idx").on(columns.order),
+    parentIdx: index("brands_rels_parent_idx").on(columns.parent),
+    pathIdx: index("brands_rels_path_idx").on(columns.path),
+    brands_rels_brands_id_idx: index("brands_rels_brands_id_idx").on(
+      columns.brandsID,
+    ),
+    parentFk: foreignKey({
+      columns: [columns["parent"]],
+      foreignColumns: [brands.id],
+      name: "brands_rels_parent_fk",
+    }).onDelete("cascade"),
+    brandsIdFk: foreignKey({
+      columns: [columns["brandsID"]],
+      foreignColumns: [brands.id],
+      name: "brands_rels_brands_fk",
+    }).onDelete("cascade"),
+  }),
+);
+
+export const media = pgTable(
+  "media",
+  {
+    id: serial("id").primaryKey(),
+    alt: varchar("alt").notNull(),
+    prefix: varchar("prefix").default("media-dev"),
+    updatedAt: timestamp("updated_at", {
+      mode: "string",
+      withTimezone: true,
+      precision: 3,
+    })
+      .defaultNow()
+      .notNull(),
+    createdAt: timestamp("created_at", {
+      mode: "string",
+      withTimezone: true,
+      precision: 3,
+    })
+      .defaultNow()
+      .notNull(),
+    url: varchar("url"),
+    thumbnailURL: varchar("thumbnail_u_r_l"),
+    filename: varchar("filename"),
+    mimeType: varchar("mime_type"),
+    filesize: numeric("filesize"),
+    width: numeric("width"),
+    height: numeric("height"),
+    focalX: numeric("focal_x"),
+    focalY: numeric("focal_y"),
+    sizes_thumbnail_url: varchar("sizes_thumbnail_url"),
+    sizes_thumbnail_width: numeric("sizes_thumbnail_width"),
+    sizes_thumbnail_height: numeric("sizes_thumbnail_height"),
+    sizes_thumbnail_mimeType: varchar("sizes_thumbnail_mime_type"),
+    sizes_thumbnail_filesize: numeric("sizes_thumbnail_filesize"),
+    sizes_thumbnail_filename: varchar("sizes_thumbnail_filename"),
+  },
+  (columns) => ({
+    media_updated_at_idx: index("media_updated_at_idx").on(columns.updatedAt),
+    media_created_at_idx: index("media_created_at_idx").on(columns.createdAt),
+    media_filename_idx: uniqueIndex("media_filename_idx").on(columns.filename),
+    media_sizes_thumbnail_sizes_thumbnail_filename_idx: index(
+      "media_sizes_thumbnail_sizes_thumbnail_filename_idx",
+    ).on(columns.sizes_thumbnail_filename),
   }),
 );
 
@@ -113,6 +353,8 @@ export const payload_locked_documents_rels = pgTable(
     parent: integer("parent_id").notNull(),
     path: varchar("path").notNull(),
     usersID: integer("users_id"),
+    brandsID: integer("brands_id"),
+    mediaID: integer("media_id"),
   },
   (columns) => ({
     order: index("payload_locked_documents_rels_order_idx").on(columns.order),
@@ -123,6 +365,12 @@ export const payload_locked_documents_rels = pgTable(
     payload_locked_documents_rels_users_id_idx: index(
       "payload_locked_documents_rels_users_id_idx",
     ).on(columns.usersID),
+    payload_locked_documents_rels_brands_id_idx: index(
+      "payload_locked_documents_rels_brands_id_idx",
+    ).on(columns.brandsID),
+    payload_locked_documents_rels_media_id_idx: index(
+      "payload_locked_documents_rels_media_id_idx",
+    ).on(columns.mediaID),
     parentFk: foreignKey({
       columns: [columns["parent"]],
       foreignColumns: [payload_locked_documents.id],
@@ -132,6 +380,16 @@ export const payload_locked_documents_rels = pgTable(
       columns: [columns["usersID"]],
       foreignColumns: [users.id],
       name: "payload_locked_documents_rels_users_fk",
+    }).onDelete("cascade"),
+    brandsIdFk: foreignKey({
+      columns: [columns["brandsID"]],
+      foreignColumns: [brands.id],
+      name: "payload_locked_documents_rels_brands_fk",
+    }).onDelete("cascade"),
+    mediaIdFk: foreignKey({
+      columns: [columns["mediaID"]],
+      foreignColumns: [media.id],
+      name: "payload_locked_documents_rels_media_fk",
     }).onDelete("cascade"),
   }),
 );
@@ -230,49 +488,77 @@ export const payload_migrations = pgTable(
   }),
 );
 
-export const links = pgTable("links", {
-  id: serial("id").primaryKey(),
-  type: enum_links_type("type").notNull(),
-  platform: enum_links_platform("platform"),
-  url: varchar("url").notNull(),
-  updatedAt: timestamp("updated_at", {
-    mode: "string",
-    withTimezone: true,
-    precision: 3,
-  }),
-  createdAt: timestamp("created_at", {
-    mode: "string",
-    withTimezone: true,
-    precision: 3,
-  }),
-});
-
-export const custom_domains = pgTable(
-  "custom_domains",
-  {
-    id: serial("id").primaryKey(),
-    name: varchar("name").notNull(),
-    url: varchar("url").notNull(),
-    description: varchar("description"),
-    updatedAt: timestamp("updated_at", {
-      mode: "string",
-      withTimezone: true,
-      precision: 3,
+export const relations_users_dietary_restrictions = relations(
+  users_dietary_restrictions,
+  ({ one }) => ({
+    parent: one(users, {
+      fields: [users_dietary_restrictions.parent],
+      references: [users.id],
+      relationName: "dietaryRestrictions",
     }),
-    createdAt: timestamp("created_at", {
-      mode: "string",
-      withTimezone: true,
-      precision: 3,
-    }),
-  },
-  (columns) => ({
-    custom_domains_name_idx: uniqueIndex("custom_domains_name_idx").on(
-      columns.name,
-    ),
   }),
 );
-
-export const relations_users = relations(users, () => ({}));
+export const relations_users_allergies = relations(
+  users_allergies,
+  ({ one }) => ({
+    parent: one(users, {
+      fields: [users_allergies.parent],
+      references: [users.id],
+      relationName: "allergies",
+    }),
+  }),
+);
+export const relations_users = relations(users, ({ one, many }) => ({
+  avatar: one(media, {
+    fields: [users.avatar],
+    references: [media.id],
+    relationName: "avatar",
+  }),
+  brandRelation: one(brands, {
+    fields: [users.brandRelation],
+    references: [brands.id],
+    relationName: "brandRelation",
+  }),
+  dietaryRestrictions: many(users_dietary_restrictions, {
+    relationName: "dietaryRestrictions",
+  }),
+  allergies: many(users_allergies, {
+    relationName: "allergies",
+  }),
+}));
+export const relations_brands_links = relations(brands_links, ({ one }) => ({
+  _parentID: one(brands, {
+    fields: [brands_links._parentID],
+    references: [brands.id],
+    relationName: "links",
+  }),
+}));
+export const relations_brands_rels = relations(brands_rels, ({ one }) => ({
+  parent: one(brands, {
+    fields: [brands_rels.parent],
+    references: [brands.id],
+    relationName: "_rels",
+  }),
+  brandsID: one(brands, {
+    fields: [brands_rels.brandsID],
+    references: [brands.id],
+    relationName: "brands",
+  }),
+}));
+export const relations_brands = relations(brands, ({ one, many }) => ({
+  media: one(media, {
+    fields: [brands.media],
+    references: [media.id],
+    relationName: "media",
+  }),
+  links: many(brands_links, {
+    relationName: "links",
+  }),
+  _rels: many(brands_rels, {
+    relationName: "_rels",
+  }),
+}));
+export const relations_media = relations(media, () => ({}));
 export const relations_payload_locked_documents_rels = relations(
   payload_locked_documents_rels,
   ({ one }) => ({
@@ -285,6 +571,16 @@ export const relations_payload_locked_documents_rels = relations(
       fields: [payload_locked_documents_rels.usersID],
       references: [users.id],
       relationName: "users",
+    }),
+    brandsID: one(brands, {
+      fields: [payload_locked_documents_rels.brandsID],
+      references: [brands.id],
+      relationName: "brands",
+    }),
+    mediaID: one(media, {
+      fields: [payload_locked_documents_rels.mediaID],
+      references: [media.id],
+      relationName: "media",
     }),
   }),
 );
@@ -323,28 +619,36 @@ export const relations_payload_migrations = relations(
   payload_migrations,
   () => ({}),
 );
-export const relations_links = relations(links, () => ({}));
-export const relations_custom_domains = relations(custom_domains, () => ({}));
 
 type DatabaseSchema = {
-  enum_links_type: typeof enum_links_type;
-  enum_links_platform: typeof enum_links_platform;
+  enum_users_dietary_restrictions: typeof enum_users_dietary_restrictions;
+  enum_users_allergies: typeof enum_users_allergies;
+  enum_users_pronouns: typeof enum_users_pronouns;
+  enum_users_tshirt_size: typeof enum_users_tshirt_size;
+  users_dietary_restrictions: typeof users_dietary_restrictions;
+  users_allergies: typeof users_allergies;
   users: typeof users;
+  brands_links: typeof brands_links;
+  brands: typeof brands;
+  brands_rels: typeof brands_rels;
+  media: typeof media;
   payload_locked_documents: typeof payload_locked_documents;
   payload_locked_documents_rels: typeof payload_locked_documents_rels;
   payload_preferences: typeof payload_preferences;
   payload_preferences_rels: typeof payload_preferences_rels;
   payload_migrations: typeof payload_migrations;
-  links: typeof links;
-  custom_domains: typeof custom_domains;
+  relations_users_dietary_restrictions: typeof relations_users_dietary_restrictions;
+  relations_users_allergies: typeof relations_users_allergies;
   relations_users: typeof relations_users;
+  relations_brands_links: typeof relations_brands_links;
+  relations_brands_rels: typeof relations_brands_rels;
+  relations_brands: typeof relations_brands;
+  relations_media: typeof relations_media;
   relations_payload_locked_documents_rels: typeof relations_payload_locked_documents_rels;
   relations_payload_locked_documents: typeof relations_payload_locked_documents;
   relations_payload_preferences_rels: typeof relations_payload_preferences_rels;
   relations_payload_preferences: typeof relations_payload_preferences;
   relations_payload_migrations: typeof relations_payload_migrations;
-  relations_links: typeof relations_links;
-  relations_custom_domains: typeof relations_custom_domains;
 };
 
 declare module "@payloadcms/db-postgres/types" {

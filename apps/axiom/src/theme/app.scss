@@ -1,0 +1,167 @@
+@import '~@payloadcms/ui/scss';
+
+@layer payload-default {
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
+
+  :root {
+    --app-header-height: calc(var(--base) * 5);
+    --font-body: 'JetBrains Mono', monospace;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-serif: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-body);
+  }
+
+  * {
+    font-family: var(--font-body);
+  }
+
+  .btn--style-primary {
+    --bg-color: var(--color-accent-0);
+    --color: var(--color-base-0);
+    --hover-color: var(--color-base-850);
+    --hover-bg: var(--color-base-650);
+  }
+
+  .card {
+    border-radius: var(--style-radius-s);
+    border: 1px solid var(--color-base-800);
+    align-items: center;
+    padding: 36px 52px;
+
+    &__title {
+      font-size: base(0.8);
+      font-weight: 600;
+      color: var(--theme-elevation-700);
+    }
+
+    &:hover {
+      border: 1px solid var(--theme-elevation-450);
+    }
+  }
+
+  .checkbox-input {
+    &__input {
+      background-color: var(--theme-elevation-0);
+      border-color: var(--theme-elevation-200);
+    }
+  }
+
+  .dashboard {
+    --cols: 4;
+
+    padding: var(--gutter-h);
+
+    &__wrap {
+      gap: calc(var(--base) * 3);
+    }
+
+    @include large-break {
+      --cols: 4;
+    }
+
+    @include mid-break {
+      --cols: 2;
+    }
+
+    @include small-break {
+      --cols: 2;
+    }
+
+    @include extra-small-break {
+      --cols: 1;
+    }
+  }
+
+  .login {
+    width: 50%;
+    margin-left: auto;
+    margin-right: 0;
+
+    @include mid-break {
+      width: 100%;
+    }
+  }
+
+  .nav {
+    border-right: 2px solid var(--theme-elevation-100);
+
+    nav a:hover {
+      text-decoration: none;
+      background-color: var(--theme-elevation-150);
+    }
+
+    nav a,
+    nav a.active {
+      padding: base(0.35) base(0.6);
+    }
+
+    &__link {
+      margin-bottom: base(0.25);
+      border-radius: 999px;
+    }
+
+    &__link-label {
+      font-size: base(0.75);
+      color: var(--theme-elevation-750);
+    }
+
+    &__link-indicator {
+      background-color: var(--theme-elevation-250);
+    }
+
+    &__icon {
+      width: 18px;
+      height: 18px;
+      margin-right: base(0.5);
+      color: var(--theme-elevation-250);
+    }
+
+    &__log-out {
+      color: var(--theme-elevation-750);
+      border-radius: 999px;
+      width: base(2.25);
+      height: base(2.25);
+      display: flex;
+      align-items: center;
+    }
+
+    &__log-out:hover {
+      color: var(--theme-elevation-750);
+      border-radius: 999px;
+      background-color: var(--theme-elevation-150);
+    }
+  }
+
+  .nav-group {
+    margin-bottom: base(1.25);
+
+    &__toggle {
+      margin-bottom: base(0.5);
+      color: var(--theme-elevation-400);
+    }
+
+    &__toggle:hover {
+      color: var(--theme-elevation-550);
+    }
+
+    &__label {
+      padding: 0 base(0.6);
+      text-transform: uppercase;
+      font-family: monospace;
+    }
+  }
+
+  .nav-toggler {
+    margin-left: base(0.6);
+  }
+
+  .step-nav {
+    &__home {
+      width: auto;
+      height: auto;
+    }
+  }
+}

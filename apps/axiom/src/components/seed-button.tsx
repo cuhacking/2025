@@ -34,7 +34,6 @@ export const SeedButton: React.FC = () => {
       }
 
       setLoading(true);
-      toast.info("🚜 Seeding database ...");
 
       try {
         toast.promise(
@@ -55,7 +54,7 @@ export const SeedButton: React.FC = () => {
               toast.success(<SuccessMessage logs={data.logs} />);
             }),
           {
-            loading: "⏳ Seeding database...",
+            loading: "🚜⏳ Seeding database...",
             error: "❌ An error occurred while seeding.",
           },
         );

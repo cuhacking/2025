@@ -1,0 +1,21 @@
+
+@layer payload-default {
+  .dashboard-banner {
+    width: 100%;
+    height: calc(200px - var(--app-header-height));
+
+    &__wrap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      min-height: 200px;
+    }
+
+    &__image-wrap {
+      position: relative; 
+      width: 100%; 
+      height: 200px
+    }
+  }
+}

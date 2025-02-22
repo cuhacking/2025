@@ -1,12 +1,11 @@
 // https://github.com/shefing/payload-tools/tree/main/packages/authorization
-import type { User } from '@/db/payload-types.ts'
+import type { User } from '@/db/payload-types'
 import type { AccessArgs, CollectionConfig } from 'payload'
+import { adminGroups } from '../adminGroups'
 
-type isAuthenticated = (args: AccessArgs<User>) => boolean
+type IsAuthenticated = (args: AccessArgs<User>) => boolean
 
-export const authenticated: isAuthenticated = ({ req: { user } }) => {
-  return Boolean(user)
-}
+export const authenticated: IsAuthenticated = ({ req }) => Boolean(req.user)
 
 export const Users: CollectionConfig = {
   slug: 'users',
@@ -19,10 +18,12 @@ export const Users: CollectionConfig = {
     update: authenticated,
   },
   admin: {
+    group: adminGroups.featured,
+    useAsTitle: 'displayName',
     defaultColumns: [
-      'avatar',
-      'firstName',
-      'lastName',
+      'displayName',
+      // "firstName",
+      // "lastName",
       'pronouns',
       'email',
       'updatedAt',
@@ -38,14 +39,11 @@ export const Users: CollectionConfig = {
     {
       type: 'collapsible',
       label: ({ data }) => data?.title || 'Personal Information',
-      // name: 'personalInfo',
-      // type: 'group',
-      // label: 'Personal Information',
       fields: [
         { name: 'firstName', type: 'text', label: 'First Name' },
         { name: 'middleName', type: 'text', label: 'Middle Name' },
         { name: 'lastName', type: 'text', label: 'Last Name' },
-        { name: 'preferredName', type: 'text', label: 'Preferred Name' },
+        { name: 'displayName', type: 'text', label: 'Display Name' },
         {
           name: 'pronouns',
           type: 'select',
@@ -58,19 +56,16 @@ export const Users: CollectionConfig = {
           ],
         },
         {
-          name: 'Avatar',
+          name: 'avatar',
           type: 'upload',
           relationTo: 'media',
-          label: 'avatar',
+          label: 'Avatar',
         },
       ],
     },
     {
       type: 'collapsible',
       label: ({ data }) => data?.title || 'Brand & Socials',
-      // name: "brandSocials",
-      // type: "group",
-      // label: "Brand & Socials",
       fields: [
         {
           name: 'brandRelation',
@@ -93,9 +88,6 @@ export const Users: CollectionConfig = {
     {
       type: 'collapsible',
       label: ({ data }) => data?.title || 'Restrictions',
-      // name: "restrictions",
-      // type: "group",
-      // label: "Restrictions",
       fields: [
         {
           name: 'dietaryRestrictions',
@@ -154,9 +146,6 @@ export const Users: CollectionConfig = {
     {
       label: ({ data }) => data?.title || 'Event Preferences',
       type: 'collapsible',
-      // name: "eventPreferences",
-      // type: "group",
-      // label: "Event Preferences",
       fields: [
         {
           name: 'tshirtSize',
@@ -173,32 +162,12 @@ export const Users: CollectionConfig = {
           ],
         },
         {
-          label: ({ data }) => data?.title || 'Emergency Contact',
+          label: 'Emergency Contact',
           type: 'collapsible',
-          // name: "emergencyContact",
-          // type: "group",
-          // label: "Emergency Contact",
           fields: [
-            {
-              name: 'name',
-              type: 'text',
-              label: 'Emergency Contact Full Name',
-            },
-            {
-              name: 'emergencyPreferredName',
-              type: 'text',
-              label: 'Emergency Contact Preferred Name',
-            },
-            {
-              name: 'phone',
-              type: 'text',
-              label: 'Emergency Contact Phone Number',
-            },
-            {
-              name: 'emergencyEmail',
-              type: 'text',
-              label: 'Emergency Contact Email Address',
-            },
+            { name: 'emergencyContactFullName', type: 'text', label: 'Emergency Contact Full Name' },
+            { name: 'emergencyContactCellPhone', type: 'text', label: 'Emergency Contact Cell Phone Number' },
+            { name: 'emergencyContactEmailAddress', type: 'email', label: 'Emergency Contact Email Address' },
           ],
         },
       ],
