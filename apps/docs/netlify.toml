@@ -1,5 +1,5 @@
 [build]
-command = "pnpm nx affected -t=build --exclude='*,!docs' --verbose"
+command = "pnpm i -g typescript; pnpm nx affected -t=build --exclude='*,!docs' --verbose"
 publish = "apps/docs/.next"
 
 [[plugins]]
