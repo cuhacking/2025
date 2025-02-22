@@ -501,6 +501,9 @@ importers:
       commitlint:
         specifier: ^19.7.1
         version: 19.7.1(@types/node@22.8.6)(typescript@5.7.3)
+      dotenv:
+        specifier: ^16.4.7
+        version: 16.4.7
       drizzle-kit:
         specifier: 0.28.0
         version: 0.28.0
