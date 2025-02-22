@@ -5,7 +5,7 @@
     "repository": "https://github.com/netlify/terraform-provider-netlify",
     "main": "bin/index.js",
     "scripts": {
-        "build": "tsc",
+        "build": "npx tsc",
         "postinstall": "node ./scripts/postinstall.js"
     },
     "dependencies": {

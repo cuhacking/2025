@@ -1,6 +1,0 @@
-[build]
-command = "pnpm i -g typescript; pnpm nx affected -t=build --exclude='*,!docs' --verbose"
-publish = "apps/docs/.next"
-
-[[plugins]]
-package = "@netlify/plugin-nextjs"
