@@ -1,4 +1,5 @@
-// https://github.com/jhb-software/payload-plugins/tree/main/geocoding
+// THEME CREDITS: github.com/akhrarovsaid/payload-theme-quantum-leap
+// github.com/jhb-software/payload-plugins/tree/main/geocoding
 import path from "node:path";
 // import {linkedinOAuth} from './endpoints/auth/linkedin'
 /* eslint-disable node/prefer-global/process */
@@ -20,8 +21,8 @@ export default buildConfig({
     // autoLogin:
     // process.env.NEXT_PUBLIC_ENABLE_AUTOLOGIN === 'true'
     //   ? {
-    //       email: 'test@example.com',
-    //       password: 'test',
+    //       email: 'hasithdev@gmail.com',
+    //       password: 'admin',
     //       prefillOnly: true,
     //     }
     //   : false,
@@ -34,17 +35,18 @@ export default buildConfig({
     },
     components: {
       // https://payload-visual-guide.vercel.app/
-      beforeDashboard: ["/components/before-dashboard#BeforeDashboard"],
-      afterDashboard: ["/components/after-dashboard#AfterDashboard"],
-      beforeLogin: ["/components/before-login#BeforeLogin"],
-      afterLogin: ["/components/after-login#AfterLogin"],
+      // beforeDashboard: ["/components/before-dashboard#BeforeDashboard"],
+      // afterDashboard: ["/components/after-dashboard#AfterDashboard"],
+      beforeLogin: ['/components/BeforeLogin#BeforeLogin'],
+      afterLogin: ["/components/AfterLogin#AfterLogin"],
       graphics: {
         Icon: "/components/icon#Icon",
         Logo: "/components/logo#Logo",
       },
+      Nav: '/components/Nav#Nav',
       // https://dev.to/aaronksaunders/payload-cms-add-a-custom-create-account-screen-in-admin-ui-2pdg
       // https://www.youtube.com/watch?v=X-6af837WbY
-      // views: {
+      views: {
       //   'login': {
       //     Component: '/components/oauth#OAuth',
       //     path: '/login',
@@ -53,13 +55,20 @@ export default buildConfig({
       //     Component: '/components/oauth#OAuth',
       //     path: '/create-account',
       //   },
-      // },
+        dashboard: {
+          Component: '/components/Dashboard#Dashboard',
+        },
+      },
     },
+    avatar: {
+      Component: '/components/Avatar#Avatar',
+    },
+    theme: 'dark',
     meta: {
       description: "cuHacking 2025 CMS",
       icons: [
         {
-          type: "image/png",
+          type: "image/ico",
           rel: "icon",
           url: "/assets/favicon.ico",
         },
@@ -67,7 +76,7 @@ export default buildConfig({
       titleSuffix: "- cuHacking 2025",
     },
   },
-  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
+  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3000',
   cors: process.env.CORS_WHITELIST_ORIGINS
     ? process.env.CORS_WHITELIST_ORIGINS.split(",")
     : [],
@@ -75,7 +84,6 @@ export default buildConfig({
     ? process.env.CSRF_WHITELIST_ORIGINS.split(",")
     : [],
   globals: [
-    // Settings,
   ],
   collections: [Users, Brands, Media],
   editor: lexicalEditor({}),

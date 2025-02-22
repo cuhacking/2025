@@ -4,12 +4,19 @@ export const Media: CollectionConfig = {
   slug: 'media',
   admin: {
     defaultColumns: [
+      'filename',
       'alt',
       'prefix',
+      'mimeType',
+      'filesize',
       'updatedAt',
       'createdAt',
       'id',
     ],
+    pagination: {
+      defaultLimit: 50,
+      limits: [10, 20, 50],
+    },
   },
   fields: [
     {
@@ -17,17 +24,13 @@ export const Media: CollectionConfig = {
       type: 'text',
       required: true,
     },
-    // {
-    //   name: 'relatedBrands',
-    //   type: 'relationship',
-    //   relationTo: 'brands',
-    //   hasMany: true,
-    //   required: false,
-    //   label: 'Related Brands',
-    //   admin: {
-    //     description: 'Who this logo belongs to.',
-    //   },
-    // },
   ],
-  upload: true,
+  upload: {
+    adminThumbnail: 'thumbnail',
+    focalPoint: true,
+    imageSizes: [{
+      name: 'thumbnail',
+      width: 300,
+    }],
+  },
 }

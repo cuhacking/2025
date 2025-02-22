@@ -1,0 +1,57 @@
+@import '~@payloadcms/ui/scss';
+
+@layer payload-default {
+  .avatar {
+    padding: 4px 8px;
+    transition-property: border;
+    transition-duration: 100ms;
+    transition-timing-function: cubic-bezier(0, 0.2, 0.2, 1);
+    border: 1px solid var(--theme-elevation-50);
+    border-radius: 999px;
+    background-color: var(--theme-elevation-50);
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+
+    &__greeting, &__chevron {
+      color: var(--theme-elevation-300);
+    }
+
+    &__username {
+      color: var(--theme-elevation-700); 
+      font-weight: 600; 
+    }
+
+    &:hover {
+      border: 1px solid var(--theme-elevation-450);
+    }
+  }
+
+  .graphic-account {
+
+    &__bg {
+      fill: var(--theme-elevation-50);
+      stroke: var(--theme-elevation-300);
+      stroke-width: 1px;
+    }
+
+    &__head,
+    &__body {
+      fill: var(--theme-elevation-300);
+    }
+
+    &:hover:not(.graphic-account--active) {
+      .graphic-account {
+        &__bg {
+          fill: var(--theme-elevation-50);
+          stroke: var(--theme-elevation-300);
+        }
+  
+        &__head,
+        &__body {
+          fill: var(--theme-elevation-300);
+        }
+      }
+    }
+  }
+}

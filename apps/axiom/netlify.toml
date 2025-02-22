@@ -1,6 +1,6 @@
 [build]
-# command = "pnpm nx migrate:run axiom; pnpm nx build:cms --verbose"
-command = "pnpm nx build axiom --verbose"
+command = "pnpm nx migrate:run axiom; pnpm nx build axiom --verbose"
+# command = "pnpm nx build axiom --verbose"
 # publish = "apps/axiom/dist/apps/axiom"
 publish = "apps/axiom/.next"
 

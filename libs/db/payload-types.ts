@@ -122,9 +122,9 @@ export interface User {
   firstName?: string | null;
   middleName?: string | null;
   lastName?: string | null;
-  preferredName?: string | null;
+  displayName?: string | null;
   pronouns?: ('he/him' | 'she/her' | 'they/them' | 'other') | null;
-  Avatar?: (number | null) | Media;
+  avatar?: (number | null) | Media;
   /**
    * This could be a company, university, or student club.
    */
@@ -179,10 +179,9 @@ export interface User {
       )[]
     | null;
   tshirtSize?: ('xs' | 's' | 'm' | 'l' | 'xl' | '2xl' | '3xl') | null;
-  name?: string | null;
-  emergencyPreferredName?: string | null;
-  phone?: string | null;
-  emergencyEmail?: string | null;
+  emergencyContactFullName?: string | null;
+  emergencyContactCellPhone?: string | null;
+  emergencyContactEmailAddress?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -213,6 +212,16 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -306,9 +315,9 @@ export interface UsersSelect<T extends boolean = true> {
   firstName?: T;
   middleName?: T;
   lastName?: T;
-  preferredName?: T;
+  displayName?: T;
   pronouns?: T;
-  Avatar?: T;
+  avatar?: T;
   brandRelation?: T;
   linkedIn?: T;
   discord?: T;
@@ -318,10 +327,9 @@ export interface UsersSelect<T extends boolean = true> {
   dietaryRestrictions?: T;
   allergies?: T;
   tshirtSize?: T;
-  name?: T;
-  emergencyPreferredName?: T;
-  phone?: T;
-  emergencyEmail?: T;
+  emergencyContactFullName?: T;
+  emergencyContactCellPhone?: T;
+  emergencyContactEmailAddress?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -369,6 +377,20 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+  sizes?:
+    | T
+    | {
+        thumbnail?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

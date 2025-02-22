@@ -18,112 +18,74 @@ export async function seed({
 
   log('🌱 Seeding database...')
 
-  log('🗑 Clearing existing brands...')
-  await payload.db.deleteMany({ collection: 'brands', where: {}, req })
-  log('✅ Existing brands cleared.')
+  const uploadedImages = new Map<string, File>()
 
-  log('📸 Uploading brand logos...')
-  const uploadedBrandMedia = await Promise.all(
-    brandData.map(async (brand) => {
-      try {
-        const file = await uploadFileByURL(payload, req, {
-          url: brand.mediaUrl,
-          filename: `${brand.name.replace(/ /g, '-').toLowerCase()}-logo.png`,
-          alt: `${brand.name} Logo`,
-        })
-        log(`✅ Logo uploaded for ${brand.name}.`)
-        return file
-      }
-      catch (error) {
-        log(
-          `⚠ Failed to upload logo for ${brand.name}: ${error instanceof Error ? error.message : 'Unknown error'}`,
-        )
-        return null
-      }
-    }),
-  )
+  async function getOrUploadMedia(url: string | undefined, filename: string, alt: string): Promise<File | null> {
+    if (!url)
+      return null
+    if (uploadedImages.has(url)) {
+      log(`🔄 Reusing cached image: ${filename}`)
+      return uploadedImages.get(url) || null
+    }
 
-  log('📝 Inserting new brands...')
+    try {
+      const file = await uploadFileByURL(payload, req, { url, filename, alt })
+      uploadedImages.set(url, file)
+      return file
+    }
+    catch (error) {
+      log(`⚠ Failed to upload ${filename}: ${error instanceof Error ? error.message : 'Unknown error'}`)
+      return null
+    }
+  }
+
+  async function clearCollection(collection: string, exclude?: string) {
+    log(`🗑 Clearing existing ${collection}...`)
+    const whereClause = exclude ? { email: { not_equals: exclude } } : {}
+    await payload.db.deleteMany({ collection, where: whereClause, req })
+    log(`✅ Existing ${collection} cleared.`)
+  }
+
+  await clearCollection('brands')
+  await clearCollection('users', 'hasithde24@gmail.com')
+
+  log('📸 Uploading brand logos & inserting brands...')
   await Promise.all(
-    brandData.map(async (brand, index) => {
+    brandData.map(async (brand) => {
+      const media = await getOrUploadMedia(brand.mediaUrl, `${brand.name.replace(/ /g, '-').toLowerCase()}-logo.png`, `${brand.name} Logo`)
       await payload.create({
         collection: 'brands',
-        data: {
-          name: brand.name,
-          description: brand.description,
-          media: uploadedBrandMedia[index]
-            ? uploadedBrandMedia[index].id
-            : null,
-          links: brand.links,
-          relatedBrands: [],
-        },
+        data: { name: brand.name, description: brand.description, media: media?.id || null, links: brand.links, relatedBrands: [] },
       })
       log(`✅ Inserted brand: ${brand.name}`)
     }),
   )
 
-  log('🗑 Clearing existing users...')
-  await payload.db.deleteMany({
-    collection: 'users',
-    where: {
-      email: { not_equals: 'hasithde24@gmail.com' },
-    },
-    req,
-  })
-  log('✅ Existing users cleared.')
-
-  log('📸 Uploading user profile pictures...')
-  const uploadedUserMedia = await Promise.all(
-    userData.map(async (user) => {
-      if (!user.mediaUrl)
-        return null
-      try {
-        const file = await uploadFileByURL(payload, req, {
-          url: user.mediaUrl,
-          filename: `${user.firstName.toLowerCase()}-profile.png`,
-          alt: `${user.firstName}'s Profile Picture`,
-        })
-        log(`✅ Profile picture uploaded for ${user.firstName}.`)
-        return file
-      }
-      catch (error) {
-        log(
-          `⚠ Failed to upload profile picture for ${user.firstName}: ${
-            error instanceof Error ? error.message : 'Unknown error'
-          }`,
-        )
-        return null
-      }
-    }),
-  )
-
-  log('📝 Inserting new users...')
+  log('📸 Uploading user avatars & inserting users...')
   await Promise.all(
-    userData.map(async (user, index) => {
+    userData.map(async (user) => {
+      const media = await getOrUploadMedia(user.mediaUrl, `${user.firstName.toLowerCase()}-${user.lastName.toLowerCase()}-avatar.png`, `${user.firstName} ${user.lastName}'s avatar`)
       await payload.create({
         collection: 'users',
         data: {
           email: user.email,
           password: user.password,
           firstName: user.firstName,
-          middleName: user.middleName,
           lastName: user.lastName,
-          preferredName: user.preferredName,
+          displayName: user.displayName,
           pronouns: user.pronouns,
-          avatar: uploadedUserMedia[index] ? uploadedUserMedia[index].id : null,
-          brandRelation: user.brandRelation,
-          linkedIn: user.linkedIn,
-          discord: user.discord,
-          github: user.github,
-          behance: user.behance,
-          website: user.website,
-          dietaryRestrictions: user.dietaryRestrictions,
-          allergies: user.allergies,
+          avatar: media?.id || null,
+          linkedIn: user.linkedIn || undefined,
+          discord: user.discord || undefined,
+          github: user.github || undefined,
+          behance: user.behance || undefined,
+          website: user.website || undefined,
+          dietaryRestrictions: user.dietaryRestrictions || undefined,
+          allergies: user.allergies || undefined,
           tshirtSize: user.tshirtSize,
-          name: user.name,
-          emergencyPreferredName: user.emergencyPreferredName,
-          phone: user.phone,
-          emergencyEmail: user.emergencyEmail,
+          emergencyContactFullName: user.emergencyContactFullName || undefined,
+          emergencyContactCellPhone: user.emergencyContactCellPhone || undefined,
+          emergencyContactEmailAddress: user.emergencyContactEmailAddress || undefined,
         },
       })
       log(`✅ Inserted user: ${user.firstName} ${user.lastName}`)
@@ -135,7 +97,7 @@ export async function seed({
 }
 
 /**
- * Function to fetch an image from a URL and upload it to PayloadCMS.
+ * Fetches an image from a URL and uploads it to PayloadCMS.
  */
 async function uploadFileByURL(
   payload: Payload,
@@ -143,11 +105,7 @@ async function uploadFileByURL(
   { url, filename, alt }: { url: string, filename: string, alt?: string },
 ): Promise<File> {
   payload.logger.info(`📥 Fetching image from URL: ${url}`)
-
-  const res = await fetch(url, {
-    credentials: 'include',
-    method: 'GET',
-  })
+  const res = await fetch(url, { method: 'GET' })
 
   if (!res.ok) {
     throw new Error(`Failed to fetch file from ${url}, status: ${res.status}`)
@@ -163,9 +121,7 @@ async function uploadFileByURL(
       mimetype: 'image/png',
       size: data.byteLength,
     },
-    data: {
-      alt: alt || filename,
-    },
+    data: { alt: alt || filename },
   })
 
   payload.logger.info(`✅ Successfully uploaded ${filename}`)

@@ -1,0 +1,26 @@
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
+
+:root {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --card: 116 0% 0%;
+  --card-foreground: 116 0% 90%;
+  --popover: 116 10% 5%;
+  --popover-foreground: 116 0% 90%;
+  --primary: 116 73.9% 52%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 116 10% 10%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 78 10% 15%;
+  --muted-foreground: 116 0% 60%;
+  --accent: 78 10% 15%;
+  --accent-foreground: 116 0% 90%;
+  --destructive: 0 50% 30%;
+  --destructive-foreground: 116 0% 90%;
+  --border: 0 0% 100% / 15%;
+  --input: 116 20% 18%;
+  --ring: 116 73.9% 52%;
+  --radius: 0.5rem;
+}
