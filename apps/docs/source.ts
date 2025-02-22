@@ -1,8 +1,9 @@
 import { loader } from 'fumadocs-core/source'
-import { createMDXSource } from 'fumadocs-mdx'
+// import { createMDXSource } from 'fumadocs-mdx'
 import { icons } from 'lucide-react'
 import { createElement } from 'react'
-import { docs, meta } from './.source'
+// import { docs, meta } from './.source'
+import { docs } from './.source'
 
 export const source = loader({
   baseUrl: '/',
@@ -18,5 +19,6 @@ export const source = loader({
       return createElement(icons[icon as keyof typeof icons])
   },
 
-  source: createMDXSource(docs, meta),
+  // source: createMDXSource(docs, meta),
+  source: docs.toFumadocsSource(),
 })
