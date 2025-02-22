@@ -85,6 +85,7 @@
     "@slidev/theme-default": "latest",
     "@slidev/theme-seriph": "latest",
     "@splinetool/react-spline": "^4.0.0",
+    "@tailwindcss/vite": "^4.0.8",
     "@xstate/react": "^5.0.2",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.4",
