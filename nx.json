@@ -78,8 +78,8 @@
   "targetDefaults": {
     "@nx/remix:build": {
       "cache": true,
-      "dependsOn": ["^website:build"],
-      "inputs": ["production", "^production"]
+      "dependsOn": ["^build"],
+      "inputs": ["production"]
     },
     "e2e-ci--**/*": {
       "dependsOn": ["^build"]

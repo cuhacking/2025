@@ -29,7 +29,13 @@ jobs:
       # - name: ⚗️ Run E2E Tests for Affected Projects
       #   run: pnpm nx affected -t e2e --parallel=2 --reporter=html --base=origin/main --head=HEAD --verbose
 
-      - name: 💀 Run Docs E2E Tests
+      - name: 💀 Run Docs E2E Test
+        env:
+          DATABASE_URI: ${{ secrets.DATABASE_URI }}
+          PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
+          PAYLOAD_PUBLIC_EXTERNAL_SERVER_URL: ${{ secrets.PAYLOAD_PUBLIC_EXTERNAL_SERVER_URL }}
+          CORS_WHITELIST_ORIGINS: ${{ secrets.CORS_WHITELIST_ORIGINS }}
+          CSRF_WHITELIST_ORIGINS: ${{ secrets.CSRF_WHITELIST_ORIGINS }}
         run: pnpm nx e2e docs-e2e --reporter=html --verbose
 
       - name: 📄 Upload Docs E2E Playwright Report
@@ -52,11 +58,6 @@ jobs:
       #     retention-days: 30
 
       # - name: 💀 Run Portal E2E Tests
-      #   env:
-      #     DATABASE_URL: ${{ secrets.DATABASE_URL }}
-      #     AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
-      #     GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
-      #     GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
       #   run: pnpm nx run portal-e2e:e2e --reporter=html --verbose
 
       # - name: 📄 Upload Portal E2E Playwright Report
