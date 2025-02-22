@@ -1,5 +1,6 @@
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 import { TerminalText } from '@cuhacking/shared/ui/terminal-text'
+import { Typography } from '@cuhacking/shared/ui/typography'
 import { Socials } from '@website/shared/ui/socials'
 
 interface Media {
@@ -72,7 +73,7 @@ interface IntroProps {
 
 export function Welcome({ socials }: IntroProps) {
   const welcomeData = {
-    title: 'Hello, World',
+    title: 'Join Us',
     organization: 'cuHacking',
     date: 'Mar 14th - 16th',
     callToAction: 'In the meantime, check out some cool stuff :)',
@@ -82,9 +83,11 @@ export function Welcome({ socials }: IntroProps) {
       ? (
           <GlassmorphicCard
             variant="default"
-            className="flex flex-col items-start p-3.5 sm:p-6 gap-y-2.5"
+            className="flex flex-col items-start px-2.5 py-10 sm:px-5 gap-y-2.5"
           >
-            <h2 className="text-2xl font-bold text-center">{welcomeData.title}</h2>
+            <Typography variant="h3">
+              <h2>{welcomeData.title}</h2>
+            </Typography>
             <div>
               <TerminalText className="text-base">
                 <p>
