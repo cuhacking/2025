@@ -1,7 +1,6 @@
 import type { Locator, Page } from '@playwright/test'
 
 export class DocsLayout {
-  // Page object
   readonly page: Page
 
   // Mobile + Tablet + Desktop
@@ -9,19 +8,6 @@ export class DocsLayout {
   readonly cuHackingLogoText: Locator
   readonly nextButton: Locator
   readonly editOnGithubButton: Locator
-
-  // Mobile + Tablet + Desktop Links
-  readonly websiteLink: Locator
-  readonly portalLink: Locator
-  readonly designLink: Locator
-  readonly eslintLink: Locator
-  readonly discordLink: Locator
-  readonly instagramLink: Locator
-  readonly linkedinLink: Locator
-  readonly linktreeLink: Locator
-  readonly figmaLink: Locator
-  readonly projectBoardLink: Locator
-  readonly githubLink: Locator
 
   // Mobile + Tablet
   readonly onThisPage: Locator
@@ -52,19 +38,6 @@ export class DocsLayout {
     this.cuHackingLogoText = page.getByRole('link', { name: 'cuHacking logo cuHacking' }).first()
     this.nextButton = page.getByRole('link', { name: /Next/i })
     this.editOnGithubButton = page.getByRole('link', { name: 'Edit on GitHub' })
-
-    // Mobile + Tablet + Desktop Links
-    this.websiteLink = page.getByRole('link', { name: 'Website', exact: true })
-    this.portalLink = page.getByRole('link', { name: 'Portal' })
-    this.designLink = page.getByRole('link', { name: 'Design', exact: true })
-    this.eslintLink = page.getByRole('link', { name: 'ESLint' })
-    this.discordLink = page.getByRole('link', { name: 'Discord' })
-    this.instagramLink = page.getByRole('link', { name: 'Instagram' })
-    this.linkedinLink = page.getByRole('link', { name: 'LinkedIn' })
-    this.linktreeLink = page.getByRole('link', { name: 'Linktree' })
-    this.figmaLink = page.getByRole('link', { name: 'Brand' }).first()
-    this.projectBoardLink = page.getByRole('link', { name: 'Project Board' })
-    this.githubLink = page.getByRole('link', { name: 'Github' }).first()
 
     // Mobile + Tablet
     this.onThisPage = page.getByRole('heading', { name: 'On this page' }).or(page.getByRole('button', { name: 'On this page' }))
