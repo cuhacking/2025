@@ -1,6 +1,8 @@
+/* eslint-disable react/no-missing-key */
 import type { HomeLayoutProps } from 'fumadocs-ui/layouts/home'
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared'
 
+import config from '@payload-config'
 import {
   Landmark as ArchitectureIcon,
   Figma as BrandIcon,
@@ -16,29 +18,66 @@ import {
 } from 'lucide-react'
 
 import Image from 'next/image'
-
+import { getPayload } from 'payload'
 import { AiOutlineDiscord as DiscordIcon } from 'react-icons/ai'
 import { SiStorybook as StorybookIcon } from 'react-icons/si'
 
-/**
- * Shared layout configurations
- *
- * you can configure layouts individually from:
- * Home Layout: app/(home)/layout.tsx
- * Docs Layout: app/docs/layout.tsx
- */
+const ICONS = new Map<string, JSX.Element>([
+  ['Website', <LandingPageIcon />],
+  ['Portal', <HackerPortalIcon />],
+  ['Design', <StorybookIcon />],
+  ['Architecture', <ArchitectureIcon />],
+  ['Graph', <GraphIcon />],
+  ['Tooling', <UtilsIcon />],
+  ['ESLint', <ESLintIcon />],
+  ['Discord', <DiscordIcon />],
+  ['Instagram', <InstagramIcon />],
+  ['LinkedIn', <LinkedinIcon />],
+  ['Linktree', <LinktreeIcon />],
+  ['Brand', <BrandIcon />],
+  ['Project Board', <ProjectBoardIcon />],
+])
+
+const ICON_TYPE_ENTRIES = new Set([
+  'Instagram',
+  'Linktree',
+  'Discord',
+  'LinkedIn',
+  'Brand',
+  'Project Board',
+])
+
+async function getBrandLinks() {
+  const payload = await getPayload({ config })
+
+  const query = await payload.find({
+    collection: 'brands',
+    where: { name: { equals: 'cuHacking' } },
+    select: { links: true },
+  })
+
+  if (!query.docs.length)
+    return { linkMap: new Map(), nameMap: new Map() }
+
+  const { linkMap, nameMap } = query.docs[0].links.reduce(
+    (acc, { name, link }) => {
+      acc.linkMap.set(name, link)
+      acc.nameMap.set(name, name)
+      return acc
+    },
+    { linkMap: new Map<string, string>(), nameMap: new Map<string, string>() },
+  )
+
+  return { linkMap, nameMap }
+}
+
+const { linkMap, nameMap } = await getBrandLinks()
 
 export const baseOptions: BaseLayoutProps = {
   nav: {
     title: (
-    /* TODO: use cms */
       <>
-        <Image
-          src="/cuhacking_logo_gradient.svg"
-          alt="cuHacking logo"
-          height={24}
-          width={24}
-        />
+        <Image src="/cuhacking_logo_gradient.svg" alt="cuHacking logo" height={24} width={24} />
         <span className="text-lg font-bold text-lime-500">
           cuHacking
           {' '}
@@ -49,89 +88,14 @@ export const baseOptions: BaseLayoutProps = {
     ),
     url: '/',
   },
-  links: [
-    {
-      text: 'Website',
-      url: 'https://cuhacking.ca',
-      icon: <LandingPageIcon />,
-    },
-    {
-      text: 'Portal',
-      url: 'https://portal.cuhacking.ca',
-      icon: <HackerPortalIcon />,
-    },
-    {
-      text: 'Design',
-      url: 'https://design.cuhacking.ca/',
-      icon: <StorybookIcon />,
-    },
-    {
-      text: 'Architecture',
-      url: 'https://arch.cuhacking.ca/view/index',
-      icon: <ArchitectureIcon />,
-    },
-    {
-      text: 'Graph',
-      url: 'https://graph.cuhacking.ca/#/projects/all?groupByFolder=true',
-      icon: <GraphIcon />,
-    },
-    {
-      text: 'Tooling',
-      url: '/contribution-guidelines/coding-standards/tooling',
-      icon: <UtilsIcon />,
-    },
-    {
-      text: 'ESLint',
-      url: 'https://eslint.cuhacking.ca/rules',
-      icon: <ESLintIcon />,
-    },
-    {
-      text: 'Discord',
-      label: 'Discord Link',
-      url: 'https://discord.gg/h2cQqF9aZf',
-      icon: <DiscordIcon />,
-      type: 'icon',
-    },
-    {
-      text: 'Instagram',
-      label: 'Instagram Link',
-      url: 'https://www.instagram.com/cuhacking/',
-      icon: <InstagramIcon />,
-      type: 'icon',
-    },
-    {
-      text: 'LinkedIn',
-      label: 'LinkedIn Link',
-      url: 'https://www.linkedin.com/company/cuhacking/',
-      icon: <LinkedinIcon />,
-      type: 'icon',
-    },
-    {
-      text: 'Linktree',
-      label: 'Linktree Link',
-      url: 'https://linktr.ee/cuhacking_',
-      icon: <LinktreeIcon />,
-      type: 'icon',
-    },
-    {
-      text: 'Brand',
-      label: 'Brand Link',
-      url: 'https://www.figma.com/design/wc1JOWR48tBNkjcjwY3AzB/%E2%8C%A8%EF%B8%8F-cuHacking-Design-System?node-id=0-1&t=YTR1ET4Qw1wG1cjz-1',
-      icon: <BrandIcon />,
-      type: 'icon',
-    },
-    {
-      text: 'Project Board',
-      label: 'Project Board Link',
-      url: 'https://github.com/orgs/cuhacking/projects/4',
-      icon: <ProjectBoardIcon />,
-      type: 'icon',
-    },
-  ],
-  githubUrl: 'https://github.com/cuhacking/2025',
+  links: Array.from(nameMap).map(([key, text]) => ({
+    text,
+    label: `${text}-link`,
+    url: linkMap.get(key),
+    icon: ICONS.get(key),
+    ...(ICON_TYPE_ENTRIES.has(key) ? { type: 'icon' } : {}),
+  })),
+  githubUrl: linkMap.get('GitHub'),
 }
 
-// home layout configuration
-export const homeOptions: HomeLayoutProps = {
-  ...baseOptions,
-}
+export const homeOptions: HomeLayoutProps = { ...baseOptions }
