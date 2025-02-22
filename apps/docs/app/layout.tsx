@@ -2,6 +2,8 @@ import type { ReactNode } from 'react'
 import { RootProvider } from 'fumadocs-ui/provider'
 import { JetBrains_Mono } from 'next/font/google'
 import '@cuhacking/docs/global.css'
+/* import '@cuhacking/shared/ui/global.css' */
+/* import '../../../global.css' */
 
 const jetBrainsMono = JetBrains_Mono({
   subsets: ['latin'],

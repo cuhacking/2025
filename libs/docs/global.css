@@ -1,67 +1,218 @@
-/**
- * Don't forget to update your APPs global.css to include this file!
- */
+/* github.com/shadcn-ui/ui/blob/main/apps/v4/app/globals.css */
+/* fumadocs.vercel.app/blog/v15 */
+/* github.com/tailwindlabs/tailwindcss/issues/13136 */
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/black.css';
+@import 'fumadocs-ui/css/preset.css';
+/* @import '../shared/ui/global.css' */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@source '../../node_modules/fumadocs-ui/dist/**/*.js';
+@source "./components/ui/**/*.{ts,tsx}";
+@source './components/ui/**/*.stories.{ts,tsx}';
+@source '../../apps/docs/mdx-components.{ts,tsx}';
+@source '../../apps/docs{src,components,app,content}/**/*!(*.stories|*.spec).{ts,tsx,md,mdx,html}';
+@source '../../apps/docs/content/docs/**/*.{md,mdx}';
+
+@plugin "tailwindcss-animate";
+
+/* @custom-variant dark (&:is(.dark *)); */
 
 @layer base {
   :root {
-    --background: 116 0% 95%;
-    --foreground: 116 0% 0%;
-    --card: 116 0% 90%;
-    --card-foreground: 116 0% 10%;
-    --popover: 116 0% 95%;
-    --popover-foreground: 116 95% 0%;
-    --primary: 116 73.9% 52%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 116 10% 70%;
-    --secondary-foreground: 0 0% 0%;
-    --muted: 78 10% 85%;
-    --muted-foreground: 116 0% 35%;
-    --accent: 78 10% 80%;
-    --accent-foreground: 116 0% 10%;
-    --destructive: 0 50% 30%;
-    --destructive-foreground: 116 0% 90%;
-    --border: 116 20% 50%;
-    --input: 116 20% 18%;
-    --ring: 116 73.9% 52%;
+    --background: hsl(116 0% 95%);
+    --foreground: hsl(116 0% 0%);
+    --card: hsl(116 0% 90%);
+    --card-foreground: hsl(116 0% 10%);
+    --popover: hsl(116 0% 95%);
+    --popover-foreground: hsl(116 95% 0%);
+    --primary: hsl(116 73.9% 52%);
+    --primary-foreground: hsl(0 0% 100%);
+    --secondary: hsl(116 10% 70%);
+    --secondary-foreground: hsl(0 0% 0%);
+    --muted: hsl(78 10% 85%);
+    --muted-foreground: hsl(116 0% 35%);
+    --accent: hsl(78 10% 80%);
+    --accent-foreground: hsl(116 0% 10%);
+    --destructive: hsl(0 50% 30%);
+    --destructive-foreground: hsl(116 0% 90%);
+    --border: hsl(116 20% 50%);
+    --input: hsl(116 20% 18%);
+    --ring: hsl(116 73.9% 52%);
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
-    --card: 116 0% 0%;
-    --card-foreground: 116 0% 90%;
-    --popover: 116 10% 5%;
-    --popover-foreground: 116 0% 90%;
-    --primary: 116 73.9% 52%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 116 10% 10%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 78 10% 15%;
-    --muted-foreground: 116 0% 60%;
-    --accent: 78 10% 15%;
-    --accent-foreground: 116 0% 90%;
-    --destructive: 0 50% 30%;
-    --destructive-foreground: 116 0% 90%;
-    --border: 0 0% 100% / 15%;
-    --input: 116 20% 18%;
-    --ring: 116 73.9% 52%;
+    --background: hsl(0 0% 0%);
+    --foreground: hsl(0 0% 100%);
+    --card: hsl(116 0% 0%);
+    --card-foreground: hsl(116 0% 90%);
+    --popover: hsl(116 10% 5%);
+    --popover-foreground: hsl(116 0% 90%);
+    --primary: hsl(116 73.9% 52%);
+    --primary-foreground: hsl(0 0% 100%);
+    --secondary: hsl(116 10% 10%);
+    --secondary-foreground: hsl(0 0% 100%);
+    --muted: hsl(78 10% 15%);
+    --muted-foreground: hsl(116 0% 60%);
+    --accent: hsl(78 10% 15%);
+    --accent-foreground: hsl(116 0% 90%);
+    --destructive: hsl(0 50% 30%);
+    --destructive-foreground: hsl(116 0% 90%);
+    --border: hsl(0 0% 100% / 15%);
+    --input: hsl(116 20% 18%);
+    --ring: hsl(116 73.9% 52%);
     --radius: 0.5rem;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+@theme {
+  --color-fd-background: var(--background);
+  --color-fd-foreground: var(--foreground);
+  --color-fd-card: var(--card);
+  --color-fd-card-foreground: var(--card-foreground);
+  --color-fd-popover: var(--popover);
+  --color-fd-popover-foreground: var(--popover-foreground);
+  --color-fd-primary: var(--primary);
+  --color-fd-primary-foreground: var(--primary-foreground);
+  --color-fd-secondary: var(--secondary);
+  --color-fd-secondary-foreground: var(--secondary-foreground);
+  --color-fd-muted: var(--muted);
+  --color-fd-muted-foreground: var(--muted-foreground);
+  --color-fd-accent: var(--accent);
+  --color-fd-accent-foreground: var(--accent-foreground);
+  --color-fd-destructive: var(--destructive);
+  --color-fd-destructive-foreground: var(--destructive-foreground);
+  --color-fd-border: var(--border);
+  --color-fd-input: var(--input);
+  --color-fd-ring: var(--ring);
+  --border-fd-radius: var(--radius);
+}
+
+.dark {
+  --color-fd-background: var(--background);
+  --color-fd-foreground: var(--foreground);
+  --color-fd-card: var(--card);
+  --color-fd-card-foreground: var(--card-foreground);
+  --color-fd-popover: var(--popover);
+  --color-fd-popover-foreground: var(--popover-foreground);
+  --color-fd-primary: var(--primary);
+  --color-fd-primary-foreground: var(--primary-foreground);
+  --color-fd-secondary: var(--secondary);
+  --color-fd-secondary-foreground: var(--secondary-foreground);
+  --color-fd-muted: var(--muted);
+  --color-fd-muted-foreground: var(--muted-foreground);
+  --color-fd-accent: var(--accent);
+  --color-fd-accent-foreground: var(--accent-foreground);
+  --color-fd-destructive: var(--destructive);
+  --color-fd-destructive-foreground: var(--destructive-foreground);
+  --color-fd-border: var(--border);
+  --color-fd-input: var(--input);
+  --color-fd-ring: var(--ring);
+  --border-fd-radius: var(--radius);
+}
+
+@layer utilities {
+  .bg-greendiant {
+    background-image: linear-gradient(200deg, var(--color-secondary) 10%, var(--color-primary) 90%);
   }
-  body {
-    @apply bg-background text-foreground;
-    font-feature-settings:
-      'rlig' 1,
-      'calt' 1;
+
+  .bg-g-keyboardBlack {
+    background-image: linear-gradient(300deg, var(--color-g-keyboardblack-start) -10%, var(--color-background) 100%);
+  }
+
+  .bg-g-nav-drawer-background {
+    background-image: linear-gradient(
+      90deg,
+      var(--color-background) 0%,
+      var(--color-light-black) 25%,
+      var(--color-light-black) 75%,
+      var(--color-background) 100%
+    );
+  }
+}
+
+@layer utilities {
+  .shadow-dropShadow {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  .shadow-innerShadow {
+    box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  .shadow-buttonKeyboard {
+    box-shadow:
+      0.5px 0.5px 0px 0.6px rgba(0, 0, 0, 0.7),
+      0.35px 0.35px 0.2px 0.75px rgba(255, 255, 255, 0.15) inset,
+      4px 2px 4px -1px rgba(0, 0, 0, 0.25);
+  }
+
+  .shadow-buttonKeyboardHover {
+    box-shadow:
+      0.25px 0.25px 0px 0.5px #0a0a0a,
+      0.2px 0.2px 0.2px 0.35px rgba(255, 255, 255, 0.25) inset,
+      0.2px 0.2px 0px 0.75px rgba(137, 237, 16, 0.25),
+      0px 0px 10px -4px rgba(137, 237, 16, 0.6),
+      4px 2px 4px -1px rgba(0, 0, 0, 0.25);
+  }
+}
+
+@layer keyframes {
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+
+    to {
+      height: 0;
+    }
+  }
+
+  @keyframes orbit {
+    0% {
+      transform: rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg);
+    }
+  }
+
+  @keyframes rainbow {
+    0% {
+      background-position: 0%;
+    }
+
+    100% {
+      background-position: 200%;
+    }
+  }
+}
+
+@layer utilities {
+  .animate-accordion-down {
+    animation: accordion-down 0.2s ease-out;
+  }
+
+  .animate-accordion-up {
+    animation: accordion-up 0.2s ease-out;
+  }
+
+  .animate-orbit {
+    animation: orbit calc(var(--duration) * 1s) linear infinite;
+  }
+
+  .animate-rainbow {
+    animation: rainbow var(--speed, 2s) infinite linear;
   }
 }

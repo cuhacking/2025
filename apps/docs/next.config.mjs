@@ -64,7 +64,7 @@ const config = {
   },
 }
 
-const withMDX = createMDX({})
+const withMDX = createMDX()
 
 // const plugins = [
 //   // Add more Next.js plugins to this list if needed.

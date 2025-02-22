@@ -1,4 +1,4 @@
-import type { LinksFunction, MetaFunction } from '@remix-run/node'
+import type { MetaFunction } from '@remix-run/node'
 
 import {
   Links,
@@ -16,24 +16,10 @@ export const meta: MetaFunction = () => [
   },
 ]
 
-export const links: LinksFunction = () => [
-  { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-  {
-    rel: 'preconnect',
-    href: 'https://fonts.gstatic.com',
-    crossOrigin: 'anonymous',
-  },
-  {
-    rel: 'stylesheet',
-    href: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap',
-  },
-]
-
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
-      className="dark scroll-smooth"
     >
       <head>
         <meta charSet="utf-8" />
@@ -42,6 +28,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <div className="bg-blue-500">
+        </div>
         {children}
         <ScrollRestoration />
         <Scripts />
