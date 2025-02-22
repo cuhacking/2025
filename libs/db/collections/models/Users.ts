@@ -20,20 +20,27 @@ export const Users: CollectionConfig = {
   },
   admin: {
     defaultColumns: [
-      'personalInfo.firstName',
+      'avatar',
+      'firstName',
       'lastName',
-      'preferredName',
+      'pronouns',
       'email',
-      'id',
       'updatedAt',
       'createdAt',
+      'id',
     ],
+    pagination: {
+      defaultLimit: 50,
+      limits: [10, 20, 50],
+    },
   },
   fields: [
     {
-      name: 'personalInfo',
-      type: 'group',
-      label: 'Personal Information',
+      type: 'collapsible',
+      label: ({ data }) => data?.title || 'Personal Information',
+      // name: 'personalInfo',
+      // type: 'group',
+      // label: 'Personal Information',
       fields: [
         { name: 'firstName', type: 'text', label: 'First Name' },
         { name: 'middleName', type: 'text', label: 'Middle Name' },
@@ -51,18 +58,19 @@ export const Users: CollectionConfig = {
           ],
         },
         {
-          name: 'media',
+          name: 'Avatar',
           type: 'upload',
           relationTo: 'media',
-          label: 'Profile Picture',
+          label: 'avatar',
         },
       ],
     },
-
     {
-      name: 'brandSocials',
-      type: 'group',
-      label: 'Brand & Socials',
+      type: 'collapsible',
+      label: ({ data }) => data?.title || 'Brand & Socials',
+      // name: "brandSocials",
+      // type: "group",
+      // label: "Brand & Socials",
       fields: [
         {
           name: 'brandRelation',
@@ -79,13 +87,15 @@ export const Users: CollectionConfig = {
         { name: 'discord', type: 'text', label: 'Discord' },
         { name: 'github', type: 'text', label: 'GitHub' },
         { name: 'behance', type: 'text', label: 'Behance' },
-        { name: 'website', type: 'text', label: 'Personal' },
+        { name: 'website', type: 'text', label: 'Personal Website' },
       ],
     },
     {
-      name: 'restrictions',
-      type: 'group',
-      label: 'Restrictions',
+      type: 'collapsible',
+      label: ({ data }) => data?.title || 'Restrictions',
+      // name: "restrictions",
+      // type: "group",
+      // label: "Restrictions",
       fields: [
         {
           name: 'dietaryRestrictions',
@@ -142,9 +152,11 @@ export const Users: CollectionConfig = {
       ],
     },
     {
-      name: 'eventPreferences',
-      type: 'group',
-      label: 'Event Preferences',
+      label: ({ data }) => data?.title || 'Event Preferences',
+      type: 'collapsible',
+      // name: "eventPreferences",
+      // type: "group",
+      // label: "Event Preferences",
       fields: [
         {
           name: 'tshirtSize',
@@ -161,14 +173,32 @@ export const Users: CollectionConfig = {
           ],
         },
         {
-          name: 'emergencyContact',
-          type: 'group',
-          label: 'Emergency Contact',
+          label: ({ data }) => data?.title || 'Emergency Contact',
+          type: 'collapsible',
+          // name: "emergencyContact",
+          // type: "group",
+          // label: "Emergency Contact",
           fields: [
-            { name: 'name', type: 'text', label: 'Full Name' },
-            { name: 'preferredName', type: 'text', label: 'Preferred Name' },
-            { name: 'phone', type: 'text', label: 'Phone Number' },
-            { name: 'email', type: 'text', label: 'Email Address' },
+            {
+              name: 'name',
+              type: 'text',
+              label: 'Emergency Contact Full Name',
+            },
+            {
+              name: 'emergencyPreferredName',
+              type: 'text',
+              label: 'Emergency Contact Preferred Name',
+            },
+            {
+              name: 'phone',
+              type: 'text',
+              label: 'Emergency Contact Phone Number',
+            },
+            {
+              name: 'emergencyEmail',
+              type: 'text',
+              label: 'Emergency Contact Email Address',
+            },
           ],
         },
       ],

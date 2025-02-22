@@ -119,80 +119,70 @@ export interface UserAuthOperations {
  */
 export interface User {
   id: number;
-  personalInfo?: {
-    firstName?: string | null;
-    middleName?: string | null;
-    lastName?: string | null;
-    preferredName?: string | null;
-    pronouns?: ('he/him' | 'she/her' | 'they/them' | 'other') | null;
-    media?: (number | null) | Media;
-  };
-  brandSocials?: {
-    /**
-     * This could be a company, university, or student club.
-     */
-    brandRelation?: (number | null) | Brand;
-    linkedIn?: string | null;
-    discord?: string | null;
-    github?: string | null;
-    behance?: string | null;
-    website?: string | null;
-  };
-  restrictions?: {
-    dietaryRestrictions?:
-      | (
-          | 'none'
-          | 'vegetarian'
-          | 'vegan'
-          | 'halal'
-          | 'kosher'
-          | 'pescatarian'
-          | 'dairy-free'
-          | 'gluten-free'
-          | 'shellfish-free'
-          | 'nut-free'
-          | 'keto'
-          | 'low-lactose'
-          | 'low-carb'
-          | 'paleo'
-          | 'high-protein'
-          | 'raw-vegan'
-          | 'whole30'
-          | 'fasting'
-          | 'other'
-        )[]
-      | null;
-    allergies?:
-      | (
-          | 'none'
-          | 'peanuts'
-          | 'tree-nuts'
-          | 'dairy'
-          | 'gluten'
-          | 'shellfish'
-          | 'fish'
-          | 'soy'
-          | 'eggs'
-          | 'red-meat'
-          | 'corn'
-          | 'sulfites'
-          | 'fruits'
-          | 'vegetables'
-          | 'caffeine'
-          | 'honey'
-          | 'other'
-        )[]
-      | null;
-  };
-  eventPreferences?: {
-    tshirtSize?: ('xs' | 's' | 'm' | 'l' | 'xl' | '2xl' | '3xl') | null;
-    emergencyContact?: {
-      name?: string | null;
-      preferredName?: string | null;
-      phone?: string | null;
-      email?: string | null;
-    };
-  };
+  firstName?: string | null;
+  middleName?: string | null;
+  lastName?: string | null;
+  preferredName?: string | null;
+  pronouns?: ('he/him' | 'she/her' | 'they/them' | 'other') | null;
+  Avatar?: (number | null) | Media;
+  /**
+   * This could be a company, university, or student club.
+   */
+  brandRelation?: (number | null) | Brand;
+  linkedIn?: string | null;
+  discord?: string | null;
+  github?: string | null;
+  behance?: string | null;
+  website?: string | null;
+  dietaryRestrictions?:
+    | (
+        | 'none'
+        | 'vegetarian'
+        | 'vegan'
+        | 'halal'
+        | 'kosher'
+        | 'pescatarian'
+        | 'dairy-free'
+        | 'gluten-free'
+        | 'shellfish-free'
+        | 'nut-free'
+        | 'keto'
+        | 'low-lactose'
+        | 'low-carb'
+        | 'paleo'
+        | 'high-protein'
+        | 'raw-vegan'
+        | 'whole30'
+        | 'fasting'
+        | 'other'
+      )[]
+    | null;
+  allergies?:
+    | (
+        | 'none'
+        | 'peanuts'
+        | 'tree-nuts'
+        | 'dairy'
+        | 'gluten'
+        | 'shellfish'
+        | 'fish'
+        | 'soy'
+        | 'eggs'
+        | 'red-meat'
+        | 'corn'
+        | 'sulfites'
+        | 'fruits'
+        | 'vegetables'
+        | 'caffeine'
+        | 'honey'
+        | 'other'
+      )[]
+    | null;
+  tshirtSize?: ('xs' | 's' | 'm' | 'l' | 'xl' | '2xl' | '3xl') | null;
+  name?: string | null;
+  emergencyPreferredName?: string | null;
+  phone?: string | null;
+  emergencyEmail?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -313,45 +303,25 @@ export interface PayloadMigration {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
-  personalInfo?:
-    | T
-    | {
-        firstName?: T;
-        middleName?: T;
-        lastName?: T;
-        preferredName?: T;
-        pronouns?: T;
-        media?: T;
-      };
-  brandSocials?:
-    | T
-    | {
-        brandRelation?: T;
-        linkedIn?: T;
-        discord?: T;
-        github?: T;
-        behance?: T;
-        website?: T;
-      };
-  restrictions?:
-    | T
-    | {
-        dietaryRestrictions?: T;
-        allergies?: T;
-      };
-  eventPreferences?:
-    | T
-    | {
-        tshirtSize?: T;
-        emergencyContact?:
-          | T
-          | {
-              name?: T;
-              preferredName?: T;
-              phone?: T;
-              email?: T;
-            };
-      };
+  firstName?: T;
+  middleName?: T;
+  lastName?: T;
+  preferredName?: T;
+  pronouns?: T;
+  Avatar?: T;
+  brandRelation?: T;
+  linkedIn?: T;
+  discord?: T;
+  github?: T;
+  behance?: T;
+  website?: T;
+  dietaryRestrictions?: T;
+  allergies?: T;
+  tshirtSize?: T;
+  name?: T;
+  emergencyPreferredName?: T;
+  phone?: T;
+  emergencyEmail?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;

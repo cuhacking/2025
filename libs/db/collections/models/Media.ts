@@ -4,7 +4,6 @@ export const Media: CollectionConfig = {
   slug: 'media',
   admin: {
     defaultColumns: [
-      'fileName',
       'alt',
       'prefix',
       'updatedAt',
