@@ -1,8 +1,8 @@
+/* eslint-disable perfectionist/sort-imports */ // so that payload imports stay together
 /* eslint-disable react/no-missing-key */
-import type { HomeLayoutProps } from 'fumadocs-ui/layouts/home'
-import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared'
-
 import config from '@payload-config'
+import { getPayload } from 'payload'
+
 import {
   Landmark as ArchitectureIcon,
   Figma as BrandIcon,
@@ -16,11 +16,13 @@ import {
   SquareKanban as ProjectBoardIcon,
   Drill as UtilsIcon,
 } from 'lucide-react'
-
-import Image from 'next/image'
-import { getPayload } from 'payload'
 import { AiOutlineDiscord as DiscordIcon } from 'react-icons/ai'
 import { SiStorybook as StorybookIcon } from 'react-icons/si'
+
+import Image from 'next/image'
+
+import type { HomeLayoutProps } from 'fumadocs-ui/layouts/home'
+import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared'
 
 const ICONS = new Map<string, JSX.Element>([
   ['Website', <LandingPageIcon />],
