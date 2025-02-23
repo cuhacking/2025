@@ -77,9 +77,9 @@ in pkgs.mkShell {
 
     destroy_db() {
       echo "Destroying database..."
-      if pg_ctl status -D "$PGDATA" > /dev/null; then
+      if ls | grep pgdata; then
         pg_ctl stop -D "$PGDATA"
-        rm -rf "$PGDATA"
+        rm -rf $PGDATA
         echo "PostgreSQL server stopped and all data removed."
       fi
     }
