@@ -5,11 +5,10 @@ import path from "node:path";
 /* eslint-disable node/prefer-global/process */
 import { fileURLToPath } from "node:url";
 // import { googleOAuth } from '@cuhacking/cms/endpoints/auth/google'
-import { Users, Brands, Media } from "@/db/collections/models";
+import { Brands, Media, Users } from "@/db/collections/models";
 // import {Settings} from '@/db/collections/globals/Settings'
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
-import { s3Storage } from "@payloadcms/storage-s3";
 import { buildConfig } from "payload";
 import sharp from "sharp";
 
@@ -99,24 +98,24 @@ export default buildConfig({
     generateSchemaOutputFile: path.resolve("../../libs/db/schema.ts"),
   }),
   plugins: [
-    s3Storage({
-      collections: {
-        media: {
-          prefix:
-            process.env.NODE_ENV === "production" ? "./media" : "./media-dev",
-        },
-      },
-      bucket: process.env.S3_BUCKET || "",
-      config: {
-        forcePathStyle: true, // Important for using Supabase
-        credentials: {
-          accessKeyId: process.env.S3_ACCESS_KEY_ID || "",
-          secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || "",
-        },
-        region: process.env.S3_REGION || "",
-        endpoint: process.env.S3_ENDPOINT || "",
-      },
-    }),
+    // s3Storage({
+    //   collections: {
+    //     media: {
+    //       prefix:
+    //         process.env.NODE_ENV === "production" ? "./media" : "./media-dev",
+    //     },
+    //   },
+    //   bucket: process.env.S3_BUCKET || "",
+    //   config: {
+    //     forcePathStyle: true, // Important for using Supabase
+    //     credentials: {
+    //       accessKeyId: process.env.S3_ACCESS_KEY_ID || "",
+    //       secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || "",
+    //     },
+    //     region: process.env.S3_REGION || "",
+    //     endpoint: process.env.S3_ENDPOINT || "",
+    //   },
+    // }),
     // googleOAuth,
     // linkedinOAuth
     // payloadCloudPlugin(),

@@ -6,6 +6,7 @@ dist
 tmp
 /out-tsc
 /media
+apps/axiom/media
 public/media/
 libs/db/.drizzle
 scaffold-examples/payload-cms-website/public/robots.txt
