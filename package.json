@@ -270,7 +270,6 @@
     "onlyBuiltDependencies": [
       "@nestjs/core",
       "@parcel/watcher",
-      "@pulumi/netlify",
       "@swc/core",
       "core-js-pure",
       "esbuild",
