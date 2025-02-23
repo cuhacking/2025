@@ -115,6 +115,10 @@
   --radius-sm: calc(var(--radius) - 4px);
 
   --animate-background-position-spin: background-position-spin 3000ms infinite alternate;
+  --animate-color-cycle-orange: color-cycle-orange 8s infinite;
+  --animate-color-cycle-yellow: color-cycle-yellow 8s infinite;
+  --animate-color-cycle-blue: color-cycle-blue 8s infinite;
+  --animate-color-cycle-primary: color-cycle-primary 8s infinite;
 
   @keyframes background-position-spin {
     0% {
@@ -123,6 +127,94 @@
 
     100% {
       background-position: bottom center;
+    }
+  }
+
+  @keyframes color-cycle-orange {
+    0% {
+      color: var(--color-orange-500);
+    }
+
+    25% {
+      color: var(--color-yellow-400);
+    }
+
+    50% {
+      color: var(--color-blue-400);
+    }
+
+    75% {
+      color: var(--color-primary);
+    }
+
+    100% {
+      color: var(--color-orange-500);
+    }
+  }
+
+  @keyframes color-cycle-yellow {
+    0% {
+      color: var(--color-yellow-400);
+    }
+
+    25% {
+      color: var(--color-blue-400);
+    }
+
+    50% {
+      color: var(--color-primary);
+    }
+
+    75% {
+      color: var(--color-orange-500);
+    }
+
+    100% {
+      color: var(--color-yellow-400);
+    }
+  }
+
+  @keyframes color-cycle-blue {
+    0% {
+      color: var(--color-blue-400);
+    }
+
+    25% {
+      color: var(--color-primary);
+    }
+
+    50% {
+      color: var(--color-orange-500);
+    }
+
+    75% {
+      color: var(--color-yellow-400);
+    }
+
+    100% {
+      color: var(--color-blue-400);
+    }
+  }
+
+  @keyframes color-cycle-primary {
+    0% {
+      color: var(--color-primary);
+    }
+
+    25% {
+      color: var(--color-orange-500);
+    }
+
+    50% {
+      color: var(--color-yellow-400);
+    }
+
+    75% {
+      color: var(--color-blue-400);
+    }
+
+    100% {
+      color: var(--color-primary);
     }
   }
 }
