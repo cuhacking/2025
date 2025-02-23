@@ -83,20 +83,6 @@
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    font-family: 'JetBrains Mono', monospace;
-    @apply bg-background text-foreground;
-    font-feature-settings:
-      'rlig' 1,
-      'calt' 1;
-  }
-}
-
 @theme {
   --color-primary: hsl(var(--primary));
   --color-secondary: hsl(var(--secondary));
@@ -125,6 +111,51 @@
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-orbit: orbit calc(var(--duration) * 1s) linear infinite;
+  --animate-rainbow: rainbow var(--speed, 2s) infinite linear;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+
+    to {
+      height: 0;
+    }
+  }
+
+  @keyframes orbit {
+    0% {
+      transform: rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg);
+    }
+  }
+
+  @keyframes rainbow {
+    0% {
+      background-position: 0%;
+    }
+
+    100% {
+      background-position: 200%;
+    }
+  }
 }
 
 @layer utilities {
@@ -173,62 +204,16 @@
   }
 }
 
-@layer keyframes {
-  @keyframes accordion-down {
-    from {
-      height: 0;
-    }
-
-    to {
-      height: var(--radix-accordion-content-height);
-    }
+@layer base {
+  * {
+    @apply border-border;
   }
 
-  @keyframes accordion-up {
-    from {
-      height: var(--radix-accordion-content-height);
-    }
-
-    to {
-      height: 0;
-    }
-  }
-
-  @keyframes orbit {
-    0% {
-      transform: rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg);
-    }
-
-    100% {
-      transform: rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg);
-    }
-  }
-
-  @keyframes rainbow {
-    0% {
-      background-position: 0%;
-    }
-
-    100% {
-      background-position: 200%;
-    }
-  }
-}
-
-@layer utilities {
-  .animate-accordion-down {
-    animation: accordion-down 0.2s ease-out;
-  }
-
-  .animate-accordion-up {
-    animation: accordion-up 0.2s ease-out;
-  }
-
-  .animate-orbit {
-    animation: orbit calc(var(--duration) * 1s) linear infinite;
-  }
-
-  .animate-rainbow {
-    animation: rainbow var(--speed, 2s) infinite linear;
+  body {
+    font-family: 'JetBrains Mono', monospace;
+    @apply bg-background text-foreground;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
   }
 }
