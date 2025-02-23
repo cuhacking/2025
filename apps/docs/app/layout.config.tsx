@@ -92,13 +92,15 @@ export const baseOptions: BaseLayoutProps = {
     ),
     url: '/',
   },
-  links: Array.from(nameMap).map(([key, text]) => ({
-    text,
-    label: `${text}-link`,
-    url: linkMap.get(key),
-    icon: ICONS.get(key),
-    ...(ICON_TYPE_ENTRIES.has(key) ? { type: 'icon' } : {}),
-  })),
+  links: Array.from(nameMap)
+    .filter(([key]) => key !== 'GitHub')
+    .map(([key, text]) => ({
+      text,
+      label: `${text}-link`,
+      url: linkMap.get(key),
+      icon: ICONS.get(key),
+      ...(ICON_TYPE_ENTRIES.has(key) ? { type: 'icon' } : {}),
+    })),
   githubUrl: linkMap.get('GitHub'),
 }
 
