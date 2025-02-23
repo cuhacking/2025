@@ -6,6 +6,11 @@
 /* @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap'); */
 
 @import 'tailwindcss';
+@import 'fumadocs-ui/css/black.css';
+@import 'fumadocs-ui/css/preset.css';
+/* @import '../shared/ui/global.css' */
+
+@source '../../../node_modules/fumadocs-ui/dist/**/*.js';
 
 @font-face {
   font-family: 'JetBrains Mono';
@@ -132,11 +137,13 @@
   }
 
   .bg-g-nav-drawer-background {
-    background-image: linear-gradient(90deg,
-        var(--color-background) 0%,
-        var(--color-light-black) 25%,
-        var(--color-light-black) 75%,
-        var(--color-background) 100%);
+    background-image: linear-gradient(
+      90deg,
+      var(--color-background) 0%,
+      var(--color-light-black) 25%,
+      var(--color-light-black) 75%,
+      var(--color-background) 100%
+    );
   }
 }
 
