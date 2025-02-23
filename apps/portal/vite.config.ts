@@ -27,7 +27,7 @@ export default defineConfig({
     netlifyPlugin(),
   ],
   server: {
-    port: 3000,
+    port: 5173,
     fs: {
       allow: ['../../libs/shared/', '../../libs/portal/', '..'],
     },
