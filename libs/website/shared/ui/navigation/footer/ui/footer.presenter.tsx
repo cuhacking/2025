@@ -1,5 +1,5 @@
 import type { Media } from '@cuhacking/shared/types'
-import netlify_logo from '@cuhacking/shared/assets/logos/sponsors/netlify-white.svg'
+import netlify_logo from '@cuhacking/shared/assets/logos/sponsors/netlify.white.svg'
 import { Link } from '@remix-run/react'
 import { Socials } from '@website/shared/ui/socials'
 
