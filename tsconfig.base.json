@@ -39,6 +39,12 @@
       "@/engine/*": [
         "libs/engine/*"
       ],
+      "@/email": [
+        "libs/email/index.ts"
+      ],
+      "@/email/*": [
+        "libs/email/*"
+      ],
       "@cuhacking/docs": [
         "libs/docs/index.ts"
       ],
