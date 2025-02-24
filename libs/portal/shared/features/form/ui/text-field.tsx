@@ -17,6 +17,7 @@ import {
 } from '@cuhacking/shared/ui/input'
 import { Typography } from '@cuhacking/shared/ui/typography/typgoraphy'
 import { cn } from '@cuhacking/shared/utils/cn'
+import { useState } from 'react'
 
 interface TextFieldProps {
   name: string
@@ -45,6 +46,8 @@ export function TextField({ variant, name, form, placeholder, label, isRequired,
     default:
       imgSrc = arrowIcon
   }
+
+  const [validInput, setValidInput] = useState(false)
   return (
     <GlassmorphicCard className={cn('w-full max-h-min p-2 flex flex-col justify-start items-start gap-0.5', isDisabled && 'border-transparent text-muted')} variant={info ? 'info' : 'default'} infoIcon={infoIcon || 'info'} info={info}>
       <FormField
@@ -53,7 +56,7 @@ export function TextField({ variant, name, form, placeholder, label, isRequired,
         render={({ field }) => (
           <FormItem className="w-full">
             <FormLabel>
-              <Typography variant="paragraph-base">
+              <Typography variant="paragraph-base" className={cn(validInput && 'bg-greendiant bg-clip-text text-transparent')}>
                 <p>
                   {label}
                   <span className="text-red-600 ml-1">
@@ -74,12 +77,23 @@ export function TextField({ variant, name, form, placeholder, label, isRequired,
                       type="text"
                       value={field.value || ''}
                       className="w-full py-[1px]"
+                      onBlur={async () => {
+                        const valid = await form.trigger(name)
+                        if (valid) {
+                          setValidInput(true)
+                        }
+                        else {
+                          setValidInput(false)
+                        }
+                      }}
                     />
                   </Typography>
                 </div>
               </div>
             </FormControl>
-            <FormMessage />
+            {form.formState.errors[name]?.message && form.formState.errors[name]?.message !== 'Required' && (
+              <FormMessage />
+            )}
           </FormItem>
         )}
       />
