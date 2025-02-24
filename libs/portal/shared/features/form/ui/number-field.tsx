@@ -69,7 +69,7 @@ export function NumberField({
 
               <div className="flex w-full justify-between items-center ">
                 <div className="flex grow justify-start items-center py-1.5 gap-3">
-                  <img src={grid} alt="" className="w-6 h-6" />
+                  <img src={grid} alt="" className="size-6" />
                   <FormControl>
                     <Typography variant="paragraph-base" className="w-full">
                       <Input
@@ -91,7 +91,7 @@ export function NumberField({
                     tabIndex={0}
                     aria-label="Decrease value"
                   >
-                    <img src={minus} alt="-" className="w-6 h-6" />
+                    <img src={minus} alt="-" className="size-6" />
                   </Button>
                   <Button
                     className="flex-shrink-0 p-1 h-auto w-auto"
@@ -101,7 +101,7 @@ export function NumberField({
                     tabIndex={0}
                     aria-label="Increase value"
                   >
-                    <img src={plus} alt="+" className="w-6 h-6" />
+                    <img src={plus} alt="+" className="size-6" />
                   </Button>
                 </div>
               </div>

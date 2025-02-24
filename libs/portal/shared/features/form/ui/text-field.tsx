@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import type { UseFormReturn } from 'react-hook-form'
 import arrowIcon from '@cuhacking/shared/assets/icons/general/arrow-1.svg'
 import linkIcon from '@cuhacking/shared/assets/icons/general/link-1.svg'
+import tildeIcon from '@cuhacking/shared/assets/icons/general/tilde-1.svg'
 import emailIcon from '@cuhacking/shared/assets/icons/socials/email-white-1.svg'
 import {
   FormControl,
@@ -25,10 +26,11 @@ interface TextFieldProps {
   isRequired?: boolean
   isDisabled?: boolean
   info?: ReactNode
+  infoIcon?: 'info' | 'linkedin'
   variant: 'text' | 'link' | 'email'
 }
 
-export function TextField({ variant, name, form, placeholder, label, isRequired, info, isDisabled }: TextFieldProps) {
+export function TextField({ variant, name, form, placeholder, label, isRequired, info, infoIcon, isDisabled }: TextFieldProps) {
   let imgSrc
   switch (variant) {
     case 'text':
@@ -44,7 +46,7 @@ export function TextField({ variant, name, form, placeholder, label, isRequired,
       imgSrc = arrowIcon
   }
   return (
-    <GlassmorphicCard className={cn('w-full max-h-min p-2 flex flex-col justify-start items-start gap-0.5', isDisabled && 'border-white border-opacity-5 cursor-not-allowed text-white text-muted')} variant={info ? 'info' : 'default'} info={info}>
+    <GlassmorphicCard className={cn('w-full max-h-min p-2 flex flex-col justify-start items-start gap-0.5', isDisabled && 'border-transparent text-muted')} variant={info ? 'info' : 'default'} infoIcon={infoIcon || 'info'} info={info}>
       <FormField
         control={form.control}
         name={name}
@@ -63,7 +65,7 @@ export function TextField({ variant, name, form, placeholder, label, isRequired,
             <FormControl>
               <div className="w-full self-stretch rounded-md flex items-center gap-3">
                 <div className="py-1.5 grow basis-0 flex items-start gap-3 w-full">
-                  <img src={imgSrc} className={cn('w-6 h-6', isDisabled && 'opacity-25')} />
+                  <img src={isDisabled ? tildeIcon : imgSrc} className={cn('size-6', isDisabled && 'opacity-25')} />
                   <Typography variant="paragraph-base" className="w-full">
                     <Input
                       {...field}

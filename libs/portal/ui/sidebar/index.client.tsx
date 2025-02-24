@@ -13,7 +13,7 @@ export function Sidebar() {
       disabled: false,
       icon: (
         <img
-          className="h-6 w-6"
+          className="size-6"
           src={user}
           alt="Logout Icon"
         />
@@ -25,7 +25,7 @@ export function Sidebar() {
       href: '/',
       icon: (
         <img
-          className="h-6 w-6"
+          className="size-6"
           src={handshake}
           alt="Profile Icon"
         />
@@ -37,7 +37,7 @@ export function Sidebar() {
       href: '/',
       icon: (
         <img
-          className="h-6 w-6"
+          className="size-6"
           src={mountain}
           alt="Settings Icon"
         />
@@ -50,7 +50,7 @@ export function Sidebar() {
       href: '/',
       icon: (
         <img
-          className="h-6 w-6"
+          className="size-6"
           src={map}
           alt="Logout Icon"
         />

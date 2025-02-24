@@ -92,9 +92,9 @@ export function ComboboxField({
                     variant="outline"
                     role="combobox"
                     aria-expanded={open}
-                    className="border border-border backdrop-blur-md bg-card hover:bg-white/10 justify-start max-w-inherit p-1.5 gap-3 h-auto"
+                    className="border border-border backdrop-blur-md bg-card hover:bg-white/10 justify-start max-w-inherit p-1.5 gap-1.5 h-auto"
                   >
-                    <img src={chevronUpDown} className="h-6 w-6" />
+                    <img src={chevronUpDown} className="size-6" />
                     <span
                       className={cn(
                         'truncate',
@@ -107,7 +107,7 @@ export function ComboboxField({
                     </span>
                   </Button>
                 </PopoverTrigger>
-                <PopoverContent side="bottom" style={{ width }} className="max-w-full p-0 bg-background">
+                <PopoverContent style={{ width }} className="p-0 bg-background">
                   <Command>
                     <CommandInput placeholder="Search option..." />
                     <CommandList>
@@ -124,7 +124,7 @@ export function ComboboxField({
                           >
                             <Check
                               className={cn(
-                                'mr-2 h-4 w-4',
+                                'mr-2 min-w-4 min-h-4',
                                 field.value === option.value ? 'opacity-100' : 'opacity-0',
                               )}
                             />

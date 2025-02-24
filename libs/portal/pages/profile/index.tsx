@@ -8,18 +8,17 @@ export function ProfilePage({ user }: { user: User }) {
   return (
     <div className="px-2.5 py-5 m-auto max-w-screen-xl">
       <Toaster />
-      <div className="">
-        <img
-          src={dashboard_left}
-          alt=""
-          className="fixed top-0 left-0 w-auto h-full object-cover z-[-1]"
-        />
-        <img
-          src={dashboard_right}
-          alt=""
-          className="fixed top-0 right-0 w-auto h-full object-cover z-[-1]"
-        />
-      </div>
+      <img
+        src={dashboard_right}
+        alt=""
+        className="fixed z-[-1000] top-0 right-0 w-auto h-screen object-cover opacity-50"
+      />
+      <img
+        src={dashboard_left}
+        alt=""
+        className="fixed z-[-1000] top-0 left-0 w-auto h-screen object-cover opacity-50"
+      />
+
       <Header
         status={user.profileStatus}
         firstName={user.details.firstName || ''}

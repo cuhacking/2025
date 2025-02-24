@@ -1,4 +1,5 @@
 import { tShirtSizes } from '@cuhacking/portal/types/tShirt'
+import { yearStandings } from '@cuhacking/portal/types/yearStandings'
 
 function toCamelCase(sentence: string) {
   return sentence
@@ -540,6 +541,11 @@ export const RESTRICTIONS = {
 export const TSHIRT_SIZES = Object.keys(tShirtSizes).map(key => ({
   value: key.toLowerCase(),
   label: tShirtSizes[key as keyof typeof tShirtSizes],
+}))
+
+export const YEAR_STANDINGS = Object.keys(yearStandings).map(key => ({
+  value: key.toLowerCase(),
+  label: yearStandings[key as keyof typeof yearStandings],
 }))
 
 export const AUTH_LINK = {

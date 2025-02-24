@@ -504,7 +504,7 @@ const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSelectorP
               })}
             </div>
             <div className="flex gap-1 items-center">
-              <img src={doubleChevronDown} className="w-6 h-6" />
+              <img src={doubleChevronDown} className="size-6" />
               {/* Avoid having the "Search" Icon */}
               <CommandPrimitive.Input
                 {...inputProps}

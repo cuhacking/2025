@@ -28,7 +28,7 @@ export function CheckboxField({ name, form, label, isRequired }: CheckboxFieldPr
               <Checkbox
                 checked={field.value}
                 onCheckedChange={field.onChange}
-                className="w-6 h-6 border-white/50 bg-transparent"
+                className="size-6 border-white/50 bg-transparent"
               />
             </Typography>
 

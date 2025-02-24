@@ -67,7 +67,7 @@ export function DateField({
               </div>
 
               <div className="flex gap-x-3 w-full py-1.5">
-                <img src={calendarIcon} className="h-6 w-6" />
+                <img src={calendarIcon} className="size-6" />
                 <FormControl className="w-full">
                   <Input
                     type="text"
