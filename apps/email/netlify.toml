@@ -1,0 +1,6 @@
+[build]
+command = "pnpm nx build email"
+publish = "apps/email/.react-email/.next"
+
+[[plugins]]
+package = "@netlify/plugin-nextjs"
