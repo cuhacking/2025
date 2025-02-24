@@ -205,26 +205,26 @@
 
 /* width */
 ::-webkit-scrollbar {
-  background-color: var(--color-background);
   width: 0.75em;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  border-radius: 10px;
-  margin-block: 0.5em;
+  background-color: var(--color-background);
+  border-radius: 100px;
+  background-clip: padding-box;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--color-popover);
+  background: var(--color-muted);
   border: 0.1em solid var(--border);
   border-radius: 100vw;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-muted);
+  background: var(--color-primary);
 }
 
 @layer base {

@@ -1,11 +1,16 @@
 import type { LegalPageProps } from '@cuhacking/portal/types/legal'
+import externalArrow from '@cuhacking/shared/assets/icons/general/external-link-black-1.svg'
+// import dashboard_left from '@cuhacking/portal/assets/backgrounds/dashboard-bg-left.webp'
+// import dashboard_right from '@cuhacking/portal/assets/backgrounds/dashboard-bg-right.webp'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@cuhacking/shared/ui/accordion'
 import { Button } from '@cuhacking/shared/ui/button'
 import { Checkbox } from '@cuhacking/shared/ui/checkbox'
 import { Typography } from '@cuhacking/shared/ui/typography'
 import { cn } from '@cuhacking/shared/utils/cn'
+import { Link } from '@remix-run/react'
 import { ScrollArea } from '@shadcn/components/ui/scroll-area'
 import { useState } from 'react'
+import ReactMarkdown from 'react-markdown'
 
 export function Legal({ legalData }: LegalPageProps) {
   const [readItems, setReadItems] = useState<Record<string, boolean>>({})
@@ -37,6 +42,16 @@ export function Legal({ legalData }: LegalPageProps) {
 
   return (
     <div className="max-w-screen-xl px-4 sm:px-6 md:px-8 mx-auto flex flex-col py-4">
+      {/* <img
+          src={dashboard_right}
+          alt=""
+          className="fixed z-[-1000] top-0 right-0 w-auto h-screen object-cover opacity-25 blur-xl"
+        />
+        <img
+          src={dashboard_left}
+          alt=""
+          className="fixed z-[-1000] top-0 left-0 w-auto h-screen object-cover opacity-25 blur-xl"
+        /> */}
       <div className="flex flex-col py-4 gap-y-1.5 ">
         {/* <h3 className="text-base sm:text-lg font-bold mb-3">Legalities</h3> */}
         <Typography variant="h4" className="">Legalities</Typography>
@@ -44,26 +59,57 @@ export function Legal({ legalData }: LegalPageProps) {
         <Typography variant="paragraph-xs" className="text-gray-400">!! MUST READ ALL !!</Typography>
       </div>
 
-      <Accordion type="single" collapsible className="flex flex-col gap-4 w-full">
-        {legalData.map(({ value, title, content, buttonContent }) => (
-          <AccordionItem key={value} value={value} className="border-b border-white w-full">
-            <AccordionTrigger className="pt-3 pb-1.5 flex justify-between items-center w-full hover:no-underline">
+      <Accordion type="single" collapsible className="flex flex-col col-span-full gap-4 w-full">
+        {legalData.map(({ value, title, content, href, buttonContent }) => (
+          <AccordionItem key={value} value={value} className="w-full ">
+            <AccordionTrigger className="pt-3 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline">
               <Typography variant="h4" className="text-primary">{title}</Typography>
             </AccordionTrigger>
 
-            <AccordionContent className="flex flex-col gap-4">
-              <ScrollArea
-                className="max-h-40 sm:max-h-60 rounded-md border p-4 overflow-y-auto bg-neutral-900"
-                onScroll={e => handleScroll(value, e)}
+            <AccordionContent className="flex flex-col gap-4 py-4">
+              <div className="relative">
+                <ScrollArea
+                  className="max-h-60 p-4 overflow-y-auto bg-card border backdrop-blur-md rounded-lg shadow-dropShadow border-border"
+                  onScroll={e => handleScroll(value, e)}
+                >
+                  <div className="prose
+      lg:prose-xl
+      [--tw-prose-body:theme(colors.foreground)]
+      [--tw-prose-headings:theme(colors.foreground)]
+      [--tw-prose-links:theme(colors.foreground)]
+      [--tw-prose-bold:theme(colors.foreground)]
+      [--tw-prose-counters:theme(colors.foreground)]
+      [--tw-prose-bullets:theme(colors.foreground)]
+      [--tw-prose-hr:theme(colors.foreground)]
+      [--tw-prose-quotes:theme(colors.foreground)]
+      [--tw-prose-quote-borders:theme(colors.foreground)]
+      [--tw-prose-code:theme(colors.foreground)]
+      [--tw-prose-pre-code:theme(colors.foreground)]
+      [--tw-prose-pre-bg:theme(colors.gray.800)]
+      [--tw-prose-th-borders:theme(colors.foreground)]
+      [--tw-prose-td-borders:theme(colors.foreground)]"
+                  >
+                    <ReactMarkdown>{content}</ReactMarkdown>
+                  </div>
+                </ScrollArea>
+                <Link
+                  to={href}
+                  target="_blank"
+                  className="absolute bottom-2 right-4 text-background flex items-center gap-2 bg-primary p-2 rounded-md w-fit z-10"
+                >
+                  <img className="size-5" src={externalArrow} alt="link arrow" />
+                  <Typography variant="paragraph-sm" className="hidden sm:block">
+                    <p>Open link</p>
+                  </Typography>
+                </Link>
+              </div>
+              <div className={cn(
+                'flex flex-row gap-3',
+                { 'cursor-not-allowed opacity-35': !scrollEndReached[value] },
+              )}
               >
-                {content}
-              </ScrollArea>
-              <div className="flex flex-row gap-3">
                 <Checkbox
-                  className={cn(
-                    'w-4 h-4',
-                    { 'cursor-not-allowed opacity-50': !scrollEndReached[value] },
-                  )}
+                  className="size-6 border-white/50 bg-transparent"
                   disabled={!scrollEndReached[value]}
                   onCheckedChange={() => handleCheckboxChange(value)}
                 />
