@@ -12,6 +12,7 @@ import { Label } from '@cuhacking/shared/ui/label'
 import { RadioGroup, RadioGroupItem } from '@cuhacking/shared/ui/radio-group'
 import { Typography } from '@cuhacking/shared/ui/typography/typgoraphy'
 import { cn } from '@cuhacking/shared/utils/cn'
+import { useState } from 'react'
 
 interface RadioOption {
   value: string
@@ -29,6 +30,7 @@ interface RadioGroupFieldProps {
 }
 
 export function RadioGroupField({ form, name, label, options, isRequired = false, info, isDisabled = false }: RadioGroupFieldProps) {
+  const [validInput, setValidInput] = useState(false)
   return (
     <GlassmorphicCard info={info} className={cn('w-full max-h-min p-2 flex flex-col justify-start items-start gap-0.5', isDisabled && 'opacity-50 cursor-not-allowed bg-gray-800')} variant={info ? 'info' : 'default'}>
       <FormField
@@ -37,7 +39,7 @@ export function RadioGroupField({ form, name, label, options, isRequired = false
         render={({ field }) => (
           <FormItem className="flex flex-col gap-0.5 w-full h-auto justify-start items-start">
             <FormLabel>
-              <Typography variant="paragraph-base">
+              <Typography variant="paragraph-base" className={cn(validInput && 'bg-greendiant bg-clip-text text-transparent')}>
                 <p>
                   {label}
                   <span className="text-red-600 ml-1">
@@ -48,7 +50,10 @@ export function RadioGroupField({ form, name, label, options, isRequired = false
             </FormLabel>
             <FormControl>
               <RadioGroup
-                onValueChange={field.onChange}
+                onValueChange={(e) => {
+                  field.onChange(e)
+                  setValidInput(true)
+                }}
                 defaultValue={field.value}
                 className="flex flex-wrap gap-1 w-full"
               >
