@@ -7,13 +7,13 @@
   "// targets": "to see all targets run: nx show project email --web",
   "targets": {
     "dev": {
-      "command": "email dev --dir templates",
+      "command": "email dev --dir templates --port $REACT_EMAIL_DEV_SERVER_PORT",
       "options": {
         "cwd": "apps/email"
       }
     },
     "start": {
-      "command": "email start",
+      "command": "email start --port $REACT_EMAIL_DEV_SERVER_PORT",
       "options": {
         "cwd": "apps/email"
       },
@@ -34,5 +34,8 @@
         "cwd": "apps/email"
       }
     }
-  }
+  },
+  "implicitDependencies": [
+    "!axiom"
+  ]
 }

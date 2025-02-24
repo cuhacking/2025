@@ -1,5 +1,6 @@
 /* eslint-disable node/prefer-global/buffer */
 import type { File, Payload, PayloadRequest } from 'payload'
+import { seedEmails } from '../collections/models'
 import { brandData } from './Brands'
 import { userData } from './Users'
 
@@ -91,6 +92,8 @@ export async function seed({
       log(`✅ Inserted user: ${user.firstName} ${user.lastName}`)
     }),
   )
+
+  await seedEmails(payload)
 
   log('🎉 Database seeded successfully! 🌱🐧')
   return { message: 'Database seeded successfully!', logs }

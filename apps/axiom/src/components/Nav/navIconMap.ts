@@ -2,6 +2,7 @@ import { CollectionSlug, GlobalSlug } from 'payload'
 import {
   Image,
   LucideProps,
+  Mail,
   Star,
   User,
 } from 'lucide-react'
@@ -13,6 +14,7 @@ export const navIconMap: Partial<
   media: Image,
   brands: Star,
   users: User,
+  emails: Mail,
 }
 
 export const getNavIcon = (slug: string) =>
