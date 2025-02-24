@@ -33,9 +33,8 @@ export function useProfileSchema(
       }),
     email: z.string().email(),
     tShirtSize: z.nativeEnum(tShirtSizes),
-    age: z.number().int(),
+    age: z.number().int().refine(value => value >= 18, { message: 'Must be 18 years or older to participate in cuHacking events' }).refine(value => value <= 120, { message: 'Invalid age' }),
     yearStanding: z.nativeEnum(yearStandings)
-
       .refine(
         value => !isStudent || (isStudent && value !== undefined),
         { message: 'Required' },
