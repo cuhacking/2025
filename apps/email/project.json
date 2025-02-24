@@ -1,0 +1,28 @@
+{
+  "name": "email",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/email",
+  "projectType": "application",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project email --web",
+  "targets": {
+    "dev": {
+      "command": "email dev --dir templates",
+      "options": {
+        "cwd": "apps/email"
+      }
+    },
+    "build": {
+      "command": "email build --dir templates",
+      "options": {
+        "cwd": "apps/email"
+      }
+    },
+    "export": {
+      "command": "email export --dir templates",
+      "options": {
+        "cwd": "apps/email"
+      }
+    }
+  }
+}
