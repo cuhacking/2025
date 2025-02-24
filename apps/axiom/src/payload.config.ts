@@ -1,12 +1,12 @@
 // THEME CREDITS: github.com/akhrarovsaid/payload-theme-quantum-leap
 // github.com/jhb-software/payload-plugins/tree/main/geocoding
 import path from "node:path";
+// import { s3Storage } from '@payloadcms/storage-s3'
 // import {linkedinOAuth} from './endpoints/auth/linkedin'
 /* eslint-disable node/prefer-global/process */
 import { fileURLToPath } from "node:url";
 // import { googleOAuth } from '@cuhacking/cms/endpoints/auth/google'
 import { Brands, Media, Users, Emails } from "@/db/collections/models";
-// import {Settings} from '@/db/collections/globals/Settings'
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { buildConfig } from "payload";
@@ -17,14 +17,13 @@ const dirname = path.dirname(filename);
 
 export default buildConfig({
   admin: {
-    // autoLogin:
-    // process.env.NEXT_PUBLIC_ENABLE_AUTOLOGIN === 'true'
-    //   ? {
-    //       email: 'hasithdev@gmail.com',
-    //       password: 'admin',
-    //       prefillOnly: true,
-    //     }
-    //   : false,
+    autoLogin:
+    process.env.production
+      ? false :{
+          email: 'hasithde24@gmail.com',
+          password: 'admin',
+          prefillOnly: true,
+        },
     user: Users.slug,
     routes: {
       // createFirstUser: '/create-account',
@@ -75,7 +74,7 @@ export default buildConfig({
       titleSuffix: "- cuHacking 2025",
     },
   },
-  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3000',
+  serverURL: process.env.NODE_ENV == 'production' ? process.env.CUHACKING_2025_AXIOM_PUBLIC_URL : process.env.CUHACKING_2025_AXIOM_LOCAL_URL,
   cors: process.env.CORS_WHITELIST_ORIGINS
     ? process.env.CORS_WHITELIST_ORIGINS.split(",")
     : [],
@@ -86,34 +85,34 @@ export default buildConfig({
   ],
   collections: [Users, Brands, Media, Emails],
   editor: lexicalEditor({}),
-  secret: process.env.PAYLOAD_SECRET || "",
+  secret: process.env.PAYLOAD_SECRET,
   sharp,
   typescript: {
     outputFile: path.resolve("../../libs/db/payload-types.ts"),
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URI || "",
+      connectionString: process.env.DATABASE_URI,
     },
     generateSchemaOutputFile: path.resolve("../../libs/db/schema.ts"),
   }),
   plugins: [
-    // s3Storage({
+    // process.env.NODE_ENV == 'production' && s3Storage({
     //   collections: {
     //     media: {
     //       prefix:
-    //         process.env.NODE_ENV === "production" ? "./media" : "./media-dev",
+    //          "./media",
     //     },
     //   },
-    //   bucket: process.env.S3_BUCKET || "",
+    //   bucket: process.env.S3_BUCKET,
     //   config: {
     //     forcePathStyle: true, // Important for using Supabase
     //     credentials: {
-    //       accessKeyId: process.env.S3_ACCESS_KEY_ID || "",
-    //       secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || "",
+    //       accessKeyId: process.env.S3_ACCESS_KEY_ID,
+    //       secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
     //     },
-    //     region: process.env.S3_REGION || "",
-    //     endpoint: process.env.S3_ENDPOINT || "",
+    //     region: process.env.S3_REGION,
+    //     endpoint: process.env.S3_ENDPOINT,
     //   },
     // }),
     // googleOAuth,
