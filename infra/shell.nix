@@ -3,11 +3,6 @@
 let
   logoPath = "../libs/shared/assets/logos/cuHacking/logo-icon-wordmark-gradient-green.png";
   teamLogoPath = "../libs/shared/assets/logos/cuHacking/team-logos.png";
-  pgPort = "5432";
-  pgUser = "postgres";
-  pgDatabase = "postgres";
-  pgPassword = "password";
-  pgHost = "localhost";
   pgLog = "$PGDATA/postgresql.log";
 
 in pkgs.mkShell {
@@ -19,13 +14,17 @@ in pkgs.mkShell {
   ];
 
   shellHook = ''
+    export PGDATABASE="$DATABASE_NAME"
+    export PGPASSWORD="$DATABASE_PASSWORD"
+    export PGUSER="$DATABASE_USER"
+    export PGHOST="$DATABASE_HOST"
+    export PGPORT="$DATABASE_PORT"
     export PGDATA="$PWD/pgdata"
-    export PGUSER="${pgUser}"
-    export PGDATABASE="${pgDatabase}"
-    export PGPASSWORD="${pgPassword}"
-    export PGHOST="${pgHost}"
 
-    alias psqlx="psql -p ${pgPort} -d $PGDATABASE -U $PGUSER"
+    echo "Hello 👋"
+    echo "Current working directory: $(pwd)"
+
+    alias psqlx="psql -p $PGPORT -d $PGDATABASE -U $PGUSER"
 
     start_db() {
       if [ ! -d "$PGDATA" ]; then
@@ -36,27 +35,27 @@ in pkgs.mkShell {
         echo "unix_socket_directories = '$PGDATA'" >> "$PGDATA/postgresql.conf"
 
         echo "host all all 127.0.0.1/32 md5" >> "$PGDATA/pg_hba.conf"
-        echo "local all ${pgUser} trust" >> "$PGDATA/pg_hba.conf"
+        echo "local all $PGUSER trust" >> "$PGDATA/pg_hba.conf"
 
-        pg_ctl start -o "-p ${pgPort} -k \"$PGDATA\"" -l "${pgLog}"
+        pg_ctl start -o "-p $PGPORT -k \"$PGDATA\"" -l "${pgLog}"
 
-        psql -d ${pgDatabase} -U ${pgUser} -c "ALTER USER ${pgUser} WITH PASSWORD '${pgPassword}';"
+        psql -d $PGDATABASE -U $PGUSER -c "ALTER USER $PGUSER WITH PASSWORD '$PGPASSWORD';"
 
         sed -i 's/local all postgres trust/local all postgres md5/' "$PGDATA/pg_hba.conf"
 
         pg_ctl restart -D "$PGDATA"
 
         # Create database only if it doesn't exist
-        psql -p ${pgPort} -U ${pgUser} -tc "SELECT 1 FROM pg_database WHERE datname = '${pgDatabase}'" | grep -q 1 || createdb "${pgDatabase}" -p ${pgPort} -U ${pgUser}
+        psql -p $PGPORT -U $PGUSER -tc "SELECT 1 FROM pg_database WHERE datname = '$PGDATABASE'" | grep -q 1 || createdb "$PGDATABASE" -p $PGPORT -U $PGUSER
       else
         echo "Starting PostgreSQL..."
-        pg_ctl start -o "-p ${pgPort} -k \"$PGDATA\"" -l "${pgLog}"
+        pg_ctl start -o "-p $PGPORT -k \"$PGDATA\"" -l "${pgLog}"
       fi
 
       echo ""
       echo "***************************************************"
-      echo "PostgreSQL is running on port ${pgPort}"
-      echo "DATABASE_URI=postgres://${pgUser}:${pgPassword}@${pgHost}:${pgPort}/${pgDatabase}"
+      echo "PostgreSQL is running on port $PGPORT"
+      echo "DATABASE_URI=$DATABASE_URI"
       echo "***************************************************"
       echo ""
       ascii-image-converter ${logoPath} --color -f -b
@@ -98,5 +97,7 @@ in pkgs.mkShell {
         exit 0
         ;;
     esac
+
+ trap 'echo "🚪 Exiting Nix shell..."' EXIT
   '';
 }
