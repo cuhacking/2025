@@ -87,7 +87,7 @@ export function Questions({ user, status, onSubmit }: ProfileFormProps) {
         <div className="py-6 px-4 flex flex-col justify-center items-center gap-2.5 w-full">
           <Accordion type="multiple" className="w-full col-span-full">
             <AccordionItem value="personal">
-              <AccordionTrigger className="pt-5 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline">
+              <AccordionTrigger aria-label="Personal" className="pt-5 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline">
                 <AccordionHeader
                   name="Personal"
                   iconVariant={IconVariant.profile}
@@ -218,7 +218,7 @@ export function Questions({ user, status, onSubmit }: ProfileFormProps) {
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="education">
-              <AccordionTrigger className="pt-5 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline">
+              <AccordionTrigger aria-label="Education" className="pt-5 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline">
                 <AccordionHeader
                   name="Education"
                   iconVariant={IconVariant.education}
@@ -294,7 +294,7 @@ export function Questions({ user, status, onSubmit }: ProfileFormProps) {
               className="z-50 relative overflow-y-visible"
               value="restrictions"
             >
-              <AccordionTrigger className="pt-5 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline">
+              <AccordionTrigger aria-label="Restrictions" className="pt-5 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline">
                 <AccordionHeader
                   name="Restrictions"
                   iconVariant={IconVariant.shield}
@@ -320,7 +320,7 @@ export function Questions({ user, status, onSubmit }: ProfileFormProps) {
               </AccordionContent>
             </AccordionItem>
             <AccordionItem className="relative" value="contact">
-              <AccordionTrigger className="pt-5 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline">
+              <AccordionTrigger aria-label="Contact" className="pt-5 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline">
                 <AccordionHeader
                   name="Contact"
                   iconVariant={IconVariant.contactBook}
@@ -343,7 +343,7 @@ export function Questions({ user, status, onSubmit }: ProfileFormProps) {
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="socialMedia">
-              <AccordionTrigger className="pt-5 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline">
+              <AccordionTrigger aria-label="Social Media" className="pt-5 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline">
                 <AccordionHeader
                   name="Social Media"
                   iconVariant={IconVariant.cellPhone}
@@ -372,7 +372,7 @@ export function Questions({ user, status, onSubmit }: ProfileFormProps) {
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="emergencyContact">
-              <AccordionTrigger className="pt-5 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline">
+              <AccordionTrigger aria-label="Emergency Contact" className="pt-5 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline">
                 <AccordionHeader
                   name="Emergency Contact"
                   iconVariant={IconVariant.warning}

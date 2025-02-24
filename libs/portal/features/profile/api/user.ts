@@ -3,7 +3,7 @@ import { UserProfileStatus } from '@cuhacking/portal/types/user'
 
 export function getCurrentUser(): User {
   return {
-    profileStatus: UserProfileStatus.complete,
+    profileStatus: UserProfileStatus.notComplete,
     details: {
       firstName: 'Hasith',
       lastName: 'De Alwis',
