@@ -58,7 +58,6 @@ async function getBrandLinks() {
     select: { links: true },
 
   })
-  console.table(query.docs[0].links)
 
   if (!query.docs.length)
     return { linkMap: new Map(), nameMap: new Map() }
