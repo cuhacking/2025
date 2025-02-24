@@ -5,7 +5,7 @@ import path from "node:path";
 /* eslint-disable node/prefer-global/process */
 import { fileURLToPath } from "node:url";
 // import { googleOAuth } from '@cuhacking/cms/endpoints/auth/google'
-import { Brands, Media, Users } from "@/db/collections/models";
+import { Brands, Media, Users, Emails } from "@/db/collections/models";
 // import {Settings} from '@/db/collections/globals/Settings'
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
@@ -84,7 +84,7 @@ export default buildConfig({
     : [],
   globals: [
   ],
-  collections: [Users, Brands, Media],
+  collections: [Users, Brands, Media, Emails],
   editor: lexicalEditor({}),
   secret: process.env.PAYLOAD_SECRET || "",
   sharp,

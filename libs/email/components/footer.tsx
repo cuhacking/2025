@@ -1,7 +1,8 @@
 import process from 'node:process'
 import { Img, Tailwind, Text } from '@react-email/components'
 
-const baseUrl = process.env.ASSET_URL || 'http://localhost:3000'
+/* const baseUrl = process.env.ASSET_URL || 'http://localhost:3000' */
+const baseUrl = process.env.CUHACKING_2025_EMAIL_TEMPLATES_SITE_LOCAL_URL
 
 export function Footer() {
   return (
