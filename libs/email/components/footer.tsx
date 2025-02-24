@@ -3,7 +3,7 @@ import { Img, Tailwind, Text } from '@react-email/components'
 
 const baseUrl = process.env.ASSET_URL || 'http://localhost:3000'
 
-export function EmailFooter() {
+export function Footer() {
   return (
     <Tailwind>
       <div className="text-center p-5 border-t border-[#333] bg-[#262626]">

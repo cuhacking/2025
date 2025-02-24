@@ -1,6 +1,8 @@
+import type { ReactNode } from 'react'
+
 import { Section, Tailwind } from '@react-email/components'
 
-export function Card({ title, children }) {
+export function Card({ title, children }: { title: string, children: ReactNode }) {
   return (
     <Tailwind>
       <Section className="rounded-lg shadow-lg text-center border border-solid border-border
@@ -11,7 +13,6 @@ export function Card({ title, children }) {
             {title}
           </h2>
         )}
-
         {children}
       </Section>
     </Tailwind>
