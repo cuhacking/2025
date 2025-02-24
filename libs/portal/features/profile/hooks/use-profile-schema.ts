@@ -101,7 +101,19 @@ export function useProfileSchema(
     allergies: z
       .array(z.object({ label: z.string(), value: z.string() }))
       .optional(),
-    website: z.string().optional(),
+    website: z.string().optional().refine((link) => {
+      if (!link)
+        return true
+      try {
+        const url = new URL(link)
+        return url.protocol === 'https:'
+      }
+      catch {
+        return false
+      }
+    }, {
+      message: 'Invalid URL',
+    }),
     isPublicProfile: z.boolean().optional(),
     isPublicResume: z.boolean().optional(),
     currentResidence: z.string(),
