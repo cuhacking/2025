@@ -21,18 +21,35 @@ export function HackathonCountdown({ date }: { date: Date }) {
   }, [date])
 
   return (
-    <GlassmorphicCard className="flex flex-col gap-y-1 p-3">
-      <Typography variant="h6" className="text-center">HACKATHON COUNTDOWN</Typography>
+    <div className="flex flex-col items-center justify-center w-full h-full p-8">
+      <Typography
+        variant="h6"
+        className="text-center mb-6 uppercase tracking-wider"
+      >
+        HACKATHON COUNTDOWN
+      </Typography>
 
-      <div className="flex gap-x-1">
-        { Object.entries(countdown).map(([dateType, timeRemaining]) => (
-          <GlassmorphicCard key={dateType} className="w-16 gap-1-y p-3 flex items-center justify-center flex-col w-full">
-            <Typography variant="h4">{timeRemaining}</Typography>
-            <Typography variant="paragraph-xs">{dateType}</Typography>
+      <div className="flex gap-4 w-full justify-center mb-8">
+        {Object.entries(countdown).map(([dateType, timeRemaining]) => (
+          <GlassmorphicCard
+            key={dateType}
+            className="flex flex-col items-center justify-center p-4 w-24 h-24"
+          >
+            <Typography
+              variant="h3"
+              className="text-3xl font-bold mb-1"
+            >
+              {String(timeRemaining).padStart(2, '0')}
+            </Typography>
+            <Typography
+              variant="paragraph-xs"
+              className="text-gray-400 uppercase text-xs"
+            >
+              {dateType}
+            </Typography>
           </GlassmorphicCard>
         ))}
       </div>
-    </GlassmorphicCard>
-
+    </div>
   )
 }

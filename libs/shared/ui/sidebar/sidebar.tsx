@@ -1,5 +1,7 @@
 import cross from '@cuhacking/shared/assets/icons/general/cross-1.svg'
 import hamburger from '@cuhacking/shared/assets/icons/general/hamburger-1.svg'
+import lockopen from '@cuhacking/shared/assets/icons/general/lock-open.svg'
+import lock from '@cuhacking/shared/assets/icons/general/lock.svg'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@cuhacking/shared/ui/tooltip'
 import { cn } from '@cuhacking/shared/utils/cn'
 import { Link } from '@remix-run/react'
@@ -16,6 +18,8 @@ interface SidebarContextProps {
   open: boolean
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
   animate: boolean
+  locked: boolean
+  setLocked: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const SidebarContext = createContext<SidebarContextProps | undefined>(
@@ -43,14 +47,15 @@ export function SidebarProvider({
   animate?: boolean
 }) {
   const [openState, setOpenState] = useState(false)
+  const [locked, setLocked] = useState(false)
 
   const open = openProp !== undefined ? openProp : openState
   const setOpen = setOpenProp !== undefined ? setOpenProp : setOpenState
 
   return (
     // eslint-disable-next-line react/no-unstable-context-value
-    <SidebarContext.Provider value={{ open, setOpen, animate }}>
-      {children}
+    <SidebarContext.Provider value={{ open, setOpen, animate, locked, setLocked }}>
+      {React.isValidElement(children) ? children : null}
     </SidebarContext.Provider>
   )
 }
@@ -87,7 +92,7 @@ export function DesktopSidebar({
   children,
   ...props
 }: React.ComponentProps<typeof motion.div>) {
-  const { open, setOpen, animate } = useSidebar()
+  const { open, setOpen, animate, locked, setLocked } = useSidebar()
   return (
     <>
       <motion.div
@@ -99,11 +104,28 @@ export function DesktopSidebar({
         animate={{
           width: animate ? (open ? '300px' : '60px') : '300px',
         }}
-        onMouseEnter={() => setOpen(true)}
-        onMouseLeave={() => setOpen(false)}
+        onMouseEnter={() => !locked && setOpen(true)}
+        onMouseLeave={() => !locked && setOpen(false)}
         {...props}
       >
-        {children}
+        <div className="flex flex-col h-full relative">
+          <div className="absolute top-2 right-0 z-50">
+            <button
+              type="button"
+              onClick={() => setLocked(prev => !prev)}
+              className="ml-8 hover:bg-gray-800 rounded cursor-pointer transition-colors duration-200"
+            >
+              <img
+                src={locked ? lock : lockopen}
+                alt={locked ? 'Unlock Sidebar' : 'Lock Sidebar'}
+                className="w-6 h-4 mb-2"
+              />
+            </button>
+          </div>
+          <div className="flex-1 z-10">
+            {children}
+          </div>
+        </div>
       </motion.div>
     </>
   )
