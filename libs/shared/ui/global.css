@@ -203,6 +203,30 @@
   }
 }
 
+/* width */
+::-webkit-scrollbar {
+  background-color: var(--color-background);
+  width: 0.75em;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  margin-block: 0.5em;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--color-popover);
+  border: 0.1em solid var(--border);
+  border-radius: 100vw;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted);
+}
+
 @layer base {
   * {
     @apply border-border;
