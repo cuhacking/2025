@@ -31,7 +31,7 @@ export function useProfileSchema(
       .refine(value => /^[\p{L}\p{M}' -]+$/u.test(value), {
         message: 'Display name should contain only alphabets',
       }),
-    email: z.string().email(),
+    email: z.string().email().max(100),
     tShirtSize: z.nativeEnum(tShirtSizes),
     age: z.number().int().refine(value => value >= 18, { message: 'Must be 18 years or older to participate in cuHacking events' }).refine(value => value <= 120, { message: 'Invalid age' }),
     yearStanding: z.nativeEnum(yearStandings)
@@ -74,23 +74,25 @@ export function useProfileSchema(
       .refine(value => /^\+?[1-9]\d{1,14}$/.test(value), {
         message: 'Invalid phone number format',
       }),
-    emergencyContactFirstName: z
+    emergencyContactFullName: z
       .string()
+      .max(100)
       .refine(value => /^[\p{L}\p{M}' -]+$/u.test(value), {
         message: 'Emergency contact first name should contain only alphabets',
       }),
-    emergencyContactLastName: z
+    emergencyContactEmail: z
       .string()
-      .refine(value => /^[\p{L}\p{M}' -]+$/u.test(value), {
-        message: 'Emergency contact last name should contain only alphabets',
-      }),
+      .max(100)
+      .email({ message: 'Invalid email' }),
     emergencyContactPhoneNumber: z
       .string()
+      .max(100)
       .refine(value => /^\+?[1-9]\d{1,14}$/.test(value), {
         message: 'Invalid emergency contact phone number',
       }),
     emergencyContactRelationship: z
       .string()
+      .max(100)
       .refine((value: string) => value !== '', { message: 'Required' }),
     middleName: z.string().max(100).optional(),
     gender: z.string(),
@@ -101,7 +103,7 @@ export function useProfileSchema(
     allergies: z
       .array(z.object({ label: z.string(), value: z.string() }))
       .optional(),
-    website: z.string().optional().refine((link) => {
+    website: z.string().max(100).optional().refine((link) => {
       if (!link)
         return true
       try {
@@ -116,8 +118,7 @@ export function useProfileSchema(
     }),
     isPublicProfile: z.boolean().optional(),
     isPublicResume: z.boolean().optional(),
-    currentResidence: z.string(),
-    resumeLink: z.string().url().refine(
+    resumeLink: z.string().max(100).url().refine(
       link =>
         /^(?:https:\/\/)?drive\.google\.com\/(?:file\/d\/|open\?id=)[\w-]+/.test(
           link,

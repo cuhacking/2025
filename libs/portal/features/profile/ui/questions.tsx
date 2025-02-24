@@ -406,17 +406,17 @@ export function Questions({ user, status }: ProfileFormProps) {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full auto-rows-auto">
                   <TextField
                     form={profile}
-                    placeholder="John"
-                    name="emergencyContactFirstName"
+                    placeholder="John Doe"
+                    name="emergencyContactFullName"
                     label="First Name"
                     variant="text"
                     isRequired
                   />
                   <TextField
-                    variant="text"
+                    variant="email"
                     form={profile}
-                    placeholder="Doe"
-                    name="emergencyContactLastName"
+                    placeholder="johndoe@gmail.com"
+                    name="emergencyContactEmail"
                     label="Last Name"
                     isRequired
                   />
