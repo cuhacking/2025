@@ -8,9 +8,8 @@ import { useProfileSchema } from '@cuhacking/portal/features/profile/hooks/use-p
 import { useNumberField } from '@cuhacking/portal/shared/features/form/hooks/use-number-field'
 import { AccordionHeader } from '@cuhacking/portal/shared/features/form/ui/accordion-header'
 import { AuthenticationField } from '@cuhacking/portal/shared/features/form/ui/authentication-field'
-import { CheckboxField } from '@cuhacking/portal/shared/features/form/ui/checkbox-field'
 import { ComboboxField } from '@cuhacking/portal/shared/features/form/ui/combobox-field'
-import { DateField } from '@cuhacking/portal/shared/features/form/ui/date-field'
+import { MonthYearField } from '@cuhacking/portal/shared/features/form/ui/month-year-field'
 import { MultiSelectField } from '@cuhacking/portal/shared/features/form/ui/multi-select-field'
 import { NumberField } from '@cuhacking/portal/shared/features/form/ui/number-field'
 import { PhoneNumberField } from '@cuhacking/portal/shared/features/form/ui/phone-number-field'
@@ -39,6 +38,7 @@ import {
   RELATIONSHIPS,
   RESTRICTIONS,
   TSHIRT_SIZES,
+  YEAR_STANDINGS,
 } from '../constants'
 
 interface ProfileFormProps {
@@ -66,12 +66,6 @@ export function Questions({ user, status }: ProfileFormProps) {
     isDirty,
     isValid,
   } = useProfileSchema(user, isStudent)
-
-  const {
-    handleIncrement: handleIncrementYearStanding,
-    handleDecrement: handleDecrementYearStanding,
-    onChange: onChangeYearStanding,
-  } = useNumberField(profile, 'yearStanding')
 
   const {
     handleIncrement: handleIncrementAge,
@@ -107,7 +101,7 @@ export function Questions({ user, status }: ProfileFormProps) {
         <div className="py-6 px-4 flex flex-col justify-center items-center gap-2.5 w-full">
           <Accordion type="multiple" className="w-full col-span-full">
             <AccordionItem value="personal">
-              <AccordionTrigger className="pt-5 pb-1.5 border-b border-white shadow-lg flex justify-between items-center w-full hover:no-underline">
+              <AccordionTrigger className="pt-5 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline">
                 <AccordionHeader
                   name="Personal"
                   iconVariant={IconVariant.profile}
@@ -127,6 +121,7 @@ export function Questions({ user, status }: ProfileFormProps) {
                         Note: This information is coming from LinkedIn
                       </p>
                     )}
+                    infoIcon="linkedin"
                     isDisabled
                   />
                   <TextField
@@ -141,6 +136,7 @@ export function Questions({ user, status }: ProfileFormProps) {
                         Note: This information is coming from LinkedIn
                       </p>
                     )}
+                    infoIcon="linkedin"
                     isDisabled
                   />
                   <TextField
@@ -154,6 +150,7 @@ export function Questions({ user, status }: ProfileFormProps) {
                         Note: This information is coming from LinkedIn
                       </p>
                     )}
+                    infoIcon="linkedin"
                     isDisabled
                   />
                   <TextField
@@ -168,6 +165,7 @@ export function Questions({ user, status }: ProfileFormProps) {
                         Note: This information is coming from LinkedIn
                       </p>
                     )}
+                    infoIcon="linkedin"
                     isDisabled
                   />
                   <TextField
@@ -182,6 +180,7 @@ export function Questions({ user, status }: ProfileFormProps) {
                         Note: This information is coming from LinkedIn
                       </p>
                     )}
+                    infoIcon="linkedin"
                     isDisabled
                   />
 
@@ -261,13 +260,13 @@ export function Questions({ user, status }: ProfileFormProps) {
                         setIsStudent(checked || false)
                       }
                     }}
-                    className="w-6 h-6 border-white/50 bg-transparent"
+                    className="size-6 border-white/50 bg-transparent"
                   />
                   <FormLabel
                     onClick={() => setIsStudent(prev => !prev)}
                   >
                     <Typography variant="paragraph-base">
-                      I am a student
+                      I am currently a student
                     </Typography>
                   </FormLabel>
                 </div>
@@ -296,18 +295,15 @@ export function Questions({ user, status }: ProfileFormProps) {
                         isRequired
                         options={EDUCATION.SCHOOLS}
                       />
-                      <NumberField
+                      <RadioGroupField
                         name="yearStanding"
-                        value={profile.watch('yearStanding')}
-                        form={profile}
-                        onChange={onChangeYearStanding}
                         label="Year Standing"
+                        options={YEAR_STANDINGS}
                         isRequired
-                        handleIncrement={handleIncrementYearStanding}
-                        handleDecrement={handleDecrementYearStanding}
+                        form={profile}
                       />
                     </div>
-                    <DateField
+                    <MonthYearField
                       form={profile}
                       name="expectedGraduationDate"
                       label="Expected Graduation Date"
@@ -440,7 +436,7 @@ export function Questions({ user, status }: ProfileFormProps) {
                 </div>
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="privacySettings">
+            {/* <AccordionItem value="privacySettings">
               <AccordionTrigger className="pt-5 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline">
                 <AccordionHeader
                   name="Privacy"
@@ -459,7 +455,7 @@ export function Questions({ user, status }: ProfileFormProps) {
                   label="Public Resume"
                 />
               </AccordionContent>
-            </AccordionItem>
+            </AccordionItem> */}
           </Accordion>
         </div>
         <div className="px-4 flex justify-center pb-6">

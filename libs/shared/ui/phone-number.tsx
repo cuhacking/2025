@@ -96,7 +96,7 @@ function CountrySelect({
           disabled={disabled}
         >
 
-          <img src={chevronUpDown} className="h-6 w-6" />
+          <img src={chevronUpDown} className="size-6" />
 
           <FlagComponent
             country={selectedCountry}

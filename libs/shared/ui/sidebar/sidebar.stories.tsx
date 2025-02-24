@@ -16,7 +16,7 @@ const links = [
     disabled: false,
     icon: (
       <img
-        className="h-5 w-5"
+        className="size-5"
         src={user.src}
         alt="Logout Icon"
       />
@@ -28,7 +28,7 @@ const links = [
     disabled: false,
     icon: (
       <img
-        className="h-5 w-5"
+        className="size-5"
         src={handshake.src}
         alt="Profile Icon"
       />
@@ -40,7 +40,7 @@ const links = [
     disabled: false,
     icon: (
       <img
-        className="h-5 w-5"
+        className="size-5"
         src={mountain.src}
         alt="Settings Icon"
       />
@@ -52,7 +52,7 @@ const links = [
     disabled: true,
     icon: (
       <img
-        className="h-5 w-5"
+        className="size-5"
         src={map.src}
         alt="Logout Icon"
       />

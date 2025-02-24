@@ -26,9 +26,9 @@ const AccordionTrigger = React.forwardRef<
       )}
       {...props}
     >
-      {isLeft ? <img alt="Accordion chevron" src={chevronDown} className="w-6 h-6  transition-transform duration-200 shrink-0" /> : null}
+      {isLeft ? <img alt="Accordion chevron" src={chevronDown} className="size-6  transition-transform duration-200 shrink-0" /> : null}
       {children}
-      {!isLeft ? <img alt="Accordion chevron" src={chevronDown} className="w-6 h-6 transition-transform duration-200 shrink-0" /> : null}
+      {!isLeft ? <img alt="Accordion chevron" src={chevronDown} className="size-6 transition-transform duration-200 shrink-0" /> : null}
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ))

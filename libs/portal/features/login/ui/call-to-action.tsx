@@ -43,7 +43,7 @@ export function LoginCallToAction() {
         aria-label="Login with Linkedin"
         onClick={handleClick}
       >
-        <img src={linkedinBlack} alt="Linkedin logo" className="h-5 w-5" />
+        <img src={linkedinBlack} alt="Linkedin logo" className="size-5" />
         <Typography variant="h6">Log In</Typography>
       </Button>
     </GlassmorphicCard>

@@ -49,7 +49,7 @@ export function AuthenticationField({ provider, userTag, link }: AuthenticationF
             providerStyles[provider],
           )}
         >
-          <img src={providerLogos[provider]} alt={`${provider} logo`} className="w-6 h-6" />
+          <img src={providerLogos[provider]} alt={`${provider} logo`} className="size-6" />
           <Typography variant="paragraph-base">
             <p className={cn('text-white text-base', userTag && providerStyles[provider])}>
               {userTag || provider.charAt(0).toUpperCase() + provider.slice(1)}
