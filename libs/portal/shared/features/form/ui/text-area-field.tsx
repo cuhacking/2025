@@ -12,11 +12,10 @@ import {
   FormMessage,
 } from '@cuhacking/shared/ui/form'
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
-import {
-  TextArea,
-} from '@cuhacking/shared/ui/text-area'
+import { TextArea } from '@cuhacking/shared/ui/text-area'
 import { Typography } from '@cuhacking/shared/ui/typography/typgoraphy'
 import { cn } from '@cuhacking/shared/utils/cn'
+import { useState } from 'react'
 
 interface TextFieldProps {
   name: string
@@ -28,9 +27,21 @@ interface TextFieldProps {
   info?: ReactNode
   infoIcon?: 'info' | 'linkedin'
   variant: 'text' | 'link' | 'email'
+  maxCharacters: number
 }
 
-export function TextAreaField({ variant, name, form, placeholder, label, isRequired, info, infoIcon, isDisabled }: TextFieldProps) {
+export function TextAreaField({
+  maxCharacters,
+  variant,
+  name,
+  form,
+  placeholder,
+  label,
+  isRequired,
+  info,
+  infoIcon,
+  isDisabled,
+}: TextFieldProps) {
   let imgSrc
   switch (variant) {
     case 'text':
@@ -45,15 +56,24 @@ export function TextAreaField({ variant, name, form, placeholder, label, isRequi
     default:
       imgSrc = arrowIcon
   }
+  const [validInput, setValidInput] = useState(false)
   return (
-    <GlassmorphicCard className={cn('w-full max-h-min p-2 flex flex-col justify-start items-start gap-0.5', isDisabled && 'border-transparent text-muted')} variant={info ? 'info' : 'default'} infoIcon={infoIcon || 'info'} info={info}>
+    <GlassmorphicCard
+      className={cn(
+        'w-full max-h-min p-2 flex flex-col justify-start items-start gap-0.5',
+        isDisabled && 'border-transparent text-muted',
+      )}
+      variant={info ? 'info' : 'default'}
+      infoIcon={infoIcon || 'info'}
+      info={info}
+    >
       <FormField
         control={form.control}
         name={name}
         render={({ field }) => (
           <FormItem className="w-full">
             <FormLabel>
-              <Typography variant="paragraph-base">
+              <Typography variant="paragraph-base" className={cn(validInput && 'bg-greendiant bg-clip-text text-transparent')}>
                 <p>
                   {label}
                   <span className="text-red-600 ml-1">
@@ -63,27 +83,45 @@ export function TextAreaField({ variant, name, form, placeholder, label, isRequi
               </Typography>
             </FormLabel>
             <FormControl>
-              <div className="w-full self-stretch rounded-md flex items-center gap-3">
+              <div className="w-full self-stretch min-h-content rounded-md flex items-center gap-3">
                 <div className="py-1.5 grow basis-0 flex items-start gap-3 w-full">
-                  <img src={isDisabled ? tildeIcon : imgSrc} className={cn('size-6', isDisabled && 'opacity-25')} />
+                  <img
+                    src={isDisabled ? tildeIcon : imgSrc}
+                    className={cn('size-6', isDisabled && 'opacity-25')}
+                    alt=""
+                  />
                   <Typography variant="paragraph-base" className="w-full">
                     <TextArea
                       {...field}
                       disabled={isDisabled}
                       placeholder={placeholder}
-                      type="text"
                       value={field.value || ''}
                       className="w-full py-[1px]"
+                      onBlur={async () => {
+                        const valid = await form.trigger(name)
+                        if (valid) {
+                          setValidInput(true)
+                        }
+                        else {
+                          setValidInput(false)
+                        }
+                      }}
                     />
                   </Typography>
                 </div>
               </div>
             </FormControl>
             <FormMessage />
+            <div className="flex justify-end">
+              <Typography variant="paragraph-xs" className="text-muted">
+                {(field.value || '').length}
+                /
+                {maxCharacters}
+              </Typography>
+            </div>
           </FormItem>
         )}
       />
     </GlassmorphicCard>
-
   )
 }

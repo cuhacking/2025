@@ -242,7 +242,7 @@ const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSelectorP
         const newOptions = selected.filter(s => s.value !== option.value)
         setSelected(newOptions)
         if (form) {
-          form.setValue(name, newOptions)
+          form.setValue(name, newOptions, { shouldValidate: true })
         }
         if (setValidInput) {
           setValidInput(!isRequired || newOptions.length > 0)
@@ -386,7 +386,7 @@ const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSelectorP
             const newOptions = [...selected, { value, label: value }]
             setSelected(newOptions)
             if (form) {
-              form?.setValues(name, newOptions)
+              form.setValue(name, newOptions, { shouldValidate: true })
             }
             if (setValidInput) {
               setValidInput(!isRequired || newOptions.length > 0)
@@ -594,7 +594,7 @@ const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSelectorP
                                     const newOptions = [...selected, option]
 
                                     if (form) {
-                                      form?.setValue(name, newOptions)
+                                      form.setValue(name, newOptions, { shouldValidate: true })
                                     }
 
                                     if (setValidInput) {

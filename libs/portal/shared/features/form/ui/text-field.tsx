@@ -68,7 +68,11 @@ export function TextField({ variant, name, form, placeholder, label, isRequired,
             <FormControl>
               <div className="w-full self-stretch rounded-md flex items-center gap-3">
                 <div className="py-1.5 grow basis-0 flex items-start gap-3 w-full">
-                  <img src={isDisabled ? tildeIcon : imgSrc} className={cn('size-6', isDisabled && 'opacity-25')} />
+                  <img
+                    alt={`${variant} icon`}
+                    src={isDisabled ? tildeIcon : imgSrc}
+                    className={cn('size-6', isDisabled && 'opacity-25')}
+                  />
                   <Typography variant="paragraph-base" className="w-full">
                     <Input
                       {...field}
