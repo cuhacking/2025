@@ -12,6 +12,15 @@
         "cwd": "apps/email"
       }
     },
+    "start": {
+      "command": "email start",
+      "options": {
+        "cwd": "apps/email"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
     "build": {
       "command": "email build --dir templates",
       "options": {
