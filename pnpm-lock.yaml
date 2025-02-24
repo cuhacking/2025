@@ -119,6 +119,9 @@ importers:
       '@remix-run/serve':
         specifier: 2.14.0
         version: 2.14.0(typescript@5.7.3)
+      '@serenity-js/playwright':
+        specifier: ^3.31.9
+        version: 3.31.9(playwright-core@1.50.1)
       '@slidev/cli':
         specifier: ^51.1.0
         version: 51.1.0(@babel/parser@7.26.8)(@nuxt/kit@3.15.4(magicast@0.3.5))(@svgr/core@8.1.0(typescript@5.7.3))(@types/markdown-it@14.1.2)(@types/node@22.8.6)(@vue/compiler-sfc@3.5.13)(less@4.1.3)(lightningcss@1.29.1)(magicast@0.3.5)(markdown-it-async@2.0.0)(postcss@8.5.1)(react@18.3.1)(rollup@4.34.6)(sass@1.84.0)(stylus@0.64.0)(terser@5.38.1)(tsx@4.19.2)
@@ -5984,12 +5987,20 @@ packages:
     resolution: {integrity: sha512-HA2xVLfPok1OkOOfMTQIv8qMG95+kdVF/nKlPlWP/9lanKs/fG648zCcLhEzNUhcjTYVIv9J9ho7nbdok0Ve0g==}
     engines: {node: ^18.12 || ^20 || ^22}
 
+  '@serenity-js/assertions@3.31.9':
+    resolution: {integrity: sha512-TmYhUqqKdOA0JwBi7t7Dj6vWFzlqskzhQw4O8AkJ8xWUjqY/b2xQJZ+N/74OnIeh9BpADUpiHm0G/G5m3aoquw==}
+    engines: {node: ^18.12 || ^20 || ^22}
+
   '@serenity-js/console-reporter@3.31.8':
     resolution: {integrity: sha512-81ajgUzm+DI79MW0txzGJXEIJY3H6LA3LCZRgc+CTo5RfZrOmW4MKi/W4W9yQOzefBhmShYZSwL6ntQcYGXlPw==}
     engines: {node: ^18.12 || ^20 || ^22}
 
   '@serenity-js/core@3.31.8':
     resolution: {integrity: sha512-YChnCZXbxPa0g7s9DlcoJUELAF5dmjPTsV8CdXKwfZXuShfOPOGh4ebs7GvPKfrLi3QlUH0WAGwIzwrEPBuc6A==}
+    engines: {node: ^18.12 || ^20 || ^22}
+
+  '@serenity-js/core@3.31.9':
+    resolution: {integrity: sha512-VNc653GGYtU8/SHUl7P2aH1ZMZbH8PtAQzEIw0x+5nQJ2ayA6ph7PG9DAtgD3xVumhPFh2ZmgW5/XeTP0woVUA==}
     engines: {node: ^18.12 || ^20 || ^22}
 
   '@serenity-js/playwright-test@3.31.8':
@@ -6000,6 +6011,12 @@ packages:
 
   '@serenity-js/playwright@3.31.8':
     resolution: {integrity: sha512-AtbCDw98LKV5Jgu/UbXb02b2xFbPjbFbUGu2kQBNRvuDZuU2Bendzfaax1O24wL+d6dM7+MLV72/qOdlvLt3oQ==}
+    engines: {node: ^18.12 || ^20 || ^22}
+    peerDependencies:
+      playwright-core: ~1.50.1
+
+  '@serenity-js/playwright@3.31.9':
+    resolution: {integrity: sha512-j+y2VNdLK8kxMoiRBSwfVjGEUZmhftTGX6v5XWIV1lHUcKX4tb569iEDQxBHZAtlaXXomDTd9Z7xQlGmQ+Fxhw==}
     engines: {node: ^18.12 || ^20 || ^22}
     peerDependencies:
       playwright-core: ~1.50.1
@@ -6015,6 +6032,10 @@ packages:
 
   '@serenity-js/web@3.31.8':
     resolution: {integrity: sha512-6zR5pfpAznthEokdX23i4AzU+JgRrIdRTjKHbHDNzu3KnHBFZBzOjRLYH98kF+fuewbxGWaUl9aEzIsOAfouTA==}
+    engines: {node: ^18.12 || ^20 || ^22}
+
+  '@serenity-js/web@3.31.9':
+    resolution: {integrity: sha512-GW/hK4I7Y+HdhXxq6oXFTzs+q/5rPslDwQggOhkLmoM3IjUqZcNRcrbKqriNJ/8Qn5GjFboOplehsf9p4VDYJg==}
     engines: {node: ^18.12 || ^20 || ^22}
 
   '@shikijs/core@2.3.2':
@@ -26342,6 +26363,11 @@ snapshots:
       '@serenity-js/core': 3.31.8
       tiny-types: 1.23.0
 
+  '@serenity-js/assertions@3.31.9':
+    dependencies:
+      '@serenity-js/core': 3.31.9
+      tiny-types: 1.23.0
+
   '@serenity-js/console-reporter@3.31.8':
     dependencies:
       '@serenity-js/core': 3.31.8
@@ -26349,6 +26375,20 @@ snapshots:
       tiny-types: 1.23.0
 
   '@serenity-js/core@3.31.8':
+    dependencies:
+      '@paralleldrive/cuid2': 2.2.2
+      chalk: 4.1.2
+      diff: 6.0.0
+      error-stack-parser: 2.1.4
+      fast-glob: 3.3.3
+      filenamify: 4.3.0
+      graceful-fs: 4.2.11
+      semver: 7.7.1
+      tiny-types: 1.23.0
+      upath: 2.0.1
+      validate-npm-package-name: 6.0.0
+
+  '@serenity-js/core@3.31.9':
     dependencies:
       '@paralleldrive/cuid2': 2.2.2
       chalk: 4.1.2
@@ -26380,6 +26420,13 @@ snapshots:
     dependencies:
       '@serenity-js/core': 3.31.8
       '@serenity-js/web': 3.31.8
+      playwright-core: 1.50.1
+      tiny-types: 1.23.0
+
+  '@serenity-js/playwright@3.31.9(playwright-core@1.50.1)':
+    dependencies:
+      '@serenity-js/core': 3.31.9
+      '@serenity-js/web': 3.31.9
       playwright-core: 1.50.1
       tiny-types: 1.23.0
 
@@ -26418,6 +26465,12 @@ snapshots:
     dependencies:
       '@serenity-js/assertions': 3.31.8
       '@serenity-js/core': 3.31.8
+      tiny-types: 1.23.0
+
+  '@serenity-js/web@3.31.9':
+    dependencies:
+      '@serenity-js/assertions': 3.31.9
+      '@serenity-js/core': 3.31.9
       tiny-types: 1.23.0
 
   '@shikijs/core@2.3.2':
