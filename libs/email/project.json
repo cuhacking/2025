@@ -1,0 +1,7 @@
+{
+  "name": "libs/email",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/email",
+  "projectType": "library",
+  "tags": []
+}
