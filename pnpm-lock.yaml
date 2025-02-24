@@ -185,6 +185,9 @@ importers:
       payload-oauth2:
         specifier: ^1.0.9
         version: 1.0.9(payload@3.23.0(graphql@16.10.0)(monaco-editor@0.51.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3))
+      playwright:
+        specifier: ^1.50.1
+        version: 1.50.1
       react:
         specifier: ^18.3.1
         version: 18.3.1
