@@ -408,7 +408,7 @@ export function Questions({ user, status }: ProfileFormProps) {
                     form={profile}
                     placeholder="John Doe"
                     name="emergencyContactFullName"
-                    label="First Name"
+                    label="Full Name"
                     variant="text"
                     isRequired
                   />
@@ -417,7 +417,7 @@ export function Questions({ user, status }: ProfileFormProps) {
                     form={profile}
                     placeholder="johndoe@gmail.com"
                     name="emergencyContactEmail"
-                    label="Last Name"
+                    label="Email"
                     isRequired
                   />
                   <ComboboxField

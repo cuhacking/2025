@@ -79,7 +79,6 @@ export function Registration() {
             isRequired
           />
 
-          {/* Ensure this is a proper text area input */}
           <TextAreaField
             form={registration}
             placeholder="Type here"
@@ -87,6 +86,7 @@ export function Registration() {
             label="What would you tell a first-time hacker?"
             variant="text"
             isRequired
+            maxCharacters={500}
           />
 
           <Button

@@ -86,7 +86,9 @@ export function MultiSelectField({
                 </FormControl>
               </div>
             </div>
-            <FormMessage />
+            {form.formState.errors[name]?.message && form.formState.errors[name]?.message !== 'Required' && (
+              <FormMessage />
+            )}
           </FormItem>
         )}
       />

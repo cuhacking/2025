@@ -7,36 +7,30 @@ export function useRegistrationSchema() {
 
     challengeInterest: z
       .array(z.object({ label: z.string(), value: z.string() }))
-      .min(1, { message: 'Select at least one challenge' }),
+      .min(1, { message: 'Required' }),
 
     discoverySource: z
       .array(z.object({ label: z.string(), value: z.string() }))
-      .min(1, { message: 'Select at least one source' }),
+      .min(1, { message: 'Required' }),
 
     desiredWorkshops: z
       .array(z.object({ label: z.string(), value: z.string() }))
-      .min(1, { message: 'Select at least one workshop' }),
+      .min(1, { message: 'Required' }),
 
     qnxExperienceLevel: z
-      .string()
-      .min(1, { message: 'Select your QNX experience level' }),
+      .string(),
 
     adviceForFirstTimers: z
       .string()
-      .min(10, { message: 'Please provide at least 10 characters' })
+      .min(50, { message: 'Please provide at least 50 characters' })
       .max(500, { message: 'Keep it under 500 characters' }),
   })
 
   const registration = useForm({
     resolver: zodResolver(registrationSchema),
     defaultValues: {
-      challengeInterest: [],
-      discoverySource: [],
-      desiredWorkshops: [],
-      qnxExperienceLevel: '',
-      adviceForFirstTimers: '',
     },
-    mode: 'onChange',
+    mode: 'onBlur',
   })
 
   return {
