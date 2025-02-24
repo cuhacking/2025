@@ -5,13 +5,13 @@
   "projectType": "application",
   "targets": {
     "dev": {
-      "command": "cross-env NODE_OPTIONS=--no-deprecation next dev",
+      "command": "cross-env NODE_OPTIONS=--no-deprecation next dev -p $PAYLOADCMS_DEV_SERVER_PORT",
       "options": {
         "cwd": "apps/axiom"
       }
     },
     "devsafe": {
-      "command": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
+      "command": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev -p $PAYLOADCMS_DEV_SERVER_PORT",
       "options": {
         "cwd": "apps/axiom"
       }
@@ -23,7 +23,7 @@
       }
     },
     "start": {
-      "command": "cross-env NODE_OPTIONS=--no-deprecation next start",
+      "command": "cross-env NODE_OPTIONS=--no-deprecation next start -p $PAYLOADCMS_DEV_SERVER_PORT",
       "options": {
         "cwd": "apps/axiom"
       }
