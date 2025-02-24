@@ -1,9 +1,9 @@
-import type { GenericEmailContent } from '../../types/content'
+import type { GenericEmailContent } from '@/email/types/content'
+import { EmailBanner } from '@/email/components/email-banner'
+import { EmailContent } from '@/email/components/email-content'
+import { EmailFooter } from '@/email/components/email-footer'
+import { EmailKeyboard } from '@/email/components/email-keyboard'
 import { Container, Html, Section, Tailwind } from '@react-email/components'
-import { EmailBanner } from '../../components/email-banner'
-import { EmailContent } from '../../components/email-content'
-import { EmailFooter } from '../../components/email-footer'
-import { EmailKeyboard } from '../../components/email-keyboard'
 
 function Generic({ title, body }: GenericEmailContent) {
   return (
