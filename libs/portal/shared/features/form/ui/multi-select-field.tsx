@@ -12,6 +12,7 @@ import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 import MultipleSelector from '@cuhacking/shared/ui/multi-select'
 import { Typography } from '@cuhacking/shared/ui/typography/typgoraphy'
 import { cn } from '@cuhacking/shared/utils/cn'
+import { useState } from 'react'
 
 export interface MultiSelectFieldProps {
   name: string
@@ -28,12 +29,13 @@ export function MultiSelectField({
   name,
   form,
   label,
-  isRequired,
+  isRequired = false,
   options,
   isDisabled,
   info,
   className,
 }: MultiSelectFieldProps) {
+  const [validInput, setValidInput] = useState(false)
   return (
     <GlassmorphicCard
       className={cn(
@@ -53,7 +55,7 @@ export function MultiSelectField({
               <div className="justify-start items-center inline-flex">
                 <div className="justify-start items-center gap-1 inline-flex">
                   <FormLabel>
-                    <Typography variant="paragraph-base">
+                    <Typography variant="paragraph-base" className={cn(validInput && 'bg-greendiant bg-clip-text text-transparent')}>
                       <p>
                         {label}
                         <span className="text-red-600 ml-1">
@@ -76,7 +78,8 @@ export function MultiSelectField({
                       placeholder="Select options..."
                       className="w-full"
                       badgeClassName="border-background border-2"
-
+                      setValidInput={setValidInput}
+                      isRequired={isRequired}
                     />
                   </Typography>
 

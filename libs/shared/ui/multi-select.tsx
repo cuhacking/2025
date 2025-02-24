@@ -22,6 +22,7 @@ interface GroupOption {
 }
 
 interface MultipleSelectorProps {
+  isRequired: boolean
   name: string
   form: any
   value?: Option[]
@@ -60,6 +61,7 @@ interface MultipleSelectorProps {
   groupBy?: string
   className?: string
   badgeClassName?: string
+  setValidInput?: React.Dispatch<React.SetStateAction<boolean>>
   /**
    * First item selected is a default behavior by cmdk. That is why the default is true.
    * This is a workaround solution by add a dummy item.
@@ -189,11 +191,13 @@ const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSelectorP
       groupBy,
       className,
       badgeClassName,
+      isRequired,
       selectFirstItem = true,
       creatable = false,
       triggerSearchOnFocus = false,
       commandProps,
       inputProps,
+      setValidInput,
     }: MultipleSelectorProps,
     ref: React.Ref<MultipleSelectorRef>,
   ) => {
@@ -240,9 +244,12 @@ const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSelectorP
         if (form) {
           form.setValue(name, newOptions)
         }
+        if (setValidInput) {
+          setValidInput(!isRequired || newOptions.length > 0)
+        }
         onChange?.(newOptions)
       },
-      [onChange, selected],
+      [onChange, selected, isRequired, setValidInput],
     )
 
     const handleKeyDown = React.useCallback(
@@ -380,6 +387,9 @@ const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSelectorP
             setSelected(newOptions)
             if (form) {
               form?.setValues(name, newOptions)
+            }
+            if (setValidInput) {
+              setValidInput(!isRequired || newOptions.length > 0)
             }
             onChange?.(newOptions)
           }}
@@ -585,6 +595,10 @@ const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSelectorP
 
                                     if (form) {
                                       form?.setValue(name, newOptions)
+                                    }
+
+                                    if (setValidInput) {
+                                      setValidInput(!isRequired || newOptions.length > 0)
                                     }
                                     setSelected(newOptions)
                                     onChange?.(newOptions)
