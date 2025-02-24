@@ -403,7 +403,7 @@ export function Questions({ user, status }: ProfileFormProps) {
                 />
               </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-y-4 pt-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full auto-rows-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full auto-rows-auto">
                   <TextField
                     form={profile}
                     placeholder="John Doe"
