@@ -3,8 +3,8 @@ import type { UseFormReturn } from 'react-hook-form'
 import grid from '@cuhacking/shared/assets/icons/general/grid.svg'
 import minus from '@cuhacking/shared/assets/icons/general/minus-1.svg'
 import plus from '@cuhacking/shared/assets/icons/general/plus-1.svg'
-
 import { Button } from '@cuhacking/shared/ui/button'
+
 import {
   FormControl,
   FormField,
@@ -18,6 +18,7 @@ import {
 } from '@cuhacking/shared/ui/input'
 import { Typography } from '@cuhacking/shared/ui/typography/typgoraphy'
 import { cn } from '@cuhacking/shared/utils/cn'
+import { useState } from 'react'
 
 interface NumberFieldProps {
   name: string
@@ -44,6 +45,7 @@ export function NumberField({
   isDisabled,
   info,
 }: NumberFieldProps) {
+  const [validInput, setValidInput] = useState(false)
   return (
     <GlassmorphicCard className={cn('max-h-min p-2 flex flex-col justify-start items-start gap-0.5', isDisabled && 'opacity-50 cursor-not-allowed bg-gray-800 border')} variant={info ? 'info' : 'default'} info={info}>
       <FormField
@@ -55,7 +57,7 @@ export function NumberField({
               <div className="justify-start items-center inline-flex">
                 <div className="justify-start items-center gap-1 inline-flex">
                   <FormLabel>
-                    <Typography variant="paragraph-base">
+                    <Typography variant="paragraph-base" className={cn(validInput && 'bg-greendiant bg-clip-text text-transparent')}>
                       <p>
                         {label}
                         <span className="text-red-600 ml-1">
@@ -78,26 +80,53 @@ export function NumberField({
                         value={value}
                         onChange={onChange}
                         className="w-full py-[1px]"
+                        onBlur={async () => {
+                          const valid = await form.trigger(name)
+                          if (valid) {
+                            setValidInput(true)
+                          }
+                          else {
+                            setValidInput(false)
+                          }
+                        }}
                       />
                     </Typography>
                   </FormControl>
                 </div>
                 <div className="flex-shrink-0 flex gap-1">
                   <Button
-                    className="flex-shrink-0 p-1 h-auto w-auto"
+                    type="button"
+                    className="cursor-pointer flex-shrink-0 p-1 h-auto w-auto"
                     variant="icon"
-                    onClick={handleDecrement}
-                    onKeyDown={e => e.key === 'Enter' && handleDecrement()}
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      handleDecrement()
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        e.stopPropagation()
+                        handleDecrement()
+                      }
+                    }}
                     tabIndex={0}
                     aria-label="Decrease value"
                   >
                     <img src={minus} alt="-" className="size-6" />
                   </Button>
                   <Button
-                    className="flex-shrink-0 p-1 h-auto w-auto"
+                    type="button"
+                    className="cursor-pointer flex-shrink-0 p-1 h-auto w-auto"
                     variant="icon"
-                    onClick={handleIncrement}
-                    onKeyDown={e => e.key === 'Enter' && handleIncrement()}
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      handleIncrement()
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        e.stopPropagation()
+                        handleIncrement()
+                      }
+                    }}
                     tabIndex={0}
                     aria-label="Increase value"
                   >
@@ -106,7 +135,9 @@ export function NumberField({
                 </div>
               </div>
             </div>
-            <FormMessage />
+            {form.formState.errors[name]?.message && form.formState.errors[name]?.message !== 'Required' && (
+              <FormMessage />
+            )}
           </FormItem>
         )}
       />
