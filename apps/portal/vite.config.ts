@@ -27,7 +27,8 @@ export default defineConfig({
     netlifyPlugin(),
   ],
   server: {
-    port: 5173,
+    // eslint-disable-next-line node/prefer-global/process
+    port: process.env.PORTAL_DEV_SERVER_PORT,
     fs: {
       allow: ['../../libs/shared/', '../../libs/portal/', '..'],
     },
