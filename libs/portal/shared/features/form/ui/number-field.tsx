@@ -72,8 +72,8 @@ export function NumberField({
               <div className="flex w-full justify-between items-center ">
                 <div className="flex grow justify-start items-center py-1.5 gap-3">
                   <img src={grid} alt="" className="size-6" />
-                  <FormControl>
-                    <Typography variant="paragraph-base" className="w-full">
+                  <Typography variant="paragraph-base" className="w-full">
+                    <FormControl>
                       <Input
                         placeholder="X"
                         type="number"
@@ -90,8 +90,8 @@ export function NumberField({
                           }
                         }}
                       />
-                    </Typography>
-                  </FormControl>
+                    </FormControl>
+                  </Typography>
                 </div>
                 <div className="flex-shrink-0 flex gap-1">
                   <Button

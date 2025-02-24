@@ -11,6 +11,7 @@ import {
   CommandList,
 } from '@cuhacking/shared/ui/command'
 import {
+  FormControl,
   FormField,
   FormItem,
   FormLabel,
@@ -89,24 +90,27 @@ export function ComboboxField({
               </div>
               <Popover open={open} onOpenChange={setOpen}>
                 <PopoverTrigger ref={triggerRef} className="w-full max-w-full" asChild>
-                  <Button
-                    variant="outline"
-                    role="combobox"
-                    aria-expanded={open}
-                    className="border border-border backdrop-blur-md bg-card hover:bg-white/10 justify-start max-w-inherit p-1.5 gap-1.5 h-auto"
-                  >
-                    <img src={chevronUpDown} className="size-6" />
-                    <span
-                      className={cn(
-                        'truncate',
-                        (!field.value || field.value === 'Search') && 'text-muted text-base font-light italic',
-                      )}
+                  <FormControl>
+                    <Button
+                      variant="outline"
+                      role="combobox"
+                      aria-expanded={open}
+                      className="border border-border backdrop-blur-md bg-card hover:bg-white/10 justify-start max-w-inherit p-1.5 gap-1.5 h-auto"
+                      aria-label={`${name} trigger`}
                     >
-                      {field.value
-                        ? options.find(option => option.value === field.value)?.label
-                        : 'Search'}
-                    </span>
-                  </Button>
+                      <img src={chevronUpDown} className="size-6" />
+                      <span
+                        className={cn(
+                          'truncate',
+                          (!field.value || field.value === 'Search') && 'text-muted text-base font-light italic',
+                        )}
+                      >
+                        {field.value
+                          ? options.find(option => option.value === field.value)?.label
+                          : 'Search'}
+                      </span>
+                    </Button>
+                  </FormControl>
                 </PopoverTrigger>
                 <PopoverContent style={{ width }} className="p-0 bg-background">
                   <Command>
@@ -137,7 +141,9 @@ export function ComboboxField({
                                 field.value === option.value ? 'opacity-100' : 'opacity-0',
                               )}
                             />
-                            {option.label}
+                            <button>
+                              {option.label}
+                            </button>
                           </CommandItem>
                         ))}
                       </CommandGroup>

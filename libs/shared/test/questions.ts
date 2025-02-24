@@ -5,6 +5,10 @@ export const button = {
     PageElement
       .located(By.cssContainingText('button', text))
       .describedAs(`"${text}" button`),
+  withAriaLabel: (label: string) =>
+    PageElement
+      .located(By.css(`[aria-label="${label.toLowerCase()} trigger"]`))
+      .describedAs(`button with aria-label "${label}"`),
 }
 
 export const label = {
