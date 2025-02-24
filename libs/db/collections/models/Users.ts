@@ -1,4 +1,6 @@
 // https://github.com/shefing/payload-tools/tree/main/packages/authorization
+/* eslint-disable node/prefer-global/process */
+
 import type { User } from '@/db/payload-types'
 import type { AccessArgs, CollectionConfig } from 'payload'
 import { adminGroups } from '../adminGroups'
@@ -18,6 +20,17 @@ export const Users: CollectionConfig = {
     update: authenticated,
   },
   admin: {
+    livePreview: {
+      url: `${process.env.CUHACKING_2025_PORTAL_LOCAL_URL}/profile`,
+      breakpoints: [
+        {
+          label: 'Mobile',
+          name: 'mobile',
+          width: 320,
+          height: 568,
+        },
+      ],
+    },
     group: adminGroups.featured,
     useAsTitle: 'displayName',
     defaultColumns: [
