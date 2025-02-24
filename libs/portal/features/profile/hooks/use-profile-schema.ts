@@ -1,5 +1,6 @@
 import type { UserDetails } from '@cuhacking/portal/types/user'
 import { tShirtSizes } from '@cuhacking/portal/types/tShirt'
+import { yearStandings } from '@cuhacking/portal/types/yearStandings'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
@@ -33,22 +34,23 @@ export function useProfileSchema(
     email: z.string().email(),
     tShirtSize: z.nativeEnum(tShirtSizes),
     age: z.number().int(),
-    yearStanding: z
-      .number()
-      .int()
-      .optional()
+    yearStanding: z.nativeEnum(yearStandings)
+
       .refine(
         value => !isStudent || (isStudent && value !== undefined),
         { message: 'Required' },
-      )
-      .refine(value => !value || value <= 7, {
-        message: 'Invalid year standing',
-      }),
+      ),
     expectedGraduationDate: z
       .date()
       .optional()
       .refine(value => !isStudent || (isStudent && value), {
         message: 'Required',
+      })
+      .refine(value => value == null || value >= new Date('2025-01-01'), {
+        message: 'Graduation date must be after January 1, 2025',
+      })
+      .refine(value => value == null || value <= new Date('2035-12-31'), {
+        message: 'Graduation date must be before December 31, 2035',
       }),
     degree: z
       .string()
