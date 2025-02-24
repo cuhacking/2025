@@ -76,7 +76,7 @@ export function MultiSelectField({
                       placeholder="Select options..."
                       className="w-full"
                       badgeClassName="border-background border-2"
-                      creatable
+
                     />
                   </Typography>
 

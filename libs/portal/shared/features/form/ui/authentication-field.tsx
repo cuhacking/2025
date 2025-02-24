@@ -1,10 +1,10 @@
-import type { Provider } from '@cuhacking/shared/types/auth'
 import behance from '@cuhacking/shared/assets/icons/socials/behance-white-1.svg'
 import discord from '@cuhacking/shared/assets/icons/socials/discord-white-1.svg'
 import github from '@cuhacking/shared/assets/icons/socials/github-white-1.svg'
 import google from '@cuhacking/shared/assets/icons/socials/google-white-1.svg'
 import instagram from '@cuhacking/shared/assets/icons/socials/instagram-white-1.svg'
 import linkedin from '@cuhacking/shared/assets/icons/socials/linkedin-white-1.svg'
+import type { Provider } from '@cuhacking/shared/types/auth'
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 import { Typography } from '@cuhacking/shared/ui/typography/typgoraphy'
 import { cn } from '@cuhacking/shared/utils/cn'
@@ -26,15 +26,16 @@ const providerLogos = {
   behance,
   linkedin,
   github,
-
 }
+
 interface AuthenticationFieldProps {
   provider: Provider
   link: string
   userTag?: string
+  isRequired?: boolean
 }
 
-export function AuthenticationField({ provider, userTag, link }: AuthenticationFieldProps) {
+export function AuthenticationField({ provider, userTag, link, isRequired }: AuthenticationFieldProps) {
   return (
     <GlassmorphicCard className="max-h-min">
       <Link
@@ -53,6 +54,7 @@ export function AuthenticationField({ provider, userTag, link }: AuthenticationF
           <Typography variant="paragraph-base">
             <p className={cn('text-white text-base', userTag && providerStyles[provider])}>
               {userTag || provider.charAt(0).toUpperCase() + provider.slice(1)}
+              {isRequired && <span className="text-red-600 ml-1">*</span>}
             </p>
           </Typography>
         </div>
