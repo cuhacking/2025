@@ -10,6 +10,8 @@ import {
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 import { PhoneInput } from '@cuhacking/shared/ui/phone-number'
 import { Typography } from '@cuhacking/shared/ui/typography/typgoraphy'
+import { cn } from '@cuhacking/shared/utils/cn'
+import { useState } from 'react'
 
 interface PhoneNumberFieldProps {
   form: UseFormReturn<any>
@@ -26,7 +28,9 @@ export function PhoneNumberField({
   isRequired = false,
   info,
 }: PhoneNumberFieldProps) {
+  const [validInput, setValidInput] = useState(false)
   return (
+
     <GlassmorphicCard className="p-2 w-full" info={info} variant={info ? 'info' : 'default'}>
       <FormField
         control={form.control}
@@ -37,7 +41,7 @@ export function PhoneNumberField({
               <div className="w-full flex-col justify-start items-start flex">
                 <div className="flex">
                   <FormLabel>
-                    <Typography variant="paragraph-base">
+                    <Typography variant="paragraph-base" className={cn(validInput && 'bg-greendiant bg-clip-text text-transparent')}>
                       <p>
                         {label}
                         <span className="text-red-600 ml-1">
@@ -52,13 +56,24 @@ export function PhoneNumberField({
                     <PhoneInput
                       placeholder="+X XXX XXX XXXX"
                       {...field}
+                      onBlur={async () => {
+                        const valid = await form.trigger(name)
+                        if (valid) {
+                          setValidInput(true)
+                        }
+                        else {
+                          setValidInput(false)
+                        }
+                      }}
                     />
                   </Typography>
 
                 </FormControl>
               </div>
             </div>
-            <FormMessage />
+            {form.formState.errors[name]?.message && form.formState.errors[name]?.message !== 'Required' && (
+              <FormMessage />
+            )}
           </FormItem>
         )}
       />
