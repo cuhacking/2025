@@ -22,6 +22,7 @@
       ]
     },
     "build": {
+      "cache": true,
       "command": "email build --dir templates",
       "options": {
         "cwd": "apps/email"
