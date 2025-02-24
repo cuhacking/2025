@@ -544,7 +544,7 @@ export const TSHIRT_SIZES = Object.keys(tShirtSizes).map(key => ({
 }))
 
 export const YEAR_STANDINGS = Object.keys(yearStandings).map(key => ({
-  value: key.toLowerCase(),
+  value: yearStandings[key as keyof typeof yearStandings],
   label: yearStandings[key as keyof typeof yearStandings],
 }))
 
