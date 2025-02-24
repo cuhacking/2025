@@ -179,7 +179,7 @@ export function SidebarLink({
                 <TooltipTrigger asChild className="w-full">
                   <div
                     className={cn(
-                      'max-w-fit flex items-center gap-2 rounded-md text-neutral-400 dark:text-neutral-500 cursor-not-allowed',
+                      'opacity-25 max-w-fit flex items-center gap-2 rounded-md cursor-not-allowed',
                       className,
                     )}
                     {...props}
@@ -219,6 +219,78 @@ export function SidebarLink({
                   {link.label}
                 </motion.span>
               </Link>
+            </div>
+          )}
+    </>
+  )
+}
+
+export function SidebarItem({
+  icon,
+  iconAlt,
+  children,
+  className,
+  disabled,
+  ...props
+}: {
+  icon: string
+  iconAlt: string
+  children?: React.ReactNode
+  className?: string
+  disabled?: boolean
+}) {
+  const { open, animate } = useSidebar()
+
+  return (
+    <>
+      {disabled
+        ? (
+            <TooltipProvider>
+              <Tooltip delayDuration={300}>
+                <TooltipTrigger asChild className="w-full">
+                  <div
+                    className={cn(
+                      'opacity-25 max-w-fit flex items-center gap-2 rounded-md cursor-not-allowed',
+                      className,
+                    )}
+                    {...props}
+                  >
+                    <img
+                      className="size-6"
+                      src={icon}
+                      alt={iconAlt}
+                    />
+                    <div className="text-sm w-full whitespace-pre !p-0 !m-0">
+                      {children}
+                    </div>
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent side="right">
+                  Coming soon
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          )
+        : (
+            <div className={cn(
+              'py-2 flex gap-2 items-center rounded-md transition-all duration-300 text-neutral-200 hover:bg-neutral-700 group',
+              className,
+            )}
+            >
+              <img
+                className="size-6"
+                src={icon}
+                alt={iconAlt}
+              />
+              <motion.span
+                animate={{
+                  display: animate ? (open ? 'inline-block' : 'none') : 'inline-block',
+                  opacity: animate ? (open ? 1 : 0) : 1,
+                }}
+                className="text-neutral-200 text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0"
+              >
+                {children}
+              </motion.span>
             </div>
           )}
     </>

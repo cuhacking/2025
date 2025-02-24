@@ -54,7 +54,7 @@ export function RadioGroupField({ form, name, label, options, isRequired = false
               >
                 {options.map(option => (
                   <div key={option.value}>
-                    <RadioGroupItem value={option.value} id={option.value} className="peer sr-only w-full" />
+                    <RadioGroupItem value={option.value} id={option.value} className="peer sr-only" />
                     <Label
                       htmlFor={option.value}
                       className="px-2.5 py-2 min-w-9 rounded-md flex items-center justify-center
