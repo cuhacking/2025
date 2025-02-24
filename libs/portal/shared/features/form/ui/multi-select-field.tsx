@@ -21,6 +21,7 @@ export interface MultiSelectFieldProps {
   options: Option[]
   isDisabled?: boolean
   info?: ReactNode
+  className?: string
 }
 
 export function MultiSelectField({
@@ -31,11 +32,13 @@ export function MultiSelectField({
   options,
   isDisabled,
   info,
+  className,
 }: MultiSelectFieldProps) {
   return (
     <GlassmorphicCard
       className={cn(
         'max-h-min p-2 flex flex-col justify-start items-start gap-0.5',
+        className,
         isDisabled && 'opacity-50 cursor-not-allowed bg-gray-800 border',
       )}
       variant={info ? 'info' : 'default'}
