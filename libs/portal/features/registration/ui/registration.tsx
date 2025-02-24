@@ -1,14 +1,14 @@
-import { useProfileSchema } from '@cuhacking/portal/features/profile/hooks/use-profile-schema'
+import { useRegistrationSchema } from '@cuhacking/portal/features/registration/hooks/use-registration-schema'
 import { AuthenticationField } from '@cuhacking/portal/shared/features/form/ui/authentication-field'
 import { ComboboxField } from '@cuhacking/portal/shared/features/form/ui/combobox-field'
 import { MultiSelectField } from '@cuhacking/portal/shared/features/form/ui/multi-select-field'
-import { TextAreaField } from '@cuhacking/portal/shared/features/form/ui/text-area-field'
+import { TextAreaField } from '@cuhacking/portal/shared/features/form/ui/text-area-field' // Ensure this is correct
 import { Provider } from '@cuhacking/shared/types/auth'
 import { Button } from '@cuhacking/shared/ui/button'
 import { Typography } from '@cuhacking/shared/ui/typography'
 import { useState } from 'react'
 import { FormProvider } from 'react-hook-form'
-import { RESTRICTIONS } from '../constants'
+import { CHALLENGE_INTERESTS, DISCOVERY_SOURCES, QNX_EXPERIENCE, WORKSHOP_INTERESTS } from '../constants'
 
 const AUTH_LINK = {
   GITHUB: 'https://github.com',
@@ -23,12 +23,7 @@ export function Registration() {
     typeof initialSocialMediaHandles
   >(initialSocialMediaHandles)
 
-  // Dummy user data (replace with actual user data)
-  const user = {} // Replace this with real user data
-  const isStudent = false
-
-  // Get the form state
-  const { profile: registration } = useProfileSchema(user, isStudent)
+  const { registration, isValid, isDirty } = useRegistrationSchema()
 
   return (
     <div className="max-w-screen-xl sm:px-6 md:px-8 mx-auto flex flex-col px-2.5 py-5 gap-y-2.5">
@@ -46,7 +41,7 @@ export function Registration() {
             provider={Provider.gitHub}
             link={AUTH_LINK.GITHUB}
             userTag={socialMediaHandles.gitHub}
-
+            isRequired
           />
 
           <MultiSelectField
@@ -54,35 +49,37 @@ export function Registration() {
             form={registration}
             name="challengeInterest"
             label="What challenge are you most interested in?"
-            options={RESTRICTIONS.ALLERGIES}
+            options={CHALLENGE_INTERESTS}
             isRequired
           />
+
           <MultiSelectField
             className="z-3"
             form={registration}
             name="discoverySource"
             label="Where did you hear about us?"
-            options={RESTRICTIONS.DIETARY}
+            options={DISCOVERY_SOURCES}
             isRequired
           />
+
           <MultiSelectField
             className="z-2"
             form={registration}
             name="desiredWorkshops"
             label="What workshops would you like to see?"
-            options={RESTRICTIONS.ALLERGIES}
+            options={WORKSHOP_INTERESTS}
             isRequired
           />
 
           <ComboboxField
-            // className="z-1"
             form={registration}
             name="qnxExperienceLevel"
             label="How familiar are you with QNX?"
-            options={RESTRICTIONS.ALLERGIES}
+            options={QNX_EXPERIENCE}
             isRequired
           />
 
+          {/* Ensure this is a proper text area input */}
           <TextAreaField
             form={registration}
             placeholder="Type here"
@@ -95,9 +92,11 @@ export function Registration() {
           <Button
             type="submit"
             variant="secondary"
+            disabled={!isValid || !isDirty}
           >
             <Typography variant="h6">Register</Typography>
           </Button>
+
         </form>
       </FormProvider>
     </div>
