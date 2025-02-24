@@ -57,6 +57,7 @@ export function ComboboxField({
     }
   }, [open])
 
+  const [validInput, setValidInput] = useState(false)
   return (
     <GlassmorphicCard
       className={cn(
@@ -75,7 +76,7 @@ export function ComboboxField({
               <div className="justify-start items-center inline-flex">
                 <div className="justify-start items-center flex flex-wrap">
                   <FormLabel>
-                    <Typography variant="paragraph-base">
+                    <Typography variant="paragraph-base" className={cn(validInput && 'bg-greendiant bg-clip-text text-transparent')}>
                       <p>
                         {label}
                         <span className="text-red-600 ml-1">
@@ -109,7 +110,9 @@ export function ComboboxField({
                 </PopoverTrigger>
                 <PopoverContent style={{ width }} className="p-0 bg-background">
                   <Command>
-                    <CommandInput placeholder="Search option..." />
+                    <CommandInput
+                      placeholder="Search option..."
+                    />
                     <CommandList>
                       <CommandEmpty>No option found.</CommandEmpty>
                       <CommandGroup>
@@ -120,6 +123,12 @@ export function ComboboxField({
                             onSelect={(currentValue) => {
                               field.onChange(currentValue === field.value ? '' : currentValue)
                               setOpen(false)
+                              if (!(currentValue === field.value)) {
+                                setValidInput(true)
+                              }
+                              else {
+                                setValidInput(false)
+                              }
                             }}
                           >
                             <Check
@@ -137,7 +146,9 @@ export function ComboboxField({
                 </PopoverContent>
               </Popover>
             </div>
-            <FormMessage />
+            {form.formState.errors[name]?.message && form.formState.errors[name]?.message !== 'Required' && (
+              <FormMessage />
+            )}
           </FormItem>
         )}
       />
