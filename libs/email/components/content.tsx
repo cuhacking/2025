@@ -1,9 +1,8 @@
-import type { GenericEmailContent } from '../types/content'
+import type { GenericContent } from '@/email/types'
+import { Button, Card } from '@/email'
 import { Text } from '@react-email/components'
-import { Button } from './button'
-import { Card } from './card'
 
-export function EmailContent({ title, body }: GenericEmailContent) {
+export function Content({ title, body }: GenericContent) {
   return (
     <table className="w-full max-w-[600px] mx-auto bg-black">
       <tr>

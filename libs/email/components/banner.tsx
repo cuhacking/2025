@@ -3,7 +3,7 @@ import { Body, Container, Img, Section, Tailwind } from '@react-email/components
 
 const baseUrl = process.env.ASSET_URL || 'http://localhost:3000'
 
-export function EmailBanner() {
+export function Banner() {
   return (
     <Tailwind>
       <Body className="m-0 p-0 bg-black">

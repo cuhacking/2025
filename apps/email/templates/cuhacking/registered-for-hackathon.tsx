@@ -1,20 +1,17 @@
-import type { GenericEmailContent } from '@/email/types/content'
-import { EmailBanner } from '@/email/components/email-banner'
-import { EmailContent } from '@/email/components/email-content'
-import { EmailFooter } from '@/email/components/email-footer'
-import { EmailKeyboard } from '@/email/components/email-keyboard'
+import type { GenericContent } from '@/email/types'
+import { Banner, Content, Footer, Keyboard } from '@/email/components'
 import { Container, Html, Section, Tailwind } from '@react-email/components'
 
-function Generic({ title, body }: GenericEmailContent) {
+function Generic({ title, body }: GenericContent) {
   return (
     <Tailwind>
       <Html>
         <Container className="w-full max-w-[600px] mx-auto bg-black rounded-t-md">
           <Section className="text-center">
-            <EmailBanner />
-            <EmailContent title={title} body={body} />
-            <EmailKeyboard />
-            <EmailFooter />
+            <Banner />
+            <Content title={title} body={body} />
+            <Keyboard />
+            <Footer />
           </Section>
         </Container>
       </Html>
@@ -22,11 +19,11 @@ function Generic({ title, body }: GenericEmailContent) {
   )
 }
 
-const genericEmailConstants: GenericEmailContent = {
+const genericEmailConstants: GenericContent = {
   title: 'Thank you for registering Hasith!',
   body: [
     {
-      text: 'Your submission has been received. Looking forward to seeing you on March 14th!',
+text: 'Your submission has been received. Looking forward to seeing you on March 14th!',
     },
     {
       buttonText: 'RSVP',

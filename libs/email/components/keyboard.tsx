@@ -3,7 +3,7 @@ import { Img } from '@react-email/components'
 
 const baseUrl = process.env.ASSET_URL || 'http://localhost:3000'
 
-export function EmailKeyboard() {
+export function Keyboard() {
   return (
     <div>
       {/* Image Section */}
