@@ -65,15 +65,16 @@ export function TextField({ variant, name, form, placeholder, label, isRequired,
                 </p>
               </Typography>
             </FormLabel>
-            <FormControl>
-              <div className="w-full self-stretch rounded-md flex items-center gap-3">
-                <div className="py-1.5 grow basis-0 flex items-start gap-3 w-full">
-                  <img
-                    alt={`${variant} icon`}
-                    src={isDisabled ? tildeIcon : imgSrc}
-                    className={cn('size-6', isDisabled && 'opacity-25')}
-                  />
-                  <Typography variant="paragraph-base" className="w-full">
+            <div className="w-full self-stretch rounded-md flex items-center gap-3">
+              <div className="py-1.5 grow basis-0 flex items-start gap-3 w-full">
+                <img
+                  alt={`${variant} icon`}
+                  src={isDisabled ? tildeIcon : imgSrc}
+                  className={cn('size-6', isDisabled && 'opacity-25')}
+                />
+
+                <Typography variant="paragraph-base" className="w-full">
+                  <FormControl>
                     <Input
                       {...field}
                       disabled={isDisabled}
@@ -91,10 +92,10 @@ export function TextField({ variant, name, form, placeholder, label, isRequired,
                         }
                       }}
                     />
-                  </Typography>
-                </div>
+                  </FormControl>
+                </Typography>
               </div>
-            </FormControl>
+            </div>
             {form.formState.errors[name]?.message && form.formState.errors[name]?.message !== 'Required' && (
               <FormMessage />
             )}
