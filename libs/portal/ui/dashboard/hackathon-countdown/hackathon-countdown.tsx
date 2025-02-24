@@ -22,12 +22,6 @@ export function HackathonCountdown({ date }: { date: Date }) {
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-full p-8">
-      <Typography
-        variant="h6"
-        className="text-center mb-6 uppercase tracking-wider"
-      >
-        HACKATHON COUNTDOWN
-      </Typography>
 
       <div className="flex gap-4 w-full justify-center mb-8">
         {Object.entries(countdown).map(([dateType, timeRemaining]) => (
