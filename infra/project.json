@@ -4,6 +4,16 @@
   "sourceRoot": "infra",
   "projectType": "application",
   "targets": {
+    "shell": {
+      "command": "nix-shell",
+      "options": {
+        "cwd": "infra"
+      },
+      "prefixColor": "yellow",
+      "color": "green",
+      "bgColor": "black",
+      "description": "Enter the Nix Shell in infra"
+    },
     "up": {
       "command": "nix-shell --argstr DB 'up'",
       "options": {
