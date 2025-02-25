@@ -2,15 +2,18 @@ import arrow_icon from '@cuhacking/shared/assets/icons/general/arrow-1.svg'
 import { Button } from '@cuhacking/shared/ui/button'
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 import { TerminalText } from '@cuhacking/shared/ui/terminal-text/terminal-text'
+import { Typography } from '@cuhacking/shared/ui/typography'
+import { cn } from '@cuhacking/shared/utils/cn'
 
 type Status = 'pending' | 'accepted' | 'rejected'
 
 interface UserStatusProps {
+  className?: string
   name: string
   status?: Status
 }
 
-export function UserStatus({ name, status }: UserStatusProps) {
+export function UserStatus({ name, status = 'pending', className }: UserStatusProps) {
   let additionalContent
   let messageContent
 
@@ -33,15 +36,21 @@ export function UserStatus({ name, status }: UserStatusProps) {
       )
       break
     case 'pending':
-      messageContent = 'HI! THANK YOU FOR APPLYING 💚'
+      messageContent = 'Hi! Thank you for applying'
       additionalContent = (
+        <div>
+          <TerminalText>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer">
+              ... coming soon
+            </a>
+          </TerminalText>
 
-        <TerminalText>
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer">
-            Under review 👀
-          </a>
-        </TerminalText>
-
+          <TerminalText>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer">
+              We hope to cuHacking 👀!!!
+            </a>
+          </TerminalText>
+        </div>
       )
       break
     case 'rejected':
@@ -55,9 +64,14 @@ export function UserStatus({ name, status }: UserStatusProps) {
   }
 
   return (
-    <GlassmorphicCard className="w-full flex flex-col items-start gap-3 p-3">
-      <p>{messageContent}</p>
-
+    <GlassmorphicCard className={cn('flex flex-col gap-2 items-start p-3', className)}>
+      <Typography variant="paragraph-base">
+        {messageContent}
+        {' '}
+        {name}
+        {' '}
+        💚
+      </Typography>
       <TerminalText
         className="text-lg text-center"
         icon={{
@@ -66,9 +80,7 @@ export function UserStatus({ name, status }: UserStatusProps) {
         }}
       >
         <p className="text-primary text-center">
-          status(
-          <span className="text-white">{name}</span>
-          )
+          cuHacking.info()
         </p>
       </TerminalText>
       {additionalContent}
