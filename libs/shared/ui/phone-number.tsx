@@ -14,6 +14,7 @@ import {
   CommandItem,
   CommandList,
 } from './command'
+import { FormControl } from './form'
 import { Input } from './input'
 import {
   Popover,
@@ -34,11 +35,13 @@ const InputComponent = React.forwardRef<
   HTMLInputElement,
   React.ComponentProps<'input'>
 >(({ className, ...props }, ref) => (
-  <Input
-    className={cn('rounded-e-lg rounded-s-none', className)}
-    {...props}
-    ref={ref}
-  />
+  <FormControl>
+    <Input
+      className={cn('rounded-e-lg rounded-s-none', className)}
+      {...props}
+      ref={ref}
+    />
+  </FormControl>
 ))
 
 const PhoneInput: React.ForwardRefExoticComponent<PhoneInputProps>

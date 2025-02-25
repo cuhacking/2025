@@ -23,16 +23,17 @@ export function CheckboxField({ name, form, label, isRequired }: CheckboxFieldPr
       name={name}
       render={({ field }) => (
         <FormItem className="flex space-x-3 items-center">
-          <FormControl>
-            <Typography variant="paragraph-base">
+          <Typography variant="paragraph-base">
+            <FormControl>
               <Checkbox
                 checked={field.value}
                 onCheckedChange={field.onChange}
                 className="size-6 border-white/50 bg-transparent"
+                aria-label={`${label} checkbox`}
               />
-            </Typography>
+            </FormControl>
+          </Typography>
 
-          </FormControl>
           <FormLabel onClick={() => { field.setValue(name, !field.value) }}>
             <Typography variant="paragraph-base">
               {label}

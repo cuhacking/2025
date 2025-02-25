@@ -461,7 +461,8 @@ const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSelectorP
         } // When onSearch is provided, we don't want to filter the options. You can still override it.
         filter={commandFilter()}
       >
-        <div
+        <button
+          type="button"
           className={cn(
             'h-auto rounded-md border border-border text-base backdrop-blur-md bg-card hover:bg-white/10 p-1.5',
             {
@@ -470,6 +471,7 @@ const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSelectorP
             },
             className,
           )}
+          aria-label={`${name} trigger`}
           onClick={() => {
             if (disabled)
               return
@@ -551,7 +553,7 @@ const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSelectorP
               />
             </div>
           </div>
-        </div>
+        </button>
         <div className="relative">
           {open && (
             <CommandList
@@ -580,6 +582,7 @@ const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSelectorP
                           <>
                             {dropdowns.map((option) => {
                               return (
+
                                 <CommandItem
                                   key={option.value}
                                   value={option.label}
@@ -612,7 +615,14 @@ const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSelectorP
                                   )}
                                 >
 
-                                  {option.label}
+                                  <button
+                                    role="menu"
+                                    type="button"
+                                    aria-label={`command item ${option.value}`}
+                                  >
+                                    {option.label}
+
+                                  </button>
                                 </CommandItem>
                               )
                             })}

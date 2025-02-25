@@ -96,7 +96,7 @@ export function ComboboxField({
                       role="combobox"
                       aria-expanded={open}
                       className="border border-border backdrop-blur-md bg-card hover:bg-white/10 justify-start max-w-inherit p-1.5 gap-1.5 h-auto"
-                      aria-label={`${name} trigger`}
+                      aria-label={`${label} trigger`}
                     >
                       <img src={chevronUpDown} className="size-6" />
                       <span
@@ -141,7 +141,11 @@ export function ComboboxField({
                                 field.value === option.value ? 'opacity-100' : 'opacity-0',
                               )}
                             />
-                            <button>
+                            <button
+                              type="button"
+                              role="menu-item"
+                              className="text-start"
+                            >
                               {option.label}
                             </button>
                           </CommandItem>

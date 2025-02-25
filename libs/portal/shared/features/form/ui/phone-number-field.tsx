@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react'
 import type { UseFormReturn } from 'react-hook-form'
 import {
-  FormControl,
   FormField,
   FormItem,
   FormLabel,
@@ -51,24 +50,21 @@ export function PhoneNumberField({
                     </Typography>
                   </FormLabel>
                 </div>
-                <FormControl>
-                  <Typography variant="paragraph-base" className="w-full">
-                    <PhoneInput
-                      placeholder="+X XXX XXX XXXX"
-                      {...field}
-                      onBlur={async () => {
-                        const valid = await form.trigger(name)
-                        if (valid) {
-                          setValidInput(true)
-                        }
-                        else {
-                          setValidInput(false)
-                        }
-                      }}
-                    />
-                  </Typography>
-
-                </FormControl>
+                <Typography variant="paragraph-base" className="w-full">
+                  <PhoneInput
+                    placeholder="+X XXX XXX XXXX"
+                    {...field}
+                    onBlur={async () => {
+                      const valid = await form.trigger(name)
+                      if (valid) {
+                        setValidInput(true)
+                      }
+                      else {
+                        setValidInput(false)
+                      }
+                    }}
+                  />
+                </Typography>
               </div>
             </div>
             {form.formState.errors[name]?.message && form.formState.errors[name]?.message !== 'Required' && (
