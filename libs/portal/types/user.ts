@@ -1,4 +1,4 @@
-import type { tShirtSizes } from './tShirt'
+import type { YearStandings } from './year-standings'
 
 export interface User {
   profileStatus: UserProfileStatus
@@ -8,25 +8,22 @@ export interface User {
 export interface UserDetails {
   firstName: string
   lastName: string
-  avatar: string
+  avatar?: string
   preferredDisplayName: string
   email: string
-  tShirtSize: tShirtSizes
   age: number
-  isStudent: boolean
-  yearStanding?: number
+  yearStanding?: YearStandings
   expectedGraduationDate?: Date
   degree?: string
   institution?: string
   fieldOfStudy?: string
   phoneNumber: string
-  emergencyContactFirstName: string
-  emergencyContactLastName: string
+  emergencyContactFullName: string
+  emergencyContactEmail: string
   emergencyContactPhoneNumber: string
   emergencyContactRelationship: string
   middleName?: string
   gender: string
-  ethnicBackground?: string
   dietaryRestrictions?: { label: string, value: string }[]
   allergies?: { label: string, value: string }[]
   discordHandle?: string
@@ -34,8 +31,9 @@ export interface UserDetails {
   instagramHandle?: string
   behanceHandle?: string
   website?: string
-  isPublicProfile?: boolean
-  isPublicResume?: boolean
+  resumeLink: string
+  // isPublicProfile?: boolean
+  // isPublicResume?: boolean
 }
 
 export enum UserProfileStatus {
