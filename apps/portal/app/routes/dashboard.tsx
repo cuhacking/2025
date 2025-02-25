@@ -36,21 +36,3 @@ export default function Dashboard() {
     <Home user={user} />
   )
 }
-
-// import { getLegalData } from '@cuhacking/portal/features/legal/api/data'
-// import { LegalPage } from '@cuhacking/portal/pages/legal'
-// import { json } from '@remix-run/node'
-// import { useLoaderData } from '@remix-run/react'
-// import { User } from '@cuhacking/portal/types/user'
-
-// export const loader: LoaderFunction = async () => {
-//   const legalData = getLegalData()
-//   return json<LoaderData>(legalData)
-// }
-
-// export default function Index() {
-//   const { legalData } = useLoaderData<LoaderData>()
-//   const user = useLoaderData<User>()
-
-//   return <LegalPage legalData={legalData} user={user} />
-// }
