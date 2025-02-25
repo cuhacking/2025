@@ -157,7 +157,13 @@ export function MonthYearField({
                                 setMonthOpen(false)
                               }}
                             >
-                              {option.label}
+                              <button
+                                type="button"
+                                role="menu"
+                                aria-label={option.label}
+                              >
+                                {option.label}
+                              </button>
                             </CommandItem>
                           ))}
                         </CommandGroup>
@@ -204,7 +210,12 @@ export function MonthYearField({
                                 setYearOpen(false)
                               }}
                             >
-                              {option.label}
+                              <button
+                                type="button"
+                                role="menu-item"
+                              >
+                                {option.label}
+                              </button>
                             </CommandItem>
                           ))}
                         </CommandGroup>
