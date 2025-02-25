@@ -23,7 +23,7 @@ export function Header({
   switch (status) {
     case UserProfileStatus.notComplete:
       welcomeMessage = 'Hi, we wanna get to know you!'
-      profileTitle = 'Profile'
+      profileTitle = 'Create Profile'
       break
     case UserProfileStatus.complete:
       welcomeMessage = 'Evolving are we? Let us know!'
@@ -39,7 +39,7 @@ export function Header({
         </Avatar>
       </div>
       <div className="flex flex-col justify-start items-start gap-1.5 w-full">
-        <div className="text-neutral-50 text-2xl font-bold  leading-loose">
+        <div className="text-Foreground text-2xl font-bold">
           {profileTitle}
         </div>
         <div className="grow text-zinc-400 text-sm font-normal font-mono leading-3">
