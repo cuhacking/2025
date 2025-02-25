@@ -133,7 +133,7 @@ export function ComboboxField({
                           >
                             <Check
                               className={cn(
-                                'mr-2 min-w-4 min-h-4',
+                                'mr-2 min-w-4 min-h-4 max-w-4 min-w-4',
                                 field.value === option.value ? 'opacity-100' : 'opacity-0',
                               )}
                             />
