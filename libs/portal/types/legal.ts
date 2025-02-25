@@ -4,6 +4,7 @@ export interface LegalItem {
   content: string
   href: string
   buttonContent: string
+  buttonContent2?: string
 }
 
 export interface LoaderData {

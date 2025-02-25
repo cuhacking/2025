@@ -491,6 +491,7 @@ const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSelectorP
                     data-disabled={disabled || undefined}
                   >
                     {option.label}
+                    {/* Visible removal button */}
                     <button
                       type="button"
                       className={cn(
@@ -508,10 +509,12 @@ const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSelectorP
                       }}
                       onClick={() => handleUnselect(option)}
                     >
+                      &times;
                     </button>
                   </Badge>
                 )
               })}
+
             </div>
             <div className="flex gap-1 items-center">
               <img src={doubleChevronDown} className="size-6" />
