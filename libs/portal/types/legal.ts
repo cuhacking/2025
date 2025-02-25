@@ -1,3 +1,5 @@
+import type { User } from './user'
+
 export interface LegalItem {
   value: string
   title: string
@@ -12,4 +14,5 @@ export interface LoaderData {
 }
 export interface LegalPageProps {
   legalData: LegalItem[]
+  user: User
 }

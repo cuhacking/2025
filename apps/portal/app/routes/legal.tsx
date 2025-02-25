@@ -1,4 +1,5 @@
 import type { LoaderData } from '@cuhacking/portal/types/legal'
+import type { User } from '@cuhacking/portal/types/user'
 import type { LoaderFunction } from '@remix-run/node'
 import { getLegalData } from '@cuhacking/portal/features/legal/api/data'
 import { LegalPage } from '@cuhacking/portal/pages/legal'
@@ -12,6 +13,7 @@ export const loader: LoaderFunction = async () => {
 
 export default function Index() {
   const { legalData } = useLoaderData<LoaderData>()
+  const user = useLoaderData<User>()
 
-  return <LegalPage legalData={legalData} />
+  return <LegalPage legalData={legalData} user={user} />
 }
