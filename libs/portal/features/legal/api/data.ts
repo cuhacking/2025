@@ -243,7 +243,8 @@ Should you have any questions, concerns or feedback regarding this Privacy Polic
 10. **Contact Information:**  
     - For any questions, contact us at [info@cuhacking.ca](mailto:info@cuhacking.ca). 
         `,
-        buttonContent: 'I have read cuHacking Terms & Conditions',
+        buttonContent: 'I am at least 18 years of age.',
+        buttonContent2: 'I have read cuHacking Terms & Conditions',
       },
     ],
   }
