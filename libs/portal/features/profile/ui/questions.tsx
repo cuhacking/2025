@@ -1,10 +1,7 @@
 import type { UserDetails } from '@cuhacking/portal/types/user'
 import type * as z from 'zod'
-import {
-  patchUser,
-  postUser,
-} from '@cuhacking/portal/features/profile/api/user'
 import { useProfileSchema } from '@cuhacking/portal/features/profile/hooks/use-profile-schema'
+
 import { useNumberField } from '@cuhacking/portal/shared/features/form/hooks/use-number-field'
 import { AccordionHeader } from '@cuhacking/portal/shared/features/form/ui/accordion-header'
 import { AuthenticationField } from '@cuhacking/portal/shared/features/form/ui/authentication-field'
@@ -28,9 +25,8 @@ import { Button } from '@cuhacking/shared/ui/button'
 import { Checkbox } from '@cuhacking/shared/ui/checkbox'
 import { Form, FormLabel } from '@cuhacking/shared/ui/form'
 import { Typography } from '@cuhacking/shared/ui/typography'
-import { Link } from '@remix-run/react'
+import { useNavigate } from '@remix-run/react'
 import { useState } from 'react'
-import { toast } from 'sonner'
 import {
   AUTH_LINK,
   EDUCATION,
@@ -43,6 +39,7 @@ import {
 interface ProfileFormProps {
   user: Partial<UserDetails>
   status: UserProfileStatus
+  onSubmit: (values: z.infer<any>, status: UserProfileStatus) => Promise<Response>
 }
 
 const initialSocialMediaHandles = {
@@ -52,12 +49,13 @@ const initialSocialMediaHandles = {
   behance: '',
 }
 
-export function Questions({ user, status }: ProfileFormProps) {
+export function Questions({ user, status, onSubmit }: ProfileFormProps) {
   const [isStudent, setIsStudent] = useState<boolean>(false)
   // will setup the social media handler once BE is up
   const [socialMediaHandles, _setSocialMediaHandles] = useState<
     typeof initialSocialMediaHandles
   >(initialSocialMediaHandles)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const {
     profile,
@@ -72,31 +70,20 @@ export function Questions({ user, status }: ProfileFormProps) {
     onChange: onChangeAge,
   } = useNumberField(profile, 'age')
 
-  function onSubmit(values: z.infer<typeof _profileSchemaType>) {
-    const isUpdating = status === UserProfileStatus.complete
-    const action = isUpdating ? 'update' : 'create'
-    try {
-      if (isUpdating) {
-        patchUser(values as UserDetails)
-      }
-      else {
-        postUser(values as UserDetails)
-      }
-
-      toast(`Successfully ${action} account!`)
-    }
-    catch (error) {
-      console.error(
-        'Profile submission error - libs/portal/features/profile/ui/questions.tsx',
-        error,
-      )
-      toast.error(`Failed to ${action} profile. Please try again.`)
+  const navigate = useNavigate()
+  async function handleSubmit(values: z.infer<any>) {
+    setIsLoading(true)
+    const res = await onSubmit(values, status)
+    setIsLoading(false)
+    if (res.status === 200 && status === UserProfileStatus.notComplete) {
+      navigate('/dashboard')
     }
   }
+  const buttonMessage = status === UserProfileStatus.complete ? 'Update Profile' : 'Create Profile'
 
   return (
     <Form {...profile}>
-      <form onSubmit={profile.handleSubmit(onSubmit)}>
+      <form onSubmit={profile.handleSubmit(handleSubmit)}>
         <div className="py-6 px-4 flex flex-col justify-center items-center gap-2.5 w-full">
           <Accordion type="multiple" className="w-full col-span-full">
             <AccordionItem value="personal">
@@ -449,16 +436,11 @@ export function Questions({ user, status }: ProfileFormProps) {
         </div>
         <div className="px-4 flex justify-center pb-6">
           <Button
-            disabled={!isValid || !isDirty}
+            disabled={!isValid || !isDirty || isLoading}
             variant="secondary"
             type="submit"
           >
-            <Link
-              to="/register"
-              aria-label="create a profile and register link"
-            >
-              <Typography variant="h6">Create pofile + Register</Typography>
-            </Link>
+            <Typography variant="h6">{buttonMessage}</Typography>
           </Button>
 
         </div>

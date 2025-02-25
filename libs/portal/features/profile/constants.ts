@@ -1,5 +1,5 @@
 import { tShirtSizes } from '@cuhacking/portal/types/tShirt'
-import { yearStandings } from '@cuhacking/portal/types/yearStandings'
+import { YearStandings } from '@cuhacking/portal/types/year-standings'
 
 function toCamelCase(sentence: string) {
   return sentence
@@ -542,9 +542,9 @@ export const TSHIRT_SIZES = Object.keys(tShirtSizes).map(key => ({
   label: tShirtSizes[key as keyof typeof tShirtSizes],
 }))
 
-export const YEAR_STANDINGS = Object.keys(yearStandings).map(key => ({
-  value: yearStandings[key as keyof typeof yearStandings],
-  label: yearStandings[key as keyof typeof yearStandings],
+export const YEAR_STANDINGS = Object.keys(YearStandings).map(key => ({
+  value: YearStandings[key as keyof typeof YearStandings],
+  label: YearStandings[key as keyof typeof YearStandings],
 }))
 
 export const AUTH_LINK = {
