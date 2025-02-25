@@ -59,9 +59,9 @@ export function HackerDock({
     {
       label: 'Home',
       disabled: false,
-      href: '/',
+      href: '/dashboard',
       icon: (
-        <Logo link="/" />
+        <Logo link="/dashboard" />
       ),
     },
     {
