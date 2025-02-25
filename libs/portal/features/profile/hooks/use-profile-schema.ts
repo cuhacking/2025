@@ -1,6 +1,5 @@
 import type { UserDetails } from '@cuhacking/portal/types/user'
-import { tShirtSizes } from '@cuhacking/portal/types/tShirt'
-import { yearStandings } from '@cuhacking/portal/types/yearStandings'
+import { YearStandings } from '@cuhacking/portal/types/year-standings'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
@@ -25,16 +24,27 @@ export function useProfileSchema(
       .refine(value => /^[\p{L}\p{M}' -]+$/u.test(value), {
         message: 'Last name should contain only alphabets',
       }),
+    middleName: z.string().max(100).optional(),
+    email: z.string().email().max(100),
     preferredDisplayName: z
       .string()
       .max(100)
       .refine(value => /^[\p{L}\p{M}' -]+$/u.test(value), {
         message: 'Display name should contain only alphabets',
       }),
-    email: z.string().email().max(100),
-    tShirtSize: z.nativeEnum(tShirtSizes),
+    gender: z.string(),
     age: z.number().int().refine(value => value >= 18, { message: 'Must be 18 years or older to participate in cuHacking events' }).refine(value => value <= 120, { message: 'Invalid age' }),
-    yearStanding: z.nativeEnum(yearStandings)
+    resumeLink: z.string().max(100).url().refine(
+      link =>
+        /^(?:https:\/\/)?drive\.google\.com\/(?:file\/d\/|open\?id=)[\w-]+/.test(
+          link,
+        ),
+      {
+        message: 'Invalid Google Drive link.',
+      },
+    ),
+    yearStanding: z.nativeEnum(YearStandings)
+      .optional()
       .refine(
         value => !isStudent || (isStudent && value !== undefined),
         { message: 'Required' },
@@ -74,6 +84,12 @@ export function useProfileSchema(
       .refine(value => /^\+?[1-9]\d{1,14}$/.test(value), {
         message: 'Invalid phone number format',
       }),
+    dietaryRestrictions: z
+      .array(z.object({ label: z.string(), value: z.string() }))
+      .optional(),
+    allergies: z
+      .array(z.object({ label: z.string(), value: z.string() }))
+      .optional(),
     emergencyContactFullName: z
       .string()
       .max(100)
@@ -94,15 +110,6 @@ export function useProfileSchema(
       .string()
       .max(100)
       .refine((value: string) => value !== '', { message: 'Required' }),
-    middleName: z.string().max(100).optional(),
-    gender: z.string(),
-    ethnicBackground: z.string().optional(),
-    dietaryRestrictions: z
-      .array(z.object({ label: z.string(), value: z.string() }))
-      .optional(),
-    allergies: z
-      .array(z.object({ label: z.string(), value: z.string() }))
-      .optional(),
     website: z.string().max(100).optional().refine((link) => {
       if (!link)
         return true
@@ -116,17 +123,6 @@ export function useProfileSchema(
     }, {
       message: 'Invalid URL',
     }),
-    isPublicProfile: z.boolean().optional(),
-    isPublicResume: z.boolean().optional(),
-    resumeLink: z.string().max(100).url().refine(
-      link =>
-        /^(?:https:\/\/)?drive\.google\.com\/(?:file\/d\/|open\?id=)[\w-]+/.test(
-          link,
-        ),
-      {
-        message: 'Invalid Google Drive link.',
-      },
-    ),
   })
 
   const profile = useForm<UserDetails>({
