@@ -1,3 +1,4 @@
+import type * as z from 'zod'
 import { useRegistrationSchema } from '@cuhacking/portal/features/registration/hooks/use-registration-schema'
 import { AuthenticationField } from '@cuhacking/portal/shared/features/form/ui/authentication-field'
 import { ComboboxField } from '@cuhacking/portal/shared/features/form/ui/combobox-field'
@@ -6,6 +7,7 @@ import { TextAreaField } from '@cuhacking/portal/shared/features/form/ui/text-ar
 import { Provider } from '@cuhacking/shared/types/auth'
 import { Button } from '@cuhacking/shared/ui/button'
 import { Typography } from '@cuhacking/shared/ui/typography'
+import { useNavigate } from '@remix-run/react'
 import { useState } from 'react'
 import { FormProvider } from 'react-hook-form'
 import { CHALLENGE_INTERESTS, DISCOVERY_SOURCES, QNX_EXPERIENCE, WORKSHOP_INTERESTS } from '../constants'
@@ -14,16 +16,30 @@ const AUTH_LINK = {
   GITHUB: 'https://github.com',
 }
 
-export function Registration() {
+interface RegistrationPropse {
+  onSubmit: (values: z.infer<any>) => Promise<Response>
+}
+export function Registration({ onSubmit }: RegistrationPropse) {
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const initialSocialMediaHandles = {
     gitHub: '',
   }
+  const navigate = useNavigate()
 
   const [socialMediaHandles, _setSocialMediaHandles] = useState<
     typeof initialSocialMediaHandles
   >(initialSocialMediaHandles)
 
   const { registration, isValid, isDirty } = useRegistrationSchema()
+
+  async function handleSubmit(values: z.infer<any>) {
+    setIsLoading(true)
+    const res = await onSubmit(values)
+    if (res.status === 200) {
+      navigate('/dashboard')
+    }
+    setIsLoading(false)
+  }
 
   return (
     <div className="max-w-screen-xl sm:px-6 md:px-8 mx-auto flex flex-col px-2.5 py-5 gap-y-2.5">
@@ -35,7 +51,7 @@ export function Registration() {
       </div>
 
       <FormProvider {...registration}>
-        <form className="flex flex-col gap-y-4 w-full px-4 pb-6">
+        <form method="post" className="flex flex-col gap-y-4 w-full px-4 pb-6" onSubmit={registration.handleSubmit(handleSubmit)}>
 
           <AuthenticationField
             provider={Provider.gitHub}
@@ -92,7 +108,7 @@ export function Registration() {
             className="w-fit mx-auto"
             type="submit"
             variant="secondary"
-            disabled={!isValid || !isDirty}
+            disabled={!isValid || !isDirty || isLoading}
           >
             <Typography variant="h6">Register</Typography>
           </Button>
