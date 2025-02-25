@@ -85,11 +85,11 @@ export function Registration() {
             name="adviceForFirstTimers"
             label="What would you tell a first-time hacker?"
             variant="text"
-            isRequired
             maxCharacters={500}
           />
 
           <Button
+            className="w-fit mx-auto"
             type="submit"
             variant="secondary"
             disabled={!isValid || !isDirty}
