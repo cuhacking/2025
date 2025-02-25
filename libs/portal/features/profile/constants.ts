@@ -421,24 +421,23 @@ export const GENDER = [
 
 export const EDUCATION = {
   LEVEL_OF_STUDY: [
-    { value: 'lessThanSecondary', label: 'Less than Secondary / High School' },
     { value: 'secondary', label: 'Secondary / High School' },
     {
       value: 'undergraduate2Year',
-      label: 'Undergraduate University (2 year - community college or similar)',
+      label: 'College',
     },
     {
       value: 'undergraduate3PlusYear',
-      label: 'Undergraduate University (3+ year)',
+      label: 'Undergraduate',
     },
     {
       value: 'graduate',
-      label: 'Graduate University (Masters, Professional, Doctoral, etc)',
+      label: 'Graduate University',
     },
     { value: 'codeSchool', label: 'Code School / Bootcamp' },
     {
       value: 'vocationalTrade',
-      label: 'Other Vocational / Trade Program or Apprenticeship',
+      label: 'Trade Program or Apprenticeship',
     },
     { value: 'postDoctorate', label: 'Post Doctorate' },
     { value: 'other', label: 'Other' },
@@ -490,7 +489,7 @@ export const EDUCATION = {
       value: 'healthScience',
       label: 'Health science (such as nursing, pharmacy, radiology, etc.)',
     },
-    { value: 'other', label: 'Other (please specify)' },
+    { value: 'other', label: 'Other' },
     { value: 'undecided', label: 'Undecided / No Declared Major' },
     {
       value: 'noMajors',

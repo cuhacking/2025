@@ -28,16 +28,15 @@ import { Button } from '@cuhacking/shared/ui/button'
 import { Checkbox } from '@cuhacking/shared/ui/checkbox'
 import { Form, FormLabel } from '@cuhacking/shared/ui/form'
 import { Typography } from '@cuhacking/shared/ui/typography'
-import React, { useState } from 'react'
+import { Link } from '@remix-run/react'
+import { useState } from 'react'
 import { toast } from 'sonner'
 import {
   AUTH_LINK,
-  COUNTRY_LIST,
   EDUCATION,
   GENDER,
   RELATIONSHIPS,
   RESTRICTIONS,
-  TSHIRT_SIZES,
   YEAR_STANDINGS,
 } from '../constants'
 
@@ -154,21 +153,6 @@ export function Questions({ user, status }: ProfileFormProps) {
                     isDisabled
                   />
                   <TextField
-                    variant="text"
-                    name="preferredDisplayName"
-                    form={profile}
-                    label="Preferred Display Name"
-                    isRequired
-                    placeholder="John"
-                    info={(
-                      <p>
-                        Note: This information is coming from LinkedIn
-                      </p>
-                    )}
-                    infoIcon="linkedin"
-                    isDisabled
-                  />
-                  <TextField
                     variant="email"
                     form={profile}
                     name="email"
@@ -183,12 +167,18 @@ export function Questions({ user, status }: ProfileFormProps) {
                     infoIcon="linkedin"
                     isDisabled
                   />
-
-                  <RadioGroupField
+                  <TextField
+                    variant="text"
+                    name="preferredDisplayName"
+                    form={profile}
+                    label="Preferred Display Name"
+                    isRequired
+                    placeholder="John"
+                  />
+                  {/* <RadioGroupField
                     name="tShirtSize"
                     label="T-Shirt Size"
                     options={TSHIRT_SIZES}
-                    isRequired
                     form={profile}
                     info={(
                       <p>
@@ -203,7 +193,7 @@ export function Questions({ user, status }: ProfileFormProps) {
                         </a>
                       </p>
                     )}
-                  />
+                  /> */}
                   <ComboboxField
                     form={profile}
                     name="gender"
@@ -221,22 +211,21 @@ export function Questions({ user, status }: ProfileFormProps) {
                     handleIncrement={handleIncrementAge}
                     handleDecrement={handleDecrementAge}
                   />
-                </div>
+                  {/* </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <ComboboxField
+                   <ComboboxField
                     form={profile}
                     name="currentResidence"
                     label="Current Residence"
                     isRequired
                     options={COUNTRY_LIST}
-                  />
+                  /> */}
                   <TextField
-                    placeholder="https://drive.google.com/your-resume-link"
-                    label="Resume Link (google drive)"
+                    placeholder="https://drive.google.com/resume"
+                    label="Resume Link"
                     variant="link"
                     form={profile}
                     name="resumeLink"
-                    isRequired
                   />
                 </div>
               </AccordionContent>
@@ -273,7 +262,7 @@ export function Questions({ user, status }: ProfileFormProps) {
 
                 {isStudent && (
                   <>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full auto-rows-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full auto-rows-auto">
                       <ComboboxField
                         form={profile}
                         name="degree"
@@ -302,13 +291,13 @@ export function Questions({ user, status }: ProfileFormProps) {
                         isRequired
                         form={profile}
                       />
+                      <MonthYearField
+                        form={profile}
+                        name="expectedGraduationDate"
+                        label="Expected Graduation Date"
+                        isRequired
+                      />
                     </div>
-                    <MonthYearField
-                      form={profile}
-                      name="expectedGraduationDate"
-                      label="Expected Graduation Date"
-                      isRequired
-                    />
                   </>
                 )}
               </AccordionContent>
@@ -418,7 +407,7 @@ export function Questions({ user, status }: ProfileFormProps) {
                     placeholder="johndoe@gmail.com"
                     name="emergencyContactEmail"
                     label="Email"
-                    isRequired
+
                   />
                   <ComboboxField
                     form={profile}
@@ -464,8 +453,14 @@ export function Questions({ user, status }: ProfileFormProps) {
             variant="secondary"
             type="submit"
           >
-            <Typography variant="h6">save</Typography>
+            <Link
+              to="/register"
+              aria-label="create a profile and register link"
+            >
+              <Typography variant="h6">Create pofile + Register</Typography>
+            </Link>
           </Button>
+
         </div>
       </form>
     </Form>
