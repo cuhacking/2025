@@ -9,8 +9,8 @@ import { Typography } from '@cuhacking/shared/ui/typography'
 import { cn } from '@cuhacking/shared/utils/cn'
 import { Link } from '@remix-run/react'
 import { ScrollArea } from '@shadcn/components/ui/scroll-area'
+import Markdown from 'markdown-to-jsx'
 import { useState } from 'react'
-import ReactMarkdown from 'react-markdown'
 
 export function Legal({ legalData }: LegalPageProps) {
   const [readItems, setReadItems] = useState<Record<string, boolean>>({})
@@ -88,7 +88,7 @@ export function Legal({ legalData }: LegalPageProps) {
       [--tw-prose-th-borders:theme(colors.foreground)]
       [--tw-prose-td-borders:theme(colors.foreground)]"
                   >
-                    <ReactMarkdown>{content}</ReactMarkdown>
+                    <Markdown>{content}</Markdown>
                   </div>
                 </ScrollArea>
                 <Link
