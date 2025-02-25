@@ -1,26 +1,11 @@
-import { userFlowActor } from '@/engine/actors/user'
 import linkedinBlack from '@cuhacking/shared/assets/icons/socials/linkedin-black-1.svg'
 import { Button } from '@cuhacking/shared/ui/button'
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 import { Typography } from '@cuhacking/shared/ui/typography'
-import { useNavigate } from '@remix-run/react'
+import { Form, useNavigation } from '@remix-run/react'
 
 export function LoginCallToAction() {
-  const navigate = useNavigate()
-
-  const handleClick = () => {
-    try {
-      /* setIsLoading(true) */
-      userFlowActor.send({ type: 'LOGIN_SUCCESS' })
-      navigate('/terms')
-    }
-    catch (error) {
-      console.error('Login failed:', error)
-    }
-    finally {
-      /* setIsLoading(false) */
-    }
-  }
+  const transition = useNavigation()
 
   return (
     <GlassmorphicCard
@@ -37,15 +22,17 @@ export function LoginCallToAction() {
         </h2>
       </header>
 
-      <Button
-        variant="primary"
-        className="flex items-center gap-x-3 px-4 md:px-6 lg:px-8 py-4"
-        aria-label="Login with Linkedin"
-        onClick={handleClick}
-      >
-        <img src={linkedinBlack} alt="Linkedin logo" className="size-5" />
-        <Typography variant="h6">Log In</Typography>
-      </Button>
+      <Form method="post">
+        <Button
+          variant="primary"
+          className="flex items-center gap-x-3 px-4 md:px-6 lg:px-8 py-4"
+          aria-label="Login with Linkedin"
+          disabled={transition.state === 'submitting'}
+        >
+          <img src={linkedinBlack} alt="Linkedin logo" className="size-5" />
+          <Typography variant="h6">Log In</Typography>
+        </Button>
+      </Form>
     </GlassmorphicCard>
   )
 }
