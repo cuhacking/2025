@@ -60,7 +60,7 @@ export function Legal({ legalData }: LegalPageProps) {
       </div>
 
       <Accordion type="single" collapsible className="flex flex-col col-span-full gap-4 w-full">
-        {legalData.map(({ value, title, content, href, buttonContent }) => (
+        {legalData.map(({ value, title, content, href, buttonContent, buttonContent2 }) => (
           <AccordionItem key={value} value={value} className="w-full ">
             <AccordionTrigger className="pt-3 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline">
               <Typography variant="h4" className="text-primary">{title}</Typography>
@@ -69,7 +69,7 @@ export function Legal({ legalData }: LegalPageProps) {
             <AccordionContent className="flex flex-col gap-4 py-4">
               <div className="relative">
                 <ScrollArea
-                  className="max-h-60 p-4 overflow-y-auto bg-card border backdrop-blur-md rounded-lg shadow-dropShadow border-border"
+                  className="h-70 p-4 overflow-y-auto bg-card border backdrop-blur-md rounded-lg shadow-dropShadow border-border"
                   onScroll={e => handleScroll(value, e)}
                 >
                   <div className="prose
@@ -119,6 +119,24 @@ export function Legal({ legalData }: LegalPageProps) {
                   <span className="text-red-500">*</span>
                 </Typography>
               </div>
+              {buttonContent2 && (
+                <div className={cn(
+                  'flex flex-row gap-3',
+                  { 'cursor-not-allowed opacity-35': !scrollEndReached[value] },
+                )}
+                >
+                  <Checkbox
+                    className="size-6 border-white/50 bg-transparent"
+                    disabled={!scrollEndReached[value]}
+                    onCheckedChange={() => handleCheckboxChange(value)}
+                  />
+                  <Typography variant="paragraph-base" className="text-left">
+                    {buttonContent2}
+                    {' '}
+                    <span className="text-red-500">*</span>
+                  </Typography>
+                </div>
+              )}
             </AccordionContent>
           </AccordionItem>
         ))}
@@ -128,6 +146,7 @@ export function Legal({ legalData }: LegalPageProps) {
         <Button
           onClick={() => { }}
           disabled={!allChecked || !allScrolled}
+          variant="secondary"
           className={cn(
             'mt-4 p-3 rounded-lg text-black w-full sm:max-w-xs h-[36px] flex items-center',
             {
