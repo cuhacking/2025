@@ -1,5 +1,6 @@
-import dashboard_background from '@cuhacking/portal/assets/backgrounds/dashboard-bg-1.webp'
+import type { User } from '@cuhacking/portal/types/user'
 import { Home } from '@cuhacking/portal/pages/index/index'
+import { useLoaderData } from '@remix-run/react'
 
 /* export const loader: LoaderFunction = async () => {
 *   const snapshot = userFlowActor.getSnapshot()
@@ -30,15 +31,26 @@ import { Home } from '@cuhacking/portal/pages/index/index'
 * } */
 
 export default function Dashboard() {
+  const user = useLoaderData<User>()
   return (
-    <div className="w-full">
-      <Home />
-      <img
-        src={dashboard_background}
-        alt="Background"
-        aria-hidden="true"
-        className="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
-      />
-    </div>
+    <Home user={user} />
   )
 }
+
+// import { getLegalData } from '@cuhacking/portal/features/legal/api/data'
+// import { LegalPage } from '@cuhacking/portal/pages/legal'
+// import { json } from '@remix-run/node'
+// import { useLoaderData } from '@remix-run/react'
+// import { User } from '@cuhacking/portal/types/user'
+
+// export const loader: LoaderFunction = async () => {
+//   const legalData = getLegalData()
+//   return json<LoaderData>(legalData)
+// }
+
+// export default function Index() {
+//   const { legalData } = useLoaderData<LoaderData>()
+//   const user = useLoaderData<User>()
+
+//   return <LegalPage legalData={legalData} user={user} />
+// }
