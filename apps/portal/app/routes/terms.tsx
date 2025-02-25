@@ -1,9 +1,10 @@
-/* import type { LoaderFunction } from '@remix-run/node' */
-import { userFlowActor } from '@/engine/actors/user'
-import { Button } from '@cuhacking/shared/ui/button'
-import { Typography } from '@cuhacking/shared/ui/typography'
-/* import { redirect } from '@remix-run/node' */
-import { useNavigate } from '@remix-run/react'
+import type { LoaderData } from '@cuhacking/portal/types/legal'
+import type { LoaderFunction } from '@remix-run/node'
+import { getLegalData } from '@cuhacking/portal/features/legal/api/data'
+import { getCurrentUser } from '@cuhacking/portal/features/profile/api/user'
+import { LegalPage } from '@cuhacking/portal/pages/legal'
+import { json } from '@remix-run/node'
+import { useLoaderData } from '@remix-run/react'
 
 /* export const loader: LoaderFunction = async () => {
 *   const currentState = userFlowActor.getSnapshot()?.value
@@ -23,31 +24,14 @@ import { useNavigate } from '@remix-run/react'
 *   }
 * } */
 
-export default function Terms() {
-  const navigate = useNavigate()
+export const loader: LoaderFunction = async () => {
+  const { legalData } = getLegalData()
+  const user = getCurrentUser()
+  return json<LoaderData>({ legalData, user })
+}
 
-  const handleClick = async () => {
-    await new Promise<void>((resolve) => {
-      const subscription = userFlowActor.subscribe((state) => {
-        if (state.matches('profile_incomplete')) {
-          subscription.unsubscribe()
-          resolve()
-        }
-      })
-      userFlowActor.send({ type: 'AGREE_TO_TERMS' })
-    })
-    navigate('/profile')
-  }
-  return (
-    <div className="flex w-full h-screen justify-center items-center">
-      <Button
-        variant="primary"
-        className="flex items-center gap-x-3 px-4 md:px-6 lg:px-8 py-4"
-        aria-label="Agree to Terms"
-        onClick={handleClick}
-      >
-        <Typography variant="h6">Agree to Terms</Typography>
-      </Button>
-    </div>
-  )
+export default function Index() {
+  const { legalData, user } = useLoaderData<LoaderData>()
+
+  return <LegalPage legalData={legalData} user={user} />
 }

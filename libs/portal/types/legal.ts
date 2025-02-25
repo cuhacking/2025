@@ -11,6 +11,7 @@ export interface LegalItem {
 
 export interface LoaderData {
   legalData: LegalItem[]
+  user: User
 }
 export interface LegalPageProps {
   legalData: LegalItem[]

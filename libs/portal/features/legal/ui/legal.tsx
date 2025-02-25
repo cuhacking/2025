@@ -16,7 +16,7 @@ export function Legal({ legalData }: LegalPageProps) {
   const [readItems, setReadItems] = useState<Record<string, boolean>>({})
   const [scrollEndReached, setScrollEndReached] = useState<Record<string, boolean>>({})
 
-  const handleScroll = (value: string, e: React.UIEvent<HTMLElement>) => {
+  const _handleScroll = (value: string, e: React.UIEvent<HTMLElement>) => {
     const target = e.currentTarget
     const scrollHeight = target.scrollHeight
     const scrollTop = target.scrollTop
@@ -70,7 +70,6 @@ export function Legal({ legalData }: LegalPageProps) {
               <div className="relative">
                 <ScrollArea
                   className="h-70 p-4 overflow-y-auto bg-card border backdrop-blur-md rounded-lg shadow-dropShadow border-border"
-                  onScroll={e => handleScroll(value, e)}
                 >
                   <div className="prose
       lg:prose-xl
