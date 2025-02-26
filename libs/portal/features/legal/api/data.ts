@@ -200,13 +200,13 @@ We may modify this Privacy Policy from time to time by posting updates on this p
 This Privacy Policy was last updated on June 30, 2021.
 
 ## Contact Us
-Should you have any questions, concerns or feedback regarding this Privacy Policy, please contact us by email at: hi@mlh.io.`,
+Should you have any questions, concerns or feedback regarding this Privacy Policy, please contact us by email at:[hi@mlh.io](mailto:hi@mlh.io)`,
         buttonContent: 'I have read MLH Privacy Policy',
       },
       {
         value: 'cuHacking Terms & Conditions',
         title: 'cuHacking Terms & Conditions',
-        href: 'https://cuhacking.ca/terms',
+        href: 'https://file.notion.so/f/f/2b9c7557-e69c-4433-8765-1da8e9fcd3af/444a2f20-6eca-48f2-861d-b45ba4dca5ad/cuHacking_2025_Terms_and_Conditions.pdf?table=block&id=18ee771c-fd12-805f-b037-f9fb7add74b1&spaceId=2b9c7557-e69c-4433-8765-1da8e9fcd3af&expirationTimestamp=1740614400000&signature=xzBCQVjHdDtvGdHNeUF0qTu1u06klr_D6B-kwsR4oZs&downloadName=cuHacking+2025+Terms+and+Conditions.pdf',
         content: `1. **Acceptance of Terms:**  
    By registering for cuHacking, you agree to these Terms & Conditions.
 
