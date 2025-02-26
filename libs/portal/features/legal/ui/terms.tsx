@@ -56,8 +56,7 @@ export function Legal({ legalData }: LegalPageProps) {
       <Accordion
         type="single"
         collapsible
-        className="flex flex-col col-span-full gap-4 w-full
-      "
+        className="flex flex-col col-span-full gap-4 w-full"
       >
         {legalData.map(({ value, title, content, href, buttonContent, buttonContent2 }) => (
           <AccordionItem key={value} value={value} className="w-full">
@@ -94,7 +93,7 @@ export function Legal({ legalData }: LegalPageProps) {
                 <Link
                   to={href}
                   target="_blank"
-                  className="absolute bottom-2 right-4 text-background flex items-center gap-2 bg-primary p-2 rounded-md w-fit z-10"
+                  className="absolute bottom-2 right-4 text-background flex items-center gap-2 bg-primary p-2 rounded-md w-fit z-10 cursor-pointer transform hover:scale-110 transition-transform duration-300 ease-in-out"
                 >
                   <img className="size-5" src={externalArrow} alt="link arrow" />
                   <Typography variant="paragraph-sm" className="hidden sm:block">
@@ -108,7 +107,7 @@ export function Legal({ legalData }: LegalPageProps) {
               )}
               >
                 <Checkbox
-                  className="size-6 border-white/50 bg-transparent"
+                  className="size-6 border-white/50 bg-transparent cursor-pointer"
                   disabled={!scrollEndReached[value]}
                   checked={readItems[`${value}1`]}
                   onCheckedChange={() => handleCheckboxChange(`${value}1`)}
@@ -126,7 +125,7 @@ export function Legal({ legalData }: LegalPageProps) {
                 )}
                 >
                   <Checkbox
-                    className="size-6 border-white/50 bg-transparent"
+                    className="size-6 border-white/50 bg-transparent cursor-pointer"
                     disabled={!scrollEndReached[value]}
                     checked={readItems[`${value}2`]}
                     onCheckedChange={() => handleCheckboxChange(`${value}2`)}
@@ -152,14 +151,14 @@ export function Legal({ legalData }: LegalPageProps) {
             aria-label="Redirect to Profile"
             type="submit"
             className={cn(
-              'mt-4 p-3 rounded-lg text-black w-full sm:max-w-xs h-[36px] flex items-center',
+              'mt-4 p-3 rounded-lg text-black w-full sm:max-w-xs h-[36px] flex items-center cursor-pointer',
               {
                 'bg-primary opacity-50 cursor-not-allowed': !allChecked || !allScrolled,
                 'bg-primary': allChecked && allScrolled,
               },
             )}
           >
-            <Typography variant="h6">LETS CREATE YOUR PROFILE</Typography>
+            <Typography variant="h6">LET'S CREATE YOUR PROFILE</Typography>
           </Button>
         </Form>
 
