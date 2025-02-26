@@ -60,9 +60,9 @@ export function Legal({ legalData }: LegalPageProps) {
       "
       >
         {legalData.map(({ value, title, content, href, buttonContent, buttonContent2 }) => (
-          <AccordionItem key={value} value={value} className="w-full ">
-            <AccordionTrigger className="pt-3 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline">
-              <Typography variant="h4" className="text-primary transition-all transform hover:scale-110">{title}</Typography>
+          <AccordionItem key={value} value={value} className="w-full">
+            <AccordionTrigger className="pt-3 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline cursor-pointer">
+              <Typography variant="h4" className="text-primary transition-all transform hover:scale-105">{title}</Typography>
             </AccordionTrigger>
 
             <AccordionContent className="flex flex-col gap-4 py-4">

@@ -518,7 +518,7 @@ const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSelectorP
               })}
 
             </div>
-            <div className="flex gap-1 items-center">
+            <div className="flex gap-1 items-center cursor-pointer">
               <img src={doubleChevronDown} className="size-6" />
               {/* Avoid having the "Search" Icon */}
               <CommandPrimitive.Input
@@ -542,7 +542,7 @@ const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSelectorP
                 }}
                 placeholder={hidePlaceholderWhenSelected && selected.length !== 0 ? '' : placeholder}
                 className={cn(
-                  'flex-1  bg-transparent outline-none placeholder:text-muted placeholder:text-base placeholder:italic',
+                  'flex-1  bg-transparent outline-none placeholder:text-muted placeholder:text-base placeholder:italic cursor-pointer',
                   {
                     'w-full': hidePlaceholderWhenSelected,
                     '': selected.length === 0,
