@@ -82,7 +82,7 @@ export async function createProfileNoSchool() {
     Enter.theValue('https://drive.google.com/file/d/1mchFDm7D8lqmVO7Y8H3WOvE2yYwNWUOm/view').into(inputs.RESUME),
 
     // ===================================
-    // ========  RESTRICTIONS  ============
+    // ========  RESTRICTIONS  ===========
     // ===================================
     Click.on(accordions.RESTRICTIONS),
 

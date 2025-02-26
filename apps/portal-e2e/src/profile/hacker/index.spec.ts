@@ -10,15 +10,15 @@ export function startLoggedInNoProfile() {
   )
 }
 
-describe('when the hacker', async () => {
+describe('when the hacker', () => {
   beforeEach(async ({ actor }) => {
     actorCalled('Hacker')
       .whoCan(BrowseTheWeb.as(actor))
       .attemptsTo(startLoggedInNoProfile(),
       )
   })
-  describe('is logged in', async () => {
-    describe('has agreed to all terms and conditions', async () => {
+  describe('is logged in', () => {
+    describe('has agreed to all terms and conditions', () => {
       // ==============================
       // ========= NO PROFILE =========
       // ==============================
@@ -42,7 +42,7 @@ describe('when the hacker', async () => {
       // ==============================
       // ========= HAS PROFILE =========
       // ==============================
-      describe('has profile', async () => {
+      describe('has profile', () => {
         describe('is a student', () => {
           it('should be able to update profile', async () => {
             // await updateProfile()

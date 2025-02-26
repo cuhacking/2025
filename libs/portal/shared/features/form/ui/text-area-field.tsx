@@ -82,15 +82,16 @@ export function TextAreaField({
                 </p>
               </Typography>
             </FormLabel>
-            <FormControl>
-              <div className="w-full self-stretch min-h-content rounded-md flex items-center gap-3">
-                <div className="py-1.5 grow basis-0 flex items-start gap-3 w-full">
-                  <img
-                    src={isDisabled ? tildeIcon : imgSrc}
-                    className={cn('size-6', isDisabled && 'opacity-25')}
-                    alt=""
-                  />
-                  <Typography variant="paragraph-base" className="w-full">
+            <div className="w-full self-stretch min-h-content rounded-md flex items-center gap-3">
+              <div className="py-1.5 grow basis-0 flex items-start gap-3 w-full">
+                <img
+                  src={isDisabled ? tildeIcon : imgSrc}
+                  className={cn('size-6', isDisabled && 'opacity-25')}
+                  alt=""
+                />
+                <Typography variant="paragraph-base" className="w-full">
+
+                  <FormControl>
                     <TextArea
                       {...field}
                       disabled={isDisabled}
@@ -107,10 +108,10 @@ export function TextAreaField({
                         }
                       }}
                     />
-                  </Typography>
-                </div>
+                  </FormControl>
+                </Typography>
               </div>
-            </FormControl>
+            </div>
             <FormMessage />
             <div className="flex justify-end">
               <Typography variant="paragraph-xs" className="text-muted">
