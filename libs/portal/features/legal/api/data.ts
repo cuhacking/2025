@@ -1,4 +1,4 @@
-import type { LegalItem } from '@cuhacking/portal/types/legal'
+import type { LegalItem } from '@cuhacking/portal/types/terms'
 
 export function getLegalData(): { legalData: LegalItem[] } {
   return {
