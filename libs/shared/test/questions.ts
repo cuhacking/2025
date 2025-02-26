@@ -33,3 +33,11 @@ export const input = {
       .located(By.css(`input[placeholder="${placeholder}"]`))
       .describedAs(`"${placeholder}" input field`),
 }
+
+export const textArea = {
+
+  withName: (name: string) =>
+    PageElement
+      .located(By.css(`textarea[name="${name}"]`))
+      .describedAs(`"${name}" input field`),
+}
