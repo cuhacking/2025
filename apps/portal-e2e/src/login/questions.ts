@@ -1,3 +1,3 @@
-import { button } from '../questions'
+import { button } from '@cuhacking/shared/test/questions'
 
-export const LOGIN = button.withText('Login')
+export const LOGIN = button.withText('LOG IN')
