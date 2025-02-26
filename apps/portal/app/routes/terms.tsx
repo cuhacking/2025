@@ -1,9 +1,10 @@
 import type { LoaderData } from '@cuhacking/portal/types/legal'
 import type { LoaderFunction } from '@remix-run/node'
+import { userFlowActor } from '@/engine/actors/user'
 import { getLegalData } from '@cuhacking/portal/features/legal/api/data'
 import { getCurrentUser } from '@cuhacking/portal/features/profile/api/user'
 import { LegalPage } from '@cuhacking/portal/pages/legal'
-import { json } from '@remix-run/node'
+import { json, redirect } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 
 /* export const loader: LoaderFunction = async () => {
@@ -23,6 +24,21 @@ import { useLoaderData } from '@remix-run/react'
 *       return redirect('/login')
 *   }
 * } */
+
+export function action() {
+  try {
+    /* setIsLoading(true) */
+    userFlowActor.send({ type: 'TERM_SUCCESS' })
+
+    return redirect('/profile')
+  }
+  catch (error) {
+    console.error('Login failed:', error)
+  }
+  finally {
+    /* setIsLoading(false) */
+  }
+}
 
 export const loader: LoaderFunction = async () => {
   const { legalData } = getLegalData()
