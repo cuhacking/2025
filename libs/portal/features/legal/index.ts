@@ -1,1 +1,1 @@
-export { Legal } from './ui/legal'
+export { Legal } from './ui/terms'

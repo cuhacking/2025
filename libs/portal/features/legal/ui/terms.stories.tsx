@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Legal } from './legal'
+import { Legal } from './terms'
 
 const meta = {
   title: '🌀 Portal/Legal',
