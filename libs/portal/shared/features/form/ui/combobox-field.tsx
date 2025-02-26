@@ -75,7 +75,7 @@ export function ComboboxField({
           <FormItem className="w-full">
             <div className="w-full max-w-full flex-col justify-start items-start inline-flex">
               <div className="justify-start items-center inline-flex">
-                <div className="justify-start items-center flex flex-wrap">
+                <div className="justify-start items-center flex flex-wrap ">
                   <FormLabel>
                     <Typography variant="paragraph-base" className={cn(validInput && 'bg-greendiant bg-clip-text text-transparent')}>
                       <p>
@@ -95,7 +95,7 @@ export function ComboboxField({
                       variant="outline"
                       role="combobox"
                       aria-expanded={open}
-                      className="border border-border backdrop-blur-md bg-card hover:bg-white/10 justify-start max-w-inherit p-1.5 gap-1.5 h-auto"
+                      className="border border-border backdrop-blur-md bg-card hover:bg-white/10 justify-start max-w-inherit p-1.5 gap-1.5 h-auto cursor-pointer"
                       aria-label={`${label} trigger`}
                     >
                       <img src={chevronUpDown} className="size-6" />
@@ -112,7 +112,7 @@ export function ComboboxField({
                     </Button>
                   </FormControl>
                 </PopoverTrigger>
-                <PopoverContent style={{ width }} className="p-0 bg-background">
+                <PopoverContent style={{ width }} className="p-0 bg-background ">
                   <Command>
                     <CommandInput
                       placeholder="Search option..."
@@ -137,7 +137,7 @@ export function ComboboxField({
                           >
                             <Check
                               className={cn(
-                                'mr-2 min-w-4 min-h-4 max-w-4 min-w-4',
+                                'mr-2 min-h-4 max-w-4 min-w-4',
                                 field.value === option.value ? 'opacity-100' : 'opacity-0',
                               )}
                             />

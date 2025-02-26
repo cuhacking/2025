@@ -95,7 +95,7 @@ function CountrySelect({
         <Button
           type="button"
           variant="outline"
-          className="flex backdrop-blur-md bg-card hover:bg-white/10 gap-0.5 border-border rounded-lg pl-0.5 pr-1.5 py-1.5 focus:z-10 h-auto"
+          className="flex backdrop-blur-md bg-card hover:bg-white/10 gap-0.5 border-border rounded-lg pl-0.5 pr-1.5 py-1.5 focus:z-10 h-auto cursor-pointer"
           disabled={disabled}
         >
 

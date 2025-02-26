@@ -126,7 +126,7 @@ export function MonthYearField({
                       variant="outline"
                       role="combobox"
                       aria-expanded={monthOpen}
-                      className="border border-border backdrop-blur-md bg-card hover:bg-white/10 justify-start p-1.5 pr-2.5 gap-1.5 h-min"
+                      className="border border-border backdrop-blur-md bg-card hover:bg-white/10 justify-start p-1.5 pr-2.5 gap-1.5 h-min cursor-pointer"
                       disabled={isDisabled}
                     >
                       <img src={chevronUpDown} className="size-6" />
@@ -179,7 +179,7 @@ export function MonthYearField({
                       variant="outline"
                       role="combobox"
                       aria-expanded={yearOpen}
-                      className="border border-border backdrop-blur-md bg-card hover:bg-white/10 justify-start p-1.5 pr-2.5 gap-1.5 h-min"
+                      className="border border-border backdrop-blur-md bg-card hover:bg-white/10 justify-start p-1.5 pr-2.5 gap-1.5 h-min cursor-pointer"
                       disabled={isDisabled}
                     >
                       <img src={chevronUpDown} className="size-6" />
