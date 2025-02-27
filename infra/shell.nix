@@ -16,6 +16,7 @@ in pkgs.mkShell {
     pkgs.lazygit
     pkgs.btop
     pkgs.atac
+    pkgs.yazi
   ];
 
   shellHook = ''
