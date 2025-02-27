@@ -16,6 +16,7 @@ in pkgs.mkShell {
     pkgs.lazygit
     pkgs.btop
     pkgs.atac
+    pkgs.sampler
     pkgs.yazi
     pkgs.bat
     pkgs.netscanner
