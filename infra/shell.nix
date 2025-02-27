@@ -13,6 +13,7 @@ in pkgs.mkShell {
     pkgs.ascii-image-converter
     pkgs.postgresql
     pkgs.lazysql
+    pkgs.lazygit
   ];
 
   shellHook = ''
