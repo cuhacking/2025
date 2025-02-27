@@ -65,6 +65,7 @@ in pkgs.mkShell {
       echo "***************************************************"
       echo "PostgreSQL is running on port $PGPORT"
       echo "DATABASE_URI=$DATABASE_URI"
+      echo "Lazysql Connection URL: postgres://$DATABASE_USER:$DATABASE_PASSWORD@127.0.0.1:$DATABASE_PORT/$DATABASE_NAME/?sslmode=disable"
       echo "***************************************************"
       echo ""
       ascii-image-converter ${logoPath} --color -f -b
