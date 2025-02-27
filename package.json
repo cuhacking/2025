@@ -21,7 +21,6 @@
   "scripts": {
     "dev": "pnpm nx dev infra",
     "storybook": "pnpm nx storybook -p $STORYBOOK_DEV_SERVER_PORT # 🎨 Design System - Storybook",
-    "portal": "pnpm nx dev portal # 🌀 Hacker Portal App",
     "web": "pnpm nx dev website # 📢 Website",
     "slides": "pnpm nx dev slides # 💐 Slide deck",
     "clean": "git clean -fdX -e '!**/.env*' -e '!**/pgdata' -e '!Pulumi.dev.yaml' # 🧽 Remove any and all files listed in .gitignore except .env and pgdata",
