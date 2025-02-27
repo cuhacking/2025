@@ -30,7 +30,8 @@ export default defineConfig({
     include: ['@splinetool/react-spline'], // Force pre-bundling of the library
   },
   server: {
-    port: 3000,
+    // eslint-disable-next-line node/prefer-global/process
+    port: process.env.WEBSITE_DEV_SERVER_PORT,
     fs: {
       allow: ['../../libs/shared/', '../../libs/', '..'],
     },

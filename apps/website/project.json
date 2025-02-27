@@ -7,7 +7,7 @@
   "// targets": "to see all targets run: nx show project website --web",
   "targets": {
     "dev": {
-      "command": "remix vite:dev --port 3010",
+      "command": "remix vite:dev --port $WEBSITE_DEV_SERVER_PORT",
       "options": {
         "cwd": "apps/website"
       }
