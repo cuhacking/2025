@@ -6,7 +6,7 @@
   "tags": [],
   "targets": {
     "view": {
-      "command": "nx run-many -t studio visualizer # 🎙 View database schema at `local.drizzle.studio`, and visualizer at `localhost:5000` ",
+      "command": "nx run-many -t studio visualizer # 🎙 View database schema at `local.drizzle.studio`, and visualizer at `localhost:5600` ",
       "options": {
         "cwd": "libs/db"
       }
@@ -18,7 +18,7 @@
       }
     },
     "visualizer": {
-      "command": "pnpx drizzle-lab visualizer --debug -p=5000 -c='./drizzle.config.ts' -e='../../.env'",
+      "command": "pnpx drizzle-lab visualizer --debug -p=5600 -c='./drizzle.config.ts' -e='../../.env'",
       "options": {
         "cwd": "libs/db"
       }
