@@ -12,6 +12,7 @@ in pkgs.mkShell {
     pkgs.zellij
     pkgs.ascii-image-converter
     pkgs.postgresql
+    pkgs.lazysql
   ];
 
   shellHook = ''
