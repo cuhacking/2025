@@ -101,5 +101,6 @@ yarn-error.log*
 # others
 .env*.local
 .env
+.env.backup
 .vercel
 Pulumi.dev.yaml
