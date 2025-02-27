@@ -1,62 +1,99 @@
 theme "gruvbox-dark"
 
-ui {
-    pane_frames {
-        rounded_corners true
-    }
-}
-
 layout {
-    cwd "../"
     tab name="🛖 Dashboard" focus=true hide_floating_panes=true {
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar"
         }
         pane split_direction="vertical" {
-            pane name="🌀 Portal | 5173 | portal.cuhacking.ca" focus=true size="50%" {
+            pane size="50%" {
+                pane command="pnpm" name="🌀 Portal | 5173 | portal.cuhacking.ca" size="50%" cwd="../" {
+                    args "nx" "dev" "portal"
+                }
+                pane command="pnpm" name="⚙ Axiom (API Layer + Admin Panel) | 8000 | axiom.cuhacking.ca" size="50%" cwd="../" {
+                    args "axiom"
+                }
             }
             pane size="50%" {
-                pane name="⚙ Axiom (API Layer + Admin Panel)" size="50%" {
-
-}
-                pane name="💿 Database | Nix-PostgreSQL" size="50%" {
-
-}
+                pane command="pnpm" name="🎨 Storybook | 6006 | design.cuhacking.ca" size="25%" cwd="../" {
+                    args "storybook"
+                    start_suspended true
+                }
+                pane command="pnpm" name="✉ Email | 5400 | email.cuhacking.ca" focus=true size="25%" cwd="../" {
+                    args "nx" "dev" "email"
+                }
+                pane command="pnpm" name="📚 Docs Site | 3000 | docs.cuhacking.ca" size="25%" cwd="../" {
+                    args "nx" "dev" "docs"
+                }
+                pane command="pnpm" name="🕸 Website | 5800 | cuhacking.ca" size="25%" cwd="../" {
+                    args "nx" "dev" "website"
+                }
             }
         }
         pane size=1 borderless=true {
             plugin location="zellij:status-bar"
         }
+
+        floating_panes {
+               pane command="pnpm" name="💿 Database | 5432 | Nix-PostgreSQL" cwd="../" {
+                args "nx" "up" "infra"
+                start_suspended true
+            }
+        }
     }
-    tab name="Sites" hide_floating_panes=true {
+    tab name="🛠 Infra + Docs" {
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar"
         }
         pane split_direction="vertical" {
-            pane name="🕸 Website - cuhacking.ca" size="50%"
             pane size="50%" {
-                pane name="📚 Docs Site - docs.cuhacking.ca" size="50%"
-                pane name="🏛 Architecture Site | arch.cuhacking.ca" size="50%"
+                pane command="pnpm" name="📊 Drizzle Studio | local.drizzle.studio" size="50%" cwd="../" {
+                    args "nx" "studio" "db"
+                }
+                pane command="pnpm" name="👀 Schema Visualizer | 5600" size="50%" cwd="../" {
+                    args "nx" "visualizer" "db"
+                }
+            }
+            pane size="50%" {
+                pane command="pnpm" name="🏛 Architecture Site | 6400 | arch.cuhacking.ca" size="25%" cwd="../" {
+                    args "nx" "dev" "arch"
+                    start_suspended true
+                }
+                pane name="🖼 Slides | 3030 | slides.cuhacking.ca" size="25%" command="pnpm" cwd="../" {
+                args "nx" "dev" "slides"
+                start_suspended true
+                }
+                pane name="PayloadCMS Schema, Typegen,& Importmap" size="25%" command="pnpm" cwd="../" {
+                   args "nx" "types" "axiom"
+                start_suspended true
+                   }
+                pane command="pnpm" name="🧹 ESLint Config Inspector | 7777 | eslint.cuhacking.ca" size="25%" cwd="../" {
+                    args "inspect"
+                    start_suspended true
+                }
             }
         }
         pane size=1 borderless=true {
             plugin location="zellij:status-bar"
         }
+        floating_panes {
+            pane command="pnpm" name="🗺 Project Graph | 4211 | graph.cuhacking.ca" cwd="../" {
+                start_suspended true
+                height 25
+                width 86
+                x 43
+                y 14
+                args "graph"
+            }
+        }
     }
-    tab name="Git" hide_floating_panes=true {
+    tab name="📦 Database TUI" hide_floating_panes=true {
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar"
         }
-        pane command="lazygit" name="Lazygit"
-        pane size=1 borderless=true {
-            plugin location="zellij:status-bar"
+        pane command="lazysql" name="Lazysql" {
+            args "postgres://postgres:password@127.0.0.1:5432/postgres?sslmode=disable"
         }
-    }
-    tab name="Database TUI" hide_floating_panes=true {
-        pane size=1 borderless=true {
-            plugin location="zellij:tab-bar"
-        }
-        pane  command="lazysql" name="Lazysql"
         pane size=1 borderless=true {
             plugin location="zellij:status-bar"
         }
@@ -65,18 +102,8 @@ layout {
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar"
         }
-        pane  command="btop" name="btop"
-        pane size=1 borderless=true {
-            plugin location="zellij:status-bar"
+        pane command="btop" name="btop" {
         }
-    }
-    tab name="🔌 REST API Client" hide_floating_panes=true {
-        pane size=1 borderless=true {
-            plugin location="zellij:tab-bar"
-        }
-        pane name="atac" command="atac" {
-            args "-d" "./infra/atac/collections/"
-            }
         pane size=1 borderless=true {
             plugin location="zellij:status-bar"
         }
@@ -85,9 +112,9 @@ layout {
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar"
         }
-        pane name="netscanner" command="sudo" {
+        pane command="sudo" name="netscanner" {
             args "netscanner"
-            }
+        }
         pane size=1 borderless=true {
             plugin location="zellij:status-bar"
         }
@@ -102,308 +129,25 @@ layout {
             plugin location="zellij:status-bar"
         }
     }
-    tab name="🛠 Devtools" hide_floating_panes=true {
+    tab name="🔬 API" hide_floating_panes=true {
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar"
         }
-        pane split_direction="vertical" {
-            pane name="🎨 Storybook | design.cuhacking.ca" size="50%"
-            pane size="50%" stacked=true {
-                pane name="👀 Schema Visualizer | localhost:" expanded=true
-                pane name="📊 Drizzle Studio | local.drizzle.studio"
-                pane name="🗺 Project Graph | graph.cuhacking.ca"
-                pane name="🧹 ESLint Config Inspector - eslint.cuhacking.ca"
-            }
+        pane command="atac" name="atac" {
+            args "-d" "./atac/collections/"
         }
         pane size=1 borderless=true {
             plugin location="zellij:status-bar"
         }
-    }
-    new_tab_template {
+        }
+    tab name="🍒 Git" hide_floating_panes=true {
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar"
         }
-        pane cwd="."
+        pane command="lazygit" name="Lazygit" {
+        }
         pane size=1 borderless=true {
             plugin location="zellij:status-bar"
-        }
-    }
-    swap_tiled_layout name="vertical" {
-        tab max_panes=5 {
-            pane size=1 borderless=true {
-                plugin location="tab-bar"
-            }
-            pane {
-                pane split_direction="vertical" {
-                    pane
-                    pane {
-                        children
-                    }
-                }
-            }
-            pane size=1 borderless=true {
-                plugin location="status-bar"
-            }
-        }
-        tab max_panes=8 {
-            pane size=1 borderless=true {
-                plugin location="tab-bar"
-            }
-            pane {
-                pane split_direction="vertical" {
-                    pane {
-                        children
-                    }
-                    pane {
-                        pane
-                        pane
-                        pane
-                        pane
-                    }
-                }
-            }
-            pane size=1 borderless=true {
-                plugin location="status-bar"
-            }
-        }
-        tab max_panes=12 {
-            pane size=1 borderless=true {
-                plugin location="tab-bar"
-            }
-            pane {
-                pane split_direction="vertical" {
-                    pane {
-                        children
-                    }
-                    pane {
-                        pane
-                        pane
-                        pane
-                        pane
-                    }
-                    pane {
-                        pane
-                        pane
-                        pane
-                        pane
-                    }
-                }
-            }
-            pane size=1 borderless=true {
-                plugin location="status-bar"
-            }
-        }
-    }
-    swap_tiled_layout name="horizontal" {
-        tab max_panes=5 {
-            pane size=1 borderless=true {
-                plugin location="tab-bar"
-            }
-            pane {
-                pane
-                pane
-            }
-            pane size=1 borderless=true {
-                plugin location="status-bar"
-            }
-        }
-        tab max_panes=8 {
-            pane size=1 borderless=true {
-                plugin location="tab-bar"
-            }
-            pane {
-                pane {
-                    pane split_direction="vertical" {
-                        children
-                    }
-                    pane split_direction="vertical" {
-                        pane
-                        pane
-                        pane
-                        pane
-                    }
-                }
-            }
-            pane size=1 borderless=true {
-                plugin location="status-bar"
-            }
-        }
-        tab max_panes=12 {
-            pane size=1 borderless=true {
-                plugin location="tab-bar"
-            }
-            pane {
-                pane {
-                    pane split_direction="vertical" {
-                        children
-                    }
-                    pane split_direction="vertical" {
-                        pane
-                        pane
-                        pane
-                        pane
-                    }
-                    pane split_direction="vertical" {
-                        pane
-                        pane
-                        pane
-                        pane
-                    }
-                }
-            }
-            pane size=1 borderless=true {
-                plugin location="status-bar"
-            }
-        }
-    }
-    swap_tiled_layout name="stacked" {
-        tab min_panes=5 {
-            pane size=1 borderless=true {
-                plugin location="tab-bar"
-            }
-            pane {
-                pane split_direction="vertical" {
-                    pane
-                    pane stacked=true {
-                        children
-                    }
-                }
-            }
-            pane size=1 borderless=true {
-                plugin location="status-bar"
-            }
-        }
-    }
-    swap_floating_layout name="staggered" {
-        floating_panes {
-        }
-    }
-    swap_floating_layout name="enlarged" {
-        floating_panes max_panes=10 {
-            pane {
-                height "90%"
-                width "90%"
-                x "5%"
-                y 1
-            }
-            pane {
-                height "90%"
-                width "90%"
-                x "5%"
-                y 2
-            }
-            pane {
-                height "90%"
-                width "90%"
-                x "5%"
-                y 3
-            }
-            pane {
-                height "90%"
-                width "90%"
-                x "5%"
-                y 4
-            }
-            pane {
-                height "90%"
-                width "90%"
-                x "5%"
-                y 5
-            }
-            pane {
-                height "90%"
-                width "90%"
-                x "5%"
-                y 6
-            }
-            pane {
-                height "90%"
-                width "90%"
-                x "5%"
-                y 7
-            }
-            pane {
-                height "90%"
-                width "90%"
-                x "5%"
-                y 8
-            }
-            pane {
-                height "90%"
-                width "90%"
-                x "5%"
-                y 9
-            }
-            pane focus=true {
-                height "90%"
-                width "90%"
-                x 10
-                y 10
-            }
-        }
-    }
-    swap_floating_layout name="spread" {
-        floating_panes max_panes=1 {
-            pane {
-                x "50%"
-                y "50%"
-            }
-        }
-        floating_panes max_panes=2 {
-            pane {
-                width "45%"
-                x "1%"
-                y "25%"
-            }
-            pane {
-                width "45%"
-                x "50%"
-                y "25%"
-            }
-        }
-        floating_panes max_panes=3 {
-            pane focus=true {
-                height "45%"
-                width "45%"
-                y "55%"
-            }
-            pane {
-                width "45%"
-                x "1%"
-                y "1%"
-            }
-            pane {
-                width "45%"
-                x "50%"
-                y "1%"
-            }
-        }
-        floating_panes max_panes=4 {
-            pane {
-                height "45%"
-                width "45%"
-                x "1%"
-                y "55%"
-            }
-            pane focus=true {
-                height "45%"
-                width "45%"
-                x "50%"
-                y "55%"
-            }
-            pane {
-                height "45%"
-                width "45%"
-                x "1%"
-                y "1%"
-            }
-            pane {
-                height "45%"
-                width "45%"
-                x "50%"
-                y "1%"
-            }
         }
     }
 }
-
