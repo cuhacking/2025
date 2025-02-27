@@ -14,6 +14,7 @@ in pkgs.mkShell {
     pkgs.postgresql
     pkgs.lazysql
     pkgs.lazygit
+    pkgs.btop
   ];
 
   shellHook = ''
