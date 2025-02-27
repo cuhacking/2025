@@ -28,7 +28,7 @@ import {
 } from '@cuhacking/shared/ui/popover'
 import { Typography } from '@cuhacking/shared/ui/typography/typgoraphy'
 import { cn } from '@cuhacking/shared/utils/cn'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface DateFieldProps {
   name: string
@@ -56,6 +56,7 @@ export function MonthYearField({
   const [selectedYear, setSelectedYear] = useState<string>(initialYear)
   const [monthOpen, setMonthOpen] = useState<boolean>(false)
   const [yearOpen, setYearOpen] = useState<boolean>(false)
+  const [validInput, setValidInput] = useState<boolean>(false)
 
   // Define month options
   const monthOptions = [
@@ -90,6 +91,12 @@ export function MonthYearField({
     }
   }
 
+  useEffect(() => {
+    if (selectedMonth && selectedYear) {
+      setValidInput(true)
+    }
+  }, [selectedMonth, selectedYear])
+
   return (
     <GlassmorphicCard
       className={cn(
@@ -107,7 +114,7 @@ export function MonthYearField({
             <div className="flex-col w-full justify-start items-startinline-flex">
               <div className="justify-start items-center inline-flex">
                 <FormLabel>
-                  <Typography variant="paragraph-base">
+                  <Typography variant="paragraph-base" className={cn(validInput && 'bg-greendiant bg-clip-text text-transparent')}>
                     <p>
                       {label}
                       {isRequired && <span className="text-red-600 ml-1">*</span>}
