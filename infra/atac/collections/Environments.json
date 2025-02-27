@@ -1,0 +1,189 @@
+{
+  "name": "Environments",
+  "requests": [
+    {
+      "name": "In URL",
+      "url": "{{BASE_URL}}/some_path/{{ID}}",
+      "method": "GET",
+      "params": [],
+      "headers": [
+        {
+          "data": [
+            "cache-control",
+            "no-cache"
+          ],
+          "enabled": true
+        },
+        {
+          "data": [
+            "user-agent",
+            "ATAC/v0.7.0"
+          ],
+          "enabled": true
+        },
+        {
+          "data": [
+            "accept",
+            "*/*"
+          ],
+          "enabled": true
+        },
+        {
+          "data": [
+            "accept-encoding",
+            "gzip, deflate, br"
+          ],
+          "enabled": true
+        },
+        {
+          "data": [
+            "connection",
+            "keep-alive"
+          ],
+          "enabled": true
+        }
+      ],
+      "body": "no_body",
+      "auth": "no_auth",
+      "scripts": {
+        "pre_request_script": null,
+        "post_request_script": null
+      },
+      "settings": {
+        "use_config_proxy": true,
+        "allow_redirects": true,
+        "store_received_cookies": true,
+        "pretty_print_response_content": true,
+        "accept_invalid_certs": false,
+        "accept_invalid_hostnames": false
+      }
+    },
+    {
+      "name": "In Bearer",
+      "url": "{{BASE_URL}}/bearer",
+      "method": "GET",
+      "params": [],
+      "headers": [
+        {
+          "data": [
+            "cache-control",
+            "no-cache"
+          ],
+          "enabled": true
+        },
+        {
+          "data": [
+            "user-agent",
+            "ATAC/v0.7.0"
+          ],
+          "enabled": true
+        },
+        {
+          "data": [
+            "accept",
+            "*/*"
+          ],
+          "enabled": true
+        },
+        {
+          "data": [
+            "accept-encoding",
+            "gzip, deflate, br"
+          ],
+          "enabled": true
+        },
+        {
+          "data": [
+            "connection",
+            "keep-alive"
+          ],
+          "enabled": true
+        }
+      ],
+      "body": "no_body",
+      "auth": {
+        "bearer_token": {
+          "token": "bearer_{{ID}}="
+        }
+      },
+      "scripts": {
+        "pre_request_script": null,
+        "post_request_script": null
+      },
+      "settings": {
+        "use_config_proxy": true,
+        "allow_redirects": true,
+        "store_received_cookies": true,
+        "pretty_print_response_content": true,
+        "accept_invalid_certs": false,
+        "accept_invalid_hostnames": false
+      }
+    },
+    {
+      "name": "Base variables",
+      "url": "https://httpbin.org/post",
+      "method": "POST",
+      "params": [],
+      "headers": [
+        {
+          "data": [
+            "cache-control",
+            "no-cache"
+          ],
+          "enabled": true
+        },
+        {
+          "data": [
+            "user-agent",
+            "ATAC/v0.16.0"
+          ],
+          "enabled": true
+        },
+        {
+          "data": [
+            "accept",
+            "*/*"
+          ],
+          "enabled": true
+        },
+        {
+          "data": [
+            "accept-encoding",
+            "gzip, deflate, br"
+          ],
+          "enabled": true
+        },
+        {
+          "data": [
+            "connection",
+            "keep-alive"
+          ],
+          "enabled": true
+        },
+        {
+          "data": [
+            "content-type",
+            "application/json"
+          ],
+          "enabled": true
+        }
+      ],
+      "body": {
+        "json": "[\n\t\"{{NOW}}\",\n\t{{TIMESTAMP}},\n\t\"{{UUIDv4}}\",\n\t\"{{UUIDv7}}\"\n]"
+      },
+      "auth": "no_auth",
+      "scripts": {
+        "pre_request_script": null,
+        "post_request_script": null
+      },
+      "settings": {
+        "use_config_proxy": true,
+        "allow_redirects": true,
+        "store_received_cookies": true,
+        "pretty_print_response_content": true,
+        "accept_invalid_certs": false,
+        "accept_invalid_hostnames": false
+      }
+    }
+  ]
+}
