@@ -18,6 +18,7 @@ in pkgs.mkShell {
     pkgs.atac
     pkgs.yazi
     pkgs.bat
+    pkgs.netscanner
   ];
 
   shellHook = ''
