@@ -22,6 +22,7 @@ in pkgs.mkShell {
     pkgs.yazi
     pkgs.bat
     pkgs.netscanner
+    pkgs.zsh
   ];
 
   shellHook = ''
