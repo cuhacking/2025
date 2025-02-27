@@ -109,8 +109,12 @@ in pkgs.mkShell {
 
 zellij -n zellij.config.kdl
 
-pnpm nx down infra
+stop_db
 
-trap 'echo "🚪 Exiting Nix shell..."; zellij da' EXIT
-  '';
+zellij da -y
+echo "🚪 Exiting Nix shell..."
+exit
+
+# trap 'echo "🚪 Exiting Nix shell..."; zellij da;' EXIT
+ '';
 }
