@@ -158,14 +158,6 @@ Set [Node.js](https://nodejs.org/en) version.
 ```sh title="Terminal"
 pnpm env use --global 22.13.1
 ```
-Install [TypeScript](https://www.typescriptlang.org).
-```sh title="Terminal"
-pnpm i -g typescript
-```
-Create `.env` file.
-```sh title="Terminal"
-cp .env.example .env
-```
 
 </div>
 
@@ -209,26 +201,37 @@ You should see the following:
   <div className="step">
 Fork and Clone [Repository](https://github.com/cuhacking/hackathon).
 
+```sh title="Terminal"
+gh repo fork cuhacking/2025 --clone; # Fork and clone repo
+cd 2025; # Navigate into directory
+pnpm ri; # Clean install packages, and set up .env
+pnpm exec playwright install --with-deps # Install Playwright Browsers for E2E Testing
+```
+
 Open VSCode (Or your preferred editor):
           ```sh title="Shell"
           # Allow all hosts and trust the authors when you see a popup
           # And install all recommended extensions
           code .
           ```
-
-    From the VSCode integrated terminal, navigate to directory and install dependencies.
-
-```sh title="Terminal"
-gh repo fork cuhacking/2025 --clone # Fork and clone repo
-cd 2025; # Navigate into directory
-pnpm i; # Install packages
-pnpm exec playwright install --with-deps # Install Playwright Browsers for E2E Testing
-```
-
   </div>
 
   <div className="step">
+
   ## Run projects
+
+⭐ With this new setup you no longer have to memorize and look up commands.
+
+   ```sh title="Shell"
+   pnpm dev
+   ```
+- Move panes & tabs: <kbd>Alt</kbd> + <kbd>left/right/up/down</kbd>
+- Toggle popup panes <kbd>Alt</kbd> + <kbd>F</kbd>
+
+Screenshots are in [Features](/features).
+
+<Accordions>
+  <Accordion title="Legacy Steps">
 <Tabs groupId="projects" items={['Devtools', 'Documentation', 'Axiom (Back-End)', 'Portal', 'Website', 'Slides']} persist>
 
 <Tab value="Devtools">
@@ -399,6 +402,8 @@ pnpm inspect
       Navigate to `/admin` route.
       </Tab>
 </Tabs>
+</Accordion>
+</Accordions>
 
   <img src="https://nx.dev/documentation/shared/images/run-target-syntax.svg" />
 
