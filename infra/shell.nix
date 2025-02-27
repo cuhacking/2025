@@ -106,6 +106,8 @@ in pkgs.mkShell {
 
 zellij -n zellij.config.kdl
 
-trap 'echo "🚪 Exiting Nix shell..."; zellij kill-all-sessions' EXIT
+pnpm nx down infra
+
+trap 'echo "🚪 Exiting Nix shell..."; zellij da' EXIT
   '';
 }
