@@ -11,6 +11,7 @@ in pkgs.mkShell {
   buildInputs = [
     pkgs.zellij
     pkgs.neovim
+    pkgs.nerd-fonts.jetbrains-mono
     pkgs.ascii-image-converter
     pkgs.postgresql
     pkgs.lazysql
