@@ -26,7 +26,7 @@
     "docs:dev": "pnpm nx dev docs # 📚 Developer Documentation Site",
     "arch": "pnpm nx dev arch # 🗄 Interactive System Design",
     "email": "pnpm nx dev email # ✉ React email templates",
-    "storybook": "pnpm nx storybook # 🎨 Design System",
+    "storybook": "pnpm nx storybook -p $STORYBOOK_DEV_SERVER_PORT # 🎨 Design System - Storybook",
     "infra": "pnpm nx up infra # 🔌 Start Database",
     "stop": "pnpm nx down infra # 💤 Stop Database",
     "axiom": "pnpm infra; pnpm nx dev axiom # ⚙ Content Mangement System (CMS)",
