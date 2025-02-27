@@ -103,6 +103,8 @@ in pkgs.mkShell {
         ;;
     esac
 
- trap 'echo "🚪 Exiting Nix shell..."' EXIT
+zellij -n zellij.config.kdl
+
+trap 'echo "🚪 Exiting Nix shell..."; zellij kill-all-sessions' EXIT
   '';
 }
