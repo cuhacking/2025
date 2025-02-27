@@ -20,7 +20,6 @@
   "engineStrict": true,
   "scripts": {
     "dev": "pnpm nx dev infra",
-    "db": "pnpm infra; pnpm nx schema axiom; pnpm nx view db",
     "inspect": "pnpx @eslint/config-inspector # 🧹 Linter Config Inspector",
     "docs:dev": "pnpm nx dev docs # 📚 Developer Documentation Site",
     "arch": "pnpm nx dev arch # 🗄 Interactive System Design - LikeC4",
