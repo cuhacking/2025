@@ -21,7 +21,6 @@
   "scripts": {
     "dev": "pnpm nx dev infra",
     "storybook": "pnpm nx storybook -p $STORYBOOK_DEV_SERVER_PORT # 🎨 Design System - Storybook",
-    "stop": "pnpm nx down infra # 💤 Stop Database",
     "axiom": "pnpm infra; pnpm nx dev axiom # ⚙ Content Management System (CMS)",
     "portal": "pnpm nx dev portal # 🌀 Hacker Portal App",
     "web": "pnpm nx dev website # 📢 Website",
