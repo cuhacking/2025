@@ -1,7 +1,36 @@
+// https://kdl.dev
+
 theme "gruvbox-dark"
 
+ui {
+    pane_frames {
+        hide_session_name true
+    }
+}
+
 layout {
-    tab name="🛖 Dashboard" focus=true hide_floating_panes=true {
+    tab name="🍒 Git" focus=true {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        pane command="lazygit" name="Lazygit" {
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+
+        floating_panes {
+            pane command="pnpm" name="🧼 Perform a clean install" cwd="../" {
+                start_suspended true
+                height 25
+                width 86
+                x 43
+                y 14
+                args "ri"
+            }
+        }
+    }
+    tab name="🛖 General" hide_floating_panes=true {
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar"
         }
@@ -10,16 +39,13 @@ layout {
                 pane command="pnpm" name="🌀 Portal | 5173 | portal.cuhacking.ca" size="50%" cwd="../" {
                     args "nx" "dev" "portal"
                 }
-                pane command="pnpm" name="⚙ Axiom (API Layer + Admin Panel) | 8000 | axiom.cuhacking.ca" size="50%" cwd="../" {
-                    args "axiom"
-                }
-            }
-            pane size="50%" {
-                pane command="pnpm" name="🎨 Storybook | 6006 | design.cuhacking.ca" size="25%" cwd="../" {
+                pane command="pnpm" name="🎨 Storybook | 6006 | design.cuhacking.ca" size="50%" cwd="../" {
                     args "storybook"
                     start_suspended true
                 }
-                pane command="pnpm" name="✉ Email | 5400 | email.cuhacking.ca" focus=true size="25%" cwd="../" {
+            }
+            pane size="50%" {
+                pane command="pnpm" name="✉ Email | 5400 | email.cuhacking.ca" size="25%" cwd="../" {
                     args "nx" "dev" "email"
                 }
                 pane command="pnpm" name="📚 Docs Site | 3000 | docs.cuhacking.ca" size="25%" cwd="../" {
@@ -28,77 +54,38 @@ layout {
                 pane command="pnpm" name="🕸 Website | 5800 | cuhacking.ca" size="25%" cwd="../" {
                     args "nx" "dev" "website"
                 }
+                pane name="🖼 Slides | 3030 | slides.cuhacking.ca" size="25%" command="pnpm" cwd="../" {
+                    args "nx" "dev" "slides"
+                    start_suspended true
+                }
             }
         }
         pane size=1 borderless=true {
             plugin location="zellij:status-bar"
         }
 
-        floating_panes {
-               pane command="pnpm" name="💿 Database | 5432 | Nix-PostgreSQL" cwd="../" {
-                args "nx" "up" "infra"
-                start_suspended true
-            }
-        }
     }
-    tab name="🛠 Infra + Docs" {
+    tab name="📁 Files" {
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar"
         }
-        pane split_direction="vertical" {
-            pane size="50%" {
-                pane command="pnpm" name="📊 Drizzle Studio | local.drizzle.studio" size="50%" cwd="../" {
-                    args "nx" "studio" "db"
-                }
-                pane command="pnpm" name="👀 Schema Visualizer | 5600" size="50%" cwd="../" {
-                    args "nx" "visualizer" "db"
-                }
-            }
-            pane size="50%" {
-                pane command="pnpm" name="🏛 Architecture Site | 6400 | arch.cuhacking.ca" size="25%" cwd="../" {
-                    args "nx" "dev" "arch"
-                    start_suspended true
-                }
-                pane name="🖼 Slides | 3030 | slides.cuhacking.ca" size="25%" command="pnpm" cwd="../" {
-                args "nx" "dev" "slides"
-                start_suspended true
-                }
-                pane name="PayloadCMS Schema, Typegen,& Importmap" size="25%" command="pnpm" cwd="../" {
-                   args "nx" "types" "axiom"
-                start_suspended true
-                   }
-                pane command="pnpm" name="🧹 ESLint Config Inspector | 7777 | eslint.cuhacking.ca" size="25%" cwd="../" {
-                    args "inspect"
-                    start_suspended true
-                }
-            }
+        pane command="yazi" name="Yazi" {
         }
         pane size=1 borderless=true {
             plugin location="zellij:status-bar"
         }
         floating_panes {
-            pane command="pnpm" name="🗺 Project Graph | 4211 | graph.cuhacking.ca" cwd="../" {
+            pane command="pnpm" name="🚨 WARNING: REMOVE .gitignore FILES INCLUDING .env AND pgdata" cwd="../" {
                 start_suspended true
                 height 25
                 width 86
                 x 43
                 y 14
-                args "graph"
+                args "nuke"
             }
         }
     }
-    tab name="📦 Database TUI" hide_floating_panes=true {
-        pane size=1 borderless=true {
-            plugin location="zellij:tab-bar"
-        }
-        pane command="lazysql" name="Lazysql" {
-            args "postgres://postgres:password@127.0.0.1:5432/postgres?sslmode=disable"
-        }
-        pane size=1 borderless=true {
-            plugin location="zellij:status-bar"
-        }
-    }
-    tab name="🩺 System Monitor" hide_floating_panes=true {
+    tab name="🩺 Health" hide_floating_panes=true {
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar"
         }
@@ -108,7 +95,65 @@ layout {
             plugin location="zellij:status-bar"
         }
     }
-    tab name="🧮 Network" hide_floating_panes=true {
+    tab name="🛠 Infra" hide_floating_panes=true {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        pane split_direction="vertical" {
+            pane size="50%" {
+            pane command="pnpm" name="🗺 Project Graph -Nx | 4211 | graph.cuhacking.ca" size="50%" cwd="../" {
+                    start_suspended true
+                    args "nx" "graph" "--groupByFolder" "--verbose"
+                }
+                pane name="PayloadCMS Schema, Typegen, & Importmap" size="50%" command="pnpm" cwd="../" {
+                    args "nx" "types" "axiom"
+                    start_suspended true
+                   }
+            }
+            pane size="50%" {
+                pane command="pnpm" name="🏛 Architecture Site | 6400 | arch.cuhacking.ca" size="25%" cwd="../" {
+                    args "nx" "dev" "arch"
+                    start_suspended true
+                }
+                pane command="pnpm" name="📊 Drizzle Studio | local.drizzle.studio" size="25%" cwd="../" {
+                    args "nx" "studio" "db"
+                }
+                pane command="pnpm" name="👀 Schema Visualizer | 5600" size="25%" cwd="../" {
+                    args "nx" "visualizer" "db"
+                }
+            }
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+        floating_panes {
+                pane command="pnpm" name="🧹 ESLint Config Inspector | 7777 | eslint.cuhacking.ca" cwd="../" {
+                start_suspended true
+                height 25
+                width 86
+                x 43
+                y 14
+                args "inspect"
+            }
+        }
+    }
+    tab name="💿 Database" {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        pane command="lazysql" name="Lazysql" {
+            args "postgres://postgres:password@127.0.0.1:5432/postgres?sslmode=disable"
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+        floating_panes {
+               pane command="pnpm" name="💿 Database | 5432 | Nix-PostgreSQL" cwd="../" {
+                args "nx" "up" "infra"
+            }
+        }
+    }
+    /- tab name="🧮 Network" hide_floating_panes=true {
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar"
         }
@@ -119,17 +164,7 @@ layout {
             plugin location="zellij:status-bar"
         }
     }
-    tab name="📁 File Browser" hide_floating_panes=true {
-        pane size=1 borderless=true {
-            plugin location="zellij:tab-bar"
-        }
-        pane command="yazi" name="Yazi" {
-        }
-        pane size=1 borderless=true {
-            plugin location="zellij:status-bar"
-        }
-    }
-    tab name="🔬 API" hide_floating_panes=true {
+    tab name="🔌 API" {
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar"
         }
@@ -139,15 +174,11 @@ layout {
         pane size=1 borderless=true {
             plugin location="zellij:status-bar"
         }
+        floating_panes {
+                pane command="pnpm" name="⚙ Axiom (API Layer + Admin Panel) | 8000 | axiom.cuhacking.ca" cwd="../" {
+                    args "nx" "dev" "axiom"
+                }
         }
-    tab name="🍒 Git" hide_floating_panes=true {
-        pane size=1 borderless=true {
-            plugin location="zellij:tab-bar"
+
         }
-        pane command="lazygit" name="Lazygit" {
-        }
-        pane size=1 borderless=true {
-            plugin location="zellij:status-bar"
-        }
-    }
 }
