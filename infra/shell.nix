@@ -9,6 +9,7 @@ in pkgs.mkShell {
   name = "cuhacking-2025-dev-db";
 
   buildInputs = [
+    pkgs.zellij
     pkgs.ascii-image-converter
     pkgs.postgresql
   ];
