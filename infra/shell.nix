@@ -17,6 +17,7 @@ in pkgs.mkShell {
     pkgs.btop
     pkgs.atac
     pkgs.yazi
+    pkgs.bat
   ];
 
   shellHook = ''
