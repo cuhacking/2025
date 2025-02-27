@@ -19,6 +19,7 @@
   },
   "engineStrict": true,
   "scripts": {
+    "dev": "pnpm nx dev infra",
     "graph": "pnpm nx graph --groupByFolder --verbose # 🗺 Project graph",
     "db": "pnpm infra; nx schema axiom; pnpm nx view db",
     "inspect": "pnpx @eslint/config-inspector # 🧹 Linter Config Inspector",
