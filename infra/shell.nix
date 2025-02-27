@@ -10,6 +10,7 @@ in pkgs.mkShell {
 
   buildInputs = [
     pkgs.zellij
+    pkgs.neovim
     pkgs.ascii-image-converter
     pkgs.postgresql
     pkgs.lazysql
