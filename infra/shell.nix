@@ -6,7 +6,7 @@ let
   pgLog = "$PGDATA/postgresql.log";
 
 in pkgs.mkShell {
-  name = "cuhacking-2025-dev-db";
+  name = "cuhacking-2025-dev-env";
 
   buildInputs = [
     pkgs.zellij
