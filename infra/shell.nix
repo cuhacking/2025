@@ -29,9 +29,6 @@ in pkgs.mkShell {
     export PGPORT="$DATABASE_PORT"
     export PGDATA="$PWD/pgdata"
 
-    echo "Hello 👋"
-    echo "Current working directory: $(pwd)"
-
     alias psqlx="psql -p $PGPORT -d $PGDATABASE -U $PGUSER"
 
     start_db() {
