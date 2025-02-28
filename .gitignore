@@ -104,3 +104,5 @@ yarn-error.log*
 .env.backup
 .vercel
 Pulumi.dev.yaml
+
+atac.log

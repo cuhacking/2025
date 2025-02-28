@@ -169,7 +169,7 @@ layout {
             plugin location="zellij:tab-bar"
         }
         pane command="atac" name="atac" {
-            args "-d" "./atac/collections/"
+            args "--no-ansi-log" "-d" "./atac/collections/"
         }
         pane size=1 borderless=true {
             plugin location="zellij:status-bar"
