@@ -6,7 +6,9 @@ import path from "node:path";
 /* eslint-disable node/prefer-global/process */
 import { fileURLToPath } from "node:url";
 // import { googleOAuth } from '@cuhacking/cms/endpoints/auth/google'
-import { Brands, Media, Users, Emails } from "@/db/collections/models";
+import {Brands} from "@/db/collections"
+import { Media, Users, Emails } from "@/db/collections/models";
+import {Website, SocialLinks} from "@/db/collections/globals";
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { buildConfig } from "payload";
@@ -82,6 +84,8 @@ export default buildConfig({
     ? process.env.CSRF_WHITELIST_ORIGINS.split(",")
     : [],
   globals: [
+    Website,
+    SocialLinks
   ],
   collections: [Users, Brands, Media, Emails],
   editor: lexicalEditor({}),

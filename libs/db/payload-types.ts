@@ -86,8 +86,14 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    website: Website;
+    'social-links': SocialLink;
+  };
+  globalsSelect: {
+    website: WebsiteSelect<false> | WebsiteSelect<true>;
+    'social-links': SocialLinksSelect<false> | SocialLinksSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -138,7 +144,6 @@ export interface User {
   website?: string | null;
   dietaryRestrictions?:
     | (
-        | 'none'
         | 'vegetarian'
         | 'vegan'
         | 'halal'
@@ -161,7 +166,6 @@ export interface User {
     | null;
   allergies?:
     | (
-        | 'none'
         | 'peanuts'
         | 'tree-nuts'
         | 'dairy'
@@ -182,7 +186,7 @@ export interface User {
     | null;
   tshirtSize?: ('xs' | 's' | 'm' | 'l' | 'xl' | '2xl' | '3xl') | null;
   emergencyContactFullName?: string | null;
-  emergencyContactCellPhone?: string | null;
+  emergencyContactCell?: string | null;
   emergencyContactEmailAddress?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -231,8 +235,8 @@ export interface Media {
 export interface Brand {
   id: number;
   name: string;
-  description: string;
-  media?: (number | null) | Media;
+  description?: string | null;
+  domain?: string | null;
   links?:
     | {
         name?: string | null;
@@ -240,10 +244,18 @@ export interface Brand {
         id?: string | null;
       }[]
     | null;
-  /**
-   * Other brands related to this one (e.g., sponsors, partners, student clubs).
-   */
-  relatedBrands?: (number | Brand)[] | null;
+  email?: string | null;
+  phone?: number | null;
+  location?: string | null;
+  symbol?: (number | null) | Media;
+  wordmark?: (number | null) | Media;
+  github?: string | null;
+  linkedin?: string | null;
+  instagram?: string | null;
+  discord?: string | null;
+  behance?: string | null;
+  figma?: string | null;
+  linktree?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -349,7 +361,7 @@ export interface UsersSelect<T extends boolean = true> {
   allergies?: T;
   tshirtSize?: T;
   emergencyContactFullName?: T;
-  emergencyContactCellPhone?: T;
+  emergencyContactCell?: T;
   emergencyContactEmailAddress?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -368,7 +380,7 @@ export interface UsersSelect<T extends boolean = true> {
 export interface BrandsSelect<T extends boolean = true> {
   name?: T;
   description?: T;
-  media?: T;
+  domain?: T;
   links?:
     | T
     | {
@@ -376,7 +388,18 @@ export interface BrandsSelect<T extends boolean = true> {
         link?: T;
         id?: T;
       };
-  relatedBrands?: T;
+  email?: T;
+  phone?: T;
+  location?: T;
+  symbol?: T;
+  wordmark?: T;
+  github?: T;
+  linkedin?: T;
+  instagram?: T;
+  discord?: T;
+  behance?: T;
+  figma?: T;
+  linktree?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -460,6 +483,46 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "website".
+ */
+export interface Website {
+  id: number;
+  links?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "social-links".
+ */
+export interface SocialLink {
+  id: number;
+  brands?: (number | Brand)[] | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "website_select".
+ */
+export interface WebsiteSelect<T extends boolean = true> {
+  links?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "social-links_select".
+ */
+export interface SocialLinksSelect<T extends boolean = true> {
+  brands?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
