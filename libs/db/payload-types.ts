@@ -65,20 +65,20 @@ export interface Config {
     users: UserAuthOperations;
   };
   collections: {
-    users: User;
     brands: Brand;
     media: Media;
     emails: Email;
+    users: User;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
   collectionsJoins: {};
   collectionsSelect: {
-    users: UsersSelect<false> | UsersSelect<true>;
     brands: BrandsSelect<false> | BrandsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     emails: EmailsSelect<false> | EmailsSelect<true>;
+    users: UsersSelect<false> | UsersSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -120,6 +120,82 @@ export interface UserAuthOperations {
     email: string;
     password: string;
   };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "brands".
+ */
+export interface Brand {
+  id: number;
+  name: string;
+  description?: string | null;
+  domain?: string | null;
+  links?:
+    | {
+        name?: string | null;
+        link?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  email?: string | null;
+  phone?: number | null;
+  location?: string | null;
+  symbol?: (number | null) | Media;
+  wordmark?: (number | null) | Media;
+  github?: string | null;
+  linkedin?: string | null;
+  instagram?: string | null;
+  discord?: string | null;
+  behance?: string | null;
+  figma?: string | null;
+  linktree?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media".
+ */
+export interface Media {
+  id: number;
+  alt: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "emails".
+ */
+export interface Email {
+  id: number;
+  title: string;
+  body: {
+    text: string;
+    buttonText: string;
+    buttonLink: string;
+    footer: string;
+  };
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -188,6 +264,7 @@ export interface User {
   emergencyContactFullName?: string | null;
   emergencyContactCell?: string | null;
   emergencyContactEmailAddress?: string | null;
+  sub?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -201,91 +278,11 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
- */
-export interface Media {
-  id: number;
-  alt: string;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
-  sizes?: {
-    thumbnail?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-  };
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "brands".
- */
-export interface Brand {
-  id: number;
-  name: string;
-  description?: string | null;
-  domain?: string | null;
-  links?:
-    | {
-        name?: string | null;
-        link?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  email?: string | null;
-  phone?: number | null;
-  location?: string | null;
-  symbol?: (number | null) | Media;
-  wordmark?: (number | null) | Media;
-  github?: string | null;
-  linkedin?: string | null;
-  instagram?: string | null;
-  discord?: string | null;
-  behance?: string | null;
-  figma?: string | null;
-  linktree?: string | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "emails".
- */
-export interface Email {
-  id: number;
-  title: string;
-  body: {
-    text: string;
-    buttonText: string;
-    buttonLink: string;
-    footer: string;
-  };
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
   id: number;
   document?:
-    | ({
-        relationTo: 'users';
-        value: number | User;
-      } | null)
     | ({
         relationTo: 'brands';
         value: number | Brand;
@@ -297,6 +294,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'emails';
         value: number | Email;
+      } | null)
+    | ({
+        relationTo: 'users';
+        value: number | User;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -339,39 +340,6 @@ export interface PayloadMigration {
   batch?: number | null;
   updatedAt: string;
   createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users_select".
- */
-export interface UsersSelect<T extends boolean = true> {
-  firstName?: T;
-  middleName?: T;
-  lastName?: T;
-  displayName?: T;
-  pronouns?: T;
-  avatar?: T;
-  brandRelation?: T;
-  linkedIn?: T;
-  discord?: T;
-  github?: T;
-  behance?: T;
-  website?: T;
-  dietaryRestrictions?: T;
-  allergies?: T;
-  tshirtSize?: T;
-  emergencyContactFullName?: T;
-  emergencyContactCell?: T;
-  emergencyContactEmailAddress?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  email?: T;
-  resetPasswordToken?: T;
-  resetPasswordExpiration?: T;
-  salt?: T;
-  hash?: T;
-  loginAttempts?: T;
-  lockUntil?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -451,6 +419,40 @@ export interface EmailsSelect<T extends boolean = true> {
       };
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users_select".
+ */
+export interface UsersSelect<T extends boolean = true> {
+  firstName?: T;
+  middleName?: T;
+  lastName?: T;
+  displayName?: T;
+  pronouns?: T;
+  avatar?: T;
+  brandRelation?: T;
+  linkedIn?: T;
+  discord?: T;
+  github?: T;
+  behance?: T;
+  website?: T;
+  dietaryRestrictions?: T;
+  allergies?: T;
+  tshirtSize?: T;
+  emergencyContactFullName?: T;
+  emergencyContactCell?: T;
+  emergencyContactEmailAddress?: T;
+  sub?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  email?: T;
+  resetPasswordToken?: T;
+  resetPasswordExpiration?: T;
+  salt?: T;
+  hash?: T;
+  loginAttempts?: T;
+  lockUntil?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

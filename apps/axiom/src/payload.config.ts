@@ -4,7 +4,9 @@ import path from "node:path";
 // import { s3Storage } from '@payloadcms/storage-s3'
 /* eslint-disable node/prefer-global/process */
 import { fileURLToPath } from "node:url";
-import { googleOAuth } from '@/cms/endpoints/auth/google'
+import {
+  // googleOAuth,
+         linkedinOAuth } from '@/cms/endpoints/auth'
 import {Brands} from "@/db/collections"
 import { Media, Users, Emails } from "@/db/collections/models";
 import {Website, SocialLinks} from "@/db/collections/globals";
@@ -118,8 +120,8 @@ export default buildConfig({
     //     endpoint: process.env.S3_ENDPOINT,
     //   },
     // }),
-    googleOAuth,
-    // linkedinOAuth
+    // googleOAuth,
+    linkedinOAuth
     // payloadCloudPlugin(),
   ],
 });

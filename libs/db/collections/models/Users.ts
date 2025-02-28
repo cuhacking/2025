@@ -51,14 +51,15 @@ export const Users: CollectionConfig = {
       type: 'collapsible',
       label: ({ data }) => data?.title || 'Personal Information',
       fields: [
-        { name: 'firstName', type: 'text', label: 'First Name' },
-        { name: 'middleName', type: 'text', label: 'Middle Name' },
-        { name: 'lastName', type: 'text', label: 'Last Name' },
-        { name: 'displayName', type: 'text', label: 'Display Name' },
+        { name: 'firstName', type: 'text', label: 'First Name', admin: { readOnly: true } },
+        { name: 'middleName', type: 'text', label: 'Middle Name', admin: { readOnly: true } },
+        { name: 'lastName', type: 'text', label: 'Last Name', admin: { readOnly: true } },
+        { name: 'displayName', type: 'text', label: 'Display Name', admin: { readOnly: true } },
         {
           name: 'pronouns',
           type: 'select',
           label: 'Pronouns',
+          admin: { readOnly: true },
           options: [
             { label: 'He/Him', value: 'he/him' },
             { label: 'She/Her', value: 'she/her' },
@@ -71,6 +72,7 @@ export const Users: CollectionConfig = {
           type: 'upload',
           relationTo: 'media',
           label: 'Avatar',
+          admin: { readOnly: true },
         },
       ],
     },
@@ -89,18 +91,19 @@ export const Users: CollectionConfig = {
               'This could be a company, university, or student club.',
           },
         },
-        { name: 'linkedIn', type: 'text', label: 'LinkedIn' },
-        { name: 'discord', type: 'text', label: 'Discord' },
-        { name: 'github', type: 'text', label: 'GitHub' },
-        { name: 'behance', type: 'text', label: 'Behance' },
-        { name: 'website', type: 'text', label: 'Personal Website' },
+        { name: 'linkedin', type: 'text', label: 'LinkedIn', admin: { readOnly: true,
+        } },
+        { name: 'discord', type: 'text', label: 'Discord', admin: { readOnly: true } },
+        { name: 'github', type: 'text', label: 'GitHub', admin: { readOnly: true } },
+        { name: 'behance', type: 'text', label: 'Behance', admin: { readOnly: true } },
+        { name: 'website', type: 'text', label: 'Personal Website', admin: { readOnly: true } },
       ],
     },
     {
       name: 'dietaryRestrictions',
       type: 'select',
       label: '🍽 Dietary Restrictions',
-      admin: { position: 'sidebar' },
+      admin: { position: 'sidebar', readOnly: true },
       options: [
         { label: '🥗 Vegetarian', value: 'vegetarian' },
         { label: '🌱 Vegan', value: 'vegan' },
@@ -127,7 +130,7 @@ export const Users: CollectionConfig = {
       name: 'allergies',
       type: 'select',
       label: '⚠ Allergies',
-      admin: { position: 'sidebar' },
+      admin: { position: 'sidebar', readOnly: true },
       options: [
         { label: '🥜 Peanuts', value: 'peanuts' },
         { label: '🌰 Tree Nuts', value: 'tree-nuts' },
@@ -152,7 +155,7 @@ export const Users: CollectionConfig = {
       name: 'tshirtSize',
       type: 'select',
       label: 'T-Shirt Size',
-      admin: { position: 'sidebar' },
+      admin: { position: 'sidebar', readOnly: true },
       options: [
         { label: 'XS', value: 'xs' },
         { label: 'S', value: 's' },
@@ -166,7 +169,7 @@ export const Users: CollectionConfig = {
     {
       label: 'Emergency Contact',
       type: 'collapsible',
-      admin: { position: 'sidebar' },
+      admin: { position: 'sidebar', readOnly: true },
       fields: [
         { name: 'emergencyContactFullName', type: 'text', label: 'Full Name' },
         { name: 'emergencyContactCell', type: 'text', label: 'Cell' },
@@ -175,6 +178,15 @@ export const Users: CollectionConfig = {
     },
     {
       name: 'linkedinSub',
+      type: 'text',
+      admin: {
+        readOnly: true,
+      //   condition: (data, siblingData, { user }) => {
+      //     return false
+      },
+    },
+    {
+      name: 'linkedinId',
       type: 'text',
       admin: {
         readOnly: true,
