@@ -21,10 +21,10 @@
       "@aceternity/*": [
         "libs/external/aceternity/*"
       ],
-      "@cuhacking/cms": [
+      "@/cms": [
         "libs/cms/index.ts"
       ],
-      "@cuhacking/cms/*": [
+      "@/cms/*": [
         "libs/cms/*"
       ],
       "@/db": [
