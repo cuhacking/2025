@@ -18,10 +18,10 @@ const dirname = path.dirname(filename);
 export default buildConfig({
   admin: {
     autoLogin:
-    process.env.production
-      ? false :{
-          email: 'hasithde24@gmail.com',
-          password: 'admin',
+    process.env.NODE_ENV==="development"
+      && {
+          email: process.env.LOCAL_DEV_EMAIL_ADDRESS,
+          password: process.env.LOCAL_DEV_PASSWORD,
           prefillOnly: true,
         },
     user: Users.slug,
