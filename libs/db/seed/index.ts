@@ -1,3 +1,4 @@
+/* eslint-disable node/prefer-global/process */
 /* eslint-disable node/prefer-global/buffer */
 import type { File, Payload, PayloadRequest } from 'payload'
 import { seedEmails } from '../collections/models'
@@ -48,7 +49,7 @@ export async function seed({
   }
 
   await clearCollection('brands')
-  await clearCollection('users', 'hasithde24@gmail.com')
+  await clearCollection('users', process.env.LOCAL_DEV_EMAIL_ADDRESS)
 
   log('📸 Uploading brand logos & inserting brands...')
   await Promise.all(
