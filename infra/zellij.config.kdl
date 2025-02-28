@@ -9,7 +9,7 @@ ui {
 }
 
 layout {
-    tab name="🍒 Git" focus=true {
+    tab name="🍒 Git" focus=true hide_floating_panes=true {
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar"
         }
@@ -116,7 +116,7 @@ layout {
         }
         pane split_direction="vertical" {
             pane size="50%" {
-            pane command="pnpm" name="🗺 Project Graph -Nx | 4211 | graph.cuhacking.ca" size="50%" cwd="../" {
+            pane command="pnpm" name="🗺 Project Graph - Nx | 4211 | graph.cuhacking.ca" size="50%" cwd="../" {
                     start_suspended true
                     args "nx" "graph" "--groupByFolder" "--verbose"
                 }
