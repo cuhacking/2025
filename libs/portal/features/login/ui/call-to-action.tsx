@@ -3,6 +3,7 @@ import { Button } from '@cuhacking/shared/ui/button'
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 import { Typography } from '@cuhacking/shared/ui/typography'
 import { Form, useNavigation } from '@remix-run/react'
+import { signIn } from '../../../pages/login/index'
 
 export function LoginCallToAction() {
   const transition = useNavigation()
@@ -28,6 +29,12 @@ export function LoginCallToAction() {
           className="flex items-center gap-x-3 px-4 md:px-6 lg:px-8 py-4"
           aria-label="Login with Linkedin"
           disabled={transition.state === 'submitting'}
+          onClick={async () => {
+            await signIn.social({
+              provider: 'linkedin',
+              callbackURL: '/hello',
+            })
+          }}
         >
           <img src={linkedinBlack} alt="Linkedin logo" className="size-5" />
           <Typography variant="h6">Log In</Typography>
