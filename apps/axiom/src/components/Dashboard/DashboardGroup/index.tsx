@@ -4,7 +4,6 @@ import { getTranslation, I18nClient } from '@payloadcms/translations'
 import { Card } from '@payloadcms/ui'
 import Link from 'next/link'
 import { BasePayload, CollectionSlug, StaticLabel } from 'payload'
-import { SeedButton } from '../../seed-button'
 
 import './index.scss'
 import { adminGroups } from '@/db/collections/adminGroups'
