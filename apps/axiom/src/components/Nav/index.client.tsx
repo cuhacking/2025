@@ -9,7 +9,7 @@ import LinkWithDefault from 'next/link'
 import { NavPreferences } from 'payload'
 import { FC, Fragment } from 'react'
 import { getNavIcon } from './navIconMap'
-import { SeedButton } from '../seed-button'
+import { SeedButton } from '@/cms/ui'
 
 type Props = {
   groups: NavGroupType[]
@@ -29,7 +29,7 @@ export const NavClient: FC<Props> = ({ groups, navPreferences }) => {
 
   return (
     <Fragment>
-      <SeedButton />
+      {process.env.NODE_ENV==="development" && <SeedButton />}
       {groups.map(({ entities, label }, key) => {
         return (
           <NavGroup isOpen={navPreferences?.groups?.[label]?.open} key={key} label={label}>
