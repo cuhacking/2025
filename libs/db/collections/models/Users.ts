@@ -35,8 +35,6 @@ export const Users: CollectionConfig = {
     useAsTitle: 'displayName',
     defaultColumns: [
       'displayName',
-      // "firstName",
-      // "lastName",
       'pronouns',
       'email',
       'updatedAt',
@@ -174,6 +172,45 @@ export const Users: CollectionConfig = {
         { name: 'emergencyContactCell', type: 'text', label: 'Cell' },
         { name: 'emergencyContactEmailAddress', type: 'email', label: 'Email Address' },
       ],
+    },
+    {
+      name: 'linkedinSub',
+      type: 'text',
+      admin: {
+        readOnly: true,
+      //   condition: (data, siblingData, { user }) => {
+      //     return false
+      },
+    },
+    {
+      name: 'linkedinEmailVerified',
+      type: 'text',
+      admin: {
+        readOnly: true,
+      },
+    },
+    {
+      name: 'linkedinLocale',
+      type: 'text',
+      admin: {
+        readOnly: true,
+      },
+    },
+    {
+      name: 'googleSub',
+      type: 'text',
+      admin: {
+        readOnly: true,
+      //   condition: (data, siblingData, { user }) => {
+      //     return false
+      },
+    },
+    {
+      name: 'googleEmailVerified',
+      type: 'text',
+      admin: {
+        readOnly: true,
+      },
     },
   ],
   timestamps: true,

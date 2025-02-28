@@ -2,10 +2,9 @@
 // github.com/jhb-software/payload-plugins/tree/main/geocoding
 import path from "node:path";
 // import { s3Storage } from '@payloadcms/storage-s3'
-// import {linkedinOAuth} from './endpoints/auth/linkedin'
 /* eslint-disable node/prefer-global/process */
 import { fileURLToPath } from "node:url";
-// import { googleOAuth } from '@cuhacking/cms/endpoints/auth/google'
+import { googleOAuth } from '@/cms/endpoints/auth/google'
 import {Brands} from "@/db/collections"
 import { Media, Users, Emails } from "@/db/collections/models";
 import {Website, SocialLinks} from "@/db/collections/globals";
@@ -119,7 +118,7 @@ export default buildConfig({
     //     endpoint: process.env.S3_ENDPOINT,
     //   },
     // }),
-    // googleOAuth,
+    googleOAuth,
     // linkedinOAuth
     // payloadCloudPlugin(),
   ],
