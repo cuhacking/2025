@@ -1,8 +1,8 @@
 /* eslint-disable node/prefer-global/process */
 /* eslint-disable node/prefer-global/buffer */
 import type { File, Payload, PayloadRequest } from 'payload'
+import { brandSeedData } from '@/db/collections/Brands'
 import { seedEmails } from '@/db/collections/models'
-import { brandData } from '@/db/collections/models/Brands'
 import { userData } from '@/db/collections/models/Users'
 
 export async function seed({
@@ -52,16 +52,42 @@ export async function seed({
   await clearCollection('users', process.env.LOCAL_DEV_EMAIL_ADDRESS)
 
   log('📸 Uploading brand logos & inserting brands...')
+
+  // await seedBrands(payload)
+
+  // async function seedEmails(payload: Payload) {
+  //   try {
+  //
   await Promise.all(
-    brandData.map(async (brand) => {
-      const media = await getOrUploadMedia(brand.mediaUrl, `${brand.name.replace(/ /g, '-').toLowerCase()}-logo.png`, `${brand.name} Logo`)
+    brandSeedData.map(async (brand) => {
+      const symbol = await getOrUploadMedia(brand.symbol, `${brand.name.replace(/ /g, '-').toLowerCase()}-logo-symbol`, `${brand.name} Logo`)
+
       await payload.create({
         collection: 'brands',
-        data: { name: brand.name, description: brand.description, media: media?.id || null, links: brand.links, relatedBrands: [] },
+        data: {
+          name: brand.name,
+          description: brand.description,
+          symbol: symbol?.id || null,
+          domain: brand.domain || null,
+          links: brand.links || [],
+          github: brand.github,
+          linkedin: brand.linkedin,
+          discord: brand.discord,
+          instagram: brand.instagram,
+          linktree: brand.linktree,
+          figma: brand.figma,
+          relatedBrands: [],
+        },
       })
       log(`✅ Inserted brand: ${brand.name}`)
     }),
   )
+
+  //   }
+  //   catch (error) {
+  //     console.error('Error seeding brand data:', error)
+  //   }
+  // }
 
   log('📸 Uploading user avatars & inserting users...')
   await Promise.all(
