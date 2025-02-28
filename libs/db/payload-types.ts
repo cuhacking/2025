@@ -213,7 +213,7 @@ export interface User {
    * This could be a company, university, or student club.
    */
   brandRelation?: (number | null) | Brand;
-  linkedIn?: string | null;
+  linkedin?: string | null;
   discord?: string | null;
   github?: string | null;
   behance?: string | null;
@@ -264,6 +264,11 @@ export interface User {
   emergencyContactFullName?: string | null;
   emergencyContactCell?: string | null;
   emergencyContactEmailAddress?: string | null;
+  linkedinSub?: string | null;
+  linkedinEmailVerified?: string | null;
+  linkedinLocale?: string | null;
+  googleSub?: string | null;
+  googleEmailVerified?: string | null;
   sub?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -432,7 +437,7 @@ export interface UsersSelect<T extends boolean = true> {
   pronouns?: T;
   avatar?: T;
   brandRelation?: T;
-  linkedIn?: T;
+  linkedin?: T;
   discord?: T;
   github?: T;
   behance?: T;
@@ -443,6 +448,11 @@ export interface UsersSelect<T extends boolean = true> {
   emergencyContactFullName?: T;
   emergencyContactCell?: T;
   emergencyContactEmailAddress?: T;
+  linkedinSub?: T;
+  linkedinEmailVerified?: T;
+  linkedinLocale?: T;
+  googleSub?: T;
+  googleEmailVerified?: T;
   sub?: T;
   updatedAt?: T;
   createdAt?: T;

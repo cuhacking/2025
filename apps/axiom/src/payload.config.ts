@@ -1,12 +1,13 @@
 // THEME CREDITS: github.com/akhrarovsaid/payload-theme-quantum-leap
 // github.com/jhb-software/payload-plugins/tree/main/geocoding
 import path from "node:path";
-// import { s3Storage } from '@payloadcms/storage-s3'
 /* eslint-disable node/prefer-global/process */
+// import { s3Storage } from '@payloadcms/storage-s3'
 import { fileURLToPath } from "node:url";
 import {
-  // googleOAuth,
-         linkedinOAuth } from '@/cms/endpoints/auth'
+  googleOAuth,
+         linkedinOAuth
+} from '@/cms/endpoints/auth'
 import {Brands} from "@/db/collections"
 import { Media, Users, Emails } from "@/db/collections/models";
 import {Website, SocialLinks} from "@/db/collections/globals";
@@ -102,6 +103,8 @@ export default buildConfig({
     generateSchemaOutputFile: path.resolve("../../libs/db/schema.ts"),
   }),
   plugins: [
+    googleOAuth,
+    linkedinOAuth
     // process.env.NODE_ENV == 'production' && s3Storage({
     //   collections: {
     //     media: {
@@ -120,8 +123,5 @@ export default buildConfig({
     //     endpoint: process.env.S3_ENDPOINT,
     //   },
     // }),
-    // googleOAuth,
-    linkedinOAuth
-    // payloadCloudPlugin(),
   ],
 });
