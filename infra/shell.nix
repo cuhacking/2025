@@ -21,6 +21,7 @@ in pkgs.mkShell {
     # pkgs.sampler
     pkgs.yazi
     pkgs.bat
+    pkgs.browsh
     # pkgs.netscanner
     pkgs.zsh
   ];
