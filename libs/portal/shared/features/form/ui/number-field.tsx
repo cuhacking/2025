@@ -77,7 +77,7 @@ export function NumberField({
                       <Input
                         placeholder="X"
                         type="number"
-                        value={value}
+                        value={value || ''}
                         onChange={onChange}
                         className="w-full py-[1px]"
                         onBlur={async () => {

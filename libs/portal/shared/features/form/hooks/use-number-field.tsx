@@ -18,8 +18,8 @@ export function useNumberField(form: any, fieldName: string) {
 
   const onChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const newValue = Number.parseInt(e.target.value, 10) || undefined
-      form.setValue(fieldName, newValue ? Math.max(0, newValue) : undefined)
+      const newValue = Number.parseInt(e.target.value, 10) || ''
+      form.setValue(fieldName, newValue ? Math.max(0, newValue) : '')
     },
     [form, fieldName],
   )
