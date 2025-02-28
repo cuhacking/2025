@@ -1,9 +1,9 @@
 /* eslint-disable node/prefer-global/process */
 /* eslint-disable node/prefer-global/buffer */
 import type { File, Payload, PayloadRequest } from 'payload'
+import { seedEmails } from '@/db/collections/models'
 import { brandData } from '@/db/collections/models/Brands'
-import { seedEmails } from '../collections/models'
-import { userData } from './Users'
+import { userData } from '@/db/collections/models/Users'
 
 export async function seed({
   payload,
