@@ -1,6 +1,8 @@
+import { Button } from '@cuhacking/shared/ui/button'
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 import { TerminalText } from '@cuhacking/shared/ui/terminal-text'
 import { Typography } from '@cuhacking/shared/ui/typography'
+import { Link } from '@remix-run/react'
 import { Socials } from '@website/shared/ui/socials'
 
 interface Media {
@@ -88,7 +90,7 @@ export function Welcome({ socials }: IntroProps) {
             <Typography variant="h3">
               <h2>{welcomeData.title}</h2>
             </Typography>
-            <div>
+            <div className="w-full">
               <TerminalText className="text-base">
                 <p>
                   <span className="text-transparent bg-greendiant bg-clip-text">
@@ -105,7 +107,23 @@ export function Welcome({ socials }: IntroProps) {
               <TerminalText className="text-base">
                 <p>{welcomeData.callToAction}</p>
               </TerminalText>
-              <Socials socials={socials} className="justify-center pt-5" />
+              <TerminalText className="text-base">
+                <Socials socials={socials} className="justify-center" />
+              </TerminalText>
+
+              {/* welcomeData.registrationLink */ }
+              <Link
+                to="https://forms.gle/gQ6o5vqHE64nQPvj7"
+                target="_blank"
+                aria-label="registration link"
+                className="block w-fit h-fit m-auto"
+              >
+                <Button variant="secondary" className="mt-4 px-16">
+                  <Typography variant="h6">
+                    <p>!! Register Now !!</p>
+                  </Typography>
+                </Button>
+              </Link>
             </div>
           </GlassmorphicCard>
         )
