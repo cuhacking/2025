@@ -209,6 +209,63 @@ export const Users: CollectionConfig = {
       },
     },
     {
+      name: 'githubId',
+      type: 'text',
+      admin: {
+        readOnly: true,
+      //   condition: (data, siblingData, { user }) => {
+      //     return false
+      },
+    },
+    {
+      name: 'githubAvatarUrl',
+      type: 'text',
+    },
+    {
+      name: 'githubType',
+      type: 'text',
+    },
+    {
+      name: 'githubUrl',
+      type: 'text',
+    },
+    {
+      name: 'githubHtmlUrl',
+      type: 'text',
+    },
+    {
+      name: 'githubName',
+      type: 'text',
+    },
+    {
+      name: 'githubBlog',
+      type: 'text',
+    },
+    {
+      name: 'githubLocation',
+      type: 'text',
+    },
+    {
+      name: 'githubHireable',
+      type: 'text',
+    },
+    {
+      name: 'githubPublicRepos',
+      type: 'text',
+    },
+    {
+      name: 'githubLinkedIn',
+      type: 'text',
+    },
+    {
+      name: 'githubInstagram',
+      type: 'text',
+    },
+    {
+      name: 'githubEmail',
+      type: 'text',
+    },
+    {
       name: 'googleSub',
       type: 'text',
       admin: {

@@ -4,9 +4,7 @@
 import path from "node:path";
 import { s3Storage } from '@payloadcms/storage-s3'
 import { fileURLToPath } from "node:url";
-import { googleOAuth,
-         linkedinOAuth,
-         discordOAuth, } from '@/cms/endpoints/auth'
+import { linkedinOAuth, githubOAuth, discordOAuth, googleOAuth } from '@/cms/endpoints/auth'
 import {Brands} from "@/db/collections"
 import { Media, Users, Emails } from "@/db/collections/models";
 import {Website, SocialLinks} from "@/db/collections/globals";
@@ -102,9 +100,10 @@ export default buildConfig({
     generateSchemaOutputFile: path.resolve("../../libs/db/schema.ts"),
   }),
   plugins: [
-    googleOAuth,
     linkedinOAuth,
+    githubOAuth,
     discordOAuth,
+    googleOAuth,
     s3Storage({
       collections: {
         media: {
