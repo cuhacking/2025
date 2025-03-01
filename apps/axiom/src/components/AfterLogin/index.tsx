@@ -27,6 +27,12 @@ export function OAuthButtons() {
         altText="LinkedIn Login"
       />
       <OAuthButton
+        href="/api/users/oauth/discord"
+        iconSrc="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/636e0a69f118df70ad7828d4_icon_clyde_blurple_RGB.svg"
+        bgColor="#000"
+        altText="Discord Login"
+      />
+      <OAuthButton
         href="/api/users/oauth/google"
         iconSrc="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/google/google-original.svg"
         bgColor="#000"
