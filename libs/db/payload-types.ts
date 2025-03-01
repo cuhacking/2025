@@ -159,6 +159,7 @@ export interface Brand {
 export interface Media {
   id: number;
   alt: string;
+  prefix?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -265,11 +266,13 @@ export interface User {
   emergencyContactCell?: string | null;
   emergencyContactEmailAddress?: string | null;
   linkedinSub?: string | null;
+  linkedinId?: string | null;
   linkedinEmailVerified?: string | null;
   linkedinLocale?: string | null;
   googleSub?: string | null;
   googleEmailVerified?: string | null;
   sub?: string | null;
+  discordSub?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -382,6 +385,7 @@ export interface BrandsSelect<T extends boolean = true> {
  */
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
+  prefix?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -449,11 +453,13 @@ export interface UsersSelect<T extends boolean = true> {
   emergencyContactCell?: T;
   emergencyContactEmailAddress?: T;
   linkedinSub?: T;
+  linkedinId?: T;
   linkedinEmailVerified?: T;
   linkedinLocale?: T;
   googleSub?: T;
   googleEmailVerified?: T;
   sub?: T;
+  discordSub?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;

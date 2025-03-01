@@ -1,13 +1,12 @@
 // THEME CREDITS: github.com/akhrarovsaid/payload-theme-quantum-leap
 // github.com/jhb-software/payload-plugins/tree/main/geocoding
-import path from "node:path";
 /* eslint-disable node/prefer-global/process */
-// import { s3Storage } from '@payloadcms/storage-s3'
+import path from "node:path";
+import { s3Storage } from '@payloadcms/storage-s3'
 import { fileURLToPath } from "node:url";
-import {
-  googleOAuth,
-         linkedinOAuth
-} from '@/cms/endpoints/auth'
+import { googleOAuth,
+         linkedinOAuth,
+         discordOAuth, } from '@/cms/endpoints/auth'
 import {Brands} from "@/db/collections"
 import { Media, Users, Emails } from "@/db/collections/models";
 import {Website, SocialLinks} from "@/db/collections/globals";
@@ -104,24 +103,25 @@ export default buildConfig({
   }),
   plugins: [
     googleOAuth,
-    linkedinOAuth
-    // process.env.NODE_ENV == 'production' && s3Storage({
-    //   collections: {
-    //     media: {
-    //       prefix:
-    //          "./media",
-    //     },
-    //   },
-    //   bucket: process.env.S3_BUCKET,
-    //   config: {
-    //     forcePathStyle: true, // Important for using Supabase
-    //     credentials: {
-    //       accessKeyId: process.env.S3_ACCESS_KEY_ID,
-    //       secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
-    //     },
-    //     region: process.env.S3_REGION,
-    //     endpoint: process.env.S3_ENDPOINT,
-    //   },
-    // }),
+    linkedinOAuth,
+    discordOAuth,
+    s3Storage({
+      collections: {
+        media: {
+          prefix:
+             "./media",
+        },
+      },
+      bucket: process.env.S3_BUCKET || "",
+      config: {
+        forcePathStyle: true, // Important for using Supabase
+        credentials: {
+          accessKeyId: process.env.S3_ACCESS_KEY_ID || "",
+          secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || "",
+        },
+        region: process.env.S3_REGION || "",
+        endpoint: process.env.S3_ENDPOINT || "",
+      },
+    }),
   ],
 });
