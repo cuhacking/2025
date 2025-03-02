@@ -110,23 +110,22 @@ export default buildConfig({
     githubOAuth,
     discordOAuth,
     googleOAuth,
-    s3Storage({
-      collections: {
-        media: {
-          prefix:
-             "./media",
-        },
+    process.env.NODE_ENV==='production' && s3Storage({
+    collections: {
+      media: {
+        prefix: "./media",
       },
-      bucket: process.env.S3_BUCKET || "",
-      config: {
-        forcePathStyle: true, // Important for using Supabase
-        credentials: {
-          accessKeyId: process.env.S3_ACCESS_KEY_ID || "",
-          secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || "",
-        },
-        region: process.env.S3_REGION || "",
-        endpoint: process.env.S3_ENDPOINT || "",
+    },
+    bucket: process.env.S3BUCKET || "",
+    config: {
+      forcePathStyle: true, // Important for using Supabase
+      credentials: {
+        accessKeyId: process.env.S3ACCESSKEYID || "",
+        secretAccessKey: process.env.S3SECRETACCESSKEY || "",
       },
-    }),
-  ],
+      region: process.env.S3REGION || "",
+      endpoint: process.env.S3ENDPOINT || "",
+    },
+  }),
+].filter(Boolean)
 });
