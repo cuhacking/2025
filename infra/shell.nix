@@ -113,6 +113,7 @@ in pkgs.mkShell {
 zellij -n zellij.config.kdl
 
 export ATAC_KEY_BINDINGS="./atac/key_bindings/vim_key_bindings.toml"
+export ATAC_MAIN_DIR="./atac/collections"
 
 stop_db
 
