@@ -1,6 +1,7 @@
 import { PayloadRequest } from "payload";
 import { OAuth2Plugin, defaultGetToken } from "payload-oauth2";
 import { baseConfig, googleStrategyConfig } from "@/cms/endpoints/auth/config"
+import {html} from '@/cms/endpoints/auth/generateEmail'
 
 export const googleOAuth = OAuth2Plugin({
   ...baseConfig,
@@ -51,6 +52,12 @@ getUserInfo: async (accessToken: string, req: PayloadRequest) => {
 
 //   console.log('Found existing user:', existingUser.docs[0])
 //       const userFromDB = existingUser.docs[0]
+
+             await req.payload.sendEmail({
+              to: user.email,
+              subject: 'Test Email for cuHacking Portal',
+              html
+            })
 
   return {
       email: user.email,
