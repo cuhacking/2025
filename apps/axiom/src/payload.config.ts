@@ -116,15 +116,15 @@ export default buildConfig({
         prefix: "./media",
       },
     },
-    bucket: process.env.S3BUCKET || "",
+    bucket: process.env.S3_BUCKET || "",
     config: {
       forcePathStyle: true, // Important for using Supabase
       credentials: {
-        accessKeyId: process.env.S3ACCESSKEYID || "",
-        secretAccessKey: process.env.S3SECRETACCESSKEY || "",
+        accessKeyId: process.env.S3_ACCESSKEYID || "",
+        secretAccessKey: process.env.S3_SECRET_ACCESSKEY || "",
       },
-      region: process.env.S3REGION || "",
-      endpoint: process.env.S3ENDPOINT || "",
+      region: process.env.S3_REGION || "",
+      endpoint: process.env.S3_ENDPOINT || "",
     },
   }),
 ].filter(Boolean)
