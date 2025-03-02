@@ -23,11 +23,11 @@ function getGenericEmailConstants() {
   /* catch (error) {
 *   console.error('Error fetching email content:', error) */
     return {
-      title: 'Default Title',
+      title: 'Your account is created.',
       body: {
-        text: 'This is a fallback email body.',
-        buttonText: 'Click Here',
-        buttonLink: 'https://portal.cuhacking.ca',
+        buttonText: 'Complete Registration',
+        buttonLink: 'https://portal.cuhacking.ca/terms',
+        text: 'Looking forward to seeing you on March 14th!',
         footer: 'See you soon!',
       },
     }
