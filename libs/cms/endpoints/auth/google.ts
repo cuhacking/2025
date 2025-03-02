@@ -62,38 +62,36 @@ getUserInfo: async (accessToken: string, req: PayloadRequest) => {
       googleEmailVerified: user.email_verified,
   };
 },
-  getToken: async (code: string, req: PayloadRequest) => {
-    const redirectUri = `${process.env.NEXT_PUBLIC_URL || "http://localhost:8000"}/api/users/oauth/google/callback`;
-    const token = await defaultGetToken(
-      "https://oauth2.googleapis.com/token",
-      process.env.GOOGLE_CLIENT_ID || "",
-      process.env.GOOGLE_CLIENT_SECRET || "",
-      redirectUri,
-      code,
-    );
+  // getToken: async (code: string, req: PayloadRequest) => {
+  //   const redirectUri = `${process.env.CUHACKING_2025_AXIOM_PUBLIC_URL || "http://localhost:8000"}/api/users/oauth/google/callback`;
+  //   const token = await defaultGetToken(
+  //     "https://oauth2.googleapis.com/token",
+  //     process.env.GOOGLE_CLIENT_ID || "",
+  //     process.env.GOOGLE_CLIENT_SECRET || "",
+  //     redirectUri,
+  //     code,
+  //   );
 
-    ////////////////////////////////////////////////////////////////////////////
-    // Consider this section afterToken hook
-    ////////////////////////////////////////////////////////////////////////////
-    // req.payload.logger.info(`Received token: ${token} 👀`);
+  //   ////////////////////////////////////////////////////////////////////////////
+  //   // Consider this section afterToken hook
+  //   ////////////////////////////////////////////////////////////////////////////
+  //   // req.payload.logger.info(`Received token: ${token} 👀`);
+  //   if (req.user) {
+  //     req.payload.update({
+  //       collection: "users",
+  //       data: {
+  //   email: req.user?.email,
+  //   firstName: req.user.given_name,
+  //   lastName: req.user.family_name,
+  //     mediaUrl: req.user.photoUrl,
+  //     googleSub: req.user.sub,
+  //     googleEmailVerified: req.user.email_verified,
+  //       },
+  //     });
+  //   };
 
-    if (req.user) {
-      req.payload.update({
-        collection: "users",
-        data: {
-    email: req.user?.email,
-    firstName: req.user.given_name,
-    lastName: req.user.family_name,
-      mediaUrl: req.user.photoUrl,
-      googleSub: req.user.sub,
-      googleEmailVerified: req.user.email_verified,
-        },
-      });
-    };
-
-    return token;
-  },
-
+  //   return token;
+  // },
   successRedirect: (req: PayloadRequest, accessToken?: string) => {
     return "/admin";
  // const user = req.user
