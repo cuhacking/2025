@@ -2,12 +2,6 @@ import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { Users } from "@/db/collections/models";
 
 export const adminConfig = {
-    autoLogin:
-process.env.NODE_ENV==="development"  && {
-          email: process.env.LOCAL_DEV_EMAIL_ADDRESS,
-          password: process.env.LOCAL_DEV_PASSWORD,
-          prefillOnly: true,
-        },
     components: { // resolves to apps/axiom/src/components, no idea why. Tried to fix it.
       // https://payload-visual-guide.vercel.app/
     meta: {
