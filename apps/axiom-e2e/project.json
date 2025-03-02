@@ -1,0 +1,11 @@
+{
+  "name": "axiom-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/axiom-e2e/src",
+  "tags": [],
+  "implicitDependencies": [
+    "axiom"
+  ],
+  "// targets": "to see all targets run: nx show project axiom-e2e --web",
+  "targets": {}
+}
