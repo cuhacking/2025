@@ -104,6 +104,7 @@ in pkgs.mkShell {
         sleep 1
         echo "This pane will close in 1..."
         sleep 1
+        echo "Happy Hacking! ⌨"
         exit 0
         ;;
       down)
@@ -116,11 +117,11 @@ in pkgs.mkShell {
         ;;
     esac
 
-zellij -n zellij.config.kdl
+export ATAC_MAIN_DIR="./atac"
+export ATAC_KEY_BINDINGS="$ATAC_MAIN_DIR/vim_key_bindings.toml"
+export ATAC_THEME="$ATAC_MAIN_DIR/postman_theme.toml"
 
-export ATAC_KEY_BINDINGS="./atac/key_bindings/vim_key_bindings.toml"
-export ATAC_MAIN_DIR="./atac/collections"
-export ATAC_THEME="./atac/themes/postman_theme.toml"
+zellij -n zellij.layout.kdl
 
 stop_db
 
