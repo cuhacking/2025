@@ -1,21 +1,11 @@
 // learn.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/sign-in-with-linkedin-v2
 import { PayloadRequest } from "payload";
 import { OAuth2Plugin, defaultGetToken } from "payload-oauth2";
+import { baseConfig, linkedinStrategyConfig } from "@/cms/endpoints/auth/config";
 
 export const linkedinOAuth = OAuth2Plugin({
-  strategyName: "linkedin",
-  enabled:
-    typeof process.env.LINKEDIN_CLIENT_ID === "string" &&
-    typeof process.env.LINKEDIN_CLIENT_SECRET === "string",
-  clientId: process.env.LINKEDIN_CLIENT_ID || "",
-  clientSecret: process.env.LINKEDIN_CLIENT_SECRET || "",
-  authorizePath: "/oauth/linkedin",
-  callbackPath: "/oauth/linkedin/callback",
-  authCollection: "users",
-  subFieldName: 'linkedinSub',
-  tokenEndpoint: "https://www.linkedin.com/oauth/v2/accessToken",
-  providerAuthorizationUrl: "https://www.linkedin.com/oauth/v2/authorization",
-  serverURL: process.env.NEXT_PUBLIC_URL || "http://localhost:8000",
+  ...baseConfig,
+  ...linkedinStrategyConfig,
   useEmailAsIdentity: true,
   scopes: [
     "openid",

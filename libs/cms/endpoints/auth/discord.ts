@@ -1,21 +1,11 @@
 // https://discord.com/developers/docs/topics/oauth2
 import { PayloadRequest } from "payload";
 import { OAuth2Plugin, defaultGetToken } from "payload-oauth2";
+import { baseConfig, discordStrategyConfig } from "@/cms/endpoints/auth/config"
 
 export const discordOAuth = OAuth2Plugin({
-  strategyName: "discord",
-  enabled:
-    typeof process.env.DISCORD_CLIENT_ID === "string" &&
-    typeof process.env.DISCORD_CLIENT_SECRET === "string",
-  clientId: process.env.DISCORD_CLIENT_ID || "",
-  clientSecret: process.env.DISCORD_CLIENT_SECRET || "",
-  authorizePath: "/oauth2/authorize",
-  callbackPath: "/oauth/discord/callback",
-  authCollection: "users",
-  subFieldName: 'discordSub',
-  tokenEndpoint: "https://discord.com/api/oauth2/token",
-  providerAuthorizationUrl: "https://discord.com/oauth2/authorize",
-  serverURL: process.env.NEXT_PUBLIC_URL || "http://localhost:8000",
+  ...baseConfig,
+  ...discordStrategyConfig,
   useEmailAsIdentity: true,
   scopes: [
     "identify",
