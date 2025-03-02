@@ -281,7 +281,6 @@ export interface User {
   googleEmailVerified?: string | null;
   githubSub?: string | null;
   discordSub?: string | null;
-  sub?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -480,7 +479,6 @@ export interface UsersSelect<T extends boolean = true> {
   googleEmailVerified?: T;
   githubSub?: T;
   discordSub?: T;
-  sub?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
