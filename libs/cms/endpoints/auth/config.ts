@@ -5,11 +5,11 @@ export const baseConfig = {
 
 export const githubStrategyConfig = {
   strategyName: "github",
+  subFieldName: 'githubSub',
   clientId: process.env.GITHUB_CLIENT_ID || "",
   clientSecret: process.env.GITHUB_CLIENT_SECRET || "",
   authorizePath: "/oauth/github",
   callbackPath: "/oauth/github/callback",
-  subFieldName: 'githubSub',
   tokenEndpoint: "https://github.com/login/oauth/access_token",
   providerAuthorizationUrl: "https://github.com/login/oauth/authorize",
   enabled:
@@ -19,11 +19,11 @@ export const githubStrategyConfig = {
 
 export const linkedinStrategyConfig = {
   strategyName: "linkedin",
+  subFieldName: 'linkedinSub',
   clientId: process.env.LINKEDIN_CLIENT_ID || "",
   clientSecret: process.env.LINKEDIN_CLIENT_SECRET || "",
   authorizePath: "/oauth/linkedin",
   callbackPath: "/oauth/linkedin/callback",
-  subFieldName: 'linkedinSub',
   tokenEndpoint: "https://www.linkedin.com/oauth/v2/accessToken",
   providerAuthorizationUrl: "https://www.linkedin.com/oauth/v2/authorization",
   enabled:
@@ -33,11 +33,11 @@ export const linkedinStrategyConfig = {
 
 export const discordStrategyConfig = {
   strategyName: "discord",
+  subFieldName: 'discordSub',
   clientId: process.env.DISCORD_CLIENT_ID || "",
   clientSecret: process.env.DISCORD_CLIENT_SECRET || "",
   authorizePath: "/oauth2/authorize",
   callbackPath: "/oauth/discord/callback",
-  subFieldName: 'discordSub',
   tokenEndpoint: "https://discord.com/api/oauth2/token",
   providerAuthorizationUrl: "https://discord.com/oauth2/authorize",
   enabled:
@@ -47,6 +47,7 @@ export const discordStrategyConfig = {
 
 export const googleStrategyConfig = {
   strategyName: "google",
+  subFieldName: 'googleSub',
   clientId: process.env.GOOGLE_CLIENT_ID || "",
   clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
   authorizePath: "/oauth/google",

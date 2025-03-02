@@ -35,7 +35,7 @@ export const linkedinOAuth = OAuth2Plugin({
       displayName: user.name,
       mediaUrl: user.picture,
       linkedinSub: user.sub,
-      linkedinId: user.id,
+      linkedinId: userVanity.id,
       linkedinEmailVerified: user.email_verified,
       linkedinLocale: user.locale,
       linkedin: userVanity.vanityName
