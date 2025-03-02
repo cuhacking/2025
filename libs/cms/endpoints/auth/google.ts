@@ -1,25 +1,16 @@
 import { PayloadRequest } from "payload";
 import { OAuth2Plugin, defaultGetToken } from "payload-oauth2";
+import { baseConfig, googleStrategyConfig } from "@/cms/endpoints/auth/config"
 
 export const googleOAuth = OAuth2Plugin({
-  enabled:
-    typeof process.env.GOOGLE_CLIENT_ID === "string" &&
-    typeof process.env.GOOGLE_CLIENT_SECRET === "string",
-  strategyName: "google",
+  ...baseConfig,
+  ...googleStrategyConfig,
   useEmailAsIdentity: true,
-  serverURL: process.env.NEXT_PUBLIC_URL || "http://localhost:8000",
-  clientId: process.env.GOOGLE_CLIENT_ID || "",
-  clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
-  authorizePath: "/oauth/google",
-  callbackPath: "/oauth/google/callback",
-  authCollection: "users",
-  tokenEndpoint: "https://oauth2.googleapis.com/token",
   scopes: [
     "openid",
     "https://www.googleapis.com/auth/userinfo.email",
     "https://www.googleapis.com/auth/userinfo.profile",
   ],
-  providerAuthorizationUrl: "https://accounts.google.com/o/oauth2/v2/auth",
 
 getUserInfo: async (accessToken: string, req: PayloadRequest) => {
   const response = await fetch(

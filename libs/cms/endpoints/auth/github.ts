@@ -1,20 +1,10 @@
 import { PayloadRequest } from "payload";
 import { OAuth2Plugin, defaultGetToken } from "payload-oauth2";
+import { baseConfig, githubStrategyConfig } from "@/cms/endpoints/auth/config";
 
 export const githubOAuth = OAuth2Plugin({
-  strategyName: "github",
-  enabled:
-    typeof process.env.GITHUB_CLIENT_ID === "string" &&
-    typeof process.env.GITHUB_CLIENT_SECRET === "string",
-  clientId: process.env.GITHUB_CLIENT_ID || "",
-  clientSecret: process.env.GITHUB_CLIENT_SECRET || "",
-  authorizePath: "/oauth/github",
-  callbackPath: "/oauth/github/callback",
-  authCollection: "users",
-  subFieldName: 'githubSub',
-  tokenEndpoint: "https://github.com/login/oauth/access_token",
-  providerAuthorizationUrl: "https://github.com/login/oauth/authorize",
-  serverURL: process.env.NEXT_PUBLIC_URL || "http://localhost:8000",
+  ...baseConfig,
+  ...githubStrategyConfig,
   useEmailAsIdentity: true,
   scopes: [
     "user",
@@ -26,8 +16,6 @@ export const githubOAuth = OAuth2Plugin({
     );
     const user = await response.json();
 
-    console.log(user)
-
     const userSocials = await fetch(
       "https://api.github.com/user/social_accounts",
       { headers: { Authorization: `Bearer ${accessToken}` } },
@@ -35,16 +23,12 @@ export const githubOAuth = OAuth2Plugin({
 
     const socials = await userSocials.json()
 
-    console.log(socials)
-
     const userEmails = await fetch(
       "https://api.github.com/user/emails",
       { headers: { Authorization: `Bearer ${accessToken}` } },
     );
 
     const emails = await userEmails.json()
-
-    console.log(emails)
 
     return {
       email: emails[0].email,
