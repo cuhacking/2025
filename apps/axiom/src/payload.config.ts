@@ -8,6 +8,7 @@ import { linkedinOAuth, githubOAuth, discordOAuth, googleOAuth } from '@/cms/end
 import {Brands} from "@/db/collections"
 import { Media, Users, Emails } from "@/db/collections/models";
 import {Website, SocialLinks} from "@/db/collections/globals";
+import { resendAdapter } from '@payloadcms/email-resend'
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { buildConfig } from "payload";
@@ -98,6 +99,11 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URI,
     },
     generateSchemaOutputFile: path.resolve("../../libs/db/schema.ts"),
+  }),
+  email: resendAdapter({
+    defaultFromAddress: 'info@cuhacking.ca',
+    defaultFromName: 'cuHacking Team',
+    apiKey: process.env.RESEND_API_KEY || '',
   }),
   plugins: [
     linkedinOAuth,
