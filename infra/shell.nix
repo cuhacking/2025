@@ -98,6 +98,12 @@ in pkgs.mkShell {
     case "${DB}" in
       up)
         start_db
+        echo "This pane will close in 3..."
+        sleep 1
+        echo "This pane will close in 2..."
+        sleep 1
+        echo "This pane will close in 1..."
+        sleep 1
         exit 0
         ;;
       down)
