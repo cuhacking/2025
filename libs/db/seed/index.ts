@@ -76,7 +76,6 @@ export async function seed({
           instagram: brand.instagram,
           linktree: brand.linktree,
           figma: brand.figma,
-          relatedBrands: [],
         },
       })
       log(`✅ Inserted brand: ${brand.name}`)

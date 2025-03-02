@@ -80,17 +80,17 @@ export const Users: CollectionConfig = {
       type: 'collapsible',
       label: ({ data }) => data?.title || 'Brand & Socials',
       fields: [
-        {
-          name: 'brandRelation',
-          type: 'relationship',
-          relationTo: 'brands',
-          hasMany: false,
-          label: 'Associated Brand',
-          admin: {
-            description:
-              'This could be a company, university, or student club.',
-          },
-        },
+        // {
+        //   name: 'brandRelation',
+        //   type: 'relationship',
+        //   relationTo: 'brands',
+        //   hasMany: false,
+        //   label: 'Associated Brand',
+        //   admin: {
+        //     description:
+        //       'This could be a company, university, or student club.',
+        //   },
+        // },
         { name: 'linkedin', type: 'text', label: 'LinkedIn', admin: { readOnly: true,
         } },
         { name: 'discord', type: 'text', label: 'Discord', admin: { readOnly: true } },

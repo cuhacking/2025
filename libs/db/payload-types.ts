@@ -210,10 +210,6 @@ export interface User {
   displayName?: string | null;
   pronouns?: ('he/him' | 'she/her' | 'they/them' | 'other') | null;
   avatar?: (number | null) | Media;
-  /**
-   * This could be a company, university, or student club.
-   */
-  brandRelation?: (number | null) | Brand;
   linkedin?: string | null;
   discord?: string | null;
   github?: string | null;
@@ -454,7 +450,6 @@ export interface UsersSelect<T extends boolean = true> {
   displayName?: T;
   pronouns?: T;
   avatar?: T;
-  brandRelation?: T;
   linkedin?: T;
   discord?: T;
   github?: T;
