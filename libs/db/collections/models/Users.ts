@@ -12,6 +12,20 @@ export const authenticated: IsAuthenticated = ({ req }) => Boolean(req.user)
 export const Users: CollectionConfig = {
   slug: 'users',
   auth: true,
+  group: adminGroups.featured,
+  useAsTitle: 'displayName',
+  defaultColumns: [
+    'displayName',
+    'pronouns',
+    'email',
+    'updatedAt',
+    'createdAt',
+    'id',
+  ],
+  pagination: {
+    defaultLimit: 50,
+    limits: [10, 20, 50],
+  },
   access: {
     admin: authenticated,
     create: authenticated,
@@ -30,20 +44,6 @@ export const Users: CollectionConfig = {
           height: 568,
         },
       ],
-    },
-    group: adminGroups.featured,
-    useAsTitle: 'displayName',
-    defaultColumns: [
-      'displayName',
-      'pronouns',
-      'email',
-      'updatedAt',
-      'createdAt',
-      'id',
-    ],
-    pagination: {
-      defaultLimit: 50,
-      limits: [10, 20, 50],
     },
   },
   fields: [
