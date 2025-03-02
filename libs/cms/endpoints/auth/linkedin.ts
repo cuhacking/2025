@@ -18,6 +18,7 @@ export const linkedinOAuth = OAuth2Plugin({
       "https://api.linkedin.com/v2/userinfo?fields=sub,email_verified,name,locale,given_name,family_name,email,picture",
       { headers: { Authorization: `Bearer ${accessToken}` } },
     );
+
     const user = await response.json();
 
     const vanityResponse = await fetch(
