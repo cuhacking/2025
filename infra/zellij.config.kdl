@@ -1,6 +1,7 @@
 // https://kdl.dev
 
 theme "gruvbox-dark"
+mirror_session true
 
 ui {
     pane_frames {
