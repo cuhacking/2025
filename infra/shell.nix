@@ -121,7 +121,7 @@ export ATAC_MAIN_DIR="./atac"
 export ATAC_KEY_BINDINGS="$ATAC_MAIN_DIR/vim_key_bindings.toml"
 export ATAC_THEME="$ATAC_MAIN_DIR/postman_theme.toml"
 
-zellij -n zellij.layout.kdl
+zellij --config zellij.config.kdl -n zellij.layout.kdl
 
 stop_db
 
