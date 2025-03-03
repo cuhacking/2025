@@ -1,0 +1,5 @@
+export {linkedinOAuth} from './strategies/linkedin'
+export {githubOAuth} from './strategies/github'
+export{discordOAuth} from './strategies/discord'
+export {googleOAuth} from './strategies/google'
+export * from './config'

@@ -1,9 +1,24 @@
-/* eslint-disable node/prefer-global/process */
 /* eslint-disable node/prefer-global/buffer */
-import type { File, Payload, PayloadRequest } from 'payload'
+import type { CollectionSlug, File, Payload, PayloadRequest } from 'payload'
 import { brandSeedData } from '@/db/collections/Brands'
 import { seedEmails } from '@/db/collections/models'
 import { userData } from '@/db/collections/models/Users'
+
+const collections: CollectionSlug[] = [
+  'media',
+  'users',
+  // 'forms',
+  // 'form-submissions',
+  // 'search',
+  'media',
+  'brands',
+]
+
+// const globals: GlobalSlug[] = [
+//   // '2025',
+//   'social-links',
+//   'website',
+// ]
 
 export async function seed({
   payload,
@@ -41,23 +56,37 @@ export async function seed({
     }
   }
 
-  async function clearCollection(collection: string, exclude?: string) {
-    log(`🗑 Clearing existing ${collection}...`)
-    const whereClause = exclude ? { email: { not_equals: exclude } } : {}
-    await payload.db.deleteMany({ collection, where: whereClause, req })
-    log(`✅ Existing ${collection} cleared.`)
-  }
+  // async function clearCollection(collection: string, exclude?: string) {
+  //   log(`🗑 Clearing existing ${collection}...`)
+  //   const whereClause = exclude ? { email: { not_equals: exclude } } : {}
+  //   await payload.db.deleteMany({ collection, where: whereClause, req })
+  //   log(`✅ Existing ${collection} cleared.`)
+  // }
 
-  await clearCollection('brands')
-  await clearCollection('users', process.env.LOCAL_DEV_EMAIL_ADDRESS)
+  // await clearCollection('brands')
+  // await clearCollection('users', process.env.LOCAL_DEV_EMAIL_ADDRESS)
+
+  // await Promise.all(
+  //   globals.map(global => payload.updateGlobal({
+  //     slug: global,
+  //     data: {},
+  //     depth: 0,
+  //     req,
+  //   })),
+  // )
+
+  await Promise.all(
+    collections.map(collection => payload.db.deleteMany({ collection, req, where: {} })),
+  )
+
+  await Promise.all(
+    collections
+      .filter(collection => Boolean(payload.collections[collection].config.versions))
+      .map(collection => payload.db.deleteVersions({ collection, req, where: {} })),
+  )
 
   log('📸 Uploading brand logos & inserting brands...')
 
-  // await seedBrands(payload)
-
-  // async function seedEmails(payload: Payload) {
-  //   try {
-  //
   await Promise.all(
     brandSeedData.map(async (brand) => {
       const symbol = await getOrUploadMedia(brand.symbol, `${brand.name.replace(/ /g, '-').toLowerCase()}-logo-symbol`, `${brand.name} Logo`)
@@ -82,31 +111,24 @@ export async function seed({
     }),
   )
 
-  //   }
-  //   catch (error) {
-  //     console.error('Error seeding brand data:', error)
-  //   }
-  // }
-
   log('📸 Uploading user avatars & inserting users...')
+
   await Promise.all(
     userData.map(async (user) => {
       const media = await getOrUploadMedia(user.mediaUrl, `${user.firstName.toLowerCase()}-${user.lastName.toLowerCase()}-avatar.png`, `${user.firstName} ${user.lastName}'s avatar`)
+
       await payload.create({
         collection: 'users',
         data: {
           email: user.email,
-          password: user.password,
           firstName: user.firstName,
           lastName: user.lastName,
           displayName: user.displayName,
           pronouns: user.pronouns,
           avatar: media?.id || null,
-          linkedIn: user.linkedIn || undefined,
-          discord: user.discord || undefined,
-          github: user.github || undefined,
-          behance: user.behance || undefined,
-          website: user.website || undefined,
+          linkedinHandle: user.linkedinHandle || undefined,
+          githubHtmlUrl: user.githubHtmlUrl || undefined,
+          website: user.linkedinHandle || undefined,
           dietaryRestrictions: user.dietaryRestrictions || undefined,
           allergies: user.allergies || undefined,
           tshirtSize: user.tshirtSize,

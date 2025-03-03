@@ -1,10 +1,8 @@
 import { PayloadRequest } from "payload";
-import { OAuth2Plugin, defaultGetToken } from "payload-oauth2";
-import { baseConfig, githubStrategyConfig } from "@/cms/endpoints/auth/config";
+import { OAuth2Plugin } from "payload-oauth2";
+import { githubStrategyConfig } from "@/cms/auth/config";
 
 export const githubOAuth = OAuth2Plugin({
-  ...baseConfig,
-  ...githubStrategyConfig,
   useEmailAsIdentity: true,
   scopes: [
     "user",
@@ -30,8 +28,38 @@ export const githubOAuth = OAuth2Plugin({
 
     const emails = await userEmails.json()
 
+const findBestEmail = async () => {
+  let selectedEmail = null;
+
+  for (const emailObj of emails) {
+    if (emailObj.verified) {
+      const existingUser = await req.payload.find({
+        collection: "users",
+        where: { email: { equals: emailObj.email } },
+      });
+
+      if (existingUser.docs.length > 0) {
+        return emailObj.email;
+      }
+
+      if (emailObj.primary && !selectedEmail) {
+        selectedEmail = emailObj.email;
+      } else if (!selectedEmail) {
+        selectedEmail = emailObj.email;
+      }
+    }
+  }
+
+  return selectedEmail; // Return the best email found
+};
+
+const bestEmail = await findBestEmail();
+
+const linkedinUrl = socials.find(social => social.provider === "linkedin")?.url || null;
+const instagramUrl = socials.find(social => social.provider === "instagram")?.url || null;
+
     return {
-      email: emails[0].email,
+      email: bestEmail,
       github: user.login,
       githubId: user.id,
       githubAvatarUrl: user.avatar_url,
@@ -43,17 +71,10 @@ export const githubOAuth = OAuth2Plugin({
       githubLocation: user.location,
       githubHireable: user.hireable,
       githubPublicRepos: user.public_repos,
-      githubLinkedIn: socials[0]?.url,
-      githubInstagram: socials[2]?.url,
-      githubEmail: emails[0]?.email
+ githubLinkedin: linkedinUrl,
+  githubInstagram: instagramUrl,
+      githubEmail: bestEmail,
     };
   },
-  successRedirect: (req: PayloadRequest, accessToken?: string) => {
-    return "/admin";
-  },
-  failureRedirect: (req, err) => {
-    req.payload.logger.error(err);
-    return "/admin/login";
-  },
+  ...githubStrategyConfig
 });
-
