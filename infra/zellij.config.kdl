@@ -194,8 +194,8 @@ keybinds {
         unbind "Alt k" "Alt Up" { MoveFocus "Up"; }
         bind "Ctrl left" { MoveFocusOrTab "Left"; }
         bind "Ctrl right" { MoveFocusOrTab "Right"; }
-        bind "Ctrl up" { MoveFocusOrTab "Up"; }
-        bind "Ctrl down" { MoveFocusOrTab "Down"; }
+        bind "Ctrl up" { MoveFocus "Up"; }
+        bind "Ctrl down" { MoveFocus "Down"; }
         bind "Alt =" "Alt +" { Resize "Increase"; }
         bind "Alt -" { Resize "Decrease"; }
         bind "Alt [" { PreviousSwapLayout; }
