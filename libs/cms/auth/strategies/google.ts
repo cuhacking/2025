@@ -51,19 +51,10 @@ getUserInfo: async (accessToken: string, req: PayloadRequest) => {
 //   console.log('Found existing user:', existingUser.docs[0])
 //       const userFromDB = existingUser.docs[0]
 
-             await req.payload.sendEmail({
-              to: user.email,
-              subject: 'Test Email for cuHacking Portal',
-              html: await generateEmail()
-            })
-
   return {
-      email: user.email,
-      displayName: user.name,
-    firstName: user.given_name,
-    lastName: user.family_name,
-      mediaUrl: user.photoUrl,
+    email: user.email,
       googleSub: user.sub,
+    googleEmail: user.email,
       googleEmailVerified: user.email_verified,
   };
 },
