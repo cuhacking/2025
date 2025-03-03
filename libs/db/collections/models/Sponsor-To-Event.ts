@@ -1,12 +1,13 @@
 import type { CollectionConfig } from 'payload'
+import { adminGroups } from '@/db/collections/adminGroups'
 
 export const SponsorToEvent: CollectionConfig = {
   slug: 'sponsor-to-event',
   admin: {
     useAsTitle: 'formattedTitle',
+    group: adminGroups.relations
   },
   fields: [
-
     {
       name: 'formattedTitle',
       type: 'text',

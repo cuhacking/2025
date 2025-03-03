@@ -2,6 +2,7 @@
 /* eslint-disable ts/no-use-before-define */
 /* eslint-disable no-console */
 import type { CollectionConfig, Payload } from 'payload'
+import { adminGroups } from '@/db/collections/adminGroups'
 
 export const Emails: CollectionConfig = {
   slug: 'emails',
@@ -9,6 +10,7 @@ export const Emails: CollectionConfig = {
     read: () => true,
   },
   admin: {
+    group: adminGroups.communication,
     livePreview: {
       url: `${process.env.CUHACKING_2025_EMAIL_TEMPLATES_SITE_LOCAL_URL}/preview/cuhacking/registered-for-hackathon`,
       breakpoints: [
@@ -20,7 +22,6 @@ export const Emails: CollectionConfig = {
         },
       ],
     },
-    group: 'Collections',
     defaultColumns: [
       'title',
     ],

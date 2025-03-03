@@ -1,7 +1,19 @@
 // github.com/jhb-software/payload-plugins/tree/main/geocoding
 /* eslint-disable node/prefer-global/process */
 import {Brands, Roles} from "@/db/collections"
-import { Media, Emails, Users, Teams } from "@/db/collections/models";
+import {Sponsor,
+        Organization,
+        ChallengePrize,
+        HostToEvent,
+        SponsorToEvent,
+        UserToEvent,
+        GeneralEvent,
+        BaseEvent,
+        ApplicationForm,
+        Media,
+        Emails,
+        Users,
+        Teams } from "@/db/collections/models";
 import {Constants} from "@/db/globals";
 import { linkedinOAuth, githubOAuth, discordOAuth, googleOAuth } from '@/cms/auth'
 
@@ -15,12 +27,21 @@ export const baseConfig = {
     Constants,
   ],
   collections: [
+    Organization,
+    Sponsor,
     Users,
     Teams,
     Brands,
     Media,
     Emails,
-    Roles
+    Roles,
+    BaseEvent,
+    ApplicationForm,
+    GeneralEvent,
+    UserToEvent,
+    SponsorToEvent,
+    HostToEvent,
+    ChallengePrize,
   ],
   email: resendAdapter({
     defaultFromAddress: 'info@cuhacking.ca',

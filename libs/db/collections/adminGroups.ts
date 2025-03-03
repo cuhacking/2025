@@ -1,5 +1,7 @@
 export const adminGroups = {
-  featured: 'Users',
-  website: 'website',
-  globals: 'site wide',
+  globals: '🫙 Globals',
+  relations: '↔ Relations',
+  communication: '✉ Communication',
+  featured: '🫂 Users',
+  events: '🍾 Events',
 }
