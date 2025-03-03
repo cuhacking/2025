@@ -64,7 +64,7 @@ async function getBrandLinks() {
 
   const { linkMap, nameMap } = query.docs[0].links.reduce(
     (acc, { name, link }) => {
-      acc.linkMap.set(name, link)
+      acc.linkMap.set(name, `https://${link}`)
       acc.nameMap.set(name, name)
       return acc
     },
