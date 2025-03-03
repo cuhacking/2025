@@ -65,9 +65,11 @@ export interface Config {
     users: UserAuthOperations;
   };
   collections: {
+    teams: Team;
     brands: Brand;
     media: Media;
     emails: Email;
+    roles: Role;
     users: User;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -75,9 +77,11 @@ export interface Config {
   };
   collectionsJoins: {};
   collectionsSelect: {
+    teams: TeamsSelect<false> | TeamsSelect<true>;
     brands: BrandsSelect<false> | BrandsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     emails: EmailsSelect<false> | EmailsSelect<true>;
+    roles: RolesSelect<false> | RolesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -87,12 +91,10 @@ export interface Config {
     defaultIDType: number;
   };
   globals: {
-    website: Website;
-    'social-links': SocialLink;
+    constants: Constant;
   };
   globalsSelect: {
-    website: WebsiteSelect<false> | WebsiteSelect<true>;
-    'social-links': SocialLinksSelect<false> | SocialLinksSelect<true>;
+    constants: ConstantsSelect<false> | ConstantsSelect<true>;
   };
   locale: null;
   user: User & {
@@ -120,6 +122,36 @@ export interface UserAuthOperations {
     email: string;
     password: string;
   };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "teams".
+ */
+export interface Team {
+  id: number;
+  name?: string | null;
+  avatar?: (number | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media".
+ */
+export interface Media {
+  id: number;
+  alt: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -154,25 +186,6 @@ export interface Brand {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
- */
-export interface Media {
-  id: number;
-  alt: string;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "emails".
  */
 export interface Email {
@@ -189,10 +202,23 @@ export interface Email {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "roles".
+ */
+export interface Role {
+  id: number;
+  name: string;
+  access: string;
+  admin?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
   id: number;
+  roles?: ('admin' | 'user')[] | null;
   displayName?: string | null;
   firstName?: string | null;
   middleName?: string | null;
@@ -290,6 +316,10 @@ export interface PayloadLockedDocument {
   id: number;
   document?:
     | ({
+        relationTo: 'teams';
+        value: number | Team;
+      } | null)
+    | ({
         relationTo: 'brands';
         value: number | Brand;
       } | null)
@@ -300,6 +330,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'emails';
         value: number | Email;
+      } | null)
+    | ({
+        relationTo: 'roles';
+        value: number | Role;
       } | null)
     | ({
         relationTo: 'users';
@@ -346,6 +380,16 @@ export interface PayloadMigration {
   batch?: number | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "teams_select".
+ */
+export interface TeamsSelect<T extends boolean = true> {
+  name?: T;
+  avatar?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -414,9 +458,21 @@ export interface EmailsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "roles_select".
+ */
+export interface RolesSelect<T extends boolean = true> {
+  name?: T;
+  access?: T;
+  admin?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  roles?: T;
   displayName?: T;
   firstName?: T;
   middleName?: T;
@@ -499,40 +555,174 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "website".
+ * via the `definition` "constants".
  */
-export interface Website {
+export interface Constant {
   id: number;
-  links?: string | null;
+  portal?: {
+    dashboard?: {
+      cards?:
+        | {
+            title?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+    };
+    login?: string | null;
+    terms?: {
+      title?: string | null;
+      description?: string | null;
+      accordion?:
+        | {
+            title?: string | null;
+            text?: string | null;
+            checkbox?: boolean | null;
+            checkboxLabel?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+    };
+    profile?: string | null;
+    registration?: string | null;
+  };
+  website?: {
+    header?: {
+      logo?: (number | null) | Media;
+      links?:
+        | {
+            text?: string | null;
+            link?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+    };
+    hero?: string | null;
+    about?: string | null;
+    events?: string | null;
+    sponsors?: string | null;
+    faq?:
+      | {
+          question?: string | null;
+          answers?:
+            | {
+                bullet?: string | null;
+                id?: string | null;
+              }[]
+            | null;
+          id?: string | null;
+        }[]
+      | null;
+    footer?:
+      | {
+          logo?: (number | null) | Media;
+          links?:
+            | {
+                text?: string | null;
+                link?: string | null;
+                id?: string | null;
+              }[]
+            | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  settings?: {
+    brand?: string | null;
+    year?: number | null;
+  };
+  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "social-links".
+ * via the `definition` "constants_select".
  */
-export interface SocialLink {
-  id: number;
-  brands?: (number | Brand)[] | null;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "website_select".
- */
-export interface WebsiteSelect<T extends boolean = true> {
-  links?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "social-links_select".
- */
-export interface SocialLinksSelect<T extends boolean = true> {
-  brands?: T;
+export interface ConstantsSelect<T extends boolean = true> {
+  portal?:
+    | T
+    | {
+        dashboard?:
+          | T
+          | {
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    id?: T;
+                  };
+            };
+        login?: T;
+        terms?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              accordion?:
+                | T
+                | {
+                    title?: T;
+                    text?: T;
+                    checkbox?: T;
+                    checkboxLabel?: T;
+                    id?: T;
+                  };
+            };
+        profile?: T;
+        registration?: T;
+      };
+  website?:
+    | T
+    | {
+        header?:
+          | T
+          | {
+              logo?: T;
+              links?:
+                | T
+                | {
+                    text?: T;
+                    link?: T;
+                    id?: T;
+                  };
+            };
+        hero?: T;
+        about?: T;
+        events?: T;
+        sponsors?: T;
+        faq?:
+          | T
+          | {
+              question?: T;
+              answers?:
+                | T
+                | {
+                    bullet?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+        footer?:
+          | T
+          | {
+              logo?: T;
+              links?:
+                | T
+                | {
+                    text?: T;
+                    link?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+      };
+  settings?:
+    | T
+    | {
+        brand?: T;
+        year?: T;
+      };
+  _status?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

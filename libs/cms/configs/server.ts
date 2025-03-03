@@ -1,11 +1,10 @@
 // github.com/jhb-software/payload-plugins/tree/main/geocoding
 /* eslint-disable node/prefer-global/process */
-import {Brands} from "@/db/collections"
-import { Media, Emails, Users } from "@/db/collections/models";
-import {Website, SocialLinks} from "@/db/collections/globals";
+import {Brands, Roles} from "@/db/collections"
+import { Media, Emails, Users, Teams } from "@/db/collections/models";
+import {Constants} from "@/db/globals";
 import { linkedinOAuth, githubOAuth, discordOAuth, googleOAuth } from '@/cms/auth'
 
-// Adapters
 import { resendAdapter } from '@payloadcms/email-resend'
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { s3Storage } from '@payloadcms/storage-s3'
@@ -13,14 +12,15 @@ import sharp from "sharp";
 
 export const baseConfig = {
   globals: [
-    Website,
-    SocialLinks
+    Constants,
   ],
   collections: [
     Users,
+    Teams,
     Brands,
     Media,
-    Emails
+    Emails,
+    Roles
   ],
   email: resendAdapter({
     defaultFromAddress: 'info@cuhacking.ca',

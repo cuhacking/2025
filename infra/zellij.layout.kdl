@@ -38,7 +38,7 @@ layout {
         }
         pane split_direction="vertical" {
                 pane command="browsh" name="Web Browser Preview" cwd="../" {
-                    args "http://localhost:8000"
+                    args "http://localhost:8000" "http://localhost:5173" "http://localhost:5800" "http://localhost:3000"
                     // args "http://localhost:5173"
                     // args "http://localhost:8000" "http://localhost:3000" "http://localhost:5173"
                     // args "http://localhost:5400" "http://localhost:61000" "http://localhost:5800" "http://local.drizzle.studio" "http://localhost:3030"

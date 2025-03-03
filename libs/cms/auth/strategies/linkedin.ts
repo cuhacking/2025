@@ -97,11 +97,20 @@ const existingUser = await req.payload.find({
 
     if (existingUser.docs.length !== 0) {
       if (existingUser.docs[0].avatar === null){
-    const { id, vanityName, imageUrl } = await fetchLinkedInProfileData(accessToken);
-    const filename = `${user.given_name.toLowerCase()}-${user.family_name.toLowerCase()}-avatar.png`;
-    const avatarId = imageUrl
-      ? await getOrUploadMedia(req.payload, req, imageUrl, filename, `${user.given_name} ${user.family_name}'s avatar`)
-      : null;
+
+      const { id, vanityName, imageUrl } = await fetchLinkedInProfileData(accessToken);
+      const filename = `${user.given_name.toLowerCase()}-${user.family_name.toLowerCase()}-avatar.png`;
+      const avatarId = imageUrl
+        ? await getOrUploadMedia(req.payload, req, imageUrl, filename, `${user.given_name} ${user.family_name}'s avatar`)
+        : null;
+
+
+      await req.payload.sendEmail({
+      to: user.email,
+      subject: 'Welcome to cuHacking 2025',
+      html: await generateEmail()
+    })
+
     return {
       email: user.email,
       firstName: user.given_name,

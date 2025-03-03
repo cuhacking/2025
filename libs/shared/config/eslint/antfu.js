@@ -13,7 +13,7 @@ export default antfu({
     'scaffold-examples/',
     // TODO: remove after monorepo integration is complete
     'apps/axiom/',
-    'libs/db/schema.ts',
+    'libs/db/',
     'libs/db/payload-types.ts',
     'libs/cms/',
     'apps/slides/slides.md',

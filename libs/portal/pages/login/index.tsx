@@ -1,17 +1,5 @@
 import dashboard_background from '@cuhacking/portal/assets/backgrounds/dashboard-bg-1.webp'
 import { LoginCallToAction } from '@cuhacking/portal/features/login'
-import { createAuthClient } from 'better-auth/react'
-
-export const authClient = createAuthClient({
-  baseURL: process.env.development ? process.env.CUHACKING_2025_AXIOM_LOCAL_URL : process.env.CUHACKING_2025_AXIOM_PUBLIC_URL,
-})
-
-export const {
-  signIn,
-  signOut,
-  signUp,
-  useSession,
-} = authClient
 
 export function Login() {
   return (

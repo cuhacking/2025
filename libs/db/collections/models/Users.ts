@@ -1,13 +1,11 @@
 // https://github.com/shefing/payload-tools/tree/main/packages/authorization
 /* eslint-disable node/prefer-global/process */
-
-import type { User } from '@/db/payload-types'
-import type { AccessArgs, CollectionConfig } from 'payload'
-import { adminGroups } from '../adminGroups'
-
-type IsAuthenticated = (args: AccessArgs<User>) => boolean
-
-export const authenticated: IsAuthenticated = ({ req }) => Boolean(req.user)
+import type { CollectionConfig } from 'payload'
+import { admins, adminsAndUser, anyone,
+  // checkRole
+} from '@/db/access'
+// import { authenticated, isAdminFieldLevel } from '@/db/access'
+import { adminGroups } from '@/db/collections/adminGroups'
 
 export const Users: CollectionConfig = {
   slug: 'users',
@@ -19,12 +17,16 @@ export const Users: CollectionConfig = {
     },
   },
   access: {
-    admin: authenticated,
-    create: authenticated,
-    delete: authenticated,
-    read: authenticated,
-    update: authenticated,
+    // admin: ({ req: { user } }) => checkRole(['admin'], user),
+    admin: anyone,
+    read: adminsAndUser,
+    create: anyone,
+    update: adminsAndUser,
+    delete: admins,
   },
+  // hooks: {
+  //   afterChange: [loginAfterCreate],
+  // },
   admin: {
     livePreview: {
       url: `${process.env.CUHACKING_2025_PORTAL_LOCAL_URL}/profile`,
@@ -57,6 +59,25 @@ export const Users: CollectionConfig = {
     },
   },
   fields: [
+    {
+      name: 'roles',
+      type: 'select',
+      hasMany: true,
+      saveToJWT: true,
+      // hooks: {
+      //   beforeChange: [protectRoles],
+      // },
+      options: [
+        {
+          label: 'Admin',
+          value: 'admin',
+        },
+        {
+          label: 'User',
+          value: 'user',
+        },
+      ],
+    },
     {
       type: 'collapsible',
       label: ({ data }) => data?.title || 'Personal Information',
