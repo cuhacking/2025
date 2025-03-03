@@ -170,16 +170,6 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
-  sizes?: {
-    thumbnail?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -203,17 +193,12 @@ export interface Email {
  */
 export interface User {
   id: number;
+  displayName?: string | null;
   firstName?: string | null;
   middleName?: string | null;
   lastName?: string | null;
-  displayName?: string | null;
   pronouns?: ('he/him' | 'she/her' | 'they/them' | 'other') | null;
   avatar?: (number | null) | Media;
-  linkedin?: string | null;
-  discord?: string | null;
-  github?: string | null;
-  behance?: string | null;
-  website?: string | null;
   dietaryRestrictions?:
     | (
         | 'vegetarian'
@@ -260,27 +245,32 @@ export interface User {
   emergencyContactFullName?: string | null;
   emergencyContactCell?: string | null;
   emergencyContactEmailAddress?: string | null;
-  linkedinSub?: string | null;
+  website?: string | null;
+  behance?: string | null;
+  linkedinVanity?: string | null;
   linkedinId?: string | null;
-  linkedinEmailVerified?: string | null;
+  linkedinEmailVerified?: boolean | null;
   linkedinLocale?: string | null;
+  githubUrl?: string | null;
+  githubEmail?: string | null;
   githubId?: string | null;
   githubAvatarUrl?: string | null;
   githubType?: string | null;
-  githubUrl?: string | null;
   githubHtmlUrl?: string | null;
   githubName?: string | null;
   githubBlog?: string | null;
   githubLocation?: string | null;
   githubHireable?: string | null;
   githubPublicRepos?: string | null;
-  githubLinkedIn?: string | null;
+  githubLinkedin?: string | null;
   githubInstagram?: string | null;
-  githubEmail?: string | null;
-  googleSub?: string | null;
-  googleEmailVerified?: string | null;
+  discordEmailVerified?: boolean | null;
+  googleEmail?: string | null;
+  googleEmailVerified?: boolean | null;
+  linkedinSub?: string | null;
   githubSub?: string | null;
   discordSub?: string | null;
+  googleSub?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -404,20 +394,6 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
-  sizes?:
-    | T
-    | {
-        thumbnail?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
-      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -441,44 +417,44 @@ export interface EmailsSelect<T extends boolean = true> {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  displayName?: T;
   firstName?: T;
   middleName?: T;
   lastName?: T;
-  displayName?: T;
   pronouns?: T;
   avatar?: T;
-  linkedin?: T;
-  discord?: T;
-  github?: T;
-  behance?: T;
-  website?: T;
   dietaryRestrictions?: T;
   allergies?: T;
   tshirtSize?: T;
   emergencyContactFullName?: T;
   emergencyContactCell?: T;
   emergencyContactEmailAddress?: T;
-  linkedinSub?: T;
+  website?: T;
+  behance?: T;
+  linkedinVanity?: T;
   linkedinId?: T;
   linkedinEmailVerified?: T;
   linkedinLocale?: T;
+  githubUrl?: T;
+  githubEmail?: T;
   githubId?: T;
   githubAvatarUrl?: T;
   githubType?: T;
-  githubUrl?: T;
   githubHtmlUrl?: T;
   githubName?: T;
   githubBlog?: T;
   githubLocation?: T;
   githubHireable?: T;
   githubPublicRepos?: T;
-  githubLinkedIn?: T;
+  githubLinkedin?: T;
   githubInstagram?: T;
-  githubEmail?: T;
-  googleSub?: T;
+  discordEmailVerified?: T;
+  googleEmail?: T;
   googleEmailVerified?: T;
+  linkedinSub?: T;
   githubSub?: T;
   discordSub?: T;
+  googleSub?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;

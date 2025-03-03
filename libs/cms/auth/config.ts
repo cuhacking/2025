@@ -1,6 +1,22 @@
+import { PayloadRequest } from "payload";
+
 export const baseConfig = {
   serverURL: process.env.NODE_ENV==="development" ? process.env.CUHACKING_2025_AXIOM_LOCAL_URL : process.env.CUHACKING_2025_AXIOM_PUBLIC_URL,
-  authCollection: 'users'
+  authCollection: 'users',
+  successRedirect: (req: PayloadRequest, accessToken?: string) => {
+    return "/admin";
+ // const user = req.user
+ //    if (user && Array.isArray(user.roles)) {
+ //      if (user.roles.includes('admin')) {
+ //        return '/admin'
+ //      }
+ //    }
+ //    return '/' // Default redirect for customers
+  },
+  failureRedirect: (req: PayloadRequest, err) => {
+    req.payload.logger.error(err);
+    return "/admin/login";
+  },
 }
 
 export const githubStrategyConfig = {
@@ -15,6 +31,7 @@ export const githubStrategyConfig = {
   enabled:
     typeof process.env.GITHUB_CLIENT_ID === "string" &&
     typeof process.env.GITHUB_CLIENT_SECRET === "string",
+  ...baseConfig
 };
 
 export const linkedinStrategyConfig = {
@@ -29,6 +46,7 @@ export const linkedinStrategyConfig = {
   enabled:
     typeof process.env.LINKEDIN_CLIENT_ID === "string" &&
     typeof process.env.LINKEDIN_CLIENT_SECRET === "string",
+  ...baseConfig
 };
 
 export const discordStrategyConfig = {
@@ -43,6 +61,7 @@ export const discordStrategyConfig = {
   enabled:
     typeof process.env.DISCORD_CLIENT_ID === "string" &&
     typeof process.env.DISCORD_CLIENT_SECRET === "string",
+  ...baseConfig
 };
 
 export const googleStrategyConfig = {
@@ -57,4 +76,5 @@ export const googleStrategyConfig = {
   enabled:
     typeof process.env.GOOGLE_CLIENT_ID === "string" &&
     typeof process.env.GOOGLE_CLIENT_SECRET === "string",
+  ...baseConfig
 };

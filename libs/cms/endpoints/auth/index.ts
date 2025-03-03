@@ -1,5 +1,0 @@
-export {linkedinOAuth} from './linkedin'
-export {githubOAuth} from './github'
-export{discordOAuth} from './discord'
-export {googleOAuth} from './google'
-export * from './config'

@@ -26,11 +26,7 @@ export const Media: CollectionConfig = {
     },
   ],
   upload: {
-    adminThumbnail: 'thumbnail',
+    displayPreview: true,
     focalPoint: true,
-    imageSizes: [{
-      name: 'thumbnail',
-      width: 300,
-    }],
   },
 }

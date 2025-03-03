@@ -1,11 +1,9 @@
 import { PayloadRequest } from "payload";
 import { OAuth2Plugin, defaultGetToken } from "payload-oauth2";
-import { baseConfig, googleStrategyConfig } from "@/cms/endpoints/auth/config"
-import {generateEmail} from '@/cms/endpoints/auth/generateEmail'
+import { googleStrategyConfig } from "@/cms/auth/config"
+import {generateEmail} from '@/cms/utils'
 
 export const googleOAuth = OAuth2Plugin({
-  ...baseConfig,
-  ...googleStrategyConfig,
   useEmailAsIdentity: true,
   scopes: [
     "openid",
@@ -99,18 +97,5 @@ getUserInfo: async (accessToken: string, req: PayloadRequest) => {
 
   //   return token;
   // },
-  successRedirect: (req: PayloadRequest, accessToken?: string) => {
-    return "/admin";
- // const user = req.user
- //    if (user && Array.isArray(user.roles)) {
- //      if (user.roles.includes('admin')) {
- //        return '/admin'
- //      }
- //    }
- //    return '/' // Default redirect for customers
-  },
-  failureRedirect: (req, err) => {
-    req.payload.logger.error(err);
-    return "/admin/login";
-  },
+  ...googleStrategyConfig,
 });

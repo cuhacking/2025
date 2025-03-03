@@ -3,7 +3,7 @@
 import {Brands} from "@/db/collections"
 import { Media, Emails, Users } from "@/db/collections/models";
 import {Website, SocialLinks} from "@/db/collections/globals";
-import { linkedinOAuth, githubOAuth, discordOAuth, googleOAuth } from '@/cms/endpoints/auth'
+import { linkedinOAuth, githubOAuth, discordOAuth, googleOAuth } from '@/cms/auth'
 
 // Adapters
 import { resendAdapter } from '@payloadcms/email-resend'
