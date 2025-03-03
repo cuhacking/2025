@@ -1,9 +1,11 @@
 import type { CollectionConfig } from 'payload'
+import { adminGroups } from '@/db/collections/adminGroups'
 
 export const ApplicationForm: CollectionConfig = {
   slug: 'application-form',
   admin: {
     useAsTitle: 'name',
+    group: adminGroups.communication,
   },
   fields: [
     {
@@ -17,25 +19,25 @@ export const ApplicationForm: CollectionConfig = {
       relationTo: 'base-event',
       required: true,
     },
-    {
-      name: 'role',
-      type: 'relationship',
-      relationTo: 'event-role',
-      required: true,
-    },
-    {
-      name: 'applicationQuestions',
-      type: 'join',
-      on: 'relatedApplication',
-      collection: 'application-question',
-      required: true,
-    },
-    {
-      name: 'acceptanceCriteria',
-      type: 'relationship',
-      relationTo: 'criteria',
-      required: true,
-    },
+    // {
+    //   name: 'role',
+    //   type: 'relationship',
+    //   relationTo: 'event-role',
+    //   required: true,
+    // },
+    // {
+    //   name: 'applicationQuestions',
+    //   type: 'join',
+    //   on: 'relatedApplication',
+    //   collection: 'application-question',
+    //   required: true,
+    // },
+    // {
+    //   name: 'acceptanceCriteria',
+    //   type: 'relationship',
+    //   relationTo: 'criteria',
+    //   required: true,
+    // },
   ],
 }
 
@@ -96,12 +98,12 @@ export const ApplicationQuestion: CollectionConfig = {
       name: 'isRequired',
       type: 'checkbox',
     },
-    {
-      name: 'relatedApplication',
-      type: 'relationship',
-      relationTo: 'application-form',
-      required: true,
-    },
+    // {
+    //   name: 'relatedApplication',
+    //   type: 'relationship',
+    //   relationTo: 'application-form',
+    //   required: true,
+    // },
   ],
 }
 
@@ -142,7 +144,7 @@ export const ApplicationResponse: CollectionConfig = {
     {
       name: 'applicant',
       type: 'relationship',
-      relationTo: 'user',
+      relationTo: 'users',
       required: true,
     },
     {
@@ -158,29 +160,28 @@ export const ApplicationResponse: CollectionConfig = {
         { label: 'RSVP Unanswered', value: 'rsvpUnanswered' },
       ],
     },
-    {
-      name: 'relatedApplication',
-      type: 'relationship',
-      relationTo: 'application-form',
-      required: true,
-    },
-
+    // {
+    //   name: 'relatedApplication',
+    //   type: 'relationship',
+    //   relationTo: 'application-form',
+    //   required: true,
+    // },
   ],
 }
 
 export const QuestionResponse: CollectionConfig = {
   slug: 'application-question-response',
   fields: [
-    {
-      name: 'relatedQuestion',
-      type: 'relationship',
-      relationTo: 'application-question',
-    },
-    {
-      name: 'relatedResponse',
-      type: 'relationship',
-      relationTo: 'application-response',
-    },
+    // {
+    //   name: 'relatedQuestion',
+    //   type: 'relationship',
+    //   relationTo: 'application-question',
+    // },
+    // {
+    //   name: 'relatedResponse',
+    //   type: 'relationship',
+    //   relationTo: 'application-response',
+    // },
     {
       name: 'response',
       type: 'text',
