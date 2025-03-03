@@ -1,28 +1,27 @@
-import { userFlowActor } from '@/engine/actors/user'
+/* eslint-disable unused-imports/no-unused-vars */
+import type { LoaderFunction } from '@remix-run/node'
 import { Login as LoginPage } from '@cuhacking/portal/pages/login'
 import { redirect } from '@remix-run/node'
 
-export function action() {
-  // do LinkedIn auth validation
-  // then redirect to dashboard
-  // update the user entry with the LinkedIn information
+export const loader: LoaderFunction = async ({ request }) => {
+  const cookie = request.headers.get('Cookie')
 
   try {
-    /* setIsLoading(true) */
-    userFlowActor.send({ type: 'LOGIN_SUCCESS' })
+    const res = await fetch('http://localhost:8000/api/users/me', {
+      headers: { Cookie: cookie || '' },
+    })
 
-    return redirect('/terms')
+    if (res.ok) {
+      return redirect('/dashboard')
+    }
   }
   catch (error) {
-    console.error('Login failed:', error)
+    // If error, show login page
   }
-  finally {
-    /* setIsLoading(false) */
-  }
+
+  return null
 }
 
 export default function Login() {
-  return (
-    <LoginPage />
-  )
+  return <LoginPage />
 }
