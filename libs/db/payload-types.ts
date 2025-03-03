@@ -65,23 +65,51 @@ export interface Config {
     users: UserAuthOperations;
   };
   collections: {
+    organization: Organization;
+    sponsor: Sponsor;
     teams: Team;
     brands: Brand;
     media: Media;
     emails: Email;
     roles: Role;
+    'base-event': BaseEvent;
+    'application-form': ApplicationForm;
+    'general-event': GeneralEvent;
+    'user-to-event': UserToEvent;
+    'sponsor-to-event': SponsorToEvent;
+    'host-to-event': HostToEvent;
+    challengePrize: ChallengePrize;
     users: User;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
-  collectionsJoins: {};
+  collectionsJoins: {
+    'general-event': {
+      'eventMembers.participants': 'user-to-event';
+      'eventMembers.mentors': 'user-to-event';
+      'eventMembers.sponsorRepresentatives': 'user-to-event';
+      'eventMembers.judges': 'user-to-event';
+      'eventMembers.volunteer': 'user-to-event';
+      'organizations.sponsor': 'sponsor-to-event';
+      'organizations.host': 'host-to-event';
+    };
+  };
   collectionsSelect: {
+    organization: OrganizationSelect<false> | OrganizationSelect<true>;
+    sponsor: SponsorSelect<false> | SponsorSelect<true>;
     teams: TeamsSelect<false> | TeamsSelect<true>;
     brands: BrandsSelect<false> | BrandsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     emails: EmailsSelect<false> | EmailsSelect<true>;
     roles: RolesSelect<false> | RolesSelect<true>;
+    'base-event': BaseEventSelect<false> | BaseEventSelect<true>;
+    'application-form': ApplicationFormSelect<false> | ApplicationFormSelect<true>;
+    'general-event': GeneralEventSelect<false> | GeneralEventSelect<true>;
+    'user-to-event': UserToEventSelect<false> | UserToEventSelect<true>;
+    'sponsor-to-event': SponsorToEventSelect<false> | SponsorToEventSelect<true>;
+    'host-to-event': HostToEventSelect<false> | HostToEventSelect<true>;
+    challengePrize: ChallengePrizeSelect<false> | ChallengePrizeSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -125,12 +153,25 @@ export interface UserAuthOperations {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "teams".
+ * via the `definition` "organization".
  */
-export interface Team {
+export interface Organization {
   id: number;
-  name?: string | null;
-  avatar?: (number | null) | Media;
+  name: string;
+  type: 'sponsor' | 'cusaClub' | 'university';
+  description: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sponsor".
+ */
+export interface Sponsor {
+  id: number;
+  baseOrganization?: (number | null) | Organization;
+  formattedTitle: string;
+  logo?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
 }
@@ -152,6 +193,17 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "teams".
+ */
+export interface Team {
+  id: number;
+  name?: string | null;
+  avatar?: (number | null) | Media;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -209,6 +261,204 @@ export interface Role {
   name: string;
   access: string;
   admin?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "base-event".
+ */
+export interface BaseEvent {
+  id: number;
+  title: string;
+  description?: string | null;
+  building?: ('rb' | 'pa' | 'nn') | null;
+  room?: string | null;
+  dateTime: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "application-form".
+ */
+export interface ApplicationForm {
+  id: number;
+  name: string;
+  event: number | BaseEvent;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "general-event".
+ */
+export interface GeneralEvent {
+  id: number;
+  formattedTitle?: string | null;
+  /**
+   * Create a base event to store general information of the event
+   */
+  generalInformation?: (number | null) | BaseEvent;
+  type?: ('workshop' | 'networking' | 'social' | 'food' | 'other') | null;
+  /**
+   * Do not modify or create unless necessary.
+   */
+  registrationLink?: string | null;
+  /**
+   * Leave blank if no attendee limit
+   */
+  attendeeLimit?: number | null;
+  eventMembers?: {
+    participants?: {
+      docs?: (number | UserToEvent)[] | null;
+      hasNextPage?: boolean | null;
+    } | null;
+    mentors?: {
+      docs?: (number | UserToEvent)[] | null;
+      hasNextPage?: boolean | null;
+    } | null;
+    sponsorRepresentatives?: {
+      docs?: (number | UserToEvent)[] | null;
+      hasNextPage?: boolean | null;
+    } | null;
+    judges?: {
+      docs?: (number | UserToEvent)[] | null;
+      hasNextPage?: boolean | null;
+    } | null;
+    volunteer?: {
+      docs?: (number | UserToEvent)[] | null;
+      hasNextPage?: boolean | null;
+    } | null;
+  };
+  organizations?: {
+    sponsor?: {
+      docs?: (number | SponsorToEvent)[] | null;
+      hasNextPage?: boolean | null;
+    } | null;
+    host?: {
+      docs?: (number | HostToEvent)[] | null;
+      hasNextPage?: boolean | null;
+    } | null;
+  };
+  /**
+   * Should be automated in the future. Create GCal event and then add link.
+   */
+  calendarLinks?: {
+    participant?: string | null;
+    mentor?: string | null;
+    sponsor?: string | null;
+    judge?: string | null;
+    volunteer?: string | null;
+  };
+  /**
+   * What should each each group bring to the event
+   */
+  prerequisites?: {
+    /**
+     * What should a participant bring to the event
+     */
+    participant?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    /**
+     * What should a mentor bring to the event
+     */
+    mentor?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    /**
+     * What should a mentor bring to the event
+     */
+    sponsor?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    /**
+     * What should a judge bring to the event
+     */
+    judge?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    /**
+     * What should a volunteer bring to the event
+     */
+    volunteer?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+  };
+  schedule?: (number | BaseEvent)[] | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "user-to-event".
+ */
+export interface UserToEvent {
+  id: number;
+  user: number | User;
+  event: number | BaseEvent;
+  role: number | Role;
   updatedAt: string;
   createdAt: string;
 }
@@ -310,11 +560,89 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sponsor-to-event".
+ */
+export interface SponsorToEvent {
+  id: number;
+  formattedTitle?: string | null;
+  event: number | BaseEvent;
+  sponsor: number | Sponsor;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "host-to-event".
+ */
+export interface HostToEvent {
+  id: number;
+  formattedTitle?: string | null;
+  event: number | BaseEvent;
+  host: number | Organization;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "challengePrize".
+ */
+export interface ChallengePrize {
+  id: number;
+  formattedTitle?: string | null;
+  prizeForPosition?:
+    | {
+        position?: number | null;
+        /**
+         * In CAD, if prize is not money, estimate the cost the prize
+         */
+        prizeMoney?: number | null;
+        /**
+         * Typically use this for physical prizes (ex. MetaQuest for 1st place)
+         */
+        otherPrize?: string | null;
+        /**
+         * If extra detail is necessary
+         */
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Prizes that are not part of the central challenge (ex. A raffle prize)
+   */
+  miscellaneousPrizes?:
+    | {
+        name?: string | null;
+        description?: string | null;
+        /**
+         * In CAD, if prize is not money, estimate the cost the prize
+         */
+        prizeMoney?: number | null;
+        /**
+         * Typically use this for physical prizes (ex. MetaQuest for 1st place)
+         */
+        otherPrize?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
   id: number;
   document?:
+    | ({
+        relationTo: 'organization';
+        value: number | Organization;
+      } | null)
+    | ({
+        relationTo: 'sponsor';
+        value: number | Sponsor;
+      } | null)
     | ({
         relationTo: 'teams';
         value: number | Team;
@@ -334,6 +662,34 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'roles';
         value: number | Role;
+      } | null)
+    | ({
+        relationTo: 'base-event';
+        value: number | BaseEvent;
+      } | null)
+    | ({
+        relationTo: 'application-form';
+        value: number | ApplicationForm;
+      } | null)
+    | ({
+        relationTo: 'general-event';
+        value: number | GeneralEvent;
+      } | null)
+    | ({
+        relationTo: 'user-to-event';
+        value: number | UserToEvent;
+      } | null)
+    | ({
+        relationTo: 'sponsor-to-event';
+        value: number | SponsorToEvent;
+      } | null)
+    | ({
+        relationTo: 'host-to-event';
+        value: number | HostToEvent;
+      } | null)
+    | ({
+        relationTo: 'challengePrize';
+        value: number | ChallengePrize;
       } | null)
     | ({
         relationTo: 'users';
@@ -380,6 +736,28 @@ export interface PayloadMigration {
   batch?: number | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "organization_select".
+ */
+export interface OrganizationSelect<T extends boolean = true> {
+  name?: T;
+  type?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sponsor_select".
+ */
+export interface SponsorSelect<T extends boolean = true> {
+  baseOrganization?: T;
+  formattedTitle?: T;
+  logo?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -464,6 +842,136 @@ export interface RolesSelect<T extends boolean = true> {
   name?: T;
   access?: T;
   admin?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "base-event_select".
+ */
+export interface BaseEventSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  building?: T;
+  room?: T;
+  dateTime?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "application-form_select".
+ */
+export interface ApplicationFormSelect<T extends boolean = true> {
+  name?: T;
+  event?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "general-event_select".
+ */
+export interface GeneralEventSelect<T extends boolean = true> {
+  formattedTitle?: T;
+  generalInformation?: T;
+  type?: T;
+  registrationLink?: T;
+  attendeeLimit?: T;
+  eventMembers?:
+    | T
+    | {
+        participants?: T;
+        mentors?: T;
+        sponsorRepresentatives?: T;
+        judges?: T;
+        volunteer?: T;
+      };
+  organizations?:
+    | T
+    | {
+        sponsor?: T;
+        host?: T;
+      };
+  calendarLinks?:
+    | T
+    | {
+        participant?: T;
+        mentor?: T;
+        sponsor?: T;
+        judge?: T;
+        volunteer?: T;
+      };
+  prerequisites?:
+    | T
+    | {
+        participant?: T;
+        mentor?: T;
+        sponsor?: T;
+        judge?: T;
+        volunteer?: T;
+      };
+  schedule?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "user-to-event_select".
+ */
+export interface UserToEventSelect<T extends boolean = true> {
+  user?: T;
+  event?: T;
+  role?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sponsor-to-event_select".
+ */
+export interface SponsorToEventSelect<T extends boolean = true> {
+  formattedTitle?: T;
+  event?: T;
+  sponsor?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "host-to-event_select".
+ */
+export interface HostToEventSelect<T extends boolean = true> {
+  formattedTitle?: T;
+  event?: T;
+  host?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "challengePrize_select".
+ */
+export interface ChallengePrizeSelect<T extends boolean = true> {
+  formattedTitle?: T;
+  prizeForPosition?:
+    | T
+    | {
+        position?: T;
+        prizeMoney?: T;
+        otherPrize?: T;
+        description?: T;
+        id?: T;
+      };
+  miscellaneousPrizes?:
+    | T
+    | {
+        name?: T;
+        description?: T;
+        prizeMoney?: T;
+        otherPrize?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

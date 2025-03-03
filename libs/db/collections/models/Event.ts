@@ -1,13 +1,14 @@
 import type { CollectionConfig } from 'payload'
 import process from 'node:process'
+import { adminGroups } from '@/db/collections/adminGroups'
 
 export const BaseEvent: CollectionConfig = {
   slug: 'base-event',
   admin: {
     useAsTitle: 'title',
+    group: adminGroups.events,
   },
   fields: [
-    // Basic Info
     {
       name: 'title',
       type: 'text',
@@ -47,6 +48,7 @@ export const GeneralEvent: CollectionConfig = {
   slug: 'general-event',
   admin: {
     useAsTitle: 'formattedTitle',
+    group: adminGroups.events,
   },
   fields: [
     {
@@ -283,11 +285,11 @@ export const GeneralEvent: CollectionConfig = {
       relationTo: 'base-event',
       hasMany: true,
     },
-    {
-      name: 'eventChallenges',
-      type: 'join',
-      on: 'event',
-      collection: 'challenge',
-    },
+    // {
+    //   name: 'eventChallenges',
+    //   type: 'join',
+    //   on: 'event',
+    //   collection: 'challenge',
+    // },
   ],
 }
