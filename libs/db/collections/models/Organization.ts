@@ -1,23 +1,12 @@
-import type { AccessArgs, CollectionConfig } from 'payload'
-// import { isAdmin } from '@/db/access/isAdmin'
-import { validateURL } from '@/db/shared/utils/validate-url'
-
-type isAuthenticated = (args: AccessArgs<User>) => boolean
-
-export const authenticated: isAuthenticated = ({ req: { user } }) => {
-  return Boolean(user)
-}
+import type { CollectionConfig } from 'payload'
+import { authenticated } from '@/db/access'
+// import { validateURL } from '@cuhacking/db/shared/utils/validate-url'
 
 export const Organization: CollectionConfig = {
   slug: 'organization',
   access: {
-    // update: isAdmin,
-    // create: isAdmin,
-    admin: authenticated,
-    create: authenticated,
-    delete: authenticated,
-    read: authenticated,
     update: authenticated,
+    create: authenticated,
   },
   admin: {
     useAsTitle: 'name',
@@ -43,12 +32,12 @@ export const Organization: CollectionConfig = {
       type: 'textarea',
       required: true,
     },
-    {
-      name: 'members',
-      type: 'join',
-      on: 'organization',
-      collection: 'user-to-organization',
-    },
+    // {
+    //   name: 'members',
+    //   type: 'join',
+    //   on: 'organization',
+    //   collection: 'user-to-organization',
+    // },
   ],
 }
 
@@ -89,19 +78,6 @@ export const Sponsor: CollectionConfig = {
       type: 'upload',
       relationTo: 'media', // Assuming a media collection exists for file uploads
     },
-    {
-      name: 'markettingWebsite',
-      type: 'text',
-      required: true,
-      validate: validateURL,
-    },
-    {
-      name: 'hiringPortal',
-      type: 'text',
-      required: true,
-      validate: validateURL,
-    },
-
   ],
 }
 
@@ -123,7 +99,7 @@ export const UserToOrganization: CollectionConfig = {
             const { user, organization } = data as any
 
             const userObj = user
-              ? await req.payload.findByID({ collection: 'user', id: user })
+              ? await req.payload.findByID({ collection: 'users', id: user })
               : null
             const organizationObj = organization
               ? await req.payload.findByID({ collection: 'organization', id: organization })
@@ -138,9 +114,9 @@ export const UserToOrganization: CollectionConfig = {
       },
     },
     {
-      name: 'user',
+      name: 'users',
       type: 'relationship',
-      relationTo: 'user',
+      relationTo: 'users',
       // @ts-expect-error - this is a bug with payload, not us
       validate: async (_, { data, req }: { data: { user: any, organization: any }, req: any }) => {
         const { user, organization } = data as any

@@ -7,7 +7,10 @@ import {
   User,
   Keyboard,
   Users,
-PersonStanding
+PersonStanding,
+MousePointer2,
+  Trophy,
+  CalendarDays
 } from 'lucide-react'
 import { ExoticComponent } from 'react'
 
@@ -20,7 +23,11 @@ export const navIconMap: Partial<
   emails: Mail,
   constants: Keyboard,
   teams: Users,
-  roles: PersonStanding
+  roles: PersonStanding,
+  challengePrize: Trophy,
+  "base-event": CalendarDays,
+  "general-event": CalendarDays,
+  "application-form": MousePointer2,
 }
 
 export const getNavIcon = (slug: string) =>
