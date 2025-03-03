@@ -1,12 +1,12 @@
 import type { CollectionConfig } from 'payload'
-import { isAdmin } from '@cuhacking/db/access/isAdmin'
+// import { isAdmin } from '@cuhacking/db/access/isAdmin'
 
 export const Hero: CollectionConfig = {
   slug: 'hero',
   access: {
     read: () => true,
-    update: isAdmin,
-    create: isAdmin,
+    // update: isAdmin,
+    // create: isAdmin,
   },
   admin: {
     useAsTitle: 'title',
