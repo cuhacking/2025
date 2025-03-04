@@ -8,11 +8,8 @@ background: https://github.com/user-attachments/assets/381f7ce4-3646-474a-8a62-f
 # some information about your slides (markdown enabled)
 title: "cuHacking"
 titleTemplate: '%s - cuHacking'
-author: "Mumtahin Farabi"
 info: |
   ## cuHacking Presentation Deck
-
-  Authored by [Hasith De Alwis](https://github.com/HasithDeAlwis), and [Aashna Verma](https://github.com/Aashna-Verma).
 
 # apply unocss classes to the current slide
 class: text-center

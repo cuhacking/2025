@@ -667,17 +667,6 @@ export const userData = [
     tshirtSize: 'm',
   },
   {
-    email: 'mfarabi619@gmail.com',
-    firstName: 'Mumtahin',
-    lastName: 'Farabi',
-    displayName: 'Mumtahin Farabi',
-    pronouns: 'he/him',
-    mediaUrl: 'https://lh3.googleusercontent.com/pw/AP1GczMXoQvW0q0xYVsAQX3nVy8h-yDvctS4giyfyT564rGYryqv6MuA2MlnBOEDIA9VRFC-C95h58Z-uTVMbDmW6gO3DO-r-s9cmkXRuPyFjVkNlxtvHu4PtFwsf46ZzFNEEdN0SKzWJsAplkyjhg503DTI=w973-h1460-s-no-gm?authuser=0',
-    githubHtmlUrl: 'https://github.com/MFarabi619',
-    linkedinHandle: 'mfarabi',
-    tshirtSize: 'l',
-  },
-  {
     email: 'julie.wechsler@example.com',
     firstName: 'Julie',
     lastName: 'Wechsler',
