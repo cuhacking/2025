@@ -540,7 +540,12 @@ export interface User {
   githubPublicRepos?: string | null;
   githubLinkedin?: string | null;
   githubInstagram?: string | null;
-  discordEmailVerified?: boolean | null;
+  discordUsername?: string | null;
+  discordGlobalName?: string | null;
+  discordVerified?: boolean | null;
+  discordDiscriminator?: string | null;
+  discordLocale?: string | null;
+  discordId?: string | null;
   googleEmail?: string | null;
   googleEmailVerified?: boolean | null;
   linkedinSub?: string | null;
@@ -1012,7 +1017,12 @@ export interface UsersSelect<T extends boolean = true> {
   githubPublicRepos?: T;
   githubLinkedin?: T;
   githubInstagram?: T;
-  discordEmailVerified?: T;
+  discordUsername?: T;
+  discordGlobalName?: T;
+  discordVerified?: T;
+  discordDiscriminator?: T;
+  discordLocale?: T;
+  discordId?: T;
   googleEmail?: T;
   googleEmailVerified?: T;
   linkedinSub?: T;

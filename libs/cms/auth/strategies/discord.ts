@@ -8,22 +8,23 @@ export const discordOAuth = OAuth2Plugin({
   scopes: [
     "identify",
     "email",
-    "openid"
   ],
   getUserInfo: async (accessToken: string, req: PayloadRequest) => {
     const response = await fetch(
-      `https://discord.com/api/v10`,
+      `https://discord.com/api/v10/users/@me`,
       { headers: { Authorization: `Bearer ${accessToken}` } },
     );
+    console.log(accessToken)
     const user = await response.json();
 
     return {
-      // email: user.email,
-      // firstName: user.given_name,
-      // lastName: user.family_name,
-      // displayName: user.name,
-      // mediaUrl: user.picture,
-      // discordSub: user.sub,
+      email: user.email,
+      discordUsername: user.username,
+      discordVerified: user.verified,
+      discordDiscriminator: user.discriminator,
+      discordId: user.id,
+      discordGlobalName: user.global_name,
+      discordLocale: user.locale,
     };
   },
   ...discordStrategyConfig,
