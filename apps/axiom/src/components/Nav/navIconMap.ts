@@ -10,7 +10,8 @@ import {
 PersonStanding,
 MousePointer2,
   Trophy,
-  CalendarDays
+  CalendarDays,
+  Cpu
 } from 'lucide-react'
 import { ExoticComponent } from 'react'
 
@@ -28,6 +29,7 @@ export const navIconMap: Partial<
   "base-event": CalendarDays,
   "general-event": CalendarDays,
   "application-form": MousePointer2,
+  hardware: Cpu
 }
 
 export const getNavIcon = (slug: string) =>

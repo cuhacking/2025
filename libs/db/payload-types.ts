@@ -73,6 +73,7 @@ export interface Config {
     emails: Email;
     roles: Role;
     'base-event': BaseEvent;
+    hardware: Hardware;
     'application-form': ApplicationForm;
     'general-event': GeneralEvent;
     'user-to-event': UserToEvent;
@@ -104,6 +105,7 @@ export interface Config {
     emails: EmailsSelect<false> | EmailsSelect<true>;
     roles: RolesSelect<false> | RolesSelect<true>;
     'base-event': BaseEventSelect<false> | BaseEventSelect<true>;
+    hardware: HardwareSelect<false> | HardwareSelect<true>;
     'application-form': ApplicationFormSelect<false> | ApplicationFormSelect<true>;
     'general-event': GeneralEventSelect<false> | GeneralEventSelect<true>;
     'user-to-event': UserToEventSelect<false> | UserToEventSelect<true>;
@@ -275,6 +277,70 @@ export interface BaseEvent {
   building?: ('rb' | 'pa' | 'nn') | null;
   room?: string | null;
   dateTime: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hardware".
+ */
+export interface Hardware {
+  id: number;
+  name?: string | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  resources?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  quantity?: number | null;
+  categories?:
+    | (
+        | 'basics'
+        | 'parts'
+        | 'communication'
+        | 'display'
+        | 'microcontrollers'
+        | 'power'
+        | 'cables'
+        | 'motorpluscontrol'
+        | 'sensors'
+        | 'peripheralsplusaccessories'
+        | 'miscellaneous'
+        | 'vr'
+        | 'lottery'
+      )[]
+    | null;
+  images?:
+    | {
+        image?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -673,6 +739,10 @@ export interface PayloadLockedDocument {
         value: number | BaseEvent;
       } | null)
     | ({
+        relationTo: 'hardware';
+        value: number | Hardware;
+      } | null)
+    | ({
         relationTo: 'application-form';
         value: number | ApplicationForm;
       } | null)
@@ -860,6 +930,25 @@ export interface BaseEventSelect<T extends boolean = true> {
   building?: T;
   room?: T;
   dateTime?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hardware_select".
+ */
+export interface HardwareSelect<T extends boolean = true> {
+  name?: T;
+  description?: T;
+  resources?: T;
+  quantity?: T;
+  categories?: T;
+  images?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

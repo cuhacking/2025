@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
 import { authenticated } from '@/db/access'
+import { adminGroups } from '@/db/collections/adminGroups'
 // import { validateURL } from '@cuhacking/db/shared/utils/validate-url'
 
 export const Organization: CollectionConfig = {
@@ -10,6 +11,7 @@ export const Organization: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'name',
+    group: adminGroups.inventory,
   },
   fields: [
     {
@@ -45,6 +47,7 @@ export const Sponsor: CollectionConfig = {
   slug: 'sponsor',
   admin: {
     useAsTitle: 'formattedTitle',
+    group: adminGroups.inventory,
   },
   fields: [
     {

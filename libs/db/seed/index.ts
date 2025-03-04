@@ -1,5 +1,6 @@
 /* eslint-disable node/prefer-global/buffer */
 import type { CollectionSlug, File, Payload, PayloadRequest } from 'payload'
+import { hardwareSeedData } from '@/db/collections'
 import { brandSeedData } from '@/db/collections/Brands'
 import { seedEmails } from '@/db/collections/models'
 import { userData } from '@/db/collections/models/Users'
@@ -140,6 +141,68 @@ export async function seed({
       log(`✅ Inserted user: ${user.firstName} ${user.lastName}`)
     }),
   )
+
+  try {
+    await Promise.all(
+      hardwareSeedData.map(async (hardware) => {
+        const mediaIds = await Promise.all(
+          hardware.images.map(async (image, index) => {
+            const media = await getOrUploadMedia(
+              image.image,
+              `${hardware.name.toLowerCase().replace(/\s+/g, '-')}-image-${index}.png`,
+              `${hardware.name} Image`,
+            )
+
+            return typeof media === 'object' && media !== null ? media.id : media
+          }),
+        )
+
+        const validMediaObjects = mediaIds
+          .filter(id => id)
+          .map(id => ({
+            id,
+            image: { id },
+          }))
+
+        const formattedDescription = {
+          root: {
+            type: 'root',
+            children: hardware.description.children.map(child => ({
+              ...child,
+            })),
+          },
+        }
+
+        const formattedResources = {
+          root: {
+            type: 'root',
+            children: hardware.resources.children.map(child => ({
+              ...child,
+            })),
+          },
+        }
+
+        await payload.create({
+          collection: 'hardware',
+          data: {
+            images: validMediaObjects.length > 0 ? validMediaObjects : undefined,
+            name: hardware.name,
+            description: formattedDescription,
+            resources: formattedResources,
+            quantity: hardware.quantity,
+            categories: hardware.categories,
+          },
+        })
+
+        console.log(`✅ Inserted hardware: ${hardware.name}`)
+      }),
+    )
+
+    console.log('✅ All hardware seed data successfully inserted!')
+  }
+  catch (error) {
+    console.error('❌ Error seeding hardware data:', error)
+  }
 
   await seedEmails(payload)
 
