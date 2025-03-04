@@ -118,13 +118,13 @@ layout {
             plugin location="zellij:status-bar"
         }
         floating_panes {
-            pane command="pnpm" name="🚨 WARNING: REMOVE .gitignore FILES INCLUDING .env AND pgdata" cwd="../" {
+            pane command="rm" name="🚨 WARNING: Delete local database?" cwd="../" {
                 start_suspended true
                 height 25
                 width 86
                 x 43
                 y 14
-                args "nuke"
+                args "-rf" "infra/pgdata"
             }
         }
     }
