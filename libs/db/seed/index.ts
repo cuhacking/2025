@@ -206,6 +206,172 @@ export async function seed({
 
   await seedEmails(payload)
 
+try {
+  await Promise.all(
+   [
+  {
+    title: "cuHacking 6 Registration Form",
+    fields: [
+      {
+        blockName: "We really want to see you there!",
+        blockType: "message",
+        message: {
+          root: {
+            type: "root",
+            children: [
+              {
+                type: "paragraph",
+                children: [
+                  {
+                    mode: "normal",
+                    text: "We really want to see you there!",
+                    type: "text",
+                    style: "",
+                    detail: 0,
+                  },
+                ],
+              },
+              {
+                type: "paragraph",
+                children: [],
+              },
+            ],
+          },
+        },
+      },
+      {
+        name: "what-challenge-are-you-most-interested-in",
+        label: "What challenge are you most interested in?",
+        width: 100,
+        defaultValue: null,
+        required: true,
+        blockName: "What challenge are you most interested in?",
+        blockType: "select",
+        options: [
+          { label: "hardware", value: "🤖 Hardware" },
+          { label: "ai-ml", value: "🧠 AI/ML" },
+          { label: "full-stack", value: "📱 Full-Stack (Mobile and Web)" },
+          { label: "cybersecurity", value: "👩‍💻 CyberSecurity" },
+        ],
+      },
+      {
+        name: "where-did-you-hear-about-us",
+        label: "Where did you hear about us?",
+        width: 100,
+        defaultValue: null,
+        required: true,
+        blockName: "Where did you hear about us?",
+        blockType: "select",
+        options: [
+          { label: "instagram", value: "Instagram" },
+          { label: "linkedin", value: "LinkedIn" },
+          { label: "reddit", value: "Reddit" },
+          { label: "discord", value: "Discord Community" },
+          { label: "friend-or-word-of-mouth", value: "Friend or Word of Mouth" },
+          { label: "university-college-announcement", value: "University/College Announcement" },
+          { label: "cuhacking-website", value: "cuHacking Website" },
+          { label: "previous-cuhacking-event", value: "Previous cuHacking Event" },
+          { label: "mlh", value: "MLH" },
+  { label: 'email-newsletter', value: 'Email Newsletter' },
+  { label: 'company-recommendation', value: 'Company/Organization Recommendation' },
+  { label: 'professor-advisor', value: 'Professor or Academic Advisor' },
+  { label: 'other', value: 'Other' },
+        ],
+      },
+      {
+        name: "what-workshops-would-you-like-to-see",
+        label: "What workshops would you like to see?",
+        width: 100,
+        defaultValue: null,
+        required: true,
+        blockName: "What workshops would you like to see?",
+        blockType: "select",
+        options: [
+  { label: 'web-dev', value: 'Intro to Web Development (HTML, CSS, JavaScript)' },
+  { label: 'ml-basics', value: 'Machine Learning Basics' },
+  { label: 'cybersecurity', value: 'Cybersecurity & Ethical Hacking' },
+  { label: 'mobile-apps', value: 'Building Mobile Apps (Flutter/React Native)' },
+  { label: 'embedded-systems', value: 'Intro to Embedded Systems' },
+  { label: 'game-dev', value: 'Game Development with Unity' },
+  { label: 'ui-ux', value: 'UI/UX Design Fundamentals' },
+  { label: 'blockchain', value: 'Blockchain & Smart Contracts' },
+  { label: 'cloud-devops', value: 'Cloud Computing & DevOps' },
+  { label: 'resume-interview', value: 'Resume & Tech Interview Prep' },
+  { label: 'data-science', value: 'Data Science & Analytics' },
+  { label: 'iot', value: 'Internet of Things (IoT) & Smart Devices' },
+  { label: 'competitive-programming', value: 'Competitive Programming & Algorithms' },
+  { label: 'quantum-computing', value: 'Quantum Computing Basics' },
+        ],
+      },
+      {
+        name: "how-familiar-are-you-with-qnx",
+        label: "How familiar are you with QNX?",
+        width: 100,
+        defaultValue: null,
+        required: true,
+        blockName: "How familiar are you with QNX?",
+        blockType: "select",
+        options: [
+  { label: '1', value: 'Never heard of it' },
+  { label: '2', value: 'I’ve heard of QNX but never used it' },
+  { label: '3', value: 'Beginner (Have read about it, but no hands-on experience)' },
+  { label: '4', value: 'Intermediate (Have worked on a small project using QNX)' },
+  { label: '5', value: 'Advanced (Actively using QNX in development)' },
+  { label: '6', value: 'Expert (Deep knowledge of QNX, have built production systems with it)' },
+]
+      },
+      {
+name: "first-time-hacker",
+label: "What would you tell a first-time hacker?",
+width: 100,
+defaultValue: null,
+required: true,
+blockName: "What would you tell a first-time hacker?",
+blockType: "textarea"
+}
+    ],
+    submitButtonLabel: "Register",
+    confirmationType: "message",
+    confirmationMessage: {
+      root: {
+        type: "root",
+        children: [
+          {
+            type: "paragraph",
+            children: [
+              {
+                mode: "normal",
+                text: "Thanks for Registering!",
+                type: "text",
+                style: "",
+                detail: 0,
+              },
+            ],
+          },
+        ],
+      },
+    },
+    redirect: {
+      url: "",
+    },
+    emails: [],
+  },
+].map(async (form) => {
+      await payload.create({
+        collection: 'forms',
+        data: form,
+      });
+
+      console.log(`✅ Inserted form: ${form.title}`);
+    }),
+  );
+
+  console.log('✅ All form seed data successfully inserted!');
+} catch (error) {
+  console.error('❌ Error seeding form data:', error);
+}
+
+
   log('🎉 Database seeded successfully! 🌱🐧')
   return { message: 'Database seeded successfully!', logs }
 }

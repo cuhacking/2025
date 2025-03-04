@@ -2,6 +2,7 @@ import { Payload, PayloadRequest } from "payload";
 import type { File } from "payload";
 import { OAuth2Plugin } from "payload-oauth2";
 import { linkedinStrategyConfig } from "@/cms/auth/config";
+import {generateEmail} from '@/cms/utils'
 
 async function uploadFileByURL(
   payload: Payload,

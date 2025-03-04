@@ -9,6 +9,7 @@ import {
   Users,
 PersonStanding,
 MousePointer2,
+  Inbox,
   Trophy,
   CalendarDays,
   Cpu
@@ -28,7 +29,8 @@ export const navIconMap: Partial<
   challengePrize: Trophy,
   "base-event": CalendarDays,
   "general-event": CalendarDays,
-  "application-form": MousePointer2,
+  forms: MousePointer2,
+  "form-submissions": Inbox,
   hardware: Cpu
 }
 
