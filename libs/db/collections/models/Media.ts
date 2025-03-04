@@ -1,8 +1,11 @@
 import type { CollectionConfig } from 'payload'
 
+import { adminGroups } from '@/db/collections/adminGroups'
+
 export const Media: CollectionConfig = {
   slug: 'media',
   admin: {
+    group: adminGroups.inventory,
     defaultColumns: [
       'filename',
       'alt',

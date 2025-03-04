@@ -1,9 +1,11 @@
 import type { CollectionConfig } from 'payload'
+import { adminGroups } from '@/db/collections/adminGroups'
 
 export const Challenge: CollectionConfig = {
   slug: 'challenge',
   admin: {
     useAsTitle: 'title',
+    group: adminGroups.inventory,
   },
   fields: [
     {
@@ -48,6 +50,9 @@ export const Challenge: CollectionConfig = {
 
 export const ChallengePrize: CollectionConfig = {
   slug: 'challengePrize',
+  admin: {
+    group: adminGroups.inventory,
+  },
   fields: [
     {
       name: 'formattedTitle',
