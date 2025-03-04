@@ -349,18 +349,34 @@ export const Users: CollectionConfig = {
           type: 'collapsible',
           label: 'Discord',
           fields: [
-            // {
-            //   name: 'discordSub',
-            //   type: 'text',
-            //   admin: {
-            //     readOnly: true,
-            //     //   condition: (data, siblingData, { user }) => {
-            //     //     return false
-            //   },
-            // },
             {
-              name: 'discordEmailVerified',
+              name: 'discordUsername',
+              type: 'text',
+            },
+            {
+              name: 'discordGlobalName',
+              type: 'text',
+            },
+            {
+              name: 'discordVerified',
               type: 'checkbox',
+            },
+            {
+              name: 'discordDiscriminator',
+              type: 'text',
+            },
+            {
+              name: 'discordLocale',
+              type: 'text',
+            },
+            {
+              name: 'discordId',
+              type: 'text',
+              admin: {
+                readOnly: true,
+                //   condition: (data, siblingData, { user }) => {
+                //     return false
+              },
             },
           ],
         },
