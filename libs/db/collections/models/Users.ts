@@ -1,7 +1,9 @@
 // https://github.com/shefing/payload-tools/tree/main/packages/authorization
 /* eslint-disable node/prefer-global/process */
 import type { CollectionConfig } from 'payload'
-import { admins, adminsAndUser, anyone,
+import { admins,
+         adminsAndUser,
+         anyone,
   // checkRole
 } from '@/db/access'
 // import { authenticated, isAdminFieldLevel } from '@/db/access'
@@ -57,6 +59,10 @@ export const Users: CollectionConfig = {
       defaultLimit: 50,
       limits: [10, 20, 50],
     },
+  },
+  versions: {
+    drafts: true,
+    maxPerDoc: 1,
   },
   fields: [
     {
@@ -211,15 +217,6 @@ export const Users: CollectionConfig = {
               label: 'Handle',
               admin: { readOnly: true },
             },
-            // {
-            //   name: 'linkedinSub',
-            //   type: 'text',
-            //   admin: {
-            //     readOnly: true,
-            //     //   condition: (data, siblingData, { user }) => {
-            //     //     return false
-            //   },
-            // },
             {
               name: 'linkedinId',
               type: 'text',
@@ -274,10 +271,6 @@ export const Users: CollectionConfig = {
                 },
               },
             },
-            // {
-            //   name: 'githubSub',
-            //   type: 'text',
-            // },
             {
               name: 'githubAvatarUrl',
               type: 'text',
@@ -374,8 +367,9 @@ export const Users: CollectionConfig = {
               type: 'text',
               admin: {
                 readOnly: true,
-                //   condition: (data, siblingData, { user }) => {
-                //     return false
+                  condition: () => {
+                    return false
+                  }
               },
             },
           ],
@@ -385,15 +379,6 @@ export const Users: CollectionConfig = {
           label: 'Google',
           fields: [
             { name: 'googleEmail', type: 'email' },
-            // {
-            //   name: 'googleSub',
-            //   type: 'text',
-            //   admin: {
-            //     readOnly: true,
-            //     //   condition: (data, siblingData, { user }) => {
-            //     //     return false
-            //   },
-            // },
             {
               name: 'googleEmailVerified',
               type: 'checkbox',

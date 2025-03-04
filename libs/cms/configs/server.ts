@@ -1,6 +1,6 @@
 // github.com/jhb-software/payload-plugins/tree/main/geocoding
 /* eslint-disable node/prefer-global/process */
-import {Brands, Roles} from "@/db/collections"
+import {adminGroups, Brands, Roles} from "@/db/collections"
 import {Sponsor,
         Organization,
         ChallengePrize,
@@ -9,7 +9,6 @@ import {Sponsor,
         UserToEvent,
         GeneralEvent,
         BaseEvent,
-        ApplicationForm,
         Media,
         Emails,
         Hardware,
@@ -18,6 +17,7 @@ import {Sponsor,
 import {Constants} from "@/db/globals";
 import { linkedinOAuth, githubOAuth, discordOAuth, googleOAuth } from '@/cms/auth'
 
+import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
 import { resendAdapter } from '@payloadcms/email-resend'
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { s3Storage } from '@payloadcms/storage-s3'
@@ -38,7 +38,6 @@ export const baseConfig = {
     Roles,
     BaseEvent,
     Hardware,
-    ApplicationForm,
     GeneralEvent,
     UserToEvent,
     SponsorToEvent,
@@ -55,6 +54,41 @@ export const baseConfig = {
     githubOAuth,
     discordOAuth,
     googleOAuth,
+formBuilderPlugin({
+  defaultToEmail: 'info@cuhacking,ca',
+// redirectRelationships: ['pages'],
+  fields: {
+    text: true,
+    textarea: true,
+    select: true,
+    email: true,
+    state: true,
+    country: true,
+    checkbox: true,
+    number: true,
+    message: true,
+    payment: false,
+  },
+formOverrides: {
+  admin: {
+    group: adminGroups.communication,
+    livePreview: {
+     // url: `${process.env.CUHACKING_2025_PORTAL_LOCAL_URL}/registration`,
+     url: `${process.env.CUHACKING_2025_PORTAL_PUBLIC_URL}/registration`,
+    }
+  },
+  versions: {
+    drafts: true
+  },
+    // access: {
+    // },
+  },
+  formSubmissionOverrides:{
+  admin: {
+    group: adminGroups.communication
+  },
+  }
+}),
     process.env.NODE_ENV==='production' && s3Storage({
     collections: {
       media: {

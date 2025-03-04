@@ -21,7 +21,6 @@ export const baseConfig = {
 
 export const githubStrategyConfig = {
   strategyName: "github",
-  subFieldName: 'githubSub',
   clientId: process.env.GITHUB_CLIENT_ID || "",
   clientSecret: process.env.GITHUB_CLIENT_SECRET || "",
   authorizePath: "/oauth/github",
@@ -36,7 +35,6 @@ export const githubStrategyConfig = {
 
 export const linkedinStrategyConfig = {
   strategyName: "linkedin",
-  subFieldName: 'linkedinSub',
   clientId: process.env.LINKEDIN_CLIENT_ID || "",
   clientSecret: process.env.LINKEDIN_CLIENT_SECRET || "",
   authorizePath: "/oauth/linkedin",
@@ -51,7 +49,6 @@ export const linkedinStrategyConfig = {
 
 export const discordStrategyConfig = {
   strategyName: "discord",
-  subFieldName: 'discordSub',
   clientId: process.env.DISCORD_CLIENT_ID || "",
   clientSecret: process.env.DISCORD_CLIENT_SECRET || "",
   authorizePath: "/oauth/discord",
@@ -66,7 +63,6 @@ export const discordStrategyConfig = {
 
 export const googleStrategyConfig = {
   strategyName: "google",
-  subFieldName: 'googleSub',
   clientId: process.env.GOOGLE_CLIENT_ID || "",
   clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
   authorizePath: "/oauth/google",

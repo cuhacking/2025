@@ -1,7 +1,6 @@
 import { PayloadRequest } from "payload";
 import { OAuth2Plugin, defaultGetToken } from "payload-oauth2";
 import { googleStrategyConfig } from "@/cms/auth/config"
-import {generateEmail} from '@/cms/utils'
 
 export const googleOAuth = OAuth2Plugin({
   useEmailAsIdentity: true,
@@ -20,40 +19,40 @@ getUserInfo: async (accessToken: string, req: PayloadRequest) => {
 
   const user = await response.json();
 
-// const existingUser = await req.payload.find({
-//         collection: 'users',
-//         where: {
-//           email: {
-//             equals: req.user?.email,
-//           },
-//         },
-//         limit: 1,
-//       })
+const existingUser = await req.payload.find({
+        collection: 'users',
+        where: {
+          email: {
+            equals: req.user?.email,
+          },
+        },
+        limit: 1,
+      })
 
-//       if (!existingUser.docs || existingUser.docs.length === 0) {
-//         console.log('Creating new user for:', req.user)
+      if (!existingUser.docs || existingUser.docs.length === 0) {
+      }
 
-//         const newUser = await req.payload.create({
-//           collection: 'users',
-//           data: {
-//             email: req.user?.email,
-//             displayName: req.user?.displayName,
-//             mediaUrl: req.user?.photoUrl
-//             // roles: ['hacker'],
-//           },
-//         })
-//         return {
-//           ...newUser,
-//           // roles: ['customer'],
-//         }
-//       }
+        // console.log('Creating new user for:', req.user)
+
+        // const newUser = await req.payload.create({
+        //   collection: 'users',
+        //   data: {
+        //     email: req.user?.email,
+        //     displayName: req.user?.displayName,
+        //     mediaUrl: req.user?.photoUrl
+        //     // roles: ['hacker'],
+        //   },
+        // })
+        // return {
+        //   ...newUser,
+        //   // roles: ['customer'],
+        // }
 
 //   console.log('Found existing user:', existingUser.docs[0])
 //       const userFromDB = existingUser.docs[0]
 
   return {
     email: user.email,
-      googleSub: user.sub,
     googleEmail: user.email,
       googleEmailVerified: user.email_verified,
   };
