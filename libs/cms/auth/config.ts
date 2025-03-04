@@ -54,7 +54,7 @@ export const discordStrategyConfig = {
   subFieldName: 'discordSub',
   clientId: process.env.DISCORD_CLIENT_ID || "",
   clientSecret: process.env.DISCORD_CLIENT_SECRET || "",
-  authorizePath: "/oauth2/authorize",
+  authorizePath: "/oauth/discord",
   callbackPath: "/oauth/discord/callback",
   tokenEndpoint: "https://discord.com/api/oauth2/token",
   providerAuthorizationUrl: "https://discord.com/oauth2/authorize",

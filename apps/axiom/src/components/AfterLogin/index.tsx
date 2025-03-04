@@ -28,13 +28,12 @@ export function OAuthButtons() {
       />
       <OAuthButton
         href="/api/users/oauth/github"
-      iconSrc="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
+        iconSrc="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
         bgColor="green"
         altText="GitHub Login"
       />
       <OAuthButton
-        // href="/api/users/oauth/discord"
-        href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        href="/api/users/oauth/discord"
         iconSrc="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/636e0a69f118df70ad7828d4_icon_clyde_blurple_RGB.svg"
         bgColor="#1e2124"
         altText="Discord Login"
@@ -75,6 +74,7 @@ const buttonStyles = {
   fontSize: '16px',
   fontWeight: 'bold',
   borderRadius: '5px',
+  transition: 'all 750ms ease-in-out',
 };
 
 const iconStyle = {
