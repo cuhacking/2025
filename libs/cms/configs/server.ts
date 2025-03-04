@@ -12,6 +12,7 @@ import {Sponsor,
         ApplicationForm,
         Media,
         Emails,
+        Hardware,
         Users,
         Teams } from "@/db/collections/models";
 import {Constants} from "@/db/globals";
@@ -36,6 +37,7 @@ export const baseConfig = {
     Emails,
     Roles,
     BaseEvent,
+    Hardware,
     ApplicationForm,
     GeneralEvent,
     UserToEvent,

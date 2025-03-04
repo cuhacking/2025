@@ -1,4 +1,5 @@
 import type { CollectionBeforeChangeHook, CollectionConfig } from 'payload/types'
+import { adminGroups } from '@/db/collections/adminGroups'
 
 const SOCIAL_MEDIA_PLATFORMS = [
   { key: 'github', domain: 'github.com', label: 'GitHub' },
@@ -78,6 +79,7 @@ export const Brands: CollectionConfig = {
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'description', 'id', 'updatedAt', 'createdAt'],
+    group: adminGroups.inventory,
   },
   hooks: {
     beforeChange: [generateSocialLinks],
