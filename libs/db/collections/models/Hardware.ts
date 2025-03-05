@@ -2,7 +2,7 @@ import type { CollectionConfig } from 'payload'
 import { admins, adminsAndUser, anyone,
   // checkRole
 } from '@/db/access'
-import { adminGroups } from '@/db/collections/adminGroups'
+import { navAccordions } from '@/db/collections/navAccordions'
 
 export const Hardware: CollectionConfig = {
   slug: 'hardware',
@@ -13,7 +13,7 @@ export const Hardware: CollectionConfig = {
     delete: admins,
   },
   admin: {
-    group: adminGroups.inventory,
+    group: navAccordions.inventory,
     defaultColumns: [
       'images',
       'name',

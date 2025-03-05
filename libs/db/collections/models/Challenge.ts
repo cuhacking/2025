@@ -1,11 +1,11 @@
 import type { CollectionConfig } from 'payload'
-import { adminGroups } from '@/db/collections/adminGroups'
+import { navAccordions } from '@/db/collections/navAccordions'
 
 export const Challenge: CollectionConfig = {
   slug: 'challenge',
   admin: {
     useAsTitle: 'title',
-    group: adminGroups.inventory,
+    group: navAccordions.inventory,
   },
   fields: [
     {
@@ -51,7 +51,7 @@ export const Challenge: CollectionConfig = {
 export const ChallengePrize: CollectionConfig = {
   slug: 'challengePrize',
   admin: {
-    group: adminGroups.inventory,
+    group: navAccordions.inventory,
   },
   fields: [
     {

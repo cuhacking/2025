@@ -2,7 +2,7 @@
 /* eslint-disable ts/no-use-before-define */
 /* eslint-disable no-console */
 import type { CollectionConfig, Payload } from 'payload'
-import { adminGroups } from '@/db/collections/adminGroups'
+import { navAccordions } from '@/db/collections/navAccordions'
 
 export const Emails: CollectionConfig = {
   slug: 'emails',
@@ -10,7 +10,7 @@ export const Emails: CollectionConfig = {
     read: () => true,
   },
   admin: {
-    group: adminGroups.communication,
+    group: navAccordions.communication,
     livePreview: {
       url: `${process.env.CUHACKING_2025_EMAIL_TEMPLATES_SITE_LOCAL_URL}/preview/cuhacking/registered-for-hackathon`,
       breakpoints: [

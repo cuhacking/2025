@@ -1,11 +1,11 @@
 import type { CollectionConfig } from 'payload'
-import { adminGroups } from '@/db/collections/adminGroups'
+import { navAccordions } from '@/db/collections/navAccordions'
 
 export const ApplicationForm: CollectionConfig = {
   slug: 'application-form',
   admin: {
     useAsTitle: 'name',
-    group: adminGroups.communication,
+    group: navAccordions.communication,
   },
   fields: [
     {

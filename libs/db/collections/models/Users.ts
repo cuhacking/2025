@@ -7,7 +7,7 @@ import { admins,
   // checkRole
 } from '@/db/access'
 // import { authenticated, isAdminFieldLevel } from '@/db/access'
-import { adminGroups } from '@/db/collections/adminGroups'
+import { navAccordions } from '@/db/collections/navAccordions'
 
 export const Users: CollectionConfig = {
   slug: 'users',
@@ -41,7 +41,7 @@ export const Users: CollectionConfig = {
         },
       ],
     },
-    group: adminGroups.featured,
+    group: navAccordions.featured,
     useAsTitle: 'displayName',
     defaultColumns: [
       'avatar',
@@ -62,27 +62,13 @@ export const Users: CollectionConfig = {
   },
   versions: {
     drafts: true,
-    maxPerDoc: 1,
+    maxPerDoc: 3,
   },
   fields: [
     {
-      name: 'roles',
-      type: 'select',
-      hasMany: true,
-      saveToJWT: true,
-      // hooks: {
-      //   beforeChange: [protectRoles],
-      // },
-      options: [
-        {
-          label: 'Admin',
-          value: 'admin',
-        },
-        {
-          label: 'User',
-          value: 'user',
-        },
-      ],
+      name: 'group',
+      type: 'relationship',
+      relationTo: 'groups'
     },
     {
       type: 'collapsible',

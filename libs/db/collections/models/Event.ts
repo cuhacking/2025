@@ -1,12 +1,12 @@
 import type { CollectionConfig } from 'payload'
 import process from 'node:process'
-import { adminGroups } from '@/db/collections/adminGroups'
+import { navAccordions } from '@/db/collections/navAccordions'
 
 export const BaseEvent: CollectionConfig = {
   slug: 'base-event',
   admin: {
     useAsTitle: 'title',
-    group: adminGroups.events,
+    group: navAccordions.events,
   },
   fields: [
     {
@@ -48,7 +48,7 @@ export const GeneralEvent: CollectionConfig = {
   slug: 'general-event',
   admin: {
     useAsTitle: 'formattedTitle',
-    group: adminGroups.events,
+    group: navAccordions.events,
   },
   fields: [
     {
@@ -104,8 +104,8 @@ export const GeneralEvent: CollectionConfig = {
             if (data?.general_event_id) {
               const baseUrl
                 = process.env.NODE_ENV === 'production'
-                  ? process.env.PAYLOAD_PORTAL_URL
-                  : process.env.PAYLOAD_LOCAL_PORTAL_URL
+                  ? process.env.CUAHCKING_2025_PORTAL_PUBLIC_URL
+                  : process.env.CUHACKING_2025_PORTAL_LOCAL_URL
               return `${baseUrl}/events/${data.event_id}/register`
             }
             return ''

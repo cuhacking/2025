@@ -87,6 +87,10 @@ export interface Config {
     'payload-migrations': PayloadMigration;
   };
   collectionsJoins: {
+    teams: {
+      brand: 'brands';
+      teamMembers: 'users';
+    };
     'general-event': {
       'eventMembers.participants': 'user-to-event';
       'eventMembers.mentors': 'user-to-event';
@@ -123,10 +127,10 @@ export interface Config {
     defaultIDType: number;
   };
   globals: {
-    constants: Constant;
+    'hackathon-2025': Hackathon2025;
   };
   globalsSelect: {
-    constants: ConstantsSelect<false> | ConstantsSelect<true>;
+    'hackathon-2025': Hackathon2025Select<false> | Hackathon2025Select<true>;
   };
   locale: null;
   user: User & {
@@ -205,7 +209,15 @@ export interface Media {
 export interface Team {
   id: number;
   name?: string | null;
-  avatar?: (number | null) | Media;
+  image?: (number | null) | Media;
+  brand?: {
+    docs?: (number | Brand)[] | null;
+    hasNextPage?: boolean | null;
+  } | null;
+  teamMembers?: {
+    docs?: (number | User)[] | null;
+    hasNextPage?: boolean | null;
+  } | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -217,6 +229,7 @@ export interface Brand {
   id: number;
   name: string;
   description?: string | null;
+  teams?: (number | null) | Team;
   domain?: string | null;
   links?:
     | {
@@ -239,6 +252,107 @@ export interface Brand {
   linktree?: string | null;
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users".
+ */
+export interface User {
+  id: number;
+  roles?: ('admin' | 'user')[] | null;
+  teams?: (number | null) | Team;
+  displayName?: string | null;
+  firstName?: string | null;
+  middleName?: string | null;
+  lastName?: string | null;
+  pronouns?: ('he/him' | 'she/her' | 'they/them' | 'other') | null;
+  avatar?: (number | null) | Media;
+  dietaryRestrictions?:
+    | (
+        | 'vegetarian'
+        | 'vegan'
+        | 'halal'
+        | 'kosher'
+        | 'pescatarian'
+        | 'dairy-free'
+        | 'gluten-free'
+        | 'shellfish-free'
+        | 'nut-free'
+        | 'keto'
+        | 'low-lactose'
+        | 'low-carb'
+        | 'paleo'
+        | 'high-protein'
+        | 'raw-vegan'
+        | 'whole30'
+        | 'fasting'
+        | 'other'
+      )[]
+    | null;
+  allergies?:
+    | (
+        | 'peanuts'
+        | 'tree-nuts'
+        | 'dairy'
+        | 'gluten'
+        | 'shellfish'
+        | 'fish'
+        | 'soy'
+        | 'eggs'
+        | 'red-meat'
+        | 'corn'
+        | 'sulfites'
+        | 'fruits'
+        | 'vegetables'
+        | 'caffeine'
+        | 'honey'
+        | 'other'
+      )[]
+    | null;
+  tshirtSize?: ('xs' | 's' | 'm' | 'l' | 'xl' | '2xl' | '3xl') | null;
+  emergencyContactFullName?: string | null;
+  emergencyContactCell?: string | null;
+  emergencyContactEmailAddress?: string | null;
+  website?: string | null;
+  behance?: string | null;
+  linkedinVanity?: string | null;
+  linkedinId?: string | null;
+  linkedinEmailVerified?: boolean | null;
+  linkedinLocale?: string | null;
+  githubUrl?: string | null;
+  githubEmail?: string | null;
+  githubId?: string | null;
+  githubAvatarUrl?: string | null;
+  githubType?: string | null;
+  githubHtmlUrl?: string | null;
+  githubName?: string | null;
+  githubBlog?: string | null;
+  githubLocation?: string | null;
+  githubHireable?: string | null;
+  githubPublicRepos?: string | null;
+  githubLinkedin?: string | null;
+  githubInstagram?: string | null;
+  discordUsername?: string | null;
+  discordGlobalName?: string | null;
+  discordVerified?: boolean | null;
+  discordDiscriminator?: string | null;
+  discordLocale?: string | null;
+  discordId?: string | null;
+  googleEmail?: string | null;
+  googleEmailVerified?: boolean | null;
+  sub?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  password?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -518,105 +632,6 @@ export interface UserToEvent {
   role: number | Role;
   updatedAt: string;
   createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
- */
-export interface User {
-  id: number;
-  roles?: ('admin' | 'user')[] | null;
-  displayName?: string | null;
-  firstName?: string | null;
-  middleName?: string | null;
-  lastName?: string | null;
-  pronouns?: ('he/him' | 'she/her' | 'they/them' | 'other') | null;
-  avatar?: (number | null) | Media;
-  dietaryRestrictions?:
-    | (
-        | 'vegetarian'
-        | 'vegan'
-        | 'halal'
-        | 'kosher'
-        | 'pescatarian'
-        | 'dairy-free'
-        | 'gluten-free'
-        | 'shellfish-free'
-        | 'nut-free'
-        | 'keto'
-        | 'low-lactose'
-        | 'low-carb'
-        | 'paleo'
-        | 'high-protein'
-        | 'raw-vegan'
-        | 'whole30'
-        | 'fasting'
-        | 'other'
-      )[]
-    | null;
-  allergies?:
-    | (
-        | 'peanuts'
-        | 'tree-nuts'
-        | 'dairy'
-        | 'gluten'
-        | 'shellfish'
-        | 'fish'
-        | 'soy'
-        | 'eggs'
-        | 'red-meat'
-        | 'corn'
-        | 'sulfites'
-        | 'fruits'
-        | 'vegetables'
-        | 'caffeine'
-        | 'honey'
-        | 'other'
-      )[]
-    | null;
-  tshirtSize?: ('xs' | 's' | 'm' | 'l' | 'xl' | '2xl' | '3xl') | null;
-  emergencyContactFullName?: string | null;
-  emergencyContactCell?: string | null;
-  emergencyContactEmailAddress?: string | null;
-  website?: string | null;
-  behance?: string | null;
-  linkedinVanity?: string | null;
-  linkedinId?: string | null;
-  linkedinEmailVerified?: boolean | null;
-  linkedinLocale?: string | null;
-  githubUrl?: string | null;
-  githubEmail?: string | null;
-  githubId?: string | null;
-  githubAvatarUrl?: string | null;
-  githubType?: string | null;
-  githubHtmlUrl?: string | null;
-  githubName?: string | null;
-  githubBlog?: string | null;
-  githubLocation?: string | null;
-  githubHireable?: string | null;
-  githubPublicRepos?: string | null;
-  githubLinkedin?: string | null;
-  githubInstagram?: string | null;
-  discordUsername?: string | null;
-  discordGlobalName?: string | null;
-  discordVerified?: boolean | null;
-  discordDiscriminator?: string | null;
-  discordLocale?: string | null;
-  discordId?: string | null;
-  googleEmail?: string | null;
-  googleEmailVerified?: boolean | null;
-  sub?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  password?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1024,7 +1039,9 @@ export interface SponsorSelect<T extends boolean = true> {
  */
 export interface TeamsSelect<T extends boolean = true> {
   name?: T;
-  avatar?: T;
+  image?: T;
+  brand?: T;
+  teamMembers?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1035,6 +1052,7 @@ export interface TeamsSelect<T extends boolean = true> {
 export interface BrandsSelect<T extends boolean = true> {
   name?: T;
   description?: T;
+  teams?: T;
   domain?: T;
   links?:
     | T
@@ -1057,6 +1075,7 @@ export interface BrandsSelect<T extends boolean = true> {
   linktree?: T;
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1249,6 +1268,7 @@ export interface ChallengePrizeSelect<T extends boolean = true> {
  */
 export interface UsersSelect<T extends boolean = true> {
   roles?: T;
+  teams?: T;
   displayName?: T;
   firstName?: T;
   middleName?: T;
@@ -1483,10 +1503,50 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "constants".
+ * via the `definition` "hackathon-2025".
  */
-export interface Constant {
+export interface Hackathon2025 {
   id: number;
+  general?: {
+    name?: string | null;
+    hosts?: (number | Brand)[] | null;
+    location?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    start?: string | null;
+    end?: string | null;
+    sponsors?: {
+      tier?: {};
+    };
+    organizers?: {
+      Advisors?: string | null;
+      coleads?: string | null;
+      'Community Engagement'?: string | null;
+      Marketing?: string | null;
+      Logistics?: string | null;
+      'Hacker Experience'?: string | null;
+      Sponsorship?: string | null;
+      Design?: string | null;
+      Development?: string | null;
+    };
+    schedule?: {};
+    judges?: string | null;
+    mentors?: string | null;
+    hackers?: {};
+    volunteers?: string | null;
+  };
   portal?: {
     dashboard?: {
       cards?:
@@ -1513,47 +1573,6 @@ export interface Constant {
     profile?: string | null;
     registration?: string | null;
   };
-  website?: {
-    header?: {
-      logo?: (number | null) | Media;
-      links?:
-        | {
-            text?: string | null;
-            link?: string | null;
-            id?: string | null;
-          }[]
-        | null;
-    };
-    hero?: string | null;
-    about?: string | null;
-    events?: string | null;
-    sponsors?: string | null;
-    faq?:
-      | {
-          question?: string | null;
-          answers?:
-            | {
-                bullet?: string | null;
-                id?: string | null;
-              }[]
-            | null;
-          id?: string | null;
-        }[]
-      | null;
-    footer?:
-      | {
-          logo?: (number | null) | Media;
-          links?:
-            | {
-                text?: string | null;
-                link?: string | null;
-                id?: string | null;
-              }[]
-            | null;
-          id?: string | null;
-        }[]
-      | null;
-  };
   settings?: {
     brand?: string | null;
     year?: number | null;
@@ -1564,9 +1583,41 @@ export interface Constant {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "constants_select".
+ * via the `definition` "hackathon-2025_select".
  */
-export interface ConstantsSelect<T extends boolean = true> {
+export interface Hackathon2025Select<T extends boolean = true> {
+  general?:
+    | T
+    | {
+        name?: T;
+        hosts?: T;
+        location?: T;
+        start?: T;
+        end?: T;
+        sponsors?:
+          | T
+          | {
+              tier?: T | {};
+            };
+        organizers?:
+          | T
+          | {
+              Advisors?: T;
+              coleads?: T;
+              'Community Engagement'?: T;
+              Marketing?: T;
+              Logistics?: T;
+              'Hacker Experience'?: T;
+              Sponsorship?: T;
+              Design?: T;
+              Development?: T;
+            };
+        schedule?: T | {};
+        judges?: T;
+        mentors?: T;
+        hackers?: T | {};
+        volunteers?: T;
+      };
   portal?:
     | T
     | {
@@ -1598,51 +1649,6 @@ export interface ConstantsSelect<T extends boolean = true> {
             };
         profile?: T;
         registration?: T;
-      };
-  website?:
-    | T
-    | {
-        header?:
-          | T
-          | {
-              logo?: T;
-              links?:
-                | T
-                | {
-                    text?: T;
-                    link?: T;
-                    id?: T;
-                  };
-            };
-        hero?: T;
-        about?: T;
-        events?: T;
-        sponsors?: T;
-        faq?:
-          | T
-          | {
-              question?: T;
-              answers?:
-                | T
-                | {
-                    bullet?: T;
-                    id?: T;
-                  };
-              id?: T;
-            };
-        footer?:
-          | T
-          | {
-              logo?: T;
-              links?:
-                | T
-                | {
-                    text?: T;
-                    link?: T;
-                    id?: T;
-                  };
-              id?: T;
-            };
       };
   settings?:
     | T

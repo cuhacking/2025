@@ -3,7 +3,10 @@ import type { CollectionSlug, File, Payload, PayloadRequest } from 'payload'
 import { hardwareSeedData } from '@/db/collections'
 import { brandSeedData } from '@/db/collections/Brands'
 import { seedEmails } from '@/db/collections/models'
+import { seedMedia } from '@/db/collections/models'
 import { userData } from '@/db/collections/models/Users'
+import { seedGroups } from '@/db/collections/models'
+import { seedOrganizerTeams } from '@/db/collections/OrganizerTeams'
 
 const collections: CollectionSlug[] = [
   'media',
@@ -362,6 +365,7 @@ blockType: "textarea"
         data: form,
       });
 
+
       console.log(`✅ Inserted form: ${form.title}`);
     }),
   );
@@ -371,6 +375,9 @@ blockType: "textarea"
   console.error('❌ Error seeding form data:', error);
 }
 
+  await seedMedia(payload)
+  await seedGroups(payload)
+  await seedOrganizerTeams(payload)
 
   log('🎉 Database seeded successfully! 🌱🐧')
   return { message: 'Database seeded successfully!', logs }

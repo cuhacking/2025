@@ -1,9 +1,11 @@
 import type { CollectionConfig } from 'payload'
+import {navAccordions} from "@/db/collections"
 
 export const Hackathon: CollectionConfig = {
   slug: 'hackathon',
   admin: {
     useAsTitle: 'year',
+    // group: navAccordions.events,
   },
   fields: [
     {
@@ -29,6 +31,9 @@ export const Hackathon: CollectionConfig = {
 
 export const HackathonEvents: CollectionConfig = {
   slug: 'hackathon-event',
+  admin: {
+    // group: navAccordions.events,
+  },
   fields: [
     {
       name: 'event',
