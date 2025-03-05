@@ -2,12 +2,9 @@ import linkedinBlack from '@cuhacking/shared/assets/icons/socials/linkedin-black
 import { Button } from '@cuhacking/shared/ui/button'
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 import { Typography } from '@cuhacking/shared/ui/typography'
-import { Form, useNavigation } from '@remix-run/react'
-import { signIn } from '../../../pages/login/index'
+import { Form } from '@remix-run/react'
 
 export function LoginCallToAction() {
-  const transition = useNavigation()
-
   return (
     <GlassmorphicCard
       className="w-full flex flex-col items-center gap-5 p-3 md:gap-6 md:px-14 md:py-8 lg:gap-8 lg:px-20 lg:py-10"
@@ -23,18 +20,12 @@ export function LoginCallToAction() {
         </h2>
       </header>
 
-      <Form method="post">
+      <Form method="get" action="/api/auth">
         <Button
+          type="submit"
           variant="primary"
           className="flex items-center gap-x-3 px-4 md:px-6 lg:px-8 py-4"
           aria-label="Login with Linkedin"
-          disabled={transition.state === 'submitting'}
-          onClick={async () => {
-            await signIn.social({
-              provider: 'linkedin',
-              callbackURL: '/hello',
-            })
-          }}
         >
           <img src={linkedinBlack} alt="Linkedin logo" className="size-5" />
           <Typography variant="h6">Log In</Typography>
