@@ -1,11 +1,11 @@
 import type { CollectionConfig } from 'payload'
-import { adminGroups } from '@/db/collections/adminGroups'
+import { navAccordions } from '@/db/collections/navAccordions'
 
 export const HostToEvent: CollectionConfig = {
   slug: 'host-to-event',
   admin: {
     useAsTitle: 'formattedTitle',
-    group: adminGroups.relations,
+    group: navAccordions.relations,
   },
   fields: [
     // Basic Info

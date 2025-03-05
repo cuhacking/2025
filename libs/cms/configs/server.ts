@@ -1,6 +1,16 @@
 // github.com/jhb-software/payload-plugins/tree/main/geocoding
 /* eslint-disable node/prefer-global/process */
-import {adminGroups, Brands, Roles} from "@/db/collections"
+import {navAccordions,
+        Brands,
+        Groups
+       } from "@/db/collections"
+
+import {OrganizerTeams} from '@/db/collections/OrganizerTeams'
+
+import {
+ TeamBlock
+} from "@/db/blocks"
+
 import {Sponsor,
         Organization,
         ChallengePrize,
@@ -10,11 +20,14 @@ import {Sponsor,
         GeneralEvent,
         BaseEvent,
         Media,
+        // Teams,
         Emails,
         Hardware,
         Users,
-        Teams } from "@/db/collections/models";
-import {Constants} from "@/db/globals";
+        // Hackathon,
+        // HackathonEvents,
+         } from "@/db/collections/models";
+import {Hackathon2025} from "@/db/globals";
 import { linkedinOAuth, githubOAuth, discordOAuth, googleOAuth } from '@/cms/auth'
 
 import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
@@ -25,24 +38,31 @@ import sharp from "sharp";
 
 export const baseConfig = {
   globals: [
-    Constants,
+    Hackathon2025,
   ],
   collections: [
     Organization,
+    Groups,
     Sponsor,
     Users,
-    Teams,
     Brands,
     Media,
+      // Teams,
     Emails,
-    Roles,
+    OrganizerTeams,
     BaseEvent,
     Hardware,
     GeneralEvent,
     UserToEvent,
+        // Hackathon,
+        // HackathonEvents,
     SponsorToEvent,
     HostToEvent,
     ChallengePrize,
+   TeamBlock
+  ],
+  blocks:[
+   // TeamBlock
   ],
   email: resendAdapter({
     defaultFromAddress: 'info@cuhacking.ca',
@@ -71,7 +91,7 @@ formBuilderPlugin({
   },
 formOverrides: {
   admin: {
-    group: adminGroups.communication,
+    group: navAccordions.communication,
     livePreview: {
      // url: `${process.env.CUHACKING_2025_PORTAL_LOCAL_URL}/registration`,
      url: `${process.env.CUHACKING_2025_PORTAL_PUBLIC_URL}/registration`,
@@ -85,7 +105,7 @@ formOverrides: {
   },
   formSubmissionOverrides:{
   admin: {
-    group: adminGroups.communication
+    group: navAccordions.communication
   },
   }
 }),

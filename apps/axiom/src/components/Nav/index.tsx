@@ -34,6 +34,7 @@ export const Nav: FC<ServerProps> = async (props) => {
     },
     collections,
     globals,
+    blocks,
   } = payload.config
 
   const groups = groupNavItems(

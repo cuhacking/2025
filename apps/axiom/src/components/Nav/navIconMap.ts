@@ -5,12 +5,14 @@ import {
   Mail,
   Star,
   User,
-  Keyboard,
-  Users,
+  // Keyboard,
+  // Users,
+  Signature,
 PersonStanding,
 MousePointer2,
   Inbox,
   Trophy,
+  Flag,
   CalendarDays,
   Cpu
 } from 'lucide-react'
@@ -23,15 +25,17 @@ export const navIconMap: Partial<
   brands: Star,
   users: User,
   emails: Mail,
-  constants: Keyboard,
-  teams: Users,
-  roles: PersonStanding,
+  // constants: Keyboard,
+  "organizerTeams": Signature,
+  groups: PersonStanding,
   challengePrize: Trophy,
   "base-event": CalendarDays,
   "general-event": CalendarDays,
   forms: MousePointer2,
   "form-submissions": Inbox,
-  hardware: Cpu
+  hardware: Cpu,
+  "2025": Flag,
+  hackathons: Flag
 }
 
 export const getNavIcon = (slug: string) =>

@@ -1,10 +1,10 @@
 import type { CollectionConfig } from 'payload'
-import { adminGroups } from '@/db/collections/adminGroups'
+import { navAccordions } from '@/db/collections/navAccordions'
 
 export const UserToEvent: CollectionConfig = {
   slug: 'user-to-event',
   admin: {
-    group: adminGroups.relations,
+    group: navAccordions.relations,
   },
   fields: [
     {
@@ -19,11 +19,11 @@ export const UserToEvent: CollectionConfig = {
       relationTo: 'base-event',
       required: true,
     },
-    {
-      name: 'role',
-      type: 'relationship',
-      relationTo: 'roles',
-      required: true,
-    },
+    // {
+    //   name: 'role',
+    //   type: 'relationship',
+    //   relationTo: 'roles',
+    //   required: true,
+    // },
   ],
 }

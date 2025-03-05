@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { BasePayload, CollectionSlug, StaticLabel } from 'payload'
 
 import './index.scss'
-import { adminGroups } from '@/db/collections/adminGroups'
+import { navAccordions } from '@/db/collections/navAccordions'
 import { FeatureCard } from '../DashboardFeatureCard'
 
 type Props = {
@@ -38,7 +38,7 @@ export const DashboardGroup: FC<Props> = async ({
     return docCounts
   }
 
-  const isFeaturedGroup = groupLabel === adminGroups.featured
+  const isFeaturedGroup = groupLabel === navAccordions.featured
   let counts: Record<string, number>
 
   if (isFeaturedGroup) {

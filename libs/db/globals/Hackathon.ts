@@ -1,18 +1,33 @@
 /* eslint-disable node/prefer-global/process */
-import type { Block, GlobalConfig} from 'payload'
+import type { Block, Field, GlobalConfig} from 'payload'
 
-export const Header: Block = {
-  slug: 'Header',
-  imageURL: '',
-  imageAltText: 'A nice thumbnail',
+export const TeamBlock: Block = {
+  slug: "organizersBlock",
   fields: [
     {
-      name: 'link',
-      type: 'text',
+      name: "team",
+      type: "select",
       required: true,
+      options: [
+        { label: "Advisors", value: "advisors" },
+        { label: "Co-Leads", value: "coleads" },
+        { label: "Community Engagement", value: "community-engagement" },
+        { label: "Marketing", value: "marketing" },
+        { label: "Logistics", value: "logistics" },
+        { label: "Hacker Experience", value: "hacker-experience" },
+        { label: "Sponsorship", value: "sponsorship" },
+        { label: "Design", value: "design" },
+        { label: "Development", value: "development" },
+      ],
+    },
+    {
+      name: "members",
+      type: "relationship",
+      relationTo: 'users',
+      hasMany: true
     },
   ],
-}
+};
 
 const SOCIAL_MEDIA_DOMAINS = [
   'behance.net',
@@ -24,8 +39,8 @@ const SOCIAL_MEDIA_DOMAINS = [
   'linktr.ee',
 ] as const
 
-export const Constants: GlobalConfig = {
-  slug: 'constants',
+export const Hackathon2025: GlobalConfig = {
+  slug: '2025',
   // access: {
   //   read: () => true,
   //   update: ({ req }) => req.user?.roles?.some(role => role.admin === true || role.name === 'owner'),
@@ -36,17 +51,22 @@ export const Constants: GlobalConfig = {
   admin: {
     livePreview: {
 url: async ({ req }) => {
-const tabIndex = (
+let tabIndex = (
     await req.payload.find({
       collection: 'payload-preferences',
-      where: { key: { equals: 'global-constants' } },
+      where: { key: { equals: 'global-hackathon' } },
     })
   )?.docs?.[0]?.value?.fields?.["_index-0"]?.tabIndex ?? 0;
 
 const isDev = process.env.NODE_ENV === 'development';
-return tabIndex === 0
-  ? (isDev ? process.env.CUHACKING_2025_PORTAL_LOCAL_URL : process.env.CUHACKING_2025_PORTAL_PUBLIC_URL)
-  : (isDev ? process.env.CUHACKING_2025_WEBSITE_LOCAL_URL : process.env.CUHACKING_2025_WEBSITE_PUBLIC_URL);
+
+
+
+return 'https://embed.figma.com/design/wc1JOWR48tBNkjcjwY3AzB/%E2%8C%A8%EF%B8%8F-cuHacking-Design-System?node-id=464-1088&embed-host=share'
+
+// return tabIndex === 0
+//   ? (isDev ? process.env.CUHACKING_2025_PORTAL_LOCAL_URL : process.env.CUHACKING_2025_PORTAL_PUBLIC_URL)
+//   : (isDev ? process.env.CUHACKING_2025_WEBSITE_LOCAL_URL : process.env.CUHACKING_2025_WEBSITE_PUBLIC_URL);
 },
       breakpoints: [
         {
@@ -78,8 +98,7 @@ return tabIndex === 0
           description: "Hackathon Management Application.",
           fields: [
 {
-  name: 'dashboard',
-  type: 'group',
+  type: 'collapsible',
   label: 'Dashboard',
   fields: [
     {
@@ -195,6 +214,7 @@ label: 'Description',
              label: 'Registration'
            },
           ]
+
         },
         {
           name: 'website',
@@ -202,8 +222,10 @@ label: 'Description',
           description: 'Promotional site for the hackathon.',
           fields: [
             {
+type: 'tabs',
+              tabs: [
+            {
               name: 'header',
-              type: 'group',
               label: 'Header',
               fields: [
                 {
@@ -238,29 +260,47 @@ label: 'Description',
               ],
             },
             {
-              name: 'hero',
-              type: 'text',
               label: 'Hero',
+              fields: [
+                {
+                  name: 'callToAction',
+                 type:'text',
               defaultValue: () => 'JOIN US',
+                }
+              ]
             },
             {
-              name: 'about',
-              type: 'text',
               label: 'About',
+              fields: [
+               {
+                 name: 'about',
+                 type: 'text',
               defaultValue: () => 'OUR MISSION',
+               }
+              ]
             },
             {
-              name: 'events',
-              type: 'text',
               label: 'Events',
+              fields:[
+              {
+                name: 'events',
+                type: 'text',
               defaultValue: () => 'EVENTS',
+              }]
             },
             {
-              name: 'sponsors',
-              type: 'text',
               label: 'Sponsors',
+              fields: [
+               {
+                 name: 'sponsors',
+              type: 'text',
               defaultValue: () => 'SPONSORSHIP',
+               }
+              ]
             },
+            {
+              label: 'FAQ',
+              fields: [
             {
               name: 'faq',
               type: 'array',
@@ -327,10 +367,14 @@ label: 'Description',
                 },
               ],
             },
+              ]
+            },
             {
+              label: 'Footer',
+              fields: [
+{
               name: 'footer',
               type: 'array',
-              label: 'Footer',
               fields:[
                 {
                   name: 'logo',
@@ -358,61 +402,133 @@ label: 'Description',
                   ],
                 },
               ]
+}
+              ],
             }
+
+              ]
+            },
           ],
         },
         {
-          name: 'settings',
-          label: '⚙ Settings',
-          description: 'General configuration for your brand.',
+          label: "⚙ Settings",
+          description: "Details for the Hackathon",
           fields: [
-            {
-              name: 'brand',
-              type: 'text',
-              defaultValue: async ({ req }) => {
-              // const res = await req.payload.find({
-              //   collection: 'brands',
-              //   where: { name: { equals: 'cuHacking' } },
-              //   select: { name: true },
-              // })
-
-                // return res?.docs[0].name || ''
-                return 'cuHacking'
-              },
-            },
-            {
-              name: 'year',
-              type: 'number',
-              defaultValue: 2025,
-            },
-// {
-//       name: 'roles',
-//       type: 'relationship',
-//       relationTo: 'roles',
-//       hasMany: true,
-//       required: true,
-//     },
-            // {
-            //   name: 'Links',
-            //   type: 'relationship',
-            //   relationTo: 'brands',
-            //   hasMany: true,
-            //   defaultValue: async ({ req }) => {
-            //     const brands = await req.payload.find({
-            //       collection: 'brands',
-            //       where: {
-            //         domain: {
-            //           in: SOCIAL_MEDIA_DOMAINS,
-            //         },
-            //       },
-            //     })
-
-            //     return brands?.docs?.map(brand => brand.id) || []
-            //   },
-            // },
-          ],
+      {
+      type: 'row',
+fields: [
+      {
+        name: 'name',
+        type: 'text',
+        defaultValue: () => 'cuHacking'
+      },
+]
+      },
+      {
+ type: 'row',
+  fields: [
+     {
+        name: 'location',
+        type: 'text',
+       defaultValue: () => 'Carleton University, Richcraft Hall'
+      },
+      {
+        name: 'start',
+        type: 'date',
+           admin: {
+        date: {
+          pickerAppearance: 'dayAndTime',
+          displayFormat: 'h:mm a, EEEE, do MMMM, yyyy',
+          minDate: new Date(),
         },
+        },
+        defaultValue: () => new Date(2025, 2, 15, -4, 0, 0)
+      },
+      {
+        name: 'end',
+        type: 'date',
+           admin: {
+        date: {
+          pickerAppearance: 'dayAndTime',
+          displayFormat: 'h:mm a, EEEE, do MMMM, yyyy',
+          minDate: new Date(),
+        },
+        },
+        defaultValue: () => new Date(2025, 2, 17, -4, 0, 0)
+      },
+  ]
+      },
+      {
+        label: 'Sponsors',
+        type: 'collapsible',
+        admin: {
+          initCollapsed: true,
+        },
+        fields: [
+    {
+      name: 'tera',
+      type: 'relationship',
+      relationTo: 'brands',
+    },
+    {
+      name: 'mega',
+      type: 'relationship',
+      relationTo: 'brands',
+    },
+    {
+      name: 'kilo',
+      type: 'relationship',
+      relationTo: 'brands',
+    },
+    {
+      name: 'centi',
+      type: 'relationship',
+      relationTo: 'brands',
+    },
+  ]
+      },
+{
+      name: "organizers",
+      type: "blocks",
+      blocks: [TeamBlock],
+    },
+      {
+        name: 'schedule',
+        type: 'group',
+        fields: [
+
+        ]
+      },
+      {
+        name: 'judges',
+        type: 'text',
+      },
+      {
+       name: 'mentors',
+        type: 'text',
+      },
+      {
+        name: 'hackers',
+        type: 'text',
+      },
+      {
+        name: 'volunteers',
+        type: 'text',
+      },
+       ]
+        },
+        {
+          label: '💅 Assets',
+          description: 'Digital artwork & Logos.',
+        fields: [
+
+        ]
+        }
       ],
     },
   ],
+}
+
+export const hackathonSeedData = {
+
 }
