@@ -143,10 +143,9 @@ export function Legal({ legalData }: LegalPageProps) {
       </Accordion>
 
       <div className="px-4 flex justify-center pb-6">
-        <Form method="post">
+        <Form method="patch">
           <Button
-            onClick={() => { }}
-            disabled={!allChecked || !allScrolled}
+            disabled={false}
             variant="secondary"
             aria-label="Redirect to Profile"
             type="submit"
@@ -158,7 +157,7 @@ export function Legal({ legalData }: LegalPageProps) {
               },
             )}
           >
-            <Typography variant="h6">LET'S CREATE YOUR PROFILE</Typography>
+            <Typography variant="h6"><span>LET'S CREATE YOUR PROFILE</span></Typography>
           </Button>
         </Form>
 
