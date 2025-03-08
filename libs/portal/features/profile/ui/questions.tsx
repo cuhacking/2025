@@ -12,7 +12,6 @@ import { NumberField } from '@cuhacking/portal/shared/features/form/ui/number-fi
 import { PhoneNumberField } from '@cuhacking/portal/shared/features/form/ui/phone-number-field'
 import { RadioGroupField } from '@cuhacking/portal/shared/features/form/ui/radio-group-field'
 import { TextField } from '@cuhacking/portal/shared/features/form/ui/text-field'
-import { UserProfileStatus } from '@cuhacking/portal/types/user'
 import { Provider } from '@cuhacking/shared/types/auth'
 import { IconVariant } from '@cuhacking/shared/types/icon'
 import {
@@ -25,7 +24,7 @@ import { Button } from '@cuhacking/shared/ui/button'
 import { Checkbox } from '@cuhacking/shared/ui/checkbox'
 import { Form, FormLabel } from '@cuhacking/shared/ui/form'
 import { Typography } from '@cuhacking/shared/ui/typography'
-import { useNavigate } from '@remix-run/react'
+import { useLoaderData, useNavigate } from '@remix-run/react'
 import { useState } from 'react'
 import {
   AUTH_LINK,
@@ -38,8 +37,8 @@ import {
 
 interface ProfileFormProps {
   user: Partial<UserDetails>
-  status: UserProfileStatus
-  onSubmit: (values: z.infer<any>, status: UserProfileStatus) => Promise<Response>
+  status: boolean
+  onSubmit: (values: z.infer<any>, isComplete: boolean, cookie: string | null, apiUrl: string) => Promise<Response>
 }
 
 const initialSocialMediaHandles = {
@@ -56,6 +55,7 @@ export function Questions({ user, status, onSubmit }: ProfileFormProps) {
     typeof initialSocialMediaHandles
   >(initialSocialMediaHandles)
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const { cookie, API_URL } = useLoaderData<{ cookie: string, API_URL: string }>()
 
   const {
     profile,
@@ -71,15 +71,18 @@ export function Questions({ user, status, onSubmit }: ProfileFormProps) {
   } = useNumberField(profile, 'age')
 
   const navigate = useNavigate()
+
   async function handleSubmit(values: z.infer<any>) {
     setIsLoading(true)
-    const res = await onSubmit(values, status)
+    const res = await onSubmit(values, false, cookie, API_URL)
     setIsLoading(false)
-    if (res.status === 200 && status === UserProfileStatus.notComplete) {
+    if (res.status === 200 && status) {
       navigate('/dashboard')
     }
   }
-  const buttonMessage = status === UserProfileStatus.complete ? 'Update Profile' : 'Create Profile'
+
+  const buttonMessage = status ? 'Update Profile' : 'Create Profile'
+  const disabled = isValid || !isDirty || isLoading
 
   return (
     <Form {...profile}>
@@ -436,7 +439,7 @@ export function Questions({ user, status, onSubmit }: ProfileFormProps) {
         </div>
         <div className="px-4 flex justify-center pb-6">
           <Button
-            disabled={!isValid || !isDirty || isLoading}
+            disabled={disabled}
             variant="secondary"
             type="submit"
           >

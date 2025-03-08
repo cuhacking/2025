@@ -1,4 +1,3 @@
-import { UserProfileStatus } from '@cuhacking/portal/types/user'
 import {
   Avatar,
   AvatarFallback,
@@ -6,28 +5,27 @@ import {
 } from '@cuhacking/shared/ui/avatar'
 
 interface QuestionHeaderProps {
-  status: UserProfileStatus
+  isComplete: boolean
   avatarUrl: string
   firstName: string
   lastName: string
 }
 
 export function Header({
-  status,
+  isComplete,
   avatarUrl,
   firstName,
   lastName,
 }: QuestionHeaderProps) {
   let welcomeMessage = ''
   let profileTitle = ''
-  switch (status) {
-    case UserProfileStatus.notComplete:
-      welcomeMessage = 'Hi, we wanna get to know you!'
-      profileTitle = 'Create Profile'
-      break
-    case UserProfileStatus.complete:
-      welcomeMessage = 'Evolving are we? Let us know!'
-      profileTitle = `Hi, ${firstName}`
+  if (!isComplete) {
+    welcomeMessage = 'Hi, we wanna get to know you!'
+    profileTitle = 'Create Profile'
+  }
+  else {
+    welcomeMessage = 'Evolving are we? Let us know!'
+    profileTitle = `Hi, ${firstName}`
   }
   const fallBackAvatar = firstName.charAt(0) + lastName.charAt(0)
   return (

@@ -24,7 +24,7 @@ export function useProfileSchema(
       .refine(value => /^[\p{L}\p{M}' -]+$/u.test(value), {
         message: 'Last name should contain only alphabets',
       }),
-    middleName: z.string().max(100).optional(),
+    middleName: z.string().max(100).optional().nullable(),
     email: z.string().email().max(100),
     preferredDisplayName: z
       .string()
@@ -48,7 +48,8 @@ export function useProfileSchema(
       .refine(
         value => !isStudent || (isStudent && value !== undefined),
         { message: 'Required' },
-      ),
+      )
+      .nullable(),
     expectedGraduationDate: z
       .date()
       .optional()
@@ -60,25 +61,29 @@ export function useProfileSchema(
       })
       .refine(value => value == null || value <= new Date('2035-12-31'), {
         message: 'Graduation date must be before December 31, 2035',
-      }),
+      })
+      .nullable(),
     degree: z
       .string()
       .optional()
       .refine(value => !isStudent || (isStudent && value), {
         message: 'Required',
-      }),
+      })
+      .nullable(),
     institution: z
       .string()
       .optional()
       .refine(value => !isStudent || (isStudent && value), {
         message: 'Required',
-      }),
+      })
+      .nullable(),
     fieldOfStudy: z
       .string()
       .optional()
       .refine(value => !isStudent || (isStudent && value), {
         message: 'Required',
-      }),
+      })
+      .nullable(),
     phoneNumber: z
       .string()
       .refine(value => /^\+?[1-9]\d{1,14}$/.test(value), {
