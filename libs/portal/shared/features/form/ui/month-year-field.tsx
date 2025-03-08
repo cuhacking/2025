@@ -47,13 +47,8 @@ export function MonthYearField({
   isDisabled,
   info,
 }: DateFieldProps) {
-  // If there is an initial date value, extract its month and year.
-  const initialDate = form.getValues(name)
-  const initialMonth = initialDate ? (initialDate.getMonth() + 1).toString() : ''
-  const initialYear = initialDate ? initialDate.getFullYear().toString() : ''
-
-  const [selectedMonth, setSelectedMonth] = useState<string>(initialMonth)
-  const [selectedYear, setSelectedYear] = useState<string>(initialYear)
+  const [selectedMonth, setSelectedMonth] = useState<string>('')
+  const [selectedYear, setSelectedYear] = useState<string>('')
   const [monthOpen, setMonthOpen] = useState<boolean>(false)
   const [yearOpen, setYearOpen] = useState<boolean>(false)
   const [validInput, setValidInput] = useState<boolean>(false)
@@ -81,7 +76,6 @@ export function MonthYearField({
     return { value: year, label: year }
   })
 
-  // Update the form value when both month and year have been selected.
   const updateDate = (month: string, year: string) => {
     if (month && year) {
       const parsedMonth = Number.parseInt(month)
@@ -96,6 +90,19 @@ export function MonthYearField({
       setValidInput(true)
     }
   }, [selectedMonth, selectedYear])
+
+  useEffect(() => {
+    if (!form.getValues(name)) {
+      return
+    }
+    const initialDate = new Date(form.getValues(name))
+    const initialMonth = initialDate ? (initialDate.getMonth() + 1).toString() : ''
+    const initialYear = initialDate ? initialDate.getFullYear().toString() : ''
+    setSelectedMonth(initialMonth)
+    setSelectedYear(initialYear)
+    updateDate(initialMonth, initialYear)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []) // want this to run only on start
 
   return (
     <GlassmorphicCard

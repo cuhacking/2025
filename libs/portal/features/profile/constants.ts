@@ -514,6 +514,7 @@ export const RESTRICTIONS = {
     { label: 'Paleo', value: 'paleo' },
     { label: 'Low-Carb', value: 'low_carb' },
     { label: 'Low-Sodium', value: 'low_sodium' },
+    { label: 'Fasting', value: 'fasting' },
     { label: 'Other', value: 'other' },
   ],
 
