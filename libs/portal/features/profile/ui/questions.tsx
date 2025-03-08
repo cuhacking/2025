@@ -37,7 +37,7 @@ import {
 
 interface ProfileFormProps {
   user: Partial<UserDetails>
-  status: boolean
+  isComplete: boolean
   onSubmit: (values: z.infer<any>, isComplete: boolean, cookie: string | null, apiUrl: string) => Promise<Response>
 }
 
@@ -48,8 +48,8 @@ const initialSocialMediaHandles = {
   behance: '',
 }
 
-export function Questions({ user, status, onSubmit }: ProfileFormProps) {
-  const [isStudent, setIsStudent] = useState<boolean>(false)
+export function Questions({ user, isComplete, onSubmit }: ProfileFormProps) {
+  const [isStudent, setIsStudent] = useState<boolean>(!!user.expectedGraduationDate)
   // will setup the social media handler once BE is up
   const [socialMediaHandles, _setSocialMediaHandles] = useState<
     typeof initialSocialMediaHandles
@@ -74,15 +74,23 @@ export function Questions({ user, status, onSubmit }: ProfileFormProps) {
 
   async function handleSubmit(values: z.infer<any>) {
     setIsLoading(true)
-    const res = await onSubmit(values, false, cookie, API_URL)
+    const refinedAllergies = values.allergies.map((allergy: { value: string, option: string }) =>
+      allergy.value,
+    )
+    const refinedDietaryRestrictions = values.dietaryRestrictions.map((restriction: { value: string, option: string }) =>
+      restriction.value,
+    )
+
+    const refinedValues = { ...values, dietaryRestrictions: refinedDietaryRestrictions, allergies: refinedAllergies }
+    const res = await onSubmit(refinedValues, false, cookie, API_URL)
     setIsLoading(false)
-    if (res.status === 200 && status) {
+    if (res.status === 200 && !isComplete) {
       navigate('/dashboard')
     }
   }
 
-  const buttonMessage = status ? 'Update Profile' : 'Create Profile'
-  const disabled = isValid || !isDirty || isLoading
+  const buttonMessage = isComplete ? 'Update Profile' : 'Create Profile'
+  const disabled = !isValid || isDirty || isLoading
 
   return (
     <Form {...profile}>

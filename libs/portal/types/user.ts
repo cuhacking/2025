@@ -27,8 +27,8 @@ export interface UserDetails {
   emergencyContactRelationship: string
   middleName?: string
   gender: string
-  dietaryRestrictions?: { label: string, value: string }[]
-  allergies?: { label: string, value: string }[]
+  dietaryRestrictions?: { label: string, value: string }[] | string[]
+  allergies?: { label: string, value: string }[] | string[]
   discordHandle?: string
   githubHandle?: string
   instagramHandle?: string

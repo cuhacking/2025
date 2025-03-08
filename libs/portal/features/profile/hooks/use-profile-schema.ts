@@ -3,11 +3,38 @@ import { YearStandings } from '@cuhacking/portal/types/year-standings'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
+import { RESTRICTIONS } from '../constants'
 
+function refinedUserData(user: Partial<UserDetails>) {
+  let graduationDate
+  if (user.expectedGraduationDate) {
+    graduationDate = new Date(user.expectedGraduationDate)
+  }
+  let refinedAllergies
+  if (user.allergies) {
+    refinedAllergies = user.allergies
+      .map(value => RESTRICTIONS.ALLERGIES.find(
+        allergy => allergy.value === value,
+      ))
+      .filter(Boolean)
+  }
+
+  let refinedRestrictions
+  if (user.dietaryRestrictions) {
+    refinedRestrictions = user.dietaryRestrictions
+      .map(value => RESTRICTIONS.DIETARY.find(
+        restriction => restriction.value === value,
+      ))
+      .filter(Boolean)
+  }
+  return { ...user, dietaryRestrictions: refinedRestrictions, allergies: refinedAllergies, expectedGraduationDate: graduationDate }
+}
 export function useProfileSchema(
   user: Partial<UserDetails>,
   isStudent: boolean,
 ) {
+  const refinedUser = refinedUserData(user)
+
   const profileSchema = z.object({
     firstName: z
       .string()
@@ -132,7 +159,7 @@ export function useProfileSchema(
 
   const profile = useForm<UserDetails>({
     resolver: zodResolver(profileSchema),
-    defaultValues: user,
+    defaultValues: refinedUser,
     mode: 'onBlur',
   })
   return {

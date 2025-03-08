@@ -38,7 +38,7 @@ export function ProfilePage({ user }: { user: UserDetails }) {
           lastName={user.lastName || ''}
           avatarUrl={user.avatar?.url || ''}
         />
-        <Questions onSubmit={handleSubmit} status={status} user={user} />
+        <Questions onSubmit={handleSubmit} isComplete={status} user={user} />
       </div>
     </Layout>
   )

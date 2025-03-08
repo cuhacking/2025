@@ -27,7 +27,7 @@ export function UserStatus({ name, status = 'pending', className }: UserStatusPr
           <TerminalText>WE HOPE TO CUHACKING!</TerminalText>
           <Button
             className="w-full text-black"
-            onClick={() => {}}
+            type="button"
             variant="secondary"
           >
             RSVP
