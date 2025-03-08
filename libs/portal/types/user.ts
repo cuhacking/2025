@@ -6,9 +6,12 @@ export interface User {
 }
 
 export interface UserDetails {
+  id: string
   firstName: string
   lastName: string
-  avatar?: string
+  avatar?: {
+    url: string
+  }
   preferredDisplayName: string
   email: string
   age: number
@@ -32,6 +35,7 @@ export interface UserDetails {
   behanceHandle?: string
   website?: string
   resumeLink: string
+  agreedToTerms?: boolean
   // isPublicProfile?: boolean
   // isPublicResume?: boolean
 }
