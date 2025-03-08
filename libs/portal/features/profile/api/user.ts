@@ -1,16 +1,22 @@
-import type { User, UserDetails } from '@cuhacking/portal/types/user'
-import { UserProfileStatus } from '@cuhacking/portal/types/user'
+import type { UserDetails } from '@cuhacking/portal/types/user'
 
-export function getCurrentUser(): User {
-  return {
-    profileStatus: UserProfileStatus.notComplete,
-    details: {
-      firstName: 'Hasith',
-      lastName: 'De Alwis',
-      middleName: ' ',
-      preferredDisplayName: 'Hasith',
-      email: 'hasithde24@gmail.com',
-    },
+export async function getCurrentUser({ cookie }: { cookie: string | null }): Promise<UserDetails | null> {
+  const API_URL = 'http://localhost:8000'
+  try {
+    const response = await fetch(`${API_URL}/api/users/me`, {
+      headers: { Cookie: cookie || '' },
+    })
+
+    if (!response.ok) {
+      return null
+    }
+
+    const user = await response.json()
+    return user.user
+  }
+  catch (error) {
+    console.error('Error fetching user:', error)
+    return null
   }
 }
 export async function postUser(_user: Partial<UserDetails>): Promise<Response> {
@@ -19,6 +25,38 @@ export async function postUser(_user: Partial<UserDetails>): Promise<Response> {
   // throw error if invalid status
   return new Response('Created User', { status: 200 })
 }
-export async function patchUser(_user: Partial<UserDetails>): Promise<Response> {
-  return new Response('Updated User', { status: 200 })
+
+export async function patchUser(user: Partial<UserDetails>, cookie: string | null, API_URL: string, userId: string): Promise<Record<string, string | number>> {
+  try {
+    const response = await fetch(`${API_URL}/api/users/${userId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Cookie': cookie || '',
+      },
+      credentials: 'include',
+      body: JSON.stringify(user),
+    })
+
+    if (!response.ok) {
+      return {
+        error: 'Failed to update user terms',
+        status: response.status,
+      }
+    }
+    return {
+      message: 'Successfully updated user',
+      status: 200,
+    }
+  }
+  catch (error) {
+    // Log the error for debugging purposes
+    console.error('Error updating user terms:', error)
+
+    // Return a generic error response
+    return {
+      error: 'An unexpected error occurred',
+      status: 500,
+    }
+  }
 }
