@@ -12,9 +12,6 @@ import handshake from '@cuhacking/shared/assets/icons/general/handshake-white-1.
 import mountain from '@cuhacking/shared/assets/icons/general/mountain-white-1.svg'
 
 const constants = {
-  user: {
-    name: 'Saim',
-  },
   hackathonDate: new Date(2025, 2, 14),
   hackathonApplicationStatus: UserHackathonApplicationStatus.complete,
   stats: [
@@ -55,9 +52,9 @@ export function Home(
 * { user: User } */
 ) {
   return (
-    <Layout user={user}>
+    <Layout isCompleteProfile={!!user.emergencyContactFullName}>
       <div className="flex flex-col p-4 sm:pt-10 gap-5 md:gap-10 min-h-screen">
-        <Banner name={user.displayName} />
+        <Banner name={user.preferredDisplayName} />
 
         <div className="grid gap-4 sm:grid-cols-4 lg:grid-cols-6 lg:grid-row-4 min-h-[70vh]">
 
