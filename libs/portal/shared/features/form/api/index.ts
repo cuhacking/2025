@@ -1,15 +1,42 @@
 import type * as z from 'zod'
-import { json } from '@remix-run/react'
 
-export async function postForm(_values: z.infer<any>) {
-  // takes the values and create an entry
+export async function postForm(values: z.infer<any>, cookie: string | null, API_URL: string, userId: string): Promise<Record<string, string | number>> {
+  try {
+    const response = await fetch(`${API_URL}/api/form-submissions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Cookie': cookie || '',
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        form: 1,
+        submissionData: values,
+        submittedBy: userId,
+      }),
+    })
 
-  return json({ someData: 'value' })
-}
+    if (!response.ok) {
+      return {
+        error: 'Failed to regsiter user for hackathon',
+        status: response.status,
+      }
+    }
+    return {
+      message: 'Successfully registered the user',
+      status: 400,
+    }
+  }
+  catch (error) {
+    // Log the error for debugging purposes
+    console.error('Error updating user terms:', error)
 
-export async function patchForm(_values: z.infer<any>) {
-  // takes the values and update entry
-  return new Response('Successfully updated form entry', { status: 200 })
+    // Return a generic error response
+    return {
+      error: 'An unexpected error occurred',
+      status: 500,
+    }
+  }
 }
 
 export async function getFormSubmission(_userID: string, _formID: string) {

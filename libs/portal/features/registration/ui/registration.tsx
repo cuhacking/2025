@@ -24,6 +24,7 @@ export function Registration({ onSubmit }: RegistrationPropse) {
   const initialSocialMediaHandles = {
     gitHub: '',
   }
+
   const navigate = useNavigate()
 
   const [socialMediaHandles, _setSocialMediaHandles] = useState<
@@ -63,7 +64,7 @@ export function Registration({ onSubmit }: RegistrationPropse) {
           <MultiSelectField
             className="z-4"
             form={registration}
-            name="challengeInterest"
+            name="what-challenge-are-you-most-interested-in"
             label="What challenge are you most interested in?"
             options={CHALLENGE_INTERESTS}
             isRequired
@@ -72,7 +73,7 @@ export function Registration({ onSubmit }: RegistrationPropse) {
           <MultiSelectField
             className="z-3"
             form={registration}
-            name="discoverySource"
+            name="where-did-you-hear-about-us"
             label="Where did you hear about us?"
             options={DISCOVERY_SOURCES}
             isRequired
@@ -81,7 +82,7 @@ export function Registration({ onSubmit }: RegistrationPropse) {
           <MultiSelectField
             className="z-2"
             form={registration}
-            name="desiredWorkshops"
+            name="what-workshops-would-you-like-to-see"
             label="What workshops would you like to see?"
             options={WORKSHOP_INTERESTS}
             isRequired
@@ -89,7 +90,7 @@ export function Registration({ onSubmit }: RegistrationPropse) {
 
           <ComboboxField
             form={registration}
-            name="qnxExperienceLevel"
+            name="how-familiar-are-you-with-qnx"
             label="How familiar are you with QNX?"
             options={QNX_EXPERIENCE}
             isRequired
@@ -98,7 +99,7 @@ export function Registration({ onSubmit }: RegistrationPropse) {
           <TextAreaField
             form={registration}
             placeholder="Type here"
-            name="adviceForFirstTimers"
+            name="first-time-hacker"
             label="What would you tell a first-time hacker?"
             variant="text"
             maxCharacters={500}
