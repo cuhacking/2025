@@ -1,53 +1,41 @@
 import type { LoaderData } from '@cuhacking/portal/types/legal'
-import type { LoaderFunction } from '@remix-run/node'
-import { userFlowActor } from '@/engine/actors/user'
+import type { ActionFunction, LoaderFunction } from '@remix-run/node'
 import { getLegalData } from '@cuhacking/portal/features/legal/api/data'
+import { updateTerms } from '@cuhacking/portal/features/legal/api/update-terms'
 import { getCurrentUser } from '@cuhacking/portal/features/profile/api/user'
 import { LegalPage } from '@cuhacking/portal/pages/legal'
 import { json, redirect } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
+import { getSession } from '../sessions'
 
-/* export const loader: LoaderFunction = async () => {
-*   const currentState = userFlowActor.getSnapshot()?.value
-*
-*   switch (currentState) {
-*     case 'unauthenticated':
-*       return redirect('/login')
-*     case 'legal':
-*       return redirect('/terms')
-*     case 'profile_incomplete':
-*       return redirect('/profile')
-*     case 'dashboard':
-*     case 'registered':
-*       return null
-*     default:
-*       return redirect('/login')
-*   }
+export const loader: LoaderFunction = async ({ request }) => {
+  const cookie = request.headers.get('Cookie')
+  const { legalData } = getLegalData()
+  const user = await getCurrentUser({ cookie })
+
+  if (!user) {
+    return redirect('/login')
+  }
+
+  /* if (user?.agreedToTerms) {
+*   return redirect('/profile')
 * } */
 
-export function action() {
-  try {
-    /* setIsLoading(true) */
-    userFlowActor.send({ type: 'TERM_SUCCESS' })
-
-    return redirect('/profile')
-  }
-  catch (error) {
-    console.error('Login failed:', error)
-  }
-  finally {
-    /* setIsLoading(false) */
-  }
+  return json<LoaderData>({ legalData, cookie })
 }
 
-export const loader: LoaderFunction = async () => {
-  const { legalData } = getLegalData()
-  const user = getCurrentUser()
-  return json<LoaderData>({ legalData, user })
+export const action: ActionFunction = async ({ request }) => {
+  const cookie = request.headers.get('Cookie')
+  const session = await getSession(cookie)
+  const userId = session.get('userId')
+
+  if (!userId) {
+    return redirect('/login')
+  }
+  return await updateTerms(userId, cookie)
 }
 
 export default function Index() {
-  const { legalData, user } = useLoaderData<LoaderData>()
-
-  return <LegalPage legalData={legalData} user={user} />
+  const { legalData } = useLoaderData<LoaderData>()
+  return <LegalPage legalData={legalData} />
 }
