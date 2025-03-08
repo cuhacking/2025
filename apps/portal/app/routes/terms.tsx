@@ -1,5 +1,6 @@
 import type { LoaderData } from '@cuhacking/portal/types/legal'
 import type { ActionFunction, LoaderFunction } from '@remix-run/node'
+import process from 'node:process'
 import { getLegalData } from '@cuhacking/portal/features/legal/api/data'
 import { updateTerms } from '@cuhacking/portal/features/legal/api/update-terms'
 import { getCurrentUser } from '@cuhacking/portal/features/profile/api/user'
@@ -11,15 +12,17 @@ import { getSession } from '../sessions'
 export const loader: LoaderFunction = async ({ request }) => {
   const cookie = request.headers.get('Cookie')
   const { legalData } = getLegalData()
-  const user = await getCurrentUser({ cookie })
+
+  const API_URL = `${process.env.NODE_ENV === 'development' ? process.env.CUHACKING_2025_AXIOM_LOCAL_URL : process.env.CUHACKING_2025_AXIOM_PUBLIC_URL}`
+  const user = await getCurrentUser({ cookie, API_URL })
 
   if (!user) {
-    return redirect('/login')
+    return redirect('/')
   }
 
-  /* if (user?.agreedToTerms) {
-*   return redirect('/profile')
-* } */
+  if (user.agreedToTerms) {
+    return redirect('/')
+  }
 
   return json<LoaderData>({ legalData, cookie })
 }

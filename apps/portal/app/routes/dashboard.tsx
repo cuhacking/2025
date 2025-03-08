@@ -1,6 +1,7 @@
 /* eslint-disable unused-imports/no-unused-vars */
 import type { User } from '@cuhacking/portal/types/user'
 import type { LoaderFunction } from '@remix-run/node'
+import process from 'node:process'
 import { Home } from '@cuhacking/portal/pages/index/index'
 import { json, redirect } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
@@ -37,7 +38,8 @@ export const loader: LoaderFunction = async ({ request }) => {
   const cookie = request.headers.get('Cookie')
 
   try {
-    const res = await fetch('http://localhost:8000/api/users/me', {
+    const API_URL = `${process.env.NODE_ENV === 'development' ? process.env.CUHACKING_2025_AXIOM_LOCAL_URL : process.env.CUHACKING_2025_AXIOM_PUBLIC_URL}`
+    const res = await fetch(`${API_URL}/api/users/me`, {
       headers: { Cookie: cookie || '' },
     })
 
@@ -48,9 +50,25 @@ export const loader: LoaderFunction = async ({ request }) => {
     const { user } = await res.json()
 
     if (!user) {
-      return redirect('/login') // Redirect to login if user is null
+      return redirect('/login')
     }
 
+    if (!user.agreedToTerms) {
+      return redirect('/terms')
+    }
+
+    if (!user.emergencyContactFullName) {
+      return redirect('/profile')
+    }
+
+    const forms = await fetch(`${API_URL}/api/form-submissions?where[submittedBy][equals]=${user.id}`, {
+      method: 'GET',
+      headers: { Cookie: cookie || '' },
+    })
+    const userForms = await forms.json()
+    if (!userForms.docs.length) {
+      return redirect('/registration')
+    }
     return json(user)
   }
   catch (error) {

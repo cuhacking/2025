@@ -1,3 +1,4 @@
+import type { UserDetails } from '@cuhacking/portal/types/user'
 import { UserHackathonApplicationStatus } from '@cuhacking/portal/types/user'
 import { Banner } from '@cuhacking/portal/ui/dashboard/banner'
 import { HackathonCountdown } from '@cuhacking/portal/ui/dashboard/hackathon-countdown'
@@ -47,19 +48,16 @@ const constants = {
 }
 
 export function Home(
-  { user },
-  /* :
-* { user: User } */
+  { user }: { user: UserDetails },
 ) {
   return (
     <Layout isCompleteProfile={!!user.emergencyContactFullName}>
       <div className="flex flex-col p-4 sm:pt-10 gap-5 md:gap-10 min-h-screen">
         <Banner name={user.preferredDisplayName} />
-
         <div className="grid gap-4 sm:grid-cols-4 lg:grid-cols-6 lg:grid-row-4 min-h-[70vh]">
 
           <div className="gap-4 grid grid-cols-1 lg:grid-cols-2 col-span-2 sm:row-span-2 lg:col-span-4">
-            <UserStatus name={user.firstName} className="lg:order-2" />
+            <UserStatus name={user.firstName} status="compelte" className="lg:order-2" />
             <HackathonCountdown date={constants.hackathonDate} className="lg:order-1" />
           </div>
           <SocialLinks label="" icon="" className="col-span-2 sm:row-span-2 lg:row-span-4" />

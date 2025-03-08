@@ -4,23 +4,22 @@ import * as z from 'zod'
 
 export function useRegistrationSchema() {
   const registrationSchema = z.object({
-
-    challengeInterest: z
+    'what-challenge-are-you-most-interested-in': z
       .array(z.object({ label: z.string(), value: z.string() }))
       .min(1, { message: 'Required' }),
 
-    discoverySource: z
+    'where-did-you-hear-about-us': z
       .array(z.object({ label: z.string(), value: z.string() }))
       .min(1, { message: 'Required' }),
 
-    desiredWorkshops: z
+    'what-workshops-would-you-like-to-see': z
       .array(z.object({ label: z.string(), value: z.string() }))
       .min(1, { message: 'Required' }),
 
-    qnxExperienceLevel: z
+    'how-familiar-are-you-with-qnx': z
       .string(),
 
-    adviceForFirstTimers: z
+    'first-time-hacker': z
       .string()
       .min(50, { message: 'Please provide at least 50 characters' })
       .max(500, { message: 'Keep it under 500 characters' }),

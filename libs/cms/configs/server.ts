@@ -104,9 +104,25 @@ formOverrides: {
     // },
   },
   formSubmissionOverrides:{
-  admin: {
-    group: navAccordions.communication
-  },
+    slug: 'form-submissions',
+    fields: ({ defaultFields }) => {
+
+        console.log(defaultFields)
+      return [
+        ...defaultFields,
+        {
+          name: 'submittedBy',
+          type: 'relationship',
+          relationTo: 'users',
+          admin: {
+            readOnly: true
+          }
+        },
+      ]
+    },
+    admin: {
+      group: navAccordions.communication
+    },
   }
 }),
     process.env.NODE_ENV==='production' && s3Storage({

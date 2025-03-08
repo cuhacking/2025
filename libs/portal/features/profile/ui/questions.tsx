@@ -60,7 +60,6 @@ export function Questions({ user, isComplete, onSubmit }: ProfileFormProps) {
   const {
     profile,
     profileSchema: _profileSchemaType,
-    isDirty,
     isValid,
   } = useProfileSchema(user, isStudent)
 
@@ -90,7 +89,7 @@ export function Questions({ user, isComplete, onSubmit }: ProfileFormProps) {
   }
 
   const buttonMessage = isComplete ? 'Update Profile' : 'Create Profile'
-  const disabled = !isValid || isDirty || isLoading
+  const disabled = !isValid || isLoading
 
   return (
     <Form {...profile}>
