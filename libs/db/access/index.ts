@@ -24,6 +24,15 @@ export const adminsAndUser: IsAuthenticated = ({ req: { user } }) => {
 
   return false
 }
+
+export const isSameUser: IsAuthenticated  = ({ req : { user }, id }) => {
+  if (!user) {
+    return false;
+  }
+
+  return user.id === id
+};
+
 export const anyone: IsAuthenticated = () => true
 
 export function checkRole(allRoles: User['roles'] = [], user: User = undefined): boolean {
