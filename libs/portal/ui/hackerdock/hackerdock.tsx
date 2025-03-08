@@ -1,4 +1,3 @@
-import { UserProfileStatus } from '@cuhacking/portal/types/user'
 import handshake from '@cuhacking/shared/assets/icons/general/handshake-white-1.svg'
 import logout from '@cuhacking/shared/assets/icons/general/logout-1.svg'
 import map from '@cuhacking/shared/assets/icons/general/map-white-1.svg'
@@ -13,7 +12,7 @@ import { cn } from '@cuhacking/shared/utils/cn'
 import { Link } from '@remix-run/react'
 
 interface HackerDockProps {
-  status: UserProfileStatus
+  status: boolean
 }
 
 export function HackerDock({
@@ -91,7 +90,7 @@ export function HackerDock({
   ]
 
   return (
-    status === UserProfileStatus.complete
+    status
     && (
       <div className="fixed w-screen bottom-4 flex flex-col items-center justify-center z-10000">
         <TooltipProvider>
