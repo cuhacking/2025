@@ -11,18 +11,14 @@ import { seedOrganizerTeams } from '@/db/collections/OrganizerTeams'
 const collections: CollectionSlug[] = [
   'media',
   'users',
-  // 'forms',
-  // 'form-submissions',
-  // 'search',
   'media',
   'brands',
+  'groups',
+  'organizerTeams',
+  'hardware',
+  'emails',
+  'forms'
 ]
-
-// const globals: GlobalSlug[] = [
-//   // '2025',
-//   'social-links',
-//   'website',
-// ]
 
 export async function seed({
   payload,
@@ -41,24 +37,31 @@ export async function seed({
 
   const uploadedImages = new Map<string, File>()
 
-  async function getOrUploadMedia(url: string | undefined, filename: string, alt: string): Promise<File | null> {
-    if (!url)
-      return null
-    if (uploadedImages.has(url)) {
-      log(`🔄 Reusing cached image: ${filename}`)
-      return uploadedImages.get(url) || null
+async function getOrUploadMedia(url: string | undefined, filename: string, alt: string): Promise<File | null> {
+  if (!url) return null;
+
+  try {
+    const existingMedia = await payload.find({
+      collection: 'media',
+      where: { alt: { equals: alt } },
+      limit: 1,
+    });
+
+    if (existingMedia.docs.length > 0) {
+      const existingFile = existingMedia.docs[0];
+      log(`🔄 Reusing existing media from Payload: ${filename} (alt: ${alt})`);
+      return existingFile;
     }
 
-    try {
-      const file = await uploadFileByURL(payload, req, { url, filename, alt })
-      uploadedImages.set(url, file)
-      return file
-    }
-    catch (error) {
-      log(`⚠ Failed to upload ${filename}: ${error instanceof Error ? error.message : 'Unknown error'}`)
-      return null
-    }
+    const file = await uploadFileByURL(payload, req, { url, filename, alt });
+
+    uploadedImages.set(url, file);
+    return file;
+  } catch (error) {
+    log(`⚠ Failed to upload ${filename}: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    return null;
   }
+}
 
   // async function clearCollection(collection: string, exclude?: string) {
   //   log(`🗑 Clearing existing ${collection}...`)
@@ -88,6 +91,24 @@ export async function seed({
       .filter(collection => Boolean(payload.collections[collection].config.versions))
       .map(collection => payload.db.deleteVersions({ collection, req, where: {} })),
   )
+
+  log('📸 Uploading media...')
+
+seedMedia(payload)
+  .then(() => {
+  log('📸 Media uploaded!')
+    return seedGroups(payload);
+  })
+  .then(() => {
+  log('Groups seeded!')
+    return seedOrganizerTeams(payload);
+  })
+  .then(() => {
+  log('Organizer teams seeded!')
+  })
+  .catch((error) => {
+    console.error("An error occurred:", error);
+  })
 
   log('📸 Uploading brand logos & inserting brands...')
 
@@ -375,10 +396,6 @@ blockType: "textarea"
   console.error('❌ Error seeding form data:', error);
 }
 
-  await seedMedia(payload)
-  await seedGroups(payload)
-  await seedOrganizerTeams(payload)
-
   log('🎉 Database seeded successfully! 🌱🐧')
   return { message: 'Database seeded successfully!', logs }
 }
@@ -386,7 +403,7 @@ blockType: "textarea"
 /**
  * Fetches an image from a URL and uploads it to PayloadCMS.
  */
-async function uploadFileByURL(
+export async function uploadFileByURL(
   payload: Payload,
   req: PayloadRequest,
   { url, filename, alt }: { url: string, filename: string, alt?: string },

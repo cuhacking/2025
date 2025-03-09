@@ -7,25 +7,15 @@ import {navAccordions,
 
 import {OrganizerTeams} from '@/db/collections/OrganizerTeams'
 
-import {
- TeamBlock
-} from "@/db/blocks"
 
-import {Sponsor,
-        Organization,
+import {
         ChallengePrize,
-        HostToEvent,
-        SponsorToEvent,
-        UserToEvent,
-        GeneralEvent,
-        BaseEvent,
+        Events,
         Media,
-        // Teams,
         Emails,
         Hardware,
         Users,
-        // Hackathon,
-        // HackathonEvents,
+        Hackathons,
          } from "@/db/collections/models";
 import {Hackathon2025} from "@/db/globals";
 import { linkedinOAuth, githubOAuth, discordOAuth, googleOAuth } from '@/cms/auth'
@@ -41,25 +31,16 @@ export const baseConfig = {
     Hackathon2025,
   ],
   collections: [
-    Organization,
     Groups,
-    Sponsor,
     Users,
     Brands,
     Media,
-      // Teams,
     Emails,
     OrganizerTeams,
-    BaseEvent,
     Hardware,
-    GeneralEvent,
-    UserToEvent,
-        // Hackathon,
-        // HackathonEvents,
-    SponsorToEvent,
-    HostToEvent,
+    Events,
+        Hackathons,
     ChallengePrize,
-   TeamBlock
   ],
   blocks:[
    // TeamBlock
@@ -106,8 +87,6 @@ formOverrides: {
   formSubmissionOverrides:{
     slug: 'form-submissions',
     fields: ({ defaultFields }) => {
-
-        console.log(defaultFields)
       return [
         ...defaultFields,
         {
