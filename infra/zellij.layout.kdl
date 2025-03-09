@@ -124,7 +124,7 @@ layout {
                 width 86
                 x 43
                 y 14
-                args "-rf" "infra/pgdata"
+                args "-rf" "apps/axiom/media" "infra/pgdata"
             }
         }
     }
