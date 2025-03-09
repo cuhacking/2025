@@ -1,8 +1,8 @@
 import type { CollectionConfig } from 'payload'
 import { navAccordions } from '@/db/collections/navAccordions'
 
-export const Challenge: CollectionConfig = {
-  slug: 'challenge',
+export const Challenges: CollectionConfig = {
+  slug: 'challenges',
   admin: {
     useAsTitle: 'title',
     group: navAccordions.inventory,
@@ -26,13 +26,13 @@ export const Challenge: CollectionConfig = {
     {
       name: 'event',
       type: 'relationship',
-      relationTo: 'base-event',
+      relationTo: 'events',
       required: true,
     },
     {
-      name: 'challengeHost',
+      name: 'sponsor',
       type: 'relationship',
-      relationTo: 'organization',
+      relationTo: 'brands',
       admin: {
         description: 'Who is hosting this challenge? Leave blank if event only has one host.',
       },

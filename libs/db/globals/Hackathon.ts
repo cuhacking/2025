@@ -60,6 +60,7 @@ export const Hackathon2025: GlobalConfig = {
 
         const isDev = process.env.NODE_ENV === 'development';
 
+// return 'https://embed.figma.com/design/wc1JOWR48tBNkjcjwY3AzB/%E2%8C%A8%EF%B8%8F-cuHacking-Design-System?node-id=464-1088&embed-host=share'
 
 
         return 'https://embed.figma.com/design/wc1JOWR48tBNkjcjwY3AzB/%E2%8C%A8%EF%B8%8F-cuHacking-Design-System?node-id=464-1088&embed-host=share'
@@ -409,126 +410,6 @@ export const Hackathon2025: GlobalConfig = {
               ]
             },
           ],
-        },
-        {
-          label: "⚙ Settings",
-          description: "Details for the Hackathon",
-          fields: [
-            {
-              type: 'row',
-              fields: [
-                {
-                  name: 'name',
-                  type: 'text',
-                  defaultValue: () => 'cuHacking'
-                },
-              ]
-            },
-            {
-              type: 'row',
-              fields: [
-                {
-                  name: 'location',
-                  type: 'text',
-                  defaultValue: () => 'Carleton University, Richcraft Hall'
-                },
-                {
-                  name: 'start',
-                  type: 'date',
-                  admin: {
-                    date: {
-                      pickerAppearance: 'dayAndTime',
-                      displayFormat: 'h:mm a, EEEE, do MMMM, yyyy',
-                      minDate: new Date(),
-                    },
-                  },
-                  defaultValue: () => new Date(2025, 2, 15, -4, 0, 0)
-                },
-                {
-                  name: 'end',
-                  type: 'date',
-                  admin: {
-                    date: {
-                      pickerAppearance: 'dayAndTime',
-                      displayFormat: 'h:mm a, EEEE, do MMMM, yyyy',
-                      minDate: new Date(),
-                    },
-                  },
-                  defaultValue: () => new Date(2025, 2, 17, -4, 0, 0)
-                },
-              ]
-            },
-            {
-              label: 'Sponsors',
-              type: 'collapsible',
-              admin: {
-                initCollapsed: true,
-              },
-              fields: [
-                {
-                  name: 'tera',
-                  type: 'relationship',
-                  relationTo: 'brands',
-                  // defaultValue: () => [],
-                },
-                {
-                  name: 'mega',
-                  type: 'relationship',
-                  relationTo: 'brands',
-                  hasMany: true,
-                },
-                {
-                  name: 'kilo',
-                  type: 'relationship',
-                  relationTo: 'brands',
-                  hasMany: true,
-                  // defaultValue: () => [38, 58, 41],
-                },
-                {
-                  name: 'centi',
-                  type: 'relationship',
-                  relationTo: 'brands',
-                  hasMany: true,
-                  // defaultValue: () => [43],
-                },
-                {
-                  name: 'mili',
-                  type: 'relationship',
-                  relationTo: 'brands',
-                  hasMany: true,
-                  // defaultValue: () => [37, 44, 35],
-                },
-              ]
-            },
-            {
-              name: "organizers",
-              type: "blocks",
-              blocks: [TeamBlock],
-            },
-            {
-              name: 'schedule',
-              type: 'group',
-              fields: [
-
-              ]
-            },
-            {
-              name: 'judges',
-              type: 'text',
-            },
-            {
-              name: 'mentors',
-              type: 'text',
-            },
-            {
-              name: 'hackers',
-              type: 'text',
-            },
-            {
-              name: 'volunteers',
-              type: 'text',
-            },
-          ]
         },
         {
           label: '💅 Assets',

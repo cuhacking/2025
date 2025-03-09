@@ -29,13 +29,12 @@ export const navIconMap: Partial<
   "organizerTeams": Signature,
   groups: PersonStanding,
   challengePrize: Trophy,
-  "base-event": CalendarDays,
-  "general-event": CalendarDays,
+  events: CalendarDays,
   forms: MousePointer2,
   "form-submissions": Inbox,
   hardware: Cpu,
   "2025": Flag,
-  hackathons: Flag
+  hackathons: Flag,
 }
 
 export const getNavIcon = (slug: string) =>

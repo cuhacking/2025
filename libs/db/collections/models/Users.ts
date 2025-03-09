@@ -246,6 +246,7 @@ import { admins,
          isSameUser,
          adminsAndUser,
          anyone,
+         authenticated,
   // checkRole
 } from '@/db/access'
 // import { authenticated, isAdminFieldLevel } from '@/db/access'
@@ -262,6 +263,7 @@ export const Users: CollectionConfig = {
   },
   access: {
     // admin: ({ req: { user } }) => checkRole(['admin'], user),
+    // admin: authenticated,
     admin: anyone,
     read: adminsAndUser,
     create: anyone,
@@ -308,9 +310,19 @@ export const Users: CollectionConfig = {
   },
   fields: [
     {
+      name: 'events',
+      type: 'relationship',
+      relationTo: 'hackathons'
+    },
+    {
       name: 'group',
       type: 'relationship',
       relationTo: 'groups'
+    },
+    {
+     name: 'organizerTeam',
+      type: 'relationship',
+      relationTo: 'organizerTeams'
     },
     {
       type: 'collapsible',
