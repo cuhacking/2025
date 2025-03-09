@@ -78,7 +78,7 @@ export const Brands: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['name', 'description', 'id', 'updatedAt', 'createdAt'],
+    defaultColumns: ['name', 'symbol', 'description', 'id', 'updatedAt', 'createdAt'],
     group: navAccordions.inventory,
   },
   versions: {
