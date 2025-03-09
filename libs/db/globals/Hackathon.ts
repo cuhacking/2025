@@ -1,5 +1,5 @@
 /* eslint-disable node/prefer-global/process */
-import type { Block, Field, GlobalConfig} from 'payload'
+import type { Block, Field, GlobalConfig } from 'payload'
 
 export const TeamBlock: Block = {
   slug: "organizersBlock",
@@ -50,24 +50,24 @@ export const Hackathon2025: GlobalConfig = {
   },
   admin: {
     livePreview: {
-url: async ({ req }) => {
-let tabIndex = (
-    await req.payload.find({
-      collection: 'payload-preferences',
-      where: { key: { equals: 'global-hackathon' } },
-    })
-  )?.docs?.[0]?.value?.fields?.["_index-0"]?.tabIndex ?? 0;
+      url: async ({ req }) => {
+        let tabIndex = (
+          await req.payload.find({
+            collection: 'payload-preferences',
+            where: { key: { equals: 'global-hackathon' } },
+          })
+        )?.docs?.[0]?.value?.fields?.["_index-0"]?.tabIndex ?? 0;
 
-const isDev = process.env.NODE_ENV === 'development';
+        const isDev = process.env.NODE_ENV === 'development';
 
 
 
-return 'https://embed.figma.com/design/wc1JOWR48tBNkjcjwY3AzB/%E2%8C%A8%EF%B8%8F-cuHacking-Design-System?node-id=464-1088&embed-host=share'
+        return 'https://embed.figma.com/design/wc1JOWR48tBNkjcjwY3AzB/%E2%8C%A8%EF%B8%8F-cuHacking-Design-System?node-id=464-1088&embed-host=share'
 
-// return tabIndex === 0
-//   ? (isDev ? process.env.CUHACKING_2025_PORTAL_LOCAL_URL : process.env.CUHACKING_2025_PORTAL_PUBLIC_URL)
-//   : (isDev ? process.env.CUHACKING_2025_WEBSITE_LOCAL_URL : process.env.CUHACKING_2025_WEBSITE_PUBLIC_URL);
-},
+        // return tabIndex === 0
+        //   ? (isDev ? process.env.CUHACKING_2025_PORTAL_LOCAL_URL : process.env.CUHACKING_2025_PORTAL_PUBLIC_URL)
+        //   : (isDev ? process.env.CUHACKING_2025_WEBSITE_LOCAL_URL : process.env.CUHACKING_2025_WEBSITE_PUBLIC_URL);
+      },
       breakpoints: [
         {
           label: 'Mobile',
@@ -77,9 +77,9 @@ return 'https://embed.figma.com/design/wc1JOWR48tBNkjcjwY3AzB/%E2%8C%A8%EF%B8%8F
         },
       ],
     },
-  hooks: {
-    afterChange: [],
-  },
+    hooks: {
+      afterChange: [],
+    },
   },
   fields: [
     // {
@@ -97,122 +97,122 @@ return 'https://embed.figma.com/design/wc1JOWR48tBNkjcjwY3AzB/%E2%8C%A8%EF%B8%8F
           label: "🌀 Portal",
           description: "Hackathon Management Application.",
           fields: [
-{
-  type: 'collapsible',
-  label: 'Dashboard',
-  fields: [
-    {
-      name: 'cards',
-      type: 'array',
-      fields: [
-        {
-          name: 'title',
-          type: 'text',
-          label: 'Title',
-        },
-      ],
-      defaultValue: [
-        { title: 'Welcome' },
-        { title: 'Hackathon Countdown' },
-        { title: 'Money Raised' },
-        { title: 'Registrations' },
-        { title: 'Sponsors - Coming Soon!!' },
-        { title: 'Schedule - Coming Soon!!' },
-        { title: 'Challenges - Coming Soon!!' },
-        { title: 'More Features!! Maybe you will add it!' },
-        { title: 'Star our GitHub' },
-      ],
-    },
-  ],
-},
-           {
-             name: 'login',
-             type: 'text',
-             label: 'Login'
-           },
-           {
-             name: 'terms',
-             type: 'group',
-             label: 'Terms & Conditions',
-             fields: [
-               {
-name: 'title',
-                 type: 'text',
-                 label: 'Title',
-                 defaultValue: 'Legalities'
-               },
-               {
-                 name: 'description',
-               type: 'text',
-label: 'Description',
-                 defaultValue: 'YO! Before we get into it, read these please.'
-               },
-               {
-                 name: 'accordion',
-                 type: 'array',
-                 fields: [
-                  {
-                    name: 'title',
-                    type: 'text',
-                   label: 'Title'
-                  },
-                   {
-                    name: 'text',
-                    type: 'text',
-                    label: 'Text'
-                  },
-                   {
-                    name: 'checkbox',
-                    type: 'checkbox',
-                  },
-                   {
-                    name: 'checkboxLabel',
-                    type: 'text'
-                  }
-                 ],
-                 defaultValue: [
- {
-      title: 'MLH Code of Conduct',
-      text: 'TL;DR. Be respectful. Harassment and abuse are never tolerated. If you are in a situation that makes you uncomfortable at '
-            + 'an MLH Member Event, if the event itself creates an unsafe or inappropriate environment, or if interacting with an MLH '
-            + 'representative or event organizer makes you uncomfortable, please report it using the procedures included in this document.\n\n'
-            + 'Major League Hacking (MLH) stands for inclusivity. We believe that every single person has the right to hack in a safe and '
-            + 'welcoming environment.',
-      checkbox: false,
-      checkboxLabel: 'I have read MLH Code of Conduct *'
-    },
-    {
-      title: 'MLH Terms & Conditions',
-      text: '',
-      checkbox: false,
-      checkboxLabel: 'I have read MLH Terms & Conditions'
-    },
-    {
-      title: 'MLH Privacy Policy',
-      text: '',
-      checkbox: false,
-      checkboxLabel: 'I have read MLH Privacy Policy'
-    },
-    {
-      title: 'cuHacking Terms & Conditions',
-      text: '',
-      checkbox: false,
-      checkboxLabel: 'I have read cuHacking Terms & Conditions'
-    }
-                 ]
-               }
-             ]
-           },
-           {
-             name: 'profile',
-             type: 'text',
-             label: 'Profile'
-           },
-           {
-             name: 'registration',
-             type: 'text',
-             label: 'Registration'
-           },
+            {
+              type: 'collapsible',
+              label: 'Dashboard',
+              fields: [
+                {
+                  name: 'cards',
+                  type: 'array',
+                  fields: [
+                    {
+                      name: 'title',
+                      type: 'text',
+                      label: 'Title',
+                    },
+                  ],
+                  defaultValue: [
+                    { title: 'Welcome' },
+                    { title: 'Hackathon Countdown' },
+                    { title: 'Money Raised' },
+                    { title: 'Registrations' },
+                    { title: 'Sponsors - Coming Soon!!' },
+                    { title: 'Schedule - Coming Soon!!' },
+                    { title: 'Challenges - Coming Soon!!' },
+                    { title: 'More Features!! Maybe you will add it!' },
+                    { title: 'Star our GitHub' },
+                  ],
+                },
+              ],
+            },
+            {
+              name: 'login',
+              type: 'text',
+              label: 'Login'
+            },
+            {
+              name: 'terms',
+              type: 'group',
+              label: 'Terms & Conditions',
+              fields: [
+                {
+                  name: 'title',
+                  type: 'text',
+                  label: 'Title',
+                  defaultValue: 'Legalities'
+                },
+                {
+                  name: 'description',
+                  type: 'text',
+                  label: 'Description',
+                  defaultValue: 'YO! Before we get into it, read these please.'
+                },
+                {
+                  name: 'accordion',
+                  type: 'array',
+                  fields: [
+                    {
+                      name: 'title',
+                      type: 'text',
+                      label: 'Title'
+                    },
+                    {
+                      name: 'text',
+                      type: 'text',
+                      label: 'Text'
+                    },
+                    {
+                      name: 'checkbox',
+                      type: 'checkbox',
+                    },
+                    {
+                      name: 'checkboxLabel',
+                      type: 'text'
+                    }
+                  ],
+                  defaultValue: [
+                    {
+                      title: 'MLH Code of Conduct',
+                      text: 'TL;DR. Be respectful. Harassment and abuse are never tolerated. If you are in a situation that makes you uncomfortable at '
+                        + 'an MLH Member Event, if the event itself creates an unsafe or inappropriate environment, or if interacting with an MLH '
+                        + 'representative or event organizer makes you uncomfortable, please report it using the procedures included in this document.\n\n'
+                        + 'Major League Hacking (MLH) stands for inclusivity. We believe that every single person has the right to hack in a safe and '
+                        + 'welcoming environment.',
+                      checkbox: false,
+                      checkboxLabel: 'I have read MLH Code of Conduct *'
+                    },
+                    {
+                      title: 'MLH Terms & Conditions',
+                      text: '',
+                      checkbox: false,
+                      checkboxLabel: 'I have read MLH Terms & Conditions'
+                    },
+                    {
+                      title: 'MLH Privacy Policy',
+                      text: '',
+                      checkbox: false,
+                      checkboxLabel: 'I have read MLH Privacy Policy'
+                    },
+                    {
+                      title: 'cuHacking Terms & Conditions',
+                      text: '',
+                      checkbox: false,
+                      checkboxLabel: 'I have read cuHacking Terms & Conditions'
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              name: 'profile',
+              type: 'text',
+              label: 'Profile'
+            },
+            {
+              name: 'registration',
+              type: 'text',
+              label: 'Registration'
+            },
           ]
 
         },
@@ -222,189 +222,189 @@ label: 'Description',
           description: 'Promotional site for the hackathon.',
           fields: [
             {
-type: 'tabs',
+              type: 'tabs',
               tabs: [
-            {
-              name: 'header',
-              label: 'Header',
-              fields: [
                 {
-                  name: 'logo',
-                  type: 'upload',
-                  relationTo: 'media',
-                  label: 'Logo',
-                },
-                {
-                  name: 'links',
-                  type: 'array',
-                  label: 'Links',
+                  name: 'header',
+                  label: 'Header',
                   fields: [
                     {
-                      name: 'text',
-                      type: 'text',
-                      label: 'Text',
+                      name: 'logo',
+                      type: 'upload',
+                      relationTo: 'media',
+                      label: 'Logo',
                     },
                     {
-                      name: 'link',
-                      type: 'text',
-                      label: 'Link',
+                      name: 'links',
+                      type: 'array',
+                      label: 'Links',
+                      fields: [
+                        {
+                          name: 'text',
+                          type: 'text',
+                          label: 'Text',
+                        },
+                        {
+                          name: 'link',
+                          type: 'text',
+                          label: 'Link',
+                        },
+                      ],
+                      defaultValue: () => [
+                        { text: 'About', link: '#about' },
+                        { text: 'Events', link: '#events' },
+                        { text: 'Sponsors', link: '#sponsors' },
+                        { text: 'FAQ', link: '#faq' },
+                      ],
                     },
                   ],
-                  defaultValue: () => [
-                    { text: 'About', link: '#about' },
-                    { text: 'Events', link: '#events' },
-                    { text: 'Sponsors', link: '#sponsors' },
-                    { text: 'FAQ', link: '#faq' },
-                  ],
                 },
-              ],
-            },
-            {
-              label: 'Hero',
-              fields: [
                 {
-                  name: 'callToAction',
-                 type:'text',
-              defaultValue: () => 'JOIN US',
+                  label: 'Hero',
+                  fields: [
+                    {
+                      name: 'callToAction',
+                      type: 'text',
+                      defaultValue: () => 'JOIN US',
+                    }
+                  ]
+                },
+                {
+                  label: 'About',
+                  fields: [
+                    {
+                      name: 'about',
+                      type: 'text',
+                      defaultValue: () => 'OUR MISSION',
+                    }
+                  ]
+                },
+                {
+                  label: 'Events',
+                  fields: [
+                    {
+                      name: 'events',
+                      type: 'text',
+                      defaultValue: () => 'EVENTS',
+                    }]
+                },
+                {
+                  label: 'Sponsors',
+                  fields: [
+                    {
+                      name: 'sponsors',
+                      type: 'text',
+                      defaultValue: () => 'SPONSORSHIP',
+                    }
+                  ]
+                },
+                {
+                  label: 'FAQ',
+                  fields: [
+                    {
+                      name: 'faq',
+                      type: 'array',
+                      label: 'FAQ',
+                      fields: [
+                        {
+                          name: 'question',
+                          type: 'text',
+                        },
+                        {
+                          name: 'answers',
+                          type: 'array',
+                          fields: [
+                            {
+                              name: 'bullet',
+                              type: 'text',
+                            },
+                          ],
+                        },
+                      ],
+                      defaultValue: () => [
+                        {
+                          question: 'what is cuHacking?',
+                          answers: [
+                            {
+                              bullet: 'cuHacking is a 36 hour hackathon.',
+                            },
+                            {
+                              bullet: 'Running from March 14th to 16th 2025 @ Carleton University, you will be able to work on a project, attend workshops, career fairs and meet like-minded people.',
+                            },
+                          ],
+                        },
+                        {
+                          question: 'who can attend?',
+                          answers: [
+                            {
+                              bullet: 'Available to all university/college students.',
+                            },
+                          ],
+                        },
+                        {
+                          question: 'how much does it cost?',
+                          answers: [
+                            {
+                              bullet: 'cuHacking is a whopping $0 for all participants.',
+                            },
+                          ],
+                        },
+                        {
+                          question: 'can I work in a team?',
+                          answers: [
+                            {
+                              bullet: 'Yes, teams of up to 4 are allowed to work together.',
+                            },
+                          ],
+                        },
+                        {
+                          question: 'I have more questions, where should I go?',
+                          answers: [
+                            {
+                              bullet: 'Hit us up on Discord, Instagram, or Email us.',
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ]
+                },
+                {
+                  label: 'Footer',
+                  fields: [
+                    {
+                      name: 'footer',
+                      type: 'array',
+                      fields: [
+                        {
+                          name: 'logo',
+                          type: 'upload',
+                          relationTo: 'media',
+                          label: 'Logo'
+                        },
+                        {
+                          name: 'links',
+                          type: 'array',
+                          label: 'Links',
+                          fields: [
+                            {
+                              name: 'text',
+                              type: 'text',
+                              label: 'Text',
+                            },
+                            {
+                              name: 'link',
+                              type: 'text',
+                              label: 'Link',
+                            },
+                          ],
+                          defaultValue: () => [
+                          ],
+                        },
+                      ]
+                    }
+                  ],
                 }
-              ]
-            },
-            {
-              label: 'About',
-              fields: [
-               {
-                 name: 'about',
-                 type: 'text',
-              defaultValue: () => 'OUR MISSION',
-               }
-              ]
-            },
-            {
-              label: 'Events',
-              fields:[
-              {
-                name: 'events',
-                type: 'text',
-              defaultValue: () => 'EVENTS',
-              }]
-            },
-            {
-              label: 'Sponsors',
-              fields: [
-               {
-                 name: 'sponsors',
-              type: 'text',
-              defaultValue: () => 'SPONSORSHIP',
-               }
-              ]
-            },
-            {
-              label: 'FAQ',
-              fields: [
-            {
-              name: 'faq',
-              type: 'array',
-              label: 'FAQ',
-              fields: [
-                {
-                  name: 'question',
-                  type: 'text',
-                },
-                {
-                  name: 'answers',
-                  type: 'array',
-                  fields: [
-                    {
-                      name: 'bullet',
-                      type: 'text',
-                    },
-                  ],
-                },
-              ],
-              defaultValue: () => [
-                {
-                  question: 'what is cuHacking?',
-                  answers: [
-                    {
-                      bullet: 'cuHacking is a 36 hour hackathon.',
-                    },
-                    {
-                      bullet: 'Running from March 14th to 16th 2025 @ Carleton University, you will be able to work on a project, attend workshops, career fairs and meet like-minded people.',
-                    },
-                  ],
-                },
-                {
-                  question: 'who can attend?',
-                  answers: [
-                    {
-                      bullet: 'Available to all university/college students.',
-                    },
-                  ],
-                },
-                {
-                  question: 'how much does it cost?',
-                  answers: [
-                    {
-                      bullet: 'cuHacking is a whopping $0 for all participants.',
-                    },
-                  ],
-                },
-                {
-                  question: 'can I work in a team?',
-                  answers: [
-                    {
-                      bullet: 'Yes, teams of up to 4 are allowed to work together.',
-                    },
-                  ],
-                },
-                {
-                  question: 'I have more questions, where should I go?',
-                  answers: [
-                    {
-                      bullet: 'Hit us up on Discord, Instagram, or Email us.',
-                    },
-                  ],
-                },
-              ],
-            },
-              ]
-            },
-            {
-              label: 'Footer',
-              fields: [
-{
-              name: 'footer',
-              type: 'array',
-              fields:[
-                {
-                  name: 'logo',
-                  type: 'upload',
-                  relationTo: 'media',
-                  label: 'Logo'
-                },
-                {
-                  name: 'links',
-                  type: 'array',
-                  label: 'Links',
-                  fields: [
-                    {
-                      name: 'text',
-                      type: 'text',
-                      label: 'Text',
-                    },
-                    {
-                      name: 'link',
-                      type: 'text',
-                      label: 'Link',
-                    },
-                  ],
-                  defaultValue: () => [
-                  ],
-                },
-              ]
-}
-              ],
-            }
 
               ]
             },
@@ -414,115 +414,128 @@ type: 'tabs',
           label: "⚙ Settings",
           description: "Details for the Hackathon",
           fields: [
-      {
-      type: 'row',
-fields: [
-      {
-        name: 'name',
-        type: 'text',
-        defaultValue: () => 'cuHacking'
-      },
-]
-      },
-      {
- type: 'row',
-  fields: [
-     {
-        name: 'location',
-        type: 'text',
-       defaultValue: () => 'Carleton University, Richcraft Hall'
-      },
-      {
-        name: 'start',
-        type: 'date',
-           admin: {
-        date: {
-          pickerAppearance: 'dayAndTime',
-          displayFormat: 'h:mm a, EEEE, do MMMM, yyyy',
-          minDate: new Date(),
-        },
-        },
-        defaultValue: () => new Date(2025, 2, 15, -4, 0, 0)
-      },
-      {
-        name: 'end',
-        type: 'date',
-           admin: {
-        date: {
-          pickerAppearance: 'dayAndTime',
-          displayFormat: 'h:mm a, EEEE, do MMMM, yyyy',
-          minDate: new Date(),
-        },
-        },
-        defaultValue: () => new Date(2025, 2, 17, -4, 0, 0)
-      },
-  ]
-      },
-      {
-        label: 'Sponsors',
-        type: 'collapsible',
-        admin: {
-          initCollapsed: true,
-        },
-        fields: [
-    {
-      name: 'tera',
-      type: 'relationship',
-      relationTo: 'brands',
-    },
-    {
-      name: 'mega',
-      type: 'relationship',
-      relationTo: 'brands',
-    },
-    {
-      name: 'kilo',
-      type: 'relationship',
-      relationTo: 'brands',
-    },
-    {
-      name: 'centi',
-      type: 'relationship',
-      relationTo: 'brands',
-    },
-  ]
-      },
-{
-      name: "organizers",
-      type: "blocks",
-      blocks: [TeamBlock],
-    },
-      {
-        name: 'schedule',
-        type: 'group',
-        fields: [
+            {
+              type: 'row',
+              fields: [
+                {
+                  name: 'name',
+                  type: 'text',
+                  defaultValue: () => 'cuHacking'
+                },
+              ]
+            },
+            {
+              type: 'row',
+              fields: [
+                {
+                  name: 'location',
+                  type: 'text',
+                  defaultValue: () => 'Carleton University, Richcraft Hall'
+                },
+                {
+                  name: 'start',
+                  type: 'date',
+                  admin: {
+                    date: {
+                      pickerAppearance: 'dayAndTime',
+                      displayFormat: 'h:mm a, EEEE, do MMMM, yyyy',
+                      minDate: new Date(),
+                    },
+                  },
+                  defaultValue: () => new Date(2025, 2, 15, -4, 0, 0)
+                },
+                {
+                  name: 'end',
+                  type: 'date',
+                  admin: {
+                    date: {
+                      pickerAppearance: 'dayAndTime',
+                      displayFormat: 'h:mm a, EEEE, do MMMM, yyyy',
+                      minDate: new Date(),
+                    },
+                  },
+                  defaultValue: () => new Date(2025, 2, 17, -4, 0, 0)
+                },
+              ]
+            },
+            {
+              label: 'Sponsors',
+              type: 'collapsible',
+              admin: {
+                initCollapsed: true,
+              },
+              fields: [
+                {
+                  name: 'tera',
+                  type: 'relationship',
+                  relationTo: 'brands',
+                  // defaultValue: () => [],
+                },
+                {
+                  name: 'mega',
+                  type: 'relationship',
+                  relationTo: 'brands',
+                  hasMany: true,
+                },
+                {
+                  name: 'kilo',
+                  type: 'relationship',
+                  relationTo: 'brands',
+                  hasMany: true,
+                  // defaultValue: () => [38, 58, 41],
+                },
+                {
+                  name: 'centi',
+                  type: 'relationship',
+                  relationTo: 'brands',
+                  hasMany: true,
+                  // defaultValue: () => [43],
+                },
+                {
+                  name: 'mili',
+                  type: 'relationship',
+                  relationTo: 'brands',
+                  hasMany: true,
+                  // defaultValue: () => [37, 44, 35],
+                },
+              ]
+            },
+            {
+              name: "organizers",
+              type: "blocks",
+              blocks: [TeamBlock],
+            },
+            {
+              name: 'schedule',
+              type: 'group',
+              fields: [
 
-        ]
-      },
-      {
-        name: 'judges',
-        type: 'text',
-      },
-      {
-       name: 'mentors',
-        type: 'text',
-      },
-      {
-        name: 'hackers',
-        type: 'text',
-      },
-      {
-        name: 'volunteers',
-        type: 'text',
-      },
-       ]
+              ]
+            },
+            {
+              name: 'judges',
+              type: 'text',
+            },
+            {
+              name: 'mentors',
+              type: 'text',
+            },
+            {
+              name: 'hackers',
+              type: 'text',
+            },
+            {
+              name: 'volunteers',
+              type: 'text',
+            },
+          ]
         },
         {
           label: '💅 Assets',
           description: 'Digital artwork & Logos.',
-        fields: [
+          fields: [
 
-        ]
+          ]
         }
       ],
     },

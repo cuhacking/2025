@@ -74,25 +74,154 @@ export const brandSeedData = [
     domain: 'uottawa.ca/en',
   },
   {
-    name: 'BlackBerry QNX',
-    description: 'A leader in embedded systems and automotive software',
+    name: 'QNX',
+    description: 'High-Performance Embedded Solutions. Accelerate embedded systems development with a secure Real-Time OS, hypervisor, and development tools.',
     symbol:
-      'https://blackberry.qnx.com/etc.clientlibs/bbcom/clientlibs/clientlib-etc-legacy/resources/bbcom-aem-project/images/BlackBerry-QNX-logo-white-new.png',
+      'https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/current-sponsors/cuhacking_6_sponsor_logo_qnx.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9jdXJyZW50LXNwb25zb3JzL2N1aGFja2luZ182X3Nwb25zb3JfbG9nb19xbnguc3ZnIiwiaWF0IjoxNzQxNTQ5ODExLCJleHAiOjE3NzMwODU4MTF9.YyGXf3jxoc3Vru8aqt-lKhbuz5XcjTfvJz2-AKvdWcg',
     domain: 'blackberry.qnx.com',
+    linkedin: "https://www.linkedin.com/company/qnx/",
   },
   {
     name: 'FullScript',
     description:
       'A platform for health professionals to support patient wellness',
     symbol:
-      'https://marketing-uploads.fullscript.com/wp-content/uploads/2024/01/24130952/fullscript-logo-r.svg',
+      'https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/current-sponsors/cuhacking_6_sponsor_logo_fullscript.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9jdXJyZW50LXNwb25zb3JzL2N1aGFja2luZ182X3Nwb25zb3JfbG9nb19mdWxsc2NyaXB0LnN2ZyIsImlhdCI6MTc0MTU0OTkwNCwiZXhwIjoxNzczMDg1OTA0fQ.zld_As2FzgzbH5vSALX74tGmjqKD6ATc3rfZFM-uvKw',
     domain: 'fullscript.com',
+    linkedin: 'https://www.linkedin.com/company/fullscript/',
+  },
+  {
+    name: 'CSE',
+    description:
+      'Communications Security Establishment Canada (CSE) is the national cryptologic agency, providing the Government of Canada with information technology security and foreign signals intelligence.',
+    symbol:
+      'https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/current-sponsors/cuhacking_6_sponsor_logo_cse.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9jdXJyZW50LXNwb25zb3JzL2N1aGFja2luZ182X3Nwb25zb3JfbG9nb19jc2Uuc3ZnIiwiaWF0IjoxNzQxNTQ5OTE1LCJleHAiOjE3NzMwODU5MTV9.Q6J53IKzhn7YXLTsOz9ZOlKO53DqHv0jK82pKrkAjjM',
+    domain: 'cse-cst.gc.ca/en',
+    linkedin: 'https://www.linkedin.com/company/cse-cst',
+  },
+  {
+    name: 'Gadget',
+    description:
+      'Gadet is the JS development and hosting platform with everything you need to build and run web apps with ease, stitched together from the start.',
+    symbol:
+      'https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/current-sponsors/cuhacking_6_sponsor_logo_gadget.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9jdXJyZW50LXNwb25zb3JzL2N1aGFja2luZ182X3Nwb25zb3JfbG9nb19nYWRnZXQuc3ZnIiwiaWF0IjoxNzQxNTQ5OTI4LCJleHAiOjE3NzMwODU5Mjh9.rjzLSGZNnAS7Z5GYOZYDORSzE5TgRSTwg6Ot8xV7emA',
+    domain: 'gadget.dev',
+    linkedin: 'https://www.linkedin.com/company/gadget-dev',
+  },
+  {
+    name: 'NordVPN',
+    description:
+      'NordVPN is a leading VPN service offering robust encryption, a large global network of servers, and advanced features to protect user privacy and bypass geo-restrictions.',
+    symbol:
+      'https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/current-sponsors/cuhacking_6_sponsor_logo_nordvpn.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9jdXJyZW50LXNwb25zb3JzL2N1aGFja2luZ182X3Nwb25zb3JfbG9nb19ub3JkdnBuLnN2ZyIsImlhdCI6MTc0MTU1MDExMCwiZXhwIjoxNzczMDg2MTEwfQ.bBjslV0gXGl8M38EGewv-UAcMut8K4CsLVQ4cy5htkA',
+    domain: 'nordvpn.com',
+    linkedin: 'https://www.linkedin.com/company/nord-vpn/',
+  },
+  {
+    name: 'NordPass',
+    description:
+      'Unlock the ease of cybersecurity with our trusted password manager',
+    symbol:
+      'https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/current-sponsors/cuhacking_6_sponsor_logo_nordpass.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9jdXJyZW50LXNwb25zb3JzL2N1aGFja2luZ182X3Nwb25zb3JfbG9nb19ub3JkcGFzcy5zdmciLCJpYXQiOjE3NDE1NTAxMjIsImV4cCI6MTc3MzA4NjEyMn0.bDz9Y-OpmJTsUnrqvl80_ByrPCl_8vo8ON3MKwlzdT0',
+    domain: 'nordpass.com',
+    linkedin: 'https://www.linkedin.com/company/nordpass/',
+  },
+  {
+    name: 'incogni',
+    description:
+      'The most comprehensive personal information removal service on the market.',
+    symbol:
+      'https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/current-sponsors/cuhacking_6_sponsor_logo_incogni.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9jdXJyZW50LXNwb25zb3JzL2N1aGFja2luZ182X3Nwb25zb3JfbG9nb19pbmNvZ25pLnN2ZyIsImlhdCI6MTc0MTU1MDA3OCwiZXhwIjoxNzczMDg2MDc4fQ._eSKS_9tcBE-t5ZrWQ0wt3e4CvAnwdNBbta5DzC1fp0',
+    domain: 'incogni.com',
+    linkedin: 'https://www.linkedin.com/company/incogni/',
+  },
+  {
+    name: 'Saily',
+    description:
+      'Saily is an eSIM service that lets you stay connected wherever you go',
+    symbol:
+      'https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/current-sponsors/cuhacking_6_sponsor_logo_saily.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9jdXJyZW50LXNwb25zb3JzL2N1aGFja2luZ182X3Nwb25zb3JfbG9nb19zYWlseS5zdmciLCJpYXQiOjE3NDE1NTAwOTUsImV4cCI6MTc3MzA4NjA5NX0.KA5QRMwD_rP3T77jQmoY4Z0bC0nyxN7v1k0i_cIh2qg',
+    domain: 'saily.com',
+    linkedin: 'https://www.linkedin.com/company/sailyworld/',
+  },
+  {
+    name: 'The Merry Dairy',
+    description:
+      'Ottawa\'s home for nut-free and peanut-free premium ice cream & frozen custard',
+    symbol:
+      'https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/current-sponsors/cuhacking_6_sponsor_logo_merry_dairy.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9jdXJyZW50LXNwb25zb3JzL2N1aGFja2luZ182X3Nwb25zb3JfbG9nb19tZXJyeV9kYWlyeS5zdmciLCJpYXQiOjE3NDE1NTAxNDEsImV4cCI6MTc3MzA4NjE0MX0.PRf1GoYrEjNZfnTiIePxndEpmtzJb48OmnpAZzl4Sa0',
+    domain: 'themerrydairy.com',
+    linkedin: 'https://www.linkedin.com/company/themerrydairy/',
+  },
+  {
+    name: 'Beeceptor',
+    description:
+      'An API mocking, debugging, and testing platform that lets developers create mock API endpoints, inspect HTTP traffic, and simulate API responses in real time.',
+    symbol:
+      'https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/current-sponsors/cuhacking_6_sponsor_logo_beeceptor.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9jdXJyZW50LXNwb25zb3JzL2N1aGFja2luZ182X3Nwb25zb3JfbG9nb19iZWVjZXB0b3Iuc3ZnIiwiaWF0IjoxNzQxNTUwMTUwLCJleHAiOjE3NzMwODYxNTB9.Oogud2f23arShtXQhYxfVCElM3EtHNkUnm4iFDhcoTY',
+    domain: 'beeceptor.com',
+    linkedin: 'https://www.linkedin.com/company/beeceptor/',
+  },
+  {
+    name: 'Wolfram',
+    description:
+      '"A computational intelligence company offering products like Mathematica and Wolfram|Alpha, providing advanced knowledge-based programming tools.',
+    symbol:
+      'https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/current-sponsors/cuhacking_6_sponsor_logo_wolfram.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9jdXJyZW50LXNwb25zb3JzL2N1aGFja2luZ182X3Nwb25zb3JfbG9nb193b2xmcmFtLnN2ZyIsImlhdCI6MTc0MTU1MDE3NCwiZXhwIjoxNzczMDg2MTc0fQ.xwtrtdtHtrcIufgEQiv48Ne9hbcvCffPCmixrqTWABs',
+    domain: 'www.wolfram.com',
+    linkedin: 'https://www.linkedin.com/company/wolfram-research/',
+  },
+  {
+    name: 'MLH',
+    description:
+      '',
+    symbol:
+      'https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/current-sponsors/cuhacking_6_sponsor_logo_mlh.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9jdXJyZW50LXNwb25zb3JzL2N1aGFja2luZ182X3Nwb25zb3JfbG9nb19tbGguc3ZnIiwiaWF0IjoxNzQxNTUwMTkwLCJleHAiOjE3NzMwODYxOTB9.z_giiKmYs6rHE8FiLX6D1RJwooHDn93pI3NK8tt9ajQ',
+    domain: 'mlh.io',
+    linkedin: 'https://www.linkedin.com/company/major-league-hacking/',
+  },
+  {
+    name: 'StandOut Stickers',
+    description:
+      '',
+    symbol:
+      'https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/current-sponsors/cuhacking_6_sponsor_logo_standout_sticker.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9jdXJyZW50LXNwb25zb3JzL2N1aGFja2luZ182X3Nwb25zb3JfbG9nb19zdGFuZG91dF9zdGlja2VyLnN2ZyIsImlhdCI6MTc0MTU1MDE5OCwiZXhwIjoxNzczMDg2MTk4fQ.VC0wa9QdKh7BiLclutZj4oeuoRrmmdVIUaScrHW4sW0',
+    domain: 'www.standoutstickers.com',
+    linkedin: 'https://www.linkedin.com/company/standout-stickers-inc/',
+  },
+  {
+    name: 'Red Bull',
+    description:
+      'A global leader in energy drinks, fueling performance and creativity with its iconic beverages and sponsorship of extreme sports and cultural events.',
+    symbol:
+      'https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/current-sponsors/cuhacking_6_sponsor_logo_redbull.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9jdXJyZW50LXNwb25zb3JzL2N1aGFja2luZ182X3Nwb25zb3JfbG9nb19yZWRidWxsLnN2ZyIsImlhdCI6MTc0MTU1MDIxNCwiZXhwIjoxNzczMDg2MjE0fQ.VrssAe2hQup9OUkSwK-0mVwzOwdgQ1ZPmh4hPOLLMRs',
+    domain: 'www.redbull.com',
+    linkedin: 'https://www.linkedin.com/company/red-bull/',
+  },
+  {
+    name: 'KEFC',
+    description:
+      'The Kostiuk Engineering Funding Collective is a way for your affiliated club, group, or society to receive funding.',
+    symbol:
+      'https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/current-sponsors/cuhacking_6_sponsor_logo_kefc.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9jdXJyZW50LXNwb25zb3JzL2N1aGFja2luZ182X3Nwb25zb3JfbG9nb19rZWZjLnN2ZyIsImlhdCI6MTc0MTU1MDIzMSwiZXhwIjoxNzczMDg2MjMxfQ.1bibkqrkFzNymVhH_Wv-DXj8LotA1IQ9tAAhsIb0_rE',
+    domain: '',
+    linkedin: '',
+  },
+  {
+    name: 'Faculty Of Science',
+    description:
+      'Carleton University’s Faculty of Science is a thriving community of researchers engaged in cutting-edge, world-class scientific inquiry.',
+    symbol:
+      '',
+    domain: 'science.carleton.ca',
+    linkedin: 'https://www.linkedin.com/in/carletonscience/',
   },
   {
     name: 'Tail\'ed',
-    description: 'A marketplace for tailors and custom clothing',
+    description: 'Tail\'ed is a free platform that connects young tech talent with opportunities—like events, coding challenges, and internships—to jumpstart their careers.',
     symbol: 'https://tailed.ca/tailed-logo-w-name.png',
     domain: 'tailed.ca',
+    linkedin: 'https://www.linkedin.com/company/tailed/',
   },
   {
     name: 'Google',
