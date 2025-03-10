@@ -365,11 +365,19 @@ export interface Email {
     text: string;
     buttonText: string;
     buttonLink: string;
+    secondButtonText?: string;
+    secondButtonLink?: string;
+    events?: Array<{
+      title?: string;
+      text?: string;
+      buttonText?: string;
+    }>;
     footer: string;
   };
   updatedAt: string;
   createdAt: string;
 }
+
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "roles".
