@@ -74,13 +74,21 @@ export function Content({ title, body }) {
                                       <Text className="text-sm text-[#e6e6e6] font-mono">
                                         {event.text}
                                       </Text>
-                                      {event.buttonText && (
-                                        <Button>
-                                          <Text className="m-0 p-0">
-                                            {event.buttonText}
-                                          </Text>
-                                        </Button>
-                                      )}
+                                      {
+                                        event.buttons.map(button =>
+                                          (
+                                            <div key={button.text} style={{ marginBottom: 8 }}>
+                                              <a href={button.link} className="block no-underline text-black">
+                                                <Button>
+                                                  <Text className="m-0 p-0">
+                                                    {button.text}
+                                                  </Text>
+                                                </Button>
+                                              </a>
+                                            </div>
+                                          ),
+                                        )
+                                      }
                                     </Card>
                                   </td>
                                 </tr>

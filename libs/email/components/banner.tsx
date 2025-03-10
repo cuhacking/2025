@@ -9,8 +9,7 @@ export function Banner() {
     <Tailwind>
       <Body className="m-0 p-0 bg-black">
         <Container
-          // className="w-full max-w-[600px] h-[192px] bg-[url('/static/bg-keycap-2.webp')] bg-cover bg-center text-white font-mono text-center"
-          className="w-full max-w-[600px] h-[192px] bg-[url('https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/cuhacking/media/bg-keycap-2.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJjdWhhY2tpbmcvbWVkaWEvYmcta2V5Y2FwLTIud2VicCIsImlhdCI6MTc0MDkxMjI5MCwiZXhwIjoxNzcyNDQ4MjkwfQ.S1oQiR--_NtIsXl5NPF_6oFY2VK-SIMO36LT7N5WwmM')] bg-cover bg-center text-white font-mono text-center"
+          className="w-full max-w-[600px] h-[192px] bg-[url('https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/email/cuhacking_email_header_bg.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9lbWFpbC9jdWhhY2tpbmdfZW1haWxfaGVhZGVyX2JnLnBuZyIsImlhdCI6MTc0MTYzODczMCwiZXhwIjoxNzQ0MjMwNzMwfQ.ejQMJXMlUkiRgd5lJRYipzeEiKCWh63_r1BPNwTgZIQ')] bg-cover bg-center text-white font-mono text-center"
         >
           <Section>
             <table className="w-full">
@@ -26,7 +25,6 @@ export function Banner() {
                       <td className="pr-2 align-middle">
                         <Img
                           src="https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/cuhacking/media/logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJjdWhhY2tpbmcvbWVkaWEvbG9nby5wbmciLCJpYXQiOjE3NDA5MTA0MDQsImV4cCI6MTc3MjQ0NjQwNH0.47yIX2M5pymmFW1aX1FxRHzs4hnBxhQj20iphG4j-pg"
-                          // src={`${baseUrl}/static/logo.png`}
                           alt="cuHacking Logo"
                           width="60"
                           className="block"
