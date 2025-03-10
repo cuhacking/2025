@@ -34,7 +34,17 @@ export async function seed({
       "events",
       "hackathons",
     ].map(async (collection) => {
-      await payload.db.deleteMany({ collection, req, where: {} });
+      if (collection === "users") {
+        await payload.db.deleteMany({
+          collection,
+          req,
+          where: {
+            id: { not_equals: 1 },
+          },
+        });
+      } else {
+        await payload.db.deleteMany({ collection, req, where: {} });
+      }
 
       if (payload.collections[collection].config.versions) {
         await payload.db.deleteVersions({ collection, req, where: {} });

@@ -9,6 +9,7 @@ import {
   adminsAndUser,
   anyone,
   authenticated,
+  isSuperAdmin,
   // checkRole
 } from "@/db/access";
 // import { authenticated, isAdminFieldLevel } from '@/db/access'
@@ -264,14 +265,10 @@ export const Users: CollectionConfig = {
     },
   },
   access: {
-    // admin: ({ req: { user } }) => checkRole(['admin'], user),
-    admin: authenticated,
-    // admin: anyone,
+    admin: isSuperAdmin,
     read: adminsAndUser,
-    create: anyone,
-    update: (req) => {
-      return adminsAndUser(req) || isSameUser(req);
-    },
+    create: authenticated,
+    update: ({ req }) => isSuperAdmin({ req }) || isSameUser({ req }),
     delete: admins,
   },
   // hooks: {
@@ -295,10 +292,7 @@ export const Users: CollectionConfig = {
       "avatar",
       "preferredDisplayName",
       "pronouns",
-      "cell",
-      "email",
-      "dietaryRestrictions",
-      "linkedinEmailVerified",
+      "group",
       "updatedAt",
       "createdAt",
       "id",

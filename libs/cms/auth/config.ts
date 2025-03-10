@@ -4,18 +4,19 @@ export const baseConfig = {
   serverURL: process.env.NODE_ENV==="development" ? process.env.CUHACKING_2025_AXIOM_LOCAL_URL : process.env.CUHACKING_2025_AXIOM_PUBLIC_URL,
   authCollection: 'users',
   successRedirect: (req: PayloadRequest, accessToken?: string) => {
-    return "/admin";
- // const user = req.user
- //    if (user && Array.isArray(user.roles)) {
- //      if (user.roles.includes('admin')) {
- //        return '/admin'
- //      }
- //    }
- //    return '/' // Default redirect for customers
-  },
+const user = req.user;
+
+  if (user) {
+    if (user.id === 1 || user.group?.name === "Organizer") {
+      return "/admin";
+    }
+  }
+
+  return "/";
+},
   failureRedirect: (req: PayloadRequest, err) => {
     req.payload.logger.error(err);
-    return "/admin/login";
+    return "/";
   },
 }
 

@@ -6,7 +6,15 @@ export const OrganizerTeams: CollectionConfig = {
   slug: "organizerTeams",
   admin: {
     group: navAccordions.featured,
-    defaultColumns: ["name", "symbol", "event", "id"],
+    defaultColumns: [
+      "name",
+      "symbol",
+      "users",
+      "event",
+      "updatedAt",
+      "createdAt",
+      "id",
+    ],
     useAsTitle: "name",
   },
   access: {

@@ -1,5 +1,4 @@
 import { Payload, PayloadRequest } from "payload";
-import type { File } from "payload";
 import { OAuth2Plugin } from "payload-oauth2";
 import { linkedinStrategyConfig } from "@/cms/auth/config";
 import { generateEmail } from "@/cms/utils";
@@ -48,52 +47,89 @@ export const linkedinOAuth = OAuth2Plugin({
       { headers },
     ).then((res) => res.json());
 
-    const existingUser = await req.payload.find({
-      collection: "users",
-      where: {
-        email: {
-          equals: user?.email,
-        },
-      },
-      limit: 1,
-    });
+      const { id, vanityName, imageUrl } =
+        await fetchLinkedInProfileData(accessToken);
 
-    if (existingUser.docs.length !== 0) {
-      if (existingUser.docs[0].avatar === null) {
-        const { id, vanityName, imageUrl } =
-          await fetchLinkedInProfileData(accessToken);
-        const filename = `${user.given_name.toLowerCase()}-${user.family_name.toLowerCase()}-avatar.png`;
-        const avatarId = imageUrl
-          ? await getOrUploadMedia(
-              req.payload,
-              req,
-              imageUrl,
-              filename,
-              `${user.given_name} ${user.family_name}'s avatar`,
-            )
-          : null;
+const existingUserByLinkedIn = await req.payload.find({
+  collection: "users",
+  where: {
+    linkedinVanity: {
+      equals: vanityName,
+    },
+  },
+  limit: 1,
+});
 
-        await req.payload.sendEmail({
-          to: user.email,
-          subject: "Welcome to cuHacking 2025",
-          html: await generateEmail(),
-        });
+if (existingUserByLinkedIn.docs.length > 0) {
+  const existingUser = existingUserByLinkedIn.docs[0];
 
-        return {
-          email: user.email,
-          firstName: user.given_name,
-          lastName: user.family_name,
-          displayName: user.name,
-          avatar: avatarId,
-          linkedinId: id,
-          linkedinVanity: vanityName,
-          linkedinEmailVerified: user.email_verified,
-          linkedinLocale: user.locale,
-        };
-      }
-    }
+  await req.payload.update({
+    collection: "users",
+    id: existingUser.id,
+    data: {
+      linkedinId: id,
+      linkedinEmailVerified: user.email_verified,
+      linkedinLocale: user.locale,
+    },
+  });
 
-    return { email: user.email };
+  return {
+    email: existingUser.email,
+    firstName: existingUser.firstName,
+    lastName: existingUser.lastName,
+    preferredDisplayName: existingUser.preferredDisplayName,
+    avatar: existingUser.avatar,
+    linkedinId: id,
+    linkedinVanity: vanityName,
+    linkedinEmailVerified: user.email_verified,
+    linkedinLocale: user.locale,
+  };
+}
+
+const existingUserByEmail = await req.payload.find({
+  collection: "users",
+  where: {
+    email: {
+      equals: user?.email,
+    },
+  },
+  limit: 1,
+});
+
+let avatarId = null;
+
+if (existingUserByEmail.docs.length === 0 || existingUserByEmail.docs[0].avatar === null) {
+  const filename = `${user.given_name.toLowerCase()}-${user.family_name.toLowerCase()}-avatar.png`;
+  avatarId = imageUrl
+    ? await getOrUploadMedia(
+        req.payload,
+        req,
+        imageUrl,
+        filename,
+        `${user.given_name} ${user.family_name}'s avatar`,
+      )
+    : null;
+}
+
+if (existingUserByEmail.docs.length === 0) {
+  await req.payload.sendEmail({
+    to: user.email,
+    subject: "Welcome to cuHacking 2025",
+    html: await generateEmail(),
+  });
+}
+
+return {
+  email: user.email,
+  firstName: user.given_name,
+  lastName: user.family_name,
+  preferredDisplayName: user.name,
+  avatar: avatarId || existingUserByEmail.docs[0]?.avatar,
+  linkedinId: id,
+  linkedinVanity: vanityName,
+  linkedinEmailVerified: user.email_verified,
+  linkedinLocale: user.locale,
+};
   },
   ...linkedinStrategyConfig,
 });

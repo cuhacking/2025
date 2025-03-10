@@ -9,12 +9,9 @@ export const Hackathons: CollectionConfig = {
   },
   fields: [
     {
-      name: "year",
-      type: "number",
-      required: true,
-      unique: true,
-      defaultValue: () => 2025,
-    },
+      type: "row",
+      admin: { position: "sidebar" },
+      fields: [
     {
       name: "name",
       type: "text",
@@ -22,10 +19,24 @@ export const Hackathons: CollectionConfig = {
       defaultValue: () => "cuHacking 6",
     },
     {
+      name: "year",
+      type: "number",
+      required: true,
+      unique: true,
+      defaultValue: () => 2025,
+    },
+        ],
+      },
+    {
       name: "location",
       type: "text",
       defaultValue: () => "Carleton University, Richcraft Hall",
+      admin: { position: "sidebar" },
     },
+    {
+      type: "row",
+      admin: { position: "sidebar" },
+      fields: [
     {
       name: "start",
       type: "date",
@@ -50,10 +61,15 @@ export const Hackathons: CollectionConfig = {
       },
       defaultValue: () => new Date(2025, 2, 17, -4, 0, 0),
     },
+        ]
+    },
     {
       label: "Sponsors",
       type: "collapsible",
-      admin: { initCollapsed: true },
+      admin: {
+        // initCollapsed: true,
+        position: 'sidebar'
+      },
       fields: [
         { name: "tera", type: "relationship", relationTo: "brands" },
         { name: "mega", type: "relationship", relationTo: "brands" },
@@ -166,6 +182,14 @@ export async function seedHackathons(payload: any) {
     //   }),
     // );
 
+    const teraSponsorResult = await payload.find({
+      collection: "brands",
+        where: { name: { equals: 'QNX' } },
+        pagination: false,
+    })
+
+    const teraSponsor = teraSponsorResult.docs[0] || null;
+
     await payload.create({
       collection: "hackathons",
       data: {
@@ -176,7 +200,7 @@ export async function seedHackathons(payload: any) {
         end: new Date(2025, 2, 17, -4, 0, 0),
 
         sponsors: {
-          tera: null,
+          tera: teraSponsor ? teraSponsor.id : null,
           mega: null,
           kilo: null,
           centi: null,
