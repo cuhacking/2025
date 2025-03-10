@@ -1,8 +1,9 @@
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig, Payload } from 'payload'
 import { admins, adminsAndUser, anyone,
   // checkRole
 } from '@/db/access'
 import { navAccordions } from '@/db/collections/navAccordions'
+import { getOrUploadMedia, formatRichText } from '@/db/seed'
 
 export const Hardware: CollectionConfig = {
   slug: 'hardware',
@@ -13,7 +14,7 @@ export const Hardware: CollectionConfig = {
     delete: admins,
   },
   admin: {
-    group: navAccordions.inventory,
+    group: navAccordions.categories,
     defaultColumns: [
       'images',
       'name',
@@ -84,7 +85,13 @@ export const Hardware: CollectionConfig = {
   ],
 }
 
-export const hardwareSeedData = [
+
+export async function seedHardware(payload: Payload, req: any) {
+  payload.logger.info("🔧 Seeding hardware data...");
+
+  try {
+    await Promise.all(
+[
   {
     images: [
       { image: "https://cdn11.bigcommerce.com/s-am5zt8xfow/images/stencil/1280x1280/products/2826/8360/879-1__51603.1644937292.jpg?c=2" },
@@ -185,4 +192,43 @@ export const hardwareSeedData = [
     quantity: 30,
     categories: ["microcontrollers"]
   }
-];
+].map(async (hardware) => {
+        const mediaIds = await Promise.all(
+          hardware.images.map(async (image, index) => {
+            return (
+              await getOrUploadMedia(
+                payload,
+                req,
+                image.image,
+                `${hardware.name.toLowerCase().replace(/\s+/g, "-")}-image-${index}.png`,
+                `${hardware.name} Image`,
+              )
+            )?.id;
+          }),
+        );
+
+        await payload.create({
+          collection: "hardware",
+          data: {
+            images: mediaIds
+              .filter(Boolean)
+              .map((id) => ({ id, image: { id } })),
+            name: hardware.name,
+            description: formatRichText(hardware.description),
+            resources: formatRichText(hardware.resources),
+            quantity: hardware.quantity,
+            categories: hardware.categories,
+          },
+        });
+
+        payload.logger.info(`✅ Inserted hardware: ${hardware.name}`);
+      }),
+    );
+
+    payload.logger.info("✅ All hardware seed data successfully inserted!");
+  } catch (error) {
+    payload.logger.error(
+      `❌ Error seeding hardware data: ${error instanceof Error ? error.message : "Unknown error"}`,
+    );
+  }
+}

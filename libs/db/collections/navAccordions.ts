@@ -1,9 +1,8 @@
 export const navAccordions = {
-  globals: '🫙 Globals',
-  relations: '↔ Relations',
-  communication: '📢 Communication',
-  featured: '🫂 People',
-  events: '🍾 Events',
-  inventory: '📦 Inventory',
-  blocks: '🗄 Blocks',
-}
+  globals: "🫙 Globals",
+  communication: "📢 Communication",
+  featured: "🫂 People",
+  events: "🍾 Events",
+  categories: "📦 Categories",
+  blocks: "🗄 Blocks",
+};

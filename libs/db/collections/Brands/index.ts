@@ -1,2 +1,1 @@
-export * from './Brands'
-export * from './seed'
+export * from "./Brands";

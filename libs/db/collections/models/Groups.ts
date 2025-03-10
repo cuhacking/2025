@@ -1,90 +1,84 @@
-import type { CollectionConfig, Payload } from 'payload';
-import { navAccordions } from '@/db/collections/navAccordions';
+import type { CollectionConfig, Payload } from "payload";
+import { navAccordions } from "@/db/collections/navAccordions";
 
 export const Groups: CollectionConfig = {
-  slug: 'groups',
+  slug: "groups",
   access: {
     admin: () => true,
   },
   admin: {
     group: navAccordions.featured,
-    defaultColumns: ['name', 'symbol', 'event', 'users', 'id'],
-    useAsTitle: 'name',
+    defaultColumns: ["name", "symbol", "event", "users", "id"],
+    useAsTitle: "name",
   },
   fields: [
     {
-      name: 'name',
-      type: 'text',
-      defaultValue: 'Hacker',
-      unique: true,
+      name: "name",
+      type: "text",
     },
     {
-      name: 'symbol',
-      type: 'upload',
-      relationTo: 'media',
+      name: "symbol",
+      type: "upload",
+      relationTo: "media",
     },
     {
-      name: 'event',
-      type: 'relationship',
-      relationTo: 'hackathons',
-      unique: true,
+      name: "event",
+      type: "relationship",
+      relationTo: "hackathons",
     },
     {
-      name: 'users',
-      type: 'relationship',
-      relationTo: 'users',
-      hasMany: true,
+      name: "users",
+      type: "join",
+      collection: "users",
+      on: "group",
     },
   ],
 };
 
-export async function seedGroups(payload: Payload, req: any) {
-  try {
-    const groupData = [
-      {
-        name: 'Hacker',
-        imageAlt: 'cuHacking 2025 Symbol Yellow',
-      },
-      {
-        name: 'Mentor',
-        imageAlt: 'cuHacking 2025 Symbol Blue',
-      },
-      {
-        name: 'Sponsor',
-        imageAlt: 'cuHacking 2025 Symbol Pink',
-      },
-      {
-        name: 'Judge',
-        imageAlt: 'cuHacking 2025 Symbol White',
-      },
-      {
-        name: 'Organizer',
-        imageAlt: 'cuHacking 2025 Symbol Green',
-      },
-    ];
+export async function seedGroups(payload, req) {
+  payload.logger.info("Seeding Groups...");
 
-    for (const group of groupData) {
-      const existingMedia = await payload.find({
-        collection: 'media',
-        where: {
-          alt: { equals: group.imageAlt },
-        },
-      });
+  await Promise.all(
+    [
+      { name: "Hacker", imageAlt: "cuHacking 2025 Symbol Yellow" },
+      { name: "Mentor", imageAlt: "cuHacking 2025 Symbol Blue" },
+      { name: "Sponsor", imageAlt: "cuHacking 2025 Symbol Pink" },
+      { name: "Judge", imageAlt: "cuHacking 2025 Symbol White" },
+      { name: "Organizer", imageAlt: "cuHacking 2025 Symbol Green" },
+    ].map(async (group) => {
+      try {
+        const existingMedia = await payload.find({
+          collection: "media",
+          where: { alt: { equals: group.imageAlt } },
+          pagination: false,
+        });
 
-      const selectedImage = existingMedia.docs.length > 0 ? existingMedia.docs[0].id : null;
+        const selectedImage =
+          existingMedia.docs.length > 0 ? existingMedia.docs[0].id : null;
 
-      await payload.create({
-        collection: 'groups',
-        data: {
-          name: group.name,
-          symbol: selectedImage,
-          users: [],
-        },
-      });
-    }
+        const hackathonResult = await payload.find({
+          collection: "hackathons",
+          where: { year: { equals: 2025 } },
+          pagination: false,
+        });
 
-    console.log('✅ Group seed data successfully inserted!');
-  } catch (error) {
-    console.error('❌ Error seeding group data:', error);
-  }
+        const hackathon = hackathonResult.docs[0] || null;
+
+        await payload.create({
+          collection: "groups",
+          data: {
+            name: group.name,
+            symbol: selectedImage,
+            event: hackathon ? hackathon.id : null,
+          },
+        });
+
+        payload.logger.info(`✅ Created Group: ${group.name}`);
+      } catch (error) {
+        console.error(`❌ Error creating group "${group.name}":`, error);
+      }
+    }),
+  );
+
+  payload.logger.info("✅ All Groups Seeded!");
 }

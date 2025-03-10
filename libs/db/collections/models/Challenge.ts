@@ -1,127 +1,133 @@
-import type { CollectionConfig } from 'payload'
-import { navAccordions } from '@/db/collections/navAccordions'
+import type { CollectionConfig } from "payload";
+import { navAccordions } from "@/db/collections/navAccordions";
 
 export const Challenges: CollectionConfig = {
-  slug: 'challenges',
+  slug: "challenges",
   admin: {
-    useAsTitle: 'title',
-    group: navAccordions.inventory,
+    useAsTitle: "title",
+    group: navAccordions.categories,
   },
   fields: [
     {
-      name: 'title',
-      type: 'text',
+      name: "title",
+      type: "text",
       required: true,
     },
     {
-      name: 'description',
-      type: 'textarea',
+      name: "description",
+      type: "textarea",
     },
     {
-      name: 'judging',
-      type: 'relationship',
-      relationTo: 'criteria',
+      name: "judging",
+      type: "relationship",
+      relationTo: "criteria",
       required: true,
     },
     {
-      name: 'event',
-      type: 'relationship',
-      relationTo: 'events',
+      name: "event",
+      type: "relationship",
+      relationTo: "events",
       required: true,
     },
     {
-      name: 'sponsor',
-      type: 'relationship',
-      relationTo: 'brands',
+      name: "sponsor",
+      type: "relationship",
+      relationTo: "brands",
       admin: {
-        description: 'Who is hosting this challenge? Leave blank if event only has one host.',
+        description:
+          "Who is hosting this challenge? Leave blank if event only has one host.",
       },
       hasMany: true,
       required: false,
     },
     {
-      name: 'prize',
-      type: 'relationship',
-      relationTo: 'challengePrize',
+      name: "prize",
+      type: "relationship",
+      relationTo: "challengePrize",
       required: true,
     },
   ],
-}
+};
 
 export const ChallengePrize: CollectionConfig = {
-  slug: 'challengePrize',
+  slug: "challengePrize",
   admin: {
-    group: navAccordions.inventory,
+    group: navAccordions.categories,
   },
   fields: [
     {
-      name: 'formattedTitle',
+      name: "formattedTitle",
       admin: {
         hidden: true,
       },
-      type: 'text',
+      type: "text",
     },
     {
-      name: 'prizeForPosition',
-      type: 'array',
+      name: "prizeForPosition",
+      type: "array",
       fields: [
         {
-          name: 'position',
-          type: 'number',
+          name: "position",
+          type: "number",
         },
         {
-          name: 'prizeMoney',
-          type: 'number',
+          name: "prizeMoney",
+          type: "number",
           admin: {
-            description: 'In CAD, if prize is not money, estimate the cost the prize',
+            description:
+              "In CAD, if prize is not money, estimate the cost the prize",
           },
         },
         {
-          name: 'otherPrize',
-          type: 'text',
+          name: "otherPrize",
+          type: "text",
           admin: {
-            description: 'Typically use this for physical prizes (ex. MetaQuest for 1st place)',
+            description:
+              "Typically use this for physical prizes (ex. MetaQuest for 1st place)",
           },
         },
         {
-          name: 'description',
-          type: 'textarea',
+          name: "description",
+          type: "textarea",
           admin: {
-            description: 'If extra detail is necessary',
+            description: "If extra detail is necessary",
           },
         },
       ],
     },
     {
-      name: 'miscellaneousPrizes',
+      name: "miscellaneousPrizes",
       admin: {
-        description: 'Prizes that are not part of the central challenge (ex. A raffle prize)',
+        description:
+          "Prizes that are not part of the central challenge (ex. A raffle prize)",
       },
-      type: 'array',
+      type: "array",
       fields: [
         {
-          name: 'name',
-          type: 'text',
+          name: "name",
+          type: "text",
         },
         {
-          name: 'description',
-          type: 'textarea',
+          name: "description",
+          type: "textarea",
         },
         {
-          name: 'prizeMoney',
-          type: 'number',
+          name: "prizeMoney",
+          type: "number",
           admin: {
-            description: 'In CAD, if prize is not money, estimate the cost the prize',
+            description:
+              "In CAD, if prize is not money, estimate the cost the prize",
           },
         },
         {
-          name: 'otherPrize',
-          type: 'text',
+          name: "otherPrize",
+          type: "text",
           admin: {
-            description: 'Typically use this for physical prizes (ex. MetaQuest for 1st place)',
+            description:
+              "Typically use this for physical prizes (ex. MetaQuest for 1st place)",
           },
         },
       ],
     },
   ],
-}
+};
