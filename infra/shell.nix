@@ -22,7 +22,7 @@ in pkgs.mkShell {
     pkgs.yazi
     pkgs.bat
     pkgs.browsh
-    pkgs.firefox
+    #pkgs.firefox
     # pkgs.netscanner
     pkgs.zsh
   ];

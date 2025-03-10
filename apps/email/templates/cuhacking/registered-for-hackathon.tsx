@@ -1,5 +1,6 @@
 /* import { execSync } from 'node:child_process' */
 import { Banner, Content, Footer, Keyboard } from '@/email/components'
+import { render } from "@react-email/render";
 import { Container, Html, Section, Tailwind } from '@react-email/components'
 
 function getGenericEmailConstants() {
@@ -31,9 +32,9 @@ Details ...
 📍 Richcraft Hall (1125 Colonel By Dr, Carleton University)
 ⌛ March 14-16 (Check-in from 5pm - 9pm)
 
-🥗 Food + Merch will be provided for the first 300 hackers on site!
+🥗 Food + Merch will be provided for the first 300 hackers on site!<br>
 What to bring?
-🪪 Government ID
+🪪 Government ID<
 💻 Your laptop + charger
 🛏️ Sleeping bags
 🪥 Personal hygiene (plz bring deodorant, plz ...)
@@ -52,9 +53,48 @@ What to bring?
       },
       {
         title: 'Intro to QNX',
-        text: 'Learn about QNX with 3 awesome speakers + meet some interns. Make sure you bring your laptop. Register now!',
-        buttonText: 'REGISTER',
+        text: 'Learn about QNX with 3 awesome speakers + meet some interns. Make sure you bring your laptop. Happening March 11th, 6:30 to 8:00 pm. Register now!',
+        buttons: [
+          {
+            text: "REGISTER",
+            link: "https://docs.google.com/forms/d/e/1FAIpQLSfni0BpF_2vf9xM02Ux4t979C_jVVXLvxVDv0u1hrrobVan-A/viewform"
+          }
+        ]
       },
+      {
+        title: "Learn about Gadget",
+        text: "Gadget is hosting a Q&A webinar to teach students the basics of their platform. It's happening Wednesday, March 12th at 2:30pm. You must create an account using the link below. If you already have an account let Gadget know during the webinar.",
+        buttons: [
+          {
+            text: "CREATE ACCOUNT",
+            link: "https://app.gadget.dev/auth/login?returnTo=/auth/hackathon"
+          },
+          {
+            text: "WEBINAR",
+            link: "https://meet.google.com/ybk-wumk-hig"
+          }
+        ]
+      },
+      {
+        title: "Resume Roast",
+        text: "Get your resume roasted at cuHacking! Sign up below to be eligible. Brought to you by uO SESA",
+        buttons: [
+          {
+            text: "REGISTER",
+            link: "https://docs.google.com/forms/d/e/1FAIpQLSdljqp8Z6F6ADINhJergvcqJZ6aTYSW2SSSVrngsY6ltx1eHQ/viewform"
+          }
+        ]
+      },
+      {
+        title: "Sign up for our portal!",
+        text: "Create your account on our portal! You must do this to be eligible for our hackathon",
+        buttons: [
+          {
+            text: "CREATE ACCOUNT",
+            link: "https://portal.cuhacking.ca"
+          }
+        ]
+      }
     ],
   },
 }
@@ -64,9 +104,11 @@ What to bring?
   /* } */
 }
 
+
+
 const genericEmailConstants = getGenericEmailConstants()
 
-function Generic({ title, body }) {
+ function Generic({ title, body } : { title: string, body: string }) {
   return (
     <Tailwind>
       <Html>
@@ -75,7 +117,7 @@ function Generic({ title, body }) {
             <Banner />
             <Content title={title} body={body} />
             <Keyboard />
-            <Footer>{body.footer}</Footer>
+            <Footer />
           </Section>
         </Container>
       </Html>
@@ -84,5 +126,7 @@ function Generic({ title, body }) {
 }
 
 export default function Preview() {
-  return <Generic {...genericEmailConstants} />
+  return (
+    <Generic {...genericEmailConstants} />
+  )
 }
