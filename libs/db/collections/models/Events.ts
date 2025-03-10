@@ -198,7 +198,7 @@ export async function seedEvents(payload: Payload, req: any) {
           ],
         },
         {
-          title: "Game Night 🎮",
+          title: "Game Night",
           description: "Relax and take a break from hacking with some fun games.",
           location: "Carleton University, Social Lounge",
           start: new Date(2025, 2, 16, 20, 0),

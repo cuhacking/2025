@@ -194,7 +194,7 @@ export async function getOrUploadMedia(
       file: {
         name: filename,
         data,
-        mimetype: "image/*",
+        mimetype: "image/png",
         size: data.length,
       },
       data: { alt },
