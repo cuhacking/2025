@@ -7,9 +7,11 @@ import { RESTRICTIONS } from '../constants'
 
 function refinedUserData(user: Partial<UserDetails>) {
   let graduationDate
+
   if (user.expectedGraduationDate) {
     graduationDate = new Date(user.expectedGraduationDate)
   }
+
   let refinedAllergies
   if (user.allergies) {
     refinedAllergies = user.allergies
@@ -27,8 +29,23 @@ function refinedUserData(user: Partial<UserDetails>) {
       ))
       .filter(Boolean)
   }
-  return { ...user, dietaryRestrictions: refinedRestrictions, allergies: refinedAllergies, expectedGraduationDate: graduationDate }
+
+  const refinedUser = {
+    ...user,
+    dietaryRestrictions: refinedRestrictions,
+    allergies: refinedAllergies,
+    expectedGraduationDate: graduationDate,
+  }
+
+  Object.keys(refinedUser).forEach((key) => {
+    if (refinedUser[key] === null) {
+      delete refinedUser[key]
+    }
+  })
+
+  return refinedUser
 }
+
 export function useProfileSchema(
   user: Partial<UserDetails>,
   isStudent: boolean,
@@ -69,7 +86,7 @@ export function useProfileSchema(
       {
         message: 'Invalid Google Drive link.',
       },
-    ),
+    ).optional(),
     yearStanding: z.nativeEnum(YearStandings)
       .optional()
       .refine(
@@ -154,7 +171,7 @@ export function useProfileSchema(
       }
     }, {
       message: 'Invalid URL',
-    }),
+    }).nullable(),
   })
 
   const profile = useForm<UserDetails>({
