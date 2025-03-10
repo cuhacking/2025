@@ -152,3 +152,34 @@ fields: [
       },
        ]
 }
+
+export async function seedHackathons(payload: any, req: any) {
+  try {
+    await payload.create({
+      collection: 'hackathons',
+      data: {
+        year: 2025,
+        name: 'cuHacking 6',
+        location: 'Carleton University, Richcraft Hall',
+        start: new Date(2025, 2, 15, -4, 0, 0),
+        end: new Date(2025, 2, 17, -4, 0, 0),
+        sponsors: {
+          tera: null,
+          mega: null,
+          kilo: null,
+          centi: null,
+        },
+        organizers: [],
+        schedule: {},
+        judges: [],
+        mentors: [],
+        hackers: [],
+        volunteers: [],
+      },
+    });
+
+    console.log('✅ Hackathon seed data successfully inserted!');
+  } catch (error) {
+    console.error('❌ Error seeding Hackathon data:', error);
+  }
+}

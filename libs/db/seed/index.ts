@@ -2,7 +2,7 @@
 import type { CollectionSlug, File, Payload, PayloadRequest } from 'payload'
 import { hardwareSeedData } from '@/db/collections'
 import { brandSeedData } from '@/db/collections/Brands'
-import { seedEmails } from '@/db/collections/models'
+import { seedEmails, seedHackathons } from '@/db/collections/models'
 import { seedMedia } from '@/db/collections/models'
 import { userData } from '@/db/collections/models/Users'
 import { seedGroups } from '@/db/collections/models'
@@ -395,6 +395,8 @@ blockType: "textarea"
 } catch (error) {
   console.error('❌ Error seeding form data:', error);
 }
+
+  await seedHackathons(payload)
 
   log('🎉 Database seeded successfully! 🌱🐧')
   return { message: 'Database seeded successfully!', logs }
