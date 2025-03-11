@@ -412,7 +412,7 @@ export function Questions({ user, isComplete, onSubmit }: ProfileFormProps) {
                     placeholder="johndoe@gmail.com"
                     name="emergencyContactEmail"
                     label="Email"
-
+                    isRequired
                   />
                   <ComboboxField
                     form={profile}
