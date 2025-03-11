@@ -135,7 +135,7 @@ export function Questions({ user, isComplete, onSubmit }: ProfileFormProps) {
                     infoIcon="linkedin"
                     isDisabled
                   />
-                  <TextField
+                  {/* <TextField
                     variant="text"
                     placeholder="K."
                     name="middleName"
@@ -148,7 +148,7 @@ export function Questions({ user, isComplete, onSubmit }: ProfileFormProps) {
                     )}
                     infoIcon="linkedin"
                     isDisabled
-                  />
+                  /> */}
                   <TextField
                     variant="email"
                     form={profile}
