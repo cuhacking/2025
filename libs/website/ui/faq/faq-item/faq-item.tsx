@@ -13,7 +13,7 @@ interface FAQItemProps {
 export function FAQItem({ question, answers }: FAQItemProps) {
   return (
     <AccordionItem value={question}>
-      <AccordionTrigger>
+      <AccordionTrigger isLeft>
         <p>
           <span className="text-primary">faq(</span>
           {question}
@@ -22,7 +22,7 @@ export function FAQItem({ question, answers }: FAQItemProps) {
       </AccordionTrigger>
       <AccordionContent>
         {answers.map((answer: string) => (
-          <TerminalText key={answer}>
+          <TerminalText key={answer} className="pl-2">
             <p>{answer}</p>
           </TerminalText>
         ))}

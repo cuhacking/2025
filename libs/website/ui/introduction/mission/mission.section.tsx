@@ -10,7 +10,7 @@ export function MissionSection() {
       <ClientOnly>
         {() => (
           <SplineComponent
-            className="absolute bottom-[14vh] lg:-bottom-[5vh] left-0 scale-1 md:scale-[1.2]"
+            className="absolute bottom-[14vh] lg:-bottom-[5vh] left-0 md:scale-[1.2]"
             link={MISSION_CONSTANTS.SPLINE_LINK}
             imgSrc={BgKeyCaps}
           />

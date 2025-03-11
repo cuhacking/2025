@@ -27,6 +27,18 @@ import { s3Storage } from '@payloadcms/storage-s3'
 import sharp from "sharp";
 
 export const baseConfig = {
+  auth: {
+    cookies: {
+      payloadToken: {
+        domain: ".cuhacking.ca",
+        path: "/",
+        secure: true,
+        httpOnly: true,
+        sameSite: "None",
+      },
+    },
+  },
+defaultDepth: 3,
   globals: [
     Hackathon2025,
   ],

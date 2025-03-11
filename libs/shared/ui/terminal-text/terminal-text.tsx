@@ -21,7 +21,7 @@ const callToActionVariation = cva('', {
 })
 
 const terminalTextVariation = cva(
-  'flex flex-row gap-x-2 items-center',
+  'flex flex-row gap-x-2 pb-1.5',
 )
 
 export function TerminalText({
@@ -32,7 +32,7 @@ export function TerminalText({
 }: TerminalTextProps) {
   return (
     <div className={cn(terminalTextVariation({ className }))}>
-      {!icon ? <div className="text-muted text-[24px] w-[24px]">~</div> : <Icon media={icon} />}
+      {!icon ? <div className="flex-shrink-0 text-muted  w-[24px] ">~</div> : <Icon media={icon} />}
       <div className={cn(callToActionVariation({ callToAction }))}>
         {children}
       </div>

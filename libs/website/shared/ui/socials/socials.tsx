@@ -25,7 +25,7 @@ export function Socials({ socials, className }: SocialsProps) {
           <Icon
             media={media}
             prefix="/socials"
-            className="transition-transform duration-300 hover:scale-[1.2]"
+            className="w-8 transition-transform duration-300 hover:scale-[1.2]"
           />
         </Link>
       ))}

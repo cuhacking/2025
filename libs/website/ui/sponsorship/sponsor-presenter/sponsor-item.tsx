@@ -1,26 +1,14 @@
 import type { Sponsor } from '../types/sponsorship'
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 import { cn } from '@cuhacking/shared/utils/cn'
-import { cva } from 'class-variance-authority'
 import SVG from 'react-inlinesvg'
 
-interface SponsorPresenterProps {
+export interface SponsorPresenterProps {
   sponsor: Sponsor
-  isPresent: boolean
+  className?: string
 }
 
-const sponsorPresenterVariation = cva(
-  'p-2.5 hover:scale-105 transition-transform m-x-auto',
-  {
-    variants: {
-      isPresent: {
-        true: 'h-32 min-w-24 ',
-        false: 'h-24 min-w-16',
-      },
-    },
-  },
-)
-export function SponsorItem({ sponsor, isPresent }: SponsorPresenterProps) {
+export function SponsorItem({ sponsor, className }: SponsorPresenterProps) {
   return (
     <GlassmorphicCard
       variant="nested"
@@ -35,7 +23,7 @@ export function SponsorItem({ sponsor, isPresent }: SponsorPresenterProps) {
         <SVG
           src={sponsor.logo}
           title={`${sponsor.name} logo`}
-          className={cn(sponsorPresenterVariation({ isPresent }))}
+          className={cn(className || 'h-32 min-w-24')}
         />
       </a>
     </GlassmorphicCard>

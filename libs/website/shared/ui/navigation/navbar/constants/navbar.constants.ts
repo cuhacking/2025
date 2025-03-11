@@ -10,7 +10,6 @@ import instagram_white from '@cuhacking/shared/assets/icons/socials/instagram-wh
 import linkedin_white from '@cuhacking/shared/assets/icons/socials/linkedin-white-1.svg'
 import linktree_white from '@cuhacking/shared/assets/icons/socials/linktree-white-1.svg'
 import cuHackingLogo from '@cuhacking/shared/assets/logos/cuHacking/cuhacking-logo-1.svg'
-import mlhBanner from '@cuhacking/shared/assets/logos/sponsors/mlh-banner.svg'
 
 const links = [
   { name: 'ABOUT', link: '/#about' },
@@ -93,7 +92,7 @@ const banner: { link: string, name: string, media: Media }
     link: 'https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2025-season&utm_content=black',
     name: 'MLH Banner',
     media: {
-      src: mlhBanner,
+      src: 'https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/current-sponsors/cuhacking_6_sponsor_logo_mlh_banner.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9jdXJyZW50LXNwb25zb3JzL2N1aGFja2luZ182X3Nwb25zb3JfbG9nb19tbGhfYmFubmVyLnN2ZyIsImlhdCI6MTc0MTY4MDAwMywiZXhwIjoxNzczMjE2MDAzfQ.gZBil66oA5z6GezEe04hcP5os2JlzpQ2Rp3w1L3QYi4',
       alt: 'Major League Hacking 2025 Hackathon Season',
     },
   }

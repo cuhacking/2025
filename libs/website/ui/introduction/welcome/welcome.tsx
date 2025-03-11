@@ -108,17 +108,17 @@ export function Welcome({ socials }: IntroProps) {
                 <p>{welcomeData.callToAction}</p>
               </TerminalText>
               <TerminalText className="text-base">
-                <Socials socials={socials} className="justify-center" />
+                <Socials socials={socials} className="justify-center grid grid-cols-4 sm:flex" />
               </TerminalText>
 
               {/* welcomeData.registrationLink */ }
               <Link
-                to="https://forms.gle/gQ6o5vqHE64nQPvj7"
+                to="https://portal.cuhacking.ca/login"
                 target="_blank"
                 aria-label="registration link"
                 className="block w-fit h-fit m-auto"
               >
-                <Button variant="secondary" className="mt-4 px-16">
+                <Button variant="secondary" className="mt-4 px-8 sm:px-16 max-w-full">
                   <Typography variant="h6">
                     <p>!! Register Now !!</p>
                   </Typography>
