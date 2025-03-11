@@ -3,6 +3,7 @@ import type { UserDetails } from '@cuhacking/portal/types/user'
 export async function getCurrentUser({ cookie, API_URL }: { cookie: string | null, API_URL: string }): Promise<UserDetails | null> {
   try {
     const response = await fetch(`${API_URL}/api/users/me`, {
+      credentials: 'include',
       headers: { Cookie: cookie || '' },
     })
 

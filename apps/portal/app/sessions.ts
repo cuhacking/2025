@@ -19,9 +19,9 @@ const { getSession, commitSession, destroySession }
     {
       cookie: {
         name: '__session',
-        secure: process.env.NODE_ENV === 'production',
+        secure: true,
         secrets: [sessionSecret],
-        sameSite: 'lax',
+        sameSite: 'none',
         path: '/',
         httpOnly: true,
       },

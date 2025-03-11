@@ -14,6 +14,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   const API_URL = baseUrl
   try {
     const me = await fetch(`${API_URL}/api/users/me`, {
+      credentials: 'include',
       headers: { Cookie: cookie || '' },
     })
 

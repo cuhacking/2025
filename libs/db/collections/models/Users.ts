@@ -259,6 +259,11 @@ export const Users: CollectionConfig = {
   slug: "users",
   // auth: true,
   auth: {
+    cookies: {
+      domain: process.env.NODE_ENV === 'development' ? 'localhost' : '.cuhacking.ca',
+      sameSite: 'None',
+      secure: true
+      },
     disableLocalStrategy: {
       enableFields: true,
       optionalPassword: true,

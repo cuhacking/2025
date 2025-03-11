@@ -11,6 +11,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   try {
     const API_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:8000' : 'https://axiom.cuhacking.ca'
     const res = await fetch(`${API_URL}/api/users/me`, {
+      credentials: 'include',
       headers: { Cookie: cookie || '' },
     })
 

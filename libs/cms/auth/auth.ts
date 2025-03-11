@@ -3,10 +3,22 @@ import {
 } from 'better-auth';
 
 export const auth = betterAuth({
+    advanced: {
+        crossSubDomainCookies: {
+            enabled: true,
+            domain: ".cuhacking.ca",
+        },
+        defaultCookieAttributes: {
+            secure: true,
+            httpOnly: true,
+            sameSite: "none",
+            partitioned: true,
+        },
+    },
     socialProviders: {
         linkedin: {
-            clientId: process.env.LINKEDIN_CLIENT_ID,
-            clientSecret: process.env.LINKEDIN_CLIENT_SECRET
+            clientId: process.env.LINKEDIN_CLIENT_ID || '',
+            clientSecret: process.env.LINKEDIN_CLIENT_SECRET || ''
         }
     },
 
