@@ -244,7 +244,6 @@
     "prettier-plugin-slidev": "^1.0.5",
     "react-email": "3.0.6",
     "react-icons": "^5.4.0",
-    "react-inlinesvg": "^4.2.0",
     "rehype-katex": "^7.0.1",
     "rehype-mermaid": "^2.1.0",
     "remark-math": "^6.0.0",

@@ -1,7 +1,6 @@
 import type { Sponsor } from '../types/sponsorship'
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 import { cn } from '@cuhacking/shared/utils/cn'
-import SVG from 'react-inlinesvg'
 
 export interface SponsorPresenterProps {
   sponsor: Sponsor
@@ -20,9 +19,8 @@ export function SponsorItem({ sponsor, className }: SponsorPresenterProps) {
         rel="noopener noreferrer"
         aria-label={`Visit ${sponsor.name}'s website`}
       >
-        <SVG
+        <img
           src={sponsor.logo}
-          title={`${sponsor.name} logo`}
           className={cn(className || 'h-32 min-w-24')}
         />
       </a>

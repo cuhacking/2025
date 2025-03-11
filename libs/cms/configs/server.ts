@@ -27,17 +27,6 @@ import { s3Storage } from '@payloadcms/storage-s3'
 import sharp from "sharp";
 
 export const baseConfig = {
-  auth: {
-    cookies: {
-      payloadToken: {
-        domain: ".cuhacking.ca",
-        path: "/",
-        secure: true,
-        httpOnly: true,
-        sameSite: "None",
-      },
-    },
-  },
 defaultDepth: 3,
   globals: [
     Hackathon2025,
@@ -134,6 +123,7 @@ formOverrides: {
       endpoint: process.env.S3_ENDPOINT || "",
     },
   }),
+],
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URI,
