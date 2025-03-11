@@ -1,5 +1,5 @@
 layout {
-    tab name="🔌 API" focus=true {
+    tab name="🔌 API" focus=true hide_floating_panes=true {
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar"
         }
@@ -13,10 +13,19 @@ layout {
                 args "nx" "dev" "axiom"
             }
             }
+                pane command="pnpm" name="🌀 Portal | 5173 | portal.cuhacking.ca" size="30%" cwd="../" {
+                    args "nx" "dev" "portal"
+                }
+                pane command="pnpm" name="🕸 Website | 5800 | cuhacking.ca" size="30%" cwd="../" {
+                    args "nx" "dev" "website"
+                    start_suspended true
+                }
+            }
+        floating_panes {
             pane command="atac" name="{A}rguably a {T}erminal {A}PI {C}lient" focus=true {
                 args "--no-ansi-log"
             }
-            }
+        }
         pane size=1 borderless=true {
             plugin location="zellij:status-bar"
         }
