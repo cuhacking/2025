@@ -2,6 +2,7 @@ import type { Sponsor } from '../types/sponsorship'
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 import { cn } from '@cuhacking/shared/utils/cn'
 import { cva } from 'class-variance-authority'
+import SVG from 'react-inlinesvg'
 
 interface SponsorPresenterProps {
   sponsor: Sponsor
@@ -31,10 +32,9 @@ export function SponsorItem({ sponsor, isPresent }: SponsorPresenterProps) {
         rel="noopener noreferrer"
         aria-label={`Visit ${sponsor.name}'s website`}
       >
-        <img
+        <SVG
           src={sponsor.logo}
-          alt={`${sponsor.name} logo`}
-          loading="lazy"
+          title={`${sponsor.name} logo`}
           className={cn(sponsorPresenterVariation({ isPresent }))}
         />
       </a>
