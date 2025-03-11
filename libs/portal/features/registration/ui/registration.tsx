@@ -1,10 +1,10 @@
 import type * as z from 'zod'
 import { useRegistrationSchema } from '@cuhacking/portal/features/registration/hooks/use-registration-schema'
-import { AuthenticationField } from '@cuhacking/portal/shared/features/form/ui/authentication-field'
+/* import { AuthenticationField } from '@cuhacking/portal/shared/features/form/ui/authentication-field' */
 import { ComboboxField } from '@cuhacking/portal/shared/features/form/ui/combobox-field'
 import { MultiSelectField } from '@cuhacking/portal/shared/features/form/ui/multi-select-field'
 import { TextAreaField } from '@cuhacking/portal/shared/features/form/ui/text-area-field' // Ensure this is correct
-import { Provider } from '@cuhacking/shared/types/auth'
+/* import { Provider } from '@cuhacking/shared/types/auth' */
 import { Button } from '@cuhacking/shared/ui/button'
 import { Typography } from '@cuhacking/shared/ui/typography'
 import { useNavigate } from '@remix-run/react'
@@ -12,24 +12,24 @@ import { useState } from 'react'
 import { FormProvider } from 'react-hook-form'
 import { CHALLENGE_INTERESTS, DISCOVERY_SOURCES, QNX_EXPERIENCE, WORKSHOP_INTERESTS } from '../constants'
 
-const AUTH_LINK = {
-  GITHUB: 'https://github.com',
-}
+/* const AUTH_LINK = {
+*   GITHUB: 'https://github.com',
+* } */
 
 interface RegistrationPropse {
   onSubmit: (values: z.infer<any>) => Promise<Response>
 }
 export function Registration({ onSubmit }: RegistrationPropse) {
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const initialSocialMediaHandles = {
-    gitHub: '',
-  }
+  /* const initialSocialMediaHandles = {
+*   gitHub: '',
+* } */
 
   const navigate = useNavigate()
 
-  const [socialMediaHandles, _setSocialMediaHandles] = useState<
-    typeof initialSocialMediaHandles
-  >(initialSocialMediaHandles)
+  /* const [socialMediaHandles, _setSocialMediaHandles] = useState<
+*   typeof initialSocialMediaHandles
+* >(initialSocialMediaHandles) */
 
   const { registration, isValid, isDirty } = useRegistrationSchema()
 
@@ -54,12 +54,12 @@ export function Registration({ onSubmit }: RegistrationPropse) {
       <FormProvider {...registration}>
         <form method="post" className="flex flex-col gap-y-4 w-full px-4 pb-6" onSubmit={registration.handleSubmit(handleSubmit)}>
 
-          <AuthenticationField
+          {/* <AuthenticationField
             provider={Provider.gitHub}
             link={AUTH_LINK.GITHUB}
             userTag={socialMediaHandles.gitHub}
             isRequired
-          />
+          /> */}
 
           <MultiSelectField
             className="z-4"

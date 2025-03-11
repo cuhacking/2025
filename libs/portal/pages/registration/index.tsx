@@ -24,7 +24,7 @@ export function RegistrationPage({ user }: { user: UserDetails }) {
       response = await postForm(refinedValues, cookie, API_URL, user.id)
 
       if (response.error) {
-        return new Response('Couldn\'t register user for hackahton', { status: 400 })
+        return new Response('Couldn\'t register user for hackathon', { status: 400 })
       }
 
       toast.success(toastMessage, {

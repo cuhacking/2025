@@ -122,7 +122,7 @@ export const Hackathon2025: GlobalConfig = {
                     { title: "Sponsors - Coming Soon!!" },
                     { title: "Schedule - Coming Soon!!" },
                     { title: "Challenges - Coming Soon!!" },
-                    { title: "More Features!! Maybe you will add it!" },
+                    { title: "More Features!! Maybe you'll add them!" },
                     { title: "Star our GitHub" },
                   ],
                 },

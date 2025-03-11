@@ -37,11 +37,11 @@ const constants = {
       icon: calendar,
     },
     {
-      label: 'CHALLANGES - Coming soon!!',
+      label: 'CHALLENGES - Coming soon!!',
       icon: mountain,
     },
     {
-      label: 'MORE FEATURES!! Maybe You will aDD it!!',
+      label: 'MORE FEATURES!! Maybe You\'ll add them!!',
       icon: null,
     },
   ],
