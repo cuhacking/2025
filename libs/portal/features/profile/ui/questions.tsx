@@ -223,6 +223,7 @@ export function Questions({ user, isComplete, onSubmit }: ProfileFormProps) {
                     variant="link"
                     form={profile}
                     name="resumeLink"
+                    isRequired
                   />
                 </div>
               </AccordionContent>
