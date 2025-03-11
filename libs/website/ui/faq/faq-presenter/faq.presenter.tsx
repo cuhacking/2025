@@ -21,7 +21,7 @@ export function FAQPresenter({ questions }: FAQPresenterProps) {
         ))}
         {/* EXTRA FAQ ITEM IS NECESSARY RIGHT NOW SO THAT WE CAN HAVE A QUESTION AND ANSWER WITH LINKS  */}
         <AccordionItem value="I have more questions, where should I go?">
-          <AccordionTrigger>
+          <AccordionTrigger isLeft>
             <p>
               <span className="text-primary">faq(</span>
               I have more questions,
@@ -30,7 +30,7 @@ export function FAQPresenter({ questions }: FAQPresenterProps) {
             </p>
           </AccordionTrigger>
           <AccordionContent>
-            <TerminalText>
+            <TerminalText className="pl-2">
               <p>
                 Hit us up on
                 {' '}

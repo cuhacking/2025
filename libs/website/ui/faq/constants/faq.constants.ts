@@ -9,7 +9,7 @@ const questions = [
   {
     question: 'who can attend?',
     answers: [
-      'Available to all university/college students.',
+      'Available to all students that are 18+',
       'If you are an alumni that has graduated in the past 12 months you are also eligible!',
     ],
   },
@@ -20,6 +20,17 @@ const questions = [
   {
     question: 'can I work in a team?',
     answers: ['Yes, teams of up to 4 are allowed to work together.'],
+  },
+  {
+    question: 'what should I bring?',
+    answers: [
+      '🪪 Government ID',
+      '💻 Your laptop + charger',
+      '🛏️ Sleeping bags',
+      '🪥 Personal hygiene (plz bring deodorant, plz ...)',
+      '🥤 Reusable water bottle',
+      '🤪 A positive attitude!',
+    ],
   },
 ]
 

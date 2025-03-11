@@ -321,16 +321,34 @@ export async function seedBrands(payload: Payload, req: any) {
     description:
       'Carleton University’s Faculty of Science is a thriving community of researchers engaged in cutting-edge, world-class scientific inquiry.',
     symbol:
-      '',
+      'https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/current-sponsors/cuhacking_6_sponsor_logo_carleton_faculty_of_science.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9jdXJyZW50LXNwb25zb3JzL2N1aGFja2luZ182X3Nwb25zb3JfbG9nb19jYXJsZXRvbl9mYWN1bHR5X29mX3NjaWVuY2Uuc3ZnIiwiaWF0IjoxNzQxNjgzOTMyLCJleHAiOjE3NzMyMTk5MzJ9.CavtztkugYCFpyhYS7U2ahd7E2MomHMfTfQS7fl-ci0',
     domain: 'science.carleton.ca',
     linkedin: 'https://www.linkedin.com/in/carletonscience/',
   },
   {
     name: 'Tail\'ed',
     description: 'Tail\'ed is a free platform that connects young tech talent with opportunities—like events, coding challenges, and internships—to jumpstart their careers.',
-    symbol: 'https://tailed.ca/tailed-logo-w-name.png',
+    symbol: 'https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/current-partners/cuhacking_6_partner_logo_tailed.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9jdXJyZW50LXBhcnRuZXJzL2N1aGFja2luZ182X3BhcnRuZXJfbG9nb190YWlsZWQuc3ZnIiwiaWF0IjoxNzQxNjg5MDk3LCJleHAiOjE3NzMyMjUwOTd9.CE-8StZTRnLyKlRG0fRF_3Ok8aUSZUsqZdkne5W9Je4',
     domain: 'tailed.ca',
     linkedin: 'https://www.linkedin.com/company/tailed/',
+  },
+  {
+    name: 'IEEE Carleton',
+    description: '',
+    symbol: 'https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/current-partners/cuhacking_6_partner_logo_ieee_carleton.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9jdXJyZW50LXBhcnRuZXJzL2N1aGFja2luZ182X3BhcnRuZXJfbG9nb19pZWVlX2NhcmxldG9uLnN2ZyIsImlhdCI6MTc0MTY5MDI0MiwiZXhwIjoxNzczMjI2MjQyfQ.C70G0Kdyj1F4otvc9wnj7QS3KJGueMIT4T8YMqA9_fc',
+    domain: 'www.ieeecarleton.ca',
+  },
+  {
+    name: 'Sesa',
+    description: '',
+    symbol: 'https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/current-partners/cuhacking_6_partner_logo_sesa.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9jdXJyZW50LXBhcnRuZXJzL2N1aGFja2luZ182X3BhcnRuZXJfbG9nb19zZXNhLnN2ZyIsImlhdCI6MTc0MTY5MDM0NCwiZXhwIjoxNzczMjI2MzQ0fQ.6unIBrU_R8qLoJtUB3H6EnX2NEBIyQBrWQJXqrmfTWQ',
+    domain: 'www.uottawasesa.ca',
+  },
+  {
+    name: 'CAIS',
+    description: '',
+    symbol: 'https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/current-partners/cuhacking_6_partner_logo_cais.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9jdXJyZW50LXBhcnRuZXJzL2N1aGFja2luZ182X3BhcnRuZXJfbG9nb19jYWlzLnN2ZyIsImlhdCI6MTc0MTY5MDUyNywiZXhwIjoxNzczMjI2NTI3fQ.WW1cZ3maSu_wEcD5fXyt0aNWL9c5RR4RdmLbQPSvPQA',
+    domain: 'carletonai.com',
   },
   {
     name: 'Google',

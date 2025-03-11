@@ -59,7 +59,7 @@ export function EventItem({ event, className }: EventProps) {
         {event.status !== 'in-progress'
           ? (
               <div className="flex justify-end w-full pt-2">
-                <Button className="text-md px-4" aria-label={ariaLabel} variant="default" size="default">
+                <Button className="px-4" aria-label={ariaLabel} variant="default" size="default">
                   <Link to={event.link} target="_blank">
                     {buttonMessage}
                   </Link>
