@@ -116,7 +116,8 @@ formOverrides: {
     },
   }
 }),
-    process.env.NODE_ENV==='production' && s3Storage({
+    s3Storage({
+    enabled: process.env.NODE_ENV !== "development",
     collections: {
       media: {
         prefix: "./media",
@@ -133,7 +134,6 @@ formOverrides: {
       endpoint: process.env.S3_ENDPOINT || "",
     },
   }),
-].filter(Boolean),
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URI,
@@ -141,7 +141,7 @@ formOverrides: {
     generateSchemaOutputFile: "../../libs/db/schema.ts", // resolves from location of payload.config.ts
   }),
   secret: process.env.PAYLOAD_SECRET,
-  serverURL: process.env.NODE_ENV == 'production' ? process.env.CUHACKING_2025_AXIOM_PUBLIC_URL : process.env.CUHACKING_2025_AXIOM_LOCAL_URL,
+  serverURL: process.env.NODE_ENV === 'development' ? process.env.CUHACKING_2025_AXIOM_LOCAL_URL : process.env.CUHACKING_2025_AXIOM_PUBLIC_URL,
   cors: process.env.CORS_WHITELIST_ORIGINS
     ? process.env.CORS_WHITELIST_ORIGINS.split(",")
     : [],
