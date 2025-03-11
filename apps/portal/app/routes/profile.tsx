@@ -7,7 +7,13 @@ import { useLoaderData } from '@remix-run/react'
 
 export const loader: LoaderFunction = async ({ request }) => {
   const cookie = request.headers.get('Cookie')
-  const API_URL = `${process.env.NODE_ENV === 'development' ? process.env.CUHACKING_2025_AXIOM_LOCAL_URL : process.env.CUHACKING_2025_AXIOM_PUBLIC_URL}`
+
+  const baseUrl
+  = process.env.NODE_ENV === 'development'
+    ? 'http://localhost:8000'
+    : 'https://axiom.cuhacking.ca'
+
+  const API_URL = baseUrl
   try {
     const res = await fetch(`${API_URL}/api/users/me`, {
       headers: { Cookie: cookie || '' },
