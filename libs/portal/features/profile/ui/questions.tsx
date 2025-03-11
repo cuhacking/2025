@@ -4,7 +4,7 @@ import { useProfileSchema } from '@cuhacking/portal/features/profile/hooks/use-p
 
 import { useNumberField } from '@cuhacking/portal/shared/features/form/hooks/use-number-field'
 import { AccordionHeader } from '@cuhacking/portal/shared/features/form/ui/accordion-header'
-import { AuthenticationField } from '@cuhacking/portal/shared/features/form/ui/authentication-field'
+/* import { AuthenticationField } from '@cuhacking/portal/shared/features/form/ui/authentication-field' */
 import { ComboboxField } from '@cuhacking/portal/shared/features/form/ui/combobox-field'
 import { MonthYearField } from '@cuhacking/portal/shared/features/form/ui/month-year-field'
 import { MultiSelectField } from '@cuhacking/portal/shared/features/form/ui/multi-select-field'
@@ -12,7 +12,7 @@ import { NumberField } from '@cuhacking/portal/shared/features/form/ui/number-fi
 import { PhoneNumberField } from '@cuhacking/portal/shared/features/form/ui/phone-number-field'
 import { RadioGroupField } from '@cuhacking/portal/shared/features/form/ui/radio-group-field'
 import { TextField } from '@cuhacking/portal/shared/features/form/ui/text-field'
-import { Provider } from '@cuhacking/shared/types/auth'
+/* import { Provider } from '@cuhacking/shared/types/auth' */
 import { IconVariant } from '@cuhacking/shared/types/icon'
 import {
   Accordion,
@@ -27,7 +27,7 @@ import { Typography } from '@cuhacking/shared/ui/typography'
 import { useLoaderData, useNavigate } from '@remix-run/react'
 import { useState } from 'react'
 import {
-  AUTH_LINK,
+  /* AUTH_LINK, */
   EDUCATION,
   GENDER,
   RELATIONSHIPS,
@@ -339,17 +339,17 @@ export function Questions({ user, isComplete, onSubmit }: ProfileFormProps) {
               </AccordionTrigger>
               <AccordionContent className="pt-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full auto-rows-auto">
-                  <AuthenticationField
-                    provider={Provider.discord}
-                    link={AUTH_LINK.DISCORD}
-                    userTag={socialMediaHandles.discord}
-                  />
                   <PhoneNumberField
                     form={profile}
                     name="phoneNumber"
                     label="Phone Number"
                     isRequired
                   />
+                  {/* <AuthenticationField
+                    provider={Provider.discord}
+                    link={AUTH_LINK.DISCORD}
+                    userTag={socialMediaHandles.discord}
+                  /> */}
                 </div>
               </AccordionContent>
             </AccordionItem>
