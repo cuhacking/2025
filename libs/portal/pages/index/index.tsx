@@ -12,8 +12,11 @@ import calendar from '@cuhacking/shared/assets/icons/general/calendar-1.svg'
 import handshake from '@cuhacking/shared/assets/icons/general/handshake-white-1.svg'
 import mountain from '@cuhacking/shared/assets/icons/general/mountain-white-1.svg'
 
+const hackathonDate = new Date(2025, 2, 14)
+hackathonDate.setHours(16, 0, 0, 0)
+
 const constants = {
-  hackathonDate: new Date(2025, 2, 14),
+  hackathonDate,
   hackathonApplicationStatus: UserHackathonApplicationStatus.complete,
   stats: [
     {
@@ -23,7 +26,7 @@ const constants = {
     },
     {
       label: 'Registrations',
-      value: '55',
+      value: '605',
       statColor: 'text-blue-500',
     },
   ],
