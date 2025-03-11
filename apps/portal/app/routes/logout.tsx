@@ -5,8 +5,8 @@ import { redirect } from '@remix-run/node'
 export const loader: LoaderFunction = async () => {
   const adminURL
     = process.env.NODE_ENV === 'development'
-      ? `${process.env.CUHACKING_2025_AXIOM_LOCAL_URL}/admin/logout`
-      : `${process.env.CUHACKING_2025_AXIOM_PUBLIC_URL}/admin/logout`
+      ? `http://localhost:8000/admin/logout`
+      : `http://axiom.cuhacking.ca/admin/logout`
 
   return redirect(adminURL)
 }

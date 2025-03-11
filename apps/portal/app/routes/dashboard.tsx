@@ -38,7 +38,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   const cookie = request.headers.get('Cookie')
 
   try {
-    const API_URL = `${process.env.NODE_ENV === 'development' ? process.env.CUHACKING_2025_AXIOM_LOCAL_URL : process.env.CUHACKING_2025_AXIOM_PUBLIC_URL}`
+    const API_URL = `${process.env.NODE_ENV} === 'development' ? http://localhost:8000 : https://axiom.cuhacking.ca`
     const res = await fetch(`${API_URL}/api/users/me`, {
       headers: { Cookie: cookie || '' },
     })
