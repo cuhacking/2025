@@ -38,7 +38,7 @@ export const action: ActionFunction = async ({ request }) => {
   const userId = session.get('userId')
 
   if (!userId) {
-    return redirect('/login')
+    return redirect('/')
   }
   return await updateTerms(userId, cookie)
 }

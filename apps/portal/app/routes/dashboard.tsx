@@ -1,44 +1,15 @@
-/* eslint-disable unused-imports/no-unused-vars */
-import type { User } from '@cuhacking/portal/types/user'
+import type { UserDetails } from '@cuhacking/portal/types/user'
 import type { LoaderFunction } from '@remix-run/node'
 import process from 'node:process'
 import { Home } from '@cuhacking/portal/pages/index/index'
 import { json, redirect } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 
-/* export const loader: LoaderFunction = async () => {
-*   const snapshot = userFlowActor.getSnapshot()
-*   if (!snapshot) {
-*     return redirect('/login')
-*   }
-*
-*   const currentState = snapshot.value
-*   const error = snapshot.context.error
-*
-*   if (error) {
-*     return redirect('/error')
-*   }
-*
-*   switch (currentState) {
-*     case 'unauthenticated':
-*       return redirect('/login')
-*     case 'legal':
-*       return redirect('/terms')
-*     case 'profile_incomplete':
-*       return redirect('/profile')
-*     case 'dashboard':
-*     case 'registered':
-*       return null
-*     default:
-*       return redirect('/login')
-*   }
-* } */
-
 export const loader: LoaderFunction = async ({ request }) => {
   const cookie = request.headers.get('Cookie')
 
   try {
-    const API_URL = `${process.env.NODE_ENV} === 'development' ? http://localhost:8000 : https://axiom.cuhacking.ca`
+    const API_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:8000' : 'https://axiom.cuhacking.ca'
     const res = await fetch(`${API_URL}/api/users/me`, {
       headers: { Cookie: cookie || '' },
     })
@@ -50,36 +21,36 @@ export const loader: LoaderFunction = async ({ request }) => {
     const { user } = await res.json()
 
     if (!user) {
-      return redirect('/login')
+      return redirect('/')
     }
 
     if (!user.agreedToTerms) {
-      return redirect('/terms')
+      return redirect('/')
     }
 
     if (!user.emergencyContactFullName) {
-      return redirect('/profile')
+      return redirect('/')
     }
 
-    /* const forms = await fetch(`${API_URL}/api/form-submissions?where[submittedBy][equals]=${user.id}`, {
-*   method: 'GET',
-*   headers: { Cookie: cookie || '' },
-* })
+    const forms = await fetch(`${API_URL}/api/form-submissions?where[submittedBy][equals]=${user.id}`, {
+      method: 'GET',
+      headers: { Cookie: cookie || '' },
+    })
 
-* const userForms = await forms.json()
-* if (!userForms.docs.length) {
-*   return redirect('/registration')
-* } */
+    const userForms = await forms.json()
+    if (!userForms.docs.length) {
+      return redirect('/registration')
+    }
 
     return json(user)
   }
-  catch (error) {
-    return redirect('/login')
+  catch {
+    return redirect('/')
   }
 }
 
 export default function Dashboard() {
-  const user = useLoaderData<User>()
+  const user = useLoaderData<UserDetails>()
 
   return <Home user={user} />
 }

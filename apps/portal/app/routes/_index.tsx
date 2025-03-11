@@ -29,8 +29,19 @@ export const loader: LoaderFunction = async ({ request }) => {
       return redirect('/profile')
     }
 
+    const forms = await fetch(`${API_URL}/api/form-submissions?where[submittedBy][equals]=${user.id}`, {
+      method: 'GET',
+      headers: { Cookie: cookie || '' },
+    })
+
+    const userForms = await forms.json()
+    if (!userForms.docs.length) {
+      return redirect('/registration')
+    }
+
     return redirect('/dashboard')
   }
+
   catch (error) {
     return redirect('/login')
   }

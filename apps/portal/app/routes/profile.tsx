@@ -26,13 +26,13 @@ export const loader: LoaderFunction = async ({ request }) => {
     const { user } = await res.json()
 
     if (!user) {
-      return redirect('/login')
+      return redirect('/')
     }
 
     return json({ user, cookie, API_URL })
   }
   catch {
-    return redirect('/login')
+    return redirect('/')
   }
 }
 
