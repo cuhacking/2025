@@ -8,10 +8,24 @@ export function Content({ title, body }) {
     <table className="w-full max-w-[600px] mx-auto bg-black">
       <tbody>
         <tr>
-          <td className="px-10 py-0">
+          <td className="px-10 pb-10">
             <Card title={title}>
               <table className="w-full">
                 <tbody>
+                  <tr>
+                    <td className="text-center w-full">
+                      <pre className="text-sm text-[#e6e6e6] font-mono text-left text-wrap">
+                        🔥 You're registered for cuHacking 2025 at Carleton University! 🔥
+                      </pre>
+                      <a href="https://portal.cuhacking.ca" target="_blank" className="block w-full">
+                        <Button className="w-full bg-[#f9a826]">
+                          <Text className="m-0 p-0 font-mono uppercase">
+                            make an account, we want to see you there pookie ↗
+                          </Text>
+                        </Button>
+                      </a>
+                    </td>
+                  </tr>
                   <tr>
                     <td className="text-center">
                       <pre className="text-sm text-[#e6e6e6] font-mono text-left">
@@ -19,9 +33,9 @@ export function Content({ title, body }) {
                       </pre>
                       {body.buttonLink && (
                         <>
-                          <a href={body.buttonLink} className="block">
+                          <a href={body.buttonLink} target="_blank" className="block">
                             <Button>
-                              <Text className="m-0 p-0">
+                              <Text className="m-0 p-0 font-mono uppercase w-40">
                                 {body.buttonText}
                               </Text>
                             </Button>
@@ -29,10 +43,11 @@ export function Content({ title, body }) {
                           <br />
                           <a
                             href={body.secondButtonLink || body.buttonText}
+                            target="_blank"
                             className="block"
                           >
                             <Button>
-                              <Text className="m-0 p-0">
+                              <Text className="m-0 p-0 font-mono uppercase w-40">
                                 {body.secondButtonText || body.buttonText}
                               </Text>
                             </Button>
@@ -48,7 +63,7 @@ export function Content({ title, body }) {
         </tr>
         {events.length > 0 && (
           <tr>
-            <td className="px-10 pt-2">
+            <td className="px-10">
               <table className="w-full">
                 <tbody>
                   <tr>
@@ -69,7 +84,7 @@ export function Content({ title, body }) {
                             <tbody>
                               {events.slice(1).map((event, idx) => (
                                 <tr key={idx}>
-                                  <td className="py-4 pl-4">
+                                  <td className="py-4">
                                     <Card title={event.title}>
                                       <Text className="text-sm text-[#e6e6e6] font-mono">
                                         {event.text}
@@ -78,9 +93,9 @@ export function Content({ title, body }) {
                                         event.buttons.map(button =>
                                           (
                                             <div key={button.text} style={{ marginBottom: 8 }}>
-                                              <a href={button.link} className="block no-underline text-black">
+                                              <a href={button.link} target="_blank" className="block no-underline text-black">
                                                 <Button>
-                                                  <Text className="m-0 p-0">
+                                                  <Text className="m-0 p-0 font-mono uppercase w-40">
                                                     {button.text}
                                                   </Text>
                                                 </Button>

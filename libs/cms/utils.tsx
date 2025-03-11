@@ -1,9 +1,9 @@
 import React from 'react';
-import Preview from '../../apps/email/templates/cuhacking/registered-for-hackathon';
+import AccountCreated from '../../apps/email/templates/cuhacking/AccountCreated';
 import { render } from '@react-email/render';
 
 export async function generateEmail() {
-  const html = await render(<Preview />, {
+  const html = await render(<AccountCreated />, {
     pretty: true,
   });
   return html;
