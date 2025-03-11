@@ -196,7 +196,11 @@ export async function getOrUploadMedia(
       file: {
         name: filename,
         data,
-        mimetype: "image/png",
+        mimetype: "image/*",
+        // mimetype: url.endsWith('.svg') ? 'image/svg+xml' :
+        //            url.endsWith('.png') ? 'image/png' :
+        //            url.endsWith('.jpg') || filename.endsWith('.jpeg') ? 'image/jpeg' :
+        //            'application/octet-stream',
         size: data.length,
       },
       data: { alt },

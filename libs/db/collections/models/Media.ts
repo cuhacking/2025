@@ -4,6 +4,9 @@ import { navAccordions } from '@/db/collections/navAccordions'
 
 export const Media: CollectionConfig = {
   slug: 'media',
+  access: {
+    read: () => true,
+  },
   admin: {
     group: navAccordions.categories,
     defaultColumns: [
@@ -30,7 +33,8 @@ export const Media: CollectionConfig = {
   ],
   upload: {
     displayPreview: true,
-    focalPoint: true,
+   focalPoint: true,
+  mimeTypes: ['image/*'],
   },
 }
 
@@ -49,6 +53,10 @@ export async function seedMedia(payload: Payload) {
       name: media.filename,
       data: Buffer.from(data),
       mimetype: 'image/*',
+// mimetype: media.filename.endsWith('.svg') ? 'image/svg+xml' :
+//                    media.filename.endsWith('.png') ? 'image/png' :
+//                    media.filename.endsWith('.jpg') || media.filename.endsWith('.jpeg') ? 'image/jpeg' :
+//                    'application/octet-stream', // Fallback
       size: data.byteLength,
     },
     data: { alt: media.alt || media.filename },
