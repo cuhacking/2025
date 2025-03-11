@@ -58,8 +58,8 @@ async function fetchSponsorData(name: string) {
     }
     const stringifiedQuery = stringify({ where: query }, { addQueryPrefix: true })
 
-    /* const response = await fetch(`https://axiom.cuhacking.ca/api/brands${stringifiedQuery}`) */
-    const response = await fetch(`http://localhost:8000/api/brands${stringifiedQuery}`)
+    const response = await fetch(`https://axiom.cuhacking.ca/api/brands${stringifiedQuery}`)
+    /* const response = await fetch(`http://localhost:8000/api/brands${stringifiedQuery}`) */
 
     if (!response.ok) {
       throw new Error(`Failed to fetch sponsor data: ${response.status} ${response.statusText}`)

@@ -95,7 +95,10 @@ export const Brands: CollectionConfig = {
     { name: 'email', type: 'email', label: 'Email Address', required: false },
     { name: 'phone', type: 'number', label: 'Phone Number', required: false },
     { name: 'location', type: 'text', label: 'Location', required: false },
-    { name: 'symbol', type: 'upload', relationTo: 'media', label: 'Symbol', required: false },
+    { name: 'symbol', type: 'upload', relationTo: 'media', label: 'Symbol', required: false,
+      access: {
+    read: () => true,
+    } },
     { name: 'wordmark', type: 'upload', relationTo: 'media', label: 'Wordmark', required: false },
     ...socialMediaFields,
   ],
