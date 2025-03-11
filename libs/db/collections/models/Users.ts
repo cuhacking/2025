@@ -312,11 +312,17 @@ export const Users: CollectionConfig = {
     maxPerDoc: 3,
   },
   fields: [
-    // {
-    //   name: "events",
-    //   type: "relationship",
-    //   relationTo: "hackathons",
-    // },
+    {
+      name: "hackathons",
+      type: "relationship",
+      relationTo: "hackathons",
+    },
+    {
+    type:"row",
+      admin: {
+       position: "sidebar"
+      },
+      fields:[
     {
       name: "group",
       type: "relationship",
@@ -332,14 +338,34 @@ export const Users: CollectionConfig = {
         // },
       },
     },
+      ]
+    },
+    {
+      type:"row",
+    fields:[
     {
       type: "collapsible",
       label: ({ data }) => data?.title || "Personal Information",
       fields: [
-        { name: "preferredDisplayName", type: "text", label: "Display Name" },
+        {
+          type: 'row',
+          fields:[
         { name: "firstName", type: "text", label: "First Name" },
-        { name: "middleName", type: "text", label: "Middle Name" },
+        { name: "middleName", type: "text", label: "Middle Name", admin: {hidden: true} },
         { name: "lastName", type: "text", label: "Last Name" },
+        { name: "preferredDisplayName", type: "text", label: "Display Name" },
+          ],
+        },
+        {
+          name: "avatar",
+          type: "upload",
+          relationTo: "media",
+          label: "Avatar",
+        },
+        {
+          type: 'row',
+          fields:[
+        { name: "gender", type: "select", label: "Gender", options: GENDER },
         {
           name: "pronouns",
           type: "select",
@@ -351,34 +377,20 @@ export const Users: CollectionConfig = {
             { label: "Other", value: "other" },
           ],
         },
-        { name: "phoneNumber", type: "text", label: "Phone Number" },
         { name: "age", type: "number", label: "Age" },
-        { name: "gender", type: "select", label: "Gender", options: GENDER },
-        {
-          name: "avatar",
-          type: "upload",
-          relationTo: "media",
-          label: "Avatar",
+          ],
         },
+        { name: "phoneNumber", type: "text", label: "Phone Number" },
       ],
     },
-    {
-      name: "agreedToTerms",
-      type: "checkbox",
-      label: "Agreed to Terms and Conditions",
-      admin: { position: "sidebar" },
-    },
-    {
-      name: "resumeLink",
-      type: "text",
-      label: "Resume Link",
-      admin: { position: "sidebar" },
-    },
+      {
+      type: "collapsible",
+      label: "Acommodations",
+      fields:[
     {
       name: "dietaryRestrictions",
       type: "select",
       label: "🍽 Dietary Restrictions",
-      admin: { position: "sidebar" },
       options: [
         { label: "🥗 Vegetarian", value: "vegetarian" },
         { label: "🌱 Vegan", value: "vegan" },
@@ -405,7 +417,6 @@ export const Users: CollectionConfig = {
       name: "allergies",
       type: "select",
       label: "⚠ Allergies",
-      admin: { position: "sidebar" },
       options: [
         { label: "🥜 Peanuts", value: "peanuts" },
         { label: "🌰 Tree Nuts", value: "tree_nuts" },
@@ -430,6 +441,20 @@ export const Users: CollectionConfig = {
       ],
       hasMany: true,
     },
+      ]},
+    ]},
+    {
+      name: "agreedToTerms",
+      type: "checkbox",
+      label: "Agreed to Terms and Conditions",
+      admin: { position: "sidebar" },
+    },
+    {
+      name: "resumeLink",
+      type: "text",
+      label: "Resume Link",
+      admin: { position: "sidebar" },
+    },
     {
       name: "tshirtSize",
       type: "select",
@@ -446,28 +471,18 @@ export const Users: CollectionConfig = {
       ],
     },
     {
-      label: "Emergency Contact",
-      type: "collapsible",
-      fields: [
-        { name: "emergencyContactFullName", type: "text", label: "Full Name" },
-        { name: "emergencyContactPhoneNumber", type: "text", label: "Cell" },
-        {
-          name: "emergencyContactEmail",
-          type: "email",
-          label: "Email Address",
-        },
-        {
-          name: "emergencyContactRelationship",
-          type: "select",
-          label: "Relationship",
-          options: RELATIONSHIPS,
-        },
-      ],
-    },
-    {
       label: "Education",
       type: "collapsible",
       fields: [
+        {
+          type: "row",
+          fields: [
+        {
+          name: "degree",
+          type: "select",
+          label: "Degree",
+          options: LEVEL_OF_STUDY,
+        },
         {
           name: "institution",
           type: "select",
@@ -480,22 +495,52 @@ export const Users: CollectionConfig = {
           options: FIELD_OF_STUDY,
           label: "Field of Study",
         },
+          ]
+        },
         {
-          name: "degree",
+        type: "row",
+          fields: [
+        {
+          name: "yearStanding",
           type: "select",
-          label: "Degree",
-          options: LEVEL_OF_STUDY,
+          options: ["1", "2", "3", "4", "5", "6+"],
         },
         {
           name: "expectedGraduationDate",
           type: "date",
           label: "Expected Graduation Date",
         },
-        {
-          name: "yearStanding",
-          type: "select",
-          options: ["1", "2", "3", "4", "5", "6+"],
+          ]
         },
+      ],
+    },
+    {
+      label: "Emergency Contact",
+      type: "collapsible",
+      fields: [
+    {
+    type: "row",
+      fields:[
+        { name: "emergencyContactFullName", type: "text", label: "Full Name" },
+        {
+          name: "emergencyContactRelationship",
+          type: "select",
+          label: "Relationship",
+          options: RELATIONSHIPS,
+        },
+      ]
+    },
+    {
+    type: "row",
+      fields:[
+        { name: "emergencyContactPhoneNumber", type: "text", label: "Cell" },
+        {
+          name: "emergencyContactEmail",
+          type: "email",
+          label: "Email Address",
+        },
+      ]
+    },
       ],
     },
     {
