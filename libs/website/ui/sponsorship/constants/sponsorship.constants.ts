@@ -21,7 +21,7 @@ async function fetchSponsorData(name: string) {
   const query = { name: { equals: name } }
   const stringifiedQuery = stringify({ where: query }, { addQueryPrefix: true })
 
-  const response = await fetch(`http://localhost:8000/api/brands${stringifiedQuery}`)
+  const response = await fetch(`https://axiom.cuhacking.ca/api/brands${stringifiedQuery}`)
   const data = await response.json()
 
   return {
