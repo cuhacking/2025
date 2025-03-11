@@ -6,6 +6,7 @@ interface SponsorDisplayProps {
   isPresent: boolean
   sponsors: Sponsor[]
 }
+
 export function SponsorPresenter({ isPresent, sponsors }: SponsorDisplayProps) {
   return (
     <div className="flex flex-col gap-y-5">
