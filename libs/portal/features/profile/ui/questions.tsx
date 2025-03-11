@@ -41,19 +41,19 @@ interface ProfileFormProps {
   onSubmit: (values: z.infer<any>, isComplete: boolean, cookie: string | null, apiUrl: string) => Promise<Response>
 }
 
-const initialSocialMediaHandles = {
-  discord: '',
-  instagram: '',
-  gitHub: '',
-  behance: '',
-}
+/* const initialSocialMediaHandles = {
+*   discord: '',
+*   instagram: '',
+*   gitHub: '',
+*   behance: '',
+* } */
 
 export function Questions({ user, isComplete, onSubmit }: ProfileFormProps) {
   const [isStudent, setIsStudent] = useState<boolean>(!!user.expectedGraduationDate)
   // will setup the social media handler once BE is up
-  const [socialMediaHandles, _setSocialMediaHandles] = useState<
-    typeof initialSocialMediaHandles
-  >(initialSocialMediaHandles)
+  /* const [socialMediaHandles, _setSocialMediaHandles] = useState<
+*   typeof initialSocialMediaHandles
+* >(initialSocialMediaHandles) */
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const { cookie, API_URL } = useLoaderData<{ cookie: string, API_URL: string }>()
 
@@ -360,7 +360,7 @@ export function Questions({ user, isComplete, onSubmit }: ProfileFormProps) {
                 </div>
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="socialMedia">
+            {/* <AccordionItem value="socialMedia">
               <AccordionTrigger aria-label="Social Media" className="cursor-pointer pt-5 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline">
                 <AccordionHeader
                   name="Social Media"
@@ -388,7 +388,7 @@ export function Questions({ user, isComplete, onSubmit }: ProfileFormProps) {
                   />
                 </div>
               </AccordionContent>
-            </AccordionItem>
+            </AccordionItem> */}
             <AccordionItem value="emergencyContact">
               <AccordionTrigger aria-label="Emergency Contact" className="cursor-pointer pt-5 pb-1.5 border-b border-white flex justify-between items-center w-full hover:no-underline">
                 <AccordionHeader
