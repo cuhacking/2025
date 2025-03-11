@@ -93,33 +93,33 @@ export const Emails: CollectionConfig = {
 }
 
 
-export async function seedEmails(payload: Payload) {
-  try {
-    await Promise.all(
-      emailSeedData.map(async (email) => {
-        await payload.create({
-          collection: 'emails',
-          data: {
-            title: email.title,
-            body: {
-              text: email.body.text,
-              buttonText: email.body.buttonText,
-              buttonLink: email.body.buttonLink,
-              secondButtonText: email.body.secondButtonText || null,
-              secondButtonLink: email.body.secondButtonLink || null,
-              events: email.body.events || [],
-              footer: email.body.footer,
-            },
-          },
-        })
-      }),
-    )
-    console.log('Email seed data successfully inserted!')
-  }
-  catch (error) {
-    console.error('Error seeding email data:', error)
-  }
-}
+// export async function seedEmails(payload: Payload) {
+//   try {
+//     await Promise.all(
+//       emailSeedData.map(async (email) => {
+//         await payload.create({
+//           collection: 'emails',
+//           data: {
+//             title: email.title,
+//             body: {
+//               text: email.body.text,
+//               buttonText: email.body.buttonText,
+//               buttonLink: email.body.buttonLink,
+//               secondButtonText: email.body.secondButtonText || null,
+//               secondButtonLink: email.body.secondButtonLink || null,
+//               events: email.body.events || [],
+//               footer: email.body.footer,
+//             },
+//           },
+//         })
+//       }),
+//     )
+//     console.log('Email seed data successfully inserted!')
+//   }
+//   catch (error) {
+//     console.error('Error seeding email data:', error)
+//   }
+// }
 
 
 // WIP - NOT FINISHED YET

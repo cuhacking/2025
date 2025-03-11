@@ -2,7 +2,9 @@
 import type { CollectionSlug, File, Payload, PayloadRequest } from "payload";
 import { seedHardware } from "@/db/collections";
 import { seedBrands } from "@/db/collections/Brands";
-import { seedEmails, seedHackathons } from "@/db/collections/models";
+import {
+  // seedEmails,
+         seedHackathons } from "@/db/collections/models";
 import { seedMedia } from "@/db/collections/models";
 import { seedUsers } from "@/db/collections/models/Users";
 import { seedGroups } from "@/db/collections/models";
@@ -65,7 +67,7 @@ export async function seed({
 
   try {
     await seedMedia(payload);
-    await seedEmails(payload);
+    // await seedEmails(payload);
     await seedHardware(payload);
     await seedHackathons(payload);
     await seedGroups(payload);
