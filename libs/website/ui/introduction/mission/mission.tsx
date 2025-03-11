@@ -17,7 +17,7 @@ export function Mission({ logo }: MissionProps) {
         </div>
         <Separator orientation="vertical" className="self-stretch hidden h-auto lg:block" />
         <div className="flex flex-col gap-y-1">
-          <h2 className="text-3xl">OUR MISSION</h2>
+          <h2 className="text-4xl font-bold">OUR MISSION</h2>
           <div>
             <TerminalText className="text-base">
               <p>

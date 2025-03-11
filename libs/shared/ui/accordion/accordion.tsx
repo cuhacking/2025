@@ -17,16 +17,17 @@ const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger> & { isLeft?: boolean }
 >(({ className, children, isLeft, ...props }, ref) => (
-  <AccordionPrimitive.Header className="flex">
+  <AccordionPrimitive.Header className="flex min-h-10">
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        'flex flex-1 items-center w-full justify-start py-0.5 font-medium transition-all hover:underline [&[data-state=open]>img]:rotate-180 gap-3 text-left',
+        'flex flex-1 w-full py-0.5 font-medium transition-all hover:underline [&[data-state=open]>img]:rotate-180 gap-3 text-left hover:cursor-pointer',
         className,
+        !isLeft && 'justify-between',
       )}
       {...props}
     >
-      {isLeft ? <img alt="Accordion chevron" src={chevronDown} className="size-6  transition-transform duration-200 shrink-0" /> : null}
+      {isLeft ? <img alt="Accordion chevron" src={chevronDown} className="size-6  transition-transform duration-200 flex-shrink-0" /> : null}
       {children}
       {!isLeft ? <img alt="Accordion chevron" src={chevronDown} className="size-6 transition-transform duration-200 shrink-0" /> : null}
     </AccordionPrimitive.Trigger>

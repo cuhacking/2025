@@ -8,6 +8,7 @@ export function SponsorshipSection() {
         <section id="sponsors" className="w-full">
           <SponsorshipPresenter
             sponsors={SPONSORSHIP_CONSTANTS.SPONSORS}
+            partners={SPONSORSHIP_CONSTANTS.PARTNERS}
             text={SPONSORSHIP_CONSTANTS.TEXT}
           />
         </section>
