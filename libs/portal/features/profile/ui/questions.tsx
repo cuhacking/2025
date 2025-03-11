@@ -345,6 +345,13 @@ export function Questions({ user, isComplete, onSubmit }: ProfileFormProps) {
                     label="Phone Number"
                     isRequired
                   />
+                  <TextField
+                    variant="link"
+                    placeholder="https://john.dev"
+                    name="website"
+                    form={profile}
+                    label="Website"
+                  />
                   {/* <AuthenticationField
                     provider={Provider.discord}
                     link={AUTH_LINK.DISCORD}
