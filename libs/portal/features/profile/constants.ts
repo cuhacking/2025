@@ -1,3 +1,4 @@
+/* eslint-disable node/prefer-global/process */
 import { tShirtSizes } from '@cuhacking/portal/types/tShirt'
 import { YearStandings } from '@cuhacking/portal/types/year-standings'
 
@@ -557,7 +558,9 @@ export const YEAR_STANDINGS = Object.keys(YearStandings).map(key => ({
 }))
 
 export const AUTH_LINK = {
-  DISCORD: 'https://discord.com',
+  DISCORD: process.env.NODE_ENV === 'development'
+    ? `${process.env.CUHACKING_2025_AXIOM_LOCAL_URL}/api/users/oauth/discord`
+    : `${process.env.CUHACKING_2025_AXIOM_PUBLIC_URL}/api/users/oauth/discord`,
   BEHANCE: 'https://behance.com',
   INSTAGRAM: 'https://instagram.com',
 }
