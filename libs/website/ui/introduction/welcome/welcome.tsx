@@ -111,9 +111,8 @@ export function Welcome({ socials }: IntroProps) {
                 <Socials socials={socials} className="justify-center grid grid-cols-4 sm:flex" />
               </TerminalText>
 
-              {/* welcomeData.registrationLink */ }
               <Link
-                to="https://portal.cuhacking.ca/login"
+                to="https://forms.gle/gQ6o5vqHE64nQPvj7"
                 target="_blank"
                 aria-label="registration link"
                 className="block w-fit h-fit m-auto"
