@@ -191,16 +191,14 @@ export async function getOrUploadMedia(
 
     const data = Buffer.from(await res.arrayBuffer());
 
+const contentType = res.headers.get("content-type") || "application/octet-stream";
+
     const uploadedFile = await payload.create({
       collection: "media",
       file: {
         name: filename,
         data,
-        mimetype: "image/*",
-        // mimetype: url.endsWith('.svg') ? 'image/svg+xml' :
-        //            url.endsWith('.png') ? 'image/png' :
-        //            url.endsWith('.jpg') || filename.endsWith('.jpeg') ? 'image/jpeg' :
-        //            'application/octet-stream',
+      mimetype: contentType,
         size: data.length,
       },
       data: { alt },

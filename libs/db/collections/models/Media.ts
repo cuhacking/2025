@@ -34,7 +34,6 @@ export const Media: CollectionConfig = {
   upload: {
     displayPreview: true,
    focalPoint: true,
-  mimeTypes: ['image/*'],
   },
 }
 
@@ -45,6 +44,8 @@ export async function seedMedia(payload: Payload) {
       mediaSeedData.map(async (media) => {
   const res = await fetch(media.url, { method: 'GET' })
 
+const contentType = res.headers.get("content-type") || "application/octet-stream";
+
   const data = await res.arrayBuffer()
 
         await payload.create({
@@ -52,11 +53,7 @@ export async function seedMedia(payload: Payload) {
     file: {
       name: media.filename,
       data: Buffer.from(data),
-      mimetype: 'image/*',
-// mimetype: media.filename.endsWith('.svg') ? 'image/svg+xml' :
-//                    media.filename.endsWith('.png') ? 'image/png' :
-//                    media.filename.endsWith('.jpg') || media.filename.endsWith('.jpeg') ? 'image/jpeg' :
-//                    'application/octet-stream', // Fallback
+      mimetype: contentType,
       size: data.byteLength,
     },
     data: { alt: media.alt || media.filename },
