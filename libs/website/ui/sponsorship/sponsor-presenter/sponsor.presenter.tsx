@@ -23,7 +23,7 @@ export function SponsorPresenter({ sponsors, title }: SponsorDisplayProps) {
           <h2>{title}</h2>
         </TerminalText>
         {Object.keys(sponsors).map(key => (
-          <div key={key} className="flex flex-row flex-wrap gap-3 justify-center md:justify-start lg:items-start">
+          <div key={key} className="flex flex-row flex-wrap gap-3 justify-center lg:items-start">
             {sponsors[key].map((sponsor: Sponsor) => (
               <div key={sponsor.name}>
                 <SponsorItem sponsor={sponsor} className={cn(size[key])} />
