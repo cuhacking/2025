@@ -87,6 +87,7 @@ layout {
             pane size="50%" {
                 pane command="pnpm" name="🌀 Portal | 5173 | portal.cuhacking.ca" size="50%" cwd="../" {
                     args "nx" "dev" "portal"
+                    start_suspended true
                 }
                 pane command="pnpm" name="🎨 Storybook | 6006 | design.cuhacking.ca" size="50%" cwd="../" {
                     args "storybook"
