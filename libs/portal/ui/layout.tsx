@@ -2,9 +2,10 @@ import type { ReactNode } from 'react'
 import dashboard_left from '@cuhacking/portal/assets/backgrounds/dashboard-bg-left.webp'
 import dashboard_right from '@cuhacking/portal/assets/backgrounds/dashboard-bg-right.webp'
 import { Toaster } from '@cuhacking/shared/ui/sonner'
+import { ClientOnly } from 'remix-utils/client-only'
 import { HackerDock } from './hackerdock'
 
-export function Layout({ children, isCompleteProfile }: { children: ReactNode, isCompleteProfile: boolean }): React.ReactElement {
+export function Layout({ children, isCompleteProfile = false }: { children: ReactNode, isCompleteProfile?: boolean }): React.ReactElement {
   return (
     <div>
       <Toaster />
@@ -19,7 +20,12 @@ export function Layout({ children, isCompleteProfile }: { children: ReactNode, i
         className="fixed z-[-1000] top-0 left-0 w-auto h-screen object-cover opacity-50"
       />
       <main className="max-w-screen-xl pb-20 mx-auto">{children}</main>
-      <HackerDock status={isCompleteProfile} />
+
+      <ClientOnly fallback={null}>
+        {() => (
+          <HackerDock status={isCompleteProfile} />
+        )}
+      </ClientOnly>
     </div>
   )
 }

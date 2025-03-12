@@ -95,8 +95,6 @@ export function HackerDock({
       <div className="fixed w-screen bottom-4 flex flex-col items-center justify-center z-10000">
         <TooltipProvider>
           <Dock direction="middle" className="bg-card">
-
-            {/* Navigation Links */}
             {links.map(link => (
               <DockIcon key={link.label}>
                 <Tooltip>

@@ -12,6 +12,7 @@ export function RegistrationPage({ user }: { user: UserDetails }) {
     const toastMessage = 'Successfully Registered'
     const loadingToastId = toast.loading('Please wait...')
     let response
+
     try {
       const formatedValues = Object.entries(values).map(([field, value]) => ({
         field,
@@ -20,8 +21,7 @@ export function RegistrationPage({ user }: { user: UserDetails }) {
           : value,
       }))
 
-      const refinedValues = [...formatedValues, { field: 'submittedBy', value: '6' }]
-      response = await postForm(refinedValues, cookie, API_URL, user.id)
+      response = await postForm(formatedValues, cookie, API_URL, user.id)
 
       if (response.error) {
         return new Response('Couldn\'t register user for hackathon', { status: 400 })

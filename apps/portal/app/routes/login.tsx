@@ -2,7 +2,6 @@
 import type { LoaderFunction } from '@remix-run/node'
 import { Login as LoginPage } from '@cuhacking/portal/pages/login'
 import { redirect } from '@remix-run/node'
-import { commitSession, getSession } from '../sessions'
 
 export const loader: LoaderFunction = async ({ request }) => {
   const cookie = request.headers.get('Cookie')
@@ -22,17 +21,9 @@ export const loader: LoaderFunction = async ({ request }) => {
     }
 
     const data = await res.json()
-
-    const session = await getSession(cookie)
-    session.set('userId', data.user.id)
-    const newCookie = await commitSession(session)
-
-    if (data?.user) {
-      return redirect('/', {
-        headers: {
-          'Set-Cookie': newCookie || '',
-        },
-      })
+    console.log(data)
+    if (data.user) {
+      redirect('/')
     }
   }
   catch (error) {
