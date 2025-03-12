@@ -30,6 +30,10 @@ export const loader: LoaderFunction = async ({ request }) => {
       return redirect('/')
     }
 
+    if (!user.agreedToTerms) {
+      return redirect('/')
+    }
+
     return json({ user, cookie, API_URL })
   }
   catch {
