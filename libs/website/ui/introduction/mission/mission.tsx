@@ -1,6 +1,7 @@
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 import { Separator } from '@cuhacking/shared/ui/separator'
 import { TerminalText } from '@cuhacking/shared/ui/terminal-text'
+import { useLoaderData } from '@remix-run/react'
 
 interface MissionProps {
   logo: string
@@ -8,6 +9,8 @@ interface MissionProps {
 
 // TODO: Refactor so that it takes in props for text
 export function Mission({ logo }: MissionProps) {
+  const { about } = useLoaderData<typeof loader>()
+
   return (
 
     <GlassmorphicCard className="py-10 px-3.5 sm:px-12 sm:py-16">
@@ -17,7 +20,7 @@ export function Mission({ logo }: MissionProps) {
         </div>
         <Separator orientation="vertical" className="self-stretch hidden h-auto lg:block" />
         <div className="flex flex-col gap-y-1">
-          <h2 className="text-4xl font-bold">OUR MISSION</h2>
+          <h2 className="text-4xl font-bold">{about}</h2>
           <div>
             <TerminalText className="text-base">
               <p>

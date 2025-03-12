@@ -2,7 +2,7 @@ import { Button } from '@cuhacking/shared/ui/button'
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
 import { TerminalText } from '@cuhacking/shared/ui/terminal-text'
 import { Typography } from '@cuhacking/shared/ui/typography'
-import { Link } from '@remix-run/react'
+import { Link, useLoaderData } from '@remix-run/react'
 import { Socials } from '@website/shared/ui/socials'
 
 interface Media {
@@ -10,76 +10,20 @@ interface Media {
   alt: string
 }
 
-/* import { useEffect, useState } from 'react'
-* import { fetchWelcomeData } from './api/welcome.api'
-*
-* interface WelcomeData {
->>>>>>> 7f5d3da7 (refactor(web): scaffold CMS to website connection)
-*   title: string
-*   organization: string
-*   date: string
-*   callToAction: string
-<<<<<<< HEAD
-* }
-*
-*
-=======
-* } */
-
-/*
-*  async function fetchWelcomeData(): Promise<WelcomeData | null> {
-*    const query = `
-*      query {
-*        Welcomes {
-*          docs {
-*            title
-*            organization
-*            date
-*            callToAction
-*          }
-*        }
-*      }
-*    `
-*
-*    try {
-*      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/graphql`, {
-*        method: 'POST',
-*        headers: {
-*          'Content-Type': 'application/json',
-*        },
-*        body: JSON.stringify({ query }),
-*      })
-*
-*      if (!response.ok) {
-*        throw new Error(`HTTP error! status: ${response.status}`)
-*      }
-*
-*      const data = await response.json()
-*      const welcomeData = data.data.Welcomes.docs[0] // Assuming only one document or taking the first one
-*      return {
-*        title: welcomeData.title,
-*        organization: welcomeData.organization,
-*        date: welcomeData.date,
-*        callToAction: welcomeData.callToAction,
-*      }
-*    }
-*    catch (error) {
-*      console.error('Failed to fetch welcome data:', error)
-*      return null
-*    }
-*  }
-*  */
 interface IntroProps {
   socials: { link: string, media: Media, name: string }[]
 }
 
 export function Welcome({ socials }: IntroProps) {
+  const { title, organization, callToAction, date, buttonText, link } = useLoaderData<typeof loader>()
+
   const welcomeData = {
-    title: 'Join Us',
-    organization: 'cuHacking',
-    date: 'Mar 14th - 16th',
-    callToAction: 'In the meantime, check out some cool stuff :)',
+    title,
+    organization,
+    date,
+    callToAction,
   }
+
   return (
     welcomeData
       ? (
@@ -112,14 +56,14 @@ export function Welcome({ socials }: IntroProps) {
               </TerminalText>
 
               <Link
-                to="https://forms.gle/gQ6o5vqHE64nQPvj7"
+                to={link}
                 target="_blank"
                 aria-label="registration link"
                 className="block w-fit h-fit m-auto"
               >
                 <Button variant="secondary" className="mt-4 px-8 sm:px-16 max-w-full">
                   <Typography variant="h6">
-                    <p>!! Register Now !!</p>
+                    <p>{buttonText}</p>
                   </Typography>
                 </Button>
               </Link>

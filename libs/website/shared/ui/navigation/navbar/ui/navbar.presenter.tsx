@@ -62,7 +62,7 @@ export function NavbarPresenter({
         <img
           src={logo}
           alt="cuHacking logo"
-          className="transition-transform duration-300 hover:scale-[1.2] relative z-[60]"
+          className="transition-transform duration-300 hover:scale-[1.2] relative z-[60] size-10"
         />
       </Link>
 

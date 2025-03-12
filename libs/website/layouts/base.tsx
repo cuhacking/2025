@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { useLoaderData } from '@remix-run/react'
 import {
   FOOTER_CONSTANTS,
   FooterPresenter,
@@ -7,11 +8,13 @@ import {
 } from '@website/shared/ui/navigation'
 
 export function Layout({ children }: { children: ReactNode }) {
+  const { header } = useLoaderData<typeof loader>()
+
   return (
     <>
       <NavbarContainer
-        links={NAVBAR_CONSTANTS.LINKS}
-        logo={NAVBAR_CONSTANTS.LOGO}
+        logo={header.logo.url}
+        links={header.links.map(({ id, ...rest }) => rest)}
         socials={NAVBAR_CONSTANTS.SOCIALS}
         hamburger={NAVBAR_CONSTANTS.HAMBURGER}
         cross={NAVBAR_CONSTANTS.CROSS}

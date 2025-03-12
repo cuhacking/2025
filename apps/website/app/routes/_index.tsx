@@ -1,3 +1,4 @@
+/* eslint-disable node/prefer-global/process */
 import type { MetaFunction } from 'remix'
 import { Home } from '@website/pages/home'
 import { stringify } from 'qs-esm'
@@ -15,12 +16,6 @@ export const meta: MetaFunction = () => {
     },
   ]
 }
-
-/* interface SponsorshipContainerProps {
-*   text: { content: string, isCallToAction: boolean }[]
-*   sponsors: any
-*   partners: any
-* } */
 
 const presentSponsorsInput = {
   tera: ['QNX'],
@@ -85,11 +80,9 @@ async function fetchSponsorData(name: string) {
 
 async function mapSponsor(tiers) {
   const result = {}
-
   for (const [tierName, sponsorNames] of Object.entries(tiers)) {
     result[tierName] = await Promise.all(sponsorNames.map(fetchSponsorData))
   }
-
   return result
 }
 
@@ -111,7 +104,12 @@ export async function loader() {
       partners,
     }
 
-    return sponsorshipData
+    const apiUrl = process.env.NODE_ENV === 'development' ? 'localhost:8000' : 'axiom.cuhacking.ca'
+    const websiteContentRequest = await fetch(`http://${apiUrl}/api/globals/2025`)
+    const websiteContentResponse = await websiteContentRequest.json()
+    const websiteContent = websiteContentResponse.website
+
+    return { sponsorshipData, ...websiteContent }
   }
   catch (error) {
     console.error('Error loading sponsorship data:', error)

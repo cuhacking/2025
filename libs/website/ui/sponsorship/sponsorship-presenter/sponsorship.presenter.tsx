@@ -5,7 +5,7 @@ import { Link, useLoaderData } from '@remix-run/react'
 import { SponsorPresenter } from '../sponsor-presenter/sponsor.presenter'
 
 export function SponsorshipPresenter() {
-  const sponsorshipData = useLoaderData<typeof loader>()
+  const { sponsorshipData } = useLoaderData<typeof loader>()
 
   const packageLink
     = 'https://drive.google.com/file/d/1mchFDm7D8lqmVO7Y8H3WOvE2yYwNWUOm/view?usp=sharing'

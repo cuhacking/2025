@@ -41,10 +41,10 @@ const SOCIAL_MEDIA_DOMAINS = [
 
 export const Hackathon2025: GlobalConfig = {
   slug: "2025",
-  // access: {
-  //   read: () => true,
-  //   update: ({ req }) => req.user?.roles?.some(role => role.admin === true || role.name === 'owner'),
-  // },
+  access: {
+    read: () => true,
+    // update: ({ req }) => req.user?.roles?.some(role => role.admin === true || role.name === 'owner'),
+  },
   versions: {
     drafts: true,
   },
@@ -63,7 +63,7 @@ export const Hackathon2025: GlobalConfig = {
 
         // return "https://embed.figma.com/design/wc1JOWR48tBNkjcjwY3AzB/%E2%8C%A8%EF%B8%8F-cuHacking-Design-System?node-id=464-1088&embed-host=share";
 
-        return tabIndex === 0
+        return tabIndex === 1
           ? isDev
             ? process.env.CUHACKING_2025_PORTAL_LOCAL_URL
             : process.env.CUHACKING_2025_PORTAL_PUBLIC_URL
@@ -243,7 +243,7 @@ export const Hackathon2025: GlobalConfig = {
                       label: "Links",
                       fields: [
                         {
-                          name: "text",
+                          name: "name",
                           type: "text",
                           label: "Text",
                         },
@@ -254,26 +254,51 @@ export const Hackathon2025: GlobalConfig = {
                         },
                       ],
                       defaultValue: () => [
-                        { text: "About", link: "#about" },
-                        { text: "Events", link: "#events" },
-                        { text: "Sponsors", link: "#sponsors" },
-                        { text: "FAQ", link: "#faq" },
+                        { name: "ABOUT", link: "/#about" },
+                        { name: "EVENTS", link: "/#events" },
+                        { name: "SPONSORS", link: "/#sponsors" },
+                        { name: "FAQ", link: "/#faq" },
                       ],
                     },
                   ],
                 },
                 {
-                  label: "Hero",
+                  label: "Join Us",
                   fields: [
                     {
-                      name: "callToAction",
+    name: 'title',
                       type: "text",
                       defaultValue: () => "JOIN US",
                     },
+                    {
+                    name: "organization",
+                      type: "text",
+                      defaultValue: () => "cuHacking",
+                    },
+                    {
+                    name: "callToAction",
+                      type: "text",
+                      defaultValue: () => "In the meantime, check out some cool stuff :)",
+                    },
+                    {
+                    name: "date",
+                      type: "text",
+                      defaultValue: () => "Mar 14th - 16th",
+                    },
+                    {
+                      name: "buttonText",
+                      type: "text",
+                      defaultValue: () => "!! REGISTER NOW !!"
+                    },
+                    {
+                      name: "link",
+                      type: "text",
+                      defaultValue: () => "https://docs.google.com/forms/d/e/1FAIpQLSde1T0yRwTilt5vt69LpbfwQp9af64MFT3--DrDMC2WbyHSOQ/viewform"
+                    }
                   ],
                 },
                 {
-                  label: "About",
+                  label: "Our Mission",
                   fields: [
                     {
                       name: "about",
@@ -427,4 +452,13 @@ export const Hackathon2025: GlobalConfig = {
   ],
 };
 
-export const hackathonSeedData = {};
+
+// export async const seedPlatforms ={
+//  // [
+//  //   {
+//  // "website":{
+//  //  logoAlt: "cuhacking-symbol-green"
+//  // },
+//  //   }
+//  // ]
+// }
