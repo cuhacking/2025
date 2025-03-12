@@ -20,7 +20,7 @@ export function LoginCallToAction() {
         </h2>
       </header>
 
-      <Form method="get" action="/api/auth">
+      <Form method="post" >
         <Button
           type="submit"
           variant="primary"

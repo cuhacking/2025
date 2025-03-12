@@ -21,15 +21,24 @@ export const loader: LoaderFunction = async ({ request }) => {
     }
 
     const data = await res.json()
-    console.log(data)
+
     if (data.user) {
-      redirect('/')
+      return redirect('/')
     }
   }
   catch (error) {
     console.error('Error fetching user:', error)
   }
   return null
+}
+
+export const action: LoaderFunction = async () => {
+  const baseUrl
+    = process.env.NODE_ENV === 'development'
+      ? 'http://localhost:8000'
+      : 'https://axiom.cuhacking.ca'
+
+  return redirect(`${baseUrl}/api/users/oauth/linkedin`)
 }
 
 export default function Login() {
