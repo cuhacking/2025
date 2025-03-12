@@ -10,7 +10,23 @@ export function startLoggedOut() {
   ))
 }
 
-describe('Hacker', () => {
+describe('When a Hacker', () => {
+  describe('navigates to axiom', () => {
+    it('they should be re-directed to portal', async ({ actor }) => {
+      await actor.attemptsTo(
+        Navigate.to('/'),
+      )
+    })
+  })
+
+  describe('navigates to portal', () => {
+    it('they should see the login screen', async ({ actor }) => {
+      await actor.attemptsTo(
+        Navigate.to('portal.cuhacking.ca'),
+      )
+    })
+  })
+
   it('should be able to log in with LinkedIn', async ({ actor }) => {
     await actor.attemptsTo(
     )
