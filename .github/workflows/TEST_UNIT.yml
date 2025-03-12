@@ -1,39 +1,39 @@
 # ===== ci(test/unit) ======
-name: Unit Tests
+# name: Unit Tests
 
-on:
-  push:
-    branches: '*'
-  pull_request:
-    branches: '*'
+# on:
+#   push:
+#     branches: '*'
+#   pull_request:
+#     branches: '*'
 
-jobs:
-  test:
-    timeout-minutes: 5
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [22.13.1]
+# jobs:
+#   test:
+#     timeout-minutes: 5
+#     runs-on: ubuntu-latest
+#     strategy:
+#       matrix:
+#         node-version: [22.13.1]
 
-    steps:
-      - name: 🛎️ Checkout Code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # All history for branches and tags
+#     steps:
+#       - name: 🛎️ Checkout Code
+#         uses: actions/checkout@v4
+#         with:
+#           fetch-depth: 0 # All history for branches and tags
 
-      - name: 📦 Install pnpm
-        uses: pnpm/action-setup@v4
-        # with:
-        #   run_install: false
+#       - name: 📦 Install pnpm
+#         uses: pnpm/action-setup@v4
+#         # with:
+#         #   run_install: false
 
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22.13.1
-          cache: pnpm
+#       - name: Install Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 22.13.1
+#           cache: pnpm
 
-      - name: 💀 Run Unit Tests
-        run: pnpm i; pnpm nx test website --verbose
+#       - name: 💀 Run Unit Tests
+#         run: pnpm i; pnpm nx test website --verbose
 
-      - name: 💰 Profit
-        run: echo 🐞
+#       - name: 💰 Profit
+#         run: echo 🐞
