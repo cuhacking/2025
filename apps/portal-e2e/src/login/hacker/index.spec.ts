@@ -1,7 +1,7 @@
 import { actorCalled, Task } from '@serenity-js/core'
 import { beforeEach, describe, it } from '@serenity-js/playwright-test'
 import { BrowseTheWeb, Navigate } from '@serenity-js/web'
-import { loginNoTerms } from './abilities'
+import { loginNoTerms, loginWithProfile } from './abilities'
 
 export function startLoggedOut() {
   return Task.where(
@@ -32,7 +32,7 @@ describe('when the hacker', async () => {
 
     describe('has a profile', async () => {
       it('should be able to login and go to dashboard', async () => {
-        // await loginWithProfile()
+        await loginWithProfile()
       })
     })
   })
