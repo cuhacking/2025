@@ -131,3 +131,119 @@ export const ChallengePrize: CollectionConfig = {
     },
   ],
 };
+
+const challengesData = [
+  {
+    host: "QNX",
+    challenges: [
+      {
+        title: "Best use of QNX (Software)",
+        details: [
+          'Create a project using QNX OS 8.0 that drives some hardware components.',
+          'Note: for cameras, only very specific camera units are supported. '
+        ],
+        prompts: [
+          'Can you make something that moves?',
+          'Can you prototype a hardware solution to a real-world problem?',
+          'Can you create an entertaining game or physical challenge?'
+        ],
+        prizes: [
+          {
+            1: '1 000 000 in unicorn points',
+            2: '500 000 in unicorn points'
+          }
+        ]
+      },
+    ]
+  },
+  {
+    host: "Gadget",
+    challenges: [
+      {
+        title: "Best use of Gadget",
+        details: [
+          'Full stack challenge',
+          'Build a project using Gadget'
+        ]
+      }
+    ]
+  },
+  {
+    host: "cuHacking",
+    challenges: [
+      {
+        title: "Best overall hack",
+        details: [
+
+        ],
+        prompts: [
+
+        ],
+        prizes: [
+          'Shhhhh, secret 🤫'
+        ]
+      },
+      {
+        title: "Most Outrageous Hack/Turn Brainrot into brain nourishment",
+        details: [
+
+        ],
+        prompts: [
+
+        ],
+        prizes: [
+
+        ]
+      }
+    ]
+  },
+  {
+    host: "Wolfram",
+    challenges: [
+      {
+        title: "Top 5 teams",
+        details: [
+
+        ],
+        prompts: [
+
+        ],
+      }
+    ]
+  },
+  {
+    host: "",
+    challenges: [
+      {
+      title: "Best First Time Hack",
+      details: [
+
+      ],
+      prompts: [
+
+      ],
+      prizes: [
+
+      ]
+      }
+    ]
+  },
+  {
+    host: "cuHacking",
+    challenges: [
+      {
+        title: "Best uOttawa x Carleton x Algonquin collaboration",
+        prompts: [
+
+        ],
+        prizes: [
+
+
+        ],
+        details: [
+
+        ]
+      }
+    ],
+  }
+]
