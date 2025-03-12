@@ -145,7 +145,7 @@ export function Legal({ legalData }: LegalPageProps) {
       <div className="px-4 flex justify-center pb-6">
         <Form method="patch">
           <Button
-            disabled={false}
+            disabled={!allChecked || !allScrolled}
             variant="secondary"
             aria-label="Redirect to Profile"
             type="submit"

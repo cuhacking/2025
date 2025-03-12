@@ -7,18 +7,15 @@ import { getCurrentUser } from '@cuhacking/portal/features/profile/api/user'
 import { LegalPage } from '@cuhacking/portal/pages/legal'
 import { json, redirect } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
-import { getSession } from '../sessions'
 
 export const loader: LoaderFunction = async ({ request }) => {
   const cookie = request.headers.get('Cookie')
   const { legalData } = getLegalData()
 
-  const baseUrl
-  = process.env.NODE_ENV === 'development'
+  const API_URL = process.env.NODE_ENV === 'development'
     ? 'http://localhost:8000'
     : 'https://axiom.cuhacking.ca'
 
-  const API_URL = baseUrl
   const user = await getCurrentUser({ cookie, API_URL })
 
   if (!user) {
@@ -33,14 +30,19 @@ export const loader: LoaderFunction = async ({ request }) => {
 }
 
 export const action: ActionFunction = async ({ request }) => {
-  const cookie = request.headers.get('Cookie')
-  const session = await getSession(cookie)
-  const userId = session.get('userId')
+  const API_URL
+  = process.env.NODE_ENV === 'development'
+    ? 'http://localhost:8000'
+    : 'https://axiom.cuhacking.ca'
 
-  if (!userId) {
+  const cookie = request.headers.get('Cookie')
+  const user = await getCurrentUser({ cookie, API_URL })
+
+  if (!user) {
     return redirect('/')
   }
-  return await updateTerms(userId, cookie)
+
+  return await updateTerms(user.id, cookie)
 }
 
 export default function Index() {
