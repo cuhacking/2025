@@ -16,8 +16,12 @@ export const adminsAndUser: IsAuthenticated = ({ req: { user } }) => {
   return { id: user.id };
 };
 
-export const isSameUser: IsAuthenticated = ({ req: { user }, id }) =>
-  user?.id === id;
+export const isSameUser: IsAuthenticated = ({ req: { user } }) => {
+  if (!user) return false;
+  return {
+    id: { equals: user.id }
+  };
+};
 
 export const anyone: IsAuthenticated = () => true;
 
