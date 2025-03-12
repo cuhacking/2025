@@ -2,6 +2,13 @@ import type * as z from 'zod'
 
 export async function postForm(values: z.infer<any>, cookie: string | null, API_URL: string, userId: string): Promise<Record<string, string | number>> {
   try {
+    const formResponse = await fetch(`${API_URL}/api/forms?where[title][equals]=cuHacking 6 Registration Form`, {
+      method: 'GET',
+      headers: { Cookie: cookie || '' },
+    })
+
+    const forms = await formResponse.json()
+
     const response = await fetch(`${API_URL}/api/form-submissions`, {
       method: 'POST',
       headers: {
@@ -10,7 +17,7 @@ export async function postForm(values: z.infer<any>, cookie: string | null, API_
       },
       credentials: 'include',
       body: JSON.stringify({
-        form: 1,
+        form: forms.docs[0].id,
         submissionData: values,
         submittedBy: userId,
       }),
