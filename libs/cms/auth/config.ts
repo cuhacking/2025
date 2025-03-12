@@ -6,9 +6,13 @@ export const baseConfig = {
   successRedirect: (req: PayloadRequest, accessToken?: string) => {
 const user = req.user;
 
-    const returnURL =  process.env.NODE_ENV === 'development' ? `${process.env.CUHACKING_2025_PORTAL_LOCAL_URL}/login` : `${process.env.CUHACKING_2025_PORTAL_PUBLIC_URL}/login`
+  const returnURL =  process.env.NODE_ENV === 'development' ? `${process.env.CUHACKING_2025_PORTAL_LOCAL_URL}/login` : `${process.env.CUHACKING_2025_PORTAL_PUBLIC_URL}/login`
+
   if (user) {
     if (user.id === 1 || user.group?.name === "Organizer") {
+      return '/admin'
+    }
+    else {
       return returnURL
     }
   }
