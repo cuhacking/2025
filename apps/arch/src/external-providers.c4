@@ -291,6 +291,18 @@ model {
                     shape: browser
                 }
             }
+
+linkedin = brand {
+title: "LinkedIn"
+icon: https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg
+desriptions: "Authentication Provider"
+link: https://linkedin.com
+style {
+color: sky-500
+shape: browser
+}
+}
+
         }
     }
     aws-s3 -> supabase{
