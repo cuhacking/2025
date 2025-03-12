@@ -257,6 +257,16 @@ model {
                 }
             }
 
+            aws-s3 = brand {
+                title: "AWS S3"
+                icon: https://upload.wikimedia.org/wikipedia/commons/b/bc/Amazon-S3-Logo.svg
+                description: "Storage Provider"
+                link : https://aws.amazon.com/s3/
+                style {
+                    color: amber
+                    shape: cylinder
+                }
+            }
 
             coderabbit = brand {
                 title: "CodeRabbit"
@@ -282,6 +292,9 @@ model {
                 }
             }
         }
+    }
+    aws-s3 -> supabase{
+        title: "provides object storage for"
     }
     coderabbit -> github{
         title: "provides code reviews on"
