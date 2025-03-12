@@ -1,1 +1,1 @@
-export { HackerDock } from './hackerdock'
+export { HackerDock } from './hackerdock.client'

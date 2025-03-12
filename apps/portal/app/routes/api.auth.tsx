@@ -61,5 +61,9 @@ export const loader: LoaderFunction = async () => {
 }
 
 export default function AuthRedirect() {
-  return null
+  return (
+    <>
+    HELL0 world ;)
+    </>
+  )
 }
