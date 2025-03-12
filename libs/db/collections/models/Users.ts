@@ -749,6 +749,17 @@ export async function seedUsers(payload: Payload, req: any) {
   await Promise.all(
     [
       {
+        email: "info@cuhacking.ca",
+        firstName: "Info",
+        lastName: "cuHacking",
+        preferredDisplayName: "Info cuHacking",
+        pronouns: "he/him",
+        group: "Organizer",
+        organizerTeam: "Logistics",
+        mediaUrl:
+          "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/keycap-logo/cuhacking_keycap_logo_sky_blue.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9rZXljYXAtbG9nby9jdWhhY2tpbmdfa2V5Y2FwX2xvZ29fc2t5X2JsdWUuc3ZnIiwiaWF0IjoxNzQxODA1OTY0LCJleHAiOjE3NzMzNDE5NjR9.CW2bS-zuthZEe8xkuOKb3Eeuqkxltn8uj5g2ei8iDpE",
+      },
+      {
         email: "adam@example.com",
         firstName: "Adam",
         lastName: "Said",
@@ -758,7 +769,7 @@ export async function seedUsers(payload: Payload, req: any) {
         organizerTeam: "Advisors",
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Adam_Said.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfQWRhbV9TYWlkLmpwZyIsImlhdCI6MTc0MTU2NTYxMSwiZXhwIjoxNzczMTAxNjExfQ.w05ond7o80w1gBwb4FsltPOrdOdPdbWQ2UMfAo_ILYI",
-        linkedinHandle: "adamsaid-",
+        linkedinVanity: "adamsaid-",
         tshirtSize: "m",
       },
       {
@@ -771,7 +782,7 @@ export async function seedUsers(payload: Payload, req: any) {
         organizerTeam: "Advisors",
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Ryan_Awad.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfUnlhbl9Bd2FkLmpwZyIsImlhdCI6MTc0MTU2NTg5NywiZXhwIjoxNzczMTAxODk3fQ.yudFkekrqEr8swlKLNknf5RSEFOd6JIgm_zHUmNe_qM",
-        linkedinHandle: "ryanawad",
+        linkedinVanity: "ryanawad",
         tshirtSize: "l",
       },
       {
@@ -784,7 +795,7 @@ export async function seedUsers(payload: Payload, req: any) {
         organizerTeam: "Co-Leads",
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Isabella_Nguyen.jpeg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfSXNhYmVsbGFfTmd1eWVuLmpwZWciLCJpYXQiOjE3NDE1NjU3NTcsImV4cCI6MTc3MzEwMTc1N30.okMsGB7ASz8Rzkw2-nIb1vgLPAsIbM2mvas9zO_i73w",
-        linkedinHandle: "isabella-vi-nguyen",
+        linkedinVanity: "isabella-vi-nguyen",
         tshirtSize: "s",
       },
       {
@@ -798,7 +809,7 @@ export async function seedUsers(payload: Payload, req: any) {
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Aashna_Verma.jpeg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfQWFzaG5hX1Zlcm1hLmpwZWciLCJpYXQiOjE3NDE1NjU1NzMsImV4cCI6MTc3MzEwMTU3M30.D_yOgrX4dzRtwVAUK_G792tkd_O5U3emP2SZ9hFnJfY",
         website: "https://aashna-verma.github.io",
-        linkedinHandle: "aashna-verma-000",
+        linkedinVanity: "aashna-verma-000",
         tshirtSize: "m",
       },
       {
@@ -811,7 +822,7 @@ export async function seedUsers(payload: Payload, req: any) {
         pronouns: "she/her",
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Esra_Marwa.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfRXNyYV9NYXJ3YS5wbmciLCJpYXQiOjE3NDE1NjU3MDMsImV4cCI6MTc3MzEwMTcwM30.r8GsqUFSkHoih6yra5764gRcxRJqWL5ntJHC3wLHVVo",
-        linkedinHandle: "esra-abdulwahab-947b332ab",
+        linkedinVanity: "esra-abdulwahab-947b332ab",
         tshirtSize: "l",
       },
       {
@@ -824,7 +835,7 @@ export async function seedUsers(payload: Payload, req: any) {
         organizerTeam: "Community Engagement",
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Selena_Quang.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfU2VsZW5hX1F1YW5nLnBuZyIsImlhdCI6MTc0MTU2NTkxOCwiZXhwIjoxNzczMTAxOTE4fQ.4fRfAZ8RaklIEtJ_fCgAOXecB6LUq3is90-KG2aS3jM",
-        linkedinHandle: "selena-quang-0aa9422b1",
+        linkedinVanity: "selena-quang-0aa9422b1",
         tshirtSize: "m",
       },
       {
@@ -837,7 +848,7 @@ export async function seedUsers(payload: Payload, req: any) {
         organizerTeam: "Community Engagement",
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Raef_Sarofiem.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfUmFlZl9TYXJvZmllbS5wbmciLCJpYXQiOjE3NDE1NjU4NzQsImV4cCI6MTc3MzEwMTg3NH0.t_xw5u-lVJCXPYny012es5-ayttVqzZ5ibIdQhsewh4",
-        linkedinHandle: "raefsarofiem",
+        linkedinVanity: "raefsarofiem",
         tshirtSize: "m",
       },
       {
@@ -850,7 +861,7 @@ export async function seedUsers(payload: Payload, req: any) {
         organizerTeam: "Community Engagement",
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Ajaan_Nalliah.jpeg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfQWphYW5fTmFsbGlhaC5qcGVnIiwiaWF0IjoxNzQxNTY1NjM1LCJleHAiOjE3NzMxMDE2MzV9.LlDfVqIn0TtXoEWvZI8r2jyX6e8huphoz6Vm8GiC48U",
-        linkedinHandle: "ajaan-nalliah-6b2b1029b",
+        linkedinVanity: "ajaan-nalliah-6b2b1029b",
         tshirtSize: "l",
       },
       {
@@ -863,7 +874,7 @@ export async function seedUsers(payload: Payload, req: any) {
         organizerTeam: "Community Engagement",
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Ishar_Ghura.jpeg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfSXNoYXJfR2h1cmEuanBlZyIsImlhdCI6MTc0MTU2NTc2NiwiZXhwIjoxNzczMTAxNzY2fQ.cg2oUVV1JLnzVLImod2uCD0YeQn53Zxp0IPBe2UQ6FE",
-        linkedinHandle: "ishar-ghura",
+        linkedinVanity: "ishar-ghura",
         tshirtSize: "m",
       },
       {
@@ -876,7 +887,7 @@ export async function seedUsers(payload: Payload, req: any) {
         organizerTeam: "Design",
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Avantika_Rao.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfQXZhbnRpa2FfUmFvLnBuZyIsImlhdCI6MTc0MTU2NTY1OCwiZXhwIjoxNzczMTAxNjU4fQ.VGfbmh4ORhK-h_y0Jbw3kGR5aYGw7_bFrxY51jtEfUI",
-        linkedinHandle: "avantika-rao-01a1b2204",
+        linkedinVanity: "avantika-rao-01a1b2204",
         tshirtSize: "s",
       },
       {
@@ -889,7 +900,7 @@ export async function seedUsers(payload: Payload, req: any) {
         organizerTeam: "Design",
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Khyonc_Brown.jpeg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfS2h5b25jX0Jyb3duLmpwZWciLCJpYXQiOjE3NDE1NjU4MTQsImV4cCI6MTc3MzEwMTgxNH0.n3gnmTDbJXlwdiAi2yxKDtAfyCfGjvryP1CqP_Adips",
-        linkedinHandle: "khyonc-browne-7a3518258",
+        linkedinVanity: "khyonc-browne-7a3518258",
         tshirtSize: "l",
       },
       {
@@ -902,7 +913,7 @@ export async function seedUsers(payload: Payload, req: any) {
         organizerTeam: "Hacker Experience",
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Muhammad_Maisam.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfTXVoYW1tYWRfTWFpc2FtLnBuZyIsImlhdCI6MTc0MTU2NTgzMiwiZXhwIjoxNzczMTAxODMyfQ.g_D5apqDEMRI-rH3n9VMnniES6HUXT_vQ8llxtWase8",
-        linkedinHandle: "muhammadmaisam01",
+        linkedinVanity: "muhammadmaisam01",
         tshirtSize: "m",
       },
       {
@@ -915,7 +926,7 @@ export async function seedUsers(payload: Payload, req: any) {
         organizerTeam: "Hacker Experience",
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Trista_Wang.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfVHJpc3RhX1dhbmcucG5nIiwiaWF0IjoxNzQxNTY1OTI4LCJleHAiOjE3NzMxMDE5Mjh9.l2c1Y6Dsa9SDCaWmTqaPtxO3ZSJGOcL7zh-Lz4m8jj4",
-        linkedinHandle: "tristaxwang",
+        linkedinVanity: "tristaxwang",
         tshirtSize: "s",
       },
       {
@@ -928,7 +939,7 @@ export async function seedUsers(payload: Payload, req: any) {
         organizerTeam: "Hacker Experience",
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Joel_Cherian.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfSm9lbF9DaGVyaWFuLnBuZyIsImlhdCI6MTc0MTU2NTc4NiwiZXhwIjoxNzczMTAxNzg2fQ.j5or3tbETMwiB0D_d_0e7FpeBaYnrdSgU0i5ILwP0F4",
-        linkedinHandle: "joel-v-cherian",
+        linkedinVanity: "joel-v-cherian",
         tshirtSize: "m",
       },
       {
@@ -941,7 +952,7 @@ export async function seedUsers(payload: Payload, req: any) {
         organizerTeam: "Hacker Experience",
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Lily_Salem.jpeg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfTGlseV9TYWxlbS5qcGVnIiwiaWF0IjoxNzQxNTY1ODIzLCJleHAiOjE3NzMxMDE4MjN9.jGRWti4jPwLkwNyKAJEOvpLQaGXqxt012SnH_T5erFQ",
-        linkedinHandle: "lily-s-396190262",
+        linkedinVanity: "lily-s-396190262",
         tshirtSize: "s",
       },
       {
@@ -954,7 +965,7 @@ export async function seedUsers(payload: Payload, req: any) {
         organizerTeam: "Logistics",
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Ngan_Cao.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfTmdhbl9DYW8uanBnIiwiaWF0IjoxNzQxNTY1ODYwLCJleHAiOjE3NzMxMDE4NjB9.dDHRD4ZAsXse_5kThl5m9HF9cB1tQ0gM-ruYB2ZtO88",
-        linkedinHandle: "nganc",
+        linkedinVanity: "nganc",
         tshirtSize: "m",
       },
       {
@@ -967,7 +978,7 @@ export async function seedUsers(payload: Payload, req: any) {
         pronouns: "he/him",
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Giancarlo_Salvador.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfR2lhbmNhcmxvX1NhbHZhZG9yLnBuZyIsImlhdCI6MTc0MTU2NTcxMiwiZXhwIjoxNzczMTAxNzEyfQ.z2aeQGhVAkEuEZXDHQpEv5Y5SFOYlW7as6K5vI0CeHQ",
-        linkedinHandle: "giancarlo-salvador-310696203",
+        linkedinVanity: "giancarlo-salvador-310696203",
         tshirtSize: "m",
       },
       {
@@ -978,7 +989,7 @@ export async function seedUsers(payload: Payload, req: any) {
         pronouns: "he/him",
         group: "Organizer",
         organizerTeam: "Sponsorship",
-        linkedinHandle: "bashar-kazma-a7223b208",
+        linkedinVanity: "bashar-kazma-a7223b208",
         tshirtSize: "m",
       },
       {
@@ -989,7 +1000,7 @@ export async function seedUsers(payload: Payload, req: any) {
         pronouns: "she/her",
         group: "Organizer",
         organizerTeam: "Sponsorship",
-        linkedinHandle: "sheila-sieyoji",
+        linkedinVanity: "sheila-sieyoji",
         tshirtSize: "s",
       },
       {
@@ -1002,7 +1013,7 @@ export async function seedUsers(payload: Payload, req: any) {
         organizerTeam: "Sponsorship",
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Muskaan_Opel.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfTXVza2Fhbl9PcGVsLmpwZyIsImlhdCI6MTc0MTU2NTg0MiwiZXhwIjoxNzczMTAxODQyfQ.O-LTBixpU_5OqmCjJ5dV6rJfeHA5Jzk6Si7dt4_5FBo",
-        linkedinHandle: "muskaan-opel",
+        linkedinVanity: "muskaan-opel",
         tshirtSize: "m",
       },
       {
@@ -1015,7 +1026,7 @@ export async function seedUsers(payload: Payload, req: any) {
         organizerTeam: "Sponsorship",
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Raaed_Mirza.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfUmFhZWRfTWlyemEucG5nIiwiaWF0IjoxNzQxNTY1ODY2LCJleHAiOjE3NzMxMDE4NjZ9.HWLxXOnT0LQbPj2jW0EhlnpAMGKWGvlN2Pc6vBE30fg",
-        linkedinHandle: "raaed-mirza-96a01324b",
+        linkedinVanity: "raaed-mirza-96a01324b",
         tshirtSize: "m",
       },
       {
@@ -1028,7 +1039,7 @@ export async function seedUsers(payload: Payload, req: any) {
         organizerTeam: "Sponsorship",
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Rayhaan_Farooq.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfUmF5aGFhbl9GYXJvb3EuanBnIiwiaWF0IjoxNzQxNTY1ODgzLCJleHAiOjE3NzMxMDE4ODN9.mWeNBYA4iAToWJHR66EH-cGnsWzea3A-OGKDz8PcogQ",
-        linkedIn: "rayhaanfarooq",
+        linkedinVanity: "rayhaanfarooq",
         tshirtSize: "l",
       },
       {
@@ -1041,7 +1052,7 @@ export async function seedUsers(payload: Payload, req: any) {
         organizerTeam: "Sponsorship",
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Akshavi_Baskaran.jpeg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfQWtzaGF2aV9CYXNrYXJhbi5qcGVnIiwiaWF0IjoxNzQxNTY1NjQ3LCJleHAiOjE3NzMxMDE2NDd9.4KXwTWpDRw2KAwvQ_vNC5M5KEYY7K6SK2EUUk8HdWJU",
-        linkedIn: "akshavibaskaran",
+        linkedinVanity: "akshavibaskaran",
         tshirtSize: "s",
       },
       {
@@ -1067,7 +1078,7 @@ export async function seedUsers(payload: Payload, req: any) {
         organizerTeam: "Development",
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Zesan_Rahim.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfWmVzYW5fUmFoaW0uanBnIiwiaWF0IjoxNzQxNTY1OTM2LCJleHAiOjE3NzMxMDE5MzZ9.gn7pWbLUEJTGrG_V8GvZATLhHimryKn-u-dmd1CuBvQ",
-        linkedinHandle: "zesanrahim",
+        linkedinVanity: "zesanrahim",
         tshirtSize: "m",
       },
       {
@@ -1075,6 +1086,19 @@ export async function seedUsers(payload: Payload, req: any) {
         firstName: "Hasith",
         lastName: "De Alwis",
         preferredDisplayName: "Hasith De Alwis",
+        pronouns: "he/him",
+        group: "Organizer",
+        organizerTeam: "Development",
+        mediaUrl:
+          "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Hasith_De_Alwis.jpeg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfSGFzaXRoX0RlX0Fsd2lzLmpwZWciLCJpYXQiOjE3NDE1NjU3NDYsImV4cCI6MTc3MzEwMTc0Nn0.0FSVfK67Q9wnHJilkUKr6YZQVbzt4pbL5-u03sZbw-A",
+        website: "https://hasithdev.com",
+        tshirtSize: "m",
+      },
+      {
+        email: "mumtahin.farabi@example.com",
+        firstName: "Mumtahin",
+        lastName: "Farabi",
+        preferredDisplayName: "Mumtahin Farabi",
         pronouns: "he/him",
         group: "Organizer",
         organizerTeam: "Development",
@@ -1093,7 +1117,7 @@ export async function seedUsers(payload: Payload, req: any) {
         organizerTeam: "Emeritus",
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Julie_Wechsler.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfSnVsaWVfV2VjaHNsZXIuanBnIiwiaWF0IjoxNzQxNTY1ODA1LCJleHAiOjE3NzMxMDE4MDV9.uPdiCceBTBA0VBv4ZptX4y1xi3oh08EB_11YCPEsFS4",
-        linkedinHandle: "julie-wechsler",
+        linkedinVanity: "julie-wechsler",
         tshirtSize: "s",
       },
       {
@@ -1119,7 +1143,7 @@ export async function seedUsers(payload: Payload, req: any) {
         organizerTeam: "Emeritus",
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Aires_Zheng.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfQWlyZXNfWmhlbmcuanBnIiwiaWF0IjoxNzQxNTY1NjI2LCJleHAiOjE3NzMxMDE2MjZ9.1pFXMVTi-lkDNlO0b1iuFmONMKE2cgdrV7tMMrzdr8s",
-        linkedinHandle: "aireszheng",
+        linkedinVanity: "aireszheng",
         tshirtSize: "m",
       },
       {
@@ -1133,7 +1157,7 @@ export async function seedUsers(payload: Payload, req: any) {
         organizerTeam: "Emeritus",
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Charelle_Constantino.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfQ2hhcmVsbGVfQ29uc3RhbnRpbm8uanBnIiwiaWF0IjoxNzQxNTY1NjkzLCJleHAiOjE3NzMxMDE2OTN9.lfcOxeUoJoPP1auEqV5Hnd6DOAeXxrUP0Zyllk1iVJY",
-        linkedinHandle: "charelleconstantino",
+        linkedinVanity: "charelleconstantino",
         tshirtSize: "s",
       },
       {
@@ -1147,7 +1171,7 @@ export async function seedUsers(payload: Payload, req: any) {
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Hamid_Siddiqi.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfSGFtaWRfU2lkZGlxaS5wbmciLCJpYXQiOjE3NDE1NjU3MzYsImV4cCI6MTc3MzEwMTczNn0.ee_WwTQkPjYjkRBNeLy-tsXMZbBO9sHmFLR3RnkBdt0",
         website: "https://hamidsiddiqi.myportfolio.com/about-me",
-        linkedIn: "hamidsiddiqi",
+        linkedinVanity: "hamidsiddiqi",
         tshirtSize: "m",
       },
       {
@@ -1161,7 +1185,7 @@ export async function seedUsers(payload: Payload, req: any) {
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Hairuo_Chen.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfSGFpcnVvX0NoZW4uanBnIiwiaWF0IjoxNzQxNTY1NzIyLCJleHAiOjE3NzMxMDE3MjJ9.RaAaRDv-EnYn06jGLZ7NlRx1MrhM8j2NzdU7JGj718E",
         website: "https://hairuochen.framer.website/",
-        linkedinHandle: "hairuochen",
+        linkedinVanity: "hairuochen",
         tshirtSize: "m",
       },
       {
@@ -1174,7 +1198,7 @@ export async function seedUsers(payload: Payload, req: any) {
         organizerTeam: "Emeritus",
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Jowi_Aoun.jpeg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfSm93aV9Bb3VuLmpwZWciLCJpYXQiOjE3NDE1NjU3OTUsImV4cCI6MTc3MzEwMTc5NX0.2tHxvw3V-HTH5600lEap7hSE2inLYgUySHvjfYnPnqg",
-        linkedinHandle: "jowiaoun",
+        linkedinVanity: "jowiaoun",
         tshirtSize: "m",
       },
       {
@@ -1187,7 +1211,7 @@ export async function seedUsers(payload: Payload, req: any) {
         organizerTeam: "Emeritus",
         mediaUrl:
           "https://rtmsxedfqcyusebbrull.supabase.co/storage/v1/object/sign/development/organizers/cuhacking_6_organizer_avatar_Jeremy_Friesen.jpeg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkZXZlbG9wbWVudC9vcmdhbml6ZXJzL2N1aGFja2luZ182X29yZ2FuaXplcl9hdmF0YXJfSmVyZW15X0ZyaWVzZW4uanBlZyIsImlhdCI6MTc0MTU2NTc3NiwiZXhwIjoxNzczMTAxNzc2fQ.HMj6pnf0WZORpWws2b9bR62kxSmog7QmRRlwEKTTtnw",
-        linkedinHandle: "jeremyfriesen1",
+        linkedinVanity: "jeremyfriesen1",
         tshirtSize: "m",
       },
     ].map(async (user) => {
@@ -1235,9 +1259,9 @@ export async function seedUsers(payload: Payload, req: any) {
           group: group ? group.id : undefined,
           organizerTeam: organizerTeam ? organizerTeam.id : undefined,
           avatar: media?.id || null,
-          linkedinHandle: user.linkedinHandle || undefined,
+          linkedinVanity: user.linkedinVanity || undefined,
           githubHtmlUrl: user.githubHtmlUrl || undefined,
-          website: user.linkedinHandle || undefined,
+          website: user.website || undefined,
           dietaryRestrictions: user.dietaryRestrictions || undefined,
           allergies: user.allergies || undefined,
           tshirtSize: user.tshirtSize,
