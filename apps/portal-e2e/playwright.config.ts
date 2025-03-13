@@ -8,7 +8,7 @@ import { defineConfig, devices } from '@playwright/test'
 
 const __filename = fileURLToPath(import.meta.url)
 
-const baseURL = process.env.CUHACKING_2025_PORTAL_LOCAL_URL
+const baseURL = !process.env.CI ? process.env.CUHACKING_2025_PORTAL_LOCAL_URL : process.env.CUHACKING_2025_PORTAL_PUBLIC_URL
 
 export default defineConfig<SerenityOptions>({
   ...nxE2EPreset(__filename, { testDir: './src' }),
