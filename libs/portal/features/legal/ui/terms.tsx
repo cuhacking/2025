@@ -112,11 +112,17 @@ export function Legal({ legalData }: LegalPageProps) {
                   checked={readItems[`${value}1`]}
                   onCheckedChange={() => handleCheckboxChange(`${value}1`)}
                 />
-                <Typography variant="paragraph-base" className="text-left">
-                  {buttonContent}
-                  {' '}
-                  <span className="text-red-500">*</span>
-                </Typography>
+
+                <div onClick={() => {
+                  if (scrollEndReached[value]) {
+                   handleCheckboxChange(`${value}1`)
+                  }
+                  }}>
+                  <Typography variant="paragraph-base" className="text-left">
+                    {buttonContent}
+                    <span className="text-red-500">*</span>
+                  </Typography>
+                </div>
               </div>
               {buttonContent2 && (
                 <div className={cn(
@@ -130,11 +136,12 @@ export function Legal({ legalData }: LegalPageProps) {
                     checked={readItems[`${value}2`]}
                     onCheckedChange={() => handleCheckboxChange(`${value}2`)}
                   />
-                  <Typography variant="paragraph-base" className="text-left">
-                    {buttonContent2}
-                    {' '}
-                    <span className="text-red-500">*</span>
-                  </Typography>
+                  <div onClick={() => handleCheckboxChange(`${value}2`)}>
+                    <Typography variant="paragraph-base" className="text-left">
+                      {buttonContent2}
+                      <span className="text-red-500">*</span>
+                    </Typography>
+                  </div>
                 </div>
               )}
             </AccordionContent>
