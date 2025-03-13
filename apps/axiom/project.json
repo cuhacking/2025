@@ -134,6 +134,12 @@
       "options": {
         "cwd": "apps/axiom"
       }
+    },
+    "delete:user": {
+      "command": "cross-env NODE_OPTIONS=--no-deprecation payload run src/delete-user.ts",
+      "options": {
+        "cwd": "apps/axiom"
+      }
     }
   },
   "tags": []
