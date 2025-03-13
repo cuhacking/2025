@@ -106,7 +106,9 @@ export function Registration({ onSubmit }: RegistrationPropse) {
           />
 
           <Button
-            className="w-fit mx-auto"
+            className={`w-fit mx-auto ${
+              !isValid || !isDirty || isLoading ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'
+            }`}
             type="submit"
             variant="secondary"
             disabled={!isValid || !isDirty || isLoading}

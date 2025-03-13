@@ -457,6 +457,7 @@ export function Questions({ user, isComplete, onSubmit }: ProfileFormProps) {
             disabled={disabled}
             variant="secondary"
             type="submit"
+            style={{ cursor: disabled ? 'not-allowed' : 'pointer' }}
           >
             <Typography variant="h6">{buttonMessage}</Typography>
           </Button>
