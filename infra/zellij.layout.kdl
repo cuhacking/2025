@@ -18,7 +18,6 @@ layout {
                 }
                 pane command="pnpm" name="🕸 Website | 5800 | cuhacking.ca" size="30%" cwd="../" {
                     args "nx" "dev" "website"
-                    start_suspended true
                 }
             }
         floating_panes {
