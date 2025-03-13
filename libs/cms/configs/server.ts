@@ -8,8 +8,8 @@ import {navAccordions,
 import {OrganizerTeams} from '@/db/collections/OrganizerTeams'
 
 
-import {
-        ChallengePrize,
+import {  
+        Challenges,
         Events,
         Media,
         Emails,
@@ -41,7 +41,7 @@ defaultDepth: 3,
     Hardware,
     Events,
         Hackathons,
-    ChallengePrize,
+    Challenges,
   ],
   blocks:[
    // TeamBlock

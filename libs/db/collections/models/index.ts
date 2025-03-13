@@ -1,4 +1,4 @@
-export * from './Challenge'
+export * from './Challenges'
 export * from './Criteria'
 export * from './Emails'
 export * from './Events'
