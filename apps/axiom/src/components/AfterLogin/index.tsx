@@ -38,12 +38,12 @@ export function OAuthButtons() {
         bgColor="#1e2124"
         altText="Discord Login"
       /> */}
-      <OAuthButton
+      {/* <OAuthButton
         href="/api/users/oauth/google"
         iconSrc="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/google/google-original.svg"
         bgColor="white"
         altText="Google Login"
-      />
+      /> */}
     </section>
   );
 }
