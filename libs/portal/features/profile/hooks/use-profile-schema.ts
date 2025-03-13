@@ -84,7 +84,7 @@ export function useProfileSchema(
           link,
         ),
       {
-        message: 'Invalid Google Drive link.',
+        message: 'Invalid Google Drive link',
       },
     ).optional(),
     yearStanding: z.nativeEnum(YearStandings)
