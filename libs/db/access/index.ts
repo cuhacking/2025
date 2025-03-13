@@ -3,7 +3,16 @@ import type { AccessArgs, FieldHook } from 'payload'
 
 type IsAuthenticated = (args: AccessArgs<User>) => boolean
 
-export const authenticated: IsAuthenticated = ({ req }) => Boolean(req.user)
+export const authenticated: IsAuthenticated = ({ req }) => {
+  return Boolean(req.user)
+}
+
+export const anyone: IsAuthenticated = ({ req: { user } }) => {
+  if (!user) return false;
+  return {
+    id: { equals: user.id }
+  };
+};
 
 export const isSuperAdmin: IsAuthenticated = ({ req: { user } }) =>
   user?.id === 1 || user?.organizerTeam?.name === "Co-Leads";
@@ -16,14 +25,48 @@ export const adminsAndUser: IsAuthenticated = ({ req: { user } }) => {
   return { id: user.id };
 };
 
-export const isSameUser: IsAuthenticated = ({ req: { user } }) => {
+
+export const isOrganizerOrUser = ({ req: {user} }) => {
   if (!user) return false;
+  if (user){
+   if (user.organizerTeam?.name){
+     return true
+   }
   return {
-    id: { equals: user.id }
-  };
+    id: {
+      equals: user.id
+    }
+  }
+};
+}
+
+export const isSponsor = ({ req: {user} }) => {
+  if (user){
+   if (user.group.name === "Sponsor"){
+     return true
+   }
+  }
+  return false
 };
 
-export const anyone: IsAuthenticated = () => true;
+export const isMentor = ({ req: {user} }) => {
+  if (user){
+   if (user.group.name === "Mentor"){
+     return true
+   }
+  }
+  return false
+};
+
+
+export const isJudge = ({ req: {user} }) => {
+  if (user){
+   if (user.group.name === "Mentor"){
+     return true
+   }
+  }
+  return false
+};
 
 export const isOrganizer: IsAuthenticated = ({ req: { user } }) =>
   user?.group?.name === "Organizer";
