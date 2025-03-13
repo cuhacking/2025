@@ -78,7 +78,7 @@ export function useProfileSchema(
       }),
     gender: z.string(),
     age: z.number().int().refine(value => value >= 18, { message: 'Must be 18 years or older to participate in cuHacking events' }).refine(value => value <= 120, { message: 'Invalid age' }),
-    resumeLink: z.string().max(100).url().refine(
+    resumeLink: z.string().max(200).url().refine(
       link =>
         /^(?:https:\/\/)?drive\.google\.com\/(?:file\/d\/|open\?id=)[\w-]+/.test(
           link,
