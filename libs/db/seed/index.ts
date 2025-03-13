@@ -9,6 +9,7 @@ import { seedMedia } from "@/db/collections/models";
 import { seedUsers } from "@/db/collections/models/Users";
 import { seedGroups } from "@/db/collections/models";
 import { seedEvents } from "@/db/collections/models";
+import { seedChallenges } from "@/db/collections/models";
 import { seedOrganizerTeams } from "@/db/collections/OrganizerTeams";
 import { promises as fs } from "fs";
 import path from "path";
@@ -34,6 +35,7 @@ export async function seed({
       "forms",
       "form-submissions",
       "events",
+      "challenges",
       "hackathons",
     ].map(async (collection) => {
       if (collection === "users") {
@@ -75,6 +77,7 @@ export async function seed({
     await seedUsers(payload);
     await seedBrands(payload);
     await seedEvents(payload);
+    await seedChallenges(payload);
   } catch (error) {
     payload.logger.error(
       `❌ Error seeding initial data: ${error instanceof Error ? error.message : "Unknown error"}`,

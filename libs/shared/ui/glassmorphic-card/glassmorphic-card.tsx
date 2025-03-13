@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import InfoIcon from '@cuhacking/shared/assets/icons/general/info-1.svg'
 import LinkedInIcon from '@cuhacking/shared/assets/icons/socials/linkedin-white-1.svg'
 import { Popover, PopoverContent, PopoverTrigger } from '@cuhacking/shared/ui/popover'
+import { Typography } from '@cuhacking/shared/ui/typography'
 import { cn } from '@cuhacking/shared/utils/cn'
 import { cva } from 'class-variance-authority'
 
@@ -11,6 +12,10 @@ interface GlassmorphicCardProps {
   infoIcon?: 'info' | 'linkedin'
   className?: string
   info?: ReactNode
+  pathTitle?: string
+  minimize?: boolean
+  maximize?: boolean
+  close?: boolean
 }
 
 const glassmorphicCardVariants = cva(
@@ -35,11 +40,25 @@ export function GlassmorphicCard({
   className,
   info,
   infoIcon,
+  pathTitle,
+  minimize,
+  maximize,
+  close,
 }: GlassmorphicCardProps) {
   const icon = (infoIcon === 'linkedin' ? LinkedInIcon : InfoIcon)
 
   return (
     <div className={cn(glassmorphicCardVariants({ variant, className }))}>
+      {pathTitle && (
+        <div className={cn('flex justify-between item-center p-2 h-9 w-full !rounded-b-[0px] border-bottom', glassmorphicCardVariants({ variant }), className)}>
+          <Typography variant="paragraph-xs">{pathTitle}</Typography>
+          <div>
+            {minimize && (<div>-</div>)}
+            {maximize && (<div>+</div>)}
+            {close && (<div>x</div>)}
+          </div>
+        </div>
+      )}
       {variant === 'info' && info
         ? (
             <Popover>

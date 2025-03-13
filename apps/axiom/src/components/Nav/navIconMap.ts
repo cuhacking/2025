@@ -28,7 +28,7 @@ export const navIconMap: Partial<
   emails: Mail,
   organizerTeams: Signature,
   groups: PersonStanding,
-  challengePrize: Trophy,
+  challenges: Trophy,
   events: CalendarDays,
   forms: MousePointer2,
   "form-submissions": Inbox,

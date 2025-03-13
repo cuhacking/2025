@@ -40,7 +40,7 @@ defaultDepth: 3,
     Hardware,
     Events,
         Hackathons,
-    ChallengePrize,
+    Challenges,
   ],
   blocks:[
    // TeamBlock
