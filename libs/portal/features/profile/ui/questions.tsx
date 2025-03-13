@@ -219,7 +219,7 @@ export function Questions({ user, isComplete, onSubmit }: ProfileFormProps) {
                   /> */}
                   <TextField
                     placeholder="https://drive.google.com/resume"
-                    label="Resume Link"
+                    label="Resume Link (PDF Required)"
                     variant="link"
                     form={profile}
                     name="resumeLink"
