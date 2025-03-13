@@ -56,4 +56,13 @@ export const adminConfig = {
 export const clientConfig = {
   editor: lexicalEditor({}),
   theme: 'dark', // CREDITS: github.com/akhrarovsaid/payload-theme-quantum-leap
+  versions: {
+    drafts: {
+      autosave: {
+        interval: 100,
+      },
+      schedulePublish: true,
+    },
+    maxPerDoc: 20,
+  },
 }
