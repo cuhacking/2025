@@ -18,107 +18,76 @@ interface HackerDockProps {
 export function HackerDock({
   status,
 }: HackerDockProps) {
-  const links = [
-    {
-      label: 'Logout',
-      href: '/logout',
-      disabled: false,
-      icon: (
-        <img
-          className="size-6"
-          src={logout}
-          alt="Logout Icon"
-        />
-      ),
-    },
-    {
-      label: 'Profile',
-      href: '/profile',
-      disabled: false,
-      icon: (
-        <img
-          className="size-6"
-          src={user}
-          alt="Profile Icon"
-        />
-      ),
-    },
-    {
-      label: 'Sponsors',
-      disabled: true,
-      href: '/',
-      icon: (
-        <img
-          className="size-6"
-          src={handshake}
-          alt="Team Icon"
-        />
-      ),
-    },
-    {
-      label: 'Home',
-      disabled: false,
-      href: '/dashboard',
-      icon: (
-        <Logo link="/dashboard" />
-      ),
-    },
-    {
-      label: 'Challenges',
-      disabled: true,
-      href: '/',
-      icon: (
-        <img
-          className="size-6"
-          src={mountain}
-          alt="Challenges Icon"
-        />
-      ),
-    },
-    {
-      label: 'Calendar',
-      disabled: true,
-      href: '/',
-      icon: (
-        <img
-          className="size-6"
-          src={map}
-          alt="Map Icon"
-        />
-      ),
-    },
-  ]
+const links = [
+  {
+    label: 'Logout',
+    href: '/logout',
+    disabled: false,
+    icon: <img className="size-6" src={logout} alt="Logout Icon" />,
+  },
+  ...(status
+    ? [
+        {
+          label: 'Profile',
+          href: '/profile',
+          disabled: false,
+          icon: <img className="size-6" src={user} alt="Profile Icon" />,
+        },
+        {
+          label: 'Sponsors',
+          disabled: true,
+          href: '/',
+          icon: <img className="size-6" src={handshake} alt="Team Icon" />,
+        },
+        {
+          label: 'Home',
+          disabled: false,
+          href: '/dashboard',
+          icon: <Logo link="/dashboard" />,
+        },
+        {
+          label: 'Challenges',
+          disabled: true,
+          href: '/',
+          icon: <img className="size-6" src={mountain} alt="Challenges Icon" />,
+        },
+        {
+          label: 'Calendar',
+          disabled: true,
+          href: '/',
+          icon: <img className="size-6" src={map} alt="Map Icon" />,
+        },
+      ]
+    : []),
+];
 
   return (
-    status
-    && (
-      <div className="fixed w-screen bottom-4 flex flex-col items-center justify-center z-10000">
-        <TooltipProvider>
-          <Dock direction="middle" className="bg-card">
-            {links.map(link => (
-              <DockIcon key={link.label}>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      to={link.href}
-                      aria-label={link.label}
-                      className={cn(
-                        '',
-                        link.disabled && 'opacity-25 pointer-events-none cursor-not-allowed',
-                      )}
-                    >
-                      {link.icon}
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent className="z-10001">
-                    <p>{link.label}</p>
-                  </TooltipContent>
-                </Tooltip>
-              </DockIcon>
-            ))}
-          </Dock>
-        </TooltipProvider>
-      </div>
-    )
+    <div className="fixed w-screen bottom-4 flex flex-col items-center justify-center z-10000">
+      <TooltipProvider>
+        <Dock direction="middle" className="bg-card">
+          {links.map(link => (
+            <DockIcon key={link.label}>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link
+                    to={link.href}
+                    aria-label={link.label}
+                    className={cn(
+                      '',
+                      link.disabled && 'opacity-25 pointer-events-none cursor-not-allowed',
+                    )}
+                  >
+                    {link.icon}
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent className="z-10001">
+                  <p>{link.label}</p>
+                </TooltipContent>
+              </Tooltip>
+            </DockIcon>
+          ))}
+        </Dock>
+      </TooltipProvider>
+    </div>
   )
 }
