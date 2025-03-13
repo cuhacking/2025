@@ -2,6 +2,9 @@ import { endsWith, Ensure, equals, matches } from '@serenity-js/assertions'
 import { Duration, Task, Wait } from '@serenity-js/core'
 import { describe, it } from '@serenity-js/playwright-test'
 import { By, Click, Enter, isVisible, Navigate, Page, PageElement, Press } from '@serenity-js/web'
+import { createProfile } from './profile/hacker/abilities'
+import { registerForHackathon } from './registration/hacker/abilities'
+import { startLoggedIn } from '@cuhacking/portal-e2e/abilities'
 
 // These need to be your LinkedIn Credentials
 const EMAIL_ADDRESS = process.env.LOCAL_DEV_EMAIL_ADDRESS
@@ -14,21 +17,6 @@ export function startLoggedOut() {
   ))
 }
 
-export function startLoggedIn() {
-  return Task.where(
-    '#actor starts logged in',
-    Navigate.to('/'),
-    Click.on(PageElement.located(By.cssContainingText('button', 'LOG IN'))),
-    Wait.upTo(Duration.ofSeconds(10))
-      .until(PageElement.located(By.css('#username')), isVisible()),
-    Enter.theValue(EMAIL_ADDRESS)
-      .into(PageElement.located(By.css('#username'))),
-    Enter.theValue(PASSWORD)
-      .into(PageElement.located(By.css('#password'))),
-    Click.on(PageElement.located(By.cssContainingText('button', 'Sign in'))),
-    Wait.until(Page.current().url().href, matches(/\/(dashboard|terms|profile)$/)),
-  )
-}
 
 // ==================== Hacker Tests ====================
 describe('A Hacker', () => {
@@ -43,13 +31,15 @@ describe('A Hacker', () => {
       Enter.theValue(PASSWORD)
         .into(PageElement.located(By.css('#password'))),
       Click.on(PageElement.located(By.cssContainingText('button', 'Sign in'))),
-      Wait.until(Page.current().url().href, endsWith('/dashboard')),
+      Navigate.to('/'),
+      Wait.until(Page.current().url().href, endsWith('/terms')),
     )
   })
 
   it('should be able to complete terms and conditions', async ({ actor }) => {
     await actor.attemptsTo(
       startLoggedIn(),
+      Navigate.to('/terms'),
       Click.on(PageElement.located(By.cssContainingText('button', 'MLH CODE OF CONDUCT'))),
       Press.the('Tab'),
       Press.the('End'),
@@ -80,21 +70,26 @@ describe('A Hacker', () => {
       Click.on(PageElement.located(By.cssContainingText('button', 'cuHacking Terms & Conditions'))),
       Press.the('Tab'),
       Press.the('End'),
-      Wait.until(PageElement.located(By.css('button[role="checkbox"]')), isVisible()),
       Click.on(
         PageElement.located(
-          By.css('button[role="checkbox"][aria-checked="false"]'),
+          By.xpath('//*[text()=\'I am at least 18 years of age.\']'),
         ),
       ),
-      Wait.until(PageElement.located(By.css('button[role="checkbox"]')), isVisible()),
       Click.on(
         PageElement.located(
-          By.css('button[role="checkbox"][aria-checked="false"]'),
+          By.xpath('//*[text()=\'I have read cuHacking Terms & Conditions\']'),
         ),
       ),
       Click.on(PageElement.located(By.cssContainingText('span', 'LET\'S CREATE YOUR PROFILE'))),
       Wait.until(Page.current().url().href, endsWith('/profile')),
     )
+  })
+  it('should be able to create profile', async ({ actor }) => {
+    await createProfile({ actor })
+  })
+
+  it('should be able to register for the hackathon', async ({ actor }) => {
+    await registerForHackathon({ actor })
   })
 
   it('should be able to logout', async ({ actor }) => {
