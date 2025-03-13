@@ -20,7 +20,7 @@ const socials: { link: string, name: string, media: Media }[] = [
     media: { src: github_green, alt: 'GitHub' },
   },
   {
-    link: 'https://discord.com/invite/h2cQqF9aZf',
+    link: 'https://discord.gg/5j3eD99H8H',
     name: 'Discord',
     media: { src: discord_green, alt: 'Discord' },
   },
