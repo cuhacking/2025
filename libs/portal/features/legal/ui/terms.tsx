@@ -1,7 +1,5 @@
 import type { LegalPageProps } from '@cuhacking/portal/types/terms'
 import externalArrow from '@cuhacking/shared/assets/icons/general/external-link-black-1.svg'
-// import dashboard_left from '@cuhacking/portal/assets/backgrounds/dashboard-bg-left.webp'
-// import dashboard_right from '@cuhacking/portal/assets/backgrounds/dashboard-bg-right.webp'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@cuhacking/shared/ui/accordion'
 import { Button } from '@cuhacking/shared/ui/button'
 import { Checkbox } from '@cuhacking/shared/ui/checkbox'
@@ -11,6 +9,7 @@ import { Form, Link } from '@remix-run/react'
 import { ScrollArea } from '@shadcn/components/ui/scroll-area'
 import Markdown from 'markdown-to-jsx'
 import { useState } from 'react'
+import { toast } from 'sonner'
 
 export function Legal({ legalData }: LegalPageProps) {
   const [readItems, setReadItems] = useState<Record<string, boolean>>({})
@@ -47,7 +46,6 @@ export function Legal({ legalData }: LegalPageProps) {
     <div className="max-w-screen-xl px-4 sm:px-6 md:px-8 mx-auto flex flex-col py-4">
 
       <div className="flex flex-col py-4 gap-y-1.5 ">
-
         <Typography variant="h4" className="">Legalities</Typography>
         <Typography variant="paragraph-xs" className="text-gray-400">YO! Before we get into it, read these please.</Typography>
         <Typography variant="paragraph-xs" className="text-gray-400">!! MUST READ ALL !!</Typography>
@@ -143,7 +141,16 @@ export function Legal({ legalData }: LegalPageProps) {
       </Accordion>
 
       <div className="px-4 flex justify-center pb-6">
-        <Form method="patch">
+        <Form
+          method="patch"
+          onSubmit={() => {
+            const loadingToastId = toast.loading('Please wait...')
+            toast.success('Moving to profile creation!', {
+              id: loadingToastId,
+              duration: 3000,
+            })
+          }}
+        >
           <Button
             disabled={!allChecked || !allScrolled}
             variant="secondary"
