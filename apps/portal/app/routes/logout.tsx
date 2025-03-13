@@ -28,11 +28,12 @@ export const loader: LoaderFunction = async ({ request }) => {
     console.error('ERROR - An error occurred during logout', error)
   }
 
+  const domain = process.env.NODE_ENV === 'development' ? 'localhost' : '.cuhacking.ca'
   const response = redirect('/login', {
     headers: {
-      "Set-Cookie":
-      "payload-token=; path=/"
-    }
+      'Set-Cookie':
+      `payload-token=; path=/; domain=${domain}`,
+    },
   })
   return response
 }
