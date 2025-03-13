@@ -29,6 +29,14 @@ export const loader: LoaderFunction = async ({ request }) => {
       return redirect('/')
     }
 
+    if (!user.agreedToTerms) {
+      return redirect('/')
+    }
+
+    if (!user.emergencyContactFullName) {
+      return redirect('/')
+    }
+
     const forms = await fetch(`${API_URL}/api/form-submissions?where[submittedBy][equals]=${user.id}`, {
       method: 'GET',
       headers: { Cookie: cookie || '' },
