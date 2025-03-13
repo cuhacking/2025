@@ -2,21 +2,21 @@ import { button, textArea } from '@cuhacking/shared/test/questions'
 
 export const multiSelect = {
   CHALLENGE_INTEREST: {
-    button: button.withAriaLabel('challengeInterest trigger'),
+    button: button.withAriaLabel('what-challenge-are-you-most-interested-in trigger'),
     options: {
       cybersecurity: button.withText('Cybersecurity'),
       hardware: button.withText('Hardware'),
     },
   },
   HERE_ABOUT_US: {
-    button: button.withAriaLabel('discoverySource trigger'),
+    button: button.withAriaLabel('where-did-you-hear-about-us trigger'),
     options: {
       linkedin: button.withText('LinkedIn'),
       reddit: button.withText('Reddit'),
     },
   },
   DESIRED_WORKSHOP: {
-    button: button.withAriaLabel(`desiredWorkshops trigger`),
+    button: button.withAriaLabel(`what-workshops-would-you-like-to-see trigger`),
     options: {
       machineLearning: button.withText('Machine Learning Basics'),
     },
@@ -25,7 +25,7 @@ export const multiSelect = {
 }
 
 export const textAreas = {
-  firstTimeHacker: textArea.withName('adviceForFirstTimers'),
+  firstTimeHacker: textArea.withName('first-time-hacker'),
 }
 
 export const SUBMIT = button.withText('REGISTER')

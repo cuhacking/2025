@@ -1,11 +1,14 @@
+import { startLoggedIn } from '@cuhacking/portal-e2e/abilities'
 import { endsWith, Ensure, not } from '@serenity-js/assertions'
 import { actorCalled, Duration, Wait } from '@serenity-js/core'
-import { Click, Enter, isEnabled, Page } from '@serenity-js/web'
+import { Click, Enter, isEnabled, Navigate, Page } from '@serenity-js/web'
 // import { Navigate, Enter, Click, SelectOption } from '@serenity-js/web';
 import { accordions, buttons, checkbox, date, inputs, radioGroup, select } from './questions'
 
-export async function createProfile() {
-  await actorCalled('Hacker').attemptsTo(
+export async function createProfile({ actor }) {
+  await actor.attemptsTo(
+    startLoggedIn(),
+    Navigate.to('/profile'),
     Wait.for(Duration.ofSeconds(1)),
     // ============================
     // =======  PERSONAL  =========
@@ -43,11 +46,6 @@ export async function createProfile() {
     // ===================================
     Click.on(accordions.CONTACT),
     Enter.theValue('16139996633').into(inputs.PHONE_NUMBER),
-
-    // ====================================
-    // ========= SOCIAL MEDIA  ============
-    // ====================================
-    Click.on(accordions.SOCIAL_MEDIA),
     Enter.theValue('https://hasithdev.com').into(inputs.WEBSITE),
 
     // ====================================
@@ -65,7 +63,7 @@ export async function createProfile() {
 
     Click.on(buttons.SAVE),
     Wait.for(Duration.ofSeconds(1)),
-    Ensure.that(Page.current().url().href, endsWith('/dashboard')),
+    Ensure.that(Page.current().url().href, endsWith('/registration')),
   )
 }
 

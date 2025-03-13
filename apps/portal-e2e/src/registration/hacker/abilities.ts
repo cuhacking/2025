@@ -1,13 +1,16 @@
 import { endsWith, Ensure, not } from '@serenity-js/assertions'
 import { actorCalled, Duration, Wait } from '@serenity-js/core'
-import { Click, Enter, isEnabled, Page } from '@serenity-js/web'
+import { Click, Enter, isEnabled, Navigate, Page } from '@serenity-js/web'
 import { multiSelect, select, SUBMIT, textAreas } from '../questions'
+import { startLoggedIn } from '@cuhacking/portal-e2e/abilities'
 
-export async function registerForHackathon() {
+export async function registerForHackathon({ actor }) {
   const words = `I would tell a first time hacker that they should be freeeeeee!
 Like that one song about being free.
 I\'m trying to get to 50 words right now haha. So how was your day?`
   await actorCalled('Hacker').attemptsTo(
+    startLoggedIn(),
+    Navigate.to('/registration'),
     Wait.for(Duration.ofSeconds(1)),
     Click.on(select.QNX.button),
     Click.on(select.QNX.options.neverHeard),
