@@ -12,7 +12,8 @@ const baseURL = process.env.CUHACKING_2025_PORTAL_LOCAL_URL
 
 export default defineConfig<SerenityOptions>({
   ...nxE2EPreset(__filename, { testDir: './src' }),
-  fullyParallel: !process.env.CI,
+  // fullyParallel: !process.env.CI,
+  fullyParallel: false,
   workers: process.env.CI ? 2 : undefined,
   use: {
     crew: [
