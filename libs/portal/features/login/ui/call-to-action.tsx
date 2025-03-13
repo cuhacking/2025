@@ -24,7 +24,7 @@ export function LoginCallToAction() {
         <Button
           type="submit"
           variant="primary"
-          className="flex items-center gap-x-3 px-4 md:px-6 lg:px-8 py-4"
+          className="flex items-center gap-x-3 px-4 md:px-6 lg:px-8 py-4 cursor-pointer"
           aria-label="Login with Linkedin"
         >
           <img src={linkedinBlack} alt="Linkedin logo" className="size-5" />
