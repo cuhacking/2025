@@ -50,42 +50,6 @@ export const linkedinOAuth = OAuth2Plugin({
       const { id, vanityName, imageUrl } =
         await fetchLinkedInProfileData(accessToken);
 
-const existingUserByLinkedIn = await req.payload.find({
-  collection: "users",
-  where: {
-    linkedinVanity: {
-      equals: vanityName,
-    },
-  },
-  limit: 1,
-});
-
-if (existingUserByLinkedIn.docs.length > 0) {
-  const existingUser = existingUserByLinkedIn.docs[0];
-
-  await req.payload.update({
-    collection: "users",
-    id: existingUser.id,
-    data: {
-      linkedinId: id,
-      linkedinEmailVerified: user.email_verified,
-      linkedinLocale: user.locale,
-    },
-  });
-
-  return {
-    email: existingUser.email,
-    firstName: existingUser.firstName,
-    lastName: existingUser.lastName,
-    preferredDisplayName: existingUser.preferredDisplayName,
-    avatar: existingUser.avatar,
-    linkedinId: id,
-    linkedinVanity: vanityName,
-    linkedinEmailVerified: user.email_verified,
-    linkedinLocale: user.locale,
-  };
-}
-
 const existingUserByEmail = await req.payload.find({
   collection: "users",
   where: {
@@ -96,11 +60,24 @@ const existingUserByEmail = await req.payload.find({
   limit: 1,
 });
 
-let avatarId = null;
+      const hackathonResult = await req.payload.find({
+        collection: "hackathons",
+        where: { year: { equals: 2025 } },
+        pagination: false,
+      });
 
-if (existingUserByEmail.docs.length === 0 || existingUserByEmail.docs[0].avatar === null) {
+      const hackathon = hackathonResult.docs[0] || null;
+
+      const groupResult = await req.payload.find({
+        collection: "groups",
+        where: { name: { equals: "Hacker" } },
+        pagination: false,
+      });
+
+      const group = groupResult.docs[0] || null;
+
   const filename = `${user.given_name.toLowerCase()}-${user.family_name.toLowerCase()}-avatar.png`;
-  avatarId = imageUrl
+  const avatarId = imageUrl
     ? await getOrUploadMedia(
         req.payload,
         req,
@@ -109,18 +86,31 @@ if (existingUserByEmail.docs.length === 0 || existingUserByEmail.docs[0].avatar 
         `${user.given_name} ${user.family_name}'s avatar`,
       )
     : null;
-}
 
-if (existingUserByEmail.docs.length === 0) {
+if (existingUserByEmail.docs.length === 0 || existingUserByEmail.docs[0].avatar === null) {
   await req.payload.sendEmail({
     to: user.email,
     subject: "Welcome to cuHacking 2025",
     html: await generateEmail(),
   });
-}
 
 return {
   email: user.email,
+  hackathons: hackathon ? hackathon.id : undefined ,
+  group: group ? group.id : undefined,
+  firstName: user.given_name,
+  lastName: user.family_name,
+  preferredDisplayName: user.name,
+  avatar: avatarId,
+  linkedinId: id,
+  linkedinVanity: vanityName,
+  linkedinEmailVerified: user.email_verified,
+  linkedinLocale: user.locale,
+};
+}
+
+return {
+  email: existingUserByEmail.docs[0].email || user.email,
   firstName: user.given_name,
   lastName: user.family_name,
   preferredDisplayName: user.name,
