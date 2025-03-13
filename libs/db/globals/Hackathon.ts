@@ -232,11 +232,21 @@ export const Hackathon2025: GlobalConfig = {
                   label: "Header",
                   fields: [
                     {
-                      name: "logo",
-                      type: "upload",
-                      relationTo: "media",
-                      label: "Logo",
-                    },
+                        name: "logo",
+                        type: "upload",
+                        relationTo: "media",
+                        label: "Logo",
+                        defaultValue: async ({ req }) => {
+                          const media = await req.payload.find({
+                            collection: "media",
+                            where: {
+                              filename: { equals: "cuHacking_2025_primary_logo.svg" }
+                            }
+                          });
+
+                          return media?.docs?.[0]?.id || null;
+                        }
+                      },
                     {
                       name: "links",
                       type: "array",
@@ -266,7 +276,7 @@ export const Hackathon2025: GlobalConfig = {
                   label: "Join Us",
                   fields: [
                     {
-    name: 'title',
+                      name: 'title',
                       type: "text",
                       defaultValue: () => "JOIN US",
                     },
