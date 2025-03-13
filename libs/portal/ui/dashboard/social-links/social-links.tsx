@@ -29,7 +29,7 @@ const constants = {
     {
       label: 'Discord',
       icon: discord,
-      href: 'https://discord.com/invite/h2cQqF9aZf',
+      href: 'https://discord.gg/VnbWdAe8kA',
       bgColor: 'bg-[#5865F2aa]',
     },
     {
