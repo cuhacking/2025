@@ -6,15 +6,7 @@ export const OrganizerTeams: CollectionConfig = {
   slug: "organizerTeams",
   admin: {
     group: navAccordions.featured,
-    defaultColumns: [
-      "name",
-      "symbol",
-      "users",
-      "event",
-      "updatedAt",
-      "createdAt",
-      "id",
-    ],
+    defaultColumns: ["name", "symbol", "users", "event", "updatedAt", "createdAt", "id"],
     useAsTitle: "name",
   },
   access: {
@@ -23,26 +15,10 @@ export const OrganizerTeams: CollectionConfig = {
     delete: authenticated,
   },
   fields: [
-    {
-      name: "name",
-      type: "text",
-    },
-    {
-      name: "symbol",
-      type: "upload",
-      relationTo: "media",
-    },
-    {
-      name: "event",
-      type: "relationship",
-      relationTo: "hackathons",
-    },
-    {
-      name: "users",
-      type: "join",
-      collection: "users",
-      on: "organizerTeam",
-    },
+    {name: "name", type: "text"},
+    {name: "symbol", type: "upload", relationTo: "media"},
+    {name: "event", type: "relationship", relationTo: "hackathons"},
+    {name: "users", type: "join", collection: "users", on: "organizerTeam"},
   ],
 };
 
@@ -51,22 +27,10 @@ export async function seedOrganizerTeams(payload) {
 
   await Promise.all(
     [
-      {
-        name: "Co-Leads",
-        symbol: { alt: "cuHacking 2025 Symbol Pink" },
-      },
-      {
-        name: "Advisors",
-        symbol: { alt: "cuHacking 2025 Symbol White" },
-      },
-      {
-        name: "Community Engagement",
-        symbol: { alt: "cuHacking 2025 Symbol Blue" },
-      },
-      {
-        name: "Hacker Experience",
-        symbol: { alt: "cuHacking 2025 Symbol Purple" },
-      },
+      { name: "Co-Leads", symbol: { alt: "cuHacking 2025 Symbol Pink" }},
+      { name: "Advisors", symbol: { alt: "cuHacking 2025 Symbol White" }},
+      { name: "Community Engagement", symbol: { alt: "cuHacking 2025 Symbol Blue" }},
+      { name: "Hacker Experience", symbol: { alt: "cuHacking 2025 Symbol Purple" }},
       { name: "Sponsorship", symbol: { alt: "cuHacking 2025 Symbol Orange" } },
       { name: "Logistics", symbol: { alt: "cuHacking 2025 Symbol Yellow" } },
       { name: "Design", symbol: { alt: "cuHacking 2025 Symbol Green" } },
