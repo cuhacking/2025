@@ -1,8 +1,8 @@
 import type { CollectionConfig, Payload } from "payload";
-import { authenticated } from "@/db/access";
 import { navAccordions } from "@/db/collections/navAccordions";
 
 import {
+  anyone,
   isSelf,
   isOrganizer,
   isSuperAdmin,
@@ -16,7 +16,7 @@ export const OrganizerTeams: CollectionConfig = {
     useAsTitle: "name",
   },
   access: {
-    read:  isOrganizer,
+    read:  anyone,
     create: isSuperAdmin,
     update: isSelf || isOrganizer || isSuperAdmin,
     delete: isSuperAdmin,

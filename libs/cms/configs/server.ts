@@ -3,10 +3,8 @@
 import {navAccordions,
         Brands,
         Groups
+OrganizerTeams,
        } from "@/db/collections"
-
-import {OrganizerTeams} from '@/db/collections/OrganizerTeams'
-
 
 import {
         ChallengePrize,
