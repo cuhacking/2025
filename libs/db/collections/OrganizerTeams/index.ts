@@ -2,6 +2,12 @@ import type { CollectionConfig, Payload } from "payload";
 import { authenticated } from "@/db/access";
 import { navAccordions } from "@/db/collections/navAccordions";
 
+import {
+  isSelf,
+  isOrganizer,
+  isSuperAdmin,
+} from "@/db/access";
+
 export const OrganizerTeams: CollectionConfig = {
   slug: "organizerTeams",
   admin: {
@@ -10,9 +16,10 @@ export const OrganizerTeams: CollectionConfig = {
     useAsTitle: "name",
   },
   access: {
-    read: authenticated,
-    update: authenticated,
-    delete: authenticated,
+    read:  isOrganizer,
+    create: isSuperAdmin,
+    update: isSelf || isOrganizer || isSuperAdmin,
+    delete: isSuperAdmin,
   },
   fields: [
     {name: "name", type: "text"},
