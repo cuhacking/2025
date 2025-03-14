@@ -16,9 +16,11 @@ export const Groups: CollectionConfig = {
       name: "symbol",
       type: "upload",
       relationTo: "media",
+      admin:{position:'sidebar'}
     },
     {
       type: "row",
+      admin:{position:'sidebar'},
       fields:[
     {
       name: "name",
