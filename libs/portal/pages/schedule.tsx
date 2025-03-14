@@ -19,6 +19,17 @@ const days = [
   { label: 'Sun', date: '2025-03-16' },
 ]
 
+const options = [
+  { label: '🔊 Ceremony', value: 'ceremony' },
+  { label: '💻 Workshop', value: 'workshop' },
+  { label: '🤝 Networking', value: 'networking' },
+  { label: '🎉 Social', value: 'social' },
+  { label: '💡 Hackathon', value: 'hackathon' },
+  { label: '😂 Fun', value: 'fun' },
+  { label: '🥑 Food', value: 'food' },
+  { label: '🤹 Other', value: 'other' },
+]
+
 export function SchedulePage({ data }) {
   const [selectedDay, setSelectedDay] = useState('2025-03-14')
 
@@ -92,9 +103,9 @@ function Event({ eventData }) {
           <div className="flex-grow-1 space-y-3">
             <Typography variant="h5">{eventData.title}</Typography>
             <Typography variant="paragraph-xs">
-              📍
+              📍 
               {' '}
-              {eventData.location}
+{             eventData.location}
             </Typography>
             <Typography variant="paragraph-xs">
               ⌛
@@ -109,12 +120,23 @@ function Event({ eventData }) {
               {eventData.description}
             </Typography>
           </div>
-          <div className="flex flex-wrap gap-1">
-            {eventData.type.map((tag, index) => (
-              <Badge key={index} variant="outline">
-                {tag}
-              </Badge>
-            ))}
+          <div className="flex flex-wrap p-2 w-fit my-auto gap-2">
+            {eventData.type.map((tag, index) => {
+              // Find the matching label for the event type
+              const matchedOption = options.find(option => option.value === tag)
+
+              return (
+                <Badge
+                  key={index}
+                  variant="outline"
+                  className="px-4 py-1 text-sm font-thin uppercase text-center min-w-[8rem] flex justify-center"
+                >
+                  {matchedOption ? matchedOption.label : tag}
+                  {' '}
+                  {/* Show emoji + label if found */}
+                </Badge>
+              )
+            })}
           </div>
         </GlassmorphicCard>
       </DialogTrigger>
