@@ -2,7 +2,7 @@
 /* eslint-disable node/prefer-global/process */
 import {navAccordions,
         Brands,
-        Groups
+        Groups,
 OrganizerTeams,
        } from "@/db/collections"
 
