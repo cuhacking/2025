@@ -1,9 +1,9 @@
 export function getCountdownTo(date: Date): { days: number, hrs: number, mins: number, secs: number } {
   const now = new Date()
 
-  if (now > date) {
-    throw new Error('Target date must be in the future.')
-  }
+  // if (now > date) {
+  //   throw new Error('Target date must be in the future.')
+  // }
 
   let diff = date.getTime() - now.getTime()
 
