@@ -58,7 +58,7 @@ const socialMediaFields = SOCIAL_MEDIA_PLATFORMS.map(({ key, label,
 export const Brands: CollectionConfig = {
   slug: 'brands',
   access: {
-    read:  anyone,
+    read: () => true,
     create: isSuperAdmin,
     update: isOrganizer || isSuperAdmin,
     delete: isSuperAdmin,

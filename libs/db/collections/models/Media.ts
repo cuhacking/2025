@@ -10,7 +10,7 @@ import {
 export const Media: CollectionConfig = {
   slug: 'media',
   access: {
-    read:  anyone,
+    read: () => true,
     update: isOrganizer || isSuperAdmin,
   },
   admin: {
