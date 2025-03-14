@@ -267,7 +267,7 @@ export const Users: CollectionConfig = {
     },
   },
   access: {
-    admin: isOrganizerOrSponsor,
+    admin: process.env.NODE_ENV === 'development' ? authenticated : isOrganizerOrSponsor,
     read:  () => true,
     create: authenticated,
     update: authenticated,
