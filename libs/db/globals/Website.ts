@@ -1,11 +1,16 @@
 /* eslint-disable node/prefer-global/process */
 import type { GlobalConfig } from "payload";
+import {
+  anyone,
+  isOrganizer,
+  isSuperAdmin,
+} from "@/db/access";
 
 export const Website: GlobalConfig = {
   slug: "2025",
   access: {
-    read: () => true,
-    // update: ({ req }) => req.user?.roles?.some(role => role.admin === true || role.name === 'owner'),
+    read:  anyone,
+    update: isOrganizer || isSuperAdmin,
   },
   versions: {
     drafts: true,
