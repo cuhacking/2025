@@ -23,6 +23,16 @@ export const adminsAndUser: IsAuthenticated = ({ req: { user } }) => {
   return { id: user.id };
 };
 
+export const isSelf = ({ req: {user} }) => {
+  if (!user) return false;
+  if (user){
+  return {
+    id: {
+      equals: user.id
+    }
+  }
+};
+}
 
 export const isOrganizerOrUser = ({ req: {user} }) => {
   if (!user) return false;
