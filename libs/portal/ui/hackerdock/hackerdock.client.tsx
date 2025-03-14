@@ -18,48 +18,48 @@ interface HackerDockProps {
 export function HackerDock({
   status,
 }: HackerDockProps) {
-const links = [
-  {
-    label: 'Logout',
-    href: '/logout',
-    disabled: false,
-    icon: <img className="size-6" src={logout} alt="Logout Icon" />,
-  },
-  ...(status
-    ? [
-        {
-          label: 'Profile',
-          href: '/profile',
-          disabled: false,
-          icon: <img className="size-6" src={user} alt="Profile Icon" />,
-        },
-        {
-          label: 'Sponsors',
-          disabled: true,
-          href: '/',
-          icon: <img className="size-6" src={handshake} alt="Team Icon" />,
-        },
-        {
-          label: 'Home',
-          disabled: false,
-          href: '/dashboard',
-          icon: <Logo link="/dashboard" />,
-        },
-        {
-          label: 'Challenges',
-          disabled: true,
-          href: '/',
-          icon: <img className="size-6" src={mountain} alt="Challenges Icon" />,
-        },
-        {
-          label: 'Calendar',
-          disabled: true,
-          href: '/',
-          icon: <img className="size-6" src={map} alt="Map Icon" />,
-        },
-      ]
-    : []),
-];
+  const links = [
+    {
+      label: 'Logout',
+      href: '/logout',
+      disabled: false,
+      icon: <img className="size-6" src={logout} alt="Logout Icon" />,
+    },
+    ...(status
+      ? [
+          {
+            label: 'Profile',
+            href: '/profile',
+            disabled: false,
+            icon: <img className="size-6" src={user} alt="Profile Icon" />,
+          },
+          {
+            label: 'Sponsors',
+            disabled: false,
+            href: 'https://cuhacking.ca',
+            icon: <img className="size-6" src={handshake} alt="Team Icon" />,
+          },
+          {
+            label: 'Home',
+            disabled: false,
+            href: '/dashboard',
+            icon: <Logo link="/dashboard" />,
+          },
+          {
+            label: 'Challenges',
+            disabled: false,
+            href: '/challenges',
+            icon: <img className="size-6" src={mountain} alt="Challenges Icon" />,
+          },
+          {
+            label: 'Calendar',
+            disabled: false,
+            href: '/schedule',
+            icon: <img className="size-6" src={map} alt="Map Icon" />,
+          },
+        ]
+      : []),
+  ]
 
   return (
     <div className="fixed w-screen bottom-4 flex flex-col items-center justify-center z-10000">

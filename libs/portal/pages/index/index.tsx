@@ -32,48 +32,70 @@ const constants = {
   ],
   quickLinks: [
     {
-      label: 'Sponsors - Coming soon!!',
+      label: 'Sponsors',
+      route: 'https://cuhacking.ca',
       icon: handshake,
     },
     {
-      label: 'Schedule - Coming soon!!',
+      label: 'Schedule',
+      route: '/schedule',
       icon: calendar,
     },
     {
-      label: 'CHALLENGES - Coming soon!!',
+      label: 'CHALLENGES',
+      route: '/challenges',
       icon: mountain,
     },
     {
       label: 'MORE FEATURES!! Maybe You\'ll add them!!',
+      route: 'https://github.com/cuhacking/2025',
       icon: null,
     },
   ],
 }
 
-export function Home(
-  { user }: { user: UserDetails },
-) {
+export function Home({ user }: { user: UserDetails }) {
   return (
     <Layout isCompleteProfile={!!user.emergencyContactFullName}>
       <div className="flex flex-col p-4 sm:pt-10 gap-5 md:gap-10 min-h-screen">
         <Banner name={user.preferredDisplayName} />
         <div className="grid gap-4 sm:grid-cols-4 lg:grid-cols-6 lg:grid-row-4 min-h-[70vh]">
-
           <div className="gap-4 grid grid-cols-1 lg:grid-cols-2 col-span-2 sm:row-span-2 lg:col-span-4">
-            <UserStatus name={user.firstName} status="compelte" className="lg:order-2" />
-            <HackathonCountdown date={constants.hackathonDate} className="lg:order-1" />
+            <UserStatus
+              name={user.firstName}
+              status="compelte"
+              className="lg:order-2"
+            />
+            <HackathonCountdown
+              date={constants.hackathonDate}
+              className="lg:order-1"
+            />
           </div>
-          <SocialLinks label="" icon="" className="col-span-2 sm:row-span-2 lg:row-span-4" />
+          <SocialLinks
+            label=""
+            icon=""
+            className="col-span-2 sm:row-span-2 lg:row-span-4"
+          />
 
           {constants.stats.map(stat => (
-            <Stat key={stat.label} label={stat.label} value={stat.value} statColor={stat.statColor} className="col-span-2" />
+            <Stat
+              key={stat.label}
+              label={stat.label}
+              value={stat.value}
+              statColor={stat.statColor}
+              className="col-span-2"
+            />
           ))}
 
           {constants.quickLinks.map(link => (
-            <StatIcon key={link.label} label={link.label} icon={link.icon} />
+            <StatIcon
+              key={link.label}
+              label={link.label}
+              route={link.route}
+              icon={link.icon}
+            />
           ))}
         </div>
-
       </div>
     </Layout>
   )
