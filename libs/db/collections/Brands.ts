@@ -3,6 +3,12 @@ import { navAccordions } from '@/db/collections/navAccordions'
 import { getOrUploadMedia } from '@/db/seed'
 import { Payload } from 'payload'
 
+import {
+  anyone,
+  isOrganizer,
+  isSuperAdmin,
+} from "@/db/access";
+
 const SOCIAL_MEDIA_PLATFORMS = [
   { key: 'github', domain: 'github.com', label: 'GitHub' },
   { key: 'linkedin', domain: 'linkedin.com', label: 'LinkedIn' },
@@ -52,7 +58,10 @@ const socialMediaFields = SOCIAL_MEDIA_PLATFORMS.map(({ key, label,
 export const Brands: CollectionConfig = {
   slug: 'brands',
   access: {
-    read: () => true,
+    read:  anyone,
+    create: isSuperAdmin,
+    update: isOrganizer || isSuperAdmin,
+    delete: isSuperAdmin,
   },
   admin: {
     useAsTitle: 'name',
