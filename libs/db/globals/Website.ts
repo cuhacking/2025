@@ -1,7 +1,6 @@
 /* eslint-disable node/prefer-global/process */
 import type { GlobalConfig } from "payload";
 import {
-  anyone,
   isOrganizer,
   isSuperAdmin,
 } from "@/db/access";
@@ -9,7 +8,7 @@ import {
 export const Website: GlobalConfig = {
   slug: "2025",
   access: {
-    read:  anyone,
+    read: () => true,
     update: isOrganizer || isSuperAdmin,
   },
   versions: {
