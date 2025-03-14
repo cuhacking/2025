@@ -2,9 +2,7 @@ import { navAccordions } from '@/db/collections/navAccordions';
 import { getOrUploadMedia } from '@/db/seed';
 import type { CollectionConfig, Payload } from 'payload';
 import {
-  anyone,
   isOrganizer,
-  isSuperAdmin,
 } from "@/db/access";
 
 export const Events: CollectionConfig = {

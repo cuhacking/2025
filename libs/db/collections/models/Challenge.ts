@@ -1,8 +1,17 @@
 import type { CollectionConfig } from "payload";
 import { navAccordions } from "@/db/collections/navAccordions";
+import {
+  isOrganizer,
+} from "@/db/access";
 
 export const Challenges: CollectionConfig = {
   slug: "challenges",
+  access: {
+    read:  () => true,
+    create: isOrganizer,
+    update: isOrganizer,
+    delete: isOrganizer,
+  },
   admin: {
     useAsTitle: "title",
     group: navAccordions.categories,
