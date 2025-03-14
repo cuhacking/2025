@@ -1,10 +1,18 @@
 import type { CollectionConfig, Payload } from "payload";
 import { navAccordions } from "@/db/collections/navAccordions";
+import {
+  anyone,
+  isOrganizer,
+  isSuperAdmin,
+} from "@/db/access";
 
 export const Groups: CollectionConfig = {
   slug: "groups",
   access: {
-    admin: () => true,
+    create:  isSuperAdmin,
+    read:  anyone,
+    update: isSuperAdmin,
+    delete:  isSuperAdmin,
   },
   admin: {
     group: navAccordions.featured,
