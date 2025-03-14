@@ -34,7 +34,7 @@ export const isSelf = ({ req: {user} }) => {
 };
 }
 
-export const isOrganizerOrUser = ({ req: {user} }) => {
+export const isOrganizerOrSelf = ({ req: {user} }) => {
   if (!user) return false;
   if (user){
    if (user.organizerTeam?.name){
@@ -77,7 +77,14 @@ export const isJudge = ({ req: {user} }) => {
 };
 
 export const isOrganizer: IsAuthenticated = ({ req: { user } }) =>
-  user?.group?.name === "Organizer";
+  {
+  if (user){
+   if (user.group.name === "Organizer"){
+     return true
+   }
+  }
+  return false
+}
 
 export const isOrganizerInTeam = (teamNames: string[]) => {
   return ({ req: { user } }: AccessArgs<User>) =>

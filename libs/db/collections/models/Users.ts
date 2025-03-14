@@ -4,16 +4,12 @@ import { getOrUploadMedia } from "@/db/seed";
 import { Payload } from "payload";
 import type { CollectionConfig } from "payload";
 import {
-  admins,
-  // isSameUser,
-  adminsAndUser,
-  anyone,
+  isSelf,
   authenticated,
   isOrganizer,
+  isOrganizerOrSelf,
   isSuperAdmin,
-  // checkRole
 } from "@/db/access";
-// import { authenticated, isAdminFieldLevel } from '@/db/access'
 import { navAccordions } from "@/db/collections/navAccordions";
 
 const LEVEL_OF_STUDY = [
@@ -270,11 +266,11 @@ export const Users: CollectionConfig = {
     },
   },
   access: {
-    admin: isOrganizer,
-    read: adminsAndUser,
+    admin: isSelf,
+    read:  isOrganizerOrSelf,
     create: authenticated,
-    update: authenticated,
-    // delete: admins,
+    update: isSelf || isOrganizer || isSuperAdmin,
+    delete: isSuperAdmin,
   },
   // hooks: {
   //   afterChange: [loginAfterCreate],
@@ -319,25 +315,34 @@ export const Users: CollectionConfig = {
   },
   fields: [
     {
+    type:"row",
+      fields:[
+    {
       name: "hackathons",
       type: "relationship",
       relationTo: "hackathons",
-    },
-    {
-    type:"row",
-      admin: {
-       position: "sidebar"
+      access:{
+    create: isOrganizer || isSuperAdmin,
+    update: isOrganizer || isSuperAdmin,
       },
-      fields:[
+    },
     {
       name: "group",
       type: "relationship",
       relationTo: "groups",
+      access:{
+    create: isOrganizer || isSuperAdmin,
+    update: isOrganizer || isSuperAdmin,
+      },
     },
     {
       name: "organizerTeam",
       type: "relationship",
       relationTo: "organizerTeams",
+      access:{
+    create: isOrganizer || isSuperAdmin,
+    update: isSelf || isOrganizer || isSuperAdmin,
+      },
       admin: {
         condition: (data, siblingData, {user}) => {
           return siblingData.group === 2; // Hardcoded to 'Organizer' temporarily for prod
@@ -447,20 +452,6 @@ export const Users: CollectionConfig = {
       ],
       hasMany: true,
     },
-      ]},
-    ]},
-    {
-      name: "agreedToTerms",
-      type: "checkbox",
-      label: "Agreed to Terms and Conditions",
-      admin: { position: "sidebar" },
-    },
-    {
-      name: "resumeLink",
-      type: "text",
-      label: "Resume Link",
-      admin: { position: "sidebar" },
-    },
     {
       name: "tshirtSize",
       type: "select",
@@ -475,6 +466,20 @@ export const Users: CollectionConfig = {
         { label: "2XL", value: "2xl" },
         { label: "3XL", value: "3xl" },
       ],
+    },
+      ]},
+    ]},
+    {
+      name: "agreedToTerms",
+      type: "checkbox",
+      label: "Agreed to Terms and Conditions",
+      admin: { position: "sidebar", readOnly: true },
+    },
+    {
+      name: "resumeLink",
+      type: "text",
+      label: "Resume Link",
+      admin: { position: "sidebar", readOnly: true },
     },
     {
       label: "Education",
@@ -552,7 +557,9 @@ export const Users: CollectionConfig = {
     {
       type: "collapsible",
       label: ({ data }) => data?.title || "Brand & Socials",
-      admin: { position: "sidebar" },
+      admin: { position: "sidebar",
+               readOnly: true
+             },
       fields: [
         {
           name: "website",
