@@ -13,18 +13,23 @@ export const Groups: CollectionConfig = {
   },
   fields: [
     {
-      name: "name",
-      type: "text",
-    },
-    {
       name: "symbol",
       type: "upload",
       relationTo: "media",
     },
     {
+      type: "row",
+      fields:[
+    {
+      name: "name",
+      type: "text",
+    },
+    {
       name: "event",
       type: "relationship",
       relationTo: "hackathons",
+    },
+      ]
     },
     {
       name: "users",
