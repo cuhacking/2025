@@ -339,9 +339,9 @@ export const Users: CollectionConfig = {
       type: "relationship",
       relationTo: "organizerTeams",
       admin: {
-        // condition: (_, siblingData, {user}) => {
-        //   return !!siblingData.group;
-        // },
+        condition: (data, siblingData, {user}) => {
+          return siblingData.group === 2; // Hardcoded to 'Organizer' temporarily for prod
+        },
       },
     },
       ]
