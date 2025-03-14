@@ -50,12 +50,12 @@ export function GlassmorphicCard({
   return (
     <div className={cn(glassmorphicCardVariants({ variant, className }))}>
       {pathTitle && (
-        <div className={cn('flex justify-between item-center p-2 h-9 w-full !rounded-b-[0px] border-bottom', glassmorphicCardVariants({ variant }), className)}>
+        <div className={cn('flex justify-between items-center p-2 h-9 w-full !rounded-b-[0px] border-bottom', glassmorphicCardVariants({ variant }), className)}>
           <Typography variant="paragraph-xs">{pathTitle}</Typography>
-          <div>
-            {minimize && (<div>-</div>)}
-            {maximize && (<div>+</div>)}
-            {close && (<div>x</div>)}
+          <div className="flex flex-shrink-0 items-center gap-2 h-full">
+            {minimize && (<div className="size-2 bg-green-500 rounded"></div>)}
+            {maximize && (<div className="size-2 bg-yellow-500 rounded"></div>)}
+            {close && (<div className="size-2 bg-red-500 rounded"></div>)}
           </div>
         </div>
       )}

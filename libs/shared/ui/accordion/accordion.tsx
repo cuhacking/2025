@@ -16,7 +16,7 @@ AccordionItem.displayName = 'AccordionItem'
 const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger> & { isLeft?: boolean }
->(({ className, children, isLeft, ...props }, ref) => (
+>(({ className, children, isLeft, noChevron, ...props }, ref) => (
   <AccordionPrimitive.Header className="flex min-h-10">
     <AccordionPrimitive.Trigger
       ref={ref}
@@ -27,9 +27,9 @@ const AccordionTrigger = React.forwardRef<
       )}
       {...props}
     >
-      {isLeft ? <img alt="Accordion chevron" src={chevronDown} className="size-6  transition-transform duration-200 flex-shrink-0" /> : null}
+      {isLeft && !noChevron ? <img alt="Accordion chevron" src={chevronDown} className="size-6  transition-transform duration-200 flex-shrink-0" /> : null}
       {children}
-      {!isLeft ? <img alt="Accordion chevron" src={chevronDown} className="size-6 transition-transform duration-200 shrink-0" /> : null}
+      {!isLeft && !noChevron ? <img alt="Accordion chevron" src={chevronDown} className="size-6 transition-transform duration-200 shrink-0" /> : null}
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ))

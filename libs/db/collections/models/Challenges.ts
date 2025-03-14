@@ -12,7 +12,7 @@ export const Challenges: CollectionConfig = {
   fields: [
     {name: "pathTitle", type: "text"},
     {name: "title", type: "text"},
-    {name: "symbol", type: "upload", relationTo: "media"},
+    {name: "sponsor", type: "relationship", relationTo: "brands"},
         {
       name: 'challengeBlock',
       type: 'blocks',
@@ -65,7 +65,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:qnx-software@cuhacking.exe",
         title: "Best use of QNX - Software",
-        symbol: "qnx-logo.png",
+        sponsor: "QNX",
         challengeBlock: [
           {
             blockName: "QNX Details",
@@ -114,7 +114,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:qnx-hardware@cuhacking.exe",
         title: "Best use of QNX - Hardware",
-        symbol: "qnx-hardware.png",
+        sponsor: "QNX",
         challengeBlock: [
           {
             blockName: "QNX Hardware Details",
@@ -154,7 +154,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:overall@cuhacking.exe",
         title: "Best overall project (1st, 2nd, and 3rd place)",
-        symbol: "external-judges.png",
+        sponsor: "cuHacking",
         challengeBlock: [
           {
             blockName: "Overall Project Details",
@@ -188,7 +188,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:wolfram-award@cuhacking.exe",
         title: "Wolfram Award - Top 5 teams",
-        symbol: "judges.png",
+        sponsor: "Wolfram",
         challengeBlock: [
           {
             blockName: "Wolfram Award Details",
@@ -223,7 +223,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:hardware-hack@cuhacking.exe",
         title: "Best Hardware Hack",
-        symbol: "safaa.png",
+        sponsor: "QNX",
         challengeBlock: [
           {
             blockName: "Hardware Hack Details",
@@ -253,7 +253,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:gadget@cuhacking.exe",
         title: "Gadget Challenge",
-        symbol: "gadget-logo.png",
+        sponsor: "Gadget",
         challengeBlock: [
           {
             blockName: "Gadget Challenge Details",
@@ -280,7 +280,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:impact-carleton@cuhacking.exe",
         title: "Carleton Impact Challenge",
-        symbol: "impact-logo.png",
+        sponsor: "cuHacking",
         challengeBlock: [
           {
             blockName: "Impact Challenge Details",
@@ -305,7 +305,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:figma@cuhacking.exe",
         title: "Best use of Figma",
-        symbol: "figma-logo.png",
+        sponsor: "cuHacking",
         challengeBlock: [
           {
             blockName: "Figma Challenge Details",
@@ -335,7 +335,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:boopbot@cuhacking.exe",
         title: "Boopbot fan art",
-        symbol: "boopbot-logo.png",
+        sponsor: "cuHacking",
         challengeBlock: [
           {
             blockName: "Boopbot Fan Art Details",
@@ -365,7 +365,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:marketing@cuhacking.exe",
         title: "Marketing challenge",
-        symbol: "organizers-logo.png",
+        sponsor: "cuHacking",
         challengeBlock: [
           {
             blockName: "Marketing Challenge Details",
@@ -395,7 +395,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:gemini-api@cuhacking.exe",
         title: "Best Use of Gemini API",
-        symbol: "mlh-logo.png",
+        sponsor: "MLH",
         challengeBlock: [
           {
             blockName: "Gemini API Details",
@@ -420,7 +420,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:auth0@cuhacking.exe",
         title: "Best Use of Auth0",
-        symbol: "mlh-logo.png",
+        sponsor: "MLH",
         challengeBlock: [
           {
             blockName: "Auth0 Challenge Details",
@@ -445,7 +445,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:cloudflare-ai@cuhacking.exe",
         title: "Best AI Application Built with Cloudflare",
-        symbol: "mlh-logo.png",
+        sponsor: "MLH",
         challengeBlock: [
           {
             blockName: "Cloudflare AI Details",
@@ -470,7 +470,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:domain-name@cuhacking.exe",
         title: "Best Domain Name from GoDaddy Registry",
-        symbol: "mlh-logo.png",
+        sponsor: "MLH",
         challengeBlock: [
           {
             blockName: "Domain Name Details",
@@ -495,7 +495,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:peoples-choice@cuhacking.exe",
         title: "People’s choice - Best overall project",
-        symbol: "devpost-logo.png",
+        sponsor: "cuHacking",
         challengeBlock: [
           {
             blockName: "People's Choice Details",
@@ -525,7 +525,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:outrageous-hack@cuhacking.exe",
         title: "Most Outrageous Hack/Turn Brainrot into brain nourishment",
-        symbol: "organizers-logo.png",
+        sponsor: "cuHacking",
         challengeBlock: [
           {
             blockName: "Outrageous Hack Details",
@@ -555,7 +555,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:school-crossover@cuhacking.exe",
         title: "Best School Crossover",
-        symbol: "judges-logo.png",
+        sponsor: "cuHacking",
         challengeBlock: [
           {
             blockName: "School Crossover Details",
@@ -585,7 +585,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:first-time-hack@cuhacking.exe",
         title: "Best First Time Hack",
-        symbol: "judges-logo.png",
+        sponsor: "cuHacking",
         challengeBlock: [
           {
             blockName: "First Time Hack Details",
@@ -618,20 +618,20 @@ export async function seedChallenges(payload: Payload, req: any) {
         
     ].map(async (challenge) => {
       try {
-        const existingMedia = await payload.find({
-          collection: "media",
-          where: { alt: { equals: challenge.symbol.alt } },
+        const existingSponsor = await payload.find({
+          collection: "brands",
+          where: { name: { equals: challenge.sponsor } },
           pagination: false,
         });
 
-        const selectedImage =
-          existingMedia.docs.length > 0 ? existingMedia.docs[0].id : null;
+        const selectedSponsor =
+          existingSponsor.docs.length > 0 ? existingSponsor.docs[0].id : null;
 
         await payload.create({
           collection: "challenges",
           data: {
             pathTitle: challenge.pathTitle,
-            symbol: selectedImage,
+            sponsor: selectedSponsor,
             title: challenge.title,
             challengeBlock: challenge.challengeBlock
           },

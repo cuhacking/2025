@@ -1,7 +1,6 @@
 import type { LoaderFunction } from '@remix-run/node'
 import process from 'node:process'
-import { ChallengesPage } from '@cuhacking/portal/pages/challenges'
-import { useLoaderData } from '@remix-run/react'
+import { QrPage } from '@cuhacking/portal/pages/qr'
 
 export const loader: LoaderFunction = async () => {
   try {
@@ -18,14 +17,13 @@ export const loader: LoaderFunction = async () => {
   }
   catch (error) {
     console.error(`Error fetching challenges`, error)
-    return [{ title: '', pathTitle: '', sponsor: { symbol: { url: '', alt: '' } }, challengeBlock: [] }]
   }
 }
 
-export default function Challenges() {
-  const data = useLoaderData<typeof loader>()
+export default function QR() {
+  // const data = useLoaderData<typeof loader>()
 
   return (
-    <ChallengesPage data={data} />
+    <QrPage />
   )
 }
