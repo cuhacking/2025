@@ -35,7 +35,6 @@ export const isSelf = ({ req: {user} }) => {
 }
 
 export const isOrganizerOrSelf = ({ req: {user} }) => {
-  if (!user) return false;
   if (user){
    if (user.organizerTeam?.name){
      return true
@@ -46,6 +45,7 @@ export const isOrganizerOrSelf = ({ req: {user} }) => {
     }
   }
 };
+  return false
 }
 
 export const isSponsor = ({ req: {user} }) => {
@@ -56,6 +56,29 @@ export const isSponsor = ({ req: {user} }) => {
   }
   return false
 };
+
+
+export const isOrganizer = ({ req: {user} }) => {
+  if (user){
+   if (user.organizerTeam?.name){
+     return true
+   }
+    return false
+};
+    return false
+}
+
+export const isOrganizerOrSponsor = ({ req: {user} }) => {
+  if (user){
+   if (user.organizerTeam?.name){
+     return true
+   }
+   if (user.group.name === "Sponsor"){
+     return true
+   }
+};
+  return false
+}
 
 export const isMentor = ({ req: {user} }) => {
   if (user){
@@ -75,16 +98,6 @@ export const isJudge = ({ req: {user} }) => {
   }
   return false
 };
-
-export const isOrganizer: IsAuthenticated = ({ req: { user } }) =>
-  {
-  if (user){
-   if (user.group.name === "Organizer"){
-     return true
-   }
-  }
-  return false
-}
 
 export const isOrganizerInTeam = (teamNames: string[]) => {
   return ({ req: { user } }: AccessArgs<User>) =>

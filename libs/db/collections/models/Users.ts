@@ -8,6 +8,7 @@ import {
   authenticated,
   isOrganizer,
   isOrganizerOrSelf,
+  isOrganizerOrSponsor,
   isSuperAdmin,
 } from "@/db/access";
 import { navAccordions } from "@/db/collections/navAccordions";
@@ -266,7 +267,7 @@ export const Users: CollectionConfig = {
     },
   },
   access: {
-    admin: isSelf,
+    admin: isOrganizerOrSponsor,
     read:  isOrganizerOrSelf,
     create: authenticated,
     update: isSelf || isOrganizer || isSuperAdmin,
@@ -276,11 +277,8 @@ export const Users: CollectionConfig = {
   //   afterChange: [loginAfterCreate],
   // },
   admin: {
-    // hidden: (user) => {
-    //   if (user?.id === 1){
-    //    return false
-    //   }
-    //   return user?.group?.name === "Organizer" ? false : true
+    // hidden: ({user}) => {
+    //   return user?.group?.name === "Hacker"
     // },
     livePreview: {
       url: `${process.env.CUHACKING_2025_PORTAL_LOCAL_URL}/profile`,
@@ -528,11 +526,15 @@ export const Users: CollectionConfig = {
     {
       label: "Emergency Contact",
       type: "collapsible",
+          admin: {
+          hidden: true
+        },
       fields: [
     {
     type: "row",
       fields:[
-        { name: "emergencyContactFullName", type: "text", label: "Full Name" },
+        { name: "emergencyContactFullName", type: "text", label: "Full Name",
+        },
         {
           name: "emergencyContactRelationship",
           type: "select",
@@ -612,7 +614,9 @@ export const Users: CollectionConfig = {
         {
           type: "collapsible",
           label: "GitHub",
-          admin: { readOnly: true },
+          admin: {
+          hidden: true
+        },
           fields: [
             {
               name: "githubUrl",
@@ -706,6 +710,9 @@ export const Users: CollectionConfig = {
         {
           type: "collapsible",
           label: "Discord",
+          admin: {
+          hidden: true
+        },
           fields: [
             {
               name: "discordUsername",
@@ -742,6 +749,9 @@ export const Users: CollectionConfig = {
         {
           type: "collapsible",
           label: "Google",
+          admin: {
+          hidden: true
+        },
           fields: [
             { name: "googleEmail", type: "email" },
             {
