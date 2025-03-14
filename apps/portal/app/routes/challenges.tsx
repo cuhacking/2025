@@ -3,7 +3,9 @@ import process from 'node:process'
 import { ChallengesPage } from '@cuhacking/portal/pages/challenges'
 import { useLoaderData } from '@remix-run/react'
 
-export const loader: LoaderFunction = async () => {
+export const loader: LoaderFunction = async ({ request }) => {
+  const cookie = request.headers.get('Cookie')
+
   try {
     const API_URL
       = process.env.NODE_ENV === 'development'
@@ -15,7 +17,10 @@ export const loader: LoaderFunction = async () => {
     let hasNextPage = true
 
     while (hasNextPage) {
-      const req = await fetch(`${API_URL}/api/challenges?page=${page}&limit=100`)
+      const req = await fetch(`${API_URL}/api/challenges?page=${page}&limit=100`, {
+        credentials: 'include',
+        headers: { Cookie: cookie || '' },
+      })
 
       if (!req.ok) {
         throw new Error('Error fetching challenges')

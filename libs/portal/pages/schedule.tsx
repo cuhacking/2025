@@ -46,7 +46,7 @@ export function SchedulePage({ data }) {
         </GlassmorphicCard>
 
         <div className="flex flex-col gap-5">
-          {/* Day Selection */}
+          {/* DAY SELECTION */}
           <div className="flex flex-row gap-3 justify-center">
             {days.map(day => (
               <button key={day.date} onClick={() => setSelectedDay(day.date)}>
@@ -77,7 +77,7 @@ export function SchedulePage({ data }) {
             ))}
           </div>
 
-          {/* Events List */}
+          {/* EVENTS LIST */}
           {filteredEvents.length > 0
             ? (
                 filteredEvents.map(event => (
@@ -103,9 +103,9 @@ function Event({ eventData }) {
           <div className="flex-grow-1 space-y-3">
             <Typography variant="h5">{eventData.title}</Typography>
             <Typography variant="paragraph-xs">
-              📍 
+              📍
               {' '}
-{             eventData.location}
+              { eventData.location}
             </Typography>
             <Typography variant="paragraph-xs">
               ⌛
@@ -122,7 +122,6 @@ function Event({ eventData }) {
           </div>
           <div className="flex flex-wrap p-2 w-fit my-auto gap-2">
             {eventData.type.map((tag, index) => {
-              // Find the matching label for the event type
               const matchedOption = options.find(option => option.value === tag)
 
               return (
@@ -133,7 +132,6 @@ function Event({ eventData }) {
                 >
                   {matchedOption ? matchedOption.label : tag}
                   {' '}
-                  {/* Show emoji + label if found */}
                 </Badge>
               )
             })}
