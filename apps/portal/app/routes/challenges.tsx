@@ -5,27 +5,49 @@ import { useLoaderData } from '@remix-run/react'
 
 export const loader: LoaderFunction = async () => {
   try {
-    const API_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:8000' : 'https://axiom.cuhacking.ca'
-    const req = await fetch(`${API_URL}/api/challenges`)
+    const API_URL
+      = process.env.NODE_ENV === 'development'
+        ? 'http://localhost:8000'
+        : 'https://axiom.cuhacking.ca'
 
-    if (!req.ok) {
-      throw new Error('Error')
+    let allChallenges: any[] = []
+    let page = 1
+    let hasNextPage = true
+
+    while (hasNextPage) {
+      const req = await fetch(`${API_URL}/api/challenges?page=${page}&limit=100`)
+
+      if (!req.ok) {
+        throw new Error('Error fetching challenges')
+      }
+
+      const data = await req.json()
+      allChallenges = [...allChallenges, ...data.docs]
+      hasNextPage = data.hasNextPage
+      page = data.nextPage
     }
 
-    const data = await req.json()
-
-    return data.docs
+    return allChallenges.map(challenge => ({
+      id: challenge.id || Math.random(),
+      title: challenge.title || 'Untitled Challenge',
+      pathTitle: challenge.pathTitle || '',
+      sponsor: {
+        symbol: {
+          url: challenge.sponsor?.symbol?.url || '',
+          alt: challenge.sponsor?.symbol?.alt || 'No Sponsor',
+        },
+      },
+      challengeBlock: challenge.challengeBlock || [],
+    }))
   }
   catch (error) {
-    console.error(`Error fetching challenges`, error)
-    return [{ title: '', pathTitle: '', sponsor: { symbol: { url: '', alt: '' } }, challengeBlock: [] }]
+    console.error('Error fetching challenges', error)
+    return []
   }
 }
 
 export default function Challenges() {
   const data = useLoaderData<typeof loader>()
 
-  return (
-    <ChallengesPage data={data} />
-  )
+  return <ChallengesPage data={data} />
 }
