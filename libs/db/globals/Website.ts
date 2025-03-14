@@ -14,12 +14,7 @@ export const Website: GlobalConfig = {
     livePreview: {
       url: process.env.NODE_ENV === "development" ? process.env.CUHACKING_2025_WEBSITE_LOCAL_URL : process.env.CUHACKING_2025_WEBSITE_PUBLIC_URL,
       breakpoints: [
-        {
-          label: "Mobile",
-          name: "mobile",
-          width: 320,
-          height: 568,
-        },
+        {label: "Mobile", name: "mobile", width: 320, height: 568},
       ],
     },
     hooks: {
@@ -119,49 +114,32 @@ export const Website: GlobalConfig = {
                         {
                           question: "what is cuHacking?",
                           answers: [
-                            {
-                              bullet: "cuHacking is a 36 hour hackathon.",
-                            },
-                            {
-                              bullet:
-                                "Running from March 14th to 16th 2025 @ Carleton University, you will be able to work on a project, attend workshops, career fairs and meet like-minded people.",
-                            },
+                            {bullet: "cuHacking is a 36 hour hackathon."},
+                            {bullet: "Running from March 14th to 16th 2025 @ Carleton University, you will be able to work on a project, attend workshops, career fairs and meet like-minded people."},
                           ],
                         },
                         {
                           question: "who can attend?",
                           answers: [
-                            {
-                              bullet:
-                                "Available to all university/college students.",
-                            },
+                            {bullet: "Available to all university/college students."},
                           ],
                         },
                         {
                           question: "how much does it cost?",
                           answers: [
-                            {
-                              bullet:
-                                "cuHacking is a whopping $0 for all participants.",
-                            },
+                            {bullet: "cuHacking is a whopping $0 for all participants."},
                           ],
                         },
                         {
                           question: "can I work in a team?",
                           answers: [
-                            {
-                              bullet:
-                                "Yes, teams of up to 4 are allowed to work together.",
-                            },
+                            {bullet: "Yes, teams of up to 4 are allowed to work together."},
                           ],
                         },
                         {
                           question: "I have more questions, where should I go?",
                           answers: [
-                            {
-                              bullet:
-                                "Hit us up on Discord, Instagram, or Email us.",
-                            },
+                            {bullet: "Hit us up on Discord, Instagram, or Email us."},
                           ],
                         },
                       ],
