@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react'
-import cuHackingLogo from '@cuhacking/shared/assets/logos/cuHacking/cuhacking-logo-1.svg'
 import { useLoaderData } from '@remix-run/react'
 import {
   FOOTER_CONSTANTS,
@@ -9,12 +8,12 @@ import {
 } from '@website/shared/ui/navigation'
 
 export function Layout({ children }: { children: ReactNode }) {
-  const { header } = useLoaderData<{ header: { links: { id: string, name: string, link: string }[] } }>()
+  const { header } = useLoaderData<{ header: { logo: { url: string }, links: { id: string, name: string, link: string }[] } }>()
 
   return (
     <>
       <NavbarContainer
-        logo={cuHackingLogo}
+        logo={header.logo.url}
         links={header.links.map(({ id, ...rest }) => rest)}
         socials={NAVBAR_CONSTANTS.SOCIALS}
         hamburger={NAVBAR_CONSTANTS.HAMBURGER}

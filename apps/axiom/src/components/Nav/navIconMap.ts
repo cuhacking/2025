@@ -12,6 +12,7 @@ MousePointer2,
   Inbox,
   Trophy,
   Flag,
+  Shell,
   CalendarDays,
   Cpu
 } from 'lucide-react'
@@ -23,6 +24,7 @@ export const navIconMap: Partial<
   media: Image,
   brands: Star,
   users: User,
+  portal: Shell,
   emails: Mail,
   organizerTeams: Signature,
   groups: PersonStanding,

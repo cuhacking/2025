@@ -3,6 +3,12 @@ import { navAccordions } from '@/db/collections/navAccordions'
 import { getOrUploadMedia } from '@/db/seed'
 import { Payload } from 'payload'
 
+import {
+  anyone,
+  isOrganizer,
+  isSuperAdmin,
+} from "@/db/access";
+
 const SOCIAL_MEDIA_PLATFORMS = [
   { key: 'github', domain: 'github.com', label: 'GitHub' },
   { key: 'linkedin', domain: 'linkedin.com', label: 'LinkedIn' },
@@ -52,7 +58,10 @@ const socialMediaFields = SOCIAL_MEDIA_PLATFORMS.map(({ key, label,
 export const Brands: CollectionConfig = {
   slug: 'brands',
   access: {
-    read: () => true,
+    read:  anyone,
+    create: isSuperAdmin,
+    update: isOrganizer || isSuperAdmin,
+    delete: isSuperAdmin,
   },
   admin: {
     useAsTitle: 'name',
@@ -67,39 +76,32 @@ export const Brands: CollectionConfig = {
     beforeChange: [generateSocialLinks],
   },
   fields: [
-    { name: 'name', type: 'text', required: true, label: 'Name' },
-    { name: 'description', type: 'textarea', required: false, label: 'Description' },
-    { name: 'domain', type: 'text', required: false, admin: { position: 'sidebar' } },
-    {
-      name: 'links',
-      type: 'array',
-      label: 'Links',
-      labels: {
-        singular: 'Link',
-        plural: 'Links',
-      },
-      required: false,
-      fields: [
-        {
-          name: 'name',
-          type: 'text',
-          required: false,
-        },
-        {
-          name: 'link',
-          type: 'text',
-          required: false,
-        },
-      ],
-    },
-    { name: 'email', type: 'email', label: 'Email Address', required: false },
-    { name: 'phone', type: 'number', label: 'Phone Number', required: false },
-    { name: 'location', type: 'text', label: 'Location', required: false },
+    {type:"row",
+    fields:[
     { name: 'symbol', type: 'upload', relationTo: 'media', label: 'Symbol', required: false,
       access: {
     read: () => true,
     } },
     { name: 'wordmark', type: 'upload', relationTo: 'media', label: 'Wordmark', required: false },
+    ]},
+    { name: 'name', type: 'text', required: true, label: 'Name' },
+    { name: 'description', type: 'textarea', label: 'Description' },
+    { name: 'domain', type: 'text', admin: { position: 'sidebar' } },
+    {
+      type:'row',
+      fields:[
+    { name: 'email', type: 'email', label: 'Email Address' },
+    { name: 'phone', type: 'number', label: 'Phone Number' },
+    { name: 'location', type: 'text', label: 'Location' },
+      ]
+    },
+    {name: 'links', type: 'array', label: 'Links',
+      labels: {singular: 'Link', plural: 'Links'},
+      fields: [
+        {name: 'name', type: 'text'},
+        {name: 'link', type: 'text'},
+      ],
+    },
     ...socialMediaFields,
   ],
 }

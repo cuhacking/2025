@@ -4,10 +4,19 @@
 import type { CollectionConfig, Payload } from 'payload'
 import { navAccordions } from '@/db/collections/navAccordions'
 
+import {
+  anyone,
+  isOrganizer,
+  isSuperAdmin,
+} from "@/db/access";
+
 export const Emails: CollectionConfig = {
   slug: 'emails',
   access: {
-    read: () => true,
+    read:  anyone,
+    create: isSuperAdmin,
+    update: isOrganizer || isSuperAdmin,
+    delete: isSuperAdmin,
   },
   admin: {
     group: navAccordions.communication,

@@ -9,9 +9,7 @@ export const authenticated: IsAuthenticated = ({ req }) => {
 
 export const anyone: IsAuthenticated = ({ req: { user } }) => {
   if (!user) return false;
-  return {
-    id: { equals: user.id }
-  };
+  return { id: user.id };
 };
 
 export const isSuperAdmin: IsAuthenticated = ({ req: { user } }) =>
@@ -25,9 +23,18 @@ export const adminsAndUser: IsAuthenticated = ({ req: { user } }) => {
   return { id: user.id };
 };
 
-
-export const isOrganizerOrUser = ({ req: {user} }) => {
+export const isSelf = ({ req: {user} }) => {
   if (!user) return false;
+  if (user){
+  return {
+    id: {
+      equals: user.id
+    }
+  }
+};
+}
+
+export const isOrganizerOrSelf = ({ req: {user} }) => {
   if (user){
    if (user.organizerTeam?.name){
      return true
@@ -38,6 +45,7 @@ export const isOrganizerOrUser = ({ req: {user} }) => {
     }
   }
 };
+  return false
 }
 
 export const isSponsor = ({ req: {user} }) => {
@@ -48,6 +56,29 @@ export const isSponsor = ({ req: {user} }) => {
   }
   return false
 };
+
+
+export const isOrganizer = ({ req: {user} }) => {
+  if (user){
+   if (user.organizerTeam?.name){
+     return true
+   }
+    return false
+};
+    return false
+}
+
+export const isOrganizerOrSponsor = ({ req: {user} }) => {
+  if (user){
+   if (user.organizerTeam?.name){
+     return true
+   }
+   if (user.group.name === "Sponsor"){
+     return true
+   }
+};
+  return false
+}
 
 export const isMentor = ({ req: {user} }) => {
   if (user){
@@ -67,9 +98,6 @@ export const isJudge = ({ req: {user} }) => {
   }
   return false
 };
-
-export const isOrganizer: IsAuthenticated = ({ req: { user } }) =>
-  user?.group?.name === "Organizer";
 
 export const isOrganizerInTeam = (teamNames: string[]) => {
   return ({ req: { user } }: AccessArgs<User>) =>

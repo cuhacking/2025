@@ -2,11 +2,9 @@
 /* eslint-disable node/prefer-global/process */
 import {navAccordions,
         Brands,
-        Groups
+        Groups,
+OrganizerTeams,
        } from "@/db/collections"
-
-import {OrganizerTeams} from '@/db/collections/OrganizerTeams'
-
 
 import {
         ChallengePrize,
@@ -17,7 +15,7 @@ import {
         Users,
         Hackathons,
          } from "@/db/collections/models";
-import {Hackathon2025} from "@/db/globals";
+import { Website, Portal} from "@/db/globals";
 import { linkedinOAuth, githubOAuth, discordOAuth, googleOAuth } from '@/cms/auth'
 
 import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
@@ -29,7 +27,8 @@ import sharp from "sharp";
 export const baseConfig = {
 defaultDepth: 3,
   globals: [
-    Hackathon2025,
+    Website,
+    Portal
   ],
   collections: [
     Groups,

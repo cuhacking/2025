@@ -1,30 +1,45 @@
 import type { CollectionConfig, Payload } from "payload";
 import { navAccordions } from "@/db/collections/navAccordions";
+import {
+  anyone,
+  isOrganizer,
+  isSuperAdmin,
+} from "@/db/access";
 
 export const Groups: CollectionConfig = {
   slug: "groups",
   access: {
-    admin: () => true,
+    create:  isSuperAdmin,
+    read:  anyone,
+    update: isSuperAdmin,
+    delete:  isSuperAdmin,
   },
   admin: {
     group: navAccordions.featured,
-    defaultColumns: ["name", "symbol", "event", "users", "id"],
+    defaultColumns: ["name", "symbol", "event", "users", "updatedAt", "createdAt", "id"],
     useAsTitle: "name",
   },
   fields: [
+    {
+      name: "symbol",
+      type: "upload",
+      relationTo: "media",
+      admin:{position:'sidebar'}
+    },
+    {
+      type: "row",
+      admin:{position:'sidebar'},
+      fields:[
     {
       name: "name",
       type: "text",
     },
     {
-      name: "symbol",
-      type: "upload",
-      relationTo: "media",
-    },
-    {
       name: "event",
       type: "relationship",
       relationTo: "hackathons",
+    },
+      ]
     },
     {
       name: "users",

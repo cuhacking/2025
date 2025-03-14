@@ -1,17 +1,20 @@
 import type { CollectionConfig, Payload } from 'payload'
-import { admins, adminsAndUser, anyone,
-  // checkRole
-} from '@/db/access'
+import {
+  anyone,
+  isOrganizer,
+  isSuperAdmin,
+} from "@/db/access";
 import { navAccordions } from '@/db/collections/navAccordions'
 import { getOrUploadMedia, formatRichText } from '@/db/seed'
+
 
 export const Hardware: CollectionConfig = {
   slug: 'hardware',
   access: {
-    read: adminsAndUser,
-    create: admins,
-    update: admins,
-    delete: admins,
+    read:  anyone,
+    create: isOrganizer || isSuperAdmin,
+    update: isOrganizer || isSuperAdmin,
+    delete: isSuperAdmin,
   },
   admin: {
     group: navAccordions.categories,
