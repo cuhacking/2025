@@ -1,69 +1,128 @@
 import { Layout } from '@cuhacking/portal/ui/layout'
 import { Badge } from '@cuhacking/shared/ui/badge'
-import { Button } from '@cuhacking/shared/ui/button'
-import { Dialog, DialogContent, DialogTrigger } from '@cuhacking/shared/ui/dialog'
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from '@cuhacking/shared/ui/dialog'
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
-import MultipleSelector from '@cuhacking/shared/ui/multi-select'
 import { Typography } from '@cuhacking/shared/ui/typography'
+import { cn } from '@cuhacking/shared/utils/cn'
+import { format, parseISO } from 'date-fns'
+import { useState } from 'react'
 
-const options = [
-  { label: '🔊 Ceremony', value: 'ceremony' },
-  { label: '💻 Workshop', value: 'workshop' },
-  { label: '🥂 Networking', value: 'networking' },
-  { label: '🎉 Social', value: 'social' },
-  { label: '💡 Hackathon', value: 'hackathon' },
-  { label: '😂 Fun', value: 'fun' },
-  { label: '🥑 Food', value: 'food' },
-  { label: '🤹 Other', value: 'other' },
+const formatTime = (isoString: string) => format(new Date(isoString), 'h:mm a')
+
+const days = [
+  { label: 'Fri', date: '2025-03-14' },
+  { label: 'Sat', date: '2025-03-15' },
+  { label: 'Sun', date: '2025-03-16' },
 ]
 
-export function SchedulePage() {
+export function SchedulePage({ data }) {
+  const [selectedDay, setSelectedDay] = useState('2025-03-14')
+
+  const filteredEvents = data.filter((event) => {
+    const eventDate = format(parseISO(event.start), 'yyyy-MM-dd')
+    return eventDate === selectedDay
+  })
+
   return (
     <Layout isCompleteProfile={false}>
-
       <section className="max-w-screen-xl mx-auto p-5 sm:px-10 py-40 pt-10">
-        <GlassmorphicCard className="row-span-2 p-5 text-center mb-5 ">
-          <Typography variant="h2">
-            SCHEDULE
-          </Typography>
+        <GlassmorphicCard className="row-span-2 p-5 text-center mb-5">
+          <Typography variant="h2">SCHEDULE</Typography>
         </GlassmorphicCard>
-        <div className="flex flex-col gap-5">
 
-          <div className="flex flex-row gap-3 justify-center ">
-            <Button className="!hover:text-white cursor-pointer">Fri Mar 14th</Button>
-            <Button className="cursor-pointer">Fri Mar 14th</Button>
-            <Button className="cursor-pointer">Fri Mar 14th</Button>
+        <div className="flex flex-col gap-5">
+          {/* Day Selection */}
+          <div className="flex flex-row gap-3 justify-center">
+            {days.map(day => (
+              <button key={day.date} onClick={() => setSelectedDay(day.date)}>
+                <GlassmorphicCard
+                  className={cn(
+                    'flex flex-col gap-y-1 p-3 w-auto cursor-pointer hover:border-primary',
+                    selectedDay === day.date ? 'border-2 border-primary' : '',
+                  )}
+                >
+                  <Typography
+                    variant="h6"
+                    className={selectedDay === day.date ? 'text-primary' : ''}
+                  >
+                    {day.label}
+                  </Typography>
+                  <Typography
+                    variant="h2"
+                    className={
+                      selectedDay === day.date
+                        ? 'text-primary text-center m-auto'
+                        : 'text-center m-auto'
+                    }
+                  >
+                    {day.date.split('-')[2]}
+                  </Typography>
+                </GlassmorphicCard>
+              </button>
+            ))}
           </div>
-          <MultipleSelector isRequired={false} name="Filter" form={undefined} options={options} placeholder="filter" hidePlaceholderWhenSelected></MultipleSelector>
-          <Event />
+
+          {/* Events List */}
+          {filteredEvents.length > 0
+            ? (
+                filteredEvents.map(event => (
+                  <Event key={event.id} eventData={event} />
+                ))
+              )
+            : (
+                <Typography variant="paragraph-lg" className="text-center">
+                  No events for this day.
+                </Typography>
+              )}
         </div>
       </section>
     </Layout>
   )
 }
 
-function Event() {
+function Event({ eventData }) {
   return (
-    <>
-      <Dialog>
-        <DialogTrigger asChild>
-          <GlassmorphicCard className="p-4 flex flex-col sm:flex-row">
-            <div className="flex-grow-1">
-              <Typography variant="h5">Title</Typography>
-              <Typography variant="paragraph-xs">⌛ 2:20pm - 5:30pm</Typography>
-              <Typography variant="paragraph-xs">📍 RB 222</Typography>
-            </div>
-            <div className="flex-shrink-1">
-              <Badge variant="outline">🚽 work</Badge>
-            </div>
-          </GlassmorphicCard>
-        </DialogTrigger>
+    <Dialog>
+      <DialogTrigger asChild>
+        <GlassmorphicCard className="p-4 flex flex-col sm:flex-row cursor-pointer">
+          <div className="flex-grow-1 space-y-3">
+            <Typography variant="h5">{eventData.title}</Typography>
+            <Typography variant="paragraph-xs">
+              📍
+              {' '}
+              {eventData.location}
+            </Typography>
+            <Typography variant="paragraph-xs">
+              ⌛
+              {' '}
+              {formatTime(eventData.start)}
+              {' '}
+              -
+              {' '}
+              {formatTime(eventData.end)}
+            </Typography>
+            <Typography variant="paragraph-xs">
+              {eventData.description}
+            </Typography>
+          </div>
+          <div className="flex flex-wrap gap-1">
+            {eventData.type.map((tag, index) => (
+              <Badge key={index} variant="outline">
+                {tag}
+              </Badge>
+            ))}
+          </div>
+        </GlassmorphicCard>
+      </DialogTrigger>
 
-        <DialogContent className="sm:max-w-[425px]">
-          hi
-        </DialogContent>
-      </Dialog>
-
-    </>
+      <DialogContent className="sm:max-w-[425px]">
+        <Typography variant="h4">{eventData.title}</Typography>
+        <Typography variant="paragraph-sm">{eventData.description}</Typography>
+      </DialogContent>
+    </Dialog>
   )
 }

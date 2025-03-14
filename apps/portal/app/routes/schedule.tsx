@@ -1,29 +1,42 @@
 import type { LoaderFunction } from '@remix-run/node'
 import process from 'node:process'
 import { SchedulePage } from '@cuhacking/portal/pages/schedule'
+import { useLoaderData } from '@remix-run/react'
 
 export const loader: LoaderFunction = async () => {
   try {
-    const API_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:8000' : 'https://axiom.cuhacking.ca'
-    const req = await fetch(`${API_URL}/api/events`)
+    const API_URL
+      = process.env.NODE_ENV === 'development'
+        ? 'http://localhost:8000'
+        : 'https://axiom.cuhacking.ca'
 
-    if (!req.ok) {
-      throw new Error('Error')
+    let allEvents: any[] = []
+    let page = 1
+    let hasNextPage = true
+
+    while (hasNextPage) {
+      const req = await fetch(`${API_URL}/api/events?page=${page}&limit=100`)
+
+      if (!req.ok) {
+        throw new Response('Error fetching events', { status: req.status })
+      }
+
+      const data = await req.json()
+      allEvents = [...allEvents, ...data.docs]
+      hasNextPage = data.hasNextPage
+      page = data.nextPage
     }
 
-    const data = await req.json()
-
-    return data.docs
+    return allEvents
   }
   catch (error) {
-    console.error(`Error fetching challenges`, error)
+    console.error(`Error fetching events`, error)
+    throw new Response('Internal Server Error', { status: 500 })
   }
 }
 
 export default function Schedule() {
-  // const data = useLoaderData<typeof loader>()
+  const data = useLoaderData<typeof loader>()
 
-  return (
-    <SchedulePage />
-  )
+  return <SchedulePage data={data} />
 }

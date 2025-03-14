@@ -65,7 +65,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:qnx-software@cuhacking.exe",
         title: "Best use of QNX - Software",
-        sponsor: "QNX",
+        sponsor: "qnx-logo.png",
         challengeBlock: [
           {
             blockName: "QNX Details",
@@ -114,7 +114,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:qnx-hardware@cuhacking.exe",
         title: "Best use of QNX - Hardware",
-        sponsor: "QNX",
+        sponsor: "qnx-hardware.png",
         challengeBlock: [
           {
             blockName: "QNX Hardware Details",
@@ -154,7 +154,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:overall@cuhacking.exe",
         title: "Best overall project (1st, 2nd, and 3rd place)",
-        sponsor: "cuHacking",
+        sponsor: "external-judges.png",
         challengeBlock: [
           {
             blockName: "Overall Project Details",
@@ -188,7 +188,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:wolfram-award@cuhacking.exe",
         title: "Wolfram Award - Top 5 teams",
-        sponsor: "Wolfram",
+        sponsor: "judges.png",
         challengeBlock: [
           {
             blockName: "Wolfram Award Details",
@@ -223,7 +223,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:hardware-hack@cuhacking.exe",
         title: "Best Hardware Hack",
-        sponsor: "QNX",
+        sponsor: "cuHacking",
         challengeBlock: [
           {
             blockName: "Hardware Hack Details",
@@ -280,7 +280,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:impact-carleton@cuhacking.exe",
         title: "Carleton Impact Challenge",
-        sponsor: "cuHacking",
+        sponsor: "",
         challengeBlock: [
           {
             blockName: "Impact Challenge Details",
@@ -495,7 +495,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:peoples-choice@cuhacking.exe",
         title: "People’s choice - Best overall project",
-        sponsor: "cuHacking",
+        sponsor: "devpost-logo.png",
         challengeBlock: [
           {
             blockName: "People's Choice Details",
@@ -555,7 +555,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:school-crossover@cuhacking.exe",
         title: "Best School Crossover",
-        sponsor: "cuHacking",
+        sponsor: "judges-logo.png",
         challengeBlock: [
           {
             blockName: "School Crossover Details",
@@ -585,7 +585,7 @@ export async function seedChallenges(payload: Payload, req: any) {
       {
         pathTitle: "E:first-time-hack@cuhacking.exe",
         title: "Best First Time Hack",
-        sponsor: "cuHacking",
+        sponsor: "judges-logo.png",
         challengeBlock: [
           {
             blockName: "First Time Hack Details",
