@@ -22,9 +22,9 @@ export const OrganizerTeams: CollectionConfig = {
     delete: isSuperAdmin,
   },
   fields: [
-    {name: "name", type: "text"},
-    {name: "symbol", type: "upload", relationTo: "media"},
-    {name: "event", type: "relationship", relationTo: "hackathons"},
+    {name: "name", type: "text", admin: {position: 'sidebar'}},
+    {name: "symbol", type: "upload", relationTo: "media", admin: {position: 'sidebar'}},
+    {name: "event", type: "relationship", relationTo: "hackathons",  admin: {position: 'sidebar'}},
     {name: "users", type: "join", collection: "users", on: "organizerTeam"},
   ],
 };
