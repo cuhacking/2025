@@ -8,7 +8,7 @@ export const Groups: CollectionConfig = {
   },
   admin: {
     group: navAccordions.featured,
-    defaultColumns: ["name", "symbol", "event", "users", "id"],
+    defaultColumns: ["name", "symbol", "event", "users", "updatedAt", "createdAt", "id"],
     useAsTitle: "name",
   },
   fields: [
