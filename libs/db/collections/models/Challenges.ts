@@ -11,8 +11,7 @@ export const Challenges: CollectionConfig = {
   },
   fields: [
     {name: "pathTitle", type: "text"},
-    {name: "title", type: "text"},
-    {name: "symbol", type: "upload", relationTo: "media"},
+    {name: "sponsor", type: "relationship", relationTo: "brands"},
         {
       name: 'challengeBlock',
       type: 'blocks',
@@ -618,20 +617,19 @@ export async function seedChallenges(payload: Payload, req: any) {
         
     ].map(async (challenge) => {
       try {
-        const existingMedia = await payload.find({
-          collection: "media",
-          where: { alt: { equals: challenge.symbol.alt } },
+        const sponsorData = await payload.find({
+          collection: "brands",
+          where: { name: { equals: challenge.sponsor } },
           pagination: false,
         });
 
-        const selectedImage =
-          existingMedia.docs.length > 0 ? existingMedia.docs[0].id : null;
+        const selectedSponsorId = sponsorData.docs.length > 0 ? sponsorData.docs[0].id : null;
 
         await payload.create({
           collection: "challenges",
           data: {
             pathTitle: challenge.pathTitle,
-            symbol: selectedImage,
+            sponsor: selectedSponsorId,
             title: challenge.title,
             challengeBlock: challenge.challengeBlock
           },

@@ -1,168 +1,80 @@
+import { Layout } from '@cuhacking/portal/ui/layout'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@cuhacking/shared/ui/accordion'
+import { Button } from '@cuhacking/shared/ui/button'
 import { GlassmorphicCard } from '@cuhacking/shared/ui/glassmorphic-card'
+import { TerminalText } from '@cuhacking/shared/ui/terminal-text/terminal-text'
+import { Typography } from '@cuhacking/shared/ui/typography'
 
-const DATA = {
-  docs: [
-    {
-      id: 8,
-      title: 'Best general hack',
-      pathTitle: 'E:general@cuhacking.exe',
-      symbol: {
-        id: 178,
-        alt: 'Gadget Logo',
-        updatedAt: '2025-03-13T12:16:31.707Z',
-        createdAt: '2025-03-13T12:16:31.661Z',
-        url: 'http://localhost:8000/api/media/file/gadget-logo-symbol-1.gadget-logo-symbol',
-        thumbnailURL: null,
-        filename: 'gadget-logo-symbol-1.gadget-logo-symbol',
-        mimeType: 'image/svg+xml',
-        filesize: 10383,
-        width: 230,
-        height: 60,
-        focalX: null,
-        focalY: null,
-      },
-      challengeBlock: [
-        {
-          id: '67d3077e8dd54b3d043d462b',
-          title: 'getDetails()',
-          blockName: null,
-          bullets: [
-            {
-              id: '67d307828dd54b3d043d462d',
-              point: 'something here',
-            },
-          ],
-          blockType: 'info',
-        },
-        {
-          id: '67d3078f8dd54b3d043d462f',
-          title: 'getResources()',
-          blockName: null,
-          buttons: [
-            {
-              id: '67d307938dd54b3d043d4631',
-              title: 'registser',
-              link: 'links',
-            },
-          ],
-          blockType: 'resources',
-        },
-      ],
-      updatedAt: '2025-03-13T16:28:14.400Z',
-      createdAt: '2025-03-13T12:16:32.605Z',
-    },
-    {
-      id: 7,
-      title: 'Most Impact',
-      pathTitle: 'E:impact-carleton@cuhacking.exe',
-      symbol: {
-        id: 178,
-        alt: 'Gadget Logo',
-        updatedAt: '2025-03-13T12:16:31.707Z',
-        createdAt: '2025-03-13T12:16:31.661Z',
-        url: 'http://localhost:8000/api/media/file/gadget-logo-symbol-1.gadget-logo-symbol',
-        thumbnailURL: null,
-        filename: 'gadget-logo-symbol-1.gadget-logo-symbol',
-        mimeType: 'image/svg+xml',
-        filesize: 10383,
-        width: 230,
-        height: 60,
-        focalX: null,
-        focalY: null,
-      },
-      updatedAt: '2025-03-13T12:16:32.606Z',
-      createdAt: '2025-03-13T12:16:32.603Z',
-      challengeBlock: [],
-    },
-    {
-      id: 6,
-      title: 'Best use of Gadget',
-      pathTitle: 'E:gadget@cuhacking.exe',
-      symbol: {
-        id: 178,
-        alt: 'Gadget Logo',
-        updatedAt: '2025-03-13T12:16:31.707Z',
-        createdAt: '2025-03-13T12:16:31.661Z',
-        url: 'http://localhost:8000/api/media/file/gadget-logo-symbol-1.gadget-logo-symbol',
-        thumbnailURL: null,
-        filename: 'gadget-logo-symbol-1.gadget-logo-symbol',
-        mimeType: 'image/svg+xml',
-        filesize: 10383,
-        width: 230,
-        height: 60,
-        focalX: null,
-        focalY: null,
-      },
-      updatedAt: '2025-03-13T12:16:32.604Z',
-      createdAt: '2025-03-13T12:16:32.603Z',
-      challengeBlock: [],
-    },
-    {
-      id: 5,
-      title: 'Best use of QNX (Software)',
-      pathTitle: 'E:qnx@cuhacking.exe',
-      symbol: {
-        id: 171,
-        alt: 'QNX Logo',
-        updatedAt: '2025-03-13T12:16:31.685Z',
-        createdAt: '2025-03-13T12:16:31.653Z',
-        url: 'http://localhost:8000/api/media/file/qnx-logo-symbol-1.qnx-logo-symbol',
-        thumbnailURL: null,
-        filename: 'qnx-logo-symbol-1.qnx-logo-symbol',
-        mimeType: 'image/svg+xml',
-        filesize: 834,
-        width: 173,
-        height: 60,
-        focalX: null,
-        focalY: null,
-      },
-      updatedAt: '2025-03-13T12:16:32.603Z',
-      createdAt: '2025-03-13T12:16:32.602Z',
-      challengeBlock: [],
-    },
-  ],
-  hasNextPage: false,
-  hasPrevPage: false,
-  limit: 10,
-  nextPage: null,
-  page: 1,
-  pagingCounter: 1,
-  prevPage: null,
-  totalDocs: 4,
-  totalPages: 1,
-}
-
-export function ChallengesPage() {
+export function ChallengesPage({ data }) {
   return (
-    <section className="max-w-screen-xl mx-auto grid sm:grid-cols-2 gap-2">
-      {DATA.docs.map(doc => (
-        <GlassmorphicCard key={doc.id} pathTitle={doc.pathTitle} minimize>
-          <div className="flex p-4">
-            {doc.challengeBlock.map(block =>
-              block.blockType === 'info'
-                ? (
-                    <ChallangeBlockBullet key={block.id} />
-                  )
-                : (
-                    <ChallangeBlockButtons key={block.id} />
-                  ),
-            )}
-            <div>{doc.id}</div>
-          </div>
-        </GlassmorphicCard>
-      ))}
-    </section>
+    <Layout isCompleteProfile={false}>
+      <section className="max-w-screen-xl mx-auto grid sm:grid-cols-2 gap-5 p-5 sm:px-10 py-40 pt-20">
+        {data.map(challenge => (
+          <GlassmorphicCard key={challenge.id} pathTitle={challenge.pathTitle} minimize>
+            <div className="flex flex-col p-4">
+              <img src={challenge.sponsor.symbol.url} alt={challenge.sponsor.symbol.alt} />
+              <Typography variant="h5">{challenge.title}</Typography>
+              <Accordion type="multiple">
+                <AccordionItem value="a">
+                  <AccordionContent>
+                    <div className="flex flex-col gap-2">
+                      {challenge.challengeBlock && challenge.challengeBlock.map(block =>
+                        block.blockType === 'info'
+                          ? (
+                              <ChallangeBlockBullet key={block.id} blockData={block} />
+                            )
+                          : (
+                              <ChallangeBlockButtons key={block.id} blockData={block} />
+                            ),
+                      )}
+                    </div>
+
+                  </AccordionContent>
+                  <AccordionTrigger noChevron className="flex !justify-end">
+                    <Button>
+                      SEE MORE
+                    </Button>
+                  </AccordionTrigger>
+                </AccordionItem>
+              </Accordion>
+            </div>
+          </GlassmorphicCard>
+        ))}
+      </section>
+    </Layout>
   )
 }
 
-function ChallangeBlockBullet() {
+function ChallangeBlockBullet({ blockData }) {
   return (
-    <div>---ChallangeBlockBullet</div>
+    <div>
+      <TerminalText className="pb-0">
+        <p className="text-primary">{blockData.title}</p>
+      </TerminalText>
+      {blockData.bullets.map(bullet => (
+        <TerminalText key={bullet.id} className="pb-0">{bullet.point}</TerminalText>
+      ),
+      )}
+    </div>
   )
 }
 
-function ChallangeBlockButtons() {
+function ChallangeBlockButtons({ blockData }) {
   return (
-    <div>ChallangeBlockBUTTON</div>
+    <div>
+      <TerminalText className="pb-0">
+        <p className="text-primary">{blockData.title}</p>
+      </TerminalText>
+      <TerminalText className="pb-0">
+        {blockData.buttons.map(btn => (
+          <a href={btn.link} key={btn.id}>
+            <Button variant="secondary">
+              {btn.title}
+            </Button>
+          </a>
+        ),
+        )}
+      </TerminalText>
+    </div>
   )
 }
