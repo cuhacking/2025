@@ -325,6 +325,15 @@ export const Users: CollectionConfig = {
       },
     },
     {
+      name: "events",
+      type: "relationship",
+      relationTo: "events",
+      access:{
+    create: isOrganizer || isSuperAdmin,
+    update: isOrganizer || isSuperAdmin,
+      },
+    },
+    {
       name: "group",
       type: "relationship",
       relationTo: "groups",
