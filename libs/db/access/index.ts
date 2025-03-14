@@ -9,9 +9,7 @@ export const authenticated: IsAuthenticated = ({ req }) => {
 
 export const anyone: IsAuthenticated = ({ req: { user } }) => {
   if (!user) return false;
-  return {
-    id: { equals: user.id }
-  };
+  return { id: user.id };
 };
 
 export const isSuperAdmin: IsAuthenticated = ({ req: { user } }) =>
