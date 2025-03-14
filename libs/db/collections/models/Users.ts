@@ -267,10 +267,10 @@ export const Users: CollectionConfig = {
     },
   },
   access: {
-    admin: isSuperAdmin,
+    admin: isOrganizerOrSponsor,
     read:  isOrganizerOrSelf,
     create: authenticated,
-    update: isSelf || isOrganizer || isSuperAdmin,
+    update: isOrganizer,
     delete: isSuperAdmin,
   },
   // hooks: {
