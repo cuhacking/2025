@@ -22,7 +22,7 @@ export function ChallengesPage({ data }: { data: Data[] }) {
   return (
     <Layout isCompleteProfile={false}>
 
-      <section className="max-w-screen-xl mx-auto p-5 sm:px-10 py-40 pt-20">
+      <section className="max-w-screen-xl mx-auto p-5 sm:px-10 py-40 pt-10">
         <GlassmorphicCard className="row-span-2 p-5 text-center mb-5">
           <Typography variant="h2">
             CHALLENGES

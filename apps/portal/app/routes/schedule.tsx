@@ -5,7 +5,7 @@ import { SchedulePage } from '@cuhacking/portal/pages/schedule'
 export const loader: LoaderFunction = async () => {
   try {
     const API_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:8000' : 'https://axiom.cuhacking.ca'
-    const req = await fetch(`${API_URL}/api/challenges`)
+    const req = await fetch(`${API_URL}/api/events`)
 
     if (!req.ok) {
       throw new Error('Error')
