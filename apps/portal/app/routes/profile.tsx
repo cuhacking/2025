@@ -2,7 +2,7 @@ import type { UserDetails } from '@cuhacking/portal/types/user'
 import type { LoaderFunction } from '@remix-run/node'
 import process from 'node:process'
 import { ProfilePage } from '@cuhacking/portal/pages/profile'
-import { json, redirect } from '@remix-run/node'
+import { redirect } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 
 export const loader: LoaderFunction = async ({ request }) => {
@@ -34,7 +34,7 @@ export const loader: LoaderFunction = async ({ request }) => {
       return redirect('/')
     }
 
-    return json({ user, cookie, API_URL })
+    return { user, cookie, API_URL }
   }
   catch {
     return redirect('/')

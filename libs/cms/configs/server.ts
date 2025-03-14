@@ -7,7 +7,7 @@ OrganizerTeams,
        } from "@/db/collections"
 
 import {
-        ChallengePrize,
+        Challenges,
         Events,
         Media,
         Emails,
@@ -39,7 +39,7 @@ defaultDepth: 3,
     OrganizerTeams,
     Hardware,
     Events,
-        Hackathons,
+    Hackathons,
     Challenges,
   ],
   blocks:[
@@ -81,8 +81,6 @@ formOverrides: {
   versions: {
     drafts: true
   },
-    // access: {
-    // },
   },
   formSubmissionOverrides:{
     slug: 'form-submissions',
