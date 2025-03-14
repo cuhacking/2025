@@ -1,13 +1,22 @@
 import type { CollectionConfig, Payload } from 'payload'
 
 import { navAccordions } from '@/db/collections/navAccordions'
+import {
+  anyone,
+  isOrganizer,
+  isSuperAdmin,
+} from "@/db/access";
 
 export const Media: CollectionConfig = {
   slug: 'media',
   access: {
-    read: () => true,
+    read:  anyone,
+    update: isOrganizer || isSuperAdmin,
   },
   admin: {
+    hidden: ({user}) => {
+      return user?.group?.name === "Hacker"
+    },
     group: navAccordions.categories,
     defaultColumns: [
       'filename',
