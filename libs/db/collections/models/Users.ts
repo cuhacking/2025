@@ -313,21 +313,23 @@ export const Users: CollectionConfig = {
   },
   fields: [
     {
+      name: "events",
+      type: "relationship",
+      relationTo: "events",
+     hasMany: true,
+      access:{
+      },
+    },
+    {
     type:"row",
       fields:[
     {
       name: "hackathons",
       type: "relationship",
       relationTo: "hackathons",
-      access:{
-    create: isOrganizer || isSuperAdmin,
-    update: isOrganizer || isSuperAdmin,
+      admin:{
+        hidden: true,
       },
-    },
-    {
-      name: "events",
-      type: "relationship",
-      relationTo: "events",
       access:{
     create: isOrganizer || isSuperAdmin,
     update: isOrganizer || isSuperAdmin,
