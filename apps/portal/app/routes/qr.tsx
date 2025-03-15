@@ -7,34 +7,35 @@ import { useLoaderData } from '@remix-run/react'
 
 export const loader: LoaderFunction = async ({ request }) => {
   const cookie = request.headers.get('Cookie')
-
   const baseUrl
-  = process.env.NODE_ENV === 'development'
-    ? 'http://localhost:8000'
-    : 'https://axiom.cuhacking.ca'
+    = process.env.NODE_ENV === 'development'
+      ? 'http://localhost:8000'
+      : 'https://axiom.cuhacking.ca'
 
-  const API_URL = baseUrl
   try {
-    const res = await fetch(`${API_URL}/api/users/me`, {
+    const userRes = await fetch(`${baseUrl}/api/users/me`, {
       credentials: 'include',
       headers: { Cookie: cookie || '' },
     })
 
-    if (!res.ok) {
+    if (!userRes.ok) {
       throw new Error('Not Authenticated')
     }
 
-    const { user } = await res.json()
+    const { user } = await userRes.json()
 
-    if (!user) {
+    if (!user || !user.agreedToTerms) {
       return redirect('/')
     }
 
-    if (!user.agreedToTerms) {
-      return redirect('/')
-    }
+    const eventsRes = await fetch(`${baseUrl}/api/events`, {
+      credentials: 'include',
+      headers: { Cookie: cookie || '' },
+    })
 
-    return { user, cookie, API_URL }
+    const { events } = await eventsRes.json()
+
+    return { user, events }
   }
   catch {
     return redirect('/')
@@ -42,9 +43,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 }
 
 export default function QR() {
-  const { user } = useLoaderData< { user: UserDetails, cookie: string }>()
+  const { user, events } = useLoaderData<{ user: UserDetails, events: any }>()
 
-  return (
-    <QrPage user={user} />
-  )
+  return <QrPage user={user} events={events} />
 }

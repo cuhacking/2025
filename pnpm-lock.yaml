@@ -107,6 +107,9 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.1.2
         version: 1.1.2(@types/react@18.3.18)(react@18.3.1)
+      '@radix-ui/react-tabs':
+        specifier: ^1.1.3
+        version: 1.1.3(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-tooltip':
         specifier: ^1.1.8
         version: 1.1.8(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -149,6 +152,9 @@ importers:
       '@xstate/react':
         specifier: ^5.0.2
         version: 5.0.2(@types/react@18.3.18)(react@18.3.1)(xstate@5.19.2)
+      '@yudiel/react-qr-scanner':
+        specifier: ^2.2.1
+        version: 2.2.1(@types/emscripten@1.40.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       better-auth:
         specifier: ^1.1.21
         version: 1.1.21
@@ -449,7 +455,7 @@ importers:
         version: 8.4.7(storybook@8.5.3(prettier@3.5.0))
       '@storybook/nextjs':
         specifier: ^8.5.3
-        version: 8.5.3(@rspack/core@1.2.2(@swc/helpers@0.5.15))(@swc/core@1.5.29(@swc/helpers@0.5.15))(babel-plugin-macros@3.1.0)(esbuild@0.24.2)(next@15.1.0(@babel/core@7.26.8)(@opentelemetry/api@1.8.0)(@playwright/test@1.50.1)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.84.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.84.0)(storybook@8.5.3(prettier@3.5.0))(type-fest@4.34.1)(typescript@5.7.3)(webpack-cli@5.1.4)(webpack-dev-server@5.2.0)(webpack-hot-middleware@2.26.1)(webpack@5.97.1)
+        version: 8.5.3(@rspack/core@1.2.2(@swc/helpers@0.5.15))(@swc/core@1.5.29(@swc/helpers@0.5.15))(babel-plugin-macros@3.1.0)(esbuild@0.24.2)(next@15.1.0(@babel/core@7.26.8)(@opentelemetry/api@1.8.0)(@playwright/test@1.50.1)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.84.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.84.0)(storybook@8.5.3(prettier@3.5.0))(type-fest@4.37.0)(typescript@5.7.3)(webpack-cli@5.1.4)(webpack-dev-server@5.2.0)(webpack-hot-middleware@2.26.1)(webpack@5.97.1)
       '@storybook/react':
         specifier: 8.4.7
         version: 8.4.7(@storybook/test@8.5.3(storybook@8.5.3(prettier@3.5.0)))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.5.3(prettier@3.5.0))(typescript@5.7.3)
@@ -7436,6 +7442,9 @@ packages:
   '@types/doctrine@0.0.9':
     resolution: {integrity: sha512-eOIHzCUSH7SMfonMG1LsC2f8vxBFtho6NGBznK41R84YzPuvSBzrhEps33IsQiOW9+VL6NQ9DbjQJznk/S4uRA==}
 
+  '@types/emscripten@1.40.0':
+    resolution: {integrity: sha512-MD2JJ25S4tnjnhjWyalMS6K6p0h+zQV6+Ylm+aGbiS8tSn/aHLSGNzBgduj6FB4zH0ax2GRMGYi/8G1uOxhXWA==}
+
   '@types/eslint-scope@3.7.7':
     resolution: {integrity: sha512-MzMFlSLBqNF2gcHWO0G1vP/YQyfvrxZ0bF+u7mzUdZ1/xK4A4sru+nraZz5i3iEIk1l1uyicaDVTB4QbbEkAYg==}
 
@@ -8246,6 +8255,12 @@ packages:
     resolution: {integrity: sha512-/HcYgtUSiJiot/XWGLOlGxPYUG65+/31V8oqk17vZLW1xlCoR4PampyePljOxY2n8/3jz9+tIFzICsyGujJZoA==}
     engines: {node: '>=18.12.0'}
 
+  '@yudiel/react-qr-scanner@2.2.1':
+    resolution: {integrity: sha512-5tmzoi9d8mqqaxKTxfI9kulS3N3Kph75AOqwU2lnl4IMwjmLcTXS8IyecDUvzFNuoMNhCpofrqqGueXm8IXkjA==}
+    peerDependencies:
+      react: ^17 || ^18 || ^19
+      react-dom: ^17 || ^18 || ^19
+
   '@zkochan/js-yaml@0.0.7':
     resolution: {integrity: sha512-nrUSn7hzt7J6JWgWGz78ZYI8wj+gdIJdk0Ynjpp8l+trkn58Uqsf6RYrYkEK+3X18EX+TNdtJI0WxAtc+L84SQ==}
     hasBin: true
@@ -8754,6 +8769,9 @@ packages:
 
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
+
+  barcode-detector@3.0.1:
+    resolution: {integrity: sha512-3fCzG/Py4SVgZJhubD1mt7rVprtHEVWrxQN4FUOG0oulPE4193evbgyptxcOYsfTNEtMlWc+Ec9tdxhjlR4/Ww==}
 
   bare-events@2.5.4:
     resolution: {integrity: sha512-+gFfDkR8pj4/TrWCGUGWmJIkBwuxPS5F+a5yWjOHQt2hHvNZd5YLzadjmDUtFmMM4y429bnKLa8bYBMHcYdnQA==}
@@ -17286,6 +17304,9 @@ packages:
   scule@1.3.0:
     resolution: {integrity: sha512-6FtHJEvt+pVMIB9IBY+IcCJ6Z5f1iQnytgyfKMhDKgmzYG+TeH/wx1y3l27rshSbLiSanrR9ffZDrEsmjlQF2g==}
 
+  sdp@3.2.0:
+    resolution: {integrity: sha512-d7wDPgDV3DDiqulJjKiV2865wKsJ34YI+NDREbm+FySq6WuKOikwyNQcm+doLAZ1O6ltdO0SeKle2xMpN3Brgw==}
+
   section-matter@1.0.0:
     resolution: {integrity: sha512-vfD3pmTzGpufjScBh50YHKzEu2lxBWhVEHsNGoEXmCmn2hKGfeNLYMzCJpe8cD7gqX7TJluOVpBkAequ6dgMmA==}
     engines: {node: '>=4'}
@@ -18483,6 +18504,10 @@ packages:
     resolution: {integrity: sha512-6kSc32kT0rbwxD6QL1CYe8IqdzN/J/ILMrNK+HMQCKH3insCDRY/3ITb0vcBss0a3t72fzh2YSzj8ko1HgwT3g==}
     engines: {node: '>=16'}
 
+  type-fest@4.37.0:
+    resolution: {integrity: sha512-S/5/0kFftkq27FPNye0XM1e2NsnoD/3FS+pBmbjmmtLT6I+i344KoOf7pvXreaFsDamWeaJX55nczA1m5PsBDg==}
+    engines: {node: '>=16'}
+
   type-is@1.6.18:
     resolution: {integrity: sha512-TkRKr9sUTxEH8MdfuCSP7VizJyzRNMjj2J2do2Jr3Kym598JVdEksuzPQCnlFPW4ky9Q+iA+ma9BGm06XQBy8g==}
     engines: {node: '>= 0.6'}
@@ -19392,6 +19417,10 @@ packages:
       webpack-cli:
         optional: true
 
+  webrtc-adapter@9.0.1:
+    resolution: {integrity: sha512-1AQO+d4ElfVSXyzNVTOewgGT/tAomwwztX/6e3totvyyzXPvXIIuUUjAmyZGbKBKbZOXauuJooZm3g6IuFuiNQ==}
+    engines: {node: '>=6.0.0', npm: '>=3.10.0'}
+
   websocket-driver@0.7.4:
     resolution: {integrity: sha512-b17KeDIQVjvb0ssuSDF2cYXSg2iztliJ4B9WdsuB6J952qCPKmnVq4DyW5motImXHDC1cBT/1UezrJVsKw5zjg==}
     engines: {node: '>=0.8.0'}
@@ -19685,6 +19714,11 @@ packages:
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
+
+  zxing-wasm@2.1.0:
+    resolution: {integrity: sha512-CvuwDZHRHwg6PeCARaCDIp3dauD4cin0mbHrQQZtMDrr5mblPzCimAjdw/XMhD/Au10q/f5+SAupvYqYvUOg1Q==}
+    peerDependencies:
+      '@types/emscripten': '>=1.39.6'
 
 snapshots:
 
@@ -25437,7 +25471,7 @@ snapshots:
     dependencies:
       playwright: 1.50.1
 
-  '@pmmmwh/react-refresh-webpack-plugin@0.5.15(react-refresh@0.14.2)(type-fest@4.34.1)(webpack-dev-server@5.2.0)(webpack-hot-middleware@2.26.1)(webpack@5.97.1)':
+  '@pmmmwh/react-refresh-webpack-plugin@0.5.15(react-refresh@0.14.2)(type-fest@4.37.0)(webpack-dev-server@5.2.0)(webpack-hot-middleware@2.26.1)(webpack@5.97.1)':
     dependencies:
       ansi-html: 0.0.9
       core-js-pure: 3.40.0
@@ -25449,7 +25483,7 @@ snapshots:
       source-map: 0.7.4
       webpack: 5.97.1(@swc/core@1.5.29(@swc/helpers@0.5.15))(esbuild@0.24.2)(webpack-cli@5.1.4)
     optionalDependencies:
-      type-fest: 4.34.1
+      type-fest: 4.37.0
       webpack-dev-server: 5.2.0(webpack-cli@5.1.4)(webpack@5.97.1)
       webpack-hot-middleware: 2.26.1
 
@@ -27780,7 +27814,7 @@ snapshots:
     dependencies:
       storybook: 8.5.3(prettier@3.5.0)
 
-  '@storybook/nextjs@8.5.3(@rspack/core@1.2.2(@swc/helpers@0.5.15))(@swc/core@1.5.29(@swc/helpers@0.5.15))(babel-plugin-macros@3.1.0)(esbuild@0.24.2)(next@15.1.0(@babel/core@7.26.8)(@opentelemetry/api@1.8.0)(@playwright/test@1.50.1)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.84.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.84.0)(storybook@8.5.3(prettier@3.5.0))(type-fest@4.34.1)(typescript@5.7.3)(webpack-cli@5.1.4)(webpack-dev-server@5.2.0)(webpack-hot-middleware@2.26.1)(webpack@5.97.1)':
+  '@storybook/nextjs@8.5.3(@rspack/core@1.2.2(@swc/helpers@0.5.15))(@swc/core@1.5.29(@swc/helpers@0.5.15))(babel-plugin-macros@3.1.0)(esbuild@0.24.2)(next@15.1.0(@babel/core@7.26.8)(@opentelemetry/api@1.8.0)(@playwright/test@1.50.1)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.84.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.84.0)(storybook@8.5.3(prettier@3.5.0))(type-fest@4.37.0)(typescript@5.7.3)(webpack-cli@5.1.4)(webpack-dev-server@5.2.0)(webpack-hot-middleware@2.26.1)(webpack@5.97.1)':
     dependencies:
       '@babel/core': 7.26.8
       '@babel/plugin-syntax-bigint': 7.8.3(@babel/core@7.26.8)
@@ -27795,7 +27829,7 @@ snapshots:
       '@babel/preset-react': 7.26.3(@babel/core@7.26.8)
       '@babel/preset-typescript': 7.26.0(@babel/core@7.26.8)
       '@babel/runtime': 7.26.7
-      '@pmmmwh/react-refresh-webpack-plugin': 0.5.15(react-refresh@0.14.2)(type-fest@4.34.1)(webpack-dev-server@5.2.0)(webpack-hot-middleware@2.26.1)(webpack@5.97.1)
+      '@pmmmwh/react-refresh-webpack-plugin': 0.5.15(react-refresh@0.14.2)(type-fest@4.37.0)(webpack-dev-server@5.2.0)(webpack-hot-middleware@2.26.1)(webpack@5.97.1)
       '@storybook/builder-webpack5': 8.5.3(@rspack/core@1.2.2(@swc/helpers@0.5.15))(@swc/core@1.5.29(@swc/helpers@0.5.15))(esbuild@0.24.2)(storybook@8.5.3(prettier@3.5.0))(typescript@5.7.3)(webpack-cli@5.1.4)
       '@storybook/preset-react-webpack': 8.5.3(@storybook/test@8.5.3(storybook@8.5.3(prettier@3.5.0)))(@swc/core@1.5.29(@swc/helpers@0.5.15))(esbuild@0.24.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.5.3(prettier@3.5.0))(typescript@5.7.3)(webpack-cli@5.1.4)
       '@storybook/react': 8.5.3(@storybook/test@8.5.3(storybook@8.5.3(prettier@3.5.0)))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.5.3(prettier@3.5.0))(typescript@5.7.3)
@@ -28591,6 +28625,8 @@ snapshots:
       '@types/ms': 2.1.0
 
   '@types/doctrine@0.0.9': {}
+
+  '@types/emscripten@1.40.0': {}
 
   '@types/eslint-scope@3.7.7':
     dependencies:
@@ -29786,6 +29822,15 @@ snapshots:
       js-yaml: 3.14.1
       tslib: 2.8.1
 
+  '@yudiel/react-qr-scanner@2.2.1(@types/emscripten@1.40.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      barcode-detector: 3.0.1(@types/emscripten@1.40.0)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      webrtc-adapter: 9.0.1
+    transitivePeerDependencies:
+      - '@types/emscripten'
+
   '@zkochan/js-yaml@0.0.7':
     dependencies:
       argparse: 2.0.1
@@ -30351,6 +30396,12 @@ snapshots:
   bail@2.0.2: {}
 
   balanced-match@1.0.2: {}
+
+  barcode-detector@3.0.1(@types/emscripten@1.40.0):
+    dependencies:
+      zxing-wasm: 2.1.0(@types/emscripten@1.40.0)
+    transitivePeerDependencies:
+      - '@types/emscripten'
 
   bare-events@2.5.4:
     optional: true
@@ -41266,6 +41317,8 @@ snapshots:
   scule@1.3.0:
     optional: true
 
+  sdp@3.2.0: {}
+
   section-matter@1.0.0:
     dependencies:
       extend-shallow: 2.0.1
@@ -42651,6 +42704,8 @@ snapshots:
 
   type-fest@4.34.1: {}
 
+  type-fest@4.37.0: {}
+
   type-is@1.6.18:
     dependencies:
       media-typer: 0.3.0
@@ -43655,6 +43710,10 @@ snapshots:
       - esbuild
       - uglify-js
 
+  webrtc-adapter@9.0.1:
+    dependencies:
+      sdp: 3.2.0
+
   websocket-driver@0.7.4:
     dependencies:
       http-parser-js: 0.5.9
@@ -43934,3 +43993,8 @@ snapshots:
   zod@3.24.1: {}
 
   zwitch@2.0.4: {}
+
+  zxing-wasm@2.1.0(@types/emscripten@1.40.0):
+    dependencies:
+      '@types/emscripten': 1.40.0
+      type-fest: 4.37.0

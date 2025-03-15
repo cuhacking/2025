@@ -268,7 +268,7 @@ export const Users: CollectionConfig = {
   },
   access: {
     admin: isOrganizerOrSponsor,
-    read:  () => true,
+    read: authenticated,
     create: authenticated,
     update: authenticated,
     delete: isSuperAdmin,
