@@ -33,10 +33,12 @@ const options = [
 export function SchedulePage({ data }) {
   const [selectedDay, setSelectedDay] = useState('2025-03-14')
 
-  const filteredEvents = data.filter((event) => {
-    const eventDate = format(parseISO(event.start), 'yyyy-MM-dd')
-    return eventDate === selectedDay
-  })
+  const filteredEvents = data
+    .filter((event) => {
+      const eventDate = format(parseISO(event.start), 'yyyy-MM-dd')
+      return eventDate === selectedDay
+    })
+    .sort((a, b) => new Date(a.start).getTime() - new Date(b.start).getTime())
 
   return (
     <Layout isCompleteProfile>
@@ -96,16 +98,24 @@ export function SchedulePage({ data }) {
 }
 
 function Event({ eventData }) {
+  const now = new Date()
+  const eventEndTime = new Date(eventData.end)
+  const isOngoing = eventEndTime > now // Check if event hasn't ended
+
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <GlassmorphicCard className="p-4 flex flex-col sm:flex-row cursor-pointer">
+        <GlassmorphicCard
+          className={cn(
+            'p-4 flex flex-col sm:flex-row cursor-pointer',
+            isOngoing ? '!border-3 !border-primary' : '',
+          )}
+        >
           <div className="flex-grow-1 space-y-3">
             <Typography variant="h5">{eventData.title}</Typography>
             <Typography variant="paragraph-xs">
               📍
-              {' '}
-              { eventData.location}
+              {eventData.location}
             </Typography>
             <Typography variant="paragraph-xs">
               ⌛
@@ -116,14 +126,11 @@ function Event({ eventData }) {
               {' '}
               {formatTime(eventData.end)}
             </Typography>
-            <Typography variant="paragraph-xs">
-              {eventData.description}
-            </Typography>
+            <Typography variant="paragraph-xs">{eventData.description}</Typography>
           </div>
           <div className="flex flex-wrap p-2 w-fit my-auto gap-2">
             {eventData.type.map((tag, index) => {
               const matchedOption = options.find(option => option.value === tag)
-
               return (
                 <Badge
                   key={index}
@@ -131,7 +138,6 @@ function Event({ eventData }) {
                   className="px-4 py-1 text-sm font-thin uppercase text-center min-w-[8rem] flex justify-center"
                 >
                   {matchedOption ? matchedOption.label : tag}
-                  {' '}
                 </Badge>
               )
             })}
