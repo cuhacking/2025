@@ -100,8 +100,9 @@ export function SchedulePage({ data }) {
 
 function Event({ eventData }) {
   const now = new Date()
+  const eventStartTime = new Date(eventData.start)
   const eventEndTime = new Date(eventData.end)
-  const isOngoing = eventEndTime > now
+  const isOngoing = eventEndTime > now && now > eventStartTime
 
   return (
     <Dialog>
