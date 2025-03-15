@@ -79,7 +79,7 @@ export const Events: CollectionConfig = {
         { label: '😂 Fun', value: 'fun' },
         { label: '🥑 Food', value: 'food' },
         { label: '🤹 Other', value: 'other' },
-        
+        { label: '💻 Tech Talk', value: 'techtalk' },
       ],
       hasMany: true
     },

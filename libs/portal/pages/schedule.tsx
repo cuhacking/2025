@@ -28,6 +28,7 @@ const options = [
   { label: '😂 Fun', value: 'fun' },
   { label: '🥑 Food', value: 'food' },
   { label: '🤹 Other', value: 'other' },
+  { label: '💻 Tech Talk', value: 'techtalk' },
 ]
 
 export function SchedulePage({ data }) {
@@ -100,7 +101,7 @@ export function SchedulePage({ data }) {
 function Event({ eventData }) {
   const now = new Date()
   const eventEndTime = new Date(eventData.end)
-  const isOngoing = eventEndTime > now // Check if event hasn't ended
+  const isOngoing = eventEndTime > now
 
   return (
     <Dialog>
