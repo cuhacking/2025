@@ -69,3 +69,12 @@ Installation instructions, contribution guidelines, and technology stacks are av
 |                          [✉️ Email Templates](https://email.cuhacking.ca)                           |                          [🧹 ESLint](https://eslint.cuhacking.ca)                          |                 [🗓️ Project Board](https://github.com/orgs/cuhacking/projects/4)                  |
 | :-------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------: |
 | ![Email Templates](https://github.com/user-attachments/assets/3fd9ea07-da23-4a7c-9e43-5f101ea5c884) | ![ESLint](https://github.com/user-attachments/assets/faa0360c-2299-4436-9e5c-f5380e01256f) | ![Project Board](https://github.com/user-attachments/assets/b10ddf82-4a8e-4892-bc45-ffdb596cd678) |
+
+---
+
+Made with 💚 by the community, and the 2025 Core Team.
+
+| | |
+|-|-|
+| ![image](https://github.com/user-attachments/assets/8da2895d-5543-4c53-aafe-8e71d62f828b) | ![image](https://github.com/user-attachments/assets/f2d93ede-3175-4d58-9682-6e2ecf6a6a78) |
+
