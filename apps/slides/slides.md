@@ -4,7 +4,7 @@
 theme: default
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
-background: https://github.com/user-attachments/assets/381f7ce4-3646-474a-8a62-fc5b2123bde2
+background: https://github.com/user-attachments/assets/9a2a8c79-3c4f-400d-8928-6f74128b66b8
 # some information about your slides (markdown enabled)
 title: "cuHacking"
 titleTemplate: '%s - cuHacking'
