@@ -41,6 +41,11 @@ const presentPartnersInput = {
     'Sesa',
     'IEEE Carleton',
     'CAIS',
+    'CPRT',
+    'Level One',
+    'Carleton Impact',
+    'Netlify',
+    'Nx',
   ],
 }
 
