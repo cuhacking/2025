@@ -6,8 +6,8 @@ theme: default
 # like them? see https://unsplash.com/collections/94734566/slidev
 background: https://github.com/user-attachments/assets/9a2a8c79-3c4f-400d-8928-6f74128b66b8
 # some information about your slides (markdown enabled)
-title: "Landing"
-titleTemplate: '%s - cuHacking'
+title: "Intro to Open Source"
+titleTemplate: '%s - BluePrint x cuHacking'
 info: |
   ## Blueprint Presentation Deck
 
@@ -50,59 +50,72 @@ The last comment block of each slide will be treated as slide notes. It will be 
 -->
 
 ---
-layout: cover
+layout: two-cols
+layoutClass: gap-4
 transition: fade-out
-background: https://github.com/user-attachments/assets/5666405a-9ec2-428e-980a-c40016c85233
 ---
 
-<h2 class="text-orange-500">Who are we?</h2>
+<h2 class="text-orange-500">Who are we?</h2> 
 
+<ul>
+<li>
+Making technology more <span class="text-yellow-500"> accessible.</span>
+</li>
+<li>
+    Delivering beautiful <span class="text-pink-500 font-bold underline">products</span> to nonprofits for <span class="text-green-500">free.</span>
+</li>
+<li>
+    Leveraging <span class="text-purple-500">skilled</span> student network to form a mutually beneficial partnership, providing a trustworthy service that nonprofits can rely on.
+</li>
+<li>
+Hosting great campus <span class="text-emerald-500">events</span> like these :)
+</li>
+</ul>
 
-   Blueprint delivers beautiful <span class="text-yellow-500 font-bold underline">technology</span> products to nonprofits for <span class="text-red-500">free.</span> We leverage the skilled student network to form a mutually beneficial partnership, providing a trustworthy service that nonprofits can rely on.
+::right::
+
 
   <iframe 
   src="https://carletonblueprint.org/" 
   width="100%" 
-  height="365px" 
-  style="border:none;"
+  height="100%"
+  class="border border-yellow-400 rounded-lg"
   allowfullscreen>
   </iframe>
-
-
 
 ---
 layout: two-cols
 layoutClass: gap-16
 ---
 
-# What is Open Source
+# What is Open Source?
 
-- Software whose code is free to view, modify, and distribute
-- Developed and maintained by communities of contributors
-- Collaboration happens on platforms like GitHub
+- Software whose code is <span class="text-green-500">free</span> to view, modify, and distribute.
+- Developed and maintained by communities of contributors.
+- Collaboration happens on platforms like GitHub.
 
 ::right::
 <img width="598" alt="Image" src="https://github.com/user-attachments/assets/4ec627c8-533c-4157-8697-9deac7f24af8" />
+
 ---
 
-# Open Source vs. Proprietary Software
+# Open Source vs. Proprietary
 
 <span class="text-green-500 font-bold underline"></span>
 
-Proprietary Software: 
+<span class="text-red-500">Proprietary</span> Software: 
 
 - Code is owned by a company
 - Only employees can modify it
 - Examples: Microsoft Windows, Adobe Photoshop
 
-Open Source Software:
+<span class="text-green-500">Open Source</span> Software:
 - Code is publicly available
 - Anyone can contribute
 - Examples: Linux, Python, React
 
 <img width="488" alt="Image" src="https://github.com/user-attachments/assets/9397780b-4abe-4fec-9021-4691e77b6924" />
 ---
-
 
 # Benefits of Open Source
 
@@ -123,19 +136,16 @@ Industry-Wide Impact:
 <img height = "150" width="300" alt="Image" src="https://github.com/user-attachments/assets/f399336b-6cef-4e45-b762-d3d83db49759" />
 ---
 
-
 # Speaking of Which...
 
 <span class="text-green-500 font-bold underline"></span>
 
-<span class="text-green-500 font-bold underline">Mumtahin Farabi </span>
+<span class="text-orange-500 font-bold underline">Mumtahin Farabi </span>
 
-Lead Technical Architect @cuHacking
+<span class="text-yellow-500">Lead Technical Architect</span> @ <span class="text-green-500">cuHacking</span>
 
-<img width="272" alt="Image" src="https://github.com/user-attachments/assets/a999951c-48c9-496b-85a3-3ad73ebe303b" />
-<img width="103" alt="Image" src="https://github.com/user-attachments/assets/ac006085-b6b8-43b1-b0ef-4334c00051d3" />
-
-
+<img width="272" alt="Image" class="rounded-full" src="https://github.com/user-attachments/assets/a999951c-48c9-496b-85a3-3ad73ebe303b" />
+<img width="103" alt="Image" src="https://cuhacking.ca/assets/cuhacking-logo-1-DgcuCcxm.svg" />
 
 ---
 layout: two-cols
