@@ -6,10 +6,10 @@ theme: default
 # like them? see https://unsplash.com/collections/94734566/slidev
 background: https://github.com/user-attachments/assets/9a2a8c79-3c4f-400d-8928-6f74128b66b8
 # some information about your slides (markdown enabled)
-title: "cuHacking"
+title: "Landing"
 titleTemplate: '%s - cuHacking'
 info: |
-  ## cuHacking Presentation Deck
+  ## Blueprint Presentation Deck
 
 # apply unocss classes to the current slide
 class: text-center
