@@ -28,26 +28,14 @@ fonts:
   mono: JetBrains Mono
 ---
 
-<div class="relative border-none backdrop-blur-md rounded-xl shadow-dropShadow border-border py-10">
+<div class="">
 
-<h1 class="font-bold"><span class="text-[#36DF2A]">cuHacking</span> <span class="text-yellow-500">6</span> </h1>
+<h1 class="font-bold"><span class="text-[#ffffff]">Introduction to Open Source Development </span> <span class="text-blue-500"></span> </h1>
 ~
-<span class="text-blue"> March 14-16th</span> <span class="text-orange">2025</span> @ <span class="text-[#e91c24]">Carleton University</span> 💚
+<span class="text-blue"> Presented By:</span> <span class="text-orange">Co-President Anirudh</span> @ <span class="text-[#e91c24]">Carleton Blueprint</span> 
 
-This slide deck is a work in progress.
-
-<!-- TODO: Convert to use logos -->
-<!-- [Website](https://cuhacking.ca) -->
-<!-- [Instagram](https://instagram.com/cuhacking) -->
-<!-- [Email](https://sponsorship@cuhacking.ca) -->
-<!-- [LinkedIn](https://linkedin.com/company/cuhacking) -->
-
-<!-- <div @click="$slidev.nav.next" class="mt-12 py-1" hover:bg="white op-10"> -->
-<!--   Press Space for next page <carbon:arrow-right /> -->
-<!-- </div> -->
 
 </div>
-
 <div class="abs-br m-6 text-xl">
   <button @click="$slidev.nav.openInEditor" title="Open in Editor" class="slidev-icon-btn">
     <carbon:edit />
