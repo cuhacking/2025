@@ -134,3 +134,26 @@ Lead Technical Architect @cuHacking
 
 <img width="272" alt="Image" src="https://github.com/user-attachments/assets/a999951c-48c9-496b-85a3-3ad73ebe303b" />
 <img width="103" alt="Image" src="https://github.com/user-attachments/assets/ac006085-b6b8-43b1-b0ef-4334c00051d3" />
+
+
+
+---
+layout: two-cols
+layoutClass: gap-0
+transition: fade-in
+background: https://github.com/user-attachments/assets/5666405a-9ec2-428e-980a-c40016c85233
+---
+
+# Thank You!
+
+<span class="text-yellow-500 font-bold underline"></span>
+
+<span class="text-yellow-500 font-bold underline">Connect with us!</span>
+
+<img width="200" alt="Image" src="https://github.com/user-attachments/assets/32ede9db-3233-4aac-85ee-f88deace2e75" />
+<img width="200" alt="Image" src="https://github.com/user-attachments/assets/669a3816-f4b8-4368-a041-aa755775171d" />
+
+::right::
+<img width="200" alt="Image" src="https://github.com/user-attachments/assets/12d078b4-beeb-43a7-bf04-da4d6ee6cd2f" />
+<img width="200" alt="Image" src="https://github.com/user-attachments/assets/a4dab1d8-1a41-47bb-89bb-0e236138a036" />
+
